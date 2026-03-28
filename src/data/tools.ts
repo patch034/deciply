@@ -4,8 +4,8 @@ export const tools: ToolEntry[] = [
   {
     slug: "chatgpt",
     pricing: "FREEMIUM",
-    websiteUrl: "https://example.com/chatgpt",
-    affiliateUrl: "https://example.com/chatgpt",
+    websiteUrl: "https://chatgpt.com",
+    affiliateUrl: "https://chatgpt.com",
     primaryCategorySlug: "writing",
     categorySlugs: ["ai-tools", "comparisons", "guides"],
     toolCategorySlugs: ["writing", "productivity"],
@@ -80,8 +80,8 @@ export const tools: ToolEntry[] = [
   {
     slug: "claude",
     pricing: "FREEMIUM",
-    websiteUrl: "https://example.com/claude",
-    affiliateUrl: "https://example.com/claude",
+    websiteUrl: "https://claude.ai",
+    affiliateUrl: "https://claude.ai",
     primaryCategorySlug: "writing",
     categorySlugs: ["ai-tools", "comparisons", "guides"],
     toolCategorySlugs: ["writing"],
@@ -148,8 +148,8 @@ export const tools: ToolEntry[] = [
   {
     slug: "midjourney",
     pricing: "PAID",
-    websiteUrl: "https://example.com/midjourney",
-    affiliateUrl: "https://example.com/midjourney",
+    websiteUrl: "https://www.midjourney.com",
+    affiliateUrl: "https://www.midjourney.com",
     primaryCategorySlug: "image",
     categorySlugs: ["ai-tools", "comparisons"],
     toolCategorySlugs: ["image"],
@@ -216,8 +216,8 @@ export const tools: ToolEntry[] = [
   {
     slug: "gemini",
     pricing: "FREEMIUM",
-    websiteUrl: "https://example.com/gemini",
-    affiliateUrl: "https://example.com/gemini",
+    websiteUrl: "https://gemini.google.com",
+    affiliateUrl: "https://gemini.google.com",
     primaryCategorySlug: "productivity",
     categorySlugs: ["ai-tools", "comparisons", "guides"],
     toolCategorySlugs: ["productivity", "writing"],
@@ -284,8 +284,8 @@ export const tools: ToolEntry[] = [
   {
     slug: "notion-ai",
     pricing: "PAID",
-    websiteUrl: "https://example.com/notion-ai",
-    affiliateUrl: "https://example.com/notion-ai",
+    websiteUrl: "https://www.notion.com/product/ai",
+    affiliateUrl: "https://www.notion.com/product/ai",
     primaryCategorySlug: "productivity",
     categorySlugs: ["ai-tools", "guides", "make-money-with-ai"],
     toolCategorySlugs: ["productivity", "writing"],
@@ -352,8 +352,8 @@ export const tools: ToolEntry[] = [
   {
     slug: "runway",
     pricing: "PAID",
-    websiteUrl: "https://example.com/runway",
-    affiliateUrl: "https://example.com/runway",
+    websiteUrl: "https://runwayml.com",
+    affiliateUrl: "https://runwayml.com",
     primaryCategorySlug: "video",
     categorySlugs: ["ai-tools", "comparisons", "make-money-with-ai"],
     toolCategorySlugs: ["video"],
@@ -420,8 +420,8 @@ export const tools: ToolEntry[] = [
   {
     slug: "perplexity",
     pricing: "FREEMIUM",
-    websiteUrl: "https://example.com/perplexity",
-    affiliateUrl: "https://example.com/perplexity",
+    websiteUrl: "https://www.perplexity.ai",
+    affiliateUrl: "https://www.perplexity.ai",
     primaryCategorySlug: "writing",
     categorySlugs: ["ai-tools", "guides", "comparisons"],
     toolCategorySlugs: ["writing", "productivity"],
@@ -488,8 +488,8 @@ export const tools: ToolEntry[] = [
   {
     slug: "jasper",
     pricing: "PAID",
-    websiteUrl: "https://example.com/jasper",
-    affiliateUrl: "https://example.com/jasper",
+    websiteUrl: "https://www.jasper.ai",
+    affiliateUrl: "https://www.jasper.ai",
     primaryCategorySlug: "writing",
     categorySlugs: ["ai-tools", "make-money-with-ai", "guides"],
     toolCategorySlugs: ["writing"],
@@ -556,8 +556,8 @@ export const tools: ToolEntry[] = [
   {
     slug: "copy-ai",
     pricing: "FREEMIUM",
-    websiteUrl: "https://example.com/copy-ai",
-    affiliateUrl: "https://example.com/copy-ai",
+    websiteUrl: "https://www.copy.ai",
+    affiliateUrl: "https://www.copy.ai",
     primaryCategorySlug: "writing",
     categorySlugs: ["ai-tools", "make-money-with-ai", "guides"],
     toolCategorySlugs: ["writing"],
@@ -624,8 +624,8 @@ export const tools: ToolEntry[] = [
   {
     slug: "canva-ai",
     pricing: "FREEMIUM",
-    websiteUrl: "https://example.com/canva-ai",
-    affiliateUrl: "https://example.com/canva-ai",
+    websiteUrl: "https://www.canva.com/canva-ai/",
+    affiliateUrl: "https://www.canva.com/canva-ai/",
     primaryCategorySlug: "image",
     categorySlugs: ["ai-tools", "make-money-with-ai", "guides"],
     toolCategorySlugs: ["image", "productivity"],
@@ -692,8 +692,8 @@ export const tools: ToolEntry[] = [
   {
     slug: "leonardo-ai",
     pricing: "FREEMIUM",
-    websiteUrl: "https://example.com/leonardo-ai",
-    affiliateUrl: "https://example.com/leonardo-ai",
+    websiteUrl: "https://leonardo.ai",
+    affiliateUrl: "https://leonardo.ai",
     primaryCategorySlug: "image",
     categorySlugs: ["ai-tools", "comparisons", "guides"],
     toolCategorySlugs: ["image"],
@@ -760,8 +760,8 @@ export const tools: ToolEntry[] = [
   {
     slug: "elevenlabs",
     pricing: "FREEMIUM",
-    websiteUrl: "https://example.com/elevenlabs",
-    affiliateUrl: "https://example.com/elevenlabs",
+    websiteUrl: "https://elevenlabs.io",
+    affiliateUrl: "https://elevenlabs.io",
     primaryCategorySlug: "video",
     categorySlugs: ["ai-tools", "guides", "make-money-with-ai"],
     toolCategorySlugs: ["video", "productivity"],
@@ -828,8 +828,8 @@ export const tools: ToolEntry[] = [
   {
     slug: "writesonic",
     pricing: "FREEMIUM",
-    websiteUrl: "https://example.com/writesonic",
-    affiliateUrl: "https://example.com/writesonic",
+    websiteUrl: "https://writesonic.com",
+    affiliateUrl: "https://writesonic.com",
     primaryCategorySlug: "writing",
     categorySlugs: ["ai-tools", "make-money-with-ai", "guides", "free-tools"],
     toolCategorySlugs: ["writing", "productivity"],
@@ -896,8 +896,8 @@ export const tools: ToolEntry[] = [
   {
     slug: "pictory",
     pricing: "PAID",
-    websiteUrl: "https://example.com/pictory",
-    affiliateUrl: "https://example.com/pictory",
+    websiteUrl: "https://pictory.ai",
+    affiliateUrl: "https://pictory.ai",
     primaryCategorySlug: "video",
     categorySlugs: ["ai-tools", "make-money-with-ai", "guides"],
     toolCategorySlugs: ["video"],
@@ -962,3 +962,4 @@ export const tools: ToolEntry[] = [
     }
   }
 ];
+

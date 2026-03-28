@@ -345,7 +345,7 @@ const homeContent: Record<Locale, HomeContent> = {
         category: "Yazı ve araştırma",
         pricing: "Freemium",
         href: "/tools/chatgpt",
-        websiteUrl: "https://example.com/chatgpt",
+        websiteUrl: "https://chatgpt.com",
         rating: "4.9/5",
         note: "Yazı ve araştırma için",
         bestFor: "İçerik, araştırma ve günlük görevler",
@@ -363,7 +363,7 @@ const homeContent: Record<Locale, HomeContent> = {
         category: "Uzun içerik",
         pricing: "Freemium",
         href: "/tools/claude",
-        websiteUrl: "https://example.com/claude",
+        websiteUrl: "https://claude.ai",
         rating: "4.8/5",
         note: "Uzun içerik için",
         bestFor: "Uzun içerik ve detaylı açıklamalar",
@@ -381,7 +381,7 @@ const homeContent: Record<Locale, HomeContent> = {
         category: "Görsel kalite",
         pricing: "Ücretli",
         href: "/tools/midjourney",
-        websiteUrl: "https://example.com/midjourney",
+        websiteUrl: "https://www.midjourney.com",
         rating: "4.8/5",
         note: "Görsel kalite için",
         bestFor: "Görsel üretim ve konsept tasarım",
@@ -399,7 +399,7 @@ const homeContent: Record<Locale, HomeContent> = {
         category: "Google ekosistemi",
         pricing: "Freemium",
         href: "/tools/gemini",
-        websiteUrl: "https://example.com/gemini",
+        websiteUrl: "https://gemini.google.com",
         rating: "4.6/5",
         note: "Google ekosistemi için",
         bestFor: "Google merkezli iş akışları",
@@ -696,7 +696,7 @@ const homeContent: Record<Locale, HomeContent> = {
         category: "Writing and research",
         pricing: "Freemium",
         href: "/tools/chatgpt",
-        websiteUrl: "https://example.com/chatgpt",
+        websiteUrl: "https://chatgpt.com",
         rating: "4.9/5",
         note: "For writing and research",
         bestFor: "Content, research, and daily tasks",
@@ -714,7 +714,7 @@ const homeContent: Record<Locale, HomeContent> = {
         category: "Long-form content",
         pricing: "Freemium",
         href: "/tools/claude",
-        websiteUrl: "https://example.com/claude",
+        websiteUrl: "https://claude.ai",
         rating: "4.8/5",
         note: "For long-form content",
         bestFor: "Long-form writing and detailed explanations",
@@ -732,7 +732,7 @@ const homeContent: Record<Locale, HomeContent> = {
         category: "Image quality",
         pricing: "Paid",
         href: "/tools/midjourney",
-        websiteUrl: "https://example.com/midjourney",
+        websiteUrl: "https://www.midjourney.com",
         rating: "4.8/5",
         note: "For image quality",
         bestFor: "Image generation and concept design",
@@ -750,7 +750,7 @@ const homeContent: Record<Locale, HomeContent> = {
         category: "Google ecosystem",
         pricing: "Freemium",
         href: "/tools/gemini",
-        websiteUrl: "https://example.com/gemini",
+        websiteUrl: "https://gemini.google.com",
         rating: "4.6/5",
         note: "For Google ecosystem",
         bestFor: "Google-centered workflows",
@@ -845,6 +845,7 @@ const homeContent: Record<Locale, HomeContent> = {
 export function getHomeContent(locale: Locale) {
   return homeContent[locale];
 }
+
 
 
 
