@@ -1,0 +1,36 @@
+﻿<svg width="720" height="180" viewBox="0 0 720 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="surface" x1="18" y1="24" x2="108" y2="122" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#141C2F" />
+      <stop offset="1" stop-color="#0B0F1A" />
+    </linearGradient>
+    <linearGradient id="brand" x1="38" y1="34" x2="103" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6C5CE7" />
+      <stop offset="0.58" stop-color="#4F7CFF" />
+      <stop offset="1" stop-color="#00C2FF" />
+    </linearGradient>
+    <linearGradient id="word" x1="316" y1="56" x2="470" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6C5CE7" />
+      <stop offset="0.5" stop-color="#4F7CFF" />
+      <stop offset="1" stop-color="#00C2FF" />
+    </linearGradient>
+    <filter id="glow" x="0" y="0" width="144" height="144" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feOffset dy="6" />
+      <feGaussianBlur stdDeviation="9" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0627451 0 0 0 0 0.384314 0 0 0 0 1 0 0 0 0.28 0" />
+      <feBlend in2="SourceGraphic" result="shape" />
+    </filter>
+  </defs>
+
+  <g filter="url(#glow)">
+    <rect x="18" y="28" width="90" height="90" rx="28" fill="url(#surface)" />
+    <rect x="18.75" y="28.75" width="88.5" height="88.5" rx="27.25" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" />
+    <path d="M43 45H69.5C84.6878 45 97 57.3122 97 72.5V73.5C97 88.6878 84.6878 101 69.5 101H43V45Z" fill="url(#brand)" />
+    <path d="M57 58H69C76.1797 58 82 63.8203 82 71V75C82 82.1797 76.1797 88 69 88H57V58Z" fill="#0B0F1A" fill-opacity="0.92" />
+    <path d="M57 58H67.5C75.5081 58 82 64.4919 82 72.5V73.5C82 81.5081 75.5081 88 67.5 88H57V58Z" fill="#F8FAFC" fill-opacity="0.96" />
+    <circle cx="88" cy="57" r="4" fill="#8EE9FF" />
+  </g>
+
+  <text x="132" y="101" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="74" font-weight="800" letter-spacing="-3.2">Deci</text>
+  <text x="300" y="101" fill="url(#word)" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="74" font-weight="800" letter-spacing="-3.2">ply</text>
+</svg>
