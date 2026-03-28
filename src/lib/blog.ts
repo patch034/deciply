@@ -65,6 +65,8 @@ export function getLocalizedBlogArticles(locale: Locale): LocalizedBlogArticle[]
   return blogArticles.map((article) => ({
     slug: article.slug,
     categorySlug: article.categorySlug,
+    publishedAt: article.publishedAt,
+    updatedAt: article.updatedAt,
     relatedToolSlugs: article.relatedToolSlugs,
     ...article.locales[locale]
   }));
@@ -80,6 +82,8 @@ export function getLocalizedBlogArticleBySlug(locale: Locale, slug: string) {
   return {
     slug: article.slug,
     categorySlug: article.categorySlug,
+    publishedAt: article.publishedAt,
+    updatedAt: article.updatedAt,
     relatedToolSlugs: article.relatedToolSlugs,
     ...article.locales[locale]
   } satisfies LocalizedBlogArticle;
@@ -107,5 +111,7 @@ export function getRelatedArticlesByTool(locale: Locale, toolSlug: string, limit
     .filter((article) => article.relatedToolSlugs.includes(toolSlug))
     .slice(0, limit);
 }
+
+
 
 

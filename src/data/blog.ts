@@ -28,6 +28,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "en-iyi-ai-araclari-2026",
     categorySlug: "ai-tools",
+    publishedAt: "2026-01-12",
     relatedToolSlugs: ["chatgpt", "claude", "gemini", "midjourney", "perplexity", "runway"],
     locales: {
       tr: {
@@ -227,6 +228,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "chatgpt-ile-para-kazanma-yollari",
     categorySlug: "make-money-with-ai",
+    publishedAt: "2026-01-12",
     relatedToolSlugs: ["chatgpt", "perplexity", "notion-ai"],
     locales: {
       tr: {
@@ -330,6 +332,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "en-iyi-ucretsiz-ai-araclari",
     categorySlug: "free-tools",
+    publishedAt: "2026-01-12",
     relatedToolSlugs: ["chatgpt", "gemini", "perplexity", "canva-ai"],
     locales: {
       tr: {
@@ -419,6 +422,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "claude-vs-chatgpt-karsilastirma",
     categorySlug: "comparisons",
+    publishedAt: "2026-01-12",
     relatedToolSlugs: ["chatgpt", "claude", "perplexity"],
     locales: {
       tr: {
@@ -500,6 +504,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "midjourney-nasil-kullanilir",
     categorySlug: "guides",
+    publishedAt: "2026-01-12",
     relatedToolSlugs: ["midjourney", "canva-ai", "leonardo-ai"],
     locales: {
       tr: {
@@ -578,6 +583,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "freelance-icin-en-iyi-ai-araclari",
     categorySlug: "make-money-with-ai",
+    publishedAt: "2026-01-12",
     relatedToolSlugs: ["chatgpt", "claude", "midjourney", "perplexity", "canva-ai"],
     locales: {
       tr: {
@@ -658,6 +664,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "ai-ile-blog-yazip-para-kazanma",
     categorySlug: "make-money-with-ai",
+    publishedAt: "2026-01-12",
     relatedToolSlugs: ["chatgpt", "claude", "perplexity", "notion-ai"],
     locales: {
       tr: {
@@ -739,6 +746,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "en-iyi-gorsel-ai-araclari",
     categorySlug: "ai-tools",
+    publishedAt: "2026-01-12",
     relatedToolSlugs: ["midjourney", "leonardo-ai", "canva-ai", "runway"],
     locales: {
       tr: {
@@ -843,6 +851,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "yeni-baslayanlar-icin-ai-rehberi",
     categorySlug: "ai-tools",
+    publishedAt: "2026-01-12",
     relatedToolSlugs: ["chatgpt", "gemini", "canva-ai", "perplexity", "notion-ai"],
     locales: {
       tr: {
@@ -939,6 +948,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "en-hizli-buyuyen-ai-araclari",
     categorySlug: "ai-tools",
+    publishedAt: "2026-01-12",
     relatedToolSlugs: ["perplexity", "runway", "elevenlabs", "leonardo-ai", "gemini"],
     locales: {
       tr: {
@@ -1035,6 +1045,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "ai-ile-para-kazanmak-icin-en-iyi-araclar",
     categorySlug: "make-money-with-ai",
+    publishedAt: "2026-01-12",
     relatedToolSlugs: ["jasper", "copy-ai", "chatgpt", "canva-ai", "runway", "elevenlabs"],
     locales: {
       tr: {
@@ -1196,6 +1207,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "chatgpt-vs-claude-vs-gemini",
     categorySlug: "comparisons",
+    publishedAt: "2026-01-12",
     relatedToolSlugs: ["chatgpt", "claude", "gemini", "perplexity"],
     locales: {
       tr: {
@@ -1357,6 +1369,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "ucretsiz-ai-araclari-2026",
     categorySlug: "free-tools",
+    publishedAt: "2026-01-12",
     relatedToolSlugs: ["chatgpt", "gemini", "perplexity", "canva-ai", "copy-ai"],
     locales: {
       tr: {
@@ -1510,6 +1523,733 @@ export const blogArticles: BlogEntry[] = [
                 "Switch tools if the signal stays weak"
               ]
             }
+          )
+        ]
+      }
+    }
+  }
+  ,{
+    slug: "best-ai-tools-for-making-money-2026",
+    categorySlug: "make-money-with-ai",
+    publishedAt: "2026-01-12",
+    updatedAt: "2026-03-29",
+    relatedToolSlugs: ["jasper", "copy-ai", "canva-ai", "runway", "perplexity", "writesonic"],
+    locales: {
+      tr: {
+        title: "2026'da para kazanmak için en mantıklı AI araçları",
+        excerpt: "Gelir üretme odaklı işlerde hangi AI aracının hangi kullanım senaryosuna daha uygun olduğunu sade şekilde gösteren rehber.",
+        intro: "AI ile para kazanmak isteyen kullanıcı için asıl mesele bir aracı ezbere seçmek değil, hangi işi daha hızlı ve daha temiz teslim edebileceğini bilmektir. Blog içerik paketleri, reklam metinleri, sosyal medya tasarımları, kısa videolar ve araştırma odaklı hizmetler farklı araçlar ister. Bu yüzden burada tek bir kazanan aramak yerine, gelir modeli ile araç uyumuna bakıyoruz.",
+        categoryLabel: "AI ile Para Kazanma",
+        seoTitle: "2026'da para kazanmak için en mantıklı AI araçları | Deciply",
+        seoDescription: "Jasper, Copy.ai, Canva AI, Runway, Perplexity ve Writesonic için para kazanma odaklı kullanım senaryolarını inceleyin.",
+        sections: [
+          section(
+            "Gelir için önce kullanım senaryosu seçilmeli",
+            [
+              "Bir aracı gelir odaklı değerlendirmek için önce ne satılacağını belirlemek gerekir. Blog paketi, kısa reklam metni, sosyal medya görseli, kısa video ya da araştırma raporu gibi çıktılar farklı araçlarla daha rahat üretilir.",
+              "Bu nedenle araç seçimi sonuçtan başlamalıdır. Daha hızlı içerik teslimi için bir yazı aracı mantıklı olabilirken, müşteriye doğrudan görsel ya da video teslim eden kullanıcı için tasarım ve video araçları daha yüksek değer üretir."
+            ],
+            {
+              comparison: {
+                title: "Hızlı kullanım haritası",
+                items: [
+                  { label: "İçerik paketi", value: "Jasper / Writesonic" },
+                  { label: "Kısa satış metni", value: "Copy.ai" },
+                  { label: "Tasarım teslimi", value: "Canva AI" },
+                  { label: "Kısa video", value: "Runway" },
+                  { label: "Araştırma hizmeti", value: "Perplexity" }
+                ]
+              }
+            }
+          ),
+          section(
+            "Hangi araç hangi gelir akışına daha uygun?",
+            [
+              "Jasper ve Writesonic, tekrar eden içerik ve pazarlama üretiminde zaman kazandırabilir. Copy.ai daha kısa ve dönüşüm odaklı copy işlerinde rahat olabilir. Canva AI, sosyal medya tasarımları ve sunum teslimlerinde pratiklik sunar. Runway ise kısa video üretimi ve hareketli içerik tarafında daha mantıklıdır.",
+              "Perplexity, araştırma temelli danışmanlık, rakip analizi ya da kaynaklı içerik üretimi yapan kullanıcı için değerli olabilir. Buradaki karar, en popüler aracı değil, satılan çıktıya en az sürtünmeyle hizmet eden aracı seçmektir."
+            ],
+            {
+              subSections: [
+                sub(
+                  "İçerik ve copy işleri",
+                  [
+                    "Düzenli blog paketi, landing page copy veya e-posta akışı satıyorsan yazı ve pazarlama odaklı araçlar daha mantıklıdır.",
+                    "Jasper ve Writesonic daha süreçli içerik üretiminde, Copy.ai ise kısa metin işlerinde rahat olabilir."
+                  ],
+                  ["Blog paketleri", "Landing page copy", "E-posta akışı"],
+                  "Yazı araçlarını incele",
+                  "/tr/categories/ai-tools"
+                ),
+                sub(
+                  "Görsel, video ve araştırma işleri",
+                  [
+                    "Canva AI hızlı tasarım teslimi için, Runway kısa video üretimi için, Perplexity ise araştırma ve raporlama için mantıklı bir seçim olabilir.",
+                    "Özellikle bir hizmeti farklı formatlarda sunan kullanıcı için bu araçlar birlikte de çalışabilir."
+                  ],
+                  ["Canva AI", "Runway", "Perplexity"],
+                  "Gelir odaklı araçları gör",
+                  "/tr/categories/make-money-with-ai"
+                )
+              ]
+            }
+          ),
+          section(
+            "Pratik başlangıç çerçevesi",
+            [
+              "Yeni başlayan bir kullanıcı için en mantıklı yaklaşım, sattığı ana çıktıya en yakın araçla başlamaktır. Yazı satıyorsan yazı aracıyla, araştırma satıyorsan araştırma aracıyla, görsel satıyorsan tasarım aracıyla başlamak daha düşük risklidir.",
+              "Daha sonra iş modeli netleştikçe ikinci bir destek aracı eklenebilir. Böylece gereksiz araç kalabalığı yerine daha net ve daha karlı bir akış kurulmuş olur."
+            ],
+            {
+              bullets: ["Önce sattığın sonucu belirle", "Sonra aracı seç", "İkinci aracı ihtiyaç doğunca ekle", "Araçları akış olarak düşün"]
+            }
+          )
+        ]
+      },
+      en: {
+        title: "Best AI tools for making money in 2026",
+        excerpt: "A scenario-based guide showing which AI tools make more sense for which monetization workflow.",
+        intro: "When people talk about making money with AI, they often stay too abstract. Real value comes from matching a tool to the output you want to sell. Blog packages, short-form copy, social graphics, short videos, and research-heavy services all benefit from different tools. This guide avoids hype and focuses on tool-to-workflow fit.",
+        categoryLabel: "Make Money With AI",
+        seoTitle: "Best AI tools for making money in 2026 | Deciply",
+        seoDescription: "Compare Jasper, Copy.ai, Canva AI, Runway, Perplexity, and Writesonic by monetization use case and workflow fit.",
+        sections: [
+          section(
+            "Start with the income model, not the app",
+            [
+              "The smartest starting point is not asking which tool is strongest. It is asking what you actually want to sell. Blog content, short-form copy, design delivery, video work, and research services all ask for different strengths.",
+              "Once the output is clear, tool choice becomes more practical. Some tools fit repeatable writing workflows. Others fit fast visual delivery. Others are better for research-backed client work."
+            ],
+            {
+              comparison: {
+                title: "Fast use-case map",
+                items: [
+                  { label: "Content packages", value: "Jasper / Writesonic" },
+                  { label: "Short-form copy", value: "Copy.ai" },
+                  { label: "Design delivery", value: "Canva AI" },
+                  { label: "Short video", value: "Runway" },
+                  { label: "Research service", value: "Perplexity" }
+                ]
+              }
+            }
+          ),
+          section(
+            "Which tool fits which monetization workflow?",
+            [
+              "Jasper and Writesonic can make sense for repeatable writing and marketing output. Copy.ai may feel more natural for shorter conversion-focused copy. Canva AI is often more practical when the deliverable is directly visual. Runway becomes useful when motion and short video are part of the offer.",
+              "Perplexity can be especially useful when the client expects faster information synthesis, market research, or source-backed summaries. The point is not to choose a universal winner but to lower friction in the workflow that creates revenue."
+            ],
+            {
+              subSections: [
+                sub(
+                  "Writing and copy workflows",
+                  [
+                    "If you sell blog retainers, landing page copy, or email sequences, content-first tools usually create the most immediate leverage.",
+                    "The real difference is whether you need longer editorial structure or shorter conversion copy."
+                  ],
+                  ["Blog retainers", "Landing page copy", "Email sequences"],
+                  "Review writing tools",
+                  "/en/categories/ai-tools"
+                ),
+                sub(
+                  "Design, video, and research workflows",
+                  [
+                    "Canva AI can fit visual delivery, Runway can fit motion-first output, and Perplexity can fit information-heavy services.",
+                    "These tools can also complement each other when one offer needs multiple formats."
+                  ],
+                  ["Canva AI", "Runway", "Perplexity"],
+                  "See monetization-focused tools",
+                  "/en/categories/make-money-with-ai"
+                )
+              ]
+            }
+          ),
+          section(
+            "A practical way to begin",
+            [
+              "If you want to start with one tool, choose the one closest to what you sell today. A writer should start with a writing tool. A visual freelancer should start with a design tool. A researcher should start with a research tool.",
+              "A second tool can be added later when the workflow clearly needs support. That keeps costs lower and decisions clearer."
+            ],
+            {
+              bullets: ["Define the outcome you sell", "Match the tool to the deliverable", "Add tools gradually", "Think in workflows, not rankings"]
+            }
+          )
+        ]
+      }
+    }
+  }
+  ,{
+    slug: "chatgpt-alternatives-compared-2026",
+    categorySlug: "comparisons",
+    publishedAt: "2026-01-12",
+    updatedAt: "2026-03-29",
+    relatedToolSlugs: ["chatgpt", "claude", "gemini", "perplexity", "jasper"],
+    locales: {
+      tr: {
+        title: "ChatGPT alternatifleri: 2026'da hangi araç daha mantıklı?",
+        excerpt: "ChatGPT'ye alternatif arayan kullanıcı için farklı araçları kullanım senaryosuna göre sade biçimde karşılaştıran rehber.",
+        intro: "ChatGPT çoğu kullanıcı için tanıdık bir başlangıç noktası. Ama bu, her senaryoda en uygun araç olduğu anlamına gelmez. Uzun içerik, kaynak odaklı araştırma, Google ekosistemiyle çalışma veya pazarlama copy üretimi gibi işlerde farklı araçlar daha doğal hissedebilir. Bu içerik, alternatif arayan kullanıcıyı tek bir araca yönlendirmek yerine doğru kullanım senaryosunu bulmasına yardım eder.",
+        categoryLabel: "Karşılaştırmalar",
+        seoTitle: "ChatGPT alternatifleri: 2026'da hangi araç daha mantıklı? | Deciply",
+        seoDescription: "Claude, Gemini, Perplexity ve Jasper gibi ChatGPT alternatiflerini yazı, araştırma ve iş akışı uyumuna göre karşılaştırın.",
+        sections: [
+          section(
+            "Alternatif ararken hangi kriterler önemli?",
+            [
+              "Bir araca alternatif aramak çoğu zaman daha iyi uyum aramak demektir. Hız, yazı yapısı, araştırma kalitesi, entegrasyon rahatlığı ve günlük iş akışında ne kadar sürtünme yarattığı bu kararı belirler.",
+              "Bu yüzden 'hangisi daha iyi?' sorusundan çok 'hangi durumda hangisi daha mantıklı?' sorusu daha işe yarar."
+            ],
+            {
+              comparison: {
+                title: "Hızlı alternatif haritası",
+                items: [
+                  { label: "Uzun ve düzenli yazı", value: "Claude" },
+                  { label: "Google ekosistemi", value: "Gemini" },
+                  { label: "Kaynaklı araştırma", value: "Perplexity" },
+                  { label: "Pazarlama copy", value: "Jasper" }
+                ]
+              }
+            }
+          ),
+          section(
+            "Hangi durumda hangi alternatif daha mantıklı?",
+            [
+              "Claude daha sakin, daha uzun ve daha düzenli yazı üretmek isteyen kullanıcı için mantıklı olabilir. Gemini, Workspace kullanan ekipler ve öğrenciler için daha doğal bir akış sağlayabilir. Perplexity, kaynak odaklı araştırma için güçlü bir tamamlayıcı veya alternatif olabilir. Jasper ise süreçli pazarlama içeriği üreten ekipler için daha anlamlı olabilir.",
+              "Buradaki amaç ChatGPT'yi tamamen bırakmak değildir. Çoğu kullanıcı için asıl kazanç, ikinci bir aracı sadece güçlü olduğu senaryoda devreye almaktır."
+            ],
+            {
+              subSections: [
+                sub(
+                  "Yazı ve yapı için",
+                  [
+                    "Uzun ve açıklayıcı içerik gerekiyorsa Claude daha rahat bir yazım hissi verebilir. Pazarlama odaklı süreçli üretim gerekiyorsa Jasper daha mantıklı olabilir.",
+                    "Bu fark özellikle müşteri teslimine giden içeriklerde daha görünür olur."
+                  ],
+                  ["Claude", "Jasper"],
+                  "Karşılaştırmaları gör",
+                  "/tr/categories/comparisons"
+                ),
+                sub(
+                  "Araştırma ve günlük akış için",
+                  [
+                    "Perplexity araştırma odaklı kullanıcı için, Gemini ise Google temelli günlük akış için daha doğal bir alternatif olabilir.",
+                    "Günlük iş akışında konfor çoğu zaman ham kalite kadar belirleyicidir."
+                  ],
+                  ["Perplexity", "Gemini"],
+                  "Alternatif araçları incele",
+                  "/tr/tools"
+                )
+              ]
+            }
+          ),
+          section(
+            "Pratik karar çerçevesi",
+            [
+              "Eğer ChatGPT genel olarak işini görüyorsa, onu bırakmak yerine eksik kalan alan için ikinci bir araç eklemek daha mantıklıdır. Uzun yazı için Claude, araştırma için Perplexity, Google odaklı akış için Gemini gibi eşleşmeler daha düşük risklidir.",
+              "En sağlıklı karar, popüler olana gitmek değil, seni daha az sürtünmeyle sonuca götüren aracı bulmaktır."
+            ],
+            { bullets: ["Sorun yaşadığın alanı belirle", "Alternatifi sadece o işte test et", "Tek kazanan arama", "Gerekirse araçları birlikte kullan"] }
+          )
+        ]
+      },
+      en: {
+        title: "ChatGPT alternatives: which tool makes more sense in 2026?",
+        excerpt: "A scenario-based guide for users who want to compare practical ChatGPT alternatives without forcing one winner.",
+        intro: "ChatGPT is often the first tool people try, but that does not make it the best fit for every workflow. Long-form writing, source-backed research, Google-based productivity, and process-driven marketing content can each point toward a different tool. This article compares alternatives by real usage context.",
+        categoryLabel: "Comparisons",
+        seoTitle: "ChatGPT alternatives: which tool makes more sense in 2026? | Deciply",
+        seoDescription: "Compare Claude, Gemini, Perplexity, and Jasper as ChatGPT alternatives across writing, research, and workflow fit.",
+        sections: [
+          section(
+            "What should matter when looking for an alternative?",
+            [
+              "Looking for an alternative is usually about finding a better fit, not replacing one tool for ideological reasons. Writing structure, research comfort, workflow friction, and integration quality are often the real decision points.",
+              "That is why a scenario-based comparison is more useful than chasing one overall winner."
+            ],
+            {
+              comparison: {
+                title: "Fast alternative map",
+                items: [
+                  { label: "Long structured writing", value: "Claude" },
+                  { label: "Google workflow", value: "Gemini" },
+                  { label: "Source-backed research", value: "Perplexity" },
+                  { label: "Marketing copy process", value: "Jasper" }
+                ]
+              }
+            }
+          ),
+          section(
+            "Which alternative fits which situation?",
+            [
+              "Claude can make sense for longer and calmer writing. Gemini can fit users already working in Workspace. Perplexity can fit research-heavy work where sources matter. Jasper can be more useful in process-driven marketing and content teams.",
+              "For many users, the smartest move is not replacing ChatGPT completely but adding a second tool where it fits better."
+            ],
+            {
+              subSections: [
+                sub(
+                  "For writing and structure",
+                  [
+                    "Claude may feel better for long-form explanation and writing flow. Jasper may fit teams producing repetitive marketing content.",
+                    "The difference becomes more visible when the output is client-facing."
+                  ],
+                  ["Claude", "Jasper"],
+                  "Open comparisons",
+                  "/en/categories/comparisons"
+                ),
+                sub(
+                  "For research and daily workflow fit",
+                  [
+                    "Perplexity can reduce friction in research-first workflows. Gemini can feel more natural when the broader workflow already lives in Google tools.",
+                    "Daily comfort often matters as much as raw output quality."
+                  ],
+                  ["Perplexity", "Gemini"],
+                  "Review alternatives",
+                  "/en/tools"
+                )
+              ]
+            }
+          ),
+          section(
+            "A simpler decision frame",
+            [
+              "If ChatGPT mostly works for you, keep it and add a second tool only where it clearly underperforms. That usually creates a better result than switching tools completely too early.",
+              "The best decision is often the one that lowers friction in the exact task you do repeatedly."
+            ],
+            { bullets: ["Identify the friction point", "Test alternatives in that exact scenario", "Avoid a fake overall winner", "Use multiple tools if needed"] }
+          )
+        ]
+      }
+    }
+  },
+  {
+    slug: "free-ai-tools-you-can-start-using-today",
+    categorySlug: "free-tools",
+    publishedAt: "2026-01-12",
+    updatedAt: "2026-03-29",
+    relatedToolSlugs: ["chatgpt", "gemini", "perplexity", "canva-ai", "copy-ai", "elevenlabs"],
+    locales: {
+      tr: {
+        title: "Bugün kullanmaya başlayabileceğin ücretsiz AI araçları",
+        excerpt: "Yazı, araştırma, tasarım ve ses tarafında ücretsiz veya freemium giriş sunan araçları kullanım senaryosuna göre inceleyen rehber.",
+        intro: "Ücretsiz bir araca başlamak cazip görünür, ama asıl soru ücretsiz katmanın gerçekten işe yarayıp yaramadığıdır. Kullanıcı için değer, ilk gün içinde somut bir sonuç alabilmekte yatar. Bu rehber, ücretsiz veya freemium giriş sunan araçları hangi işte mantıklı olduklarına göre ele alır.",
+        categoryLabel: "Ücretsiz Araçlar",
+        seoTitle: "Bugün kullanmaya başlayabileceğin ücretsiz AI araçları | Deciply",
+        seoDescription: "ChatGPT, Gemini, Perplexity, Canva AI, Copy.ai ve ElevenLabs gibi ücretsiz başlangıç sunan AI araçlarını senaryo bazlı inceleyin.",
+        sections: [
+          section(
+            "Ücretsiz araçta asıl değer ne?",
+            [
+              "Ücretsiz olması tek başına avantaj değildir. Asıl avantaj, ilk gün içinde gerçekten bir çıktı üretebilmesidir. Eğer araç yazı, araştırma, sunum veya ses tarafında somut iş yaptırıyorsa ücretsiz katman anlamlı hale gelir.",
+              "Bu yüzden ücretsiz araçları fiyat sıfır diye değil, düşük riskle gerçek sinyal verdiği için değerlendirmek gerekir."
+            ],
+            {
+              comparison: {
+                title: "Hızlı başlangıç görünümü",
+                items: [
+                  { label: "Genel yazı", value: "ChatGPT" },
+                  { label: "Araştırma", value: "Perplexity" },
+                  { label: "Google akışı", value: "Gemini" },
+                  { label: "Görsel teslim", value: "Canva AI" },
+                  { label: "Ses denemesi", value: "ElevenLabs" }
+                ]
+              }
+            }
+          ),
+          section(
+            "Hangi ücretsiz araç hangi işte mantıklı?",
+            [
+              "ChatGPT günlük yazı ve özet işlerinde güçlü bir başlangıç sunabilir. Perplexity araştırma odaklı kullanıcı için daha net değer verebilir. Gemini, Google kullanan kullanıcı için daha düşük sürtünme yaratabilir.",
+              "Canva AI görsel teslim, sunum ve hızlı tasarım için; ElevenLabs ise seslendirme denemeleri ve ses tabanlı içerik testleri için daha anlamlı olabilir. Copy.ai da kısa metin denemeleri için freemium bir giriş noktası sunabilir."
+            ],
+            {
+              subSections: [
+                sub(
+                  "Yazı ve araştırma için",
+                  [
+                    "İçerik taslağı, özet ve araştırma için ChatGPT, Gemini ve Perplexity çoğu kullanıcıya yeterli bir başlangıç seti sunabilir.",
+                    "Buradaki fark, hangi aracın senin çalışma şekline daha doğal uyduğudur."
+                  ],
+                  ["ChatGPT", "Gemini", "Perplexity"],
+                  "Ücretsiz araçları gör",
+                  "/tr/categories/free-tools"
+                ),
+                sub(
+                  "Tasarım ve ses için",
+                  [
+                    "Canva AI ve ElevenLabs, ödeme yapmadan önce teslime yakın çıktılar görmek isteyen kullanıcı için daha pratik olabilir.",
+                    "Özellikle içerik üreticileri için bunlar düşük bariyerli deneme alanlarıdır."
+                  ],
+                  ["Canva AI", "ElevenLabs"],
+                  "Canva AI detayını aç",
+                  "/tr/tools/canva-ai"
+                )
+              ]
+            }
+          ),
+          section(
+            "Ücretsizden ücretliye geçiş ne zaman mantıklı?",
+            [
+              "Bir araç ücretsiz katmanda gerçek değer üretmeye başladıysa ve sınırlar artık iş akışını yavaşlatıyorsa ücretli geçiş mantıklı olabilir. Eğer ücretsiz kullanımda bile net fayda görünmüyorsa sorun büyük ihtimalle plan değil araç uyumudur.",
+              "Bu yüzden önce gerçek görevle denemek, sonra yükseltme düşünmek daha sağlıklıdır."
+            ],
+            { bullets: ["Gerçek görevle test et", "Sinyal varsa devam et", "Sınır yavaşlatıyorsa yükselt", "Uyum yoksa araç değiştir"] }
+          )
+        ]
+      },
+      en: {
+        title: "Free AI tools you can start using today",
+        excerpt: "A practical guide to free and freemium AI tools for writing, research, design, and voice workflows.",
+        intro: "Trying a tool for free sounds attractive, but the real question is whether the free tier creates a meaningful first result. For many users, value comes from getting useful output quickly before committing money. This guide reviews free and freemium tools by real use case rather than hype.",
+        categoryLabel: "Free Tools",
+        seoTitle: "Free AI tools you can start using today | Deciply",
+        seoDescription: "Review ChatGPT, Gemini, Perplexity, Canva AI, Copy.ai, and ElevenLabs as free starting points for useful AI workflows.",
+        sections: [
+          section(
+            "What makes a free tool actually useful?",
+            [
+              "The most important value is not zero cost by itself. It is getting a real output quickly. If the free tier helps you write, research, design, or test voice workflows in a meaningful way, it is doing its job.",
+              "That is why the better filter is usable signal, not just price."
+            ],
+            {
+              comparison: {
+                title: "Fast start map",
+                items: [
+                  { label: "General writing", value: "ChatGPT" },
+                  { label: "Research", value: "Perplexity" },
+                  { label: "Google workflow", value: "Gemini" },
+                  { label: "Visual delivery", value: "Canva AI" },
+                  { label: "Voice testing", value: "ElevenLabs" }
+                ]
+              }
+            }
+          ),
+          section(
+            "Which free tool fits which job?",
+            [
+              "ChatGPT can be a strong starting point for drafting and summaries. Perplexity can fit research-first tasks. Gemini can feel natural for users already in Google tools.",
+              "Canva AI can help with presentation and visual design tasks. ElevenLabs can be useful for testing voiceover and narration workflows. Copy.ai can help with short copy experiments on a freemium plan."
+            ],
+            {
+              subSections: [
+                sub(
+                  "For writing and research",
+                  [
+                    "ChatGPT, Gemini, and Perplexity can create a practical low-cost starting set for writing, summaries, and research.",
+                    "The best fit depends on which workflow feels most natural and useful fastest."
+                  ],
+                  ["ChatGPT", "Gemini", "Perplexity"],
+                  "Explore free tools",
+                  "/en/categories/free-tools"
+                ),
+                sub(
+                  "For design and voice",
+                  [
+                    "Canva AI can support quick visual delivery, while ElevenLabs can support voice tests and narration experiments.",
+                    "Both are useful when you want practical output before spending money."
+                  ],
+                  ["Canva AI", "ElevenLabs"],
+                  "Open Canva AI",
+                  "/en/tools/canva-ai"
+                )
+              ]
+            }
+          ),
+          section(
+            "When does paid start making sense?",
+            [
+              "A paid upgrade makes sense when the free tier already produces repeatable value and the cap starts slowing real work. If the tool still feels weak in free use, the issue may be fit rather than plan limits.",
+              "That is why the cleanest approach is to test with a real task first and decide based on output and friction."
+            ],
+            { bullets: ["Test a real task first", "Look for repeatable value", "Upgrade when the cap blocks work", "Switch if fit stays weak"] }
+          )
+        ]
+      }
+    }
+  }
+  ,{
+    slug: "best-ai-tools-for-freelancers-2026",
+    categorySlug: "guides",
+    publishedAt: "2026-01-12",
+    updatedAt: "2026-03-29",
+    relatedToolSlugs: ["chatgpt", "claude", "canva-ai", "runway", "perplexity", "notion-ai"],
+    locales: {
+      tr: {
+        title: "Freelancer'lar için en mantıklı AI araçları",
+        excerpt: "Freelance iş akışında hangi AI aracının hangi teslim tipine daha uygun olduğunu gösteren kullanım senaryosu odaklı rehber.",
+        intro: "Freelance çalışan kullanıcı için araç seçimi doğrudan marjı etkiler. Aynı işi daha kısa sürede teslim etmek, aynı hafta içinde daha fazla iş almak anlamına gelir. Ama her freelancer aynı araca ihtiyaç duymaz. Yazı, görsel, video, araştırma ve proje düzeni gibi farklı işlerde farklı araçlar daha mantıklı olabilir. Bu rehber, freelancer için daha pratik karar vermeyi kolaylaştırır.",
+        categoryLabel: "Rehberler",
+        seoTitle: "Freelancer'lar için en mantıklı AI araçları | Deciply",
+        seoDescription: "ChatGPT, Claude, Canva AI, Runway, Perplexity ve Notion AI için freelance iş akışı odaklı kullanım senaryolarını inceleyin.",
+        sections: [
+          section(
+            "Freelance dünyasında araç seçimi neden önemli?",
+            [
+              "Freelancer için zaman doğrudan para demektir. Taslak hazırlamak, müşteri araştırması yapmak, görsel üretmek veya sunum düzenlemek için harcanan süre düştükçe iş kapasitesi artar.",
+              "Bu yüzden karar verirken popülerliğe değil, teslim tipine bakmak gerekir. Yazı teslim eden biriyle görsel ya da video üreten biri aynı araçtan aynı değeri almaz."
+            ],
+            {
+              comparison: {
+                title: "Freelance iş akışı özeti",
+                items: [
+                  { label: "Genel yazı ve taslak", value: "ChatGPT" },
+                  { label: "Uzun içerik", value: "Claude" },
+                  { label: "Görsel teslim", value: "Canva AI" },
+                  { label: "Video", value: "Runway" },
+                  { label: "Araştırma", value: "Perplexity" }
+                ]
+              }
+            }
+          ),
+          section(
+            "Hangi freelancer hangi araca bakmalı?",
+            [
+              "Metin yazan veya danışmanlık veren freelancer için ChatGPT ve Claude çoğu zaman ilk duraktır. Hızlı taslak için ChatGPT, daha düzenli uzun anlatım için Claude daha rahat olabilir. Araştırma yoğun işlerde Perplexity ciddi zaman kazandırabilir.",
+              "Tasarım, sunum ve sosyal medya tarafında çalışan kullanıcı için Canva AI daha pratik olabilir. Kısa video ve hareketli içerik teslim eden kullanıcı için Runway daha mantıklıdır. Notion AI ise müşteri işleri ve proje düzeni tarafında destek sağlayabilir."
+            ],
+            {
+              subSections: [
+                sub(
+                  "Yazı ve danışmanlık işleri",
+                  [
+                    "Blog yazısı, rapor, sunum metni veya müşteri dokümanı hazırlıyorsan yazı ve araştırma araçları önceliklidir.",
+                    "Bu kombinasyon özellikle içerik ve bilgi tabanlı freelance hizmetlerde güçlüdür."
+                  ],
+                  ["ChatGPT", "Claude", "Perplexity"],
+                  "Yazı araçlarını aç",
+                  "/tr/categories/ai-tools"
+                ),
+                sub(
+                  "Tasarım ve içerik teslimi",
+                  [
+                    "Canva AI hızlı görsel teslimde, Runway kısa video akışında, Notion AI ise düzen tarafında faydalı olabilir.",
+                    "Freelancer için sadece üretim değil, işin düzeni de karlılığı etkiler."
+                  ],
+                  ["Canva AI", "Runway", "Notion AI"],
+                  "Freelancer araçlarını incele",
+                  "/tr/tools"
+                )
+              ]
+            }
+          ),
+          section(
+            "Daha sade bir başlangıç seti",
+            [
+              "Yeni başlayan bir freelancer için tek seferde çok fazla araç toplamak yerine bir üretim aracı ve bir destek aracıyla başlamak daha mantıklıdır. Böylece hem maliyet daha düşük kalır hem de öğrenme yükü azalır.",
+              "İş büyüdükçe ikinci veya üçüncü aracı eklemek çok daha sağlıklı bir yaklaşımdır."
+            ],
+            { bullets: ["Teslim tipini merkeze al", "Bir üretim aracıyla başla", "Gerekiyorsa araştırma ya da düzen aracı ekle", "Araç setini büyürken genişlet"] }
+          )
+        ]
+      },
+      en: {
+        title: "Best AI tools for freelancers",
+        excerpt: "A scenario-based guide to which AI tools make the most sense for different freelance deliverables.",
+        intro: "For freelancers, tool choice affects margin directly. Delivering the same kind of work faster creates room for more client work. But not every freelancer needs the same stack. Writing, design, video, research, and project organization all benefit from different tools. This guide helps users choose more practically.",
+        categoryLabel: "Guides",
+        seoTitle: "Best AI tools for freelancers | Deciply",
+        seoDescription: "Review ChatGPT, Claude, Canva AI, Runway, Perplexity, and Notion AI through a freelance workflow lens.",
+        sections: [
+          section(
+            "Why tool choice matters in freelance work",
+            [
+              "For freelancers, time is margin. The less time spent drafting, researching, designing, or organizing, the more room there is for better delivery and more capacity.",
+              "That is why deliverable type matters more than popularity. A writer, designer, and video editor will not get the same value from the same tool."
+            ],
+            {
+              comparison: {
+                title: "Freelance workflow snapshot",
+                items: [
+                  { label: "General drafting", value: "ChatGPT" },
+                  { label: "Long-form content", value: "Claude" },
+                  { label: "Visual delivery", value: "Canva AI" },
+                  { label: "Video workflow", value: "Runway" },
+                  { label: "Research", value: "Perplexity" }
+                ]
+              }
+            }
+          ),
+          section(
+            "Which freelancer should look at which tool?",
+            [
+              "Writers and consultants often start with ChatGPT and Claude. ChatGPT may fit faster drafts. Claude may fit longer structured writing. Perplexity may reduce research time when source quality matters.",
+              "Canva AI can fit designers and social content creators. Runway can fit motion and short video work. Notion AI can support client organization and project structure."
+            ],
+            {
+              subSections: [
+                sub(
+                  "Writing and consulting workflows",
+                  [
+                    "If you sell articles, reports, or structured client documents, writing and research tools matter most.",
+                    "That makes ChatGPT, Claude, and Perplexity a practical starting trio for many knowledge-based freelancers."
+                  ],
+                  ["ChatGPT", "Claude", "Perplexity"],
+                  "Open writing tools",
+                  "/en/categories/ai-tools"
+                ),
+                sub(
+                  "Design and delivery workflows",
+                  [
+                    "Canva AI can support fast visual delivery, Runway can support short-form video, and Notion AI can improve the organization layer behind client work.",
+                    "For freelancers, structure often matters as much as generation."
+                  ],
+                  ["Canva AI", "Runway", "Notion AI"],
+                  "Review freelancer tools",
+                  "/en/tools"
+                )
+              ]
+            }
+          ),
+          section(
+            "A simpler starter stack",
+            [
+              "Most freelancers do not need many tools on day one. One production tool plus one support tool is often enough to begin.",
+              "That keeps costs under control and makes the workflow easier to manage. Additional tools can be added only when real friction appears."
+            ],
+            { bullets: ["Center the deliverable", "Start with one production tool", "Add support only when needed", "Expand as the work grows"] }
+          )
+        ]
+      }
+    }
+  },
+  {
+    slug: "best-ai-tools-for-students-2026",
+    categorySlug: "guides",
+    publishedAt: "2026-01-12",
+    updatedAt: "2026-03-29",
+    relatedToolSlugs: ["chatgpt", "gemini", "perplexity", "notion-ai", "canva-ai"],
+    locales: {
+      tr: {
+        title: "Öğrenciler için en mantıklı AI araçları",
+        excerpt: "Öğrenciler için hangi AI aracının not çıkarma, araştırma, sunum ve günlük ders çalışma akışında daha uygun olduğunu gösteren rehber.",
+        intro: "Öğrenciler için AI aracı seçimi sadece hızlı cevap almakla ilgili değildir. Asıl değer; daha net özet çıkarmak, araştırmayı düzenli yapmak, notları toparlamak ve sunum hazırlığını kolaylaştırmaktır. Bu rehber, öğrenciler için farklı araçların hangi işte daha mantıklı olduğunu tarafsız biçimde ele alır.",
+        categoryLabel: "Rehberler",
+        seoTitle: "Öğrenciler için en mantıklı AI araçları | Deciply",
+        seoDescription: "ChatGPT, Gemini, Perplexity, Notion AI ve Canva AI için öğrenci kullanım senaryolarını araştırma, not alma ve sunum açısından inceleyin.",
+        sections: [
+          section(
+            "Öğrenci için araç seçimi neden farklıdır?",
+            [
+              "Öğrenci için önemli olan sadece daha hızlı metin üretmek değildir. Bilgiyi daha iyi anlamak, daha temiz not tutmak, daha güvenilir araştırma yapmak ve teslimleri daha az stresle hazırlamak da önemlidir.",
+              "Bu yüzden düşük maliyet, düşük öğrenme bariyeri ve günlük kullanım kolaylığı öğrenci için daha kritik hale gelir."
+            ],
+            {
+              comparison: {
+                title: "Öğrenci kullanım haritası",
+                items: [
+                  { label: "Genel ders desteği", value: "ChatGPT" },
+                  { label: "Google ile çalışma", value: "Gemini" },
+                  { label: "Kaynak araştırması", value: "Perplexity" },
+                  { label: "Not düzeni", value: "Notion AI" },
+                  { label: "Sunum ve görsel", value: "Canva AI" }
+                ]
+              }
+            }
+          ),
+          section(
+            "Hangi araç hangi öğrenci ihtiyacına daha uygun?",
+            [
+              "ChatGPT genel ders soruları ve özet çıkarmada pratik olabilir. Gemini, Google Docs ve Drive kullanan öğrenciler için daha akıcı bir deneyim sunabilir. Perplexity ise makale tarama ve kaynaklı araştırma için daha mantıklı olabilir.",
+              "Notion AI notları ve proje parçalarını düzenlemek için faydalıdır. Canva AI ise sunum, poster ve görsel destek gereken okul işlerinde zaman kazandırabilir."
+            ],
+            {
+              subSections: [
+                sub(
+                  "Araştırma ve ders çalışma için",
+                  [
+                    "Konu anlamak, özet çıkarmak ve kaynak toplamak için ChatGPT, Gemini ve Perplexity iyi bir başlangıç kombinasyonu sunabilir.",
+                    "Buradaki fark, hangi aracın senin öğrenme ve çalışma şekline daha iyi uyduğudur."
+                  ],
+                  ["ChatGPT", "Gemini", "Perplexity"],
+                  "Araçları incele",
+                  "/tr/tools"
+                ),
+                sub(
+                  "Düzen ve sunum için",
+                  [
+                    "Notion AI çalışma düzeni kurmak için, Canva AI ise sunum ve görsel teslimleri hazırlamak için daha uygundur.",
+                    "Özellikle son dakika teslimlerinde bu iki araç ciddi rahatlık sağlayabilir."
+                  ],
+                  ["Notion AI", "Canva AI"],
+                  "Notion AI detayını aç",
+                  "/tr/tools/notion-ai"
+                )
+              ]
+            }
+          ),
+          section(
+            "Sade bir öğrenci araç seti",
+            [
+              "Öğrenci için en mantıklı yapı genelde bir genel amaçlı araç, gerekiyorsa bir araştırma aracı ve bir düzen aracıdır. Çok sayıda uygulama toplamak yerine daha az ama daha net bir sistem kurmak daha faydalıdır.",
+              "Amaç, araç öğrenmek değil; çalışma sürtünmesini azaltmaktır."
+            ],
+            { bullets: ["Bir genel araçla başla", "Araştırma gerekiyorsa ikinci aracı ekle", "Not düzenini sade tut", "Dersi merkeze al"] }
+          )
+        ]
+      },
+      en: {
+        title: "Best AI tools for students",
+        excerpt: "A practical guide to which AI tools fit studying, research, note organization, and presentations for students.",
+        intro: "For students, the best AI workflow is not about getting the fastest answer. It is about understanding information more clearly, organizing research better, keeping notes manageable, and preparing deliverables with less friction. This guide looks at student needs in a scenario-based way.",
+        categoryLabel: "Guides",
+        seoTitle: "Best AI tools for students | Deciply",
+        seoDescription: "Review ChatGPT, Gemini, Perplexity, Notion AI, and Canva AI for student workflows like research, notes, and presentations.",
+        sections: [
+          section(
+            "Why tool choice is different for students",
+            [
+              "Students usually need clarity, structure, and lower friction more than raw output volume. Better summaries, cleaner note systems, and more reliable research can matter more than faster generation alone.",
+              "That makes cost, ease of use, and workflow comfort especially important."
+            ],
+            {
+              comparison: {
+                title: "Student workflow map",
+                items: [
+                  { label: "General study support", value: "ChatGPT" },
+                  { label: "Google-based study flow", value: "Gemini" },
+                  { label: "Research", value: "Perplexity" },
+                  { label: "Note organization", value: "Notion AI" },
+                  { label: "Presentation visuals", value: "Canva AI" }
+                ]
+              }
+            }
+          ),
+          section(
+            "Which tool fits which student need?",
+            [
+              "ChatGPT can help with explanations and summaries. Gemini can feel natural for students working in Google tools. Perplexity can be more useful when source gathering and research structure matter.",
+              "Notion AI can support note organization and project planning. Canva AI can help with presentations, posters, and visual coursework."
+            ],
+            {
+              subSections: [
+                sub(
+                  "For studying and research",
+                  [
+                    "If the goal is understanding, summarizing, and gathering sources, ChatGPT, Gemini, and Perplexity form a practical starting set.",
+                    "The best fit depends on which one makes studying feel clearer and less chaotic."
+                  ],
+                  ["ChatGPT", "Gemini", "Perplexity"],
+                  "Review tools",
+                  "/en/tools"
+                ),
+                sub(
+                  "For structure and presentations",
+                  [
+                    "Notion AI can keep notes and tasks more organized. Canva AI can reduce friction when a project needs a clean presentation or visual output.",
+                    "These tools are especially useful when deadlines get close and structure matters."
+                  ],
+                  ["Notion AI", "Canva AI"],
+                  "Open Notion AI",
+                  "/en/tools/notion-ai"
+                )
+              ]
+            }
+          ),
+          section(
+            "A simpler student starter stack",
+            [
+              "A student usually does not need many apps. One general-purpose assistant, one research tool if needed, and one organization tool is often enough.",
+              "The point is not to master tools for their own sake. The point is to make learning cleaner and easier to manage."
+            ],
+            { bullets: ["Start with one general tool", "Add research support only if needed", "Keep note systems simple", "Center the study process, not the tool stack"] }
           )
         ]
       }

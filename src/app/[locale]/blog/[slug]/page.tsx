@@ -1,6 +1,14 @@
 ﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+function formatBlogDate(locale: Locale, value: string) {
+  return new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-US", {
+    day: "numeric",
+    month: "short",
+    year: "numeric"
+  }).format(new Date(value));
+}
+
 import { ArticleContent } from "@/components/blog/article-content";
 import { ArticleCtaBlock } from "@/components/blog/article-cta-block";
 import { BlogCard } from "@/components/blog/blog-card";
@@ -86,6 +94,10 @@ export default async function BlogDetailPage({
   const leadSections = article.sections.slice(0, 2);
   const tailSections = article.sections.slice(2);
   const canonicalUrl = `https://deciply.com/${safeLocale}/blog/${article.slug}`;
+  const publishedLabel = safeLocale === "tr" ? "Yayınlandı" : "Published";
+  const updatedLabel = safeLocale === "tr" ? "Güncellendi" : "Updated";
+  const publishedDate = formatBlogDate(safeLocale, article.publishedAt);
+  const updatedDate = article.updatedAt ? formatBlogDate(safeLocale, article.updatedAt) : null;
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -154,6 +166,10 @@ export default async function BlogDetailPage({
               <h1 className="mt-6 bg-gradient-to-r from-white via-sky-200 to-cyan-300 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-[3.5rem] lg:leading-[1.03]">
                 {article.title}
               </h1>
+              <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-400">
+                <span>{publishedLabel}: {publishedDate}</span>
+                {updatedDate ? <span>{updatedLabel}: {updatedDate}</span> : null}
+              </div>
               <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{article.excerpt}</p>
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-400">{article.intro}</p>
             </div>
@@ -276,3 +292,8 @@ export default async function BlogDetailPage({
     </>
   );
 }
+
+
+
+
+
