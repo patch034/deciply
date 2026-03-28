@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Locale {
+  tr
+  en
+}
+
+enum ToolPricing {
+  FREE
+  FREEMIUM
+  PAID
+  CUSTOM
+}
+
+enum PublishStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model Category {
+  id           String           @id @default(cuid())
+  slug         String           @unique
+  icon         String?
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  translations CategoryLocale[]
+  tools        Tool[]
+}
+
+model CategoryLocale {
+  id          String   @id @default(cuid())
+  locale      Locale
+  name        String
+  description String?
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([categoryId, locale])
+}
+
+model Tool {
+  id            String        @id @default(cuid())
+  slug          String        @unique
+  websiteUrl    String
+  pricing       ToolPricing
+  affiliateUrl  String?
+  featuredScore Int           @default(0)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  categoryId    String
+  category      Category      @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  translations  ToolLocale[]
+}
+
+model ToolLocale {
+  id               String   @id @default(cuid())
+  locale           Locale
+  name             String
+  tagline          String
+  intro            String
+  bestFor          String
+  standoutFeatures String
+  pros             String
+  cons             String
+  whoShouldUse     String
+  seoTitle         String?
+  seoDescription   String?
+  toolId           String
+  tool             Tool     @relation(fields: [toolId], references: [id], onDelete: Cascade)
+
+  @@unique([toolId, locale])
+}
+
+model Article {
+  id           String         @id @default(cuid())
+  slug         String         @unique
+  type         String
+  status       PublishStatus  @default(DRAFT)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  translations ArticleLocale[]
+}
+
+model ArticleLocale {
+  id             String   @id @default(cuid())
+  locale         Locale
+  title          String
+  excerpt        String
+  content        String
+  seoTitle       String?
+  seoDescription String?
+  articleId      String
+  article        Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@unique([articleId, locale])
+}

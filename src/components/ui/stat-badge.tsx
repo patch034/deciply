@@ -1,0 +1,17 @@
+﻿import { GlassPanel } from "@/components/ui/glass-panel";
+
+type StatBadgeProps = {
+  value: string;
+  label: string;
+};
+
+export function StatBadge({ value, label }: StatBadgeProps) {
+  return (
+    <GlassPanel className="flex h-full flex-col justify-between rounded-2xl border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.065),rgba(255,255,255,0.02))] px-5 py-5 shadow-card-soft md:px-6 md:py-6">
+      <p className="balance-text bg-gradient-to-r from-white via-sky-200 to-cyan-300 bg-clip-text text-2xl font-bold tracking-tight text-transparent">
+        {value}
+      </p>
+      <p className="mt-3 text-sm leading-6 text-slate-300/78">{label}</p>
+    </GlassPanel>
+  );
+}
