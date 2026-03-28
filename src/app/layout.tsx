@@ -16,7 +16,13 @@ export const metadata: Metadata = {
   },
   description: "Choose the right AI. Faster, smarter, confidently.",
   icons: {
-    icon: "/favicon.ico"
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" }
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }]
   }
 };
 
@@ -34,4 +40,3 @@ export default function RootLayout({
     </html>
   );
 }
-
