@@ -53,8 +53,12 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
             <p className="max-w-2xl">{dictionary.footer.bottomNote}</p>
             <p className="shrink-0">{dictionary.footer.copyright}</p>
           </div>
+          <p className="mt-3 text-[10px] opacity-50">
+            Impact-Site-Verification: cc3ef693-e846-43e9-8663-c0af7be7810c
+          </p>
         </div>
       </GlassPanel>
     </footer>
   );
 }
+
