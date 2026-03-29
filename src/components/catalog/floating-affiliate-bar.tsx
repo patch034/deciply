@@ -38,8 +38,8 @@ export function FloatingAffiliateBar({
         </div>
       </aside>
 
-      <div className="pointer-events-none fixed inset-x-0 bottom-[calc(env(safe-area-inset-bottom)+0.5rem)] z-40 px-3 lg:hidden">
-        <div className="pointer-events-auto mx-auto max-w-3xl overflow-hidden rounded-[22px] border border-cyan-400/18 bg-[#0b0f19]/94 p-3 shadow-[0_18px_60px_-24px_rgba(34,211,238,0.42)] backdrop-blur-xl">
+      <div className="mt-4 lg:hidden">
+        <div className="sticky bottom-3 rounded-[22px] border border-cyan-400/18 bg-[#0b0f19]/94 p-3 shadow-[0_18px_60px_-24px_rgba(34,211,238,0.42)] backdrop-blur-xl">
           <div className="flex items-center gap-3">
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-semibold text-slate-100">{toolName}</p>
@@ -52,7 +52,7 @@ export function FloatingAffiliateBar({
               href={websiteUrl}
               target="_blank"
               rel="nofollow sponsored noreferrer"
-              className="shrink-0 rounded-2xl bg-gradient-to-r from-fuchsia-500 via-blue-500 to-cyan-400 px-4 py-3 text-sm font-semibold text-white shadow-[0_18px_48px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:scale-[1.02]"
+              className="inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-2xl bg-gradient-to-r from-fuchsia-500 via-blue-500 to-cyan-400 px-4 py-3 text-sm font-semibold text-white shadow-[0_18px_48px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:scale-[1.02]"
             >
               {ctaLabel}
             </a>
@@ -62,4 +62,3 @@ export function FloatingAffiliateBar({
     </>
   );
 }
-

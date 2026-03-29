@@ -28,11 +28,11 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#0b0f19]/74 backdrop-blur-2xl">
-      <div className="mx-auto grid max-w-[1200px] grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
-        <Link href={`/${locale}`} className="inline-flex min-h-[44px] items-center">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-[minmax(0,1fr)_auto] items-center gap-2.5 px-4 py-3 md:grid-cols-[auto_1fr_auto] md:gap-4 md:px-6 md:py-4">
+        <Link href={`/${locale}`} className="inline-flex min-h-[44px] min-w-0 items-center">
           <BrandLogo compact className="drop-shadow-[0_12px_30px_rgba(108,92,231,0.22)]" />
         </Link>
-        <div className="flex justify-center">
+        <div className="hidden justify-center md:flex">
           <nav className="ui-nav-shell hidden items-center gap-1 px-2 py-2 md:flex">
             {dictionary.navigation.map((item) => (
               <Link
@@ -56,7 +56,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
             <Link
               key={item.href}
               href={item.href}
-              className="ui-nav-shell inline-flex min-h-[44px] items-center justify-center px-3 text-xs font-semibold tracking-[0.08em] text-slate-200 transition duration-150 hover:border-cyan-400/20 hover:text-cyan-200"
+              className="ui-nav-shell inline-flex min-h-[44px] min-w-0 items-center justify-center truncate px-1.5 text-[10px] font-semibold tracking-normal text-slate-200 transition duration-150 hover:border-cyan-400/20 hover:text-cyan-200"
             >
               {item.label}
             </Link>
@@ -66,3 +66,4 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
     </header>
   );
 }
+
