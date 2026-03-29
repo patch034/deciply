@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { SectionShell } from "@/components/ui/section-shell";
 import { blogArticles } from "@/data/blog";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
-import { formatBlogDate, getBlogCopy, getBlogPublishSource, getLocalizedBlogArticleBySlug, getRelatedArticles } from "@/lib/blog";
+import { formatBlogDate, getBlogCopy, resolveBlogPublishDate, getLocalizedBlogArticleBySlug, getRelatedArticles } from "@/lib/blog";
 import {
   formatPricing,
   getCategoryNamesMap,
@@ -46,7 +46,7 @@ export async function generateMetadata({
   }
 
   const canonicalUrl = buildCanonicalUrl(`/${locale}/blog/${slug}`);
-  const publishedTime = getBlogPublishSource(article);
+  const publishedTime = resolveBlogPublishDate(article);
 
   return {
     title: article.seoTitle,
@@ -99,7 +99,7 @@ export default async function BlogDetailPage({
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/blog/${article.slug}`);
   const publishedLabel = safeLocale === "tr" ? "Yayınlandı" : "Published";
   const updatedLabel = safeLocale === "tr" ? "Güncellendi" : "Updated";
-  const publishedSource = getBlogPublishSource(article);
+  const publishedSource = resolveBlogPublishDate(article);
   const publishedDate = publishedSource ? formatBlogDate(safeLocale, publishedSource) : null;
   const updatedDate = article.updatedAt ? formatBlogDate(safeLocale, article.updatedAt) : null;
 
@@ -298,6 +298,7 @@ export default async function BlogDetailPage({
     </>
   );
 }
+
 
 
 

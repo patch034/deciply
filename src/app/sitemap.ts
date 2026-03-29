@@ -57,11 +57,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const article of blogArticles) {
       entries.push({
         url: withLocale(locale, `/blog/${article.slug}`),
-        lastModified: new Date(article.updatedAt ?? article.publishedAt ?? article.createdAt ?? staticLastModified.toISOString())
+        lastModified: new Date(article.updatedAt ?? article.publishDate ?? article.createdAt ?? staticLastModified.toISOString())
       });
     }
   }
 
   return entries;
 }
+
 

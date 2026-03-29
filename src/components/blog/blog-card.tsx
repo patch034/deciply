@@ -3,7 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { GlassPanel } from "@/components/ui/glass-panel";
 import type { Locale } from "@/i18n/config";
-import { formatBlogDate, getBlogPublishSource } from "@/lib/blog";
+import { formatBlogDate, resolveBlogPublishDate } from "@/lib/blog";
 import type { LocalizedBlogArticle } from "@/types/blog";
 
 type BlogCardProps = {
@@ -14,7 +14,7 @@ type BlogCardProps = {
 
 export function BlogCard({ locale, article, ctaLabel }: BlogCardProps) {
   const relatedToolsLabel = locale === "tr" ? "bağlantılı araç" : "related tools";
-  const publishSource = getBlogPublishSource(article);
+  const publishSource = resolveBlogPublishDate(article);
   const publishDate = publishSource ? formatBlogDate(locale, publishSource) : null;
 
   return (
@@ -49,3 +49,4 @@ export function BlogCard({ locale, article, ctaLabel }: BlogCardProps) {
     </GlassPanel>
   );
 }
+

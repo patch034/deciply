@@ -1,6 +1,6 @@
 ﻿import { blogArticles } from "@/data/blog";
 import type { Locale } from "@/i18n/config";
-import type { LocalizedBlogArticle } from "@/types/blog";
+import type { BlogEntry, LocalizedBlogArticle } from "@/types/blog";
 
 const blogCopy = {
   tr: {
@@ -61,8 +61,8 @@ export function getBlogCopy(locale: Locale) {
   return blogCopy[locale];
 }
 
-export function getBlogPublishSource(article: Pick<LocalizedBlogArticle, "publishedAt" | "createdAt">) {
-  return article.publishedAt ?? article.createdAt;
+export function resolveBlogPublishDate(article: Pick<BlogEntry, "publishDate" | "createdAt">) {
+  return article.publishDate ?? article.createdAt;
 }
 
 export function formatBlogDate(locale: Locale, value: string) {
@@ -73,16 +73,26 @@ export function formatBlogDate(locale: Locale, value: string) {
   }).format(new Date(value));
 }
 
-export function getLocalizedBlogArticles(locale: Locale): LocalizedBlogArticle[] {
-  return blogArticles.map((article) => ({
+function localizeArticle(article: BlogEntry, locale: Locale): LocalizedBlogArticle {
+  const publishDate = resolveBlogPublishDate(article);
+
+  if (!publishDate) {
+    throw new Error(`Blog article is missing publishDate and createdAt: ${article.slug}`);
+  }
+
+  return {
     slug: article.slug,
     categorySlug: article.categorySlug,
-    publishedAt: article.publishedAt,
+    publishDate,
     createdAt: article.createdAt,
     updatedAt: article.updatedAt,
     relatedToolSlugs: article.relatedToolSlugs,
     ...article.locales[locale]
-  }));
+  };
+}
+
+export function getLocalizedBlogArticles(locale: Locale): LocalizedBlogArticle[] {
+  return blogArticles.map((article) => localizeArticle(article, locale));
 }
 
 export function getLocalizedBlogArticleBySlug(locale: Locale, slug: string) {
@@ -92,15 +102,7 @@ export function getLocalizedBlogArticleBySlug(locale: Locale, slug: string) {
     return null;
   }
 
-  return {
-    slug: article.slug,
-    categorySlug: article.categorySlug,
-    publishedAt: article.publishedAt,
-    createdAt: article.createdAt,
-    updatedAt: article.updatedAt,
-    relatedToolSlugs: article.relatedToolSlugs,
-    ...article.locales[locale]
-  } satisfies LocalizedBlogArticle;
+  return localizeArticle(article, locale);
 }
 
 export function getRelatedArticles(locale: Locale, slug: string, limit = 3) {

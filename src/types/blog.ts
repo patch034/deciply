@@ -27,7 +27,7 @@ export type BlogSection = {
 export type BlogEntry = {
   slug: string;
   categorySlug: string;
-  publishedAt?: string;
+  publishDate?: string;
   createdAt?: string;
   updatedAt?: string;
   relatedToolSlugs: string[];
@@ -48,7 +48,7 @@ export type BlogEntry = {
 export type LocalizedBlogArticle = {
   slug: string;
   categorySlug: string;
-  publishedAt?: string;
+  publishDate: string;
   createdAt?: string;
   updatedAt?: string;
   relatedToolSlugs: string[];
@@ -60,4 +60,3 @@ export type LocalizedBlogArticle = {
   seoDescription: string;
   sections: BlogSection[];
 };
-
