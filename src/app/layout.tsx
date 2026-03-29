@@ -2,6 +2,8 @@
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 
+import { siteConfig } from "@/lib/site";
+
 import "./globals.css";
 
 const inter = Inter({
@@ -10,12 +12,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://deciply.com"),
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: "Deciply",
     template: "%s | Deciply"
   },
-  description: "Choose the right AI. Faster, smarter, confidently.",
+  description: siteConfig.description,
   manifest: "/site.webmanifest",
   icons: {
     icon: [
