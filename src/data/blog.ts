@@ -41,7 +41,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "en-iyi-ai-araclari-2026",
     categorySlug: "ai-tools",
-    publishDate: "2026-01-12",
+    publishDate: "2026-03-12",
     relatedToolSlugs: ["chatgpt", "claude", "gemini", "midjourney", "perplexity", "runway"],
     locales: {
       tr: {
@@ -241,7 +241,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "chatgpt-ile-para-kazanma-yollari",
     categorySlug: "make-money-with-ai",
-    publishDate: "2026-01-18",
+    publishDate: "2026-03-13",
     relatedToolSlugs: ["chatgpt", "perplexity", "notion-ai"],
     locales: {
       tr: {
@@ -345,7 +345,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "en-iyi-ucretsiz-ai-araclari",
     categorySlug: "free-tools",
-    publishDate: "2026-01-22",
+    publishDate: "2026-03-14",
     relatedToolSlugs: ["chatgpt", "gemini", "perplexity", "canva-ai"],
     locales: {
       tr: {
@@ -435,7 +435,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "claude-vs-chatgpt-karsilastirma",
     categorySlug: "comparisons",
-    publishDate: "2026-01-27",
+    publishDate: "2026-03-15",
     relatedToolSlugs: ["chatgpt", "claude", "perplexity"],
     locales: {
       tr: {
@@ -517,7 +517,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "midjourney-nasil-kullanilir",
     categorySlug: "guides",
-    publishDate: "2026-02-01",
+    publishDate: "2026-03-16",
     relatedToolSlugs: ["midjourney", "canva-ai", "leonardo-ai"],
     locales: {
       tr: {
@@ -596,7 +596,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "freelance-icin-en-iyi-ai-araclari",
     categorySlug: "make-money-with-ai",
-    publishDate: "2026-02-05",
+    publishDate: "2026-03-17",
     relatedToolSlugs: ["chatgpt", "claude", "midjourney", "perplexity", "canva-ai"],
     locales: {
       tr: {
@@ -677,7 +677,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "ai-ile-blog-yazip-para-kazanma",
     categorySlug: "make-money-with-ai",
-    publishDate: "2026-02-09",
+    publishDate: "2026-03-18",
     relatedToolSlugs: ["chatgpt", "claude", "perplexity", "notion-ai"],
     locales: {
       tr: {
@@ -759,7 +759,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "en-iyi-gorsel-ai-araclari",
     categorySlug: "ai-tools",
-    publishDate: "2026-02-14",
+    publishDate: "2026-03-19",
     relatedToolSlugs: ["midjourney", "leonardo-ai", "canva-ai", "runway"],
     locales: {
       tr: {
@@ -864,7 +864,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "yeni-baslayanlar-icin-ai-rehberi",
     categorySlug: "ai-tools",
-    publishDate: "2026-02-19",
+    publishDate: "2026-03-20",
     relatedToolSlugs: ["chatgpt", "gemini", "canva-ai", "perplexity", "notion-ai"],
     locales: {
       tr: {
@@ -961,7 +961,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "en-hizli-buyuyen-ai-araclari",
     categorySlug: "ai-tools",
-    publishDate: "2026-02-24",
+    publishDate: "2026-03-21",
     relatedToolSlugs: ["perplexity", "runway", "elevenlabs", "leonardo-ai", "gemini"],
     locales: {
       tr: {
@@ -1058,7 +1058,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "ai-ile-para-kazanmak-icin-en-iyi-araclar",
     categorySlug: "make-money-with-ai",
-    publishDate: "2026-03-01",
+    publishDate: "2026-03-22",
     relatedToolSlugs: ["jasper", "copy-ai", "chatgpt", "canva-ai", "runway", "elevenlabs"],
     locales: {
       tr: {
@@ -1220,7 +1220,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "chatgpt-vs-claude-vs-gemini",
     categorySlug: "comparisons",
-    publishDate: "2026-03-05",
+    publishDate: "2026-03-23",
     relatedToolSlugs: ["chatgpt", "claude", "gemini", "perplexity"],
     locales: {
       tr: {
@@ -1382,7 +1382,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "ucretsiz-ai-araclari-2026",
     categorySlug: "free-tools",
-    publishDate: "2026-03-09",
+    publishDate: "2026-03-24",
     relatedToolSlugs: ["chatgpt", "gemini", "perplexity", "canva-ai", "copy-ai"],
     locales: {
       tr: {
@@ -1544,7 +1544,7 @@ export const blogArticles: BlogEntry[] = [
   ,{
     slug: "best-ai-tools-for-making-money-2026",
     categorySlug: "make-money-with-ai",
-    publishDate: "2026-03-13",
+    publishDate: "2026-03-25",
     updatedAt: "2026-03-29",
     relatedToolSlugs: ["jasper", "copy-ai", "canva-ai", "runway", "perplexity", "writesonic"],
     locales: {
@@ -1693,7 +1693,7 @@ export const blogArticles: BlogEntry[] = [
   ,{
     slug: "chatgpt-alternatives-compared-2026",
     categorySlug: "comparisons",
-    publishDate: "2026-03-17",
+    publishDate: "2026-03-26",
     updatedAt: "2026-03-29",
     relatedToolSlugs: ["chatgpt", "claude", "gemini", "perplexity", "jasper"],
     locales: {
@@ -1836,7 +1836,7 @@ export const blogArticles: BlogEntry[] = [
   {
     slug: "free-ai-tools-you-can-start-using-today",
     categorySlug: "free-tools",
-    publishDate: "2026-03-21",
+    publishDate: "2026-03-27",
     updatedAt: "2026-03-29",
     relatedToolSlugs: ["chatgpt", "gemini", "perplexity", "canva-ai", "copy-ai", "elevenlabs"],
     locales: {
@@ -1981,7 +1981,7 @@ export const blogArticles: BlogEntry[] = [
   ,{
     slug: "best-ai-tools-for-freelancers-2026",
     categorySlug: "guides",
-    publishDate: "2026-03-25",
+    publishDate: "2026-03-28",
     updatedAt: "2026-03-29",
     relatedToolSlugs: ["chatgpt", "claude", "canva-ai", "runway", "perplexity", "notion-ai"],
     locales: {
@@ -2269,3 +2269,4 @@ export const blogArticles: BlogEntry[] = [
     }
   }
 ].map(withBlogMeta);
+
