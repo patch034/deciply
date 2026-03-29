@@ -1,14 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-function formatBlogDate(locale: Locale, value: string) {
-  return new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-US", {
-    day: "numeric",
-    month: "short",
-    year: "numeric"
-  }).format(new Date(value));
-}
-
 import { ArticleContent } from "@/components/blog/article-content";
 import { ArticleCtaBlock } from "@/components/blog/article-cta-block";
 import { BlogCard } from "@/components/blog/blog-card";
@@ -18,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { SectionShell } from "@/components/ui/section-shell";
 import { blogArticles } from "@/data/blog";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
-import { getBlogCopy, getLocalizedBlogArticleBySlug, getRelatedArticles } from "@/lib/blog";
+import { formatBlogDate, getBlogCopy, getBlogPublishSource, getLocalizedBlogArticleBySlug, getRelatedArticles } from "@/lib/blog";
 import {
   formatPricing,
   getCategoryNamesMap,
@@ -53,12 +45,23 @@ export async function generateMetadata({
     return {};
   }
 
+  const canonicalUrl = buildCanonicalUrl(`/${locale}/blog/${slug}`);
+  const publishedTime = getBlogPublishSource(article);
+
   return {
     title: article.seoTitle,
     description: article.seoDescription,
     alternates: {
-      canonical: buildCanonicalUrl(`/${locale}/blog/${slug}`),
+      canonical: canonicalUrl,
       languages: buildAlternates(`/blog/${slug}`)
+    },
+    openGraph: {
+      type: "article",
+      url: canonicalUrl,
+      title: article.seoTitle,
+      description: article.seoDescription,
+      publishedTime,
+      modifiedTime: article.updatedAt ?? publishedTime
     }
   };
 }
@@ -96,7 +99,8 @@ export default async function BlogDetailPage({
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/blog/${article.slug}`);
   const publishedLabel = safeLocale === "tr" ? "Yayınlandı" : "Published";
   const updatedLabel = safeLocale === "tr" ? "Güncellendi" : "Updated";
-  const publishedDate = formatBlogDate(safeLocale, article.publishedAt);
+  const publishedSource = getBlogPublishSource(article);
+  const publishedDate = publishedSource ? formatBlogDate(safeLocale, publishedSource) : null;
   const updatedDate = article.updatedAt ? formatBlogDate(safeLocale, article.updatedAt) : null;
 
   const articleSchema = {
@@ -111,7 +115,9 @@ export default async function BlogDetailPage({
     publisher: {
       "@type": "Organization",
       name: "Deciply"
-    }
+    },
+    datePublished: publishedSource,
+    dateModified: article.updatedAt ?? publishedSource
   };
 
   const breadcrumbSchema = {
@@ -292,6 +298,9 @@ export default async function BlogDetailPage({
     </>
   );
 }
+
+
+
 
 
 

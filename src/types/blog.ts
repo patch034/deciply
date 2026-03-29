@@ -28,6 +28,7 @@ export type BlogEntry = {
   slug: string;
   categorySlug: string;
   publishedAt: string;
+  createdAt?: string;
   updatedAt?: string;
   relatedToolSlugs: string[];
   locales: Record<
@@ -48,6 +49,7 @@ export type LocalizedBlogArticle = {
   slug: string;
   categorySlug: string;
   publishedAt: string;
+  createdAt?: string;
   updatedAt?: string;
   relatedToolSlugs: string[];
   title: string;
@@ -58,5 +60,3 @@ export type LocalizedBlogArticle = {
   seoDescription: string;
   sections: BlogSection[];
 };
-
-

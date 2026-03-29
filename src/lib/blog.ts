@@ -61,11 +61,24 @@ export function getBlogCopy(locale: Locale) {
   return blogCopy[locale];
 }
 
+export function getBlogPublishSource(article: Pick<LocalizedBlogArticle, "publishedAt" | "createdAt">) {
+  return article.publishedAt ?? article.createdAt;
+}
+
+export function formatBlogDate(locale: Locale, value: string) {
+  return new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-US", {
+    day: "numeric",
+    month: locale === "tr" ? "long" : "short",
+    year: "numeric"
+  }).format(new Date(value));
+}
+
 export function getLocalizedBlogArticles(locale: Locale): LocalizedBlogArticle[] {
   return blogArticles.map((article) => ({
     slug: article.slug,
     categorySlug: article.categorySlug,
     publishedAt: article.publishedAt,
+    createdAt: article.createdAt,
     updatedAt: article.updatedAt,
     relatedToolSlugs: article.relatedToolSlugs,
     ...article.locales[locale]
@@ -83,6 +96,7 @@ export function getLocalizedBlogArticleBySlug(locale: Locale, slug: string) {
     slug: article.slug,
     categorySlug: article.categorySlug,
     publishedAt: article.publishedAt,
+    createdAt: article.createdAt,
     updatedAt: article.updatedAt,
     relatedToolSlugs: article.relatedToolSlugs,
     ...article.locales[locale]
@@ -111,7 +125,3 @@ export function getRelatedArticlesByTool(locale: Locale, toolSlug: string, limit
     .filter((article) => article.relatedToolSlugs.includes(toolSlug))
     .slice(0, limit);
 }
-
-
-
-

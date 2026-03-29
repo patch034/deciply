@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { GlassPanel } from "@/components/ui/glass-panel";
 import type { Locale } from "@/i18n/config";
+import { formatBlogDate, getBlogPublishSource } from "@/lib/blog";
 import type { LocalizedBlogArticle } from "@/types/blog";
 
 type BlogCardProps = {
@@ -13,14 +14,18 @@ type BlogCardProps = {
 
 export function BlogCard({ locale, article, ctaLabel }: BlogCardProps) {
   const relatedToolsLabel = locale === "tr" ? "bağlantılı araç" : "related tools";
+  const publishSource = getBlogPublishSource(article);
+  const publishDate = publishSource ? formatBlogDate(locale, publishSource) : null;
 
   return (
     <GlassPanel className="group flex h-full flex-col overflow-hidden border-white/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(11,15,25,0.98))] p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/20 hover:shadow-[0_24px_80px_-42px_rgba(34,211,238,0.22)]">
-      <div className="flex items-center justify-between gap-3">
-        <Badge variant="ghost" className="max-w-[70%] justify-start text-cyan-200">
+      <div className="flex flex-wrap items-center gap-3">
+        <Badge variant="ghost" className="max-w-full justify-start text-cyan-200">
           {article.categoryLabel}
         </Badge>
-        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">SEO</span>
+        {publishDate ? (
+          <span className="text-xs font-medium text-slate-500/90">{publishDate}</span>
+        ) : null}
       </div>
 
       <div className="mt-5 flex flex-1 flex-col">
@@ -29,7 +34,7 @@ export function BlogCard({ locale, article, ctaLabel }: BlogCardProps) {
         </h2>
         <p className="mt-4 text-sm leading-7 text-slate-300">{article.excerpt}</p>
 
-        <div className="mt-6 flex items-center justify-between gap-4 pt-4 text-sm">
+        <div className="mt-6 flex items-center justify-between gap-4 border-t border-white/10 pt-4 text-sm">
           <span className="truncate text-slate-500">
             {article.relatedToolSlugs.length} {relatedToolsLabel}
           </span>
