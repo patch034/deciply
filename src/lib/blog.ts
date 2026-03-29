@@ -1,10 +1,11 @@
 import { blogArticles } from "@/data/blog";
 import type { Locale } from "@/i18n/config";
+import { assertEncodingHealth, normalizeEncodingTree } from "@/lib/encoding";
 import type { BlogEntry, LocalizedBlogArticle } from "@/types/blog";
 
 export const BLOG_PAGE_SIZE = 12;
 
-const blogCopy = {
+const rawBlogCopy = {
   tr: {
     breadcrumbsHome: "Ana sayfa",
     blogLabel: "Blog",
@@ -13,8 +14,8 @@ const blogCopy = {
     listDescription:
       "Deciply blog bölümünde öne çıkan AI araçları, karşılaştırmalar, ücretsiz araç listeleri ve para kazandıran kullanım senaryoları yer alır.",
     readMoreLabel: "Devamını oku",
-    heroPrimaryCta: "?? Bu aracı incele",
-    heroSecondaryCta: "?? Öne çıkan AI araçlarını gör",
+    heroPrimaryCta: "Bu aracı incele",
+    heroSecondaryCta: "Öne çıkan AI araçlarını gör",
     comparisonCtaLabel: "Karşılaştırmaya git",
     relatedToolsTitle: "Bu içerikte geçen araçlar",
     relatedToolsDescription:
@@ -42,8 +43,8 @@ const blogCopy = {
     listDescription:
       "The Deciply blog covers the best AI tools, comparisons, free tool roundups, and monetization-focused use cases.",
     readMoreLabel: "Read more",
-    heroPrimaryCta: "?? Try this tool now",
-    heroSecondaryCta: "?? View top AI tools",
+    heroPrimaryCta: "Try this tool now",
+    heroSecondaryCta: "View top AI tools",
     comparisonCtaLabel: "Go to comparison",
     relatedToolsTitle: "Tools mentioned in this article",
     relatedToolsDescription:
@@ -64,6 +65,10 @@ const blogCopy = {
     pageLabel: "Page"
   }
 } as const;
+
+assertEncodingHealth("blog-copy");
+
+const blogCopy = normalizeEncodingTree(rawBlogCopy).value as typeof rawBlogCopy;
 
 export function getBlogCopy(locale: Locale) {
   return blogCopy[locale];
@@ -89,7 +94,7 @@ function localizeArticle(article: BlogEntry, locale: Locale): LocalizedBlogArtic
     throw new Error(`Blog article is missing publishDate and createdAt: ${article.slug}`);
   }
 
-  return {
+  const localizedArticle = {
     slug: article.slug,
     categorySlug: article.categorySlug,
     publishDate,
@@ -98,6 +103,14 @@ function localizeArticle(article: BlogEntry, locale: Locale): LocalizedBlogArtic
     relatedToolSlugs: article.relatedToolSlugs,
     ...article.locales[locale]
   };
+
+  const normalizedArticle = normalizeEncodingTree(localizedArticle);
+
+  if (normalizedArticle.changed && process.env.NODE_ENV !== "production") {
+    console.warn(`[encoding] Repaired suspicious localized blog content for "${article.slug}" (${locale}).`);
+  }
+
+  return normalizedArticle.value;
 }
 
 function sortArticlesByPublishDate(articles: LocalizedBlogArticle[]) {
