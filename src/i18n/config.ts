@@ -1,3 +1,5 @@
+﻿import { buildSiteUrl } from "@/lib/site";
+
 export const locales = ["tr", "en"] as const;
 export type Locale = (typeof locales)[number];
 
@@ -8,13 +10,18 @@ export function isValidLocale(value: string): value is Locale {
   return locales.includes(value as Locale);
 }
 
-export function buildAlternates(path: string) {
+export function buildCanonicalUrl(path: string) {
   const safePath = path.startsWith("/") ? path : `/${path}`;
-
-  return {
-    tr: `/tr${safePath === "/" ? "" : safePath}`,
-    en: `/en${safePath === "/" ? "" : safePath}`,
-    "x-default": `/en${safePath === "/" ? "" : safePath}`
-  };
+  return buildSiteUrl(safePath === "/" ? "" : safePath);
 }
 
+export function buildAlternates(path: string) {
+  const safePath = path.startsWith("/") ? path : `/${path}`;
+  const normalizedPath = safePath === "/" ? "" : safePath;
+
+  return {
+    tr: buildSiteUrl(`/tr${normalizedPath}`),
+    en: buildSiteUrl(`/en${normalizedPath}`),
+    "x-default": buildSiteUrl(`/en${normalizedPath}`)
+  };
+}

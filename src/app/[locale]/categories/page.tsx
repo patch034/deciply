@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 import { CategoryCard } from "@/components/catalog/category-card";
 import { CategoryHero } from "@/components/catalog/category-hero";
 import { getCatalogContent, getLocalizedCategories } from "@/lib/catalog";
-import { buildAlternates, isValidLocale, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
 
 export async function generateMetadata({
   params
@@ -22,7 +22,7 @@ export async function generateMetadata({
     title: content.categoriesIndex.title,
     description: content.categoriesIndex.description,
     alternates: {
-      canonical: `/${locale}/categories`,
+      canonical: buildCanonicalUrl(`/${locale}/categories`),
       languages: buildAlternates("/categories")
     }
   };
@@ -67,4 +67,5 @@ export default async function CategoriesPage({
     </div>
   );
 }
+
 

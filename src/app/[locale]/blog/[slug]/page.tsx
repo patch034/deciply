@@ -17,7 +17,7 @@ import { ToolCard } from "@/components/catalog/tool-card";
 import { Badge } from "@/components/ui/badge";
 import { SectionShell } from "@/components/ui/section-shell";
 import { blogArticles } from "@/data/blog";
-import { buildAlternates, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
 import { getBlogCopy, getLocalizedBlogArticleBySlug, getRelatedArticles } from "@/lib/blog";
 import {
   formatPricing,
@@ -57,7 +57,7 @@ export async function generateMetadata({
     title: article.seoTitle,
     description: article.seoDescription,
     alternates: {
-      canonical: `/${locale}/blog/${slug}`,
+      canonical: buildCanonicalUrl(`/${locale}/blog/${slug}`),
       languages: buildAlternates(`/blog/${slug}`)
     }
   };
@@ -93,7 +93,7 @@ export default async function BlogDetailPage({
   const comparisonHref = `/${safeLocale}/categories/comparisons`;
   const leadSections = article.sections.slice(0, 2);
   const tailSections = article.sections.slice(2);
-  const canonicalUrl = `https://deciply.com/${safeLocale}/blog/${article.slug}`;
+  const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/blog/${article.slug}`);
   const publishedLabel = safeLocale === "tr" ? "Yayınlandı" : "Published";
   const updatedLabel = safeLocale === "tr" ? "Güncellendi" : "Updated";
   const publishedDate = formatBlogDate(safeLocale, article.publishedAt);
@@ -292,6 +292,7 @@ export default async function BlogDetailPage({
     </>
   );
 }
+
 
 
 

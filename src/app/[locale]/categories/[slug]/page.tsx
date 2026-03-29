@@ -22,7 +22,7 @@ import {
   getLocalizedToolBySlug,
   getToolsByCategory
 } from "@/lib/catalog";
-import { buildAlternates, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
 import { getToolTrustIndicators } from "@/lib/tool-ui";
 
 export function generateStaticParams() {
@@ -52,7 +52,7 @@ export async function generateMetadata({
       title: `${comparison.title} | Deciply`,
       description: comparison.summary,
       alternates: {
-        canonical: `/${locale}/categories/${slug}`,
+        canonical: buildCanonicalUrl(`/${locale}/categories/${slug}`),
         languages: buildAlternates(`/categories/${slug}`)
       }
     };
@@ -68,7 +68,7 @@ export async function generateMetadata({
     title: category.seoTitle,
     description: category.seoDescription,
     alternates: {
-      canonical: `/${locale}/categories/${slug}`,
+      canonical: buildCanonicalUrl(`/${locale}/categories/${slug}`),
       languages: buildAlternates(`/categories/${slug}`)
     }
   };
@@ -104,7 +104,7 @@ export default async function CategoryDetailPage({
       notFound();
     }
 
-    const canonicalUrl = `https://deciply.com/${safeLocale}/categories/comparisons`;
+    const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/categories/comparisons`);
     const trustIndicators = getToolTrustIndicators(safeLocale);
     const editorNote = safeLocale === "tr"
       ? "Bu sayfa tek bir kazanan se?mez. G??l? ve zay?f taraflar? senaryoya g?re g?sterir."
@@ -396,3 +396,4 @@ export default async function CategoryDetailPage({
     </div>
   );
 }
+

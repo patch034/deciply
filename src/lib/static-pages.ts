@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 import { staticPages } from "@/data/static-pages";
-import { buildAlternates, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, type Locale } from "@/i18n/config";
 
 export type StaticPageKey = keyof (typeof staticPages)[Locale];
 
@@ -16,7 +16,7 @@ export function buildStaticPageMetadata(locale: Locale, path: string, key: Stati
     title: page.title,
     description: page.description,
     alternates: {
-      canonical: `/${locale}${path}`,
+      canonical: buildCanonicalUrl(`/${locale}${path}`),
       languages: buildAlternates(path)
     }
   };

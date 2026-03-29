@@ -1,6 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 
 import { defaultLocale, localeCookieName, locales } from "@/i18n/config";
+import { siteConfig } from "@/lib/site";
 
 function getPreferredLocale(request: NextRequest) {
   const cookieLocale = request.cookies.get(localeCookieName)?.value;
@@ -29,6 +30,14 @@ function getPreferredLocale(request: NextRequest) {
   return preferred?.slice(0, 2) ?? defaultLocale;
 }
 
+function getRequestHost(request: NextRequest) {
+  return (request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? "").toLowerCase();
+}
+
+function getRequestProtocol(request: NextRequest) {
+  return (request.headers.get("x-forwarded-proto") ?? request.nextUrl.protocol.replace(":", "")).toLowerCase();
+}
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -38,6 +47,19 @@ export function middleware(request: NextRequest) {
     pathname.includes(".")
   ) {
     return NextResponse.next();
+  }
+
+  const host = getRequestHost(request);
+  const protocol = getRequestProtocol(request);
+  const isLocalhost = host.includes("localhost") || host.startsWith("127.0.0.1");
+  const isCanonicalHost = host === siteConfig.host;
+  const isWwwHost = host === `www.${siteConfig.host}`;
+
+  if (!isLocalhost && (isWwwHost || ((isCanonicalHost || isWwwHost) && protocol === "http"))) {
+    const url = request.nextUrl.clone();
+    url.protocol = "https";
+    url.host = siteConfig.host;
+    return NextResponse.redirect(url, 308);
   }
 
   const pathnameHasLocale = locales.some(

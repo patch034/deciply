@@ -11,7 +11,7 @@ import { ToolCard } from "@/components/catalog/tool-card";
 import { Badge } from "@/components/ui/badge";
 import { tools } from "@/data/tools";
 import { toolCategoryOptions } from "@/data/tool-taxonomy";
-import { buildAlternates, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
 import { getBlogCopy, getRelatedArticlesByTool } from "@/lib/blog";
 import { getToolTrustIndicators, getToolUseCaseTags } from "@/lib/tool-ui";
 import {
@@ -288,7 +288,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: tool.seoTitle,
     description: tool.seoDescription,
     alternates: {
-      canonical: `/${locale}/tools/${slug}`,
+      canonical: buildCanonicalUrl(`/${locale}/tools/${slug}`),
       languages: buildAlternates(`/tools/${slug}`)
     }
   };
@@ -553,3 +553,4 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
     </div>
   );
 }
+

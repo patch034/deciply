@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 import { CategoryHero } from "@/components/catalog/category-hero";
 import { ToolsExplorer } from "@/components/catalog/tools-explorer";
@@ -9,7 +9,7 @@ import {
   getCategoryNamesMap,
   getLocalizedTools
 } from "@/lib/catalog";
-import { buildAlternates, isValidLocale, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
 
 export async function generateMetadata({
   params
@@ -28,7 +28,7 @@ export async function generateMetadata({
     title: content.toolsIndex.title,
     description: content.toolsIndex.description,
     alternates: {
-      canonical: `/${locale}/tools`,
+      canonical: buildCanonicalUrl(`/${locale}/tools`),
       languages: buildAlternates("/tools")
     }
   };

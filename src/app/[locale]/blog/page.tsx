@@ -3,7 +3,7 @@
 import { BlogCard } from "@/components/blog/blog-card";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
-import { buildAlternates, isValidLocale, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
 import { getBlogCopy, getLocalizedBlogArticles } from "@/lib/blog";
 
 export async function generateMetadata({
@@ -23,7 +23,7 @@ export async function generateMetadata({
     title: `${copy.blogLabel} | Deciply`,
     description: copy.listDescription,
     alternates: {
-      canonical: `/${locale}/blog`,
+      canonical: buildCanonicalUrl(`/${locale}/blog`),
       languages: buildAlternates("/blog")
     }
   };
@@ -61,3 +61,4 @@ export default async function BlogPage({
     </div>
   );
 }
+

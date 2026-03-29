@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { getDictionary } from "@/i18n/dictionaries";
-import { buildAlternates, isValidLocale, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
 
 export async function generateMetadata({
   params
@@ -23,7 +23,7 @@ export async function generateMetadata({
     title: dictionary.meta.homeTitle,
     description: dictionary.meta.homeDescription,
     alternates: {
-      canonical: `/${locale}`,
+      canonical: buildCanonicalUrl(`/${locale}`),
       languages: buildAlternates("/")
     }
   };
@@ -52,4 +52,5 @@ export default async function LocaleLayout({
     </div>
   );
 }
+
 
