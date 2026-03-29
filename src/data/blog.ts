@@ -1,4 +1,4 @@
-﻿import type { BlogEntry, BlogSection, BlogSubSection } from "@/types/blog";
+import type { BlogEntry, BlogSection, BlogSubSection } from "@/types/blog";
 
 const sub = (
   title: string,
@@ -2268,5 +2268,203 @@ export const blogArticles: BlogEntry[] = [
       }
     }
   }
+
+,
+  {
+    slug: "ai-tools-for-passive-income-2026",
+    categorySlug: "make-money-with-ai",
+    relatedToolSlugs: ["chatgpt", "perplexity", "copy-ai", "canva-ai", "elevenlabs", "pictory"],
+    locales: {
+      tr: {
+        title: "2026'da pasif gelir için en mantıklı AI araçları",
+        excerpt: "Pasif gelir tarafında hangi AI araçlarının niş içerik, template, ses ve video akışlarında daha mantıklı olduğunu gösteren rehber.",
+        intro: "Pasif gelir için araç seçerken popüler olanı değil, tekrar tekrar üretim sağlayanı seçmek gerekir. Bu rehber, içerik siteleri, dijital ürünler, sesli içerikler ve repurpose video akışları için hangi araçların daha mantıklı olabileceğini sade biçimde açıklar.",
+        categoryLabel: "AI ile Para Kazanma",
+        seoTitle: "2026'da pasif gelir için en mantıklı AI araçları | Deciply",
+        seoDescription: "ChatGPT, Perplexity, Copy.ai, Canva AI, ElevenLabs ve Pictory'nin pasif gelir senaryolarında nerede mantıklı olduğunu görün.",
+        sections: [
+          section("Hızlı özet", ["Pasif gelir için en iyi araç genelde tek bir uygulama değil, küçük bir üretim stack'idir. Araştırma için [Perplexity](/tr/tools/perplexity), yazı için [ChatGPT](/tr/tools/chatgpt) veya [Copy.ai](/tr/tools/copy-ai), dağıtım için [Canva AI](/tr/tools/canva-ai), ses için [ElevenLabs](/tr/tools/elevenlabs) ve video repurpose için [Pictory](/tr/tools/pictory) öne çıkabilir.", "Burada kilit nokta aracın tekrar üretimi kolaylaştırmasıdır. Aynı formatı haftalık olarak çıkarabiliyorsan, araç pasif gelire daha yakın bir değer üretir."], { comparison: { title: "Pasif gelir haritası", items: [ { label: "Niş içerik", value: "ChatGPT / Perplexity" }, { label: "Landing ve ürün metni", value: "Copy.ai" }, { label: "Template ve görsel", value: "Canva AI" }, { label: "Sesli içerik", value: "ElevenLabs" }, { label: "Video repurpose", value: "Pictory" } ] } }),
+          section("Bu içerik kimler için?", ["Niş site kurmak, dijital ürün çıkarmak, faceless içerik üretmek veya bilgi ürünleriyle ölçeklenebilir sistem kurmak isteyen kullanıcılar için uygundur.", "Hedefi günlük müşteri işi değil de zamanla biriken içerik ve ürün akışı olan kullanıcı burada daha net seçim yapabilir."], { bullets: ["Niş blog kuranlar", "Template ve prompt paketi hazırlayanlar", "Sesli içerik üretenler", "Faceless video akışı deneyenler"] }),
+          section("En mantıklı araçlar ve stratejiler", ["Yazı ve araştırma odaklı modellerde [ChatGPT](/tr/tools/chatgpt) ve [Perplexity](/tr/tools/perplexity) güçlü bir başlangıçtır. Blog rehberi, affiliate içerik ve newsletter üretimi için bu ikili genelde yeterlidir.", "Görsel, ses ve repurpose tarafta [Canva AI](/tr/tools/canva-ai), [ElevenLabs](/tr/tools/elevenlabs) ve [Pictory](/tr/tools/pictory) daha mantıklı hale gelir. Bu araçlar özellikle tekrar kullanılabilen asset ve medya akışlarında faydalıdır."], { subSections: [ sub("Yazı ve bilgi ürünü akışı", ["Araştırma + taslak + dağıtım modeli pasif gelir tarafında en düşük bariyerli başlangıçtır.", "Önce niş rehber veya lead magnet, sonra buna bağlı affiliate veya küçük dijital ürün eklemek daha mantıklıdır."], ["Blog içerik", "Mini rehber", "Lead magnet"], "View tool", "/tr/tools/chatgpt"), sub("Ses ve video odaklı akış", ["Sesli özet, mini anlatım veya videoya çevrilen metinler daha sistemli pasif içerik üretimi sağlar.", "Bu yüzden ElevenLabs ve Pictory daha çok ikinci aşamada değer üretir."], ["Sesli içerik", "Repurpose video"], "See details", "/tr/tools/elevenlabs") ] }),
+          section("Doğru seçimi nasıl yaparsın?", ["Önce gelir modelini seç: niş blog mu, template mağazası mı, yoksa ses/video akışı mı? Sonra o modele en yakın aracı seç.", "İkinci kriter tekrar üretim hızıdır. Güzel ama zor tekrar edilen çıktı, pasif gelir için çoğu zaman yeterli değildir."]),
+          section("Gerçekçi kullanım senaryoları", ["Niş bir blogda karşılaştırma içerikleri yayımlamak, Gumroad için template paketi hazırlamak, blog yazılarını sesli anlatıma çevirmek veya aynı içeriği kısa videolara dönüştürmek daha gerçekçi senaryolardır.", "Bu modellerde amaç tek seferlik mükemmel üretim değil, düşük ek maliyetle tekrar üretimdir."], { bullets: ["Affiliate içerik sitesi", "Prompt/template paketi", "Sesli mini içerik", "Repurpose short video"] }),
+          section("Son not", ["Pasif gelir için doğru araç, senin tekrar etmek istediğin formatı kolaylaştıran araçtır. Tek araca değil, iş akışına bakmak daha sağlıklıdır.", "Kararsızsan ilgili tool detail sayfalarını açıp artılar, eksiler ve kullanım alanlarını karşılaştır."], { subSections: [ sub("Sonraki adım", ["Önce gelir modelini seç, sonra o modele en yakın aracı açıp detaylara bak."], undefined, "View tool", "/tr/tools") ] })
+        ]
+      },
+      en: {
+        title: "Best AI tools for passive income in 2026",
+        excerpt: "A scenario-based guide to which AI tools fit passive-income workflows like niche content, templates, audio, and repurposed media.",
+        intro: "Passive income comes from repeatable outputs, not from software alone. This guide looks at which AI tools make more sense for content sites, digital products, voice assets, and repurposed media workflows.",
+        categoryLabel: "Make Money with AI",
+        seoTitle: "Best AI tools for passive income in 2026 | Deciply",
+        seoDescription: "Compare ChatGPT, Perplexity, Copy.ai, Canva AI, ElevenLabs, and Pictory through a passive-income workflow lens.",
+        sections: [
+          section("Quick summary", ["For passive income, the best setup is usually a small stack rather than one tool. [Perplexity](/en/tools/perplexity) can support research, [ChatGPT](/en/tools/chatgpt) or [Copy.ai](/en/tools/copy-ai) can support drafting, [Canva AI](/en/tools/canva-ai) can support design, [ElevenLabs](/en/tools/elevenlabs) can support voice, and [Pictory](/en/tools/pictory) can support repurposing.", "The main question is whether the tool helps repeat the workflow every week with low friction."], { comparison: { title: "Passive income map", items: [ { label: "Niche content", value: "ChatGPT / Perplexity" }, { label: "Landing and sales copy", value: "Copy.ai" }, { label: "Templates and visuals", value: "Canva AI" }, { label: "Voice assets", value: "ElevenLabs" }, { label: "Repurposed video", value: "Pictory" } ] } }),
+          section("Who is this for?", ["This article is for users building niche sites, template products, prompt packs, voice-based assets, or faceless media workflows.", "If the goal is reusable output instead of one-off client delivery, these tools matter more."], { bullets: ["Niche site builders", "Digital product creators", "Voice-content operators", "Faceless media workflows"] }),
+          section("Best tools and strategies", ["For writing-led models, [ChatGPT](/en/tools/chatgpt) and [Perplexity](/en/tools/perplexity) are often the most practical starting pair. [Copy.ai](/en/tools/copy-ai) can help more on short conversion-focused copy.", "For design, voice, and repurposing workflows, [Canva AI](/en/tools/canva-ai), [ElevenLabs](/en/tools/elevenlabs), and [Pictory](/en/tools/pictory) often fit better."], { subSections: [ sub("Writing and knowledge products", ["Affiliate content, lead magnets, and mini guides often start with research plus drafting.", "That makes ChatGPT and Perplexity strong early tools for this model."], ["Blog content", "Lead magnets", "Small digital products"], "View tool", "/en/tools/chatgpt"), sub("Audio and repurposed media", ["Voice assets and repurposed short videos become more useful when the workflow is repeated often.", "ElevenLabs and Pictory are usually more valuable after the first output format is already clear."], ["Voice content", "Repurposed video"], "See details", "/en/tools/elevenlabs") ] }),
+          section("How to choose the right option", ["Pick the income model first, then the tool. A niche content system needs different software than a voice-product system.", "The second filter is repeatability. A workflow that can be repeated weekly is usually a better passive-income candidate." ]),
+          section("Realistic use cases", ["Niche affiliate articles, template packs, small ebooks, voice explainers, and repurposed video workflows are realistic passive-income use cases.", "What matters is not perfection but repeatable output with low extra cost."], { bullets: ["Affiliate content site", "Template pack", "Mini guide", "Voice explainer", "Repurposed short video"] }),
+          section("Final note", ["The right passive-income tool is the one that supports the output you want to repeat. Workflow fit matters more than hype.", "If you are unsure, open the relevant tool pages and compare strengths, limits, and use cases."], { subSections: [ sub("Next step", ["Choose the income model first, then review the tool that fits it best."], undefined, "View tool", "/en/tools") ] })
+        ]
+      }
+    }
+  },
+  {
+    slug: "ai-side-hustles-you-can-start-today",
+    categorySlug: "make-money-with-ai",
+    relatedToolSlugs: ["chatgpt", "copy-ai", "canva-ai", "runway", "elevenlabs", "perplexity"],
+    locales: {
+      tr: {
+        title: "Bugün başlayabileceğin 10 AI yan gelir fikri",
+        excerpt: "Hızlı test edilebilir 10 AI side hustle fikrini, uygun araçlarla ve gerçekçi kullanım senaryolarıyla bir araya getiren rehber.",
+        intro: "Yan gelir tarafında asıl avantaj hızlı denemedir. Bu yüzden ilk aşamada küçük ama satılabilir teslimler seçmek daha mantıklıdır. Bu yazı, bugün başlayabileceğin AI yan gelir fikirlerini araç uyumu ve gerçekçi beklenti açısından ele alır.",
+        categoryLabel: "AI ile Para Kazanma",
+        seoTitle: "Bugün başlayabileceğin 10 AI yan gelir fikri | Deciply",
+        seoDescription: "İçerik, görsel, araştırma, ses ve faceless video odaklı 10 AI yan gelir fikrini uygun araçlarla birlikte inceleyin.",
+        sections: [
+          section("Hızlı özet", ["En hızlı test edilen AI yan gelir fikirleri genelde küçük teslimli modellerdir: kısa içerik paketleri, sosyal medya görselleri, araştırma özetleri, voice asset'ler ve faceless video klipleri.", "Bu modeller düşük bariyerlidir çünkü önce küçük teklif çıkarıp talebi test etmeye izin verir."], { bullets: ["Kısa içerik paketi", "Sosyal medya görsel seti", "Araştırma özeti", "Faceless video", "Voice asset", "Template paketi", "Landing page copy", "Ürün açıklaması", "Mini newsletter", "Lead magnet hazırlığı"] }),
+          section("Bu içerik kimler için?", ["Öğrenci, freelancer, küçük işletme sahibi ya da ilk ek gelirini test eden herkes için uygundur.", "Özellikle büyük sistem kurmadan önce küçük bir teklif doğrulamak isteyen kullanıcı için daha anlamlıdır."]),
+          section("En mantıklı araçlar ve stratejiler", ["Metin ve araştırma odaklı fikirlerde [ChatGPT](/tr/tools/chatgpt), [Copy.ai](/tr/tools/copy-ai) ve [Perplexity](/tr/tools/perplexity) mantıklı olabilir. Kısa teslim, araştırma özeti ve satış odaklı metinlerde bu araçlar değer üretir.", "Görsel ve medya odaklı fikirlerde [Canva AI](/tr/tools/canva-ai), [Runway](/tr/tools/runway) ve [ElevenLabs](/tr/tools/elevenlabs) daha iyi oturur."], { subSections: [ sub("Hızlı başlayan fikirler", ["Ürün açıklaması, kısa içerik, araştırma özeti veya basit görsel teslim gibi küçük işlerle başlamak daha sağlıklıdır.", "Çünkü bunlar kısa sürede test edilir ve ilk geri bildirimi hızlı getirir."], ["Hızlı test", "Küçük teklif", "Düşük risk"], "View tool", "/tr/tools/chatgpt"), sub("Daha sistemli modeller", ["Faceless video veya sesli mini ürün gibi taraflar biraz daha sistem ister ama daha ölçeklenebilir olabilir.", "Bu noktada Runway ve ElevenLabs daha anlamlı hale gelir."], ["Faceless video", "Sesli içerik"], "See details", "/tr/tools/runway") ] }),
+          section("Doğru seçimi nasıl yaparsın?", ["İlk soru şu olmalı: bugün kime ne teslim edebilirim? Eğer bu net değilse fikir henüz fazla geniştir.", "İkinci soru da şu: mevcut becerime en yakın model hangisi? Yazı biliyorsan yazı, görsel biliyorsan tasarım tarafından başlamak daha mantıklıdır."]),
+          section("Gerçekçi kullanım senaryoları", ["Bir öğrenci araştırma özeti satabilir, bir freelancer haftalık sosyal medya paketi hazırlayabilir, bir içerik üreticisi blog yazılarını kısa videolara dönüştürebilir.", "Amaç ilk ayda mükemmel marka kurmak değil, ilk ödeme alan küçük teklifi bulmaktır."], { comparison: { title: "Düşük bariyerli başlangıç", items: [ { label: "En hızlı test", value: "Kısa içerik paketi" }, { label: "En görsel odaklı", value: "Canva AI teslimi" }, { label: "En sistem isteyen", value: "Faceless video" } ] } }),
+          section("Son not", ["Yan gelir için doğru araç, bugün başlayabildiğin küçük teklifi hızlandıran araçtır. Küçük ve net teklif, büyük ama dağınık fikre göre çok daha değerlidir.", "Kararsızsan ilgili tool detail sayfasını açıp güçlü ve zayıf alanları karşılaştır."], { subSections: [ sub("Sonraki adım", ["Bir yan gelir fikri seç ve ona en yakın aracı açıp detaylara bak."], undefined, "View tool", "/tr/tools") ] })
+        ]
+      },
+      en: {
+        title: "10 AI side hustles you can start today",
+        excerpt: "A practical guide to 10 AI side hustle ideas you can test quickly, with realistic expectations and clearer tool fit.",
+        intro: "In side-income workflows, speed of testing matters more than bigger plans. Small but sellable outputs are often the best first move. This article looks at AI side hustles through tool fit, difficulty, and realistic use cases.",
+        categoryLabel: "Make Money with AI",
+        seoTitle: "10 AI side hustles you can start today | Deciply",
+        seoDescription: "Explore 10 practical AI side hustle ideas across writing, research, visuals, audio, and short-form video workflows.",
+        sections: [
+          section("Quick summary", ["The fastest AI side hustles to validate are usually small deliverables: content packs, visual posts, research summaries, voice assets, and short-form repurposed media.", "They work because users can test demand before building a larger system."], { bullets: ["Short content packs", "Social visuals", "Research summaries", "Faceless video", "Voice assets", "Template packs", "Landing page copy", "Product descriptions", "Mini newsletters", "Lead magnets"] }),
+          section("Who is this for?", ["This guide is useful for students, freelancers, and operators testing a first extra income stream.", "It is especially useful for people who want to validate a simple offer before building something larger."]),
+          section("Best tools and strategies", ["For text-led side hustles, [ChatGPT](/en/tools/chatgpt), [Copy.ai](/en/tools/copy-ai), and [Perplexity](/en/tools/perplexity) often make sense. For visual or media-led side hustles, [Canva AI](/en/tools/canva-ai), [Runway](/en/tools/runway), and [ElevenLabs](/en/tools/elevenlabs) often fit better."], { subSections: [ sub("Fastest-to-test ideas", ["Smaller outputs like captions, short copy, research summaries, or basic visual packs are usually easier to validate.", "That is why small service offers often beat more complex automation ideas early on."], ["Fast validation", "Small offer", "Lower risk"], "View tool", "/en/tools/chatgpt"), sub("More system-heavy ideas", ["Faceless video and voice-based assets usually need more structure, but they can scale better later.", "That makes Runway and ElevenLabs stronger second-stage tools."], ["Faceless video", "Voice assets"], "See details", "/en/tools/runway") ] }),
+          section("How to choose the right option", ["Ask what you can deliver today. If the answer is vague, the idea is still too broad.", "Then pick the model closest to your current skill set so the first validation happens faster." ]),
+          section("Realistic use cases", ["A student may sell research summaries. A freelancer may sell weekly social packs. A content operator may turn blog posts into short clips.", "The goal is not a perfect business in month one. It is the first paid offer."], { comparison: { title: "Low-friction starting points", items: [ { label: "Fastest validation", value: "Short content pack" }, { label: "Most visual", value: "Canva AI delivery" }, { label: "Most system-heavy", value: "Faceless video" } ] } }),
+          section("Final note", ["The right side-hustle tool is the one that speeds up the smallest useful offer you can start now.", "Open the relevant tool page and compare strengths before choosing."], { subSections: [ sub("Next step", ["Choose one side hustle idea and review the tool that fits it best."], undefined, "View tool", "/en/tools") ] })
+        ]
+      }
+    }
+  },
+  {
+    slug: "free-ai-tools-that-actually-make-money",
+    categorySlug: "free-tools",
+    relatedToolSlugs: ["chatgpt", "gemini", "perplexity", "canva-ai", "notion-ai"],
+    locales: {
+      tr: {
+        title: "Gerçekten para kazandırabilen ücretsiz AI araçları",
+        excerpt: "Ücretsiz veya freemium planı gerçekten iş çıkaran AI araçlarının hangi senaryolarda anlamlı olduğunu gösteren rehber.",
+        intro: "Ücretsiz AI araçları her zaman oyuncak değildir. Bazıları ilk müşteri işini test etmeye, küçük teslimler üretmeye ve iş modelini düşük riskle doğrulamaya yardım edebilir. Bu yazı, ücretsiz planların nerede işe yaradığını ve nerede yetersiz kaldığını netleştirir.",
+        categoryLabel: "Ücretsiz Araçlar",
+        seoTitle: "Gerçekten para kazandırabilen ücretsiz AI araçları | Deciply",
+        seoDescription: "ChatGPT, Gemini, Perplexity, Canva AI ve Notion AI gibi ücretsiz veya freemium araçların hangi işlerde gerçekten değer üretebildiğini görün.",
+        sections: [
+          section("Hızlı özet", ["Ücretsiz planla para kazanmak mümkündür ama genelde ilk müşteri, ilk test veya düşük hacimli akış seviyesinde anlamlıdır.", "Asıl mantık ücretsiz planı son çözüm değil, düşük maliyetli doğrulama aracı olarak kullanmaktır."], { comparison: { title: "Düşük bütçeli başlangıç", items: [ { label: "Genel yazı", value: "ChatGPT / Gemini" }, { label: "Araştırma", value: "Perplexity" }, { label: "Görsel", value: "Canva AI" }, { label: "Düzen", value: "Notion AI" } ] } }),
+          section("Bu içerik kimler için?", ["Sıfır bütçeyle başlamak isteyenler, ilk müşteriden önce araç maliyeti yüklenmek istemeyen freelancer'lar ve küçük side hustle akışlarını test edenler için uygundur.", "Hedef büyük ölçek değil de ilk doğrulamayı almaksa ücretsiz araçlar yeterli olabilir." ]),
+          section("En mantıklı araçlar ve stratejiler", ["[ChatGPT](/tr/tools/chatgpt) ve [Gemini](/tr/tools/gemini) genel yazı, özet ve fikir üretimi için başlangıçta iş görebilir. [Perplexity](/tr/tools/perplexity) araştırma tarafında ücretsiz planda bile güçlü kalabilir.", "[Canva AI](/tr/tools/canva-ai) küçük görsel teslimler için mantıklıdır. [Notion AI](/tr/tools/notion-ai) ise not, süreç ve içerik planı tarafında faydalı olabilir."], { subSections: [ sub("İlk para için uygun işler", ["Kısa blog taslağı, araştırma özeti, basit sunum taslağı veya sosyal medya seti gibi küçük teslimler ücretsiz planlarla başlatılabilir.", "Bu aşamada amaç süreci doğrulamak ve ilk geri bildirimi almaktır."], ["Kısa içerik", "Araştırma özeti", "Basit görsel teslim"], "View tool", "/tr/tools/perplexity"), sub("Ne zaman ücretliye geçmek gerekir?", ["Daha yüksek hacim, daha hızlı teslim veya tekrar eden müşteri geldiğinde ücretsiz plan darboğaz olmaya başlar.", "Bu noktada geçiş maliyet değil kapasite kararıdır."], ["Daha fazla hacim", "Daha az sürtünme"], "Start free", "/tr/tools/chatgpt") ] }),
+          section("Doğru seçimi nasıl yaparsın?", ["Önce küçük bir iş modeli seç ve ücretsiz planla gerçekten teslim üretip üretemediğine bak.", "Eğer süreç limit yüzünden sık sık duruyorsa, araç test aşamasını tamamlamış demektir." ]),
+          section("Gerçekçi kullanım senaryoları", ["Bir öğrenci [Gemini](/tr/tools/gemini) ile sunum taslağı çıkarabilir. Bir freelancer [Perplexity](/tr/tools/perplexity) ile rakip analizi satabilir. [Canva AI](/tr/tools/canva-ai) ile küçük sosyal medya görsel paketleri hazırlanabilir.", "Ücretsiz araçlar doğrudan para basmaz; ama ilk küçük teklifi çıkarmayı kolaylaştırır."], { bullets: ["İlk müşteri testi", "Araştırma paketi", "Sosyal medya teslimi", "Sunum taslağı", "Kısa yazı paketi"] }),
+          section("Son not", ["Ücretsiz planlar başlangıç için değerlidir. Onları kalıcı sistem değil, doğrulama katmanı gibi görmek daha doğrudur.", "Karar vermek için ilgili tool detail sayfasını açıp kullanım senaryosuna göre değerlendirmek daha sağlıklıdır."], { subSections: [ sub("Sonraki adım", ["Düşük bütçeyle başlayacaksan önce en yakın ücretsiz aracı açıp detaylara bak."], undefined, "Start free", "/tr/tools") ] })
+        ]
+      },
+      en: {
+        title: "Free AI tools that actually make money",
+        excerpt: "A practical guide to free and freemium AI tools that can support real income workflows, plus where their limits show up.",
+        intro: "Free AI tools are not always just toys. Some are useful enough to validate a service idea, land a first small client, or test a low-cost workflow. This guide focuses on where free and freemium plans create real value and where they stop being enough.",
+        categoryLabel: "Free Tools",
+        seoTitle: "Free AI tools that actually make money | Deciply",
+        seoDescription: "Review ChatGPT, Gemini, Perplexity, Canva AI, and Notion AI through a low-budget monetization lens.",
+        sections: [
+          section("Quick summary", ["It is possible to make money while starting on a free plan, but usually at the level of validation and low-volume delivery.", "The practical mindset is to treat the free tier as a low-risk proving ground, not a permanent full workflow."], { comparison: { title: "Low-budget starter map", items: [ { label: "General writing", value: "ChatGPT / Gemini" }, { label: "Research", value: "Perplexity" }, { label: "Visuals", value: "Canva AI" }, { label: "Structure", value: "Notion AI" } ] } }),
+          section("Who is this for?", ["This guide is useful for users starting with no budget, freelancers who want to validate before paying for software, and people testing smaller AI side hustles.", "If the goal is first proof of demand rather than scale, free plans can be enough." ]),
+          section("Best tools and strategies", ["[ChatGPT](/en/tools/chatgpt) and [Gemini](/en/tools/gemini) can help with general writing and summaries. [Perplexity](/en/tools/perplexity) can stay especially useful for research. [Canva AI](/en/tools/canva-ai) fits small visual delivery. [Notion AI](/en/tools/notion-ai) helps more with organization and briefs."], { subSections: [ sub("Jobs that fit free plans", ["Short content packs, research summaries, and basic presentation drafts are realistic low-budget offers.", "The goal is validation, not maximum volume."], ["Short content", "Research summaries", "Basic visual delivery"], "View tool", "/en/tools/perplexity"), sub("When to upgrade", ["Once the work becomes recurring or client-facing at higher volume, free tiers often become the bottleneck.", "That is when paying becomes a capacity choice rather than a pure cost."], ["Higher volume", "Less friction"], "Start free", "/en/tools/chatgpt") ] }),
+          section("How to choose the right option", ["Pick a small workflow and see whether the free plan can produce a useful output.", "If limits constantly interrupt the process, the tool has probably done its job as a test platform." ]),
+          section("Realistic use cases", ["A student may draft a presentation with Gemini. A freelancer may sell a small competitor summary with Perplexity. A creator may use Canva AI for a lightweight visual pack.", "Free tools do not create revenue on their own, but they can help create the first sellable output."], { bullets: ["First client validation", "Research package", "Social delivery", "Presentation draft", "Short writing pack"] }),
+          section("Final note", ["Free plans are most valuable at the beginning. They work best as a validation layer.", "To choose well, open the relevant tool detail page and judge it by the workflow instead of the word 'free'."], { subSections: [ sub("Next step", ["If budget is tight, start by reviewing the tool closest to your workflow."], undefined, "Start free", "/en/tools") ] })
+        ]
+      }
+    }
+  },
+  {
+    slug: "best-ai-tools-for-beginners-2026",
+    categorySlug: "guides",
+    relatedToolSlugs: ["chatgpt", "gemini", "canva-ai", "notion-ai", "perplexity"],
+    locales: {
+      tr: {
+        title: "2026'da yeni başlayanlar için en mantıklı AI araçları",
+        excerpt: "AI'a yeni başlayan kullanıcı için hangi araçların daha anlaşılır, daha rahat ve daha hızlı ilk sonuç verdiğini gösteren rehber.",
+        intro: "Yeni başlayan biri için asıl sorun zayıf araç değil, fazla seçenek ve yönsüz denemedir. Bu rehber, hangi aracın hangi ilk kullanım alanında daha mantıklı olduğunu ve yeni başlayan kullanıcı için hangi sırayla keşfedilmesi gerektiğini sade biçimde anlatır.",
+        categoryLabel: "Rehberler",
+        seoTitle: "2026'da yeni başlayanlar için en mantıklı AI araçları | Deciply",
+        seoDescription: "ChatGPT, Gemini, Canva AI, Notion AI ve Perplexity'nin yeni başlayan kullanıcı için hangi senaryolarda daha mantıklı olduğunu görün.",
+        sections: [
+          section("Hızlı özet", ["Yeni başlayan kullanıcı için en mantıklı araçlar düşük sürtünmeli, hızlı ilk sonuç veren ve öğrenme bariyeri düşük araçlardır. Bu yüzden [ChatGPT](/tr/tools/chatgpt) ve [Gemini](/tr/tools/gemini) çoğu kullanıcı için ilk durak olur.", "Araştırma için [Perplexity](/tr/tools/perplexity), görsel başlangıç için [Canva AI](/tr/tools/canva-ai), düzen ve not akışı için [Notion AI](/tr/tools/notion-ai) daha anlamlı ikinci araçlar olabilir."], { comparison: { title: "Başlangıç haritası", items: [ { label: "Genel kullanım", value: "ChatGPT / Gemini" }, { label: "Araştırma", value: "Perplexity" }, { label: "Görsel", value: "Canva AI" }, { label: "Düzen", value: "Notion AI" } ] } }),
+          section("Bu içerik kimler için?", ["Öğrenciler, freelancer'lar, küçük işletme sahipleri ve günlük işini AI ile rahatlatmak isteyen herkes için uygundur.", "Özellikle ilk haftada net fayda görmek isteyen kullanıcıya hitap eder."], { bullets: ["İlk AI aracını seçenler", "Düşük sürtünmeyle başlamak isteyenler", "İlk hızlı sonucu görmek isteyenler"] }),
+          section("En mantıklı araçlar ve stratejiler", ["İlk araç olarak genelde genel amaçlı bir araç seçmek daha iyidir. Çünkü hızlı soru-cevap, özet ve taslak üretimi yeni başlayan kullanıcıya doğrudan değer gösterir.", "İkinci araç ise ihtiyaç çıktığında eklenmelidir. Araştırma ağırlıklıysa Perplexity, görsel taraf baskınsa Canva AI, not ve süreç karmaşıksa Notion AI daha mantıklı hale gelir."], { subSections: [ sub("En rahat başlangıç", ["İlk hafta için en doğru kriter, aracın hızla işe yarayıp yaramadığıdır.", "Bu yüzden çoğu kullanıcı için ChatGPT veya Gemini ile başlamak daha sağlıklıdır."], ["Hızlı özet", "İlk taslak", "Soru-cevap"], "Start free", "/tr/tools/chatgpt"), sub("İkinci araç ne zaman eklenmeli?", ["Genel araç artık yetmiyorsa ikinci araç eklenmelidir. Çok erken çok uygulama eklemek kararı zorlaştırır.", "İhtiyaç netleşmeden stack büyütmek çoğu zaman gereksizdir."], ["Önce genel araç", "Sonra ihtiyaç bazlı ekleme"], "View tool", "/tr/tools/perplexity") ] }),
+          section("Doğru seçimi nasıl yaparsın?", ["Önce ne yapmak istediğini tanımla: yazı mı, araştırma mı, görsel mi, yoksa düzen mi? Sonra bu işi en hızlı çözecek aracı seç.", "İkinci filtre de öğrenme hissidir. Araç seni gereğinden fazla ayar ve karmaşıklıkla uğraştırıyorsa ilk seçim için doğru olmayabilir." ]),
+          section("Gerçekçi kullanım senaryoları", ["Öğrenci not özeti çıkarabilir, freelancer teklif taslağı hazırlayabilir, küçük işletme sahibi ürün açıklamasını netleştirebilir, içerik üreticisi haftalık fikir listesi çıkarabilir.", "Yeni başlayan kullanıcı için amaç uzmanlaşmak değil, ilk net faydayı düzenli görmek olmalıdır."], { bullets: ["Ders özeti", "Teklif taslağı", "Ürün açıklaması", "Fikir listesi", "Sunum taslağı"] }),
+          section("Son not", ["Yeni başlayan için doğru araç, ilk haftada güven veren küçük kazanımlar üreten araçtır.", "Kararsızsan ilgili tool detail sayfasını açıp güçlü ve zayıf yanları okumak daha sağlıklı bir başlangıç sağlar."], { subSections: [ sub("Sonraki adım", ["İlk kullanım alanını seç, sonra o alana en yakın aracı incele."], undefined, "See details", "/tr/tools") ] })
+        ]
+      },
+      en: {
+        title: "Best AI tools for beginners in 2026",
+        excerpt: "A practical guide to which AI tools feel easier, cleaner, and more useful for beginners who want a fast first win.",
+        intro: "For beginners, the real problem is usually not weak software. It is too many options and too little direction. This guide focuses on which tools make the easiest first step and when a second tool becomes useful.",
+        categoryLabel: "Guides",
+        seoTitle: "Best AI tools for beginners in 2026 | Deciply",
+        seoDescription: "Compare ChatGPT, Gemini, Canva AI, Notion AI, and Perplexity for beginner-friendly AI workflows in 2026.",
+        sections: [
+          section("Quick summary", ["Beginner-friendly tools are usually the ones with lower friction and faster first results. That is why [ChatGPT](/en/tools/chatgpt) and [Gemini](/en/tools/gemini) often make sense as first stops.", "[Perplexity](/en/tools/perplexity) fits research, [Canva AI](/en/tools/canva-ai) fits visual creation, and [Notion AI](/en/tools/notion-ai) fits structure and planning once the first workflow is clear."], { comparison: { title: "Starter map", items: [ { label: "General use", value: "ChatGPT / Gemini" }, { label: "Research", value: "Perplexity" }, { label: "Visual work", value: "Canva AI" }, { label: "Planning and notes", value: "Notion AI" } ] } }),
+          section("Who is this for?", ["This guide is for students, freelancers, small business owners, and everyday users choosing a first AI workflow.", "It is especially useful for people who want a fast first result rather than a large stack immediately."], { bullets: ["First-time AI users", "Low-friction starters", "Users looking for a first win"] }),
+          section("Best tools and strategies", ["A general-purpose tool is usually the best first move because it creates faster feedback and lower learning pressure.", "A second tool should only be added when a clear need appears, such as research, visual output, or note organization."], { subSections: [ sub("Easiest first step", ["The best first tool is usually the one that shows useful value in the first week.", "That often makes ChatGPT or Gemini the clearest early choice."], ["Quick Q&A", "Summaries", "First drafts"], "Start free", "/en/tools/chatgpt"), sub("When should a second tool be added?", ["A second tool becomes useful only after the first workflow feels clear.", "Adding too many tools too early usually adds confusion instead of value."], ["Start general", "Add by need later"], "View tool", "/en/tools/perplexity") ] }),
+          section("How to choose the right option", ["Start with the job: writing, research, visuals, or planning. Then choose the tool that gives the fastest useful output.", "The second filter is learning comfort. If the tool feels too heavy too early, it may not be the right first choice." ]),
+          section("Realistic use cases", ["A student may summarize notes, a freelancer may draft a proposal, a small business owner may improve product copy, and a creator may build a weekly idea list.", "For beginners, the point is not deep mastery on day one. It is useful repetition."], { bullets: ["Study summaries", "Proposal drafts", "Product copy", "Idea lists", "Presentation drafts"] }),
+          section("Final note", ["For beginners, the right tool is the one that creates small, confident wins in the first week.", "Opening the related tool page and reviewing strengths and limits is often the cleanest next step."], { subSections: [ sub("Next step", ["Choose the first use case, then open the tool that matches it best."], undefined, "See details", "/en/tools") ] })
+        ]
+      }
+    }
+  },
+  {
+    slug: "how-to-make-1000-a-month-with-ai-tools",
+    categorySlug: "make-money-with-ai",
+    relatedToolSlugs: ["chatgpt", "claude", "perplexity", "canva-ai", "elevenlabs", "runway"],
+    locales: {
+      tr: {
+        title: "AI araçlarıyla ayda 1000 dolar kazanmak için pratik çerçeve",
+        excerpt: "Ayda 1000 dolar seviyesine AI araçlarıyla daha gerçekçi şekilde yaklaşmak için hangi hizmetlerin ve araçların daha mantıklı olduğunu anlatan rehber.",
+        intro: "Ayda 1000 dolar hedefi çoğu kullanıcı için motive edici ama ulaşılabilir bir eşiktir. Bu hedefe araç toplayarak değil, küçük ama tekrar edilebilir bir gelir sistemi kurarak yaklaşılır. Bu yazı, hangi AI araçlarının bu tür bir akışta daha mantıklı olduğunu gösterir.",
+        categoryLabel: "AI ile Para Kazanma",
+        seoTitle: "AI araçlarıyla ayda 1000 dolar kazanma | Deciply",
+        seoDescription: "ChatGPT, Claude, Perplexity, Canva AI, ElevenLabs ve Runway ile ayda 1000 dolar hedefine yaklaşmak için pratik gelir modellerini inceleyin.",
+        sections: [
+          section("Hızlı özet", ["Ayda 1000 dolar için en mantıklı yol, küçük ama tekrarlanabilir müşteri paketi veya içerik sistemi kurmaktır.", "Araçların görevi teslim süresini azaltmak, düzeni artırmak ve aynı işi daha karlı hale getirmektir."], { comparison: { title: "1000 dolar çerçevesi", items: [ { label: "Yazı ve copy", value: "ChatGPT / Claude" }, { label: "Araştırma", value: "Perplexity" }, { label: "Görsel destek", value: "Canva AI" }, { label: "Ses ve video", value: "ElevenLabs / Runway" } ] } }),
+          section("Bu içerik kimler için?", ["Freelancer'lar, küçük operatörler, içerik üreticileri ve side hustle'ı daha düzenli gelire çevirmek isteyenler için uygundur.", "Özellikle büyük vaat yerine küçük ama sürdürülebilir sistem kurmak isteyen kullanıcıya hitap eder."], { bullets: ["Freelance içerik üreticileri", "Küçük ajans mantığıyla çalışanlar", "Dijital ürün ve affiliate modeli kuranlar"] }),
+          section("En mantıklı araçlar ve stratejiler", ["[ChatGPT](/tr/tools/chatgpt) ve [Claude](/tr/tools/claude) içerik, teklif, e-posta ve yapılandırılmış müşteri teslimlerinde öne çıkar. [Perplexity](/tr/tools/perplexity) araştırma tarafında güvenilirlik ekler. [Canva AI](/tr/tools/canva-ai) aynı müşteriye görsel veya sunum teslimi eklemeyi kolaylaştırır.", "[ElevenLabs](/tr/tools/elevenlabs) ve [Runway](/tr/tools/runway) genelde ikinci aşama araçlarıdır; ilk teklif satıldıktan sonra ek değer üretir."], { subSections: [ sub("En mantıklı ilk gelir modeli", ["Aylık blog paketi, blog + e-posta seti veya sosyal medya + görsel teslimi gibi küçük ama düzenli paketler 1000 dolar hedefine daha hızlı yaklaştırabilir.", "Bu nedenle önce tekrar eden müşteri paketi kurmak genelde daha sağlıklıdır."], ["Aylık içerik paketi", "Blog + e-posta", "Sosyal + görsel"], "View tool", "/tr/tools/claude"), sub("İkinci aşama büyüme", ["Temel gelir oturunca affiliate içerik, dijital ürün, sesli mini ürün veya video repurpose akışı eklenebilir.", "Bu noktada Perplexity, ElevenLabs ve Runway daha anlamlı hale gelir."], ["Affiliate içerik", "Sesli mini ürün", "Repurpose video"], "See details", "/tr/tools/perplexity") ] }),
+          section("Doğru seçimi nasıl yaparsın?", ["Hedefi küçük parçalara böl: kaç müşteri, kaç paket veya kaç ürün satışı seni 1000 dolara yaklaştırır? Sonra o akışı en çok hızlandıran aracı seç.", "İkinci kriter de teslim kaldıraç etkisidir. İlham veren değil, işi hızlandıran araç daha değerlidir." ]),
+          section("Gerçekçi kullanım senaryoları", ["Dört adet 250 dolarlık aylık içerik paketi, beş adet 200 dolarlık araştırma + sunum paketi veya küçük müşteri işleriyle birleşen affiliate içerik sistemi bu hedefi gerçekçi kılar.", "Büyüme daha fazla araçla değil, daha tutarlı teklif ve daha kısa teslim süresiyle gelir."], { bullets: ["Aylık blog paketi", "Araştırma + sunum teslimi", "Sosyal medya + görsel paket", "Affiliate içerik sistemi"] }),
+          section("Son not", ["1000 dolar hedefi için doğru araç, tekrar edilen işi hızlandıran araçtır. Küçük ama istikrarlı gelir akışları burada büyük vaatlerden daha değerlidir.", "Kararsızsan ilgili tool detail sayfasını açıp güçlü ve zayıf yanlara bakarak ilerle."], { subSections: [ sub("Sonraki adım", ["Önce gelir modelini seç, sonra o modeli hızlandıran aracı detaylı incele."], undefined, "View tool", "/tr/tools") ] })
+        ]
+      },
+      en: {
+        title: "How to make $1000 a month with AI tools",
+        excerpt: "A practical guide to the types of AI-supported offers and workflows that make a $1000 monthly target more realistic.",
+        intro: "For many users, $1000 a month is the first meaningful income milestone. It becomes realistic when small, repeatable systems are built around useful outputs. This guide looks at which AI-supported models and tools fit that goal better.",
+        categoryLabel: "Make Money with AI",
+        seoTitle: "How to make $1000 a month with AI tools | Deciply",
+        seoDescription: "Review practical $1000/month AI income paths using ChatGPT, Claude, Perplexity, Canva AI, ElevenLabs, and Runway.",
+        sections: [
+          section("Quick summary", ["A $1000 monthly target usually becomes realistic through small recurring packages or repeatable content systems, not through one dramatic idea.", "The role of AI tools is to reduce delivery time and increase consistency."], { comparison: { title: "$1000 framework", items: [ { label: "Writing and copy", value: "ChatGPT / Claude" }, { label: "Research", value: "Perplexity" }, { label: "Visual support", value: "Canva AI" }, { label: "Audio and video", value: "ElevenLabs / Runway" } ] } }),
+          section("Who is this for?", ["This guide is useful for freelancers, small operators, and side-income seekers who want a more stable monthly number.", "It is especially relevant for people building practical systems rather than looking for hype."], { bullets: ["Freelance writers", "Small operators", "Affiliate and digital product builders"] }),
+          section("Best tools and strategies", ["[ChatGPT](/en/tools/chatgpt) and [Claude](/en/tools/claude) fit writing, proposals, and structured delivery. [Perplexity](/en/tools/perplexity) adds research quality. [Canva AI](/en/tools/canva-ai) helps turn the same offer into stronger visual delivery.", "[ElevenLabs](/en/tools/elevenlabs) and [Runway](/en/tools/runway) usually make more sense after the first stable offer already exists."], { subSections: [ sub("Most practical first revenue model", ["Small recurring packages like monthly content packs or blog-plus-email offers are often the clearest path toward $1000.", "That is why writing, research, and light design tools matter first."], ["Monthly content pack", "Blog + email", "Social + visual"], "View tool", "/en/tools/claude"), sub("Second-stage growth", ["Once the first recurring offer is stable, affiliate content, digital products, voice assets, or repurposed media can be layered on top.", "At that point Perplexity, ElevenLabs, and Runway become more relevant."], ["Affiliate content", "Voice assets", "Repurposed video"], "See details", "/en/tools/perplexity") ] }),
+          section("How to choose the right option", ["Break the target into smaller parts: how many clients, packages, or product sales would make $1000 realistic? Then choose the tool that best speeds up that workflow.", "Delivery leverage matters more than novelty here." ]),
+          section("Realistic use cases", ["Four $250 content retainers, five $200 research-and-slide packages, or a smaller client base combined with affiliate content can all make this goal realistic.", "Growth usually comes from consistency and lower delivery time, not a bigger tool stack."], { bullets: ["Monthly content packages", "Research + presentation delivery", "Social + design packs", "Affiliate content system"] }),
+          section("Final note", ["The right tool for a $1000 monthly goal is the one that helps build a repeatable delivery system.", "Before choosing, open the relevant tool page and review where the tool is strong and where it may be weaker."], { subSections: [ sub("Next step", ["Choose the revenue model first, then review the tool that accelerates that workflow."], undefined, "View tool", "/en/tools") ] })
+        ]
+      }
+    }
+  }
+
 ].map(withBlogMeta);
 
