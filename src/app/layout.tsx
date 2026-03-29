@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
@@ -9,20 +10,22 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL("https://deciply.com"),
   title: {
     default: "Deciply",
     template: "%s | Deciply"
   },
   description: "Choose the right AI. Faster, smarter, confidently.",
+  manifest: "/site.webmanifest",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", sizes: "180x180", type: "image/png" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" }
     ],
     shortcut: "/favicon.ico",
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }]
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }]
   }
 };
 
@@ -36,7 +39,10 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
