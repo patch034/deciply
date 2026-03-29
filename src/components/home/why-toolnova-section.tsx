@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { motion } from "framer-motion";
 
@@ -76,7 +76,7 @@ export function WhyToolNovaSection({ locale }: WhyToolNovaSectionProps) {
             transition={{ duration: 0.35, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
             className="h-full"
           >
-            <GlassPanel className="ui-card ui-card-hover flex h-full flex-col justify-between overflow-hidden p-5">
+            <GlassPanel className="ui-card ui-card-hover flex h-full flex-col justify-between overflow-hidden p-4 sm:p-5">
               <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-300/68">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-300/80" />
                 <span>0{index + 1}</span>
@@ -90,3 +90,4 @@ export function WhyToolNovaSection({ locale }: WhyToolNovaSectionProps) {
     </SectionShell>
   );
 }
+

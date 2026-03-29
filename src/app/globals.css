@@ -1,4 +1,4 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -15,11 +15,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at 12% 0%, rgba(124, 58, 237, 0.26), transparent 24%),
     radial-gradient(circle at 86% 8%, rgba(59, 130, 246, 0.2), transparent 28%),
@@ -62,6 +65,16 @@ a {
 
 * {
   box-sizing: border-box;
+  min-width: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
 }
 
 ::selection {
@@ -209,4 +222,11 @@ a {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .ui-card,
+  .ui-card-strong {
+    border-radius: 24px;
+  }
 }

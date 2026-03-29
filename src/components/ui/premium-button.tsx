@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import clsx from "clsx";
 import { motion } from "framer-motion";
@@ -34,7 +34,7 @@ export function PremiumButton({
   rel
 }: PremiumButtonProps) {
   const classes = clsx(
-    "inline-flex h-10 items-center justify-center overflow-hidden rounded-[10px] px-4 py-0 text-sm font-semibold leading-none transition duration-150",
+    "inline-flex min-h-[44px] items-center justify-center overflow-hidden rounded-[10px] px-4 py-2 text-sm font-semibold leading-none transition duration-150",
     variant !== "primary" && "shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]",
     styles[variant],
     className
@@ -46,7 +46,7 @@ export function PremiumButton({
     const isExternal = href.startsWith("http");
 
     return (
-      <motion.div whileHover={{ y: -2, scale: variant === "primary" ? 1.03 : 1 }} whileTap={{ scale: 0.985 }} transition={{ duration: 0.16 }} className="inline-flex">
+      <motion.div whileHover={{ y: -2, scale: variant === "primary" ? 1.03 : 1 }} whileTap={{ scale: 0.985 }} transition={{ duration: 0.16 }} className="inline-flex max-w-full">
         {isExternal ? (
           <a href={href} target={target} rel={rel} className={classes}>
             {content}

@@ -1,4 +1,4 @@
-﻿import type { ToolCard } from "@/types/home";
+import type { ToolCard } from "@/types/home";
 
 type ComparisonTableProps = {
   locale: "tr" | "en";
@@ -22,11 +22,11 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
   const editorChoiceLabel = locale === "tr" ? "Editörün seçimi" : "Editor's Choice";
 
   return (
-    <div className="ui-card-strong overflow-hidden p-5 md:p-7">
+    <div className="ui-card-strong overflow-hidden p-4 sm:p-5 md:p-7">
       <div className="max-w-3xl">
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">{eyebrow}</p>
-        <h2 className="balance-text mt-4 text-[2rem] font-bold tracking-[-0.03em] text-slate-50 md:text-[2.4rem] md:leading-[1.08]">{title}</h2>
-        <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300/88 md:text-[1.05rem] md:leading-8">{description}</p>
+        <h2 className="balance-text mt-4 text-[1.7rem] font-bold tracking-[-0.03em] text-slate-50 md:text-[2.4rem] md:leading-[1.08]">{title}</h2>
+        <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-slate-300/88 md:text-[1.05rem] md:leading-8">{description}</p>
       </div>
 
       <div className="mt-10 hidden overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.03] md:block">
@@ -72,7 +72,7 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
                 <td className="px-5 py-5 text-sm leading-6 text-slate-300"><div className="min-w-0 break-words">{tool.comparisonOutcome}</div></td>
                 <td className="px-5 py-5 text-sm font-semibold text-slate-100 whitespace-nowrap">{tool.rating}</td>
                 <td className="px-5 py-5 text-right">
-                  <a href={tool.affiliateUrl ?? tool.websiteUrl} target="_blank" rel="nofollow sponsored noreferrer" className="inline-flex min-h-[38px] min-w-[92px] items-center justify-center rounded-xl bg-[var(--tn-gradient-primary)] px-4 py-2.5 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:brightness-105">
+                  <a href={tool.affiliateUrl ?? tool.websiteUrl} target="_blank" rel="nofollow sponsored noreferrer" className="inline-flex min-h-[44px] min-w-[92px] items-center justify-center rounded-xl bg-[var(--tn-gradient-primary)] px-4 py-2.5 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:brightness-105">
                     {tool.ctaLabel ?? actionLabel}
                   </a>
                 </td>
@@ -108,7 +108,7 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
               <p><span className="font-semibold text-slate-100">{columns.rating}:</span> {tool.rating}</p>
             </div>
             <div className="mt-5">
-              <a href={tool.affiliateUrl ?? tool.websiteUrl} target="_blank" rel="nofollow sponsored noreferrer" className="inline-flex min-h-[40px] w-full items-center justify-center rounded-xl bg-[var(--tn-gradient-primary)] px-4 py-2.5 text-sm font-semibold text-white transition duration-200 hover:brightness-105">
+              <a href={tool.affiliateUrl ?? tool.websiteUrl} target="_blank" rel="nofollow sponsored noreferrer" className="inline-flex min-h-[44px] w-full items-center justify-center rounded-xl bg-[var(--tn-gradient-primary)] px-4 py-2.5 text-sm font-semibold text-white transition duration-200 hover:brightness-105">
                 {tool.ctaLabel ?? actionLabel}
               </a>
             </div>
@@ -118,3 +118,4 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
     </div>
   );
 }
+

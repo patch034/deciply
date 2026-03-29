@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -41,8 +41,8 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
 
   return (
     <motion.div whileHover={{ y: -4, scale: 1.012 }} transition={{ duration: 0.22 }} className="h-full">
-      <GlassPanel className="group ui-card ui-card-hover home-card-glow relative flex h-full flex-col justify-between overflow-hidden p-6">
-        <div className="flex min-h-[52px] items-center justify-between gap-3 overflow-hidden">
+      <GlassPanel className="group ui-card ui-card-hover home-card-glow relative flex h-full flex-col justify-between overflow-hidden p-4 sm:p-6">
+        <div className="flex min-h-[52px] flex-wrap items-center justify-between gap-3 overflow-hidden">
           <div className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[var(--tn-gradient-primary)] text-sm font-bold uppercase tracking-[0.14em] text-white shadow-[0_14px_30px_-16px_rgba(59,130,246,0.42)]">
               {tool.icon}
@@ -59,11 +59,11 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
         </div>
 
         <div className="flex flex-1 flex-col">
-          <div className="mt-6 min-w-0">
+          <div className="mt-5 min-w-0 sm:mt-6">
             <Link
               href={`/${locale}${tool.href}`}
               aria-label={`${detailLabel}: ${tool.name}`}
-              className="clamp-2 block text-[1.48rem] font-bold leading-tight tracking-[-0.03em] text-slate-50 transition duration-200 hover:text-white"
+              className="clamp-2 block text-[1.32rem] font-bold leading-tight tracking-[-0.03em] text-slate-50 transition duration-200 hover:text-white sm:text-[1.48rem]"
             >
               {tool.name}
             </Link>
@@ -80,13 +80,13 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
             ) : null}
           </div>
 
-          <div className="ui-inner-panel mt-5 min-w-0 p-4">
+          <div className="ui-inner-panel mt-4 min-w-0 p-4 sm:mt-5">
             <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{bestForLabel}</p>
             <p className="mt-2 truncate text-base font-semibold text-slate-100">{tool.bestFor}</p>
             <p className="clamp-3 mt-3 text-[15px] leading-relaxed text-slate-300/84">{tool.benefit}</p>
           </div>
 
-          <div className="ui-inner-panel mt-5 min-w-0 p-4">
+          <div className="ui-inner-panel mt-4 min-w-0 p-4 sm:mt-5">
             <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Deciply notu</p>
             <p className="clamp-3 mt-2 text-[15px] leading-relaxed text-slate-200/88">{tool.editorNote}</p>
           </div>
@@ -99,7 +99,7 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
           ) : null}
         </div>
 
-        <div className="mt-6 border-t border-white/10 pt-6">
+        <div className="mt-5 border-t border-white/10 pt-5 sm:mt-6 sm:pt-6">
           <div className="min-h-[1.5rem] overflow-hidden pb-2">
             <p className="translate-y-2 text-sm font-medium text-cyan-100/92 opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100">
               {tool.benefit}
@@ -115,7 +115,7 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
                 href={tool.affiliateUrl ?? tool.websiteUrl}
                 target="_blank"
                 rel="nofollow sponsored noreferrer"
-                className="inline-flex h-10 w-full min-w-[152px] items-center justify-center whitespace-nowrap rounded-[10px] bg-[linear-gradient(90deg,#6C5CE7_0%,#4F7CFF_55%,#00C2FF_100%)] px-4 py-0 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_22px_52px_-28px_rgba(108,92,231,0.62),0_30px_82px_-42px_rgba(0,194,255,0.48)] transition duration-150 hover:-translate-y-1 hover:scale-[1.03] hover:brightness-[1.16] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_28px_62px_-28px_rgba(108,92,231,0.74),0_38px_96px_-42px_rgba(0,194,255,0.58)] sm:w-auto"
+                className="inline-flex min-h-[44px] w-full min-w-[152px] items-center justify-center whitespace-nowrap rounded-[10px] bg-[linear-gradient(90deg,#6C5CE7_0%,#4F7CFF_55%,#00C2FF_100%)] px-4 py-2 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_22px_52px_-28px_rgba(108,92,231,0.62),0_30px_82px_-42px_rgba(0,194,255,0.48)] transition duration-150 hover:-translate-y-1 hover:scale-[1.03] hover:brightness-[1.16] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_28px_62px_-28px_rgba(108,92,231,0.74),0_38px_96px_-42px_rgba(0,194,255,0.58)] sm:w-auto"
               >
                 {tool.ctaLabel ?? tryLabel}
               </a>
@@ -126,6 +126,7 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
     </motion.div>
   );
 }
+
 
 
 

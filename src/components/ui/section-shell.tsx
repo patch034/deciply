@@ -1,4 +1,4 @@
-﻿import clsx from "clsx";
+import clsx from "clsx";
 import type { ReactNode } from "react";
 
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -25,7 +25,7 @@ export function SectionShell({
   align = "left"
 }: SectionShellProps) {
   return (
-    <section className={clsx("mx-auto w-full max-w-[1200px] px-6", className)}>
+    <section className={clsx("mx-auto w-full max-w-[1200px] px-4 sm:px-6", className)}>
       {title ? (
         <SectionHeading
           eyebrow={eyebrow}
@@ -33,7 +33,7 @@ export function SectionShell({
           description={description}
           actions={actions}
           align={align}
-          className="mb-10"
+          className="mb-8 sm:mb-10"
         />
       ) : null}
       <div className={contentClassName}>{children}</div>

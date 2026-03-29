@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useDeferredValue, useState } from "react";
 
@@ -70,7 +70,7 @@ function FilterChip({
       aria-pressed={active}
       onClick={onClick}
       className={[
-        "rounded-full border px-4 py-2 text-sm font-semibold transition duration-200",
+        "min-h-[44px] rounded-full border px-4 py-2 text-sm font-semibold transition duration-200",
         active
           ? "border-cyan-400/40 bg-cyan-400/12 text-cyan-200 shadow-[0_14px_34px_-22px_rgba(34,211,238,0.5)]"
           : "border-white/10 bg-white/[0.04] text-slate-300 hover:border-cyan-400/20 hover:text-cyan-200"
@@ -120,8 +120,8 @@ export function ToolsExplorer({
 
   return (
     <>
-      <section className="rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.94),rgba(15,23,42,0.92))] p-6 shadow-card md:p-8">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+      <section className="rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.94),rgba(15,23,42,0.92))] p-4 shadow-card sm:p-6 md:p-8">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-8">
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-slate-100">{copy.filterTitle}</h2>
             <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-300">{copy.filterDescription}</p>
@@ -142,7 +142,7 @@ export function ToolsExplorer({
             <p className="mt-3 text-xs leading-6 text-slate-400">{copy.searchHelp}</p>
           </div>
 
-          <div className="rounded-[26px] border border-white/10 bg-white/[0.03] p-5">
+          <div className="rounded-[26px] border border-white/10 bg-white/[0.03] p-4 sm:p-5">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
               <p className="text-sm font-semibold text-slate-100">
                 {filteredTools.length} {copy.resultsLabel}
@@ -156,7 +156,7 @@ export function ToolsExplorer({
                     setActivePricing("all");
                     setActiveUseCase("all");
                   }}
-                  className="inline-flex items-center rounded-full border border-white/10 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-400/30 hover:text-cyan-200"
+                  className="inline-flex min-h-[40px] items-center rounded-full border border-white/10 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-400/30 hover:text-cyan-200"
                 >
                   {copy.resetFiltersLabel}
                 </button>
@@ -225,7 +225,7 @@ export function ToolsExplorer({
       </section>
 
       {filteredTools.length > 0 ? (
-        <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <section className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-3">
           {filteredTools.map((tool) => (
             <ToolCard
               key={tool.slug}
@@ -240,7 +240,7 @@ export function ToolsExplorer({
           ))}
         </section>
       ) : (
-        <section className="rounded-[28px] border border-dashed border-white/10 bg-white/[0.03] px-6 py-10 text-center shadow-card">
+        <section className="rounded-[28px] border border-dashed border-white/10 bg-white/[0.03] px-4 py-8 text-center shadow-card sm:px-6 sm:py-10">
           <h3 className="text-xl font-bold tracking-tight text-slate-100">{copy.emptyTitle}</h3>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-300">{copy.emptyDescription}</p>
           <button
@@ -251,7 +251,7 @@ export function ToolsExplorer({
               setActivePricing("all");
               setActiveUseCase("all");
             }}
-            className="mt-6 inline-flex items-center rounded-2xl border border-white/10 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/30 hover:text-cyan-200"
+            className="mt-6 inline-flex min-h-[44px] items-center rounded-2xl border border-white/10 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/30 hover:text-cyan-200"
           >
             {copy.resetFiltersLabel}
           </button>
@@ -260,3 +260,4 @@ export function ToolsExplorer({
     </>
   );
 }
+

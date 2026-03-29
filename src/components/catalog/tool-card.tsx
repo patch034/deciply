@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 
 import type { LocalizedTool } from "@/types/catalog";
 
@@ -45,8 +45,8 @@ export function ToolCard({
   const pricingSignal = getPricingSignal(pricingLabel);
 
   return (
-    <GlassPanel className="ui-card ui-card-hover flex h-full flex-col overflow-hidden p-6">
-      <div className="flex min-h-[38px] items-start justify-between gap-3 overflow-hidden">
+    <GlassPanel className="ui-card ui-card-hover flex h-full flex-col overflow-hidden p-4 sm:p-6">
+      <div className="flex min-h-[38px] flex-wrap items-start justify-between gap-3 overflow-hidden">
         <div className="flex min-w-0 flex-wrap gap-2 overflow-hidden">
           {categoryNames.slice(0, 1).map((category) => (
             <Badge key={category} variant="ghost" className="max-w-[110px] justify-center">{category}</Badge>
@@ -58,21 +58,22 @@ export function ToolCard({
         </Badge>
       </div>
 
-      <h2 className="clamp-2 mt-5 min-h-[3.25rem] text-[1.45rem] font-bold leading-tight tracking-[-0.03em] text-slate-100">{tool.name}</h2>
-      <p className="clamp-3 mt-3 text-sm leading-7 text-slate-300/88">{tool.shortDescription}</p>
+      <h2 className="clamp-2 mt-4 min-h-[3rem] text-[1.28rem] font-bold leading-tight tracking-[-0.03em] text-slate-100 sm:mt-5 sm:min-h-[3.25rem] sm:text-[1.45rem]">{tool.name}</h2>
+      <p className="clamp-3 mt-3 text-[15px] leading-relaxed text-slate-300/88">{tool.shortDescription}</p>
 
       {bestForLabel && useCaseLabel ? (
-        <div className="ui-inner-panel mt-4 min-w-0 px-4 py-3 text-sm text-slate-300/88">
+        <div className="ui-inner-panel mt-4 min-w-0 px-4 py-3 text-[15px] leading-relaxed text-slate-300/88">
           <span className="font-semibold text-slate-100">{bestForLabel}:</span> {useCaseLabel}
         </div>
       ) : null}
 
-      <div className="mt-auto flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-auto flex flex-col gap-3 border-t border-white/10 pt-5 sm:pt-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm font-semibold text-amber-100 drop-shadow-[0_0_10px_rgba(251,191,36,0.2)]">{tool.rating.toFixed(1)}/5</p>
-        <Link href={`/${locale}/tools/${tool.slug}`} className="inline-flex min-h-[38px] w-full items-center justify-center rounded-xl border border-white/12 bg-white/[0.03] px-4 py-2.5 text-sm font-semibold text-slate-200 transition duration-150 hover:bg-white/[0.05] hover:text-white sm:w-auto">
+        <Link href={`/${locale}/tools/${tool.slug}`} className="inline-flex min-h-[44px] w-full items-center justify-center rounded-xl border border-white/12 bg-white/[0.03] px-4 py-2.5 text-sm font-semibold text-slate-200 transition duration-150 hover:bg-white/[0.05] hover:text-white sm:w-auto">
           {detailLabel}
         </Link>
       </div>
     </GlassPanel>
   );
 }
+

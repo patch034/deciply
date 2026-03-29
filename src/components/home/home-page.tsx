@@ -1,4 +1,4 @@
-﻿import { CategoryCard } from "@/components/home/category-card";
+import { CategoryCard } from "@/components/home/category-card";
 import { ComparisonCard } from "@/components/home/comparison-card";
 import { ComparisonTable } from "@/components/home/comparison-table";
 import { ConversionListCard } from "@/components/home/conversion-list-card";
@@ -84,18 +84,18 @@ export function HomePage({ locale, content }: HomePageProps) {
   const freelancerTools = getToolsBySlugs(locale, ["chatgpt", "claude", "midjourney"]);
 
   return (
-    <div className="relative pb-20">
+    <div className="relative overflow-x-clip pb-16 sm:pb-20">
       <HeroSection locale={locale} content={content.hero} />
 
-      <div className="mt-8 px-6 md:mt-10">
-        <GlassPanel className="mx-auto flex max-w-[1200px] flex-col gap-4 rounded-2xl px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-6 px-4 sm:mt-8 sm:px-6 md:mt-10">
+        <GlassPanel className="mx-auto flex max-w-[1200px] flex-col gap-4 rounded-2xl px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5 sm:py-5">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-300">{ui.selectorTitle}</p>
           <div className="flex flex-wrap gap-2">
             {ui.selectorOptions.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="inline-flex h-10 items-center justify-center rounded-[10px] border border-white/10 bg-white/[0.03] px-4 text-sm font-semibold text-slate-200 transition duration-150 hover:border-cyan-400/25 hover:text-cyan-200"
+                className="inline-flex min-h-[44px] w-full items-center justify-center rounded-[10px] border border-white/10 bg-white/[0.03] px-4 text-sm font-semibold text-slate-200 transition duration-150 hover:border-cyan-400/25 hover:text-cyan-200 sm:w-auto"
               >
                 {item.label}
               </a>
@@ -104,7 +104,7 @@ export function HomePage({ locale, content }: HomePageProps) {
         </GlassPanel>
       </div>
 
-      <div className="mt-14 space-y-14 md:mt-20 md:space-y-20">
+      <div className="mt-12 space-y-12 md:mt-20 md:space-y-20">
         <AnimatedSection delay={0.02}>
           <TopPickSection locale={locale} content={content.topPick} />
         </AnimatedSection>
@@ -130,16 +130,16 @@ export function HomePage({ locale, content }: HomePageProps) {
 
         <AnimatedSection delay={0.06}>
           <SectionShell className="section-tint-cyan">
-            <GlassPanel className="ui-card-strong overflow-hidden rounded-2xl px-6 py-8">
-              <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+            <GlassPanel className="ui-card-strong overflow-hidden rounded-2xl px-4 py-6 sm:px-6 sm:py-8">
+              <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
                 <div className="max-w-2xl min-w-0">
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
                     {content.sections.socialProof.eyebrow}
                   </p>
-                  <h2 className="balance-text mt-4 text-[2rem] font-bold tracking-[-0.03em] text-slate-50 md:text-[2.25rem] md:leading-[1.08]">
+                  <h2 className="balance-text mt-4 text-[1.75rem] font-bold tracking-[-0.03em] text-slate-50 md:text-[2.25rem] md:leading-[1.08]">
                     {content.sections.socialProof.title}
                   </h2>
-                  <p className="mt-4 max-w-2xl text-base leading-8 text-slate-300/86 md:text-[1.05rem] md:leading-8">
+                  <p className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-300/86 md:text-[1.05rem] md:leading-8">
                     {content.sections.socialProof.description}
                   </p>
                 </div>
@@ -310,16 +310,16 @@ export function HomePage({ locale, content }: HomePageProps) {
 
         <AnimatedSection delay={0.26}>
           <SectionShell className="section-tint-cyan">
-            <div className="ui-card-strong overflow-hidden rounded-2xl px-6 py-8 text-white">
-              <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div className="ui-card-strong overflow-hidden rounded-2xl px-4 py-6 text-white sm:px-6 sm:py-8">
+              <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
                 <div className="max-w-3xl min-w-0">
                   <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300/85">
                     {content.sections.finalCta.eyebrow}
                   </p>
-                  <h2 className="balance-text mt-4 text-[2rem] font-bold tracking-[-0.03em] md:text-[2.5rem] md:leading-[1.08]">
+                  <h2 className="balance-text mt-4 text-[1.75rem] font-bold tracking-[-0.03em] md:text-[2.5rem] md:leading-[1.08]">
                     {content.sections.finalCta.title}
                   </h2>
-                  <p className="mt-4 max-w-2xl text-base leading-8 text-slate-300/88 md:text-[1.05rem] md:leading-8">
+                  <p className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-300/88 md:text-[1.05rem] md:leading-8">
                     {content.sections.finalCta.description}
                   </p>
                   <p className="mt-4 text-sm font-medium text-cyan-200/92">{content.sections.finalCta.urgencyNote}</p>
@@ -340,6 +340,7 @@ export function HomePage({ locale, content }: HomePageProps) {
     </div>
   );
 }
+
 
 
 

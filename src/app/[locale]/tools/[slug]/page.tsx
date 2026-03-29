@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -326,7 +326,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   const audienceCards = getAudienceCards(safeLocale, tool, dictionary);
 
   return (
-    <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-10 pb-28 sm:px-6 lg:px-8 lg:py-14 lg:pb-14">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-8 pb-40 sm:px-6 sm:py-10 sm:pb-32 lg:gap-10 lg:px-8 lg:py-14 lg:pb-14">
       <Breadcrumb
         items={[
           { label: dictionary.breadcrumbsHome, href: `/${safeLocale}` },
@@ -336,16 +336,16 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       />
 
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
-        <div className="rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.86),rgba(17,24,39,0.9),rgba(11,15,25,0.96))] p-8 shadow-[0_24px_80px_-40px_rgba(34,211,238,0.18)] md:p-10">
+        <div className="rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.86),rgba(17,24,39,0.9),rgba(11,15,25,0.96))] p-5 shadow-[0_24px_80px_-40px_rgba(34,211,238,0.18)] sm:p-8 md:p-10">
           <div className="flex flex-wrap items-center gap-3">
             <Badge variant="accent">{pricingValue}</Badge>
             <Badge>{quickCategory}</Badge>
           </div>
 
-          <h1 className="mt-6 bg-gradient-to-r from-white via-sky-200 to-cyan-300 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-[3.6rem] lg:leading-[1.05]">
+          <h1 className="mt-5 bg-gradient-to-r from-white via-sky-200 to-cyan-300 bg-clip-text text-[28px] font-bold tracking-tight text-transparent sm:mt-6 sm:text-4xl md:text-5xl lg:text-[3.6rem] lg:leading-[1.05]">
             {tool.name}
           </h1>
-          <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">{tool.shortDescription}</p>
+          <p className="mt-4 max-w-3xl text-[15px] leading-7 text-slate-300 sm:text-lg sm:leading-8">{tool.shortDescription}</p>
           <p className="mt-4 text-sm font-medium text-cyan-200/90">{dictionary.heroTrustLine}</p>
 
           <div className="mt-4 flex flex-wrap gap-2">
@@ -366,7 +366,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-400/10 px-4 py-2 text-sm font-semibold text-amber-200">
-              <span aria-hidden="true">★</span>
+              <span aria-hidden="true">?</span>
               <span>{tool.rating.toFixed(1)}/5</span>
             </div>
             <p className="text-sm font-medium text-slate-400">
@@ -374,18 +374,18 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
             </p>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
             <a
               href={outboundUrl}
               target="_blank"
               rel="nofollow sponsored noreferrer"
-              className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 px-7 py-4 text-base font-semibold text-white shadow-[0_22px_60px_-24px_rgba(34,211,238,0.45)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_70px_-24px_rgba(56,189,248,0.52)]"
+              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 px-7 py-4 text-base font-semibold text-white shadow-[0_22px_60px_-24px_rgba(34,211,238,0.45)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_70px_-24px_rgba(56,189,248,0.52)] sm:w-auto"
             >
               {dictionary.heroPrimaryCta}
             </a>
             <Link
               href={`/${safeLocale}/tools`}
-              className="inline-flex items-center justify-center rounded-2xl border border-white/12 px-6 py-4 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/30 hover:text-cyan-300"
+              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl border border-white/12 px-6 py-4 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/30 hover:text-cyan-300 sm:w-auto"
             >
               {dictionary.secondaryCta}
             </Link>
@@ -423,7 +423,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       </section>
 
       <InfoSection title={dictionary.overviewTitle} description={dictionary.overviewDescription}>
-        <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 text-base leading-7 text-slate-300">
+        <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 text-[15px] leading-7 text-slate-300 sm:p-5 sm:text-base">
           {tool.longDescription}
         </div>
       </InfoSection>
@@ -431,7 +431,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       <InfoSection title={dictionary.useCasesTitle} description={dictionary.useCasesDescription}>
         <div className="grid gap-4 md:grid-cols-3">
           {useCaseCards.map((item) => (
-            <div key={item.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
+            <div key={item.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
               <p className="text-base font-semibold text-slate-100">{item.title}</p>
               <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
             </div>
@@ -442,7 +442,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       <InfoSection title={dictionary.moneyTitle} description={dictionary.moneyDescription}>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {tool.moneyUseCases.map((item) => (
-            <div key={item.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
+            <div key={item.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
               <p className="text-base font-semibold text-slate-100">{item.title}</p>
               <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
             </div>
@@ -453,7 +453,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       <InfoSection title={dictionary.howToUseTitle} description={dictionary.howToUseDescription}>
         <div className="grid gap-4 md:grid-cols-3">
           {howToUseSteps.map((step, index) => (
-            <div key={step.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
+            <div key={step.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">0{index + 1}</p>
               <p className="mt-3 text-base font-semibold text-slate-100">{step.title}</p>
               <p className="mt-3 text-sm leading-7 text-slate-300">{step.description}</p>
@@ -471,7 +471,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         <InfoSection title={dictionary.whoShouldUseTitle} description={dictionary.whoShouldUseDescription}>
           <div className="grid gap-4 md:grid-cols-2">
             {audienceCards.map((item) => (
-              <div key={item.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
+              <div key={item.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
                 <p className="text-base font-semibold text-slate-100">{item.title}</p>
                 <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
               </div>
@@ -479,7 +479,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
           </div>
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             {tool.whoShouldUse.map((item) => (
-              <div key={item} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
+              <div key={item} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
                 <p className="text-sm font-semibold text-slate-100">{item}</p>
               </div>
             ))}
@@ -489,7 +489,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         <InfoSection title={dictionary.whoShouldAvoidTitle} description={dictionary.whoShouldAvoidDescription}>
           <div className="grid gap-4 md:grid-cols-1">
             {whoShouldAvoid.map((item) => (
-              <div key={item} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
+              <div key={item} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
                 <p className="text-sm font-semibold text-slate-100">{item}</p>
               </div>
             ))}
@@ -524,7 +524,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </InfoSection>
       ) : null}
 
-      <section className="rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 text-white shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
+      <section className="rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-5 py-8 text-white shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300/85">{dictionary.finalCtaEyebrow}</p>
@@ -532,18 +532,18 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
             <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{dictionary.finalCtaDescription}</p>
             <p className="mt-4 text-sm font-medium text-cyan-200/90">{dictionary.finalCtaUrgency}</p>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={outboundUrl}
               target="_blank"
               rel="nofollow sponsored noreferrer"
-              className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 px-7 py-4 text-base font-semibold text-white shadow-[0_22px_60px_-24px_rgba(34,211,238,0.45)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_70px_-24px_rgba(56,189,248,0.52)]"
+              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 px-7 py-4 text-base font-semibold text-white shadow-[0_22px_60px_-24px_rgba(34,211,238,0.45)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_70px_-24px_rgba(56,189,248,0.52)] sm:w-auto"
             >
               {dictionary.finalPrimaryCta}
             </a>
             <Link
               href={`/${safeLocale}/tools`}
-              className="inline-flex items-center justify-center rounded-2xl border border-white/15 px-6 py-4 text-sm font-semibold text-white transition hover:border-cyan-400/30 hover:text-cyan-300"
+              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl border border-white/15 px-6 py-4 text-sm font-semibold text-white transition hover:border-cyan-400/30 hover:text-cyan-300 sm:w-auto"
             >
               {dictionary.secondaryCta}
             </Link>
@@ -553,4 +553,6 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
     </div>
   );
 }
+
+
 

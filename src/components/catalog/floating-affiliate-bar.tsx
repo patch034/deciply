@@ -1,4 +1,4 @@
-﻿import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/badge";
 
 type FloatingAffiliateBarProps = {
   toolName: string;
@@ -31,20 +31,20 @@ export function FloatingAffiliateBar({
             href={websiteUrl}
             target="_blank"
             rel="nofollow sponsored noreferrer"
-            className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-fuchsia-500 via-blue-500 to-cyan-400 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_72px_-22px_rgba(56,189,248,0.68)]"
+            className="mt-5 inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-fuchsia-500 via-blue-500 to-cyan-400 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_72px_-22px_rgba(56,189,248,0.68)]"
           >
             {ctaLabel}
           </a>
         </div>
       </aside>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 px-3 pb-3 lg:hidden">
-        <div className="mx-auto max-w-3xl overflow-hidden rounded-[24px] border border-cyan-400/18 bg-[#0b0f19]/92 p-3 shadow-[0_18px_60px_-24px_rgba(34,211,238,0.42)] backdrop-blur-xl">
-          <div className="flex items-center justify-between gap-3">
-            <div className="min-w-0">
+      <div className="pointer-events-none fixed inset-x-0 bottom-[calc(env(safe-area-inset-bottom)+0.5rem)] z-40 px-3 lg:hidden">
+        <div className="pointer-events-auto mx-auto max-w-3xl overflow-hidden rounded-[22px] border border-cyan-400/18 bg-[#0b0f19]/94 p-3 shadow-[0_18px_60px_-24px_rgba(34,211,238,0.42)] backdrop-blur-xl">
+          <div className="flex items-center gap-3">
+            <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-semibold text-slate-100">{toolName}</p>
               <div className="mt-1 flex items-center gap-2">
-                <Badge variant="accent" className="max-w-[120px]">{pricingValue}</Badge>
+                <Badge variant="accent" className="max-w-[120px] justify-center">{pricingValue}</Badge>
               </div>
               <p className="mt-1 truncate text-xs text-slate-400">{supportText}</p>
             </div>
@@ -62,3 +62,4 @@ export function FloatingAffiliateBar({
     </>
   );
 }
+

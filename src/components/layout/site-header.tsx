@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { LocaleSwitcher } from "@/components/layout/locale-switcher";
@@ -11,10 +11,25 @@ type SiteHeaderProps = {
 };
 
 export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
+  const mobileQuickLinks = [
+    {
+      href: `/${locale}/tools`,
+      label: locale === "tr" ? "Tools" : "Tools"
+    },
+    {
+      href: `/${locale}/blog`,
+      label: locale === "tr" ? "Blog" : "Blog"
+    },
+    {
+      href: `/${locale}/categories/comparisons`,
+      label: locale === "tr" ? "Compare" : "Compare"
+    }
+  ];
+
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#0b0f19]/74 backdrop-blur-2xl">
-      <div className="mx-auto grid max-w-[1200px] grid-cols-[auto_1fr_auto] items-center gap-4 px-6 py-4">
-        <Link href={`/${locale}`} className="inline-flex items-center">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
+        <Link href={`/${locale}`} className="inline-flex min-h-[44px] items-center">
           <BrandLogo compact className="drop-shadow-[0_12px_30px_rgba(108,92,231,0.22)]" />
         </Link>
         <div className="flex justify-center">
@@ -33,6 +48,20 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
         <div className="flex justify-end">
           <LocaleSwitcher locale={locale} />
         </div>
+      </div>
+
+      <div className="border-t border-white/8 px-4 py-2 md:hidden">
+        <nav className="mx-auto grid max-w-[1200px] grid-cols-3 gap-2">
+          {mobileQuickLinks.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="ui-nav-shell inline-flex min-h-[44px] items-center justify-center px-3 text-xs font-semibold tracking-[0.08em] text-slate-200 transition duration-150 hover:border-cyan-400/20 hover:text-cyan-200"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
       </div>
     </header>
   );
