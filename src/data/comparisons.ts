@@ -1,4 +1,5 @@
-﻿import type { Locale } from "@/i18n/config";
+import type { Locale } from "@/i18n/config";
+import { assertEncodingHealth, normalizeLocalizedContent } from "@/lib/encoding";
 
 export type ComparisonRow = {
   label: string;
@@ -409,6 +410,12 @@ export const comparisonContent: Record<Locale, ComparisonPageContent> = {
 
 
 
+assertEncodingHealth("comparisons");
+
 export function getComparisonContent(locale: Locale) {
-  return comparisonContent[locale];
+  return normalizeLocalizedContent(`comparison:${locale}`, comparisonContent[locale]);
 }
+
+
+
+

@@ -1,18 +1,24 @@
-﻿import { categories } from "@/data/categories";
+import { categories } from "@/data/categories";
 import { catalogContent } from "@/data/catalog-content";
 import { tools } from "@/data/tools";
 import type { Locale } from "@/i18n/config";
+import { assertEncodingHealth, normalizeLocalizedContent } from "@/lib/encoding";
 import type { LocalizedCategory, LocalizedTool, PricingTier } from "@/types/catalog";
 
+assertEncodingHealth("catalog");
+
 export function getCatalogContent(locale: Locale) {
-  return catalogContent[locale];
+  return normalizeLocalizedContent(`catalog-content:${locale}`, catalogContent[locale]);
 }
 
 export function getLocalizedCategories(locale: Locale): LocalizedCategory[] {
-  return categories.map((category) => ({
-    slug: category.slug,
-    ...category.locales[locale]
-  }));
+  return normalizeLocalizedContent(
+    `categories:${locale}`,
+    categories.map((category) => ({
+      slug: category.slug,
+      ...category.locales[locale]
+    }))
+  );
 }
 
 export function getLocalizedCategoryBySlug(locale: Locale, slug: string) {
@@ -22,26 +28,32 @@ export function getLocalizedCategoryBySlug(locale: Locale, slug: string) {
     return null;
   }
 
-  return {
-    slug: category.slug,
-    ...category.locales[locale]
-  } satisfies LocalizedCategory;
+  return normalizeLocalizedContent(
+    `category:${slug}:${locale}`,
+    {
+      slug: category.slug,
+      ...category.locales[locale]
+    } satisfies LocalizedCategory
+  );
 }
 
 export function getLocalizedTools(locale: Locale): LocalizedTool[] {
-  return tools.map((tool) => ({
-    slug: tool.slug,
-    pricing: tool.pricing,
-    websiteUrl: tool.websiteUrl,
-    affiliateUrl: tool.affiliateUrl ?? tool.websiteUrl,
-    primaryCategorySlug: tool.primaryCategorySlug,
-    categorySlugs: tool.categorySlugs,
-    toolCategorySlugs: tool.toolCategorySlugs,
-    useCaseSlugs: tool.useCaseSlugs,
-    rating: tool.rating,
-    featured: tool.featured,
-    ...tool.locales[locale]
-  }));
+  return normalizeLocalizedContent(
+    `tools:${locale}`,
+    tools.map((tool) => ({
+      slug: tool.slug,
+      pricing: tool.pricing,
+      websiteUrl: tool.websiteUrl,
+      affiliateUrl: tool.affiliateUrl ?? tool.websiteUrl,
+      primaryCategorySlug: tool.primaryCategorySlug,
+      categorySlugs: tool.categorySlugs,
+      toolCategorySlugs: tool.toolCategorySlugs,
+      useCaseSlugs: tool.useCaseSlugs,
+      rating: tool.rating,
+      featured: tool.featured,
+      ...tool.locales[locale]
+    }))
+  );
 }
 
 export function getToolCount() {
@@ -55,19 +67,22 @@ export function getLocalizedToolBySlug(locale: Locale, slug: string) {
     return null;
   }
 
-  return {
-    slug: tool.slug,
-    pricing: tool.pricing,
-    websiteUrl: tool.websiteUrl,
-    affiliateUrl: tool.affiliateUrl ?? tool.websiteUrl,
-    primaryCategorySlug: tool.primaryCategorySlug,
-    categorySlugs: tool.categorySlugs,
-    toolCategorySlugs: tool.toolCategorySlugs,
-    useCaseSlugs: tool.useCaseSlugs,
-    rating: tool.rating,
-    featured: tool.featured,
-    ...tool.locales[locale]
-  } satisfies LocalizedTool;
+  return normalizeLocalizedContent(
+    `tool:${slug}:${locale}`,
+    {
+      slug: tool.slug,
+      pricing: tool.pricing,
+      websiteUrl: tool.websiteUrl,
+      affiliateUrl: tool.affiliateUrl ?? tool.websiteUrl,
+      primaryCategorySlug: tool.primaryCategorySlug,
+      categorySlugs: tool.categorySlugs,
+      toolCategorySlugs: tool.toolCategorySlugs,
+      useCaseSlugs: tool.useCaseSlugs,
+      rating: tool.rating,
+      featured: tool.featured,
+      ...tool.locales[locale]
+    } satisfies LocalizedTool
+  );
 }
 
 export function getToolsByCategory(locale: Locale, categorySlug: string) {
@@ -114,3 +129,4 @@ export function formatPricing(pricing: PricingTier, locale: Locale) {
 export function getToolOutboundUrl(tool: { affiliateUrl?: string; websiteUrl: string }) {
   return tool.affiliateUrl?.trim() || tool.websiteUrl;
 }
+

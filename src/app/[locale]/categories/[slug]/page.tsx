@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -107,7 +107,7 @@ export default async function CategoryDetailPage({
     const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/categories/comparisons`);
     const trustIndicators = getToolTrustIndicators(safeLocale);
     const editorNote = safeLocale === "tr"
-      ? "Bu sayfa tek bir kazanan se?mez. G??l? ve zay?f taraflar? senaryoya g?re g?sterir."
+      ? "Bu sayfa tek bir kazanan seçmez. Güçlü ve zayıf tarafları senaryoya göre gösterir."
       : "This page does not pick a single winner. It shows strengths and limitations by scenario.";
     const webPageSchema = {
       "@context": "https://schema.org",
@@ -206,7 +206,7 @@ export default async function CategoryDetailPage({
           </section>
 
           <section className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-card">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">{safeLocale === "tr" ? "Edit?r notu" : "Editor note"}</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">{safeLocale === "tr" ? "Editör notu" : "Editor note"}</p>
             <p className="mt-4 max-w-3xl text-base leading-8 text-slate-300">{editorNote}</p>
           </section>
 
@@ -396,4 +396,6 @@ export default async function CategoryDetailPage({
     </div>
   );
 }
+
+
 

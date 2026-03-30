@@ -68,6 +68,16 @@ export function normalizeEncodingTree<T>(input: T): NormalizeResult<T> {
   return { value: input, changed: false };
 }
 
+export function normalizeLocalizedContent<T>(context: string, input: T): T {
+  const normalized = normalizeEncodingTree(input);
+
+  if (normalized.changed && process.env.NODE_ENV !== "production") {
+    console.warn(`[encoding] Repaired suspicious localized content in ${context}.`);
+  }
+
+  return normalized.value;
+}
+
 export function assertEncodingHealth(context: string) {
   const sample = repairSuspiciousEncoding(TURKISH_ENCODING_SAMPLE);
 
@@ -77,3 +87,4 @@ export function assertEncodingHealth(context: string) {
 
   return sample;
 }
+
