@@ -1,3 +1,4 @@
+import { BlogCard } from "@/components/blog/blog-card";
 import { CategoryCard } from "@/components/home/category-card";
 import { ComparisonCard } from "@/components/home/comparison-card";
 import { ComparisonTable } from "@/components/home/comparison-table";
@@ -16,6 +17,7 @@ import { StatBadge } from "@/components/ui/stat-badge";
 import type { HomeContent } from "@/data/home";
 import type { Locale } from "@/i18n/config";
 import { getLocalizedTools } from "@/lib/catalog";
+import { getLocalizedBlogArticles } from "@/lib/blog";
 import { toHomeToolCard } from "@/lib/tool-ui";
 
 type HomePageProps = {
@@ -43,7 +45,12 @@ const sectionCopy = {
     freelancersDescription: "\u0130\u00e7erik, ara\u015ft\u0131rma, sunum ve g\u00f6rsel teslim s\u00fcre\u00e7lerinde zaman kazand\u0131rabilecek ara\u00e7lar\u0131 yan yana g\u00f6r\u00fcn.",
     moneyEyebrow: "Gelir odakl\u0131",
     moneyTitle: "Para kazanmak i\u00e7in AI ara\u00e7lar\u0131",
-    moneyDescription: "\u0130\u00e7erik \u00fcretimi, g\u00f6rsel teslim, ara\u015ft\u0131rma ve paket hizmet senaryolar\u0131nda gelir \u00fcretmeye yard\u0131mc\u0131 olabilecek ara\u00e7lar."
+    moneyDescription: "\u0130\u00e7erik \u00fcretimi, g\u00f6rsel teslim, ara\u015ft\u0131rma ve paket hizmet senaryolar\u0131nda gelir \u00fcretmeye yard\u0131mc\u0131 olabilecek ara\u00e7lar.",
+    latestPostsEyebrow: "Son i\u00e7erikler",
+    latestPostsTitle: "En yeni blog yaz\u0131lar\u0131",
+    latestPostsDescription: "Yeni yay\u0131nlanan rehberleri, kar\u015f\u0131la\u015ft\u0131rmalar\u0131 ve para odakl\u0131 i\u00e7erikleri ana sayfadan h\u0131zl\u0131ca a\u00e7\u0131n.",
+    latestPostsViewAll: "T\u00fcm yaz\u0131lar\u0131 g\u00f6r",
+    latestPostsReadMore: "Devam\u0131n\u0131 oku"
   },
   en: {
     selectorTitle: "What do you want to do?",
@@ -64,7 +71,12 @@ const sectionCopy = {
     freelancersDescription: "See tools that can reduce time spent on content, research, presentation, and visual delivery work.",
     moneyEyebrow: "Revenue focused",
     moneyTitle: "AI tools for making money",
-    moneyDescription: "Tools that can support monetization through content, design delivery, research, and service packaging workflows."
+    moneyDescription: "Tools that can support monetization through content, design delivery, research, and service packaging workflows.",
+    latestPostsEyebrow: "Latest posts",
+    latestPostsTitle: "Latest blog posts",
+    latestPostsDescription: "Open the newest guides, comparisons, and monetization-focused articles directly from the homepage.",
+    latestPostsViewAll: "View all articles",
+    latestPostsReadMore: "Read more"
   }
 } as const;
 
@@ -83,6 +95,7 @@ export function HomePage({ locale, content }: HomePageProps) {
   const moneyTools = getToolsBySlugs(locale, ["jasper", "copy-ai", "canva-ai"]);
   const beginnerTools = getToolsBySlugs(locale, ["chatgpt", "gemini", "canva-ai"]);
   const freelancerTools = getToolsBySlugs(locale, ["chatgpt", "claude", "midjourney"]);
+  const latestArticles = getLocalizedBlogArticles(locale).slice(0, 4);
 
   return (
     <div className="relative overflow-x-clip pb-16 sm:pb-20">
@@ -337,6 +350,28 @@ export function HomePage({ locale, content }: HomePageProps) {
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {content.guides.map((item) => (
                   <GuideCard key={item.href} locale={locale} item={item} linkLabel={content.sections.guides.linkLabel} />
+                ))}
+              </div>
+            </SectionShell>
+          </AnimatedSection>
+        ) : null}
+
+        {latestArticles.length ? (
+          <AnimatedSection delay={0.255}>
+            <SectionShell
+              className="section-tint-violet"
+              eyebrow={ui.latestPostsEyebrow}
+              title={ui.latestPostsTitle}
+              description={ui.latestPostsDescription}
+              actions={
+                <PremiumButton href={`/${locale}/blog`} variant="secondary">
+                  {ui.latestPostsViewAll}
+                </PremiumButton>
+              }
+            >
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                {latestArticles.map((article) => (
+                  <BlogCard key={article.slug} locale={locale} article={article} ctaLabel={ui.latestPostsReadMore} />
                 ))}
               </div>
             </SectionShell>
