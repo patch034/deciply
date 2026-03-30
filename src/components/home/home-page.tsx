@@ -5,6 +5,7 @@ import { ComparisonTable } from "@/components/home/comparison-table";
 import { GuideCard } from "@/components/home/guide-card";
 import { HeroSection } from "@/components/home/hero-section";
 import { HowItWorksSection } from "@/components/home/how-it-works-section";
+import { NewsletterForm } from "@/components/home/newsletter-form";
 import { TopPickSection } from "@/components/home/top-pick-section";
 import { ToolCard } from "@/components/home/tool-card";
 import { WhyToolNovaSection } from "@/components/home/why-toolnova-section";
@@ -385,6 +386,22 @@ export function HomePage({ locale, content }: HomePageProps) {
           </AnimatedSection>
         ) : null}
 
+        <AnimatedSection delay={0.257}>
+          <SectionShell
+            className="section-tint-cyan"
+            eyebrow={content.sections.newsletter.eyebrow}
+            title={content.sections.newsletter.title}
+            description={content.sections.newsletter.description}
+          >
+            <NewsletterForm
+              locale={locale}
+              inputLabel={content.sections.newsletter.inputLabel}
+              placeholder={content.sections.newsletter.placeholder}
+              buttonLabel={content.sections.newsletter.buttonLabel}
+              disclaimer={content.sections.newsletter.disclaimer}
+            />
+          </SectionShell>
+        </AnimatedSection>
         <AnimatedSection delay={0.26}>
           <SectionShell className="section-tint-cyan">
             <div className="ui-card-strong overflow-hidden rounded-2xl px-4 py-6 text-white sm:px-6 sm:py-8">
