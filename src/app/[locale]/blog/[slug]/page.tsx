@@ -10,7 +10,14 @@ import { Badge } from "@/components/ui/badge";
 import { SectionShell } from "@/components/ui/section-shell";
 import { blogArticles } from "@/data/blog";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
-import { formatBlogDate, getBlogCopy, resolveBlogPublishDate, getLocalizedBlogArticleBySlug, getRelatedArticles } from "@/lib/blog";
+import {
+  formatBlogDate,
+  getBlogCopy,
+  getLocalizedBlogArticleBySlug,
+  getLocalizedBlogArticles,
+  getRelatedArticles,
+  resolveBlogPublishDate
+} from "@/lib/blog";
 import {
   formatPricing,
   getCategoryNamesMap,
@@ -92,11 +99,25 @@ export default async function BlogDetailPage({
     .filter((tool) => tool !== null);
   const primaryTool = relatedTools[0];
   const relatedArticles = getRelatedArticles(safeLocale, article.slug, 3);
+  const fallbackArticle =
+    relatedArticles[0] ?? getLocalizedBlogArticles(safeLocale).find((item) => item.slug !== article.slug) ?? null;
   const heroPrimaryHref = primaryTool ? getToolOutboundUrl(primaryTool) : `/${safeLocale}/tools`;
   const comparisonHref = `/${safeLocale}/categories/comparisons`;
   const leadSections = article.sections.slice(0, 2);
   const tailSections = article.sections.slice(2);
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/blog/${article.slug}`);
+  const inlineSupportingLinks = {
+    tools: relatedTools.slice(0, 2).map((tool) => ({
+      label: tool.name,
+      href: `/${safeLocale}/tools/${tool.slug}`
+    })),
+    article: fallbackArticle
+      ? {
+          label: fallbackArticle.title,
+          href: `/${safeLocale}/blog/${fallbackArticle.slug}`
+        }
+      : undefined
+  };
   const publishedLabel = safeLocale === "tr" ? "Yayınlandı" : "Published";
   const updatedLabel = safeLocale === "tr" ? "Güncellendi" : "Updated";
   const publishedSource = resolveBlogPublishDate(article);
@@ -212,7 +233,7 @@ export default async function BlogDetailPage({
           </div>
         </section>
 
-        <ArticleContent locale={safeLocale} sections={leadSections} />
+        <ArticleContent locale={safeLocale} sections={leadSections} supportingLinks={inlineSupportingLinks} />
 
         <ArticleCtaBlock
           eyebrow={safeLocale === "tr" ? "Ara CTA" : "Mid CTA"}
