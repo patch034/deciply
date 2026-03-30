@@ -4239,5 +4239,662 @@ export const tools: ToolEntry[] = [
         seoDescription: "Read a short Remove.bg review covering pricing, strengths, limitations, and practical use cases."
       }
     }
+  },
+  {
+    slug: "github-copilot",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://github.com/features/copilot",
+    affiliateUrl: "https://github.com/features/copilot",
+    primaryCategorySlug: "productivity",
+    categorySlugs: [
+      "ai-tools",
+      "guides",
+      "free-tools",
+      "make-money-with-ai"
+    ],
+    toolCategorySlugs: [
+      "productivity",
+      "writing"
+    ],
+    useCaseSlugs: [
+      "business",
+      "freelancers",
+      "research"
+    ],
+    rating: 4.8,
+    featured: false,
+    locales: {
+      tr: {
+        name: "GitHub Copilot",
+        shortDescription: "Kod tamamlama, refactor ve geliştirme akışını hızlandıran popüler AI coding aracı.",
+        longDescription: "GitHub Copilot, kod üretimi, refactor ve teslim hızlandırma is akislarinda one cikan bir AI aracidir. Ozellikle ai destekli kod üretimi ve geliştirme icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        bestUseCase: "AI destekli kod üretimi ve geliştirme",
+        whoShouldUse: [
+          "Geliştiriciler",
+          "Freelancer'lar",
+          "Ürün ekipleri"
+        ],
+        moneyUseCases: [
+          {
+            title: "Hizmet teslimini hizlandirma",
+            description: "GitHub Copilot, kod üretimi, refactor ve teslim hızlandırma odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+          },
+          {
+            title: "Paket hizmet uretme",
+            description: "GitHub Copilot ile ai destekli kod üretimi ve geliştirme icin daha hizli paket cikti uretebilirsiniz."
+          },
+          {
+            title: "Tekrarlanan isleri olcekleme",
+            description: "GitHub Copilot, benzer isleri daha az manuel eforla cogaltip ek gelir akislarini destekleyebilir."
+          }
+        ],
+        features: [
+          "AI destekli kod üretimi ve geliştirme",
+          "Operasyon ve verimlilik isleri",
+          "Arastirma veya otomasyon destegi",
+          "Tekrarlanan isleri azaltma"
+        ],
+        pros: [
+          "AI destekli kod üretimi ve geliştirme icin guclu olabilir",
+          "Tekrarlanan isleri hizlandirabilir",
+          "Dogru senaryoda uretim suresini kisaltabilir"
+        ],
+        cons: [
+          "Ucretsiz katman bazi islerde sinirli kalabilir",
+          "Ciktilar yayina almadan once kontrol edilmelidir"
+        ],
+        seoTitle: "GitHub Copilot incelemesi ve kullanim alanlari",
+        seoDescription: "GitHub Copilot icin fiyat, kullanim alanlari, artilar ve eksiler dahil kisa bir inceleme okuyun."
+      },
+      en: {
+        name: "GitHub Copilot",
+        shortDescription: "A popular AI coding tool that speeds up code completion, refactoring, and developer workflows.",
+        longDescription: "GitHub Copilot is an AI tool used in coding, refactoring, and delivery acceleration. It can be a practical fit for ai-assisted coding and development when speed and repeatability matter.",
+        bestUseCase: "AI-assisted coding and development",
+        whoShouldUse: [
+          "Developers",
+          "Freelancers",
+          "Product teams"
+        ],
+        moneyUseCases: [
+          {
+            title: "Speed up delivery work",
+            description: "GitHub Copilot can reduce delivery time in workflows focused on coding, refactoring, and delivery acceleration."
+          },
+          {
+            title: "Build repeatable service packages",
+            description: "GitHub Copilot can help you package ai-assisted coding and development into faster repeatable client work."
+          },
+          {
+            title: "Scale repeated output",
+            description: "GitHub Copilot can support extra revenue by reducing manual work in recurring tasks."
+          }
+        ],
+        features: [
+          "AI-assisted coding and development",
+          "Operations and productivity work",
+          "Research or automation support",
+          "Reducing repeated tasks"
+        ],
+        pros: [
+          "Can be strong for ai-assisted coding and development",
+          "Can speed up repeated work",
+          "Can shorten production time in the right workflow"
+        ],
+        cons: [
+          "The free tier may feel limited for some workflows",
+          "Outputs still need review before publishing or delivery"
+        ],
+        seoTitle: "GitHub Copilot review and use cases",
+        seoDescription: "Read a short GitHub Copilot review covering pricing, strengths, limitations, and practical use cases."
+      }
+    }
+  },
+  {
+    slug: "bolt-new",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://bolt.new",
+    affiliateUrl: "https://bolt.new",
+    primaryCategorySlug: "productivity",
+    categorySlugs: [
+      "ai-tools",
+      "guides",
+      "free-tools",
+      "make-money-with-ai"
+    ],
+    toolCategorySlugs: [
+      "productivity",
+      "writing"
+    ],
+    useCaseSlugs: [
+      "business",
+      "freelancers",
+      "content"
+    ],
+    rating: 4.6,
+    featured: false,
+    locales: {
+      tr: {
+        name: "Bolt.new",
+        shortDescription: "Tarayıcı içinde tam yığın uygulama ve hızlı web ürünü üretmeye odaklanan AI builder.",
+        longDescription: "Bolt.new, hızlı MVP, demo ve web ürün üretimi is akislarinda one cikan bir AI aracidir. Ozellikle hızlı web uygulaması ve mvp üretimi icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        bestUseCase: "Hızlı web uygulaması ve MVP üretimi",
+        whoShouldUse: [
+          "Kurucular",
+          "Freelancer'lar",
+          "Ajans ekipleri"
+        ],
+        moneyUseCases: [
+          {
+            title: "Hizmet teslimini hizlandirma",
+            description: "Bolt.new, hızlı MVP, demo ve web ürün üretimi odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+          },
+          {
+            title: "Paket hizmet uretme",
+            description: "Bolt.new ile hızlı web uygulaması ve mvp üretimi icin daha hizli paket cikti uretebilirsiniz."
+          },
+          {
+            title: "Tekrarlanan isleri olcekleme",
+            description: "Bolt.new, benzer isleri daha az manuel eforla cogaltip ek gelir akislarini destekleyebilir."
+          }
+        ],
+        features: [
+          "Hızlı web uygulaması ve MVP üretimi",
+          "Operasyon ve verimlilik isleri",
+          "Arastirma veya otomasyon destegi",
+          "Tekrarlanan isleri azaltma"
+        ],
+        pros: [
+          "Hızlı web uygulaması ve MVP üretimi icin guclu olabilir",
+          "Tekrarlanan isleri hizlandirabilir",
+          "Dogru senaryoda uretim suresini kisaltabilir"
+        ],
+        cons: [
+          "Ucretsiz katman bazi islerde sinirli kalabilir",
+          "Ciktilar yayina almadan once kontrol edilmelidir"
+        ],
+        seoTitle: "Bolt.new incelemesi ve kullanim alanlari",
+        seoDescription: "Bolt.new icin fiyat, kullanim alanlari, artilar ve eksiler dahil kisa bir inceleme okuyun."
+      },
+      en: {
+        name: "Bolt.new",
+        shortDescription: "An AI builder focused on creating full-stack apps and fast web products directly in the browser.",
+        longDescription: "Bolt.new is an AI tool used in fast MVP, demo, and web-product workflows. It can be a practical fit for fast web app and mvp creation when speed and repeatability matter.",
+        bestUseCase: "Fast web app and MVP creation",
+        whoShouldUse: [
+          "Founders",
+          "Freelancers",
+          "Agency teams"
+        ],
+        moneyUseCases: [
+          {
+            title: "Speed up delivery work",
+            description: "Bolt.new can reduce delivery time in workflows focused on fast MVP, demo, and web-product workflows."
+          },
+          {
+            title: "Build repeatable service packages",
+            description: "Bolt.new can help you package fast web app and mvp creation into faster repeatable client work."
+          },
+          {
+            title: "Scale repeated output",
+            description: "Bolt.new can support extra revenue by reducing manual work in recurring tasks."
+          }
+        ],
+        features: [
+          "Fast web app and MVP creation",
+          "Operations and productivity work",
+          "Research or automation support",
+          "Reducing repeated tasks"
+        ],
+        pros: [
+          "Can be strong for fast web app and mvp creation",
+          "Can speed up repeated work",
+          "Can shorten production time in the right workflow"
+        ],
+        cons: [
+          "The free tier may feel limited for some workflows",
+          "Outputs still need review before publishing or delivery"
+        ],
+        seoTitle: "Bolt.new review and use cases",
+        seoDescription: "Read a short Bolt.new review covering pricing, strengths, limitations, and practical use cases."
+      }
+    }
+  },
+  {
+    slug: "lovable",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://lovable.dev",
+    affiliateUrl: "https://lovable.dev",
+    primaryCategorySlug: "productivity",
+    categorySlugs: [
+      "ai-tools",
+      "guides",
+      "free-tools",
+      "make-money-with-ai"
+    ],
+    toolCategorySlugs: [
+      "productivity",
+      "writing"
+    ],
+    useCaseSlugs: [
+      "business",
+      "freelancers",
+      "content"
+    ],
+    rating: 4.6,
+    featured: false,
+    locales: {
+      tr: {
+        name: "Lovable",
+        shortDescription: "Doğal dille uygulama ve web sitesi üretimini hızlandıran full-stack AI builder.",
+        longDescription: "Lovable, uygulama, iç araç ve hızlı site üretimi is akislarinda one cikan bir AI aracidir. Ozellikle doğal dille ürün ve site geliştirme icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        bestUseCase: "Doğal dille ürün ve site geliştirme",
+        whoShouldUse: [
+          "Kurucular",
+          "Freelancer'lar",
+          "Ürün ekipleri"
+        ],
+        moneyUseCases: [
+          {
+            title: "Hizmet teslimini hizlandirma",
+            description: "Lovable, uygulama, iç araç ve hızlı site üretimi odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+          },
+          {
+            title: "Paket hizmet uretme",
+            description: "Lovable ile doğal dille ürün ve site geliştirme icin daha hizli paket cikti uretebilirsiniz."
+          },
+          {
+            title: "Tekrarlanan isleri olcekleme",
+            description: "Lovable, benzer isleri daha az manuel eforla cogaltip ek gelir akislarini destekleyebilir."
+          }
+        ],
+        features: [
+          "Doğal dille ürün ve site geliştirme",
+          "Operasyon ve verimlilik isleri",
+          "Arastirma veya otomasyon destegi",
+          "Tekrarlanan isleri azaltma"
+        ],
+        pros: [
+          "Doğal dille ürün ve site geliştirme icin guclu olabilir",
+          "Tekrarlanan isleri hizlandirabilir",
+          "Dogru senaryoda uretim suresini kisaltabilir"
+        ],
+        cons: [
+          "Ucretsiz katman bazi islerde sinirli kalabilir",
+          "Ciktilar yayina almadan once kontrol edilmelidir"
+        ],
+        seoTitle: "Lovable incelemesi ve kullanim alanlari",
+        seoDescription: "Lovable icin fiyat, kullanim alanlari, artilar ve eksiler dahil kisa bir inceleme okuyun."
+      },
+      en: {
+        name: "Lovable",
+        shortDescription: "A full-stack AI builder that turns natural-language prompts into apps and websites faster.",
+        longDescription: "Lovable is an AI tool used in app, internal-tool, and fast website workflows. It can be a practical fit for natural-language product and site building when speed and repeatability matter.",
+        bestUseCase: "Natural-language product and site building",
+        whoShouldUse: [
+          "Founders",
+          "Freelancers",
+          "Product teams"
+        ],
+        moneyUseCases: [
+          {
+            title: "Speed up delivery work",
+            description: "Lovable can reduce delivery time in workflows focused on app, internal-tool, and fast website workflows."
+          },
+          {
+            title: "Build repeatable service packages",
+            description: "Lovable can help you package natural-language product and site building into faster repeatable client work."
+          },
+          {
+            title: "Scale repeated output",
+            description: "Lovable can support extra revenue by reducing manual work in recurring tasks."
+          }
+        ],
+        features: [
+          "Natural-language product and site building",
+          "Operations and productivity work",
+          "Research or automation support",
+          "Reducing repeated tasks"
+        ],
+        pros: [
+          "Can be strong for natural-language product and site building",
+          "Can speed up repeated work",
+          "Can shorten production time in the right workflow"
+        ],
+        cons: [
+          "The free tier may feel limited for some workflows",
+          "Outputs still need review before publishing or delivery"
+        ],
+        seoTitle: "Lovable review and use cases",
+        seoDescription: "Read a short Lovable review covering pricing, strengths, limitations, and practical use cases."
+      }
+    }
+  },
+  {
+    slug: "murf-ai",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://murf.ai",
+    affiliateUrl: "https://murf.ai",
+    primaryCategorySlug: "video",
+    categorySlugs: [
+      "ai-tools",
+      "guides",
+      "free-tools",
+      "make-money-with-ai"
+    ],
+    toolCategorySlugs: [
+      "video"
+    ],
+    useCaseSlugs: [
+      "creators",
+      "business",
+      "content"
+    ],
+    rating: 4.5,
+    featured: false,
+    locales: {
+      tr: {
+        name: "Murf AI",
+        shortDescription: "Voice-over, dublaj ve anlatım odaklı ses üretimi için kullanılan AI voice platformu.",
+        longDescription: "Murf AI, seslendirme, dublaj ve anlatım içerikleri is akislarinda one cikan bir AI aracidir. Ozellikle voice-over ve dublaj üretimi icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        bestUseCase: "Voice-over ve dublaj üretimi",
+        whoShouldUse: [
+          "İçerik üreticileri",
+          "Ajanslar",
+          "Eğitim ekipleri"
+        ],
+        moneyUseCases: [
+          {
+            title: "Hizmet teslimini hizlandirma",
+            description: "Murf AI, seslendirme, dublaj ve anlatım içerikleri odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+          },
+          {
+            title: "Paket hizmet uretme",
+            description: "Murf AI ile voice-over ve dublaj üretimi icin daha hizli paket cikti uretebilirsiniz."
+          },
+          {
+            title: "Tekrarlanan isleri olcekleme",
+            description: "Murf AI, benzer isleri daha az manuel eforla cogaltip ek gelir akislarini destekleyebilir."
+          }
+        ],
+        features: [
+          "Voice-over ve dublaj üretimi",
+          "Video veya medya uretimi",
+          "Kisa teslim akisleri",
+          "Icerik tekrar kullanimi"
+        ],
+        pros: [
+          "Voice-over ve dublaj üretimi icin guclu olabilir",
+          "Tekrarlanan isleri hizlandirabilir",
+          "Dogru senaryoda uretim suresini kisaltabilir"
+        ],
+        cons: [
+          "Ucretsiz katman bazi islerde sinirli kalabilir",
+          "Ciktilar yayina almadan once kontrol edilmelidir"
+        ],
+        seoTitle: "Murf AI incelemesi ve kullanim alanlari",
+        seoDescription: "Murf AI icin fiyat, kullanim alanlari, artilar ve eksiler dahil kisa bir inceleme okuyun."
+      },
+      en: {
+        name: "Murf AI",
+        shortDescription: "An AI voice platform used for voice-over, dubbing, and narration-focused audio production.",
+        longDescription: "Murf AI is an AI tool used in voice-over, dubbing, and narrated content workflows. It can be a practical fit for voice-over and dubbing generation when speed and repeatability matter.",
+        bestUseCase: "Voice-over and dubbing generation",
+        whoShouldUse: [
+          "Creators",
+          "Agencies",
+          "Training teams"
+        ],
+        moneyUseCases: [
+          {
+            title: "Speed up delivery work",
+            description: "Murf AI can reduce delivery time in workflows focused on voice-over, dubbing, and narrated content workflows."
+          },
+          {
+            title: "Build repeatable service packages",
+            description: "Murf AI can help you package voice-over and dubbing generation into faster repeatable client work."
+          },
+          {
+            title: "Scale repeated output",
+            description: "Murf AI can support extra revenue by reducing manual work in recurring tasks."
+          }
+        ],
+        features: [
+          "Voice-over and dubbing generation",
+          "Video or media production",
+          "Short delivery workflows",
+          "Content repurposing"
+        ],
+        pros: [
+          "Can be strong for voice-over and dubbing generation",
+          "Can speed up repeated work",
+          "Can shorten production time in the right workflow"
+        ],
+        cons: [
+          "The free tier may feel limited for some workflows",
+          "Outputs still need review before publishing or delivery"
+        ],
+        seoTitle: "Murf AI review and use cases",
+        seoDescription: "Read a short Murf AI review covering pricing, strengths, limitations, and practical use cases."
+      }
+    }
+  },
+  {
+    slug: "surfer",
+    pricing: "PAID",
+    websiteUrl: "https://surferseo.com",
+    affiliateUrl: "https://surferseo.com",
+    primaryCategorySlug: "writing",
+    categorySlugs: [
+      "ai-tools",
+      "guides",
+      "make-money-with-ai"
+    ],
+    toolCategorySlugs: [
+      "writing",
+      "productivity"
+    ],
+    useCaseSlugs: [
+      "content",
+      "business",
+      "freelancers"
+    ],
+    rating: 4.5,
+    featured: false,
+    locales: {
+      tr: {
+        name: "Surfer",
+        shortDescription: "SEO odaklı içerik planlama, optimizasyon ve görünürlük takibi için kullanılan içerik aracı.",
+        longDescription: "Surfer, SEO içerik planlama ve optimizasyon is akislarinda one cikan bir AI aracidir. Ozellikle seo odaklı içerik planlama ve optimizasyon icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        bestUseCase: "SEO odaklı içerik planlama ve optimizasyon",
+        whoShouldUse: [
+          "SEO ekipleri",
+          "İçerik pazarlamacıları",
+          "Freelancer'lar"
+        ],
+        moneyUseCases: [
+          {
+            title: "Hizmet teslimini hizlandirma",
+            description: "Surfer, SEO içerik planlama ve optimizasyon odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+          },
+          {
+            title: "Paket hizmet uretme",
+            description: "Surfer ile seo odaklı içerik planlama ve optimizasyon icin daha hizli paket cikti uretebilirsiniz."
+          },
+          {
+            title: "Tekrarlanan isleri olcekleme",
+            description: "Surfer, benzer isleri daha az manuel eforla cogaltip ek gelir akislarini destekleyebilir."
+          }
+        ],
+        features: [
+          "SEO odaklı içerik planlama ve optimizasyon",
+          "Metin odakli is akislar",
+          "Duzenleme ve yeniden yazim",
+          "Hizli taslak uretimi"
+        ],
+        pros: [
+          "SEO odaklı içerik planlama ve optimizasyon icin guclu olabilir",
+          "Tekrarlanan isleri hizlandirabilir",
+          "Dogru senaryoda uretim suresini kisaltabilir"
+        ],
+        cons: [
+          "Ucretli plan gerektirebilir",
+          "Ciktilar yayina almadan once kontrol edilmelidir"
+        ],
+        seoTitle: "Surfer incelemesi ve kullanim alanlari",
+        seoDescription: "Surfer icin fiyat, kullanim alanlari, artilar ve eksiler dahil kisa bir inceleme okuyun."
+      },
+      en: {
+        name: "Surfer",
+        shortDescription: "A content optimization platform used for SEO planning, on-page guidance, and visibility workflows.",
+        longDescription: "Surfer is an AI tool used in SEO content planning and optimization workflows. It can be a practical fit for seo-focused content planning and optimization when speed and repeatability matter.",
+        bestUseCase: "SEO-focused content planning and optimization",
+        whoShouldUse: [
+          "SEO teams",
+          "Content marketers",
+          "Freelancers"
+        ],
+        moneyUseCases: [
+          {
+            title: "Speed up delivery work",
+            description: "Surfer can reduce delivery time in workflows focused on SEO content planning and optimization workflows."
+          },
+          {
+            title: "Build repeatable service packages",
+            description: "Surfer can help you package seo-focused content planning and optimization into faster repeatable client work."
+          },
+          {
+            title: "Scale repeated output",
+            description: "Surfer can support extra revenue by reducing manual work in recurring tasks."
+          }
+        ],
+        features: [
+          "SEO-focused content planning and optimization",
+          "Text-focused workflows",
+          "Editing and rewriting",
+          "Fast first-draft output"
+        ],
+        pros: [
+          "Can be strong for seo-focused content planning and optimization",
+          "Can speed up repeated work",
+          "Can shorten production time in the right workflow"
+        ],
+        cons: [
+          "May require a paid plan",
+          "Outputs still need review before publishing or delivery"
+        ],
+        seoTitle: "Surfer review and use cases",
+        seoDescription: "Read a short Surfer review covering pricing, strengths, limitations, and practical use cases."
+      }
+    }
+  },
+  {
+    slug: "clearscope",
+    pricing: "PAID",
+    websiteUrl: "https://www.clearscope.io",
+    affiliateUrl: "https://www.clearscope.io",
+    primaryCategorySlug: "writing",
+    categorySlugs: [
+      "ai-tools",
+      "guides",
+      "make-money-with-ai"
+    ],
+    toolCategorySlugs: [
+      "writing",
+      "productivity"
+    ],
+    useCaseSlugs: [
+      "content",
+      "business",
+      "research"
+    ],
+    rating: 4.4,
+    featured: false,
+    locales: {
+      tr: {
+        name: "Clearscope",
+        shortDescription: "Arama görünürlüğü ve içerik kalitesini iyileştirmek için kullanılan içerik strateji aracı.",
+        longDescription: "Clearscope, arama görünürlüğü ve içerik geliştirme is akislarinda one cikan bir AI aracidir. Ozellikle arama görünürlüğü ve içerik stratejisi icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        bestUseCase: "Arama görünürlüğü ve içerik stratejisi",
+        whoShouldUse: [
+          "İçerik ekipleri",
+          "SEO uzmanları",
+          "Araştırma odaklı ekipler"
+        ],
+        moneyUseCases: [
+          {
+            title: "Hizmet teslimini hizlandirma",
+            description: "Clearscope, arama görünürlüğü ve içerik geliştirme odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+          },
+          {
+            title: "Paket hizmet uretme",
+            description: "Clearscope ile arama görünürlüğü ve içerik stratejisi icin daha hizli paket cikti uretebilirsiniz."
+          },
+          {
+            title: "Tekrarlanan isleri olcekleme",
+            description: "Clearscope, benzer isleri daha az manuel eforla cogaltip ek gelir akislarini destekleyebilir."
+          }
+        ],
+        features: [
+          "Arama görünürlüğü ve içerik stratejisi",
+          "Metin odakli is akislar",
+          "Duzenleme ve yeniden yazim",
+          "Hizli taslak uretimi"
+        ],
+        pros: [
+          "Arama görünürlüğü ve içerik stratejisi icin guclu olabilir",
+          "Tekrarlanan isleri hizlandirabilir",
+          "Dogru senaryoda uretim suresini kisaltabilir"
+        ],
+        cons: [
+          "Ucretli plan gerektirebilir",
+          "Ciktilar yayina almadan once kontrol edilmelidir"
+        ],
+        seoTitle: "Clearscope incelemesi ve kullanim alanlari",
+        seoDescription: "Clearscope icin fiyat, kullanim alanlari, artilar ve eksiler dahil kisa bir inceleme okuyun."
+      },
+      en: {
+        name: "Clearscope",
+        shortDescription: "A content strategy tool used to improve search visibility and content quality across workflows.",
+        longDescription: "Clearscope is an AI tool used in search visibility and content improvement workflows. It can be a practical fit for search visibility and content strategy when speed and repeatability matter.",
+        bestUseCase: "Search visibility and content strategy",
+        whoShouldUse: [
+          "Content teams",
+          "SEO specialists",
+          "Research-driven teams"
+        ],
+        moneyUseCases: [
+          {
+            title: "Speed up delivery work",
+            description: "Clearscope can reduce delivery time in workflows focused on search visibility and content improvement workflows."
+          },
+          {
+            title: "Build repeatable service packages",
+            description: "Clearscope can help you package search visibility and content strategy into faster repeatable client work."
+          },
+          {
+            title: "Scale repeated output",
+            description: "Clearscope can support extra revenue by reducing manual work in recurring tasks."
+          }
+        ],
+        features: [
+          "Search visibility and content strategy",
+          "Text-focused workflows",
+          "Editing and rewriting",
+          "Fast first-draft output"
+        ],
+        pros: [
+          "Can be strong for search visibility and content strategy",
+          "Can speed up repeated work",
+          "Can shorten production time in the right workflow"
+        ],
+        cons: [
+          "May require a paid plan",
+          "Outputs still need review before publishing or delivery"
+        ],
+        seoTitle: "Clearscope review and use cases",
+        seoDescription: "Read a short Clearscope review covering pricing, strengths, limitations, and practical use cases."
+      }
+    }
   }
 ];
