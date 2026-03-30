@@ -1,4 +1,7 @@
-﻿import type { Locale } from "@/i18n/config";
+﻿import { blogArticles } from "@/data/blog";
+import { discoveryPages, getHomepageDiscoveryGuides } from "@/data/discovery-pages";
+import type { Locale } from "@/i18n/config";
+import { getToolCount } from "@/lib/catalog";
 import type {
   CategoryCard,
   ComparisonCard,
@@ -843,12 +846,77 @@ const homeContent: Record<Locale, HomeContent> = {
 };
 
 export function getHomeContent(locale: Locale) {
-  return homeContent[locale];
+  const base = homeContent[locale];
+  const toolCount = getToolCount();
+  const articleCount = blogArticles.length;
+  const discoveryCount = discoveryPages.length;
+
+  const heroStats =
+    locale === "tr"
+      ? [
+          { value: String(toolCount), label: "küratörlü AI araç" },
+          { value: String(articleCount), label: "yayındaki rehber" },
+          { value: String(discoveryCount), label: "karar sayfası" }
+        ]
+      : [
+          { value: String(toolCount), label: "curated AI tools" },
+          { value: String(articleCount), label: "guides published" },
+          { value: String(discoveryCount), label: "decision pages" }
+        ];
+
+  const socialProofStats =
+    locale === "tr"
+      ? [
+          { value: String(toolCount), label: "incelenen AI araç" },
+          { value: String(discoveryCount), label: "yayındaki use-case sayfası" },
+          { value: String(articleCount), label: "güncel rehber" }
+        ]
+      : [
+          { value: String(toolCount), label: "AI tools reviewed" },
+          { value: String(discoveryCount), label: "use-case pages live" },
+          { value: String(articleCount), label: "fresh guides" }
+        ];
+
+  return {
+    ...base,
+    hero: {
+      ...base.hero,
+      stats: heroStats
+    },
+    sections: {
+      ...base.sections,
+      hotTools:
+        locale === "tr"
+          ? {
+              ...base.sections.hotTools,
+              eyebrow: "Trending",
+              title: "Şu an öne çıkan AI araçları",
+              description: "Karşılaştırma ve keşif akışlarında sık açılan araçları hızlıca görün."
+            }
+          : {
+              ...base.sections.hotTools,
+              eyebrow: "Trending",
+              title: "Trending AI tools right now",
+              description: "Quickly review the tools that show up most often in discovery and comparison flows."
+            },
+      guides:
+        locale === "tr"
+          ? {
+              ...base.sections.guides,
+              eyebrow: "Discovery sayfaları",
+              title: "Kararı hızlandıran en iyi sayfalar",
+              description: "Para kazanma, yeni başlangıç, içerik üretimi ve freelance kullanım senaryoları için hazırlanan sayfaları açın.",
+              linkLabel: "Sayfayı aç"
+            }
+          : {
+              ...base.sections.guides,
+              eyebrow: "Discovery pages",
+              title: "Best pages built to speed up decisions",
+              description: "Open use-case pages for monetization, beginner workflows, content creation, and freelance work.",
+              linkLabel: "Open page"
+            }
+    },
+    socialProofStats,
+    guides: getHomepageDiscoveryGuides(locale)
+  };
 }
-
-
-
-
-
-
-

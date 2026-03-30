@@ -44,6 +44,10 @@ export function getLocalizedTools(locale: Locale): LocalizedTool[] {
   }));
 }
 
+export function getToolCount() {
+  return tools.length;
+}
+
 export function getLocalizedToolBySlug(locale: Locale, slug: string) {
   const tool = tools.find((item) => item.slug === slug);
 

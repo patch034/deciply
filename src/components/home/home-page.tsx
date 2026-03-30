@@ -2,6 +2,7 @@ import { CategoryCard } from "@/components/home/category-card";
 import { ComparisonCard } from "@/components/home/comparison-card";
 import { ComparisonTable } from "@/components/home/comparison-table";
 import { ConversionListCard } from "@/components/home/conversion-list-card";
+import { GuideCard } from "@/components/home/guide-card";
 import { HeroSection } from "@/components/home/hero-section";
 import { HowItWorksSection } from "@/components/home/how-it-works-section";
 import { TopPickSection } from "@/components/home/top-pick-section";
@@ -26,23 +27,23 @@ const sectionCopy = {
   tr: {
     selectorTitle: "Ne yapmak istiyorsun?",
     selectorOptions: [
-      { label: "İçerik yazmak", href: "#featured-tools" },
-      { label: "Görsel üretmek", href: "#category-tools" },
+      { label: "\u0130\u00e7erik yazmak", href: "#featured-tools" },
+      { label: "G\u00f6rsel \u00fcretmek", href: "#category-tools" },
       { label: "Para kazanmak", href: "#money-tools" },
-      { label: "Araştırma yapmak", href: "#popular-tools" }
+      { label: "Ara\u015ft\u0131rma yapmak", href: "#popular-tools" }
     ],
-    topToolsEyebrow: "Popüler kullanım senaryolarına göre",
-    topToolsTitle: "En çok tercih edilen AI araçları",
-    topToolsDescription: "Karar vermeyi kolaylaştırmak için sık incelenen araçları nötr ve senaryo bazlı şekilde görün.",
-    beginnersEyebrow: "Başlangıç odaklı",
-    beginnersTitle: "Yeni başlayanlar için AI araçları",
-    beginnersDescription: "Düşük sürtünme, daha anlaşılır kullanım ve hızlı ilk sonuç arayan kullanıcılar için uygun seçenekler.",
-    freelancersEyebrow: "Servis odaklı",
-    freelancersTitle: "Freelancer'lar için AI araçları",
-    freelancersDescription: "İçerik, araştırma, sunum ve görsel teslim süreçlerinde zaman kazandırabilecek araçları yan yana görün.",
-    moneyEyebrow: "Gelir odaklı",
-    moneyTitle: "AI tools for making money",
-    moneyDescription: "İçerik üretimi, görsel teslim, araştırma ve paket hizmet senaryolarında gelir üretmeye yardımcı olabilecek araçlar."
+    topToolsEyebrow: "En \u00e7ok incelenenler",
+    topToolsTitle: "Karar verirken en \u00e7ok a\u00e7\u0131lan AI ara\u00e7lar\u0131",
+    topToolsDescription: "Kullan\u0131c\u0131lar\u0131n karar a\u015famas\u0131nda s\u0131k a\u00e7t\u0131\u011f\u0131 ara\u00e7lar\u0131 senaryo bazl\u0131 ve n\u00f6tr \u015fekilde g\u00f6r\u00fcn.",
+    beginnersEyebrow: "Ba\u015flang\u0131\u00e7 odakl\u0131",
+    beginnersTitle: "Yeni ba\u015flayanlar i\u00e7in AI ara\u00e7lar\u0131",
+    beginnersDescription: "D\u00fc\u015f\u00fck s\u00fcrt\u00fcnme, daha anla\u015f\u0131l\u0131r kullan\u0131m ve h\u0131zl\u0131 ilk sonu\u00e7 arayanlar i\u00e7in uygun se\u00e7enekler.",
+    freelancersEyebrow: "Servis odakl\u0131",
+    freelancersTitle: "Freelancer'lar i\u00e7in AI ara\u00e7lar\u0131",
+    freelancersDescription: "\u0130\u00e7erik, ara\u015ft\u0131rma, sunum ve g\u00f6rsel teslim s\u00fcre\u00e7lerinde zaman kazand\u0131rabilecek ara\u00e7lar\u0131 yan yana g\u00f6r\u00fcn.",
+    moneyEyebrow: "Gelir odakl\u0131",
+    moneyTitle: "Para kazanmak i\u00e7in AI ara\u00e7lar\u0131",
+    moneyDescription: "\u0130\u00e7erik \u00fcretimi, g\u00f6rsel teslim, ara\u015ft\u0131rma ve paket hizmet senaryolar\u0131nda gelir \u00fcretmeye yard\u0131mc\u0131 olabilecek ara\u00e7lar."
   },
   en: {
     selectorTitle: "What do you want to do?",
@@ -52,16 +53,16 @@ const sectionCopy = {
       { label: "Make money", href: "#money-tools" },
       { label: "Do research", href: "#popular-tools" }
     ],
-    topToolsEyebrow: "By popular use cases",
-    topToolsTitle: "Most reviewed AI tools",
-    topToolsDescription: "Review frequently opened tools in a neutral, scenario-based format that helps decisions happen faster.",
+    topToolsEyebrow: "Most explored",
+    topToolsTitle: "AI tools people open most while deciding",
+    topToolsDescription: "Review the tools users open most often during discovery in a neutral, scenario-based layout.",
     beginnersEyebrow: "Easy start",
     beginnersTitle: "AI tools for beginners",
     beginnersDescription: "Useful options for people who want low-friction onboarding and fast first wins.",
     freelancersEyebrow: "Freelance workflows",
     freelancersTitle: "AI tools for freelancers",
     freelancersDescription: "See tools that can reduce time spent on content, research, presentation, and visual delivery work.",
-    moneyEyebrow: "Revenue-focused",
+    moneyEyebrow: "Revenue focused",
     moneyTitle: "AI tools for making money",
     moneyDescription: "Tools that can support monetization through content, design delivery, research, and service packaging workflows."
   }
@@ -187,6 +188,23 @@ export function HomePage({ locale, content }: HomePageProps) {
           </AnimatedSection>
         </div>
 
+        <AnimatedSection delay={0.13}>
+          <SectionShell
+            className="section-tint-cyan"
+            eyebrow={content.sections.hotTools.eyebrow}
+            title={content.sections.hotTools.title}
+            description={content.sections.hotTools.description}
+          >
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {content.hotTools.map((item) => (
+                <div key={item.title} className="h-full">
+                  <ConversionListCard locale={locale} item={item} />
+                </div>
+              ))}
+            </div>
+          </SectionShell>
+        </AnimatedSection>
+
         <div id="popular-tools" className="scroll-mt-28">
           <AnimatedSection delay={0.14}>
             <SectionShell
@@ -307,6 +325,23 @@ export function HomePage({ locale, content }: HomePageProps) {
             </SectionShell>
           </AnimatedSection>
         </div>
+
+        {content.guides.length ? (
+          <AnimatedSection delay={0.25}>
+            <SectionShell
+              className="section-tint-cyan"
+              eyebrow={content.sections.guides.eyebrow}
+              title={content.sections.guides.title}
+              description={content.sections.guides.description}
+            >
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {content.guides.map((item) => (
+                  <GuideCard key={item.href} locale={locale} item={item} linkLabel={content.sections.guides.linkLabel} />
+                ))}
+              </div>
+            </SectionShell>
+          </AnimatedSection>
+        ) : null}
 
         <AnimatedSection delay={0.26}>
           <SectionShell className="section-tint-cyan">

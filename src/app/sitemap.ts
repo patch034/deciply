@@ -1,6 +1,7 @@
 ﻿import type { MetadataRoute } from "next";
 
 import { blogArticles } from "@/data/blog";
+import { discoveryPages } from "@/data/discovery-pages";
 import { categories } from "@/data/categories";
 import { locales } from "@/i18n/config";
 import { tools } from "@/data/tools";
@@ -50,6 +51,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const tool of tools) {
       entries.push({
         url: withLocale(locale, `/tools/${tool.slug}`),
+        lastModified: staticLastModified
+      });
+    }
+
+    for (const page of discoveryPages) {
+      entries.push({
+        url: withLocale(locale, `/${page.slug}`),
         lastModified: staticLastModified
       });
     }

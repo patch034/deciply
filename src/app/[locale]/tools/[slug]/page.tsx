@@ -324,6 +324,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   const useCaseCards = getUseCaseCards(safeLocale, tool, dictionary);
   const howToUseSteps = getHowToUseSteps(safeLocale, tool);
   const audienceCards = getAudienceCards(safeLocale, tool, dictionary);
+  const alternativesTitle = safeLocale === "tr" ? `${tool.name} alternatifleri` : `Alternatives to ${tool.name}`;
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-8 pb-40 sm:px-6 sm:py-10 sm:pb-32 lg:gap-10 lg:px-8 lg:py-14 lg:pb-14">
@@ -497,7 +498,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </InfoSection>
       </section>
 
-      <InfoSection title={dictionary.alternativesTitle} description={dictionary.alternativesDescription}>
+      <InfoSection title={alternativesTitle} description={dictionary.alternativesDescription}>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {relatedTools.map((item) => (
             <ToolCard
