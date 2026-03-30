@@ -284,12 +284,21 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return {};
   }
 
+  const canonicalUrl = buildCanonicalUrl(`/${locale}/tools/${slug}`);
+
   return {
     title: tool.seoTitle,
     description: tool.seoDescription,
+    keywords: [tool.name, tool.bestUseCase, ...tool.toolCategorySlugs, ...tool.useCaseSlugs, "AI tool", "AI software"],
     alternates: {
-      canonical: buildCanonicalUrl(`/${locale}/tools/${slug}`),
+      canonical: canonicalUrl,
       languages: buildAlternates(`/tools/${slug}`)
+    },
+    openGraph: {
+      type: "website",
+      url: canonicalUrl,
+      title: tool.seoTitle,
+      description: tool.seoDescription
     }
   };
 }
@@ -325,9 +334,52 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   const howToUseSteps = getHowToUseSteps(safeLocale, tool);
   const audienceCards = getAudienceCards(safeLocale, tool, dictionary);
   const alternativesTitle = safeLocale === "tr" ? `${tool.name} alternatifleri` : `Alternatives to ${tool.name}`;
+  const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/tools/${tool.slug}`);
+  const decisionSummaryTitle = safeLocale === "tr" ? "Karar ?zeti" : "Decision snapshot";
+  const decisionSummaryDescription =
+    safeLocale === "tr"
+      ? "Bu arac?n kimler i?in daha mant?kl? oldu?unu ve hangi senaryoda zay?f kalabilece?ini h?zl?ca g?r?n."
+      : "See who this tool fits best, where it may fall short, and which scenarios it supports before you click out.";
+  const decisionSummaryCards = [
+    {
+      title: dictionary.bestForLabel,
+      value: tool.bestUseCase
+    },
+    {
+      title: dictionary.whoShouldUseTitle,
+      value: tool.whoShouldUse.slice(0, 3).join(", ")
+    },
+    {
+      title: dictionary.whoShouldAvoidTitle,
+      value: whoShouldAvoid.slice(0, 3).join(", ")
+    },
+    {
+      title: safeLocale === "tr" ? "Use-case sinyalleri" : "Use-case signals",
+      value: decisionTags.slice(0, 3).join(", ")
+    }
+  ];
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: tool.name,
+    description: tool.seoDescription,
+    applicationCategory: quickCategory,
+    operatingSystem: "Web",
+    url: canonicalUrl,
+    inLanguage: safeLocale,
+    isAccessibleForFree: tool.pricing !== "PAID",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: tool.rating.toFixed(1),
+      bestRating: "5",
+      ratingCount: "1"
+    }
+  };
 
   return (
-    <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-8 pb-40 sm:px-6 sm:py-10 sm:pb-32 lg:gap-10 lg:px-8 lg:py-14 lg:pb-14">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-8 pb-40 sm:px-6 sm:py-10 sm:pb-32 lg:gap-10 lg:px-8 lg:py-14 lg:pb-14">
       <Breadcrumb
         items={[
           { label: dictionary.breadcrumbsHome, href: `/${safeLocale}` },
@@ -422,6 +474,17 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
           />
         </div>
       </section>
+
+      <InfoSection title={decisionSummaryTitle} description={decisionSummaryDescription}>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {decisionSummaryCards.map((item) => (
+            <div key={item.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{item.title}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-200">{item.value}</p>
+            </div>
+          ))}
+        </div>
+      </InfoSection>
 
       <InfoSection title={dictionary.overviewTitle} description={dictionary.overviewDescription}>
         <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 text-[15px] leading-7 text-slate-300 sm:p-5 sm:text-base">
@@ -551,7 +614,8 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
 
