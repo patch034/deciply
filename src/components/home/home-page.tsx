@@ -2,7 +2,6 @@ import { BlogCard } from "@/components/blog/blog-card";
 import { CategoryCard } from "@/components/home/category-card";
 import { ComparisonCard } from "@/components/home/comparison-card";
 import { ComparisonTable } from "@/components/home/comparison-table";
-import { ConversionListCard } from "@/components/home/conversion-list-card";
 import { GuideCard } from "@/components/home/guide-card";
 import { HeroSection } from "@/components/home/hero-section";
 import { HowItWorksSection } from "@/components/home/how-it-works-section";
@@ -92,6 +91,7 @@ export function HomePage({ locale, content }: HomePageProps) {
   const ui = sectionCopy[locale];
   const featuredTools = getToolsBySlugs(locale, ["chatgpt", "claude", "midjourney", "gemini"]);
   const topTools = getToolsBySlugs(locale, ["chatgpt", "claude", "perplexity"]);
+  const trendingTools = getToolsBySlugs(locale, ["chatgpt", "claude", "perplexity", "midjourney"]);
   const moneyTools = getToolsBySlugs(locale, ["jasper", "copy-ai", "canva-ai"]);
   const beginnerTools = getToolsBySlugs(locale, ["chatgpt", "gemini", "canva-ai"]);
   const freelancerTools = getToolsBySlugs(locale, ["chatgpt", "claude", "midjourney"]);
@@ -208,10 +208,17 @@ export function HomePage({ locale, content }: HomePageProps) {
             title={content.sections.hotTools.title}
             description={content.sections.hotTools.description}
           >
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {content.hotTools.map((item) => (
-                <div key={item.title} className="h-full">
-                  <ConversionListCard locale={locale} item={item} />
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+              {trendingTools.map((tool) => (
+                <div key={tool.name} className="h-full">
+                  <ToolCard
+                    locale={locale}
+                    tool={tool}
+                    detailLabel={content.sections.tools.detailLabel}
+                    tryLabel={content.sections.tools.tryLabel}
+                    bestForLabel={content.sections.tools.bestForLabel}
+                    ratingLabel={content.sections.tools.ratingLabel}
+                  />
                 </div>
               ))}
             </div>
