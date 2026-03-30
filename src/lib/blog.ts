@@ -1,4 +1,5 @@
 import { blogArticles } from "@/data/blog";
+import { getBlogPlaybookSections } from "@/data/blog-playbooks";
 import type { Locale } from "@/i18n/config";
 import { getLocalizedToolBySlug, getLocalizedTools } from "@/lib/catalog";
 import { assertEncodingHealth, normalizeEncodingTree } from "@/lib/encoding";
@@ -94,6 +95,8 @@ function localizeArticle(article: BlogEntry, locale: Locale): LocalizedBlogArtic
   if (!publishDate) {
     throw new Error(`Blog article is missing publishDate and createdAt: ${article.slug}`);
   }
+
+  const playbookSections = getBlogPlaybookSections(article.slug, locale);
 
   const localizedArticle = {
     slug: article.slug,
