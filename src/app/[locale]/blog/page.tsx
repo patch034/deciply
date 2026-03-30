@@ -74,7 +74,7 @@ export default async function BlogPage({
   const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <div className="pb-10 pt-10 lg:pt-14">
+    <div className="w-full max-w-full overflow-x-hidden pb-10 pt-10 lg:pt-14">
       <SectionShell
         eyebrow={copy.listEyebrow}
         title={copy.listTitle}
@@ -90,22 +90,22 @@ export default async function BlogPage({
         {totalPages > 1 ? (
           <nav
             aria-label={`${copy.blogLabel} pagination`}
-            className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3"
+            className="mt-8 flex w-full max-w-full flex-wrap items-center justify-center gap-2 overflow-x-hidden sm:gap-3"
           >
             {currentPage > 1 ? (
               <Link
                 href={buildBlogPageHref(safeLocale, currentPage - 1)}
                 className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/12 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
               >
-                {safeLocale === "tr" ? "‹ Önceki" : "‹ Previous"}
+                {`‹ ${copy.previousPage}`}
               </Link>
             ) : (
               <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/8 bg-white/[0.03] px-4 text-sm font-medium text-slate-500/70">
-                {safeLocale === "tr" ? "‹ Önceki" : "‹ Previous"}
+                {`‹ ${copy.previousPage}`}
               </span>
             )}
 
-            <div className="flex flex-wrap items-center justify-center gap-2">
+            <div className="flex max-w-full flex-wrap items-center justify-center gap-2">
               {pageNumbers.map((pageNumber) => {
                 const isActive = pageNumber === currentPage;
 
@@ -134,11 +134,11 @@ export default async function BlogPage({
                 href={buildBlogPageHref(safeLocale, currentPage + 1)}
                 className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/12 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
               >
-                {safeLocale === "tr" ? "Sonraki ›" : "Next ›"}
+                {`${copy.nextPage} ›`}
               </Link>
             ) : (
               <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/8 bg-white/[0.03] px-4 text-sm font-medium text-slate-500/70">
-                {safeLocale === "tr" ? "Sonraki ›" : "Next ›"}
+                {`${copy.nextPage} ›`}
               </span>
             )}
           </nav>
