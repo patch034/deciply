@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import type { ReactNode } from "react";
 
 import type { Locale } from "@/i18n/config";
@@ -19,7 +19,7 @@ type ArticleContentProps = {
   sections: BlogSection[];
   supportingLinks?: {
     tools?: InlineLinkItem[];
-    article?: InlineLinkItem;
+    articles?: InlineLinkItem[];
   };
 };
 
@@ -63,51 +63,39 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
     });
   }
 
+  function renderLinkList(items: InlineLinkItem[]) {
+    return items.map((item, index) => (
+      <span key={item.href}>
+        {index > 0 ? (locale === "tr" ? ", " : ", ") : null}
+        <Link
+          href={item.href}
+          className="font-medium text-cyan-200 underline decoration-cyan-400/40 underline-offset-4 transition hover:text-cyan-100 hover:decoration-cyan-300"
+        >
+          {item.label}
+        </Link>
+      </span>
+    ));
+  }
+
   function renderSupportingLinks() {
-    if (!supportingLinks?.tools?.length && !supportingLinks?.article) {
+    if (!supportingLinks?.tools?.length && !supportingLinks?.articles?.length) {
       return null;
     }
 
     const toolItems = supportingLinks?.tools ?? [];
-    const article = supportingLinks?.article;
-    const introText =
-      locale === "tr"
-        ? "Bu konuyu incelerken "
-        : "While reviewing this topic, you can also explore ";
-    const toolJoiner = locale === "tr" ? " ve " : " and ";
-    const articlePrefix = locale === "tr" ? " ayrıca " : ", and also read ";
-    const articleSuffix = ".";
+    const articleItems = supportingLinks?.articles ?? [];
 
     return (
       <div className="mt-5 rounded-[20px] border border-cyan-400/14 bg-cyan-400/[0.04] px-4 py-3 text-sm leading-7 text-slate-300">
-        <p>
-          {introText}
-          {toolItems.map((tool, index) => (
-            <span key={tool.href}>
-              {index > 0 ? toolJoiner : null}
-              <Link
-                href={tool.href}
-                className="font-medium text-cyan-200 underline decoration-cyan-400/40 underline-offset-4 transition hover:text-cyan-100 hover:decoration-cyan-300"
-              >
-                {tool.label}
-              </Link>
-            </span>
-          ))}
-          {article ? (
-            <>
-              {articlePrefix}
-              <Link
-                href={article.href}
-                className="font-medium text-cyan-200 underline decoration-cyan-400/40 underline-offset-4 transition hover:text-cyan-100 hover:decoration-cyan-300"
-              >
-                {article.label}
-              </Link>
-              {articleSuffix}
-            </>
-          ) : (
-            articleSuffix
-          )}
-        </p>
+        {locale === "tr" ? (
+          <p>
+            Bu konuyla ilgili olarak {renderLinkList(toolItems)} detay sayfalarina ve {renderLinkList(articleItems)} rehberlerine de goz atabilirsiniz.
+          </p>
+        ) : (
+          <p>
+            For this topic, you can also explore {renderLinkList(toolItems)} tool pages and {renderLinkList(articleItems)} related guides.
+          </p>
+        )}
       </div>
     );
   }

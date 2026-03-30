@@ -311,8 +311,8 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   }
 
   const categoryNamesMap = getCategoryNamesMap(safeLocale);
-  const relatedTools = getRelatedTools(safeLocale, tool.slug, 3);
-  const relatedArticles = getRelatedArticlesByTool(safeLocale, tool.slug, 3);
+  const relatedTools = getRelatedTools(safeLocale, tool.slug, 4);
+  const relatedArticles = getRelatedArticlesByTool(safeLocale, tool.slug, 4);
   const blogCopy = getBlogCopy(safeLocale);
   const pricingValue = formatPricing(tool.pricing, safeLocale);
   const supportText = safeLocale === "tr" ? "Hızlı başlangıç • Net fiyat bilgisi" : "Fast start • Clear pricing signal";

@@ -1,5 +1,6 @@
 import { blogArticles } from "@/data/blog";
 import type { Locale } from "@/i18n/config";
+import { getLocalizedToolBySlug, getLocalizedTools } from "@/lib/catalog";
 import { assertEncodingHealth, normalizeEncodingTree } from "@/lib/encoding";
 import type { BlogEntry, LocalizedBlogArticle } from "@/types/blog";
 
@@ -182,4 +183,69 @@ export function getRelatedArticlesByTool(locale: Locale, toolSlug: string, limit
   return getLocalizedBlogArticles(locale)
     .filter((article) => article.relatedToolSlugs.includes(toolSlug))
     .slice(0, limit);
+}
+
+export function getBlogSupportingLinks(locale: Locale, slug: string, toolLimit = 2, articleLimit = 2) {
+  const currentArticle = getLocalizedBlogArticleBySlug(locale, slug);
+
+  if (!currentArticle) {
+    return { tools: [], articles: [] };
+  }
+
+  const pickedToolSlugs = new Set<string>();
+  const tools = currentArticle.relatedToolSlugs
+    .map((toolSlug) => getLocalizedToolBySlug(locale, toolSlug))
+    .filter((tool): tool is NonNullable<typeof tool> => tool !== null)
+    .filter((tool) => {
+      if (pickedToolSlugs.has(tool.slug)) {
+        return false;
+      }
+
+      pickedToolSlugs.add(tool.slug);
+      return true;
+    });
+
+  if (tools.length < toolLimit) {
+    for (const tool of getLocalizedTools(locale)) {
+      if (pickedToolSlugs.has(tool.slug)) {
+        continue;
+      }
+
+      pickedToolSlugs.add(tool.slug);
+      tools.push(tool);
+
+      if (tools.length >= toolLimit) {
+        break;
+      }
+    }
+  }
+
+  const articleCandidates = getRelatedArticles(locale, slug, Math.max(articleLimit, 3));
+  const pickedArticleSlugs = new Set(articleCandidates.map((article) => article.slug));
+
+  if (articleCandidates.length < articleLimit) {
+    for (const article of getLocalizedBlogArticles(locale)) {
+      if (article.slug === slug || pickedArticleSlugs.has(article.slug)) {
+        continue;
+      }
+
+      pickedArticleSlugs.add(article.slug);
+      articleCandidates.push(article);
+
+      if (articleCandidates.length >= articleLimit) {
+        break;
+      }
+    }
+  }
+
+  return {
+    tools: tools.slice(0, toolLimit).map((tool) => ({
+      label: tool.name,
+      href: `/${locale}/tools/${tool.slug}`
+    })),
+    articles: articleCandidates.slice(0, articleLimit).map((article) => ({
+      label: article.title,
+      href: `/${locale}/blog/${article.slug}`
+    }))
+  };
 }

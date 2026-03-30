@@ -13,8 +13,8 @@ import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale
 import {
   formatBlogDate,
   getBlogCopy,
+  getBlogSupportingLinks,
   getLocalizedBlogArticleBySlug,
-  getLocalizedBlogArticles,
   getRelatedArticles,
   resolveBlogPublishDate
 } from "@/lib/blog";
@@ -99,25 +99,12 @@ export default async function BlogDetailPage({
     .filter((tool) => tool !== null);
   const primaryTool = relatedTools[0];
   const relatedArticles = getRelatedArticles(safeLocale, article.slug, 3);
-  const fallbackArticle =
-    relatedArticles[0] ?? getLocalizedBlogArticles(safeLocale).find((item) => item.slug !== article.slug) ?? null;
   const heroPrimaryHref = primaryTool ? getToolOutboundUrl(primaryTool) : `/${safeLocale}/tools`;
   const comparisonHref = `/${safeLocale}/categories/comparisons`;
   const leadSections = article.sections.slice(0, 2);
   const tailSections = article.sections.slice(2);
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/blog/${article.slug}`);
-  const inlineSupportingLinks = {
-    tools: relatedTools.slice(0, 2).map((tool) => ({
-      label: tool.name,
-      href: `/${safeLocale}/tools/${tool.slug}`
-    })),
-    article: fallbackArticle
-      ? {
-          label: fallbackArticle.title,
-          href: `/${safeLocale}/blog/${fallbackArticle.slug}`
-        }
-      : undefined
-  };
+  const inlineSupportingLinks = getBlogSupportingLinks(safeLocale, article.slug, 2, 2);
   const publishedLabel = safeLocale === "tr" ? "Yayınlandı" : "Published";
   const updatedLabel = safeLocale === "tr" ? "Güncellendi" : "Updated";
   const publishedSource = resolveBlogPublishDate(article);
