@@ -335,10 +335,10 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   const audienceCards = getAudienceCards(safeLocale, tool, dictionary);
   const alternativesTitle = safeLocale === "tr" ? `${tool.name} alternatifleri` : `Alternatives to ${tool.name}`;
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/tools/${tool.slug}`);
-  const decisionSummaryTitle = safeLocale === "tr" ? "Karar ?zeti" : "Decision snapshot";
+  const decisionSummaryTitle = safeLocale === "tr" ? "Karar özeti" : "Decision snapshot";
   const decisionSummaryDescription =
     safeLocale === "tr"
-      ? "Bu arac?n kimler i?in daha mant?kl? oldu?unu ve hangi senaryoda zay?f kalabilece?ini h?zl?ca g?r?n."
+      ? "Bu aracın kimler için daha mantıklı olduğunu ve hangi senaryoda zayıf kalabileceğini hızlıca görün."
       : "See who this tool fits best, where it may fall short, and which scenarios it supports before you click out.";
   const decisionSummaryCards = [
     {
@@ -453,7 +453,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-400/10 px-4 py-2 text-sm font-semibold text-amber-200">
-              <span aria-hidden="true">?</span>
+              <span aria-hidden="true">★</span>
               <span>{tool.rating.toFixed(1)}/5</span>
             </div>
             <p className="text-sm font-medium text-slate-400">

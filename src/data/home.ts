@@ -156,9 +156,9 @@ const homeContent: Record<Locale, HomeContent> = {
       panelEyebrow: "Karar paneli",
       trustBadges: ["Tarafsız", "Gerçek kullanım", "Düzenli güncellenir"],
       stats: [
-        { value: "120+", label: "AI araç" },
-        { value: "10.000+", label: "aktif kullanıcı sinyali" },
-        { value: "Haftalık", label: "güncellenen veriler" }
+        { value: String(getToolCount()), label: "küratörlü AI araç" },
+        { value: String(blogArticles.length), label: "yayındaki rehber" },
+        { value: String(discoveryPages.length), label: "karar sayfası" }
       ],
       panelTitle: "Daha hızlı, daha net karar verin",
       panelDescription:
@@ -264,9 +264,9 @@ const homeContent: Record<Locale, HomeContent> = {
       }
     },
     socialProofStats: [
-      { value: "10.000+", label: "kullanıcı" },
-      { value: "Her hafta", label: "güncellenen araçlar" },
-      { value: "Gerçek", label: "kullanım senaryolarına göre sıralama" }
+      { value: String(getToolCount()), label: "incelenen AI araç" },
+      { value: String(discoveryPages.length), label: "yayındaki use-case sayfası" },
+      { value: String(blogArticles.length), label: "güncel rehber" }
     ],
     highIntentCards: [
       {
@@ -507,9 +507,9 @@ const homeContent: Record<Locale, HomeContent> = {
       panelEyebrow: "Decision panel",
       trustBadges: ["Scenario-based", "Transparent", "Updated regularly"],
       stats: [
-        { value: "120+", label: "AI tools" },
-        { value: "10,000+", label: "user signals" },
-        { value: "Weekly", label: "fresh updates" }
+        { value: String(getToolCount()), label: "curated AI tools" },
+        { value: String(blogArticles.length), label: "guides published" },
+        { value: String(discoveryPages.length), label: "decision pages" }
       ],
       panelTitle: "Decide faster",
       panelDescription:
@@ -615,9 +615,9 @@ const homeContent: Record<Locale, HomeContent> = {
       }
     },
     socialProofStats: [
-      { value: "10,000+", label: "users" },
-      { value: "Weekly", label: "updated tools" },
-      { value: "Real", label: "use-case-based sorting" }
+      { value: String(getToolCount()), label: "AI tools reviewed" },
+      { value: String(discoveryPages.length), label: "use-case pages live" },
+      { value: String(blogArticles.length), label: "fresh guides" }
     ],
     highIntentCards: [
       {

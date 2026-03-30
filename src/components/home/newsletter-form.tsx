@@ -34,10 +34,10 @@ export function NewsletterForm({
     }
 
     const subject =
-      locale === "tr" ? "Deciply bulten kaydi" : "Deciply newsletter signup";
+      locale === "tr" ? "Deciply bülten kaydı" : "Deciply newsletter signup";
     const body =
       locale === "tr"
-        ? `Merhaba,\n\nDeciply guncellemeleri icin bu adresi listeye eklemek istiyorum:\n${email}\n`
+        ? `Merhaba,\n\nDeciply güncellemeleri için bu adresi listeye eklemek istiyorum:\n${email}\n`
         : `Hello,\n\nI'd like to join Deciply updates with this email address:\n${email}\n`;
 
     window.location.href = `mailto:${destinationEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;

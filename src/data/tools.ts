@@ -4730,7 +4730,7 @@ export const tools: ToolEntry[] = [
           "SEO odaklı içerik planlama ve optimizasyon",
           "Metin odakli is akislar",
           "Duzenleme ve yeniden yazim",
-          "Hizli taslak uretimi"
+          "Hızlı taslak üretimi"
         ],
         pros: [
           "SEO odaklı içerik planlama ve optimizasyon icin guclu olabilir",
@@ -4839,7 +4839,7 @@ export const tools: ToolEntry[] = [
           "Arama görünürlüğü ve içerik stratejisi",
           "Metin odakli is akislar",
           "Duzenleme ve yeniden yazim",
-          "Hizli taslak uretimi"
+          "Hızlı taslak üretimi"
         ],
         pros: [
           "Arama görünürlüğü ve içerik stratejisi icin guclu olabilir",

@@ -89,7 +89,7 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
       <div className="mt-5 rounded-[20px] border border-cyan-400/14 bg-cyan-400/[0.04] px-4 py-3 text-sm leading-7 text-slate-300">
         {locale === "tr" ? (
           <p>
-            Bu konuyla ilgili olarak {renderLinkList(toolItems)} detay sayfalarina ve {renderLinkList(articleItems)} rehberlerine de goz atabilirsiniz.
+            Bu konuyla ilgili olarak {renderLinkList(toolItems)} detay sayfalarına ve {renderLinkList(articleItems)} rehberlerine de göz atabilirsiniz.
           </p>
         ) : (
           <p>
