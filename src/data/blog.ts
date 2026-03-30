@@ -58,7 +58,7 @@ function withBlogMeta(entry: BlogEntry): BlogEntry {
 
 assertEncodingHealth("blog-data");
 
-export const blogArticles: BlogEntry[] = [
+const allBlogArticles: BlogEntry[] = [
   {
     slug: "en-iyi-ai-araclari-2026",
     categorySlug: "ai-tools",
@@ -2609,4 +2609,16 @@ export const blogArticles: BlogEntry[] = [
   }
 
 ].map(withBlogMeta);
+
+const approvedBlogSlugs = new Set([
+  "en-iyi-ai-araclari-2026",
+  "chatgpt-vs-claude-vs-gemini",
+  "midjourney-nasil-kullanilir",
+  "best-ai-tools-for-beginners-2026",
+  "ai-tools-for-freelancers",
+  "best-free-ai-tools-2026",
+  "ai-tools-to-make-money-2026"
+]);
+
+export const blogArticles: BlogEntry[] = allBlogArticles.filter((article) => approvedBlogSlugs.has(article.slug));
 

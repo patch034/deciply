@@ -105,7 +105,8 @@ function localizeArticle(article: BlogEntry, locale: Locale): LocalizedBlogArtic
     createdAt: article.createdAt,
     updatedAt: article.updatedAt,
     relatedToolSlugs: article.relatedToolSlugs,
-    ...article.locales[locale]
+    ...article.locales[locale],
+    sections: playbookSections ?? article.locales[locale].sections
   };
 
   const normalizedArticle = normalizeEncodingTree(localizedArticle);

@@ -120,6 +120,169 @@ const freeStarterPlaybook: Playbook = {
     ]
   }
 };
+
+const beginnerLaunchPlaybook: Playbook = {
+  tr: {
+    scenarioParagraphs: [
+      "Ger\u00e7ek senaryoda yeni ba\u015flayan biri tek seferde on ara\u00e7 \u00f6\u011frenmeye \u00e7al\u0131\u015fmaz. Genelde bir \u00f6\u011frenci, yeni freelancer veya k\u00fc\u00e7\u00fck i\u015fletme sahibi ilk haftada hangi arac\u0131n ger\u00e7ekten i\u015fine yarad\u0131\u011f\u0131n\u0131 anlamaya \u00e7al\u0131\u015f\u0131r.",
+      "Bu y\u00fczden ChatGPT, Gemini, Perplexity, Canva AI ve Notion AI gibi ara\u00e7lar 'en pop\u00fcler' olduklar\u0131 i\u00e7in de\u011fil, ilk fayday\u0131 h\u0131zl\u0131 g\u00f6sterdikleri i\u00e7in \u00f6nemlidir."
+    ],
+    stepCards: [
+      { title: "Step 1: \u0130lk g\u00f6revi se\u00e7", paragraphs: ["\u00d6nce tek bir i\u015f belirle: \u00f6zet \u00e7\u0131karmak, fikir toplamak, ara\u015ft\u0131rma yapmak veya sunum haz\u0131rlamak.", "Yeni ba\u015flayan biri i\u00e7in en do\u011fru ara\u00e7, ilk g\u00f6revde h\u0131zl\u0131 sonu\u00e7 verendir."], bullets: ["\u00d6zet", "Taslak", "Ara\u015ft\u0131rma", "Sunum"] },
+      { title: "Step 2: Tek ara\u00e7la 7 g\u00fcn dene", paragraphs: ["\u0130lk hafta boyunca tek ara\u00e7la k\u00fc\u00e7\u00fck ama ger\u00e7ek g\u00f6revler \u00e7\u00f6z. B\u00f6ylece arac\u0131n dili, h\u0131z\u0131 ve s\u0131n\u0131rlar\u0131 daha net g\u00f6r\u00fcn\u00fcr.", "Bu a\u015famada ara\u00e7 toplamak yerine kullan\u0131m al\u0131\u015fkanl\u0131\u011f\u0131 kurmak daha de\u011ferlidir."], bullets: ["7 g\u00fcnl\u00fck test", "Tek ara\u00e7 oda\u011f\u0131", "Ger\u00e7ek g\u00f6rev"] },
+      { title: "Step 3: \u0130kinci arac\u0131 ihtiya\u00e7 \u00e7\u0131k\u0131nca ekle", paragraphs: ["Genel ara\u00e7 art\u0131k yetmedi\u011finde ikinci katman\u0131 ekle. Ara\u015ft\u0131rma i\u00e7in Perplexity, d\u00fczen i\u00e7in Notion AI, g\u00f6rsel i\u00e7in Canva AI daha mant\u0131kl\u0131 olabilir.", "\u0130htiya\u00e7 olu\u015fmadan stack b\u00fcy\u00fctmek kafa kar\u0131\u015f\u0131kl\u0131\u011f\u0131n\u0131 art\u0131r\u0131r."], bullets: ["\u00d6nce temel ara\u00e7", "Sonra ihtiya\u00e7 bazl\u0131 ekleme", "Gereksiz kalabal\u0131\u011f\u0131 \u00f6nle"] }
+    ],
+    earningsParagraphs: [
+      "Yeni ba\u015flayan biri i\u00e7in ilk hedef b\u00fcy\u00fck gelir de\u011fil, h\u0131zl\u0131 de\u011fer \u00fcretmektir. Do\u011fru ara\u00e7 se\u00e7imi k\u00fc\u00e7\u00fck teslimleri daha h\u0131zl\u0131 haz\u0131rlamay\u0131 m\u00fcmk\u00fcn k\u0131larsa ilk k\u00fc\u00e7\u00fck gelir f\u0131rsat\u0131 da olu\u015fabilir.",
+      "D\u00fc\u015f\u00fck senaryoda kullan\u0131c\u0131 sadece kendi i\u015fini h\u0131zland\u0131r\u0131r. Orta senaryoda k\u00fc\u00e7\u00fck freelance teslimler ba\u015flayabilir. \u0130yi senaryoda ise tek g\u00f6revden k\u00fc\u00e7\u00fck ama d\u00fczenli bir ek gelir modeli \u00e7\u0131kabilir."
+    ],
+    earningsItems: [
+      { label: "D\u00fc\u015f\u00fck senaryo", value: "$0-$100 / ay - \u00f6nce ki\u015fisel verim" },
+      { label: "Orta senaryo", value: "$100-$300 / ay - ilk k\u00fc\u00e7\u00fck teslimler" },
+      { label: "\u0130yi senaryo", value: "$300+ / ay - dar ama tekrar eden servis" }
+    ],
+    failParagraphs: [
+      "\u00c7o\u011fu yeni ba\u015flayan ki\u015fi \u00e7ok fazla ara\u00e7 denedi\u011fi i\u00e7in kal\u0131c\u0131 kullan\u0131m al\u0131\u015fkanl\u0131\u011f\u0131 kuramaz. Bu da arac\u0131 de\u011fil, motivasyonu t\u00fcketir.",
+      "Di\u011fer b\u00fcy\u00fck hata, ilk \u00e7\u0131kt\u0131y\u0131 g\u00f6rmeden \u00fccretli plana ge\u00e7mek veya tek bir arac\u0131n her i\u015fi \u00e7\u00f6zece\u011fini sanmakt\u0131r."
+    ],
+    failBullets: ["\u00c7ok fazla ara\u00e7 denemek", "Ger\u00e7ek g\u00f6rev yerine bo\u015f test yapmak", "\u0130lk haftada \u00fccretli plana ko\u015fmak", "Tek arac\u0131 her i\u015f i\u00e7in zorlamak"],
+    toolsParagraphs: [
+      "ChatGPT ve Gemini ilk genel kullan\u0131m katman\u0131 i\u00e7in mant\u0131kl\u0131d\u0131r. Perplexity ara\u015ft\u0131rma gerekiyorsa ikinci ara\u00e7 olarak g\u00fc\u00e7l\u00fcd\u00fcr. Canva AI g\u00f6rsel teslimlerde, Notion AI ise d\u00fczen ve not ak\u0131\u015f\u0131nda daha mant\u0131kl\u0131 hissedilir.",
+      "Ba\u015flang\u0131\u00e7ta soru 'en g\u00fc\u00e7l\u00fc ara\u00e7 hangisi?' de\u011fil, 'benim ilk i\u015fimi en h\u0131zl\u0131 hangisi \u00e7\u00f6z\u00fcyor?' olmal\u0131d\u0131r."
+    ],
+    toolItems: [
+      { label: "\u0130lk genel kullan\u0131m", value: "ChatGPT / Gemini" },
+      { label: "Ara\u015ft\u0131rma", value: "Perplexity" },
+      { label: "G\u00f6rsel ba\u015flang\u0131\u00e7", value: "Canva AI" },
+      { label: "D\u00fczen ve not", value: "Notion AI" }
+    ],
+    caseParagraphs: [
+      "Mini \u00f6rnek: yeni ba\u015flayan bir kullan\u0131c\u0131 \u00f6nce ChatGPT ile teklif tasla\u011f\u0131 ve \u00f6zet \u00e7\u0131karmay\u0131 \u00f6\u011frendi, sonra ara\u015ft\u0131rma gerekti\u011finde Perplexity ekledi. \u0130lk ay iki k\u00fc\u00e7\u00fck deneme i\u015fi ald\u0131.",
+      "Buradaki kazan\u00e7tan daha \u00f6nemli nokta, hangi arac\u0131n hangi g\u00f6revde ger\u00e7ekten i\u015fe yarad\u0131\u011f\u0131n\u0131 g\u00f6rmesiydi. Bu da sonraki se\u00e7imleri \u00e7ok daha kolay hale getirdi."
+    ]
+  },
+  en: {
+    scenarioParagraphs: [
+      "In a real beginner scenario, the user is not trying to master ten tools at once. They are usually a student, new freelancer, or small operator trying to find the first tool that creates real value in the first week.",
+      "That is why tools like ChatGPT, Gemini, Perplexity, Canva AI, and Notion AI matter less because they are famous and more because they can show quick practical value."
+    ],
+    stepCards: [
+      { title: "Step 1: Choose the first task", paragraphs: ["Pick one real job first: summarize, brainstorm, research, or prepare a simple deck.", "The best beginner tool is usually the one that solves the first job with the least friction."], bullets: ["Summary", "Draft", "Research", "Slides"] },
+      { title: "Step 2: Use one tool for 7 days", paragraphs: ["Spend the first week on one real workflow. That reveals speed, limits, and usability much faster than random experiments.", "Early consistency matters more than tool collecting."], bullets: ["7-day test", "One-tool focus", "Real tasks"] },
+      { title: "Step 3: Add the second tool only when needed", paragraphs: ["Add Perplexity for research, Canva AI for visuals, or Notion AI for organization only after the first tool stops being enough.", "This keeps the learning curve manageable."], bullets: ["Core tool first", "Add by need", "Avoid tool clutter"] }
+    ],
+    earningsParagraphs: [
+      "For beginners, the first goal is not major income. It is practical value. If the right tool helps produce useful drafts, summaries, or simple deliverables faster, small revenue paths become more realistic.",
+      "In a low scenario the user only improves personal productivity. In a medium scenario they test small freelance outputs. In a better scenario those outputs turn into a narrow but repeatable offer."
+    ],
+    earningsItems: [
+      { label: "Low scenario", value: "$0-$100/mo - personal productivity first" },
+      { label: "Medium scenario", value: "$100-$300/mo - first small deliverables" },
+      { label: "Good scenario", value: "$300+/mo - narrow repeatable service" }
+    ],
+    failParagraphs: [
+      "Most beginners fail because they try too many tools too early and never build a repeatable habit around one workflow.",
+      "The second issue is paying for tools before the first useful result has even been validated."
+    ],
+    failBullets: ["Trying too many tools", "Testing without a real task", "Paying too early", "Forcing one tool into every job"],
+    toolsParagraphs: [
+      "ChatGPT and Gemini usually fit first general use. Perplexity fits research as a second layer. Canva AI fits visual outputs. Notion AI fits note and workflow structure.",
+      "The key beginner question is not which tool looks strongest. It is which tool creates the first useful result fastest."
+    ],
+    toolItems: [
+      { label: "General first tool", value: "ChatGPT / Gemini" },
+      { label: "Research layer", value: "Perplexity" },
+      { label: "Visual starter", value: "Canva AI" },
+      { label: "Notes and structure", value: "Notion AI" }
+    ],
+    caseParagraphs: [
+      "Mini case: a new user started with ChatGPT for quick summaries and simple proposal drafts, then added Perplexity only when research quality started to matter.",
+      "The first wins were small, but the user quickly learned which tool actually fit the workflow instead of guessing from hype."
+    ]
+  }
+};
+
+const freelancerWorkflowPlaybook: Playbook = {
+  tr: {
+    scenarioParagraphs: [
+      "Ger\u00e7ek senaryoda freelancer i\u00e7in de\u011fer, daha \u00e7ok ara\u00e7 kullanmakta de\u011fil; ayn\u0131 m\u00fc\u015fteriye daha h\u0131zl\u0131 ve daha temiz teslim yapabilmektedir. Bir i\u00e7erik freelancer'\u0131 tasla\u011f\u0131 h\u0131zland\u0131rmak isterken, bir ara\u015ft\u0131rma odakl\u0131 dan\u0131\u015fman kaynak kalitesini \u00f6ne \u00e7\u0131kar\u0131r.",
+      "Bu y\u00fczden ChatGPT, Claude, Perplexity, Canva AI ve Notion AI ayn\u0131 anda de\u011fil; teklifin ihtiya\u00e7 duydu\u011fu yerde anlam kazan\u0131r."
+    ],
+    stepCards: [
+      { title: "Step 1: Sat\u0131lacak teslimi netle\u015ftir", paragraphs: ["\u00d6nce hangi \u00e7\u0131kt\u0131y\u0131 satt\u0131\u011f\u0131n\u0131 netle\u015ftir: blog paketi, ara\u015ft\u0131rma \u00f6zeti, sosyal medya kreatifi veya teklif tasla\u011f\u0131.", "Freelancer i\u00e7in ara\u00e7 se\u00e7imi teslim tipinden sonra gelmelidir."], bullets: ["Blog paketi", "Ara\u015ft\u0131rma \u00f6zeti", "Sosyal medya", "Teklif tasla\u011f\u0131"] },
+      { title: "Step 2: \u00c7ekirdek arac\u0131 se\u00e7", paragraphs: ["Yaz\u0131 ve taslak i\u00e7in ChatGPT veya Claude, ara\u015ft\u0131rma i\u00e7in Perplexity, g\u00f6rsel destek i\u00e7in Canva AI daha mant\u0131kl\u0131 olabilir.", "\u0130lk a\u015famada tek ana ara\u00e7 se\u00e7mek s\u00fcre\u00e7te netlik sa\u011flar."], bullets: ["Ana ara\u00e7", "Destek ara\u00e7", "G\u00f6reve g\u00f6re se\u00e7im"] },
+      { title: "Step 3: Teslim s\u00fcresini \u00f6l\u00e7", paragraphs: ["Ara\u00e7 ger\u00e7ekten zaman kazand\u0131r\u0131yor mu, revizyonu azalt\u0131yor mu ve fiyat\u0131 koruyor mu bunlar\u0131 ilk m\u00fc\u015fterilerde \u00f6l\u00e7.", "Freelancer i\u00e7in en de\u011ferli metrik g\u00f6r\u00fcn\u00fc\u015f de\u011fil marjd\u0131r."], bullets: ["Teslim s\u00fcresi", "Revizyon say\u0131s\u0131", "Marj etkisi"] }
+    ],
+    earningsParagraphs: [
+      "Freelancer i\u00e7in gelir ara\u00e7tan de\u011fil, teslim sisteminden gelir. Do\u011fru ara\u00e7 se\u00e7imi ayn\u0131 i\u015ften daha fazla \u00e7\u0131kt\u0131 almay\u0131 veya ayn\u0131 s\u00fcrede daha kaliteli teslim yapmay\u0131 sa\u011flar.",
+      "D\u00fc\u015f\u00fck senaryoda birka\u00e7 k\u00fc\u00e7\u00fck teslim vard\u0131r. Orta senaryoda haftal\u0131k tekrar eden paketler olu\u015fur. \u0130yi senaryoda ise ara\u00e7, marj\u0131 b\u00fcy\u00fcten bir kald\u0131ra\u00e7 haline gelir."
+    ],
+    earningsItems: [
+      { label: "D\u00fc\u015f\u00fck senaryo", value: "$150-$400 / ay - birka\u00e7 k\u00fc\u00e7\u00fck teslim" },
+      { label: "Orta senaryo", value: "$400-$1.200 / ay - tekrar eden paketler" },
+      { label: "\u0130yi senaryo", value: "$1.200+ / ay - daha y\u00fcksek marjl\u0131 sistem" }
+    ],
+    failParagraphs: [
+      "Freelancer'lar\u0131n \u00e7o\u011fu ara\u00e7 y\u00fcz\u00fcnden de\u011fil, teklifi net olmad\u0131\u011f\u0131 i\u00e7in zorlan\u0131r. Ara\u00e7 g\u00fc\u00e7l\u00fc olsa da m\u00fc\u015fteri \u00e7\u0131kt\u0131y\u0131 net anlam\u0131yorsa sat\u0131\u015f zorla\u015f\u0131r.",
+      "Di\u011fer b\u00fcy\u00fck hata ham AI \u00e7\u0131kt\u0131s\u0131n\u0131 teslim etmektir. Bu k\u0131sa vadede h\u0131z kazand\u0131r\u0131r ama uzun vadede g\u00fcven kaybettirir."
+    ],
+    failBullets: ["Net teslim tan\u0131mlamamak", "Ham \u00e7\u0131kt\u0131 teslim etmek", "\u00c7ok fazla araca ayn\u0131 anda \u00f6deme yapmak", "Teslim s\u00fcresini \u00f6l\u00e7memek"],
+    toolsParagraphs: [
+      "Claude uzun i\u00e7erikte ve daha d\u00fczenli anlat\u0131mda rahat olabilir. ChatGPT esnek taslak taraf\u0131nda iyi hissedebilir. Perplexity kaynakl\u0131 ara\u015ft\u0131rma gereken i\u015flerde de\u011fer katar. Canva AI g\u00f6rsel ek teslimlerde yard\u0131mc\u0131 olur.",
+      "Freelancer i\u00e7in do\u011fru stack, m\u00fc\u015fteriye daha net sonu\u00e7 veren k\u00fc\u00e7\u00fck ve temiz stack'tir."
+    ],
+    toolItems: [
+      { label: "Yaz\u0131 ve taslak", value: "Claude / ChatGPT" },
+      { label: "Ara\u015ft\u0131rma", value: "Perplexity" },
+      { label: "G\u00f6rsel ek teslim", value: "Canva AI" },
+      { label: "D\u00fczen ve s\u00fcre\u00e7", value: "Notion AI" }
+    ],
+    caseParagraphs: [
+      "Mini \u00f6rnek: bir freelancer \u00f6nce Claude ile haftal\u0131k blog taslaklar\u0131n\u0131 h\u0131zland\u0131rd\u0131, sonra Perplexity ile ara\u015ft\u0131rma k\u0131sm\u0131n\u0131 g\u00fc\u00e7lendirdi. \u0130ki m\u00fc\u015fteride teslim s\u00fcresi k\u0131sald\u0131 ve revizyonlar azald\u0131.",
+      "As\u0131l kazan\u00e7 yaln\u0131zca h\u0131z de\u011fildi; ayn\u0131 paketi daha g\u00fcvenli \u015fekilde satabilmekti."
+    ]
+  },
+  en: {
+    scenarioParagraphs: [
+      "In a real freelance scenario, value does not come from using more tools. It comes from delivering cleaner work faster. A content freelancer may care about draft speed, while a strategy freelancer may care more about research quality.",
+      "That is why ChatGPT, Claude, Perplexity, Canva AI, and Notion AI matter only when they fit the deliverable being sold."
+    ],
+    stepCards: [
+      { title: "Step 1: Define the deliverable", paragraphs: ["Start by defining the output you sell: blog package, research summary, social creative, or proposal draft.", "Tool choice should come after the deliverable is clear."], bullets: ["Blog package", "Research summary", "Social creative", "Proposal draft"] },
+      { title: "Step 2: Pick the core tool", paragraphs: ["ChatGPT or Claude may fit drafting, Perplexity may fit research, Canva AI may fit visual support.", "A clean first stack is easier to manage and improve."], bullets: ["Core tool", "Support tool", "Fit by task"] },
+      { title: "Step 3: Measure delivery speed", paragraphs: ["Track whether the tool reduces time, lowers revision cycles, and protects margin.", "For freelancers, the key metric is not novelty. It is profitable delivery."], bullets: ["Delivery speed", "Revision count", "Margin impact"] }
+    ],
+    earningsParagraphs: [
+      "Freelance income comes from the delivery system, not the software name. The right tool can improve output volume or raise quality without increasing time.",
+      "In a low scenario the freelancer only lands a few small jobs. In a medium scenario packages repeat. In a better scenario the tool becomes real margin leverage."
+    ],
+    earningsItems: [
+      { label: "Low scenario", value: "$150-$400/mo - a few small jobs" },
+      { label: "Medium scenario", value: "$400-$1,200/mo - repeatable packages" },
+      { label: "Good scenario", value: "$1,200+/mo - better margin system" }
+    ],
+    failParagraphs: [
+      "Most freelancers struggle not because the tool is weak, but because the offer is unclear. A strong tool cannot fix a vague client promise.",
+      "The second mistake is shipping raw AI output. That may save time once, but it usually hurts trust fast."
+    ],
+    failBullets: ["Unclear deliverables", "Shipping raw output", "Paying for too many tools at once", "Not measuring delivery time"],
+    toolsParagraphs: [
+      "Claude may feel stronger for longer structured writing. ChatGPT may feel better for flexible drafting. Perplexity adds value when sources matter. Canva AI helps when visual add-ons increase package value.",
+      "The right freelance stack is usually a small stack that improves client-facing output."
+    ],
+    toolItems: [
+      { label: "Writing and drafts", value: "Claude / ChatGPT" },
+      { label: "Research", value: "Perplexity" },
+      { label: "Visual add-ons", value: "Canva AI" },
+      { label: "Planning and process", value: "Notion AI" }
+    ],
+    caseParagraphs: [
+      "Mini case: a freelancer used Claude for weekly blog drafts and Perplexity for research verification. Delivery time dropped and revision cycles became easier to manage across two clients.",
+      "The main gain was not just speed. It was being able to sell the same package with more confidence."
+    ]
+  }
+};
+
 const moneyServicePlaybook: Playbook = {
   tr: {
     scenarioParagraphs: [
@@ -376,7 +539,9 @@ const playbooks: Record<string, Playbook> = {
   "ucretsiz-ai-araclari-2026": freeStarterPlaybook,
   "free-ai-tools-you-can-start-using-today": freeStarterPlaybook,
   "free-ai-tools-that-actually-make-money": freeStarterPlaybook,
-  "best-free-ai-tools-2026": freeStarterPlaybook
+  "best-free-ai-tools-2026": freeStarterPlaybook,
+  "best-ai-tools-for-beginners-2026": beginnerLaunchPlaybook,
+  "ai-tools-for-freelancers": freelancerWorkflowPlaybook
 };
 
 export function getBlogPlaybookSections(slug: string, locale: Locale): BlogSection[] | null {
