@@ -120,6 +120,15 @@ export default async function BlogDetailPage({
     inLanguage: safeLocale,
     mainEntityOfPage: canonicalUrl,
     url: canonicalUrl,
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Deciply",
+      url: "https://deciply.com"
+    },
+    author: {
+      "@type": "Organization",
+      name: "Deciply Editorial Team"
+    },
     publisher: {
       "@type": "Organization",
       name: "Deciply"

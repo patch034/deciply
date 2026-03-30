@@ -368,6 +368,14 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
     url: canonicalUrl,
     inLanguage: safeLocale,
     isAccessibleForFree: tool.pricing !== "PAID",
+    author: {
+      "@type": "Organization",
+      name: "Deciply Editorial Team"
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Deciply"
+    },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: tool.rating.toFixed(1),
@@ -376,9 +384,35 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
     }
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: dictionary.breadcrumbsHome,
+        item: `https://deciply.com/${safeLocale}`
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: dictionary.toolsLabel,
+        item: `https://deciply.com/${safeLocale}/tools`
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: tool.name,
+        item: canonicalUrl
+      }
+    ]
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-8 pb-40 sm:px-6 sm:py-10 sm:pb-32 lg:gap-10 lg:px-8 lg:py-14 lg:pb-14">
       <Breadcrumb
         items={[
