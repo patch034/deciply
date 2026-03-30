@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "npm run verify:encoding && prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:studio": "prisma studio"
+    "prisma:studio": "prisma studio",
+    "verify:encoding": "node scripts/verify-encoding.mjs",
+    "fix:encoding": "node scripts/verify-encoding.mjs --fix"
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",
