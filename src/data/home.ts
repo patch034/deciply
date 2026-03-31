@@ -1,4 +1,4 @@
-﻿import { blogArticles } from "@/data/blog";
+import { blogArticles } from "@/data/blog";
 import { discoveryPages, getHomepageDiscoveryGuides } from "@/data/discovery-pages";
 import type { Locale } from "@/i18n/config";
 import { getToolCount } from "@/lib/catalog";
@@ -144,9 +144,9 @@ const homeContent: Record<Locale, HomeContent> = {
   tr: {
     hero: {
       badge: "AI araç rehberi",
-      title: "Doğru AI aracını saniyeler içinde bul",
+      title: "Kullanım senaryonuza tam uyan AI aracını bulun",
       description:
-        "Karşılaştır, karar ver ve hemen başla.",
+        "Yazı, araştırma, tasarım ve gelir odaklı gerçek senaryolara göre AI araçlarını karşılaştırın.",
       primaryCta: "Ücretsiz Başla",
       secondaryCta: "Karşılaştırmaları incele",
       starterHint: "",
@@ -495,9 +495,9 @@ const homeContent: Record<Locale, HomeContent> = {
   en: {
     hero: {
       badge: "AI tool directory",
-      title: "Find the right AI tool in seconds",
+      title: "Find the right AI tool for your exact use case",
       description:
-        "Compare, decide, and start instantly.",
+        "Compare AI tools based on real scenarios like writing, research, design, and monetization.",
       primaryCta: "Start Free",
       secondaryCta: "Review comparisons",
       starterHint: "",

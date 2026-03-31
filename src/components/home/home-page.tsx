@@ -27,12 +27,12 @@ type HomePageProps = {
 
 const sectionCopy = {
   tr: {
-    selectorTitle: "Ne yapmak istiyorsun?",
+    selectorTitle: "Öne çıkan kullanım alanları",
     selectorOptions: [
-      { label: "\u0130\u00e7erik yazmak", href: "#featured-tools" },
-      { label: "G\u00f6rsel \u00fcretmek", href: "#category-tools" },
-      { label: "Para kazanmak", href: "#money-tools" },
-      { label: "Ara\u015ft\u0131rma yapmak", href: "#popular-tools" }
+      { label: "Yazı", href: "#featured-tools" },
+      { label: "Tasarım", href: "#category-tools" },
+      { label: "Gelir odaklı", href: "#money-tools" },
+      { label: "Araştırma", href: "#popular-tools" }
     ],
     topToolsEyebrow: "En \u00e7ok incelenenler",
     topToolsTitle: "Karar verirken en \u00e7ok a\u00e7\u0131lan AI ara\u00e7lar\u0131",
@@ -53,12 +53,12 @@ const sectionCopy = {
     latestPostsReadMore: "Devam\u0131n\u0131 oku"
   },
   en: {
-    selectorTitle: "What do you want to do?",
+    selectorTitle: "Popular use cases",
     selectorOptions: [
-      { label: "Write content", href: "#featured-tools" },
-      { label: "Generate images", href: "#category-tools" },
-      { label: "Make money", href: "#money-tools" },
-      { label: "Do research", href: "#popular-tools" }
+      { label: "Writing", href: "#featured-tools" },
+      { label: "Design", href: "#category-tools" },
+      { label: "Monetization", href: "#money-tools" },
+      { label: "Research", href: "#popular-tools" }
     ],
     topToolsEyebrow: "Most explored",
     topToolsTitle: "AI tools people open most while deciding",
@@ -434,8 +434,3 @@ export function HomePage({ locale, content }: HomePageProps) {
     </div>
   );
 }
-
-
-
-
-
