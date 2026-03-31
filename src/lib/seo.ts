@@ -1,4 +1,4 @@
-﻿import type { Locale } from "@/i18n/config";
+import type { Locale } from "@/i18n/config";
 import type { LocalizedBlogArticle } from "@/types/blog";
 import type { LocalizedTool } from "@/types/catalog";
 
@@ -100,7 +100,7 @@ const blogDescriptionTemplates: Record<Locale, ((topic: string) => string)[]> = 
     (topic) => `This guide explains ${topic} with real examples, use cases, and practical steps.`,
     (topic) => `Learn ${topic} through real examples, practical workflows, and realistic expectations.`,
     (topic) => `Explore ${topic} with practical steps, real use cases, and clearer decision points.`,
-    (topic) => `See how ${topic} works in real scenarios, where it helps, and what to watch for.`
+    (topic) => `See ${topic} in real scenarios, where it helps, and what to watch for.`
   ],
   tr: [
     (topic) => `Bu rehber, ${topic} gerçek örnekler, kullanım senaryoları ve uygulanabilir adımlarla açıklar.`,
