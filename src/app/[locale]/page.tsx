@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
   const content = getHomeContent(safeLocale);
 
   return {
-    title: buildHomeTitle(),
+    title: buildHomeTitle(safeLocale),
     description: buildHomeMetaDescription(safeLocale),
     alternates: {
       canonical: buildCanonicalUrl(`/${safeLocale}`),
@@ -41,4 +41,5 @@ export default async function LocaleHomePage({ params }: LocalePageProps) {
 
   return <HomePage locale={safeLocale} content={content} />;
 }
+
 

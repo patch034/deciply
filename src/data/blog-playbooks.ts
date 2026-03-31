@@ -43,41 +43,41 @@ const sub = (
 const freeStarterPlaybook: Playbook = {
   tr: {
     scenarioParagraphs: [
-      "Gerçek senaryoda ücretsiz araç arayan kişi çoğu zaman öğrenci, yeni freelancer veya ilk ürününü test eden solo operatördür. Bu kullanıcı için soru 'bedava mı?' değil, 'ilk gerçek çıktıyı çıkarabiliyor muyum?' sorusudur.",
-      "Örneğin bir freelancer, [ChatGPT] veya [Perplexity] ile ilk araştırma özetini hazırlayıp küçük bir teklif çıkabilir. Bir öğrenci [Gemini] ile ders özeti hazırlarken, içerik üreticisi [Canva AI] ile ilk görsel teslimini test edebilir."
+      "Ger�ek senaryoda �cretsiz ara� arayan ki_i �ou zaman �renci, yeni freelancer veya ilk �r�n�n� test eden solo operat�rd�r. Bu kullan1c1 i�in soru 'bedava m1?' deil, 'ilk ger�ek �1kt1y1 �1karabiliyor muyum?' sorusudur.",
+      "�rnein bir freelancer, [ChatGPT] veya [Perplexity] ile ilk ara_t1rma �zetini haz1rlay1p k���k bir teklif �1kabilir. Bir �renci [Gemini] ile ders �zeti haz1rlarken, i�erik �reticisi [Canva AI] ile ilk g�rsel teslimini test edebilir."
     ],
     stepCards: [
-      { title: "Step 1: Tek görev seç", paragraphs: ["Önce tek bir görev seç: araştırma özeti, kısa blog taslağı, sunum taslağı veya temel sosyal medya görseli.", "Ücretsiz planı gerçek görev üzerinde test etmek, özellik listesi okumaktan çok daha değerlidir."], bullets: ["Araştırma özeti", "Kısa taslak", "Sunum taslağı"] },
-      { title: "Step 2: Çıktıyı satılabilir hale getir", paragraphs: ["Ham çıktıyı direkt teslim etme. Kısa düzenleme, başlık temizliği ve örnek ekleme ile çıktıyı kullanılabilir hale getir.", "Buradaki amaç AI'a güvenmek değil, teslimi daha hızlı hazırlamaktır."], bullets: ["Kısa edit", "Basit formatlama", "İnsan kontrolü"] },
-      { title: "Step 3: Limit geldiğinde karar ver", paragraphs: ["Ücretsiz plan gerçekten işe yarıyor ama limit yüzünden süreç duruyorsa ücretli plan mantıklı hale gelir.", "Fit yoksa planı büyütmek yerine aracı değiştirmek daha doğrudur."], bullets: ["Önce doğrula", "Sonra yükselt", "Gerekirse değiştir"] }
+      { title: "Step 1: Tek g�rev se�", paragraphs: ["�nce tek bir g�rev se�: ara_t1rma �zeti, k1sa blog tasla1, sunum tasla1 veya temel sosyal medya g�rseli.", "�cretsiz plan1 ger�ek g�rev �zerinde test etmek, �zellik listesi okumaktan �ok daha deerlidir."], bullets: ["Ara_t1rma �zeti", "K1sa taslak", "Sunum tasla1"] },
+      { title: "Step 2: �1kt1y1 sat1labilir hale getir", paragraphs: ["Ham �1kt1y1 direkt teslim etme. K1sa d�zenleme, ba_l1k temizlii ve �rnek ekleme ile �1kt1y1 kullan1labilir hale getir.", "Buradaki ama� AI'a g�venmek deil, teslimi daha h1zl1 haz1rlamakt1r."], bullets: ["K1sa edit", "Basit formatlama", "0nsan kontrol�"] },
+      { title: "Step 3: Limit geldiinde karar ver", paragraphs: ["�cretsiz plan ger�ekten i_e yar1yor ama limit y�z�nden s�re� duruyorsa �cretli plan mant1kl1 hale gelir.", "Fit yoksa plan1 b�y�tmek yerine arac1 dei_tirmek daha dorudur."], bullets: ["�nce dorula", "Sonra y�kselt", "Gerekirse dei_tir"] }
     ],
     earningsParagraphs: [
-      "Ücretsiz araçlarla doğrudan büyük gelir beklemek gerçekçi değildir. Ama küçük teslimleri test etmek, ilk müşteri geri bildirimini almak ve hangi iş modelinin çalıştığını görmek için yeterlidir.",
-      "Düşük senaryoda kullanıcı ayda birkaç küçük teslimle sınırlı kalır. Orta senaryoda araştırma, içerik veya basit görsel işiyle düzenli ek gelir oluşabilir. İyi senaryoda ise ücretsiz plan sadece doğrulama aşaması olur ve ücretli plana geçiş gerekebilir."
+      "�cretsiz ara�larla dorudan b�y�k gelir beklemek ger�ek�i deildir. Ama k���k teslimleri test etmek, ilk m�_teri geri bildirimini almak ve hangi i_ modelinin �al1_t11n1 g�rmek i�in yeterlidir.",
+      "D�_�k senaryoda kullan1c1 ayda birka� k���k teslimle s1n1rl1 kal1r. Orta senaryoda ara_t1rma, i�erik veya basit g�rsel i_iyle d�zenli ek gelir olu_abilir. 0yi senaryoda ise �cretsiz plan sadece dorulama a_amas1 olur ve �cretli plana ge�i_ gerekebilir."
     ],
     earningsItems: [
-      { label: "Düşük senaryo", value: "$50-$150 / ay - küçük test teslimleri" },
-      { label: "Orta senaryo", value: "$150-$400 / ay - tekrar eden küçük işler" },
-      { label: "İyi senaryo", value: "$400+ / ay - artık ücretli plana geçiş gerekebilir" }
+      { label: "D�_�k senaryo", value: "$50-$150 / ay - k���k test teslimleri" },
+      { label: "Orta senaryo", value: "$150-$400 / ay - tekrar eden k���k i_ler" },
+      { label: "0yi senaryo", value: "$400+ / ay - art1k �cretli plana ge�i_ gerekebilir" }
     ],
     failParagraphs: [
-      "Çoğu kişi ücretsiz aracı gelir sistemi yerine sihirli çözüm gibi görür. Oysa araç ücretsiz olsa da müşteriye değer sunmayan çıktı para kazandırmaz.",
-      "İkinci hata, ücretsiz planın limitlerini iş modeli kurmadan önce görmezden gelmektir. Eğer süreç daha ilk haftada tıkanıyorsa, darboğazı erken fark etmek gerekir."
+      "�ou ki_i �cretsiz arac1 gelir sistemi yerine sihirli ��z�m gibi g�r�r. Oysa ara� �cretsiz olsa da m�_teriye deer sunmayan �1kt1 para kazand1rmaz.",
+      "0kinci hata, �cretsiz plan1n limitlerini i_ modeli kurmadan �nce g�rmezden gelmektir. Eer s�re� daha ilk haftada t1kan1yorsa, darboaz1 erken fark etmek gerekir."
     ],
-    failBullets: ["Ham çıktıyı teslim etmek", "Tek aracı her iş için zorlamak", "Limitleri planlamamak", "İlk geri bildirimi toplamamak"],
+    failBullets: ["Ham �1kt1y1 teslim etmek", "Tek arac1 her i_ i�in zorlamak", "Limitleri planlamamak", "0lk geri bildirimi toplamamak"],
     toolsParagraphs: [
-      "[ChatGPT] ve [Gemini] hızlı taslak ve özet için mantıklıdır. [Perplexity] kaynaklı araştırmada daha faydalı olabilir. [Canva AI] basit görsel teslim ve sunum akışında daha pratik hissettirebilir.",
-      "Araç seçimi, görev tipine göre yapılmalıdır. Ücretsiz araç listesi, ancak iş bağlamı ile birlikte anlamlı hale gelir."
+      "[ChatGPT] ve [Gemini] h1zl1 taslak ve �zet i�in mant1kl1d1r. [Perplexity] kaynakl1 ara_t1rmada daha faydal1 olabilir. [Canva AI] basit g�rsel teslim ve sunum ak1_1nda daha pratik hissettirebilir.",
+      "Ara� se�imi, g�rev tipine g�re yap1lmal1d1r. �cretsiz ara� listesi, ancak i_ balam1 ile birlikte anlaml1 hale gelir."
     ],
     toolItems: [
-      { label: "Taslak ve özet", value: "ChatGPT / Gemini" },
-      { label: "Kaynaklı araştırma", value: "Perplexity" },
-      { label: "Görsel ve sunum", value: "Canva AI" },
-      { label: "Not ve düzen", value: "Notion AI" }
+      { label: "Taslak ve �zet", value: "ChatGPT / Gemini" },
+      { label: "Kaynakl1 ara_t1rma", value: "Perplexity" },
+      { label: "G�rsel ve sunum", value: "Canva AI" },
+      { label: "Not ve d�zen", value: "Notion AI" }
     ],
     caseParagraphs: [
-      "Mini örnek: üniversite son sınıfta olan bir kullanıcı, [Perplexity] ile rakip analizi özeti çıkardı ve bunu küçük işletme sahibine haftalık rapor olarak sundu. İlk ay iki küçük teslim aldı.",
-      "Sonuç büyük değildi; ama kullanıcı hangi çıktının satıldığını gördü. Bu, ücretsiz plandan ücretli sisteme geçmeden önce en değerli öğrenme oldu."
+      "Mini �rnek: �niversite son s1n1fta olan bir kullan1c1, [Perplexity] ile rakip analizi �zeti �1kard1 ve bunu k���k i_letme sahibine haftal1k rapor olarak sundu. 0lk ay iki k���k teslim ald1.",
+      "Sonu� b�y�k deildi; ama kullan1c1 hangi �1kt1n1n sat1ld11n1 g�rd�. Bu, �cretsiz plandan �cretli sisteme ge�meden �nce en deerli �renme oldu."
     ]
   },
   en: {
@@ -286,41 +286,41 @@ const freelancerWorkflowPlaybook: Playbook = {
 const moneyServicePlaybook: Playbook = {
   tr: {
     scenarioParagraphs: [
-      "Gerçek senaryoda kullanıcı tek seferlik viral gelir peşinde değildir; küçük ama tekrar eden bir hizmet kurmaya çalışır. Örneğin bir freelancer, haftalık içerik paketi ya da araştırma özeti satarak ilk müşterisini bulabilir.",
-      "Burada [ChatGPT], [Claude] ve [Perplexity] gibi araçlar işi müşteriye satmak için değil, teslim süresini kısaltmak için kullanılır. Gelir farkı çoğu zaman aracın kendisinden değil, kurulan sistemden gelir."
+      "Ger�ek senaryoda kullan1c1 tek seferlik viral gelir pe_inde deildir; k���k ama tekrar eden bir hizmet kurmaya �al1_1r. �rnein bir freelancer, haftal1k i�erik paketi ya da ara_t1rma �zeti satarak ilk m�_terisini bulabilir.",
+      "Burada [ChatGPT], [Claude] ve [Perplexity] gibi ara�lar i_i m�_teriye satmak i�in deil, teslim s�resini k1saltmak i�in kullan1l1r. Gelir fark1 �ou zaman arac1n kendisinden deil, kurulan sistemden gelir."
     ],
     stepCards: [
-      { title: "Step 1: Tek bir teslim seç", paragraphs: ["Önce blog yazısı, e-posta serisi, araştırma özeti ya da kısa teklif paketi gibi net bir teslim seç.", "İlk müşteri için çok geniş hizmet değil, sonucu anlaşılır küçük bir teklif daha güçlüdür."], bullets: ["Blog paketi", "Araştırma özeti", "E-posta dizisi"] },
-      { title: "Step 2: Teklifini ölçülebilir yap", paragraphs: ["'AI ile çalışıyorum' demek yerine 'haftada 4 blog taslağı teslim ediyorum' gibi net bir çıktı sun.", "Müşteri aracı değil, sonucunu satın alır."], bullets: ["Net çıktı", "Paket mantığı", "Revizyon sınırı"] },
-      { title: "Step 3: İlk 3 müşteriyle sistemi doğrula", paragraphs: ["İlk hedef ölçek değil, tekrar eden süreç kurmaktır. İlk 2-3 müşteride hangi adımın yavaşladığını ölç.", "Darboğaz görüldüğünde ikinci aracı eklemek daha doğru olur."], bullets: ["İlk 3 müşteri", "Darboğaz ölçümü", "Sonra stack büyüt"] }
+      { title: "Step 1: Tek bir teslim se�", paragraphs: ["�nce blog yaz1s1, e-posta serisi, ara_t1rma �zeti ya da k1sa teklif paketi gibi net bir teslim se�.", "0lk m�_teri i�in �ok geni_ hizmet deil, sonucu anla_1l1r k���k bir teklif daha g��l�d�r."], bullets: ["Blog paketi", "Ara_t1rma �zeti", "E-posta dizisi"] },
+      { title: "Step 2: Teklifini �l��lebilir yap", paragraphs: ["'AI ile �al1_1yorum' demek yerine 'haftada 4 blog tasla1 teslim ediyorum' gibi net bir �1kt1 sun.", "M�_teri arac1 deil, sonucunu sat1n al1r."], bullets: ["Net �1kt1", "Paket mant11", "Revizyon s1n1r1"] },
+      { title: "Step 3: 0lk 3 m�_teriyle sistemi dorula", paragraphs: ["0lk hedef �l�ek deil, tekrar eden s�re� kurmakt1r. 0lk 2-3 m�_teride hangi ad1m1n yava_lad11n1 �l�.", "Darboaz g�r�ld��nde ikinci arac1 eklemek daha doru olur."], bullets: ["0lk 3 m�_teri", "Darboaz �l��m�", "Sonra stack b�y�t"] }
     ],
     earningsParagraphs: [
-      "Gerçekçi gelir, niş, teklif gücü ve teslim disiplinine bağlıdır. İlk ay düşük gelir normaldir; orta senaryoda küçük paketler tekrar etmeye başlar; iyi senaryoda ise aynı sistem daha yüksek fiyatla satılabilir.",
-      "Buradaki hedef dev rakamlar söylemek değil, tekrar eden küçük işlerin zaman içinde gelir oluşturduğunu göstermek olmalıdır."
+      "Ger�ek�i gelir, ni_, teklif g�c� ve teslim disiplinine bal1d1r. 0lk ay d�_�k gelir normaldir; orta senaryoda k���k paketler tekrar etmeye ba_lar; iyi senaryoda ise ayn1 sistem daha y�ksek fiyatla sat1labilir.",
+      "Buradaki hedef dev rakamlar s�ylemek deil, tekrar eden k���k i_lerin zaman i�inde gelir olu_turduunu g�stermek olmal1d1r."
     ],
     earningsItems: [
-      { label: "Düşük senaryo", value: "$100-$300 / ay - ilk küçük müşteriler" },
+      { label: "D�_�k senaryo", value: "$100-$300 / ay - ilk k���k m�_teriler" },
       { label: "Orta senaryo", value: "$300-$900 / ay - tekrar eden paketler" },
-      { label: "İyi senaryo", value: "$900-$2.000 / ay - sistem oturmaya başlar" }
+      { label: "0yi senaryo", value: "$900-$2.000 / ay - sistem oturmaya ba_lar" }
     ],
     failParagraphs: [
-      "Çoğu kişi para kazanamaz çünkü araçla üretim yapmayı teklif satmakla karıştırır. İyi çıktı üretmek tek başına yetmez; müşteri açısından net problem ve net teslim gerekir.",
-      "İkinci büyük sorun kalite kontrolüdür. Ham AI çıktısı teslim edildiğinde güven kaybı yaşanır ve tekrar eden müşteri gelmez."
+      "�ou ki_i para kazanamaz ��nk� ara�la �retim yapmay1 teklif satmakla kar1_t1r1r. 0yi �1kt1 �retmek tek ba_1na yetmez; m�_teri a�1s1ndan net problem ve net teslim gerekir.",
+      "0kinci b�y�k sorun kalite kontrol�d�r. Ham AI �1kt1s1 teslim edildiinde g�ven kayb1 ya_an1r ve tekrar eden m�_teri gelmez."
     ],
-    failBullets: ["Sonuç yerine araç satmak", "Ham çıktıyı teslim etmek", "Teklifi çok geniş tutmak", "Süreç ölçmeden ölçek denemek"],
+    failBullets: ["Sonu� yerine ara� satmak", "Ham �1kt1y1 teslim etmek", "Teklifi �ok geni_ tutmak", "S�re� �l�meden �l�ek denemek"],
     toolsParagraphs: [
-      "[ChatGPT] hızlı taslak ve çok yönlü üretimde faydalıdır. [Claude] daha uzun ve düzenli metinlerde güçlü olabilir. [Perplexity] kaynaklı araştırma eklemek istediğinde değer yaratır.",
-      "Görsel veya sunum desteği gerekiyorsa [Canva AI], süreç ve not düzeni gerekiyorsa [Notion AI] destekleyici katman olabilir."
+      "[ChatGPT] h1zl1 taslak ve �ok y�nl� �retimde faydal1d1r. [Claude] daha uzun ve d�zenli metinlerde g��l� olabilir. [Perplexity] kaynakl1 ara_t1rma eklemek istediinde deer yarat1r.",
+      "G�rsel veya sunum destei gerekiyorsa [Canva AI], s�re� ve not d�zeni gerekiyorsa [Notion AI] destekleyici katman olabilir."
     ],
     toolItems: [
       { label: "Taslak ve esneklik", value: "ChatGPT" },
-      { label: "Uzun ve düzenli yazı", value: "Claude" },
-      { label: "Kaynaklı araştırma", value: "Perplexity" },
-      { label: "Düzen ve plan", value: "Notion AI / Canva AI" }
+      { label: "Uzun ve d�zenli yaz1", value: "Claude" },
+      { label: "Kaynakl1 ara_t1rma", value: "Perplexity" },
+      { label: "D�zen ve plan", value: "Notion AI / Canva AI" }
     ],
     caseParagraphs: [
-      "Mini örnek: solo çalışan bir içerik freelancer'ı, [Claude] ile haftalık blog taslağı hazırlayıp [Perplexity] ile araştırma doğrulaması ekledi. İlk ay 2 müşteriye küçük paket sattı.",
-      "Kazanç sınırlı kaldı ama tekrar eden iş modeli oluştu. Bu noktadan sonra fiyat yükseltmek ve teslim çeşitlendirmek çok daha kolay hale geldi."
+      "Mini �rnek: solo �al1_an bir i�erik freelancer'1, [Claude] ile haftal1k blog tasla1 haz1rlay1p [Perplexity] ile ara_t1rma dorulamas1 ekledi. 0lk ay 2 m�_teriye k���k paket satt1.",
+      "Kazan� s1n1rl1 kald1 ama tekrar eden i_ modeli olu_tu. Bu noktadan sonra fiyat y�kseltmek ve teslim �e_itlendirmek �ok daha kolay hale geldi."
     ]
   },
   en: {
@@ -367,41 +367,41 @@ const moneyServicePlaybook: Playbook = {
 const blogPublisherPlaybook: Playbook = {
   tr: {
     scenarioParagraphs: [
-      "Gerçek senaryoda blogdan para kazanmak isteyen kişi önce trafik değil, doğru trafik peşinde olmalıdır. Bir niche yayıncı, karar niyeti taşıyan yazılar yazarak ilk affiliate tıklamalarını ve ilk lead'lerini toplamaya başlar.",
-      "Burada [Perplexity] araştırma için, [ChatGPT] veya [Claude] taslak ve yapı için, [Notion AI] ise yayın planı için işe yarar. Gelir, içerik miktarından çok niyet, iç link ve CTA akışından gelir."
+      "Ger�ek senaryoda blogdan para kazanmak isteyen ki_i �nce trafik deil, doru trafik pe_inde olmal1d1r. Bir niche yay1nc1, karar niyeti ta_1yan yaz1lar yazarak ilk affiliate t1klamalar1n1 ve ilk lead'lerini toplamaya ba_lar.",
+      "Burada [Perplexity] ara_t1rma i�in, [ChatGPT] veya [Claude] taslak ve yap1 i�in, [Notion AI] ise yay1n plan1 i�in i_e yarar. Gelir, i�erik miktar1ndan �ok niyet, i� link ve CTA ak1_1ndan gelir."
     ],
     stepCards: [
-      { title: "Step 1: Gelir niyetli konu seç", paragraphs: ["Önce 'nasıl para kazanılır', 'hangi tool ne işe yarar', 'x vs y' gibi karar niyeti yüksek konu kümelerini seç.", "Sadece trafik çeken ama karar anına uzak içerikler daha yavaş monetize olur."], bullets: ["Karşılaştırma", "Use-case rehberi", "Alternatives"] },
-      { title: "Step 2: İçerik zinciri kur", paragraphs: ["Liste yazısından tool sayfasına, tool sayfasından comparison ya da başka rehbere giden iç link akışı kur.", "Bu zincir kullanıcıyı tek sayfada bırakmak yerine karar akışına taşır."], bullets: ["Blog -> tool", "Tool -> comparison", "Blog -> blog"] },
-      { title: "Step 3: Tıklanan şeyi ölç", paragraphs: ["İlk 10-20 içerikte hangi başlıkların tool tıklaması getirdiğini izle.", "Büyüme, daha çok yazmaktan çok çalışan formatı tekrar etmekle gelir."], bullets: ["CTR takibi", "Tool click", "Kazanan formatı büyüt"] }
+      { title: "Step 1: Gelir niyetli konu se�", paragraphs: ["�nce 'nas1l para kazan1l1r', 'hangi tool ne i_e yarar', 'x vs y' gibi karar niyeti y�ksek konu k�melerini se�.", "Sadece trafik �eken ama karar an1na uzak i�erikler daha yava_ monetize olur."], bullets: ["Kar_1la_t1rma", "Use-case rehberi", "Alternatives"] },
+      { title: "Step 2: 0�erik zinciri kur", paragraphs: ["Liste yaz1s1ndan tool sayfas1na, tool sayfas1ndan comparison ya da ba_ka rehbere giden i� link ak1_1 kur.", "Bu zincir kullan1c1y1 tek sayfada b1rakmak yerine karar ak1_1na ta_1r."], bullets: ["Blog -> tool", "Tool -> comparison", "Blog -> blog"] },
+      { title: "Step 3: T1klanan _eyi �l�", paragraphs: ["0lk 10-20 i�erikte hangi ba_l1klar1n tool t1klamas1 getirdiini izle.", "B�y�me, daha �ok yazmaktan �ok �al1_an format1 tekrar etmekle gelir."], bullets: ["CTR takibi", "Tool click", "Kazanan format1 b�y�t"] }
     ],
     earningsParagraphs: [
-      "Blog gelirinde düşük senaryo birkaç komisyon veya küçük lead ile başlar. Orta senaryoda düzenli organik trafik, affiliate tıklamaları ve birkaç iyi intent yazı birleşir. İyi senaryo ise içerik zinciri çalıştığında oluşur.",
-      "Burada kritik nokta, gelir beklentisini ilk haftalarda abartmamaktır. Blog genelde içerik stoğu büyüdükçe ve iç link akışı güçlendikçe sonuç verir."
+      "Blog gelirinde d�_�k senaryo birka� komisyon veya k���k lead ile ba_lar. Orta senaryoda d�zenli organik trafik, affiliate t1klamalar1 ve birka� iyi intent yaz1 birle_ir. 0yi senaryo ise i�erik zinciri �al1_t11nda olu_ur.",
+      "Burada kritik nokta, gelir beklentisini ilk haftalarda abartmamakt1r. Blog genelde i�erik stou b�y�d�k�e ve i� link ak1_1 g��lendik�e sonu� verir."
     ],
     earningsItems: [
-      { label: "Düşük senaryo", value: "$20-$100 / ay - ilk tıklama ve lead'ler" },
-      { label: "Orta senaryo", value: "$100-$500 / ay - çalışan içerik kümeleri" },
-      { label: "İyi senaryo", value: "$500+ / ay - düzenli intent akışı" }
+      { label: "D�_�k senaryo", value: "$20-$100 / ay - ilk t1klama ve lead'ler" },
+      { label: "Orta senaryo", value: "$100-$500 / ay - �al1_an i�erik k�meleri" },
+      { label: "0yi senaryo", value: "$500+ / ay - d�zenli intent ak1_1" }
     ],
     failParagraphs: [
-      "Çoğu kişi blogda para kazanamaz çünkü sadece içerik sayısına odaklanır. Oysa arama niyeti, iç link ve doğru CTA kurulmadığında trafik bile dönüşmeyebilir.",
-      "İkinci hata, AI ile üretimi otomatik sanmaktır. Editoryal karar, örnek seçimi ve içeriğin yapısı hâlâ insan tarafında çözülmelidir."
+      "�ou ki_i blogda para kazanamaz ��nk� sadece i�erik say1s1na odaklan1r. Oysa arama niyeti, i� link ve doru CTA kurulmad11nda trafik bile d�n�_meyebilir.",
+      "0kinci hata, AI ile �retimi otomatik sanmakt1r. Editoryal karar, �rnek se�imi ve i�eriin yap1s1 h�l� insan taraf1nda ��z�lmelidir."
     ],
-    failBullets: ["Yalnızca trafik odaklı konu seçmek", "İç link kurmamak", "CTA düşünmemek", "AI taslağını edit etmeden yayınlamak"],
+    failBullets: ["Yaln1zca trafik odakl1 konu se�mek", "0� link kurmamak", "CTA d�_�nmemek", "AI tasla1n1 edit etmeden yay1nlamak"],
     toolsParagraphs: [
-      "[Perplexity] araştırma ve kaynak toplamada faydalıdır. [ChatGPT] hızlı taslak, [Claude] daha uzun yapı için anlamlı olabilir. [Notion AI] yayın planı ve içerik düzeni tarafında destek sağlar.",
-      "Blog geliri için doğru tool, en popüler olan değil; editoryal akışı düzenleyen ve içerik üretimini sürdürülebilir hale getiren tooldur."
+      "[Perplexity] ara_t1rma ve kaynak toplamada faydal1d1r. [ChatGPT] h1zl1 taslak, [Claude] daha uzun yap1 i�in anlaml1 olabilir. [Notion AI] yay1n plan1 ve i�erik d�zeni taraf1nda destek salar.",
+      "Blog geliri i�in doru tool, en pop�ler olan deil; editoryal ak1_1 d�zenleyen ve i�erik �retimini s�rd�r�lebilir hale getiren tooldur."
     ],
     toolItems: [
-      { label: "Araştırma", value: "Perplexity" },
-      { label: "Taslak ve yapı", value: "ChatGPT / Claude" },
-      { label: "Yayın planı", value: "Notion AI" },
+      { label: "Ara_t1rma", value: "Perplexity" },
+      { label: "Taslak ve yap1", value: "ChatGPT / Claude" },
+      { label: "Yay1n plan1", value: "Notion AI" },
       { label: "CTA destekli sayfalar", value: "Tool detail + comparison pages" }
     ],
     caseParagraphs: [
-      "Mini örnek: niş bir araç blogu yöneten kullanıcı, önce comparison ve use-case içeriklerine odaklandı. [Perplexity] ile araştırma, [Claude] ile taslak ve manuel edit ile yayın akışını kurdu.",
-      "İlk ay gelir düşük kaldı; ama birkaç intent yazı tıklama üretmeye başlayınca hangi konuların ölçeklenmesi gerektiği netleşti."
+      "Mini �rnek: ni_ bir ara� blogu y�neten kullan1c1, �nce comparison ve use-case i�eriklerine odakland1. [Perplexity] ile ara_t1rma, [Claude] ile taslak ve manuel edit ile yay1n ak1_1n1 kurdu.",
+      "0lk ay gelir d�_�k kald1; ama birka� intent yaz1 t1klama �retmeye ba_lay1nca hangi konular1n �l�eklenmesi gerektii netle_ti."
     ]
   },
   en: {
@@ -447,41 +447,41 @@ const blogPublisherPlaybook: Playbook = {
 const monetizationToolsPlaybook: Playbook = {
   tr: {
     scenarioParagraphs: [
-      "Gerçek senaryoda kullanıcı 'hangi tool para kazandırır?' diye sormaz; hangi tool'un hangi iş modeline uygun olduğunu anlamaya çalışır. Affiliate içerik, freelance paket, araştırma özeti, dijital ürün veya kısa video gibi modeller farklı araç ister.",
-      "Bu yüzden [ChatGPT], [Claude], [Perplexity], [Canva AI], [ElevenLabs] ve [Runway] gibi araçlara tek liste gibi değil, farklı kullanım bağlamlarıyla bakmak gerekir."
+      "Ger�ek senaryoda kullan1c1 'hangi tool para kazand1r1r?' diye sormaz; hangi tool'un hangi i_ modeline uygun olduunu anlamaya �al1_1r. Affiliate i�erik, freelance paket, ara_t1rma �zeti, dijital �r�n veya k1sa video gibi modeller farkl1 ara� ister.",
+      "Bu y�zden [ChatGPT], [Claude], [Perplexity], [Canva AI], [ElevenLabs] ve [Runway] gibi ara�lara tek liste gibi deil, farkl1 kullan1m balamlar1yla bakmak gerekir."
     ],
     stepCards: [
-      { title: "Step 1: İş modelini seç", paragraphs: ["Önce gelir modelini seç: içerik paketi mi, affiliate içerik mi, araştırma teslimi mi, görsel/video işi mi?", "Aracı iş modelinden önce seçmek genelde yanlış başlangıçtır."], bullets: ["İçerik", "Araştırma", "Görsel", "Video"] },
-      { title: "Step 2: Teklifini daralt", paragraphs: ["'AI hizmeti veriyorum' gibi geniş cümleler yerine çıktı bazlı teklif kur.", "Net teslim, ilk satış ihtimalini yükseltir."], bullets: ["Net teslim", "Paket mantığı", "Hedef müşteri"] },
-      { title: "Step 3: Tool stack'i göreve göre kur", paragraphs: ["İlk satıştan sonra araştırma, taslak, görsel veya video katmanını ihtiyaca göre ekle.", "Her araç aynı akışta gerekli değildir."], bullets: ["Önce satış", "Sonra araç ekleme", "Darboğaz bazlı seçim"] }
+      { title: "Step 1: 0_ modelini se�", paragraphs: ["�nce gelir modelini se�: i�erik paketi mi, affiliate i�erik mi, ara_t1rma teslimi mi, g�rsel/video i_i mi?", "Arac1 i_ modelinden �nce se�mek genelde yanl1_ ba_lang1�t1r."], bullets: ["0�erik", "Ara_t1rma", "G�rsel", "Video"] },
+      { title: "Step 2: Teklifini daralt", paragraphs: ["'AI hizmeti veriyorum' gibi geni_ c�mleler yerine �1kt1 bazl1 teklif kur.", "Net teslim, ilk sat1_ ihtimalini y�kseltir."], bullets: ["Net teslim", "Paket mant11", "Hedef m�_teri"] },
+      { title: "Step 3: Tool stack'i g�reve g�re kur", paragraphs: ["0lk sat1_tan sonra ara_t1rma, taslak, g�rsel veya video katman1n1 ihtiyaca g�re ekle.", "Her ara� ayn1 ak1_ta gerekli deildir."], bullets: ["�nce sat1_", "Sonra ara� ekleme", "Darboaz bazl1 se�im"] }
     ],
     earningsParagraphs: [
-      "Düşük senaryo genelde küçük tek seferlik işlerle başlar. Orta senaryoda aynı teslim tekrar eden paket olur. İyi senaryoda ise içerik ve süreç birikimi birleşir.",
-      "Gerçekçi beklenti, ilk ay büyük rakam görmek değil; hangi modelin tutacağını sayılarla görmektir."
+      "D�_�k senaryo genelde k���k tek seferlik i_lerle ba_lar. Orta senaryoda ayn1 teslim tekrar eden paket olur. 0yi senaryoda ise i�erik ve s�re� birikimi birle_ir.",
+      "Ger�ek�i beklenti, ilk ay b�y�k rakam g�rmek deil; hangi modelin tutaca1n1 say1larla g�rmektir."
     ],
     earningsItems: [
-      { label: "Düşük senaryo", value: "$100-$250 / ay - küçük tek seferlik işler" },
+      { label: "D�_�k senaryo", value: "$100-$250 / ay - k���k tek seferlik i_ler" },
       { label: "Orta senaryo", value: "$250-$1.000 / ay - tekrar eden paketler" },
-      { label: "İyi senaryo", value: "$1.000+ / ay - sistem ve kanal birleşir" }
+      { label: "0yi senaryo", value: "$1.000+ / ay - sistem ve kanal birle_ir" }
     ],
     failParagraphs: [
-      "İnsanlar çoğu zaman araç listesi okuyup hemen gelir bekler. Ama araç seçimi, teklif kalitesinin yerini tutmaz. Net problem çözülmüyorsa araç ismi fark yaratmaz.",
-      "İkinci risk, aynı anda çok fazla araca para ve zaman ayırmaktır. Bu durum hem odağı hem marjı bozar."
+      "0nsanlar �ou zaman ara� listesi okuyup hemen gelir bekler. Ama ara� se�imi, teklif kalitesinin yerini tutmaz. Net problem ��z�lm�yorsa ara� ismi fark yaratmaz.",
+      "0kinci risk, ayn1 anda �ok fazla araca para ve zaman ay1rmakt1r. Bu durum hem oda1 hem marj1 bozar."
     ],
-    failBullets: ["İş modeli seçmeden tool seçmek", "Çok geniş teklif vermek", "Aynı anda fazla araç denemek", "Geliri araçtan beklemek"],
+    failBullets: ["0_ modeli se�meden tool se�mek", "�ok geni_ teklif vermek", "Ayn1 anda fazla ara� denemek", "Geliri ara�tan beklemek"],
     toolsParagraphs: [
-      "[ChatGPT] ve [Claude] yazı tarafında, [Perplexity] araştırmada, [Canva AI] görsel teslimde, [ElevenLabs] sesli varlıklarda, [Runway] ise video akışında daha anlamlı olabilir.",
-      "Araçlar güçlüdür ama sadece doğru bağlamda. Asıl değer, bunları iş modeline göre dizmektir."
+      "[ChatGPT] ve [Claude] yaz1 taraf1nda, [Perplexity] ara_t1rmada, [Canva AI] g�rsel teslimde, [ElevenLabs] sesli varl1klarda, [Runway] ise video ak1_1nda daha anlaml1 olabilir.",
+      "Ara�lar g��l�d�r ama sadece doru balamda. As1l deer, bunlar1 i_ modeline g�re dizmektir."
     ],
     toolItems: [
-      { label: "Yazı ve teklif", value: "ChatGPT / Claude" },
-      { label: "Araştırma ve doğrulama", value: "Perplexity" },
-      { label: "Görsel paket", value: "Canva AI" },
-      { label: "Ses / video genişleme", value: "ElevenLabs / Runway" }
+      { label: "Yaz1 ve teklif", value: "ChatGPT / Claude" },
+      { label: "Ara_t1rma ve dorulama", value: "Perplexity" },
+      { label: "G�rsel paket", value: "Canva AI" },
+      { label: "Ses / video geni_leme", value: "ElevenLabs / Runway" }
     ],
     caseParagraphs: [
-      "Mini örnek: küçük ölçekli bir içerik üreticisi önce [ChatGPT] ile blog paketi, sonra [Canva AI] ile aynı pakete görsel teslim ekledi. Bu, teklif değerini artırdı.",
-      "Daha sonra [Perplexity] ile araştırma doğrulaması ekleyince daha yüksek fiyat istemek kolaylaştı. Buradaki büyüme tek bir araçtan değil, kademeli sistem kurmaktan geldi."
+      "Mini �rnek: k���k �l�ekli bir i�erik �reticisi �nce [ChatGPT] ile blog paketi, sonra [Canva AI] ile ayn1 pakete g�rsel teslim ekledi. Bu, teklif deerini art1rd1.",
+      "Daha sonra [Perplexity] ile ara_t1rma dorulamas1 ekleyince daha y�ksek fiyat istemek kolayla_t1. Buradaki b�y�me tek bir ara�tan deil, kademeli sistem kurmaktan geldi."
     ]
   },
   en: {
@@ -554,11 +554,11 @@ export function getBlogPlaybookSections(slug: string, locale: Locale): BlogSecti
   const isTurkish = locale === "tr";
 
   return [
-    section(isTurkish ? "Gerçek senaryo" : "Real scenario", playbook.scenarioParagraphs),
-    section(isTurkish ? "Adım adım sistem" : "Step-by-step system", [isTurkish ? "Bu yazının mantığı kolay para anlatmak değil; yapılabilir ve ölçülebilir bir sistem kurmaktır." : "The goal here is not easy-money language. It is a small system that can actually be executed and measured."], { subSections: playbook.stepCards.map((card) => sub(card.title, card.paragraphs, card.bullets)) }),
-    section(isTurkish ? "Ne kadar kazanılır?" : "How much can you earn?", playbook.earningsParagraphs, { comparison: { title: isTurkish ? "Gerçekçi aralık" : "Realistic range", items: playbook.earningsItems } }),
+    section(isTurkish ? "Ger�ek senaryo" : "Real scenario", playbook.scenarioParagraphs),
+    section(isTurkish ? "Ad1m ad1m sistem" : "Step-by-step system", [isTurkish ? "Bu yaz1n1n mant11 kolay para anlatmak deil; yap1labilir ve �l��lebilir bir sistem kurmakt1r." : "The goal here is not easy-money language. It is a small system that can actually be executed and measured."], { subSections: playbook.stepCards.map((card) => sub(card.title, card.paragraphs, card.bullets)) }),
+    section(isTurkish ? "Ne kadar kazan1l1r?" : "How much can you earn?", playbook.earningsParagraphs, { comparison: { title: isTurkish ? "Ger�ek�i aral1k" : "Realistic range", items: playbook.earningsItems } }),
     section(isTurkish ? "Nerede fail olur?" : "Where does it fail?", playbook.failParagraphs, { bullets: playbook.failBullets }),
-    section(isTurkish ? "Hangi tool ne işe yarar?" : "What does each tool do?", playbook.toolsParagraphs, { comparison: { title: isTurkish ? "Araç bağlamı" : "Tool context", items: playbook.toolItems } }),
+    section(isTurkish ? "Hangi tool ne i_e yarar?" : "What does each tool do?", playbook.toolsParagraphs, { comparison: { title: isTurkish ? "Ara� balam1" : "Tool context", items: playbook.toolItems } }),
     section(isTurkish ? "Mini case study" : "Mini case study", playbook.caseParagraphs)
   ];
 }

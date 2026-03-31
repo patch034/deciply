@@ -39,7 +39,7 @@ export async function generateMetadata({
   const alternatesPath = currentPage <= 1 ? "/blog" : `/blog?page=${currentPage}`;
 
   return {
-    title: currentPage > 1 ? `${copy.blogLabel} - ${copy.pageLabel} ${currentPage} | Deciply` : `${copy.blogLabel} | Deciply`,
+    title: currentPage > 1 ? `${copy.blogLabel} - ${copy.pageLabel} ${currentPage}` : copy.blogLabel,
     description: buildBlogIndexMetaDescription(safeLocale, currentPage),
     alternates: {
       canonical: buildCanonicalUrl(canonicalPath),
@@ -80,7 +80,7 @@ export default async function BlogPage({
         eyebrow={copy.listEyebrow}
         title={copy.listTitle}
         description={copy.listDescription}
-        actions={<PremiumButton href={`/${safeLocale}/tools`}>{safeLocale === "tr" ? "Araçlara git" : "Browse tools"}</PremiumButton>}
+        actions={<PremiumButton href={`/${safeLocale}/tools?page=1`}>{safeLocale === "tr" ? "Araçlara git" : "Browse tools"}</PremiumButton>}
       >
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {articles.map((article) => (

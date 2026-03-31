@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 
 import { CategoryHero } from "@/components/catalog/category-hero";
 import { ToolsExplorer } from "@/components/catalog/tools-explorer";
@@ -8,40 +8,61 @@ import {
   getCatalogContent,
   getCategoryNamesMap,
   getLocalizedTools,
-  getToolCount
+  getToolCount,
+  parseToolsQueryFilters
 } from "@/lib/catalog";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
-import { buildToolsIndexMetaDescription } from "@/lib/seo";
+import { buildToolsIndexMetaDescription, buildToolsPageTitle } from "@/lib/seo";
 
 export async function generateMetadata({
-  params
+  params,
+  searchParams
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{
+    page?: string | string[];
+    q?: string | string[];
+    category?: string | string[];
+    pricing?: string | string[];
+    useCase?: string | string[];
+  }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const resolvedSearchParams = await searchParams;
 
   if (!isValidLocale(locale)) {
     return {};
   }
 
-  const content = getCatalogContent(locale as Locale);
+  const safeLocale = locale as Locale;
+  const { page } = parseToolsQueryFilters(resolvedSearchParams);
+  const canonicalPath = `/${locale}/tools?page=${page}`;
 
   return {
-    title: content.toolsIndex.title,
-    description: buildToolsIndexMetaDescription(locale as Locale, getToolCount()),
+    title: buildToolsPageTitle(safeLocale, page),
+    description: buildToolsIndexMetaDescription(safeLocale, getToolCount(), page),
     alternates: {
-      canonical: buildCanonicalUrl(`/${locale}/tools`),
-      languages: buildAlternates("/tools")
+      canonical: buildCanonicalUrl(canonicalPath),
+      languages: buildAlternates(canonicalPath)
     }
   };
 }
 
 export default async function ToolsPage({
-  params
+  params,
+  searchParams
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{
+    page?: string | string[];
+    q?: string | string[];
+    category?: string | string[];
+    pricing?: string | string[];
+    useCase?: string | string[];
+  }>;
 }) {
   const { locale } = await params;
+  const resolvedSearchParams = await searchParams;
 
   if (!isValidLocale(locale)) {
     return null;
@@ -73,6 +94,10 @@ export default async function ToolsPage({
       searchKeywords: [
         tool.name,
         tool.shortDescription,
+        tool.whatItActuallyDoes,
+        tool.whoShouldUseSummary,
+        tool.realUseCaseExample.title,
+        tool.realUseCaseExample.description,
         ...siteCategoryNames,
         ...toolCategoryLabels,
         ...useCaseLabels,
@@ -95,6 +120,7 @@ export default async function ToolsPage({
       <ToolsExplorer
         locale={safeLocale}
         tools={explorerTools}
+        initialFilters={parseToolsQueryFilters(resolvedSearchParams)}
         toolCategoryOptions={[...toolCategoryOptions[safeLocale]]}
         useCaseOptions={[...useCaseOptions[safeLocale]]}
         detailLabel={content.common.viewDetailsLabel}
@@ -114,7 +140,10 @@ export default async function ToolsPage({
           resultsLabel: content.toolsIndex.resultsLabel,
           emptyTitle: content.toolsIndex.emptyTitle,
           emptyDescription: content.toolsIndex.emptyDescription,
-          bestForLabel: content.toolsIndex.bestForLabel
+          bestForLabel: content.toolsIndex.bestForLabel,
+          pageLabel: content.toolsIndex.pageLabel,
+          previousPage: content.toolsIndex.previousPage,
+          nextPage: content.toolsIndex.nextPage
         }}
       />
     </div>

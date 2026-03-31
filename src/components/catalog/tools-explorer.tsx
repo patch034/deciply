@@ -1,8 +1,11 @@
 "use client";
 
-import { useDeferredValue, useState } from "react";
+import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { startTransition, useCallback, useDeferredValue, useEffect, useState } from "react";
 
 import { ToolCard } from "@/components/catalog/tool-card";
+import { TOOLS_PAGE_SIZE, type ToolsQueryFilters } from "@/lib/catalog";
 import type { Locale } from "@/i18n/config";
 import type { PricingTier } from "@/types/catalog";
 
@@ -44,11 +47,15 @@ type ToolsExplorerCopy = {
   emptyTitle: string;
   emptyDescription: string;
   bestForLabel: string;
+  pageLabel: string;
+  previousPage: string;
+  nextPage: string;
 };
 
 type ToolsExplorerProps = {
   locale: Locale;
   tools: ExplorerTool[];
+  initialFilters: ToolsQueryFilters;
   toolCategoryOptions: FilterOption[];
   useCaseOptions: FilterOption[];
   detailLabel: string;
@@ -84,16 +91,29 @@ function FilterChip({
 export function ToolsExplorer({
   locale,
   tools,
+  initialFilters,
   toolCategoryOptions,
   useCaseOptions,
   detailLabel,
   copy
 }: ToolsExplorerProps) {
-  const [query, setQuery] = useState("");
-  const [activeToolCategory, setActiveToolCategory] = useState("all");
-  const [activePricing, setActivePricing] = useState<"all" | PricingTier>("all");
-  const [activeUseCase, setActiveUseCase] = useState("all");
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState(initialFilters.query);
+  const [activeToolCategory, setActiveToolCategory] = useState(initialFilters.toolCategory);
+  const [activePricing, setActivePricing] = useState<PricingTier | "all">(initialFilters.pricing);
+  const [activeUseCase, setActiveUseCase] = useState(initialFilters.useCase);
+  const [page, setPage] = useState(initialFilters.page);
   const deferredQuery = useDeferredValue(query);
+
+  useEffect(() => {
+    setQuery(initialFilters.query);
+    setActiveToolCategory(initialFilters.toolCategory);
+    setActivePricing(initialFilters.pricing);
+    setActiveUseCase(initialFilters.useCase);
+    setPage(initialFilters.page);
+  }, [initialFilters]);
 
   const normalizedQuery = deferredQuery.trim().toLocaleLowerCase(locale === "tr" ? "tr-TR" : "en-US");
 
@@ -117,6 +137,128 @@ export function ToolsExplorer({
 
   const hasActiveFilters =
     query.length > 0 || activeToolCategory !== "all" || activePricing !== "all" || activeUseCase !== "all";
+  const totalPages = Math.max(1, Math.ceil(filteredTools.length / TOOLS_PAGE_SIZE));
+  const currentPage = Math.min(Math.max(1, page), totalPages);
+  const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+  const visibleTools = filteredTools.slice((currentPage - 1) * TOOLS_PAGE_SIZE, currentPage * TOOLS_PAGE_SIZE);
+
+  const replaceQueryState = useCallback(
+    (nextState: {
+      query?: string;
+      toolCategory?: string;
+      pricing?: PricingTier | "all";
+      useCase?: string;
+      page?: number;
+    }) => {
+      const params = new URLSearchParams(searchParams.toString());
+      const nextQuery = (nextState.query ?? query).trim();
+      const nextToolCategory = nextState.toolCategory ?? activeToolCategory;
+      const nextPricing = nextState.pricing ?? activePricing;
+      const nextUseCase = nextState.useCase ?? activeUseCase;
+      const nextPage = nextState.page ?? page;
+
+      if (nextQuery) {
+        params.set("q", nextQuery);
+      } else {
+        params.delete("q");
+      }
+
+      if (nextToolCategory !== "all") {
+        params.set("category", nextToolCategory);
+      } else {
+        params.delete("category");
+      }
+
+      if (nextPricing !== "all") {
+        params.set("pricing", nextPricing);
+      } else {
+        params.delete("pricing");
+      }
+
+      if (nextUseCase !== "all") {
+        params.set("useCase", nextUseCase);
+      } else {
+        params.delete("useCase");
+      }
+
+      params.set("page", String(nextPage));
+
+      startTransition(() => {
+        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+      });
+    },
+    [activePricing, activeToolCategory, activeUseCase, page, pathname, query, router, searchParams]
+  );
+
+  useEffect(() => {
+    if (page !== currentPage) {
+      setPage(currentPage);
+      replaceQueryState({ page: currentPage });
+    }
+  }, [currentPage, page, replaceQueryState]);
+
+  function setFilters(nextState: {
+    query?: string;
+    toolCategory?: string;
+    pricing?: PricingTier | "all";
+    useCase?: string;
+    page?: number;
+  }) {
+    if (nextState.query !== undefined) {
+      setQuery(nextState.query);
+    }
+
+    if (nextState.toolCategory !== undefined) {
+      setActiveToolCategory(nextState.toolCategory);
+    }
+
+    if (nextState.pricing !== undefined) {
+      setActivePricing(nextState.pricing);
+    }
+
+    if (nextState.useCase !== undefined) {
+      setActiveUseCase(nextState.useCase);
+    }
+
+    if (nextState.page !== undefined) {
+      setPage(nextState.page);
+    }
+
+    replaceQueryState(nextState);
+  }
+
+  function buildPageHref(pageNumber: number) {
+    const params = new URLSearchParams(searchParams.toString());
+    const safeQuery = query.trim();
+
+    if (safeQuery) {
+      params.set("q", safeQuery);
+    } else {
+      params.delete("q");
+    }
+
+    if (activeToolCategory !== "all") {
+      params.set("category", activeToolCategory);
+    } else {
+      params.delete("category");
+    }
+
+    if (activePricing !== "all") {
+      params.set("pricing", activePricing);
+    } else {
+      params.delete("pricing");
+    }
+
+    if (activeUseCase !== "all") {
+      params.set("useCase", activeUseCase);
+    } else {
+      params.delete("useCase");
+    }
+
+    params.set("page", String(pageNumber));
+
+    return `${pathname}?${params.toString()}`;
+  }
 
   return (
     <>
@@ -134,7 +276,7 @@ export function ToolsExplorer({
                 id="tool-search"
                 type="search"
                 value={query}
-                onChange={(event) => setQuery(event.target.value)}
+                onChange={(event) => setFilters({ query: event.target.value, page: 1 })}
                 placeholder={copy.searchPlaceholder}
                 className="h-12 w-full rounded-[18px] border border-transparent bg-transparent px-4 text-sm text-slate-100 outline-none placeholder:text-slate-500 focus:border-cyan-400/30 focus:bg-white/[0.03]"
               />
@@ -150,12 +292,15 @@ export function ToolsExplorer({
               {hasActiveFilters ? (
                 <button
                   type="button"
-                  onClick={() => {
-                    setQuery("");
-                    setActiveToolCategory("all");
-                    setActivePricing("all");
-                    setActiveUseCase("all");
-                  }}
+                  onClick={() =>
+                    setFilters({
+                      query: "",
+                      toolCategory: "all",
+                      pricing: "all",
+                      useCase: "all",
+                      page: 1
+                    })
+                  }
                   className="inline-flex min-h-[40px] items-center rounded-full border border-white/10 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-400/30 hover:text-cyan-200"
                 >
                   {copy.resetFiltersLabel}
@@ -170,14 +315,14 @@ export function ToolsExplorer({
                   <FilterChip
                     label={copy.allToolCategoriesLabel}
                     active={activeToolCategory === "all"}
-                    onClick={() => setActiveToolCategory("all")}
+                    onClick={() => setFilters({ toolCategory: "all", page: 1 })}
                   />
                   {toolCategoryOptions.map((option) => (
                     <FilterChip
                       key={option.slug}
                       label={option.label}
                       active={activeToolCategory === option.slug}
-                      onClick={() => setActiveToolCategory(option.slug)}
+                      onClick={() => setFilters({ toolCategory: option.slug, page: 1 })}
                     />
                   ))}
                 </div>
@@ -189,15 +334,15 @@ export function ToolsExplorer({
                   <FilterChip
                     label={copy.allPricingLabel}
                     active={activePricing === "all"}
-                    onClick={() => setActivePricing("all")}
+                    onClick={() => setFilters({ pricing: "all", page: 1 })}
                   />
-                  <FilterChip label={locale === "tr" ? "Ücretsiz" : "Free"} active={activePricing === "FREE"} onClick={() => setActivePricing("FREE")} />
+                  <FilterChip label={locale === "tr" ? "Ücretsiz" : "Free"} active={activePricing === "FREE"} onClick={() => setFilters({ pricing: "FREE", page: 1 })} />
                   <FilterChip
                     label={locale === "tr" ? "Kısmen ücretsiz" : "Freemium"}
                     active={activePricing === "FREEMIUM"}
-                    onClick={() => setActivePricing("FREEMIUM")}
+                    onClick={() => setFilters({ pricing: "FREEMIUM", page: 1 })}
                   />
-                  <FilterChip label={locale === "tr" ? "Ücretli" : "Paid"} active={activePricing === "PAID"} onClick={() => setActivePricing("PAID")} />
+                  <FilterChip label={locale === "tr" ? "Ücretli" : "Paid"} active={activePricing === "PAID"} onClick={() => setFilters({ pricing: "PAID", page: 1 })} />
                 </div>
               </div>
 
@@ -207,14 +352,14 @@ export function ToolsExplorer({
                   <FilterChip
                     label={copy.allUseCasesLabel}
                     active={activeUseCase === "all"}
-                    onClick={() => setActiveUseCase("all")}
+                    onClick={() => setFilters({ useCase: "all", page: 1 })}
                   />
                   {useCaseOptions.map((option) => (
                     <FilterChip
                       key={option.slug}
                       label={option.label}
                       active={activeUseCase === option.slug}
-                      onClick={() => setActiveUseCase(option.slug)}
+                      onClick={() => setFilters({ useCase: option.slug, page: 1 })}
                     />
                   ))}
                 </div>
@@ -224,33 +369,101 @@ export function ToolsExplorer({
         </div>
       </section>
 
-      {filteredTools.length > 0 ? (
-        <section className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {filteredTools.map((tool) => (
-            <ToolCard
-              key={tool.slug}
-              locale={locale}
-              tool={tool}
-              categoryNames={tool.toolCategoryLabels}
-              pricingLabel={tool.pricingLabel}
-              detailLabel={detailLabel}
-              bestForLabel={copy.bestForLabel}
-              useCaseLabel={tool.useCaseLabels[0]}
-            />
-          ))}
-        </section>
+      {visibleTools.length > 0 ? (
+        <>
+          <section className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {visibleTools.map((tool) => (
+              <ToolCard
+                key={tool.slug}
+                locale={locale}
+                tool={tool}
+                categoryNames={tool.toolCategoryLabels}
+                pricingLabel={tool.pricingLabel}
+                detailLabel={detailLabel}
+                bestForLabel={copy.bestForLabel}
+                useCaseLabel={tool.useCaseLabels[0]}
+              />
+            ))}
+          </section>
+
+          {totalPages > 1 ? (
+            <nav
+              aria-label={`${copy.pageLabel} navigation`}
+              className="flex w-full max-w-full flex-wrap items-center justify-center gap-2 overflow-x-hidden sm:gap-3"
+            >
+              {currentPage > 1 ? (
+                <Link
+                  href={buildPageHref(currentPage - 1)}
+                  scroll={false}
+                  onClick={() => setPage(currentPage - 1)}
+                  className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/12 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
+                >
+                  {`← ${copy.previousPage}`}
+                </Link>
+              ) : (
+                <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/8 bg-white/[0.03] px-4 text-sm font-medium text-slate-500/70">
+                  {`← ${copy.previousPage}`}
+                </span>
+              )}
+
+              <div className="flex max-w-full flex-wrap items-center justify-center gap-2">
+                {pageNumbers.map((pageNumber) => {
+                  const isActive = pageNumber === currentPage;
+
+                  return isActive ? (
+                    <span
+                      key={pageNumber}
+                      aria-current="page"
+                      className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-cyan-400/40 bg-cyan-400/12 px-4 text-sm font-semibold text-cyan-200 shadow-[0_10px_30px_-18px_rgba(34,211,238,0.45)]"
+                    >
+                      {pageNumber}
+                    </span>
+                  ) : (
+                    <Link
+                      key={pageNumber}
+                      href={buildPageHref(pageNumber)}
+                      scroll={false}
+                      onClick={() => setPage(pageNumber)}
+                      className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-white/12 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
+                    >
+                      {pageNumber}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {currentPage < totalPages ? (
+                <Link
+                  href={buildPageHref(currentPage + 1)}
+                  scroll={false}
+                  onClick={() => setPage(currentPage + 1)}
+                  className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/12 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
+                >
+                  {`${copy.nextPage} →`}
+                </Link>
+              ) : (
+                <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/8 bg-white/[0.03] px-4 text-sm font-medium text-slate-500/70">
+                  {`${copy.nextPage} →`}
+                </span>
+              )}
+            </nav>
+          ) : null}
+        </>
       ) : (
         <section className="rounded-[28px] border border-dashed border-white/10 bg-white/[0.03] px-4 py-8 text-center shadow-card sm:px-6 sm:py-10">
           <h3 className="text-xl font-bold tracking-tight text-slate-100">{copy.emptyTitle}</h3>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-300">{copy.emptyDescription}</p>
           <button
             type="button"
-            onClick={() => {
-              setQuery("");
-              setActiveToolCategory("all");
-              setActivePricing("all");
-              setActiveUseCase("all");
-            }}
+            onClick={() =>
+              setFilters({
+                query: "",
+                toolCategory: "all",
+                pricing: "all",
+                useCase: "all",
+                page: 1
+              })
+            }
             className="mt-6 inline-flex min-h-[44px] items-center rounded-2xl border border-white/10 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/30 hover:text-cyan-200"
           >
             {copy.resetFiltersLabel}
@@ -260,4 +473,3 @@ export function ToolsExplorer({
     </>
   );
 }
-

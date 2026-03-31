@@ -279,17 +279,19 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return {};
   }
 
-  const tool = getLocalizedToolBySlug(locale as Locale, slug);
+  const safeLocale = locale as Locale;
+  const tool = getLocalizedToolBySlug(safeLocale, slug);
 
   if (!tool) {
     return {};
   }
 
   const canonicalUrl = buildCanonicalUrl(`/${locale}/tools/${slug}`);
-  const description = buildToolMetaDescription(locale as Locale, tool);
+  const description = buildToolMetaDescription(safeLocale, tool);
+  const title = buildToolPageTitle(safeLocale, tool);
 
   return {
-    title: buildToolPageTitle(tool),
+    title,
     description: description,
     keywords: [tool.name, tool.bestUseCase, ...tool.toolCategorySlugs, ...tool.useCaseSlugs, "AI tool", "AI software"],
     alternates: {
@@ -299,7 +301,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       type: "website",
       url: canonicalUrl,
-      title: buildToolPageTitle(tool),
+      title,
       description: description
     }
   };
@@ -326,7 +328,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   const relatedArticles = getRelatedArticlesByTool(safeLocale, tool.slug, 4);
   const blogCopy = getBlogCopy(safeLocale);
   const pricingValue = formatPricing(tool.pricing, safeLocale);
-  const supportText = safeLocale === "tr" ? "Hızlı başlangıç • Net fiyat bilgisi" : "Fast start • Clear pricing signal";
+  const supportText = safeLocale === "tr" ? "Hızlı başlangıç | Net fiyat bilgisi" : "Fast start | Clear pricing signal";
   const quickCategory = getToolCategoryLabel(safeLocale, tool);
   const whoShouldAvoid = getWhoShouldAvoid(safeLocale, tool);
   const outboundUrl = getToolOutboundUrl(tool);
@@ -341,24 +343,24 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   const decisionSummaryTitle = safeLocale === "tr" ? "Karar özeti" : "Decision snapshot";
   const decisionSummaryDescription =
     safeLocale === "tr"
-      ? "Bu aracın kimler için daha mantıklı olduğunu ve hangi senaryoda zayıf kalabileceğini hızlıca görün."
-      : "See who this tool fits best, where it may fall short, and which scenarios it supports before you click out.";
+      ? "Bu aracın kimler için daha mantıklı olduğunu, ne yaptığını ve hangi senaryoda zayıf kalabileceğini hızlıca görün."
+      : "See who this tool fits best, what it does, and where it may fall short before you click out.";
   const decisionSummaryCards = [
     {
       title: dictionary.bestForLabel,
       value: tool.bestUseCase
     },
     {
+      title: safeLocale === "tr" ? "Bu araç ne yapar?" : "What it does",
+      value: tool.whatItActuallyDoes
+    },
+    {
       title: dictionary.whoShouldUseTitle,
-      value: tool.whoShouldUse.slice(0, 3).join(", ")
+      value: tool.whoShouldUseSummary
     },
     {
-      title: dictionary.whoShouldAvoidTitle,
-      value: whoShouldAvoid.slice(0, 3).join(", ")
-    },
-    {
-      title: safeLocale === "tr" ? "Use-case sinyalleri" : "Use-case signals",
-      value: decisionTags.slice(0, 3).join(", ")
+      title: safeLocale === "tr" ? "Gerçek kullanım örneği" : "Real use case example",
+      value: tool.realUseCaseExample.title
     }
   ];
   const softwareSchema = {
@@ -655,6 +657,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
     </>
   );
 }
+
 
 
 

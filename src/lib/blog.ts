@@ -190,9 +190,16 @@ export function getRelatedArticles(locale: Locale, slug: string, limit = 3) {
 }
 
 export function getRelatedArticlesByTool(locale: Locale, toolSlug: string, limit = 3) {
-  return getLocalizedBlogArticles(locale)
-    .filter((article) => article.relatedToolSlugs.includes(toolSlug))
-    .slice(0, limit);
+  const directMatches = getLocalizedBlogArticles(locale).filter((article) => article.relatedToolSlugs.includes(toolSlug));
+
+  if (directMatches.length >= limit) {
+    return directMatches.slice(0, limit);
+  }
+
+  const pickedSlugs = new Set(directMatches.map((article) => article.slug));
+  const fallbackArticles = getLocalizedBlogArticles(locale).filter((article) => !pickedSlugs.has(article.slug));
+
+  return [...directMatches, ...fallbackArticles].slice(0, limit);
 }
 
 export function getBlogSupportingLinks(locale: Locale, slug: string, toolLimit = 2, articleLimit = 2) {

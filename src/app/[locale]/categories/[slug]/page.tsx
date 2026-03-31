@@ -49,7 +49,7 @@ export async function generateMetadata({
     const comparison = getComparisonContent(locale as Locale);
 
     return {
-      title: `${comparison.title} | Deciply`,
+      title: comparison.title,
       description: comparison.summary,
       alternates: {
         canonical: buildCanonicalUrl(`/${locale}/categories/${slug}`),
@@ -396,6 +396,7 @@ export default async function CategoryDetailPage({
     </div>
   );
 }
+
 
 
 

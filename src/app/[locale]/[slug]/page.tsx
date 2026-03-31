@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { Breadcrumb } from "@/components/catalog/breadcrumb";
@@ -15,6 +15,7 @@ import {
   getToolCount
 } from "@/lib/catalog";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { stripBrandSuffix } from "@/lib/seo";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => discoveryPages.map((page) => ({ locale, slug: page.slug })));
@@ -38,7 +39,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: page.seoTitle,
+    title: stripBrandSuffix(page.seoTitle),
     description: page.seoDescription,
     alternates: {
       canonical: buildCanonicalUrl(`/${locale}/${slug}`),
@@ -226,3 +227,5 @@ export default async function DiscoveryPage({
     </>
   );
 }
+
+

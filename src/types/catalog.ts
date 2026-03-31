@@ -1,4 +1,4 @@
-﻿import type { Locale } from "@/i18n/config";
+import type { Locale } from "@/i18n/config";
 
 export type LocalizedText = Record<Locale, string>;
 export type LocalizedStringList = Record<Locale, string[]>;
@@ -6,6 +6,11 @@ export type LocalizedStringList = Record<Locale, string[]>;
 export type PricingTier = "FREE" | "FREEMIUM" | "PAID";
 
 export type MoneyUseCase = {
+  title: string;
+  description: string;
+};
+
+export type RealUseCaseExample = {
   title: string;
   description: string;
 };
@@ -67,6 +72,9 @@ export type LocalizedTool = {
   name: string;
   shortDescription: string;
   longDescription: string;
+  whatItActuallyDoes: string;
+  whoShouldUseSummary: string;
+  realUseCaseExample: RealUseCaseExample;
   bestUseCase: string;
   whoShouldUse: string[];
   moneyUseCases: MoneyUseCase[];

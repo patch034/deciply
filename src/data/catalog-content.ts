@@ -1,4 +1,4 @@
-﻿import type { Locale } from "@/i18n/config";
+import type { Locale } from "@/i18n/config";
 
 export const catalogContent = {
   tr: {
@@ -61,7 +61,10 @@ export const catalogContent = {
       emptyTitle: "Sonuç bulunamadı",
       emptyDescription:
         "Aramayı sadeleştirin veya filtreleri temizleyip yeniden deneyin.",
-      bestForLabel: "En uygun kullanım"
+      bestForLabel: "En uygun kullanım",
+      pageLabel: "Sayfa",
+      previousPage: "Önceki",
+      nextPage: "Sonraki"
     },
     toolDetail: {
       overviewTitle: "Genel bakış",
@@ -133,7 +136,10 @@ export const catalogContent = {
       emptyTitle: "No tools found",
       emptyDescription:
         "Try a broader search or reset the filters to discover more options.",
-      bestForLabel: "Best fit"
+      bestForLabel: "Best fit",
+      pageLabel: "Page",
+      previousPage: "Previous",
+      nextPage: "Next"
     },
     toolDetail: {
       overviewTitle: "Overview",
@@ -155,4 +161,3 @@ export const catalogContent = {
     toolDetail: Record<string, string>;
   }
 >;
-

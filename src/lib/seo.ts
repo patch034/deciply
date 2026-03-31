@@ -36,64 +36,20 @@ function getFirstSentence(value: string) {
   return ensureSentence(match?.[0] ?? text);
 }
 
-const blogTopicCopy: Record<Locale, Partial<Record<string, string>>> = {
-  en: {
-    "en-iyi-ai-araclari-2026": "which AI tools fit writing, research, design, video, and monetization workflows in 2026",
-    "chatgpt-ile-para-kazanma-yollari": "how to use ChatGPT for client work, content offers, and realistic monetization paths",
-    "en-iyi-ucretsiz-ai-araclari": "which free AI tools are worth testing for real work and early validation",
-    "claude-vs-chatgpt-karsilastirma": "when Claude fits better than ChatGPT and where ChatGPT still makes more sense",
-    "midjourney-nasil-kullanilir": "how to use Midjourney for prompts, image workflows, and better visual output",
-    "freelance-icin-en-iyi-ai-araclari": "which AI tools help freelancers deliver faster, research better, and protect margins",
-    "ai-ile-blog-yazip-para-kazanma": "how AI tools support a blog monetization workflow with realistic publishing steps",
-    "en-iyi-gorsel-ai-araclari": "which AI image tools fit brand work, concept creation, and client-ready visuals",
-    "yeni-baslayanlar-icin-ai-rehberi": "how beginners can choose their first AI tools without wasting time or money",
-    "en-hizli-buyuyen-ai-araclari": "which fast-growing AI tools are gaining attention and where they fit in real workflows",
-    "ai-ile-para-kazanmak-icin-en-iyi-araclar": "which AI tools fit service offers, content delivery, and practical monetization systems",
-    "chatgpt-vs-claude-vs-gemini": "how ChatGPT, Claude, and Gemini compare across writing, research, and daily work",
-    "ucretsiz-ai-araclari-2026": "which free AI tools still make sense in 2026 for real work and testing",
-    "best-ai-tools-for-making-money-2026": "which AI tools fit realistic monetization workflows in 2026",
-    "chatgpt-alternatives-compared-2026": "which alternatives to ChatGPT make more sense for research, writing, and specialized workflows",
-    "free-ai-tools-you-can-start-using-today": "which free AI tools you can start using today for practical work",
-    "best-ai-tools-for-freelancers-2026": "which AI tools freelancers can use to save time, improve delivery, and support repeatable income",
-    "best-ai-tools-for-students-2026": "which AI tools help students study, research, and organize work more efficiently",
-    "ai-tools-for-passive-income-2026": "how AI tools fit passive-income style workflows with realistic expectations",
-    "ai-side-hustles-you-can-start-today": "which AI side hustles are realistic to test today and how the workflows actually work",
-    "free-ai-tools-that-actually-make-money": "which free AI tools can support small monetization experiments that actually lead to revenue",
-    "best-ai-tools-for-beginners-2026": "which beginner-friendly AI tools are easiest to start with in 2026",
-    "how-to-make-1000-a-month-with-ai-tools": "how to build a realistic path toward making $1000 a month with AI tools",
-    "ai-tools-for-freelancers": "how freelancers can use AI tools to save time, improve delivery, and earn more realistically",
-    "best-free-ai-tools-2026": "which free AI tools are strongest in 2026 for writing, research, design, and validation",
-    "ai-tools-to-make-money-2026": "which AI tools fit real online income workflows in 2026"
-  },
-  tr: {
-    "en-iyi-ai-araclari-2026": "2026'da yazı, araştırma, tasarım, video ve gelir odaklı işler için hangi AI araçlarının daha uygun olduğunu",
-    "chatgpt-ile-para-kazanma-yollari": "ChatGPT'nin müşteri işleri, içerik teklifleri ve gerçekçi gelir modellerinde nasıl kullanılabileceğini",
-    "en-iyi-ucretsiz-ai-araclari": "gerçek işlerde denemeye değer ücretsiz AI araçlarının hangileri olduğunu",
-    "claude-vs-chatgpt-karsilastirma": "Claude'un hangi durumlarda ChatGPT'den daha mantıklı olduğunu ve ChatGPT'nin nerede öne çıktığını",
-    "midjourney-nasil-kullanilir": "Midjourney'in prompt, görsel üretim ve daha iyi çıktı alma akışlarında nasıl kullanıldığını",
-    "freelance-icin-en-iyi-ai-araclari": "freelancer'ların daha hızlı teslim, daha iyi araştırma ve daha güçlü marj için hangi AI araçlarını kullanabileceğini",
-    "ai-ile-blog-yazip-para-kazanma": "AI araçlarıyla blog üretim sürecinin gerçekçi şekilde nasıl gelir modeline dönüştürülebileceğini",
-    "en-iyi-gorsel-ai-araclari": "marka işi, konsept üretimi ve teslim odaklı görseller için hangi AI araçlarının daha uygun olduğunu",
-    "yeni-baslayanlar-icin-ai-rehberi": "yeni başlayanların zaman ve para kaybetmeden ilk AI araçlarını nasıl seçebileceğini",
-    "en-hizli-buyuyen-ai-araclari": "hızlı büyüyen AI araçlarının hangi işlerde anlamlı hale geldiğini",
-    "ai-ile-para-kazanmak-icin-en-iyi-araclar": "AI araçlarının hizmet satışı, içerik üretimi ve pratik gelir sistemlerinde nasıl konumlandığını",
-    "chatgpt-vs-claude-vs-gemini": "ChatGPT, Claude ve Gemini'nin yazı, araştırma ve günlük iş akışlarında nasıl ayrıştığını",
-    "ucretsiz-ai-araclari-2026": "2026'da ücretsiz AI araçlarının gerçek işlerde hangi senaryolarda hâlâ mantıklı olduğunu",
-    "best-ai-tools-for-making-money-2026": "2026'da gerçekçi gelir sistemleri için hangi AI araçlarının daha uygun olduğunu",
-    "chatgpt-alternatives-compared-2026": "ChatGPT alternatiflerinin araştırma, yazı ve uzmanlaşmış iş akışlarında nerede daha mantıklı olduğunu",
-    "free-ai-tools-you-can-start-using-today": "bugün hemen denenebilecek ücretsiz AI araçlarının hangi işlerde pratik değer verdiğini",
-    "best-ai-tools-for-freelancers-2026": "freelancer'ların zaman kazanmak, teslim kalitesini artırmak ve geliri desteklemek için hangi AI araçlarını kullanabileceğini",
-    "best-ai-tools-for-students-2026": "öğrenciler için araştırma, not alma ve çalışma düzeni açısından hangi AI araçlarının daha uygun olduğunu",
-    "ai-tools-for-passive-income-2026": "AI araçlarının pasif gelir benzeri sistemlerde gerçekçi olarak nasıl kullanılabileceğini",
-    "ai-side-hustles-you-can-start-today": "bugün başlanabilecek AI yan gelir fikirlerinin gerçekte nasıl çalıştığını",
-    "free-ai-tools-that-actually-make-money": "küçük ama gerçek gelir deneylerinde işe yarayabilen ücretsiz AI araçlarını",
-    "best-ai-tools-for-beginners-2026": "2026'da yeni başlayanlar için en kolay başlanabilecek AI araçlarını",
-    "how-to-make-1000-a-month-with-ai-tools": "AI araçlarıyla ayda 1000 dolar seviyesine giden gerçekçi bir yolun nasıl kurulacağını",
-    "ai-tools-for-freelancers": "freelancer'ların AI araçlarıyla zamanı nasıl kısaltıp teslim kalitesini nasıl yükseltebileceğini",
-    "best-free-ai-tools-2026": "2026'da yazı, araştırma, tasarım ve doğrulama için en mantıklı ücretsiz AI araçlarını",
-    "ai-tools-to-make-money-2026": "2026'da internetten gelir üretmek için hangi AI araçlarının gerçek iş akışlarına uyduğunu"
-  }
-};
+function lowerFirst(value: string) {
+  return value ? value.charAt(0).toLowerCase() + value.slice(1) : value;
+}
+
+function cleanTitleTopic(value: string) {
+  return normalizeMetaText(value)
+    .replace(/\s*\|\s*Deciply$/i, "")
+    .replace(/\s*-\s*Deciply$/i, "")
+    .replace(/[!?]$/, "");
+}
+
+export function stripBrandSuffix(value: string) {
+  return cleanTitleTopic(value);
+}
 
 const blogDescriptionTemplates: Record<Locale, ((topic: string) => string)[]> = {
   en: [
@@ -103,10 +59,10 @@ const blogDescriptionTemplates: Record<Locale, ((topic: string) => string)[]> = 
     (topic) => `See ${topic} in real scenarios, where it helps, and what to watch for.`
   ],
   tr: [
-    (topic) => `Bu rehber, ${topic} gerçek örnekler, kullanım senaryoları ve uygulanabilir adımlarla açıklar.`,
-    (topic) => `Bu içerik, ${topic} gerçek örnekler, pratik iş akışları ve gerçekçi beklentilerle anlatır.`,
-    (topic) => `Bu rehberde ${topic} uygulanabilir adımlar, gerçek kullanım örnekleri ve net karar çerçeveleriyle ele alınır.`,
-    (topic) => `Bu içerik, ${topic} gerçek senaryolar, dikkat edilmesi gereken noktalar ve somut adımlarla gösterir.`
+    (topic) => `Bu rehber, ${topic} ger\u00e7ek \u00f6rnekler, kullan\u0131m senaryolar\u0131 ve uygulanabilir ad\u0131mlarla a\u00e7\u0131klar.`,
+    (topic) => `Bu i\u00e7erik, ${topic} ger\u00e7ek \u00f6rnekler, pratik i\u015f ak\u0131\u015flar\u0131 ve ger\u00e7ek\u00e7i beklentilerle anlat\u0131r.`,
+    (topic) => `Bu rehberde ${topic} uygulanabilir ad\u0131mlar, ger\u00e7ek kullan\u0131m \u00f6rnekleri ve net karar \u00e7er\u00e7eveleriyle ele al\u0131n\u0131r.`,
+    (topic) => `Bu i\u00e7erik, ${topic} ger\u00e7ek senaryolar, dikkat edilmesi gereken noktalar ve somut ad\u0131mlarla g\u00f6sterir.`
   ]
 };
 
@@ -114,17 +70,9 @@ function slugHash(value: string) {
   return [...value].reduce((total, char) => total + char.charCodeAt(0), 0);
 }
 
-function lowerFirst(value: string) {
-  return value ? value.charAt(0).toLowerCase() + value.slice(1) : value;
-}
-
-function buildFallbackBlogTopic(locale: Locale, article: LocalizedBlogArticle) {
-  const cleanTitle = normalizeMetaText(article.title).replace(/\s*\|.*$/, "").replace(/[!?]$/g, "");
-  return locale === "tr" ? lowerFirst(cleanTitle) : lowerFirst(cleanTitle);
-}
-
 function buildBlogTopic(locale: Locale, article: LocalizedBlogArticle) {
-  return blogTopicCopy[locale][article.slug] ?? buildFallbackBlogTopic(locale, article);
+  const cleanTitle = cleanTitleTopic(article.title);
+  return locale === "tr" ? lowerFirst(cleanTitle) : lowerFirst(cleanTitle);
 }
 
 export function buildBlogSeoLead(locale: Locale, article: LocalizedBlogArticle) {
@@ -149,44 +97,54 @@ export function buildBlogIntroParagraph(locale: Locale, article: LocalizedBlogAr
   return ensureSentence(`${lead} ${intro}`);
 }
 
-function cleanTitleTopic(value: string) {
-  return normalizeMetaText(value)
-    .replace(/\s*\|\s*Deciply$/i, "")
-    .replace(/\s*[–-]\s*Deciply$/i, "")
-    .replace(/[!?]$/, "");
-}
-
-export function buildHomeTitle() {
-  return "Deciply – Compare AI Tools Based on Real Use Cases";
+export function buildHomeTitle(locale: Locale) {
+  return locale === "tr"
+    ? "Ger\u00e7ek kullan\u0131m alanlar\u0131na g\u00f6re AI ara\u00e7lar\u0131n\u0131 kar\u015f\u0131la\u015ft\u0131r\u0131n"
+    : "Compare AI Tools by Real Use Case";
 }
 
 export function buildBlogPageTitle(article: LocalizedBlogArticle) {
   const base = cleanTitleTopic(article.title);
 
   return /\b2026\b/.test(base)
-    ? `${base} – Real Use Cases & Tools`
-    : `${base} (2026 Guide) – Real Use Cases & Tools`;
+    ? `${base} - Real Use Cases & Tools`
+    : `${base} (2026 Guide) - Real Use Cases & Tools`;
 }
 
-export function buildToolPageTitle(tool: LocalizedTool) {
-  return `${tool.name} Review (2026) – Use Cases, Pros & Cons`;
+export function buildToolsPageTitle(locale: Locale, currentPage: number) {
+  const base = locale === "tr" ? "AI ara\u00e7lar\u0131 dizini" : "AI Tools Directory";
+  return currentPage > 1 ? `${base} - Page ${currentPage}` : base;
 }
+
+export function buildToolPageTitle(locale: Locale, tool: LocalizedTool) {
+  return locale === "tr"
+    ? `${tool.name} incelemesi (2026): ${tool.bestUseCase}`
+    : `${tool.name} Review (2026): ${tool.bestUseCase}`;
+}
+
 export function buildHomeMetaDescription(locale: Locale) {
   return locale === "tr"
-    ? "AI araçlarını karşılaştırın, gerçek kullanım senaryolarını keşfedin ve Deciply ile doğru aracı daha hızlı seçin."
+    ? "AI ara\u00e7lar\u0131n\u0131 kar\u015f\u0131la\u015ft\u0131r\u0131n, ger\u00e7ek kullan\u0131m senaryolar\u0131n\u0131 ke\u015ffedin ve Deciply ile do\u011fru arac\u0131 daha h\u0131zl\u0131 se\u00e7in."
     : "Compare AI tools, explore real use cases, and choose the right tool faster with Deciply.";
 }
 
-export function buildToolsIndexMetaDescription(locale: Locale, toolCount: number) {
-  return locale === "tr"
-    ? `${toolCount} seçilmiş AI aracını kullanım alanı, fiyat modeli ve güçlü yönlerine göre inceleyin. Deciply ile size en uygun aracı daha hızlı bulun.`
-    : `Browse ${toolCount} curated AI tools by use case, pricing, and strengths. Compare options and find the right fit faster with Deciply.`;
+export function buildToolsIndexMetaDescription(locale: Locale, toolCount: number, currentPage = 1) {
+  const base =
+    locale === "tr"
+      ? `${toolCount} se\u00e7ilmi\u015f AI arac\u0131n\u0131 kullan\u0131m alan\u0131, fiyat modeli ve g\u00fc\u00e7l\u00fc y\u00f6nlerine g\u00f6re inceleyin. Deciply ile size en uygun arac\u0131 daha h\u0131zl\u0131 bulun.`
+      : `Browse ${toolCount} curated AI tools by use case, pricing, and strengths. Compare options and find the right fit faster with Deciply.`;
+
+  if (currentPage <= 1) {
+    return base;
+  }
+
+  return locale === "tr" ? `${base} Sayfa ${currentPage}.` : `${base} Page ${currentPage}.`;
 }
 
 export function buildBlogIndexMetaDescription(locale: Locale, currentPage = 1) {
   const base =
     locale === "tr"
-      ? "Deciply blogunda gerçek kullanım senaryoları, karşılaştırmalar ve net araç seçim rehberleri yer alır."
+      ? "Deciply blogunda ger\u00e7ek kullan\u0131m senaryolar\u0131, kar\u015f\u0131la\u015ft\u0131rmalar ve net ara\u00e7 se\u00e7im rehberleri yer al\u0131r."
       : "Explore Deciply blog guides built around real use cases, honest comparisons, and clearer AI tool decisions.";
 
   if (currentPage <= 1) {
@@ -198,12 +156,13 @@ export function buildBlogIndexMetaDescription(locale: Locale, currentPage = 1) {
 
 export function buildToolMetaDescription(locale: Locale, tool: LocalizedTool) {
   const base = ensureSentence(tool.shortDescription);
+  const example = ensureSentence(tool.realUseCaseExample.description);
   const tail =
     locale === "tr"
-      ? `${tool.name} için güçlü yönleri, sınırlamaları ve en mantıklı kullanım alanlarını görün.`
+      ? `${tool.name} i\u00e7in g\u00fc\u00e7l\u00fc y\u00f6nleri, s\u0131n\u0131rlamalar\u0131 ve en mant\u0131kl\u0131 kullan\u0131m alanlar\u0131n\u0131 g\u00f6r\u00fcn.`
       : `See ${tool.name}'s strengths, trade-offs, and the workflows where it makes the most sense.`;
 
-  return clipMetaDescription(`${base} ${tail}`);
+  return clipMetaDescription(`${base} ${example} ${tail}`);
 }
 
 export function buildBlogMetaDescription(locale: Locale, article: LocalizedBlogArticle) {
