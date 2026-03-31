@@ -25,7 +25,7 @@ import {
   getLocalizedToolBySlug,
   getToolOutboundUrl
 } from "@/lib/catalog";
-import { buildBlogMetaDescription } from "@/lib/seo";
+import { buildBlogMetaDescription, buildBlogPageTitle } from "@/lib/seo";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -59,7 +59,7 @@ export async function generateMetadata({
   const description = buildBlogMetaDescription(safeLocale, article);
 
   return {
-    title: article.seoTitle,
+    title: buildBlogPageTitle(article),
     description: description,
     alternates: {
       canonical: canonicalUrl,
@@ -68,7 +68,7 @@ export async function generateMetadata({
     openGraph: {
       type: "article",
       url: canonicalUrl,
-      title: article.seoTitle,
+      title: buildBlogPageTitle(article),
       description: description,
       publishedTime,
       modifiedTime: article.updatedAt ?? publishedTime

@@ -13,7 +13,7 @@ import { tools } from "@/data/tools";
 import { toolCategoryOptions } from "@/data/tool-taxonomy";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
 import { getBlogCopy, getRelatedArticlesByTool } from "@/lib/blog";
-import { buildToolMetaDescription } from "@/lib/seo";
+import { buildToolMetaDescription, buildToolPageTitle } from "@/lib/seo";
 import { getToolTrustIndicators, getToolUseCaseTags } from "@/lib/tool-ui";
 import {
   formatPricing,
@@ -289,7 +289,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const description = buildToolMetaDescription(locale as Locale, tool);
 
   return {
-    title: tool.seoTitle,
+    title: buildToolPageTitle(tool),
     description: description,
     keywords: [tool.name, tool.bestUseCase, ...tool.toolCategorySlugs, ...tool.useCaseSlugs, "AI tool", "AI software"],
     alternates: {
@@ -299,7 +299,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       type: "website",
       url: canonicalUrl,
-      title: tool.seoTitle,
+      title: buildToolPageTitle(tool),
       description: description
     }
   };

@@ -149,6 +149,28 @@ export function buildBlogIntroParagraph(locale: Locale, article: LocalizedBlogAr
   return ensureSentence(`${lead} ${intro}`);
 }
 
+function cleanTitleTopic(value: string) {
+  return normalizeMetaText(value)
+    .replace(/\s*\|\s*Deciply$/i, "")
+    .replace(/\s*[–-]\s*Deciply$/i, "")
+    .replace(/[!?]$/, "");
+}
+
+export function buildHomeTitle() {
+  return "Deciply – Compare AI Tools Based on Real Use Cases";
+}
+
+export function buildBlogPageTitle(article: LocalizedBlogArticle) {
+  const base = cleanTitleTopic(article.title);
+
+  return /\b2026\b/.test(base)
+    ? `${base} – Real Use Cases & Tools`
+    : `${base} (2026 Guide) – Real Use Cases & Tools`;
+}
+
+export function buildToolPageTitle(tool: LocalizedTool) {
+  return `${tool.name} Review (2026) – Use Cases, Pros & Cons`;
+}
 export function buildHomeMetaDescription(locale: Locale) {
   return locale === "tr"
     ? "AI araçlarını karşılaştırın, gerçek kullanım senaryolarını keşfedin ve Deciply ile doğru aracı daha hızlı seçin."
