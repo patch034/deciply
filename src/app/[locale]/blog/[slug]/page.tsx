@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ArticleContent } from "@/components/blog/article-content";
@@ -47,15 +47,16 @@ export async function generateMetadata({
     return {};
   }
 
-  const article = getLocalizedBlogArticleBySlug(locale as Locale, slug);
+  const safeLocale = locale as Locale;
+  const article = getLocalizedBlogArticleBySlug(safeLocale, slug);
 
   if (!article) {
     return {};
   }
 
-  const canonicalUrl = buildCanonicalUrl(`/${locale}/blog/${slug}`);
+  const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/blog/${slug}`);
   const publishedTime = resolveBlogPublishDate(article);
-  const description = buildBlogMetaDescription(article);
+  const description = buildBlogMetaDescription(safeLocale, article);
 
   return {
     title: article.seoTitle,
@@ -112,7 +113,7 @@ export default async function BlogDetailPage({
   const publishedSource = resolveBlogPublishDate(article);
   const publishedDate = publishedSource ? formatBlogDate(safeLocale, publishedSource) : null;
   const updatedDate = article.updatedAt ? formatBlogDate(safeLocale, article.updatedAt) : null;
-  const description = buildBlogMetaDescription(article);
+  const description = buildBlogMetaDescription(safeLocale, article);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -318,6 +319,7 @@ export default async function BlogDetailPage({
     </>
   );
 }
+
 
 
 

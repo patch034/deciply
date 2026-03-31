@@ -2,7 +2,8 @@ import { blogArticles } from "@/data/blog";
 import { getBlogPlaybookSections } from "@/data/blog-playbooks";
 import type { Locale } from "@/i18n/config";
 import { getLocalizedToolBySlug, getLocalizedTools } from "@/lib/catalog";
-import { assertEncodingHealth, normalizeEncodingTree } from "@/lib/encoding";
+import { assertEncodingHealth, normalizeEncodingTree } from "@/lib/encoding";
+import { buildBlogIntroParagraph } from "@/lib/seo";
 import type { BlogEntry, LocalizedBlogArticle } from "@/types/blog";
 
 export const BLOG_PAGE_SIZE = 12;
@@ -98,7 +99,7 @@ function localizeArticle(article: BlogEntry, locale: Locale): LocalizedBlogArtic
 
   const playbookSections = getBlogPlaybookSections(article.slug, locale);
 
-  const localizedArticle = {
+  const baseArticle = {
     slug: article.slug,
     categorySlug: article.categorySlug,
     publishDate,
@@ -107,6 +108,11 @@ function localizeArticle(article: BlogEntry, locale: Locale): LocalizedBlogArtic
     relatedToolSlugs: article.relatedToolSlugs,
     ...article.locales[locale],
     sections: playbookSections ?? article.locales[locale].sections
+  };
+
+  const localizedArticle = {
+    ...baseArticle,
+    intro: buildBlogIntroParagraph(locale, baseArticle)
   };
 
   const normalizedArticle = normalizeEncodingTree(localizedArticle);
