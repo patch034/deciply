@@ -20,13 +20,9 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   manifest: "/site.webmanifest",
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon.svg", type: "image/svg+xml" }
-    ],
+    icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }]
+    apple: "/icon.png"
   }
 };
 
@@ -39,6 +35,8 @@ export default function RootLayout({
     <html suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/icon.png" />
       </head>
       <body className={inter.className}>
         {children}
@@ -47,3 +45,4 @@ export default function RootLayout({
     </html>
   );
 }
+
