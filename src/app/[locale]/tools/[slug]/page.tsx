@@ -14,6 +14,7 @@ import { toolCategoryOptions } from "@/data/tool-taxonomy";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
 import { getBlogCopy, getRelatedArticlesByTool } from "@/lib/blog";
 import { buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
+import { buildAlternativesPath, buildUseCasePath, getSafeComparisonPath, getUseCasePagesForTool } from "@/lib/intent-pages";
 import { buildToolMetaDescription, buildToolPageTitle } from "@/lib/seo";
 import { getToolTrustIndicators, getToolUseCaseTags } from "@/lib/tool-ui";
 import {
@@ -345,6 +346,8 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   const howToUseSteps = getHowToUseSteps(safeLocale, tool);
   const audienceCards = getAudienceCards(safeLocale, tool, dictionary);
   const comparisonTargets = getComparisonTargetTools(safeLocale, tool.slug, 3);
+  const useCasePages = getUseCasePagesForTool(safeLocale, tool.useCaseSlugs, 2);
+  const alternativesHubHref = buildAlternativesPath(safeLocale, tool.slug);
   const alternativesTitle = safeLocale === "tr" ? `${tool.name} alternatifleri` : `Alternatives to ${tool.name}`;
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/tools/${tool.slug}`);
   const description = buildToolMetaDescription(safeLocale, tool);
@@ -624,6 +627,33 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </InfoSection>
       ) : null}
 
+      <InfoSection
+        title={safeLocale === "tr" ? "Dahili karar yollar?" : "Internal decision paths"}
+        description={
+          safeLocale === "tr"
+            ? "Alternatif ve use-case sayfalarina gecerek bu araci farkli karar acilarindan degerlendirebilirsiniz."
+            : "Use the alternatives and use-case pages to evaluate this tool from a few different decision angles."
+        }
+      >
+        <div className="grid gap-4 md:grid-cols-3">
+          <Link
+            href={alternativesHubHref}
+            className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 text-sm font-semibold leading-7 text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300"
+          >
+            {safeLocale === "tr" ? `${tool.name} alternatifleri` : `${tool.name} alternatives`}
+          </Link>
+          {useCasePages.map((page) => (
+            <Link
+              key={page.slug}
+              href={buildUseCasePath(safeLocale, page.slug)}
+              className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 text-sm font-semibold leading-7 text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300"
+            >
+              {page.title}
+            </Link>
+          ))}
+        </div>
+      </InfoSection>
+
       <InfoSection title={alternativesTitle} description={dictionary.alternativesDescription}>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {relatedTools.map((item) => (
@@ -636,7 +666,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
               detailLabel={content.common.viewDetailsLabel}
               bestForLabel={dictionary.bestForLabel}
               useCaseLabel={item.bestUseCase}
-              compareHref={buildComparisonPath(safeLocale, tool.slug, item.slug)}
+              compareHref={getSafeComparisonPath(safeLocale, tool.slug, item.slug)}
             />
           ))}
         </div>

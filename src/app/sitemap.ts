@@ -6,6 +6,7 @@ import { categories } from "@/data/categories";
 import { locales } from "@/i18n/config";
 import { tools } from "@/data/tools";
 import { getStaticComparisonPairSlugs } from "@/lib/comparisons";
+import { getStaticAlternativeSlugs, getStaticUseCaseSlugs } from "@/lib/intent-pages";
 
 const siteUrl = "https://deciply.com";
 const staticLastModified = new Date("2026-03-29T00:00:00.000Z");
@@ -59,6 +60,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const pair of getStaticComparisonPairSlugs()) {
       entries.push({
         url: withLocale(locale, `/compare/${pair}`),
+        lastModified: staticLastModified
+      });
+    }
+
+    for (const toolSlug of getStaticAlternativeSlugs()) {
+      entries.push({
+        url: withLocale(locale, `/alternatives/${toolSlug}`),
+        lastModified: staticLastModified
+      });
+    }
+
+    for (const useCaseSlug of getStaticUseCaseSlugs()) {
+      entries.push({
+        url: withLocale(locale, `/use-cases/${useCaseSlug}`),
         lastModified: staticLastModified
       });
     }
