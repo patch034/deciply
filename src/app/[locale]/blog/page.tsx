@@ -12,6 +12,7 @@ import {
   getPaginatedLocalizedBlogArticles,
   parseBlogPage
 } from "@/lib/blog";
+import { buildBlogIndexMetaDescription } from "@/lib/seo";
 
 function buildBlogPageHref(locale: Locale, page: number) {
   return page <= 1 ? `/${locale}/blog` : `/${locale}/blog?page=${page}`;
@@ -39,7 +40,7 @@ export async function generateMetadata({
 
   return {
     title: currentPage > 1 ? `${copy.blogLabel} - ${copy.pageLabel} ${currentPage} | Deciply` : `${copy.blogLabel} | Deciply`,
-    description: copy.listDescription,
+    description: buildBlogIndexMetaDescription(safeLocale, currentPage),
     alternates: {
       canonical: buildCanonicalUrl(canonicalPath),
       languages: buildAlternates(alternatesPath)

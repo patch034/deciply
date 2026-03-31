@@ -13,6 +13,7 @@ import { tools } from "@/data/tools";
 import { toolCategoryOptions } from "@/data/tool-taxonomy";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
 import { getBlogCopy, getRelatedArticlesByTool } from "@/lib/blog";
+import { buildToolMetaDescription } from "@/lib/seo";
 import { getToolTrustIndicators, getToolUseCaseTags } from "@/lib/tool-ui";
 import {
   formatPricing,
@@ -285,10 +286,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 
   const canonicalUrl = buildCanonicalUrl(`/${locale}/tools/${slug}`);
+  const description = buildToolMetaDescription(locale as Locale, tool);
 
   return {
     title: tool.seoTitle,
-    description: tool.seoDescription,
+    description: description,
     keywords: [tool.name, tool.bestUseCase, ...tool.toolCategorySlugs, ...tool.useCaseSlugs, "AI tool", "AI software"],
     alternates: {
       canonical: canonicalUrl,
@@ -298,7 +300,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       type: "website",
       url: canonicalUrl,
       title: tool.seoTitle,
-      description: tool.seoDescription
+      description: description
     }
   };
 }
@@ -335,6 +337,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   const audienceCards = getAudienceCards(safeLocale, tool, dictionary);
   const alternativesTitle = safeLocale === "tr" ? `${tool.name} alternatifleri` : `Alternatives to ${tool.name}`;
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/tools/${tool.slug}`);
+  const description = buildToolMetaDescription(safeLocale, tool);
   const decisionSummaryTitle = safeLocale === "tr" ? "Karar özeti" : "Decision snapshot";
   const decisionSummaryDescription =
     safeLocale === "tr"
@@ -362,7 +365,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: tool.name,
-    description: tool.seoDescription,
+    description: description,
     applicationCategory: quickCategory,
     operatingSystem: "Web",
     url: canonicalUrl,

@@ -25,6 +25,7 @@ import {
   getLocalizedToolBySlug,
   getToolOutboundUrl
 } from "@/lib/catalog";
+import { buildBlogMetaDescription } from "@/lib/seo";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -54,10 +55,11 @@ export async function generateMetadata({
 
   const canonicalUrl = buildCanonicalUrl(`/${locale}/blog/${slug}`);
   const publishedTime = resolveBlogPublishDate(article);
+  const description = buildBlogMetaDescription(article);
 
   return {
     title: article.seoTitle,
-    description: article.seoDescription,
+    description: description,
     alternates: {
       canonical: canonicalUrl,
       languages: buildAlternates(`/blog/${slug}`)
@@ -66,7 +68,7 @@ export async function generateMetadata({
       type: "article",
       url: canonicalUrl,
       title: article.seoTitle,
-      description: article.seoDescription,
+      description: description,
       publishedTime,
       modifiedTime: article.updatedAt ?? publishedTime
     }
@@ -110,12 +112,13 @@ export default async function BlogDetailPage({
   const publishedSource = resolveBlogPublishDate(article);
   const publishedDate = publishedSource ? formatBlogDate(safeLocale, publishedSource) : null;
   const updatedDate = article.updatedAt ? formatBlogDate(safeLocale, article.updatedAt) : null;
+  const description = buildBlogMetaDescription(article);
 
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: article.title,
-    description: article.seoDescription,
+    description: description,
     articleSection: article.categoryLabel,
     inLanguage: safeLocale,
     mainEntityOfPage: canonicalUrl,

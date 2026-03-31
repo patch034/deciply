@@ -3,6 +3,7 @@
 import { HomePage } from "@/components/home/home-page";
 import { getHomeContent } from "@/data/home";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
+import { buildHomeMetaDescription } from "@/lib/seo";
 
 type LocalePageProps = {
   params: Promise<{ locale: string }>;
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
       safeLocale === "tr"
         ? "Deciply | AI araçlarını karşılaştır, keşfet ve doğru seçimi yap"
         : "Deciply | Compare AI tools and choose with confidence",
-    description: content.hero.description,
+    description: buildHomeMetaDescription(safeLocale),
     alternates: {
       canonical: buildCanonicalUrl(`/${safeLocale}`),
       languages: buildAlternates("")

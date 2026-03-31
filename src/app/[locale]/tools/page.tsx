@@ -7,9 +7,11 @@ import {
   formatPricing,
   getCatalogContent,
   getCategoryNamesMap,
-  getLocalizedTools
+  getLocalizedTools,
+  getToolCount
 } from "@/lib/catalog";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
+import { buildToolsIndexMetaDescription } from "@/lib/seo";
 
 export async function generateMetadata({
   params
@@ -26,7 +28,7 @@ export async function generateMetadata({
 
   return {
     title: content.toolsIndex.title,
-    description: content.toolsIndex.description,
+    description: buildToolsIndexMetaDescription(locale as Locale, getToolCount()),
     alternates: {
       canonical: buildCanonicalUrl(`/${locale}/tools`),
       languages: buildAlternates("/tools")
