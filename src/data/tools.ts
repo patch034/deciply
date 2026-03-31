@@ -15,34 +15,34 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "ChatGPT",
-        shortDescription: "YazÄ±, araÅŸtÄ±rma ve gÃ¼nlÃ¼k iÅŸ akÄ±ÅŸlarÄ±nÄ± hÄ±zlandÄ±ran Ã§ok yÃ¶nlÃ¼ bir AI asistanÄ±.",
+        shortDescription: "Yazı, araştırma ve günlük iş akışlarını hızlandıran çok yönlü bir AI asistanı.",
         longDescription:
-          "ChatGPT; yazÄ± yazma, Ã¶zet Ã§Ä±karma, fikir bulma ve araÅŸtÄ±rma destekli iÃ§erik Ã¼retimi iÃ§in kullanÄ±lan Ã§ok yÃ¶nlÃ¼ bir AI aracÄ±dÄ±r. HÄ±zlÄ± sonuÃ§ verdiÄŸi iÃ§in bireysel kullanÄ±cÄ±lar ve ekipler iÃ§in pratik bir baÅŸlangÄ±Ã§ noktasÄ± olur.",
-        bestUseCase: "YazÄ±, araÅŸtÄ±rma ve gÃ¼nlÃ¼k Ã¼retkenlik iÅŸleri",
-        whoShouldUse: ["Freelancer'lar", "Ã–ÄŸrenciler", "Ä°Ã§erik Ã¼reticileri"],
+          "ChatGPT; yazı yazma, özet çıkarma, fikir bulma ve araştırma destekli içerik üretimi için kullanılan çok yönlü bir AI aracıdır. Hızlı sonuç verdiği için bireysel kullanıcılar ve ekipler için pratik bir başlangıç noktası olur.",
+        bestUseCase: "Yazı, araştırma ve günlük üretkenlik işleri",
+        whoShouldUse: ["Freelancer'lar", "Öğrenciler", "İçerik üreticileri"],
         moneyUseCases: [
           {
-            title: "Blog iÃ§erikleri Ã¼retme",
-            description: "Daha hÄ±zlÄ± taslak Ã§Ä±karÄ±p reklam veya affiliate geliri hedefleyen siteler iÃ§in iÃ§erik Ã¼retebilirsiniz."
+            title: "Blog içerikleri üretme",
+            description: "Daha hızlı taslak çıkarıp reklam veya affiliate geliri hedefleyen siteler için içerik üretebilirsiniz."
           },
           {
-            title: "MÃ¼ÅŸteri iÃ§in metin yazma",
+            title: "Müşteri için metin yazma",
             description: "Landing page, e-posta ve sosyal medya metinlerini freelance hizmet olarak satabilirsiniz."
           },
           {
-            title: "Dijital Ã¼rÃ¼n hazÄ±rlama",
-            description: "Kontrol listesi, mini rehber ve ÅŸablon Ã¼retip bunlarÄ± dijital Ã¼rÃ¼n olarak satabilirsiniz."
+            title: "Dijital ürün hazırlama",
+            description: "Kontrol listesi, mini rehber ve şablon üretip bunları dijital ürün olarak satabilirsiniz."
           },
           {
             title: "YouTube senaryosu yazma",
-            description: "Video Ã¼reticileri iÃ§in senaryo ve iÃ§erik akÄ±ÅŸÄ± hazÄ±rlayarak ek gelir oluÅŸturabilirsiniz."
+            description: "Video üreticileri için senaryo ve içerik akışı hazırlayarak ek gelir oluşturabilirsiniz."
           }
         ],
-        features: ["Uzun ve kÄ±sa metin Ã¼retimi", "Ã–zetleme ve yeniden yazÄ±m", "AraÅŸtÄ±rma desteÄŸi", "Esnek prompt kullanÄ±mÄ±"],
-        pros: ["Ã‡ok geniÅŸ kullanÄ±m alanÄ± sunar", "Yeni baÅŸlayanlar iÃ§in Ã¶ÄŸrenmesi kolaydÄ±r", "HÄ±zlÄ± Ã§Ä±ktÄ± verir"],
-        cons: ["SonuÃ§ kalitesi prompt kalitesine baÄŸlÄ±dÄ±r", "Ã–nemli bilgiler iÃ§in kontrol gerekebilir"],
-        seoTitle: "ChatGPT incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "ChatGPT fiyat modeli, gÃ¼Ã§lÃ¼ yÃ¶nleri, eksileri ve para kazanma kullanÄ±m alanlarÄ±nÄ± kÄ±sa ÅŸekilde inceleyin."
+        features: ["Uzun ve kısa metin üretimi", "Özetleme ve yeniden yazım", "Araştırma desteği", "Esnek prompt kullanımı"],
+        pros: ["Çok geniş kullanım alanı sunar", "Yeni başlayanlar için öğrenmesi kolaydır", "Hızlı çıktı verir"],
+        cons: ["Sonuç kalitesi prompt kalitesine bağlıdır", "Önemli bilgiler için kontrol gerekebilir"],
+        seoTitle: "ChatGPT incelemesi ve kullanım alanları",
+        seoDescription: "ChatGPT fiyat modeli, güçlü yönleri, eksileri ve para kazanma kullanım alanlarını kısa şekilde inceleyin."
       },
       en: {
         name: "ChatGPT",
@@ -91,30 +91,30 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Claude",
-        shortDescription: "Uzun iÃ§erik, detaylÄ± aÃ§Ä±klama ve daha sakin yazÄ±m tonu iÃ§in gÃ¼Ã§lÃ¼ bir AI aracÄ±.",
+        shortDescription: "Uzun içerik, detaylı açıklama ve daha sakin yazım tonu için güçlü bir AI aracı.",
         longDescription:
-          "Claude; uzun metin Ã¼retimi, detaylÄ± aÃ§Ä±klamalar ve dÃ¼zenli yazÄ± akÄ±ÅŸÄ± isteyen kullanÄ±cÄ±lar iÃ§in Ã¶ne Ã§Ä±kar. Ã–zellikle araÅŸtÄ±rma destekli iÃ§erik ve daha temiz uzun form yazÄ±lar iÃ§in tercih edilir.",
-        bestUseCase: "Uzun iÃ§erik ve detaylÄ± anlatÄ±m",
-        whoShouldUse: ["AraÅŸtÄ±rmacÄ±lar", "Ä°Ã§erik ekipleri", "Freelancer'lar"],
+          "Claude; uzun metin üretimi, detaylı açıklamalar ve düzenli yazı akışı isteyen kullanıcılar için öne çıkar. Özellikle araştırma destekli içerik ve daha temiz uzun form yazılar için tercih edilir.",
+        bestUseCase: "Uzun içerik ve detaylı anlatım",
+        whoShouldUse: ["Araştırmacılar", "İçerik ekipleri", "Freelancer'lar"],
         moneyUseCases: [
           {
-            title: "Uzun blog yazÄ±larÄ± hazÄ±rlama",
-            description: "Daha dÃ¼zenli uzun iÃ§erikler Ã¼reterek mÃ¼ÅŸterilere blog paketi satabilirsiniz."
+            title: "Uzun blog yazıları hazırlama",
+            description: "Daha düzenli uzun içerikler üreterek müşterilere blog paketi satabilirsiniz."
           },
           {
-            title: "B2B iÃ§erik Ã¼retimi",
-            description: "Kurumsal ton isteyen markalar iÃ§in daha aÃ§Ä±klayÄ±cÄ± iÃ§erikler hazÄ±rlayabilirsiniz."
+            title: "B2B içerik üretimi",
+            description: "Kurumsal ton isteyen markalar için daha açıklayıcı içerikler hazırlayabilirsiniz."
           },
           {
-            title: "Rapor ve rehber yazÄ±mÄ±",
-            description: "DetaylÄ± rehberler ve araÅŸtÄ±rma Ã¶zetlerini Ã¼cretli iÃ§erik hizmetine dÃ¶nÃ¼ÅŸtÃ¼rebilirsiniz."
+            title: "Rapor ve rehber yazımı",
+            description: "Detaylı rehberler ve araştırma özetlerini ücretli içerik hizmetine dönüştürebilirsiniz."
           }
         ],
-        features: ["Uzun baÄŸlam desteÄŸi", "DÃ¼zenli aÃ§Ä±klama yapÄ±sÄ±", "YazÄ± odaklÄ± kullanÄ±m", "AraÅŸtÄ±rma destekli akÄ±ÅŸlar"],
-        pros: ["Uzun cevaplarda gÃ¼Ã§lÃ¼dÃ¼r", "Daha dÃ¼zenli bir yazÄ±m stili sunar", "AraÅŸtÄ±rma odaklÄ± iÃ§erikte iyidir"],
-        cons: ["BazÄ± hÄ±zlÄ± iÅŸ akÄ±ÅŸlarÄ±nda daha yavaÅŸ hissedilebilir", "KÄ±sa pazarlama metinlerinde her zaman en pratik seÃ§enek olmayabilir"],
-        seoTitle: "Claude incelemesi ve karÅŸÄ±laÅŸtÄ±rmalarÄ±",
-        seoDescription: "Claude iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        features: ["Uzun bağlam desteği", "Düzenli açıklama yapısı", "Yazı odaklı kullanım", "Araştırma destekli akışlar"],
+        pros: ["Uzun cevaplarda güçlüdür", "Daha düzenli bir yazım stili sunar", "Araştırma odaklı içerikte iyidir"],
+        cons: ["Bazı hızlı iş akışlarında daha yavaş hissedilebilir", "Kısa pazarlama metinlerinde her zaman en pratik seçenek olmayabilir"],
+        seoTitle: "Claude incelemesi ve karşılaştırmaları",
+        seoDescription: "Claude için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Claude",
@@ -159,30 +159,30 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Midjourney",
-        shortDescription: "YÃ¼ksek kaliteli konsept gÃ¶rseller ve stil odaklÄ± yaratÄ±cÄ± iÅŸler iÃ§in gÃ¼Ã§lÃ¼ bir gÃ¶rsel AI aracÄ±.",
+        shortDescription: "Yüksek kaliteli konsept görseller ve stil odaklı yaratıcı işler için güçlü bir görsel AI aracı.",
         longDescription:
-          "Midjourney; konsept tasarÄ±m, yaratÄ±cÄ± gÃ¶rsel Ã¼retimi ve estetik kalite arayan kullanÄ±cÄ±lar iÃ§in Ã¶ne Ã§Ä±kan bir gÃ¶rsel AI aracÄ±dÄ±r. TasarÄ±mcÄ±lar ve iÃ§erik Ã¼reticileri iÃ§in hÄ±zlÄ± ilham ve sunum desteÄŸi saÄŸlar.",
-        bestUseCase: "GÃ¶rsel Ã¼retim ve konsept tasarÄ±mÄ±",
-        whoShouldUse: ["TasarÄ±mcÄ±lar", "Ä°Ã§erik Ã¼reticileri", "Freelancer'lar"],
+          "Midjourney; konsept tasarım, yaratıcı görsel üretimi ve estetik kalite arayan kullanıcılar için öne çıkan bir görsel AI aracıdır. Tasarımcılar ve içerik üreticileri için hızlı ilham ve sunum desteği sağlar.",
+        bestUseCase: "Görsel üretim ve konsept tasarımı",
+        whoShouldUse: ["Tasarımcılar", "İçerik üreticileri", "Freelancer'lar"],
         moneyUseCases: [
           {
-            title: "MÃ¼ÅŸteri iÃ§in gÃ¶rsel hazÄ±rlama",
-            description: "Kapak, poster ve sosyal medya gÃ¶rsellerini Ã¼cretli tasarÄ±m hizmetine Ã§evirebilirsiniz."
+            title: "Müşteri için görsel hazırlama",
+            description: "Kapak, poster ve sosyal medya görsellerini ücretli tasarım hizmetine çevirebilirsiniz."
           },
           {
-            title: "Print-on-demand tasarÄ±mlar Ã¼retme",
-            description: "TiÅŸÃ¶rt, poster ve dijital baskÄ± Ã¼rÃ¼nleri iÃ§in satÄ±labilir gÃ¶rseller hazÄ±rlayabilirsiniz."
+            title: "Print-on-demand tasarımlar üretme",
+            description: "Tişört, poster ve dijital baskı ürünleri için satılabilir görseller hazırlayabilirsiniz."
           },
           {
             title: "Moodboard ve konsept sunumu",
-            description: "Ajans veya freelance sunumlarda hÄ±zlÄ± konsept gÃ¶rselleri hazÄ±rlayarak iÅŸ kazanabilirsiniz."
+            description: "Ajans veya freelance sunumlarda hızlı konsept görselleri hazırlayarak iş kazanabilirsiniz."
           }
         ],
-        features: ["Stil odaklÄ± gÃ¶rsel Ã¼retim", "Konsept ve moodboard desteÄŸi", "YÃ¼ksek estetik kalite", "YaratÄ±cÄ± iterasyon"],
-        pros: ["GÃ¶rsel kalite algÄ±sÄ± yÃ¼ksektir", "YaratÄ±cÄ± projelerde gÃ¼Ã§lÃ¼ sonuÃ§lar verir", "Konsept Ã¼retimini hÄ±zlandÄ±rÄ±r"],
-        cons: ["Ãœcretli baÅŸlangÄ±Ã§ bariyeri olabilir", "ArayÃ¼z ve akÄ±ÅŸ her kullanÄ±cÄ± iÃ§in en kolay seÃ§enek deÄŸildir"],
+        features: ["Stil odaklı görsel üretim", "Konsept ve moodboard desteği", "Yüksek estetik kalite", "Yaratıcı iterasyon"],
+        pros: ["Görsel kalite algısı yüksektir", "Yaratıcı projelerde güçlü sonuçlar verir", "Konsept üretimini hızlandırır"],
+        cons: ["Ücretli başlangıç bariyeri olabilir", "Arayüz ve akış her kullanıcı için en kolay seçenek değildir"],
         seoTitle: "Midjourney incelemesi",
-        seoDescription: "Midjourney fiyat modeli, gÃ¶rsel kalite gÃ¼cÃ¼ ve para kazanma senaryolarÄ±nÄ± kÄ±saca inceleyin."
+        seoDescription: "Midjourney fiyat modeli, görsel kalite gücü ve para kazanma senaryolarını kısaca inceleyin."
       },
       en: {
         name: "Midjourney",
@@ -227,30 +227,30 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Gemini",
-        shortDescription: "Google ekosistemiyle Ã§alÄ±ÅŸan kullanÄ±cÄ±lar iÃ§in pratik araÅŸtÄ±rma ve Ã¼retkenlik AI aracÄ±.",
+        shortDescription: "Google ekosistemiyle çalışan kullanıcılar için pratik araştırma ve üretkenlik AI aracı.",
         longDescription:
-          "Gemini; Google araÃ§larÄ±yla birlikte Ã§alÄ±ÅŸan, araÅŸtÄ±rma, Ã¶zetleme ve genel iÅŸ akÄ±ÅŸlarÄ±nÄ± hÄ±zlandÄ±ran bir AI asistanÄ±dÄ±r. Ã–zellikle Gmail, Docs ve Workspace odaklÄ± kullanÄ±cÄ±lar iÃ§in verimli bir seÃ§enek olur.",
-        bestUseCase: "Google ekosistemi ve gÃ¼nlÃ¼k Ã¼retkenlik",
-        whoShouldUse: ["Ã–ÄŸrenciler", "Ä°ÅŸ ekipleri", "AraÅŸtÄ±rma yapan kullanÄ±cÄ±lar"],
+          "Gemini; Google araçlarıyla birlikte çalışan, araştırma, özetleme ve genel iş akışlarını hızlandıran bir AI asistanıdır. Özellikle Gmail, Docs ve Workspace odaklı kullanıcılar için verimli bir seçenek olur.",
+        bestUseCase: "Google ekosistemi ve günlük üretkenlik",
+        whoShouldUse: ["Öğrenciler", "İş ekipleri", "Araştırma yapan kullanıcılar"],
         moneyUseCases: [
           {
-            title: "HÄ±zlÄ± araÅŸtÄ±rma destekli iÃ§erik Ã¼retimi",
-            description: "AraÅŸtÄ±rma sÃ¼resini kÄ±saltarak daha fazla mÃ¼ÅŸteri iÅŸi veya iÃ§erik yayÄ±nÄ± Ã§Ä±karabilirsiniz."
+            title: "Hızlı araştırma destekli içerik üretimi",
+            description: "Araştırma süresini kısaltarak daha fazla müşteri işi veya içerik yayını çıkarabilirsiniz."
           },
           {
-            title: "Sunum ve dokÃ¼man hazÄ±rlama",
-            description: "MÃ¼ÅŸteriler iÃ§in daha hÄ±zlÄ± rapor, Ã¶zet ve sunum iÃ§eriÄŸi hazÄ±rlayabilirsiniz."
+            title: "Sunum ve doküman hazırlama",
+            description: "Müşteriler için daha hızlı rapor, özet ve sunum içeriği hazırlayabilirsiniz."
           },
           {
-            title: "Workspace odaklÄ± danÄ±ÅŸmanlÄ±k",
-            description: "Google araÃ§larÄ±nÄ± yoÄŸun kullanan ekipler iÃ§in iÅŸ akÄ±ÅŸÄ± ve iÃ§erik desteÄŸi sunabilirsiniz."
+            title: "Workspace odaklı danışmanlık",
+            description: "Google araçlarını yoğun kullanan ekipler için iş akışı ve içerik desteği sunabilirsiniz."
           }
         ],
-        features: ["AraÅŸtÄ±rma ve Ã¶zetleme desteÄŸi", "Google araÃ§larÄ±yla uyum", "GÃ¼nlÃ¼k iÅŸ akÄ±ÅŸlarÄ±nda hÄ±z", "Soru-cevap kullanÄ±mÄ±"],
-        pros: ["Google ekosistemiyle uyumludur", "AraÅŸtÄ±rma ve Ã¶zet iÅŸlerinde pratiktir", "BaÅŸlamak kolaydÄ±r"],
-        cons: ["Her senaryoda en derin Ã§Ä±ktÄ±yÄ± vermeyebilir", "BazÄ± yaratÄ±cÄ± iÅŸlerde alternatifler daha gÃ¼Ã§lÃ¼ olabilir"],
-        seoTitle: "Gemini incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Gemini fiyat modeli, kullanÄ±m alanlarÄ± ve hangi kullanÄ±cÄ±lar iÃ§in uygun olduÄŸuna kÄ±sa bakÄ±ÅŸ."
+        features: ["Araştırma ve özetleme desteği", "Google araçlarıyla uyum", "Günlük iş akışlarında hız", "Soru-cevap kullanımı"],
+        pros: ["Google ekosistemiyle uyumludur", "Araştırma ve özet işlerinde pratiktir", "Başlamak kolaydır"],
+        cons: ["Her senaryoda en derin çıktıyı vermeyebilir", "Bazı yaratıcı işlerde alternatifler daha güçlü olabilir"],
+        seoTitle: "Gemini incelemesi ve kullanım alanları",
+        seoDescription: "Gemini fiyat modeli, kullanım alanları ve hangi kullanıcılar için uygun olduğuna kısa bakış."
       },
       en: {
         name: "Gemini",
@@ -295,30 +295,30 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Notion AI",
-        shortDescription: "Notion iÃ§inde yazÄ±, Ã¶zet ve dokÃ¼mantasyon sÃ¼reÃ§lerini hÄ±zlandÄ±ran Ã¼retkenlik aracÄ±.",
+        shortDescription: "Notion içinde yazı, özet ve dokümantasyon süreçlerini hızlandıran üretkenlik aracı.",
         longDescription:
-          "Notion AI; notlar, iÃ§erik taslaklarÄ±, toplantÄ± Ã¶zetleri ve bilgi tabanÄ± iÅŸleri iÃ§in kullanÄ±lan entegre bir AI katmanÄ±dÄ±r. Ã–zellikle Notion ile Ã§alÄ±ÅŸan ekipler ve freelancer'lar iÃ§in dÃ¼zenli Ã¼retim saÄŸlar.",
-        bestUseCase: "Notion iÃ§inde yazÄ± ve dokÃ¼mantasyon iÅŸleri",
-        whoShouldUse: ["Freelancer'lar", "Operasyon ekipleri", "Ä°Ã§erik ekipleri"],
+          "Notion AI; notlar, içerik taslakları, toplantı özetleri ve bilgi tabanı işleri için kullanılan entegre bir AI katmanıdır. Özellikle Notion ile çalışan ekipler ve freelancer'lar için düzenli üretim sağlar.",
+        bestUseCase: "Notion içinde yazı ve dokümantasyon işleri",
+        whoShouldUse: ["Freelancer'lar", "Operasyon ekipleri", "İçerik ekipleri"],
         moneyUseCases: [
           {
-            title: "MÃ¼ÅŸteri dokÃ¼mantasyonu hazÄ±rlama",
-            description: "SOP, sÃ¼reÃ§ dokÃ¼manÄ± ve proje Ã¶zetlerini daha hÄ±zlÄ± hazÄ±rlayÄ±p danÄ±ÅŸmanlÄ±k hizmeti verebilirsiniz."
+            title: "Müşteri dokümantasyonu hazırlama",
+            description: "SOP, süreç dokümanı ve proje özetlerini daha hızlı hazırlayıp danışmanlık hizmeti verebilirsiniz."
           },
           {
-            title: "Ä°Ã§erik planÄ± satma",
-            description: "Ä°Ã§erik takvimi, brief ve Ã¼retim ÅŸablonlarÄ± hazÄ±rlayarak paket hizmet sunabilirsiniz."
+            title: "İçerik planı satma",
+            description: "İçerik takvimi, brief ve üretim şablonları hazırlayarak paket hizmet sunabilirsiniz."
           },
           {
-            title: "Bilgi tabanÄ± kurulumu",
-            description: "Ekipler iÃ§in Notion tabanlÄ± bilgi sistemi kurup buna AI destekli iÃ§erik akÄ±ÅŸÄ± ekleyebilirsiniz."
+            title: "Bilgi tabanı kurulumu",
+            description: "Ekipler için Notion tabanlı bilgi sistemi kurup buna AI destekli içerik akışı ekleyebilirsiniz."
           }
         ],
-        features: ["Notion iÃ§inde AI Ã¼retim", "Ã–zet ve yeniden yazÄ±m", "DokÃ¼man ve toplantÄ± notu desteÄŸi", "Bilgi tabanÄ± odaklÄ± kullanÄ±m"],
-        pros: ["Notion kullanan ekipler iÃ§in Ã§ok pratiktir", "DokÃ¼mantasyonu hÄ±zlandÄ±rÄ±r", "Ä°ÅŸ akÄ±ÅŸÄ±na kolay entegre olur"],
-        cons: ["Notion dÄ±ÅŸÄ±nda tek baÅŸÄ±na gÃ¼Ã§lÃ¼ bir araÃ§ deÄŸildir", "Ãœcretli kullanÄ±m gerektirir"],
+        features: ["Notion içinde AI üretim", "Özet ve yeniden yazım", "Doküman ve toplantı notu desteği", "Bilgi tabanı odaklı kullanım"],
+        pros: ["Notion kullanan ekipler için çok pratiktir", "Dokümantasyonu hızlandırır", "İş akışına kolay entegre olur"],
+        cons: ["Notion dışında tek başına güçlü bir araç değildir", "Ücretli kullanım gerektirir"],
         seoTitle: "Notion AI incelemesi",
-        seoDescription: "Notion AI ile Ã¼retkenlik, dokÃ¼mantasyon ve para kazanma kullanÄ±m alanlarÄ±nÄ± kÄ±sa ÅŸekilde inceleyin."
+        seoDescription: "Notion AI ile üretkenlik, dokümantasyon ve para kazanma kullanım alanlarını kısa şekilde inceleyin."
       },
       en: {
         name: "Notion AI",
@@ -363,30 +363,30 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Runway",
-        shortDescription: "AI video Ã¼retimi, dÃ¼zenleme ve kÄ±sa iÃ§erik kurgusu iÃ§in gÃ¼Ã§lÃ¼ bir video aracÄ±.",
+        shortDescription: "AI video üretimi, düzenleme ve kısa içerik kurgusu için güçlü bir video aracı.",
         longDescription:
-          "Runway; video Ã¼retimi, gÃ¶rsel efektler ve hÄ±zlÄ± dÃ¼zenleme akÄ±ÅŸlarÄ± iÃ§in kullanÄ±lan AI video araÃ§larÄ±ndan biridir. Ä°Ã§erik Ã¼reticileri ve ajanslar iÃ§in fikirden videoya giden sÃ¼reci hÄ±zlandÄ±rÄ±r.",
-        bestUseCase: "Video Ã¼retimi ve kÄ±sa iÃ§erik kurgusu",
-        whoShouldUse: ["Video Ã¼reticileri", "Ajans ekipleri", "Freelancer'lar"],
+          "Runway; video üretimi, görsel efektler ve hızlı düzenleme akışları için kullanılan AI video araçlarından biridir. İçerik üreticileri ve ajanslar için fikirden videoya giden süreci hızlandırır.",
+        bestUseCase: "Video üretimi ve kısa içerik kurgusu",
+        whoShouldUse: ["Video üreticileri", "Ajans ekipleri", "Freelancer'lar"],
         moneyUseCases: [
           {
-            title: "KÄ±sa video hizmeti sunma",
-            description: "Markalar iÃ§in Reels, Shorts ve reklam klipleri Ã¼reterek hizmet satabilirsiniz."
+            title: "Kısa video hizmeti sunma",
+            description: "Markalar için Reels, Shorts ve reklam klipleri üreterek hizmet satabilirsiniz."
           },
           {
-            title: "YouTube iÃ§erik Ã¼retimi",
-            description: "Daha hÄ±zlÄ± video akÄ±ÅŸÄ± kurup kendi kanalÄ±nÄ±zdan reklam veya sponsor geliri hedefleyebilirsiniz."
+            title: "YouTube içerik üretimi",
+            description: "Daha hızlı video akışı kurup kendi kanalınızdan reklam veya sponsor geliri hedefleyebilirsiniz."
           },
           {
-            title: "Video dÃ¼zenleme iÅŸi alma",
-            description: "Klip temizleme, sahne Ã¼retimi ve hÄ±zlÄ± teslim isteyen mÃ¼ÅŸteriler iÃ§in Ã§alÄ±ÅŸma yapabilirsiniz."
+            title: "Video düzenleme işi alma",
+            description: "Klip temizleme, sahne üretimi ve hızlı teslim isteyen müşteriler için çalışma yapabilirsiniz."
           }
         ],
-        features: ["AI video Ã¼retimi", "HÄ±zlÄ± kurgu akÄ±ÅŸÄ±", "GÃ¶rsel efekt desteÄŸi", "KÄ±sa video odaklÄ± kullanÄ±m"],
-        pros: ["Video Ã¼retimini hÄ±zlandÄ±rÄ±r", "YaratÄ±cÄ± ekipler iÃ§in gÃ¼Ã§lÃ¼dÃ¼r", "KÄ±sa form iÃ§erikte faydalÄ±dÄ±r"],
-        cons: ["Ãœcretli kullanÄ±m maliyeti artabilir", "Ã–ÄŸrenme sÃ¼reci bazÄ± kullanÄ±cÄ±lar iÃ§in zaman alabilir"],
+        features: ["AI video üretimi", "Hızlı kurgu akışı", "Görsel efekt desteği", "Kısa video odaklı kullanım"],
+        pros: ["Video üretimini hızlandırır", "Yaratıcı ekipler için güçlüdür", "Kısa form içerikte faydalıdır"],
+        cons: ["Ücretli kullanım maliyeti artabilir", "Öğrenme süreci bazı kullanıcılar için zaman alabilir"],
         seoTitle: "Runway incelemesi",
-        seoDescription: "Runway ile video Ã¼retimi, fiyat modeli ve gelir odaklÄ± kullanÄ±m senaryolarÄ±nÄ± kÄ±saca inceleyin."
+        seoDescription: "Runway ile video üretimi, fiyat modeli ve gelir odaklı kullanım senaryolarını kısaca inceleyin."
       },
       en: {
         name: "Runway",
@@ -431,30 +431,30 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Perplexity",
-        shortDescription: "Kaynak odaklÄ± araÅŸtÄ±rma ve hÄ±zlÄ± bilgi toplama iÃ§in gÃ¼Ã§lÃ¼ bir AI arama aracÄ±.",
+        shortDescription: "Kaynak odaklı araştırma ve hızlı bilgi toplama için güçlü bir AI arama aracı.",
         longDescription:
-          "Perplexity; kaynak gÃ¶stererek araÅŸtÄ±rma yapmak, hÄ±zlÄ± Ã¶zet Ã§Ä±karmak ve karar Ã¶ncesi bilgi toplamak iÃ§in kullanÄ±lan AI destekli bir arama aracÄ±dÄ±r. Ã–zellikle iÃ§erik, analiz ve pazar araÅŸtÄ±rmasÄ± iÅŸlerinde zaman kazandÄ±rÄ±r.",
-        bestUseCase: "AraÅŸtÄ±rma ve kaynaklÄ± bilgi toplama",
-        whoShouldUse: ["AraÅŸtÄ±rmacÄ±lar", "Ä°Ã§erik Ã¼reticileri", "Ã–ÄŸrenciler"],
+          "Perplexity; kaynak göstererek araştırma yapmak, hızlı özet çıkarmak ve karar öncesi bilgi toplamak için kullanılan AI destekli bir arama aracıdır. Özellikle içerik, analiz ve pazar araştırması işlerinde zaman kazandırır.",
+        bestUseCase: "Araştırma ve kaynaklı bilgi toplama",
+        whoShouldUse: ["Araştırmacılar", "İçerik üreticileri", "Öğrenciler"],
         moneyUseCases: [
           {
-            title: "Pazar araÅŸtÄ±rmasÄ± yapma",
-            description: "MÃ¼ÅŸteriler iÃ§in hÄ±zlÄ± sektÃ¶r araÅŸtÄ±rmasÄ± hazÄ±rlayÄ±p danÄ±ÅŸmanlÄ±k veya iÃ§erik hizmeti verebilirsiniz."
+            title: "Pazar araştırması yapma",
+            description: "Müşteriler için hızlı sektör araştırması hazırlayıp danışmanlık veya içerik hizmeti verebilirsiniz."
           },
           {
-            title: "AraÅŸtÄ±rma destekli yazÄ± Ã¼retme",
-            description: "KaynaklÄ± iÃ§erik hazÄ±rlayarak daha gÃ¼ven veren blog ve raporlar yazabilirsiniz."
+            title: "Araştırma destekli yazı üretme",
+            description: "Kaynaklı içerik hazırlayarak daha güven veren blog ve raporlar yazabilirsiniz."
           },
           {
-            title: "Rakip analizi Ã§Ä±karma",
-            description: "Markalar iÃ§in rakip, trend ve Ã¼rÃ¼n araÅŸtÄ±rmalarÄ±nÄ± daha hÄ±zlÄ± hazÄ±rlayabilirsiniz."
+            title: "Rakip analizi çıkarma",
+            description: "Markalar için rakip, trend ve ürün araştırmalarını daha hızlı hazırlayabilirsiniz."
           }
         ],
-        features: ["Kaynak gÃ¶steren cevaplar", "HÄ±zlÄ± araÅŸtÄ±rma akÄ±ÅŸÄ±", "Ã–zet ve bilgi toplama", "Karar Ã¶ncesi inceleme desteÄŸi"],
-        pros: ["AraÅŸtÄ±rma iÅŸlerinde Ã§ok pratiktir", "KaynaklÄ± cevaplar gÃ¼ven verir", "Ã–ÄŸrenme sÃ¼reci kÄ±sadÄ±r"],
-        cons: ["YaratÄ±cÄ± Ã¼retim iÃ§in tek baÅŸÄ±na yeterli olmayabilir", "Derin yazÄ± Ã¼retiminde ek araÃ§ gerekebilir"],
+        features: ["Kaynak gösteren cevaplar", "Hızlı araştırma akışı", "Özet ve bilgi toplama", "Karar öncesi inceleme desteği"],
+        pros: ["Araştırma işlerinde çok pratiktir", "Kaynaklı cevaplar güven verir", "Öğrenme süreci kısadır"],
+        cons: ["Yaratıcı üretim için tek başına yeterli olmayabilir", "Derin yazı üretiminde ek araç gerekebilir"],
         seoTitle: "Perplexity incelemesi",
-        seoDescription: "Perplexity ile araÅŸtÄ±rma, kaynaklÄ± iÃ§erik ve para kazanma kullanÄ±m alanlarÄ±nÄ± kÄ±saca gÃ¶rÃ¼n."
+        seoDescription: "Perplexity ile araştırma, kaynaklı içerik ve para kazanma kullanım alanlarını kısaca görün."
       },
       en: {
         name: "Perplexity",
@@ -499,30 +499,30 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Jasper",
-        shortDescription: "Pazarlama ekipleri iÃ§in reklam, satÄ±ÅŸ ve marka odaklÄ± iÃ§erik Ã¼retimini hÄ±zlandÄ±ran AI yazÄ± aracÄ±.",
+        shortDescription: "Pazarlama ekipleri için reklam, satış ve marka odaklı içerik üretimini hızlandıran AI yazı aracı.",
         longDescription:
-          "Jasper; pazarlama metinleri, kampanya iÃ§erikleri ve marka dili korunan yazÄ± akÄ±ÅŸlarÄ± iÃ§in kullanÄ±lan bir AI yazÄ± aracÄ±dÄ±r. Ã–zellikle ajanslar ve gelir odaklÄ± iÃ§erik ekipleri iÃ§in verimlidir.",
-        bestUseCase: "Pazarlama ve satÄ±ÅŸ odaklÄ± metin Ã¼retimi",
+          "Jasper; pazarlama metinleri, kampanya içerikleri ve marka dili korunan yazı akışları için kullanılan bir AI yazı aracıdır. Özellikle ajanslar ve gelir odaklı içerik ekipleri için verimlidir.",
+        bestUseCase: "Pazarlama ve satış odaklı metin üretimi",
         whoShouldUse: ["Pazarlama ekipleri", "Ajanslar", "Freelance copywriter'lar"],
         moneyUseCases: [
           {
-            title: "Reklam metni hazÄ±rlama",
-            description: "Meta, Google ve e-posta kampanyalarÄ± iÃ§in dÃ¶nÃ¼ÅŸÃ¼m odaklÄ± metinler Ã¼retebilirsiniz."
+            title: "Reklam metni hazırlama",
+            description: "Meta, Google ve e-posta kampanyaları için dönüşüm odaklı metinler üretebilirsiniz."
           },
           {
-            title: "Landing page yazÄ±mÄ±",
-            description: "SatÄ±ÅŸ sayfasÄ± ve teklif sayfasÄ± metinlerini mÃ¼ÅŸteri iÅŸi olarak sunabilirsiniz."
+            title: "Landing page yazımı",
+            description: "Satış sayfası ve teklif sayfası metinlerini müşteri işi olarak sunabilirsiniz."
           },
           {
-            title: "Marka iÃ§erik paketi satma",
-            description: "DÃ¼zenli sosyal medya ve kampanya metni hazÄ±rlayÄ±p abonelik modeliyle Ã§alÄ±ÅŸabilirsiniz."
+            title: "Marka içerik paketi satma",
+            description: "Düzenli sosyal medya ve kampanya metni hazırlayıp abonelik modeliyle çalışabilirsiniz."
           }
         ],
-        features: ["Pazarlama odaklÄ± iÃ§erik akÄ±ÅŸlarÄ±", "Marka tonu desteÄŸi", "KÄ±sa ve orta format metin", "Kampanya Ã¼retimi"],
-        pros: ["Pazarlama ekipleri iÃ§in uygundur", "SatÄ±ÅŸ metinlerinde hÄ±zlÄ±dÄ±r", "Tekrarlayan copy iÅŸlerini kÄ±saltÄ±r"],
-        cons: ["Ãœcretli kullanÄ±m gerekir", "Genel amaÃ§lÄ± araÃ§lar kadar esnek olmayabilir"],
+        features: ["Pazarlama odaklı içerik akışları", "Marka tonu desteği", "Kısa ve orta format metin", "Kampanya üretimi"],
+        pros: ["Pazarlama ekipleri için uygundur", "Satış metinlerinde hızlıdır", "Tekrarlayan copy işlerini kısaltır"],
+        cons: ["Ücretli kullanım gerekir", "Genel amaçlı araçlar kadar esnek olmayabilir"],
         seoTitle: "Jasper incelemesi",
-        seoDescription: "Jasper ile reklam metni, landing page ve gelir odaklÄ± iÃ§erik Ã¼retimini kÄ±saca inceleyin."
+        seoDescription: "Jasper ile reklam metni, landing page ve gelir odaklı içerik üretimini kısaca inceleyin."
       },
       en: {
         name: "Jasper",
@@ -567,30 +567,30 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Copy.ai",
-        shortDescription: "KÄ±sa pazarlama metinleri, satÄ±ÅŸ mesajlarÄ± ve hÄ±zlÄ± iÃ§erik Ã¼retimi iÃ§in pratik bir AI aracÄ±.",
+        shortDescription: "Kısa pazarlama metinleri, satış mesajları ve hızlı içerik üretimi için pratik bir AI aracı.",
         longDescription:
-          "Copy.ai; kÄ±sa formatlÄ± pazarlama metinleri, e-posta ve satÄ±ÅŸ odaklÄ± iÃ§erikler iÃ§in hÄ±z saÄŸlayan bir AI yazÄ± aracÄ±dÄ±r. Ã–zellikle hÄ±zlÄ± Ã¼retim isteyen freelancer'lar ve kÃ¼Ã§Ã¼k ekipler iÃ§in uygundur.",
-        bestUseCase: "KÄ±sa pazarlama metni ve satÄ±ÅŸ mesajlarÄ±",
-        whoShouldUse: ["Freelancer'lar", "KÃ¼Ã§Ã¼k ekipler", "SatÄ±ÅŸ odaklÄ± iÃ§erik Ã¼reticileri"],
+          "Copy.ai; kısa formatlı pazarlama metinleri, e-posta ve satış odaklı içerikler için hız sağlayan bir AI yazı aracıdır. Özellikle hızlı üretim isteyen freelancer'lar ve küçük ekipler için uygundur.",
+        bestUseCase: "Kısa pazarlama metni ve satış mesajları",
+        whoShouldUse: ["Freelancer'lar", "Küçük ekipler", "Satış odaklı içerik üreticileri"],
         moneyUseCases: [
           {
-            title: "E-posta ve satÄ±ÅŸ mesajÄ± yazma",
-            description: "Outbound mesajlar, teklif e-postalarÄ± ve takip akÄ±ÅŸlarÄ±nÄ± hizmet olarak sunabilirsiniz."
+            title: "E-posta ve satış mesajı yazma",
+            description: "Outbound mesajlar, teklif e-postaları ve takip akışlarını hizmet olarak sunabilirsiniz."
           },
           {
-            title: "Sosyal medya aÃ§Ä±klamalarÄ±",
-            description: "KÄ±sa aÃ§Ä±klama ve post kopyalarÄ±nÄ± hÄ±zlÄ± Ã¼reterek aylÄ±k iÃ§erik paketi satabilirsiniz."
+            title: "Sosyal medya açıklamaları",
+            description: "Kısa açıklama ve post kopyalarını hızlı üreterek aylık içerik paketi satabilirsiniz."
           },
           {
-            title: "ÃœrÃ¼n aÃ§Ä±klamasÄ± hazÄ±rlama",
-            description: "E-ticaret markalarÄ± iÃ§in Ã¼rÃ¼n aÃ§Ä±klamalarÄ± ve kampanya metinleri Ã¼retebilirsiniz."
+            title: "Ürün açıklaması hazırlama",
+            description: "E-ticaret markaları için ürün açıklamaları ve kampanya metinleri üretebilirsiniz."
           }
         ],
-        features: ["KÄ±sa format copy Ã¼retimi", "SatÄ±ÅŸ odaklÄ± akÄ±ÅŸlar", "HÄ±zlÄ± ÅŸablon tabanlÄ± kullanÄ±m", "Pazarlama mesajlarÄ±"],
-        pros: ["KÄ±sa metinlerde hÄ±zlÄ±dÄ±r", "BaÅŸlamak kolaydÄ±r", "Freemium giriÅŸ sunabilir"],
-        cons: ["Uzun iÃ§erikte sÄ±nÄ±rlÄ± kalabilir", "Derin araÅŸtÄ±rma gerektiren iÅŸlerde ek araÃ§ ister"],
+        features: ["Kısa format copy üretimi", "Satış odaklı akışlar", "Hızlı şablon tabanlı kullanım", "Pazarlama mesajları"],
+        pros: ["Kısa metinlerde hızlıdır", "Başlamak kolaydır", "Freemium giriş sunabilir"],
+        cons: ["Uzun içerikte sınırlı kalabilir", "Derin araştırma gerektiren işlerde ek araç ister"],
         seoTitle: "Copy.ai incelemesi",
-        seoDescription: "Copy.ai ile kÄ±sa pazarlama metinleri, satÄ±ÅŸ mesajlarÄ± ve mÃ¼ÅŸteri iÅŸleri iÃ§in kullanÄ±m alanlarÄ±na bakÄ±n."
+        seoDescription: "Copy.ai ile kısa pazarlama metinleri, satış mesajları ve müşteri işleri için kullanım alanlarına bakın."
       },
       en: {
         name: "Copy.ai",
@@ -635,30 +635,30 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Canva AI",
-        shortDescription: "Sunum, sosyal medya ve hÄ±zlÄ± tasarÄ±m iÅŸleri iÃ§in pratik AI destekli gÃ¶rsel Ã¼retim aracÄ±.",
+        shortDescription: "Sunum, sosyal medya ve hızlı tasarım işleri için pratik AI destekli görsel üretim aracı.",
         longDescription:
-          "Canva AI; sunum, sosyal medya gÃ¶rselleri, kÄ±sa videolar ve temel tasarÄ±m iÅŸleri iÃ§in hÄ±zlÄ± Ã¼retim saÄŸlayan gÃ¶rsel araÃ§lardan biridir. Ã–zellikle teknik tasarÄ±m bilgisi sÄ±nÄ±rlÄ± olan kullanÄ±cÄ±lar iÃ§in kolay bir akÄ±ÅŸ sunar.",
-        bestUseCase: "HÄ±zlÄ± tasarÄ±m ve sosyal medya gÃ¶rselleri",
-        whoShouldUse: ["Ä°Ã§erik Ã¼reticileri", "KÃ¼Ã§Ã¼k iÅŸletmeler", "Freelancer'lar"],
+          "Canva AI; sunum, sosyal medya görselleri, kısa videolar ve temel tasarım işleri için hızlı üretim sağlayan görsel araçlardan biridir. Özellikle teknik tasarım bilgisi sınırlı olan kullanıcılar için kolay bir akış sunar.",
+        bestUseCase: "Hızlı tasarım ve sosyal medya görselleri",
+        whoShouldUse: ["İçerik üreticileri", "Küçük işletmeler", "Freelancer'lar"],
         moneyUseCases: [
           {
-            title: "Sosyal medya tasarÄ±mÄ± satma",
-            description: "MÃ¼ÅŸteriler iÃ§in post, story ve sunum gÃ¶rselleri hazÄ±rlayarak dÃ¼zenli gelir elde edebilirsiniz."
+            title: "Sosyal medya tasarımı satma",
+            description: "Müşteriler için post, story ve sunum görselleri hazırlayarak düzenli gelir elde edebilirsiniz."
           },
           {
-            title: "Sunum ve teklif dosyasÄ± hazÄ±rlama",
-            description: "Åirketler ve giriÅŸimler iÃ§in sunum, medya kiti ve teklif dosyasÄ± tasarlayabilirsiniz."
+            title: "Sunum ve teklif dosyası hazırlama",
+            description: "Şirketler ve girişimler için sunum, medya kiti ve teklif dosyası tasarlayabilirsiniz."
           },
           {
-            title: "Basit marka paketleri oluÅŸturma",
-            description: "Logo seti, sosyal medya ÅŸablonu ve gÃ¶rsel kit hizmeti sunabilirsiniz."
+            title: "Basit marka paketleri oluşturma",
+            description: "Logo seti, sosyal medya şablonu ve görsel kit hizmeti sunabilirsiniz."
           }
         ],
-        features: ["Kolay tasarÄ±m akÄ±ÅŸÄ±", "Sosyal medya ve sunum Ã¼retimi", "Åablon tabanlÄ± kullanÄ±m", "HÄ±zlÄ± gÃ¶rsel dÃ¼zenleme"],
-        pros: ["Ã–ÄŸrenmesi kolaydÄ±r", "HÄ±zlÄ± teslim gerektiren iÅŸler iÃ§in uygundur", "Freemium kullanÄ±m sunar"],
-        cons: ["Ã‡ok ileri tasarÄ±m ihtiyaÃ§larÄ±nda sÄ±nÄ±rlÄ± kalabilir", "Benzersiz kreatif iÅŸler iÃ§in ek araÃ§ gerekebilir"],
+        features: ["Kolay tasarım akışı", "Sosyal medya ve sunum üretimi", "Şablon tabanlı kullanım", "Hızlı görsel düzenleme"],
+        pros: ["Öğrenmesi kolaydır", "Hızlı teslim gerektiren işler için uygundur", "Freemium kullanım sunar"],
+        cons: ["Çok ileri tasarım ihtiyaçlarında sınırlı kalabilir", "Benzersiz kreatif işler için ek araç gerekebilir"],
         seoTitle: "Canva AI incelemesi",
-        seoDescription: "Canva AI ile hÄ±zlÄ± tasarÄ±m, sosyal medya Ã¼retimi ve para kazanma kullanÄ±m alanlarÄ±nÄ± inceleyin."
+        seoDescription: "Canva AI ile hızlı tasarım, sosyal medya üretimi ve para kazanma kullanım alanlarını inceleyin."
       },
       en: {
         name: "Canva AI",
@@ -703,30 +703,30 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Leonardo AI",
-        shortDescription: "Asset Ã¼retimi, yaratÄ±cÄ± gÃ¶rseller ve oyun odaklÄ± tasarÄ±m iÅŸleri iÃ§in esnek gÃ¶rsel AI aracÄ±.",
+        shortDescription: "Asset üretimi, yaratıcı görseller ve oyun odaklı tasarım işleri için esnek görsel AI aracı.",
         longDescription:
-          "Leonardo AI; konsept Ã¼retimi, oyun asset'leri ve yaratÄ±cÄ± gÃ¶rseller iÃ§in kullanÄ±lan esnek bir gÃ¶rsel AI aracÄ±dÄ±r. Ã–zellikle Ã§ok sayÄ±da varyasyon isteyen tasarÄ±m ve Ã¼retim sÃ¼reÃ§lerinde faydalÄ±dÄ±r.",
-        bestUseCase: "Asset Ã¼retimi ve yaratÄ±cÄ± gÃ¶rseller",
-        whoShouldUse: ["TasarÄ±mcÄ±lar", "Oyun geliÅŸtiricileri", "YaratÄ±cÄ± ekipler"],
+          "Leonardo AI; konsept üretimi, oyun asset'leri ve yaratıcı görseller için kullanılan esnek bir görsel AI aracıdır. Özellikle çok sayıda varyasyon isteyen tasarım ve üretim süreçlerinde faydalıdır.",
+        bestUseCase: "Asset üretimi ve yaratıcı görseller",
+        whoShouldUse: ["Tasarımcılar", "Oyun geliştiricileri", "Yaratıcı ekipler"],
         moneyUseCases: [
           {
-            title: "Oyun ve uygulama asset'leri hazÄ±rlama",
-            description: "SatÄ±labilir gÃ¶rsel setler veya mÃ¼ÅŸteri iÃ§in asset paketleri oluÅŸturabilirsiniz."
+            title: "Oyun ve uygulama asset'leri hazırlama",
+            description: "Satılabilir görsel setler veya müşteri için asset paketleri oluşturabilirsiniz."
           },
           {
-            title: "Thumbnail ve reklam gÃ¶rseli Ã¼retme",
-            description: "Ä°Ã§erik Ã¼reticileri ve markalar iÃ§in hÄ±zlÄ± gÃ¶rsel hizmeti verebilirsiniz."
+            title: "Thumbnail ve reklam görseli üretme",
+            description: "İçerik üreticileri ve markalar için hızlı görsel hizmeti verebilirsiniz."
           },
           {
-            title: "Konsept tasarÄ±m hizmeti",
-            description: "Proje baÅŸlangÄ±cÄ±nda Ã§oklu gÃ¶rsel yÃ¶n gÃ¶stererek mÃ¼ÅŸteri kazanabilirsiniz."
+            title: "Konsept tasarım hizmeti",
+            description: "Proje başlangıcında çoklu görsel yön göstererek müşteri kazanabilirsiniz."
           }
         ],
-        features: ["Asset ve konsept Ã¼retimi", "Esnek stil denemeleri", "Varyasyon odaklÄ± akÄ±ÅŸ", "YaratÄ±cÄ± iterasyon"],
-        pros: ["Asset Ã¼retiminde kullanÄ±ÅŸlÄ±dÄ±r", "YaratÄ±cÄ± denemeler iÃ§in esnektir", "Freemium baÅŸlangÄ±Ã§ sunar"],
-        cons: ["ArayÃ¼z bazÄ± kullanÄ±cÄ±lar iÃ§in karmaÅŸÄ±k gelebilir", "BazÄ± sonuÃ§lar ek dÃ¼zenleme gerektirebilir"],
+        features: ["Asset ve konsept üretimi", "Esnek stil denemeleri", "Varyasyon odaklı akış", "Yaratıcı iterasyon"],
+        pros: ["Asset üretiminde kullanışlıdır", "Yaratıcı denemeler için esnektir", "Freemium başlangıç sunar"],
+        cons: ["Arayüz bazı kullanıcılar için karmaşık gelebilir", "Bazı sonuçlar ek düzenleme gerektirebilir"],
         seoTitle: "Leonardo AI incelemesi",
-        seoDescription: "Leonardo AI ile asset Ã¼retimi, gÃ¶rsel tasarÄ±m ve gelir odaklÄ± kullanÄ±m alanlarÄ±nÄ± kÄ±sa ÅŸekilde inceleyin."
+        seoDescription: "Leonardo AI ile asset üretimi, görsel tasarım ve gelir odaklı kullanım alanlarını kısa şekilde inceleyin."
       },
       en: {
         name: "Leonardo AI",
@@ -771,30 +771,30 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "ElevenLabs",
-        shortDescription: "GerÃ§ekÃ§i ses Ã¼retimi ve voiceover iÅŸleri iÃ§in Ã¶ne Ã§Ä±kan AI ses aracÄ±dÄ±r.",
+        shortDescription: "Gerçekçi ses üretimi ve voiceover işleri için öne çıkan AI ses aracıdır.",
         longDescription:
-          "ElevenLabs; gerÃ§ekÃ§i AI ses Ã¼retimi, anlatÄ±m sesleri ve hÄ±zlÄ± voiceover akÄ±ÅŸlarÄ± iÃ§in kullanÄ±lan gÃ¼Ã§lÃ¼ bir araÃ§tÄ±r. Video Ã¼reticileri, eÄŸitim iÃ§erik ekipleri ve ses odaklÄ± freelancer'lar iÃ§in pratiktir.",
-        bestUseCase: "Voiceover ve ses Ã¼retimi",
-        whoShouldUse: ["Video Ã¼reticileri", "EÄŸitim iÃ§erik ekipleri", "Freelancer'lar"],
+          "ElevenLabs; gerçekçi AI ses üretimi, anlatım sesleri ve hızlı voiceover akışları için kullanılan güçlü bir araçtır. Video üreticileri, eğitim içerik ekipleri ve ses odaklı freelancer'lar için pratiktir.",
+        bestUseCase: "Voiceover ve ses üretimi",
+        whoShouldUse: ["Video üreticileri", "Eğitim içerik ekipleri", "Freelancer'lar"],
         moneyUseCases: [
           {
             title: "Voiceover hizmeti sunma",
-            description: "TanÄ±tÄ±m, eÄŸitim ve sosyal medya videolarÄ± iÃ§in seslendirme hizmeti verebilirsiniz."
+            description: "Tanıtım, eğitim ve sosyal medya videoları için seslendirme hizmeti verebilirsiniz."
           },
           {
-            title: "YouTube anlatÄ±m kanalÄ± kurma",
-            description: "Kendi anlatÄ±m iÃ§eriklerinizi daha hÄ±zlÄ± Ã¼retip reklam geliri hedefleyebilirsiniz."
+            title: "YouTube anlatım kanalı kurma",
+            description: "Kendi anlatım içeriklerinizi daha hızlı üretip reklam geliri hedefleyebilirsiniz."
           },
           {
-            title: "Kurumsal eÄŸitim sesleri hazÄ±rlama",
-            description: "Åirketler iÃ§in demo, onboarding ve eÄŸitim seslendirmeleri hazÄ±rlayabilirsiniz."
+            title: "Kurumsal eğitim sesleri hazırlama",
+            description: "Şirketler için demo, onboarding ve eğitim seslendirmeleri hazırlayabilirsiniz."
           }
         ],
-        features: ["GerÃ§ekÃ§i ses Ã¼retimi", "HÄ±zlÄ± voiceover akÄ±ÅŸÄ±", "Ã‡ok dilli kullanÄ±m potansiyeli", "Video odaklÄ± Ã¼retim"],
-        pros: ["Ses kalitesi gÃ¼Ã§lÃ¼dÃ¼r", "Video iÅŸ akÄ±ÅŸlarÄ±na kolay girer", "Freemium baÅŸlangÄ±Ã§ sunar"],
-        cons: ["YoÄŸun kullanÄ±mda maliyet artabilir", "BazÄ± projelerde manuel dÃ¼zenleme gerekebilir"],
+        features: ["Gerçekçi ses üretimi", "Hızlı voiceover akışı", "Çok dilli kullanım potansiyeli", "Video odaklı üretim"],
+        pros: ["Ses kalitesi güçlüdür", "Video iş akışlarına kolay girer", "Freemium başlangıç sunar"],
+        cons: ["Yoğun kullanımda maliyet artabilir", "Bazı projelerde manuel düzenleme gerekebilir"],
         seoTitle: "ElevenLabs incelemesi",
-        seoDescription: "ElevenLabs ile ses Ã¼retimi, voiceover ve gelir odaklÄ± kullanÄ±m alanlarÄ±nÄ± kÄ±sa biÃ§imde gÃ¶rÃ¼n."
+        seoDescription: "ElevenLabs ile ses üretimi, voiceover ve gelir odaklı kullanım alanlarını kısa biçimde görün."
       },
       en: {
         name: "ElevenLabs",
@@ -839,30 +839,30 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Writesonic",
-        shortDescription: "Blog, reklam ve satÄ±ÅŸ odaklÄ± iÃ§eriklerde hÄ±z kazandÄ±ran AI yazÄ± aracÄ±.",
+        shortDescription: "Blog, reklam ve satış odaklı içeriklerde hız kazandıran AI yazı aracı.",
         longDescription:
-          "Writesonic; blog taslaklarÄ±, reklam metinleri ve satÄ±ÅŸ sayfasÄ± iÃ§erikleri gibi gelir odaklÄ± yazÄ± akÄ±ÅŸlarÄ±nda hÄ±z saÄŸlayan bir AI aracÄ±dÄ±r.",
-        bestUseCase: "Blog ve pazarlama metni Ã¼retimi",
-        whoShouldUse: ["Freelancer'lar", "Pazarlama ekipleri", "Ä°Ã§erik Ã¼reticileri"],
+          "Writesonic; blog taslakları, reklam metinleri ve satış sayfası içerikleri gibi gelir odaklı yazı akışlarında hız sağlayan bir AI aracıdır.",
+        bestUseCase: "Blog ve pazarlama metni üretimi",
+        whoShouldUse: ["Freelancer'lar", "Pazarlama ekipleri", "İçerik üreticileri"],
         moneyUseCases: [
           {
-            title: "Blog paketleri hazÄ±rlama",
-            description: "MÃ¼ÅŸterilere hÄ±zlÄ± blog iÃ§erik paketleri sunabilirsiniz."
+            title: "Blog paketleri hazırlama",
+            description: "Müşterilere hızlı blog içerik paketleri sunabilirsiniz."
           },
           {
-            title: "Reklam kopyasÄ± yazma",
-            description: "Kampanya ve reklam metinlerini hizmet olarak hazÄ±rlayabilirsiniz."
+            title: "Reklam kopyası yazma",
+            description: "Kampanya ve reklam metinlerini hizmet olarak hazırlayabilirsiniz."
           },
           {
-            title: "Landing page iÃ§erikleri",
-            description: "SatÄ±ÅŸ sayfasÄ± metinlerini daha hÄ±zlÄ± Ã¼retip Ã¼cretli iÅŸ haline getirebilirsiniz."
+            title: "Landing page içerikleri",
+            description: "Satış sayfası metinlerini daha hızlı üretip ücretli iş haline getirebilirsiniz."
           }
         ],
-        features: ["Blog ve reklam metni Ã¼retimi", "Pazarlama akÄ±ÅŸlarÄ±", "Åablon destekli kullanÄ±m"],
-        pros: ["Pazarlama iÃ§in pratiktir", "Ä°Ã§erik sÃ¼resini kÄ±saltÄ±r", "Freemium giriÅŸ sunar"],
-        cons: ["Uzun formatta ek dÃ¼zenleme ister", "Genel amaÃ§lÄ± araÃ§lar kadar geniÅŸ deÄŸildir"],
+        features: ["Blog ve reklam metni üretimi", "Pazarlama akışları", "Şablon destekli kullanım"],
+        pros: ["Pazarlama için pratiktir", "İçerik süresini kısaltır", "Freemium giriş sunar"],
+        cons: ["Uzun formatta ek düzenleme ister", "Genel amaçlı araçlar kadar geniş değildir"],
         seoTitle: "Writesonic incelemesi",
-        seoDescription: "Writesonic ile blog, reklam ve satÄ±ÅŸ odaklÄ± iÃ§erik Ã¼retimini kÄ±sa biÃ§imde inceleyin."
+        seoDescription: "Writesonic ile blog, reklam ve satış odaklı içerik üretimini kısa biçimde inceleyin."
       },
       en: {
         name: "Writesonic",
@@ -907,30 +907,30 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Pictory",
-        shortDescription: "Metinden videoya ve kÄ±sa iÃ§erik dÃ¶nÃ¼ÅŸtÃ¼rme iÃ§in pratik bir AI video aracÄ±.",
+        shortDescription: "Metinden videoya ve kısa içerik dönüştürme için pratik bir AI video aracı.",
         longDescription:
-          "Pictory; yazÄ±larÄ±, Ã¶zetleri ve iÃ§erik fikirlerini kÄ±sa videolara dÃ¶nÃ¼ÅŸtÃ¼rmek iÃ§in kullanÄ±lan pratik bir AI video aracÄ±dÄ±r. Ã–zellikle iÃ§erik tekrar kullanÄ±mÄ± yapmak isteyen ekipler iÃ§in uygundur.",
-        bestUseCase: "Metinden videoya hÄ±zlÄ± Ã¼retim",
-        whoShouldUse: ["Ä°Ã§erik Ã¼reticileri", "Ajans ekipleri", "KÃ¼Ã§Ã¼k iÅŸletmeler"],
+          "Pictory; yazıları, özetleri ve içerik fikirlerini kısa videolara dönüştürmek için kullanılan pratik bir AI video aracıdır. Özellikle içerik tekrar kullanımı yapmak isteyen ekipler için uygundur.",
+        bestUseCase: "Metinden videoya hızlı üretim",
+        whoShouldUse: ["İçerik üreticileri", "Ajans ekipleri", "Küçük işletmeler"],
         moneyUseCases: [
           {
-            title: "Blogdan videoya iÃ§erik dÃ¶nÃ¼ÅŸtÃ¼rme",
-            description: "Mevcut yazÄ±larÄ± kÄ±sa videolara dÃ¶nÃ¼ÅŸtÃ¼rerek yeni daÄŸÄ±tÄ±m kanallarÄ± aÃ§abilirsiniz."
+            title: "Blogdan videoya içerik dönüştürme",
+            description: "Mevcut yazıları kısa videolara dönüştürerek yeni dağıtım kanalları açabilirsiniz."
           },
           {
-            title: "KÄ±sa video paketi satma",
-            description: "MÃ¼ÅŸterilere sosyal medya iÃ§in kÄ±sa video Ã¼retim hizmeti sunabilirsiniz."
+            title: "Kısa video paketi satma",
+            description: "Müşterilere sosyal medya için kısa video üretim hizmeti sunabilirsiniz."
           },
           {
-            title: "TanÄ±tÄ±m videosu hazÄ±rlama",
-            description: "ÃœrÃ¼n ve hizmetler iÃ§in hÄ±zlÄ± tanÄ±tÄ±m videolarÄ± hazÄ±rlayabilirsiniz."
+            title: "Tanıtım videosu hazırlama",
+            description: "Ürün ve hizmetler için hızlı tanıtım videoları hazırlayabilirsiniz."
           }
         ],
-        features: ["Metinden videoya dÃ¶nÃ¼ÅŸÃ¼m", "KÄ±sa video akÄ±ÅŸÄ±", "Ä°Ã§erik tekrar kullanÄ±mÄ±", "HÄ±zlÄ± Ã¼retim"],
-        pros: ["Video Ã¼retimini hÄ±zlandÄ±rÄ±r", "Mevcut iÃ§eriÄŸi deÄŸerlendirmeyi kolaylaÅŸtÄ±rÄ±r", "Ajans iÅŸlerine uygundur"],
-        cons: ["Ãœcretli kullanÄ±m gerektirir", "Ã–zgÃ¼n kurgu ihtiyacÄ±nda sÄ±nÄ±rlÄ± kalabilir"],
+        features: ["Metinden videoya dönüşüm", "Kısa video akışı", "İçerik tekrar kullanımı", "Hızlı üretim"],
+        pros: ["Video üretimini hızlandırır", "Mevcut içeriği değerlendirmeyi kolaylaştırır", "Ajans işlerine uygundur"],
+        cons: ["Ücretli kullanım gerektirir", "Özgün kurgu ihtiyacında sınırlı kalabilir"],
         seoTitle: "Pictory incelemesi",
-        seoDescription: "Pictory ile metinden videoya Ã¼retim ve para kazanma kullanÄ±m alanlarÄ±nÄ± inceleyin."
+        seoDescription: "Pictory ile metinden videoya üretim ve para kazanma kullanım alanlarını inceleyin."
       },
       en: {
         name: "Pictory",
@@ -987,45 +987,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Cursor",
-        shortDescription: "Kod yazma, refactor ve debugging akÄ±ÅŸÄ±nÄ± hÄ±zlandÄ±ran AI odaklÄ± editÃ¶r.",
-        longDescription: "Cursor, kod Ã¼retimi, refactor ve mÃ¼ÅŸteri geliÅŸtirme iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle ai destekli geliÅŸtirme ve debugging iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "AI destekli geliÅŸtirme ve debugging",
+        shortDescription: "Kod yazma, refactor ve debugging akışını hızlandıran AI odaklı editör.",
+        longDescription: "Cursor, kod üretimi, refactor ve müşteri geliştirme iş akışlarında öne çıkan bir AI aracıdır. Özellikle ai destekli geliştirme ve debugging için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "AI destekli geliştirme ve debugging",
         whoShouldUse: [
-          "GeliÅŸtiriciler",
+          "Geliştiriciler",
           "Freelancer'lar",
-          "ÃœrÃ¼n ekipleri"
+          "Ürün ekipleri"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Cursor, mÃ¼ÅŸteri projeleri ve hÄ±zlÄ± prototip geliÅŸtirme odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Cursor, müşteri projeleri ve hızlı prototip geliştirme odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Cursor ile kod Ã¼retimi, refactor ve mÃ¼ÅŸteri geliÅŸtirme iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Cursor ile kod üretimi, refactor ve müşteri geliştirme için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Cursor, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Cursor, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "AI destekli geliÅŸtirme ve debugging",
-          "Operasyon ve verimlilik iÅŸleri",
-          "AraÅŸtÄ±rma veya otomasyon desteÄŸi",
-          "Tekrarlanan iÅŸleri azaltma"
+          "AI destekli geliştirme ve debugging",
+          "Operasyon ve verimlilik işleri",
+          "Araştırma veya otomasyon desteği",
+          "Tekrarlanan işleri azaltma"
         ],
         pros: [
-          "AI destekli geliÅŸtirme ve debugging iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "AI destekli geliştirme ve debugging için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Cursor incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Cursor iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Cursor incelemesi ve kullanım alanları",
+        seoDescription: "Cursor için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Cursor",
@@ -1097,45 +1097,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Replit",
-        shortDescription: "TarayÄ±cÄ± iÃ§inde hÄ±zlÄ± kod, demo ve kÃ¼Ã§Ã¼k Ã¼rÃ¼n geliÅŸtirme akÄ±ÅŸlarÄ± sunan platform.",
-        longDescription: "Replit, demo, eÄŸitim ve kÃ¼Ã§Ã¼k Ã¼rÃ¼n geliÅŸtirme iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle hÄ±zlÄ± demo ve mvp oluÅŸturma iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "HÄ±zlÄ± demo ve MVP oluÅŸturma",
+        shortDescription: "Tarayıcı içinde hızlı kod, demo ve küçük ürün geliştirme akışları sunan platform.",
+        longDescription: "Replit, demo, eğitim ve küçük ürün geliştirme iş akışlarında öne çıkan bir AI aracıdır. Özellikle hızlı demo ve mvp oluşturma için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Hızlı demo ve MVP oluşturma",
         whoShouldUse: [
-          "Ã–ÄŸrenciler",
-          "GeliÅŸtiriciler",
-          "Kurucu adaylarÄ±"
+          "Öğrenciler",
+          "Geliştiriciler",
+          "Kurucu adayları"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Replit, hÄ±zlÄ± MVP, landing demo veya teknik prototip teslimi odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Replit, hızlı MVP, landing demo veya teknik prototip teslimi odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Replit ile demo, eÄŸitim ve kÃ¼Ã§Ã¼k Ã¼rÃ¼n geliÅŸtirme iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Replit ile demo, eğitim ve küçük ürün geliştirme için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Replit, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Replit, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "HÄ±zlÄ± demo ve MVP oluÅŸturma",
-          "Operasyon ve verimlilik iÅŸleri",
-          "AraÅŸtÄ±rma veya otomasyon desteÄŸi",
-          "Tekrarlanan iÅŸleri azaltma"
+          "Hızlı demo ve MVP oluşturma",
+          "Operasyon ve verimlilik işleri",
+          "Araştırma veya otomasyon desteği",
+          "Tekrarlanan işleri azaltma"
         ],
         pros: [
-          "HÄ±zlÄ± demo ve MVP oluÅŸturma iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Hızlı demo ve MVP oluşturma için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Replit incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Replit iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Replit incelemesi ve kullanım alanları",
+        seoDescription: "Replit için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Replit",
@@ -1207,45 +1207,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Grammarly",
-        shortDescription: "Ä°ngilizce yazÄ±m, ton dÃ¼zeltme ve metin kalitesini iyileÅŸtirmek iÃ§in kullanÄ±lan yazÄ± yardÄ±mcÄ±sÄ±.",
-        longDescription: "Grammarly, e-posta, teklif ve mÃ¼ÅŸteri metni dÃ¼zenleme iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle iÌ‡ngilizce metin dÃ¼zenleme ve kalite kontrolÃ¼ iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "Ä°ngilizce metin dÃ¼zenleme ve kalite kontrolÃ¼",
+        shortDescription: "İngilizce yazım, ton düzeltme ve metin kalitesini iyileştirmek için kullanılan yazı yardımcısı.",
+        longDescription: "Grammarly, e-posta, teklif ve müşteri metni düzenleme iş akışlarında öne çıkan bir AI aracıdır. Özellikle i̇ngilizce metin düzenleme ve kalite kontrolü için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "İngilizce metin düzenleme ve kalite kontrolü",
         whoShouldUse: [
-          "Ã–ÄŸrenciler",
-          "Ä°Ã§erik ekipleri",
+          "Öğrenciler",
+          "İçerik ekipleri",
           "B2B ekipleri"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Grammarly, mÃ¼ÅŸteri metni, teklif ve iÃ§erik teslim kalitesini artÄ±rma odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Grammarly, müşteri metni, teklif ve içerik teslim kalitesini artırma odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Grammarly ile e-posta, teklif ve mÃ¼ÅŸteri metni dÃ¼zenleme iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Grammarly ile e-posta, teklif ve müşteri metni düzenleme için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Grammarly, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Grammarly, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "Ä°ngilizce metin dÃ¼zenleme ve kalite kontrolÃ¼",
-          "Metin odaklÄ± iÅŸ akÄ±ÅŸlarÄ±",
-          "DÃ¼zenleme ve yeniden yazÄ±m",
-          "HÄ±zlÄ± taslak Ã¼retimi"
+          "İngilizce metin düzenleme ve kalite kontrolü",
+          "Metin odaklı iş akışları",
+          "Düzenleme ve yeniden yazım",
+          "Hızlı taslak üretimi"
         ],
         pros: [
-          "Ä°ngilizce metin dÃ¼zenleme ve kalite kontrolÃ¼ iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "İngilizce metin düzenleme ve kalite kontrolü için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Grammarly incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Grammarly iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Grammarly incelemesi ve kullanım alanları",
+        seoDescription: "Grammarly için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Grammarly",
@@ -1316,45 +1316,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "QuillBot",
-        shortDescription: "Paraphrase, Ã¶zetleme ve hÄ±zlÄ± yeniden yazÄ±m iÃ§in kullanÄ±lan pratik bir yazÄ± aracÄ±.",
-        longDescription: "QuillBot, Ã¶zetleme ve yeniden yazÄ±m iÅŸ akÄ±ÅŸlarÄ± iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle yeniden yazÄ±m ve Ã¶zetleme iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "Yeniden yazÄ±m ve Ã¶zetleme",
+        shortDescription: "Paraphrase, özetleme ve hızlı yeniden yazım için kullanılan pratik bir yazı aracı.",
+        longDescription: "QuillBot, özetleme ve yeniden yazım iş akışları iş akışlarında öne çıkan bir AI aracıdır. Özellikle yeniden yazım ve özetleme için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Yeniden yazım ve özetleme",
         whoShouldUse: [
-          "Ã–ÄŸrenciler",
-          "AraÅŸtÄ±rmacÄ±lar",
-          "Ä°Ã§erik Ã¼reticileri"
+          "Öğrenciler",
+          "Araştırmacılar",
+          "İçerik üreticileri"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "QuillBot, makale taslaÄŸÄ±, Ã¶zet ve dÃ¼zenleme hizmetleri odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "QuillBot, makale taslağı, özet ve düzenleme hizmetleri odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "QuillBot ile Ã¶zetleme ve yeniden yazÄ±m iÅŸ akÄ±ÅŸlarÄ± iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "QuillBot ile özetleme ve yeniden yazım iş akışları için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "QuillBot, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "QuillBot, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "Yeniden yazÄ±m ve Ã¶zetleme",
-          "Metin odaklÄ± iÅŸ akÄ±ÅŸlarÄ±",
-          "DÃ¼zenleme ve yeniden yazÄ±m",
-          "HÄ±zlÄ± taslak Ã¼retimi"
+          "Yeniden yazım ve özetleme",
+          "Metin odaklı iş akışları",
+          "Düzenleme ve yeniden yazım",
+          "Hızlı taslak üretimi"
         ],
         pros: [
-          "Yeniden yazÄ±m ve Ã¶zetleme iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Yeniden yazım ve özetleme için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "QuillBot incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "QuillBot iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "QuillBot incelemesi ve kullanım alanları",
+        seoDescription: "QuillBot için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "QuillBot",
@@ -1425,45 +1425,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "DeepL Write",
-        shortDescription: "Daha temiz Ã§ok dilli yazÄ±m ve Ã§eviri destekli dÃ¼zenleme iÃ§in kullanÄ±lan AI yazÄ± aracÄ±.",
-        longDescription: "DeepL Write, Ã§eviri ve yazÄ± kalitesi odaklÄ± iÅŸ akÄ±ÅŸlarÄ± iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle Ã§ok dilli metin dÃ¼zenleme iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "Ã‡ok dilli metin dÃ¼zenleme",
+        shortDescription: "Daha temiz çok dilli yazım ve çeviri destekli düzenleme için kullanılan AI yazı aracı.",
+        longDescription: "DeepL Write, çeviri ve yazı kalitesi odaklı iş akışları iş akışlarında öne çıkan bir AI aracıdır. Özellikle çok dilli metin düzenleme için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Çok dilli metin düzenleme",
         whoShouldUse: [
           "Pazarlama ekipleri",
           "Freelancer'lar",
-          "UluslararasÄ± Ã§alÄ±ÅŸan ekipler"
+          "Uluslararası çalışan ekipler"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "DeepL Write, Ã§ok dilli mÃ¼ÅŸteri metni ve iÃ§erik dÃ¼zenleme hizmetleri odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "DeepL Write, çok dilli müşteri metni ve içerik düzenleme hizmetleri odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "DeepL Write ile Ã§eviri ve yazÄ± kalitesi odaklÄ± iÅŸ akÄ±ÅŸlarÄ± iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "DeepL Write ile çeviri ve yazı kalitesi odaklı iş akışları için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "DeepL Write, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "DeepL Write, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "Ã‡ok dilli metin dÃ¼zenleme",
-          "Metin odaklÄ± iÅŸ akÄ±ÅŸlarÄ±",
-          "DÃ¼zenleme ve yeniden yazÄ±m",
-          "HÄ±zlÄ± taslak Ã¼retimi"
+          "Çok dilli metin düzenleme",
+          "Metin odaklı iş akışları",
+          "Düzenleme ve yeniden yazım",
+          "Hızlı taslak üretimi"
         ],
         pros: [
-          "Ã‡ok dilli metin dÃ¼zenleme iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Çok dilli metin düzenleme için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "DeepL Write incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "DeepL Write iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "DeepL Write incelemesi ve kullanım alanları",
+        seoDescription: "DeepL Write için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "DeepL Write",
@@ -1535,45 +1535,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Otter.ai",
-        shortDescription: "ToplantÄ±, ders ve gÃ¶rÃ¼ÅŸmeleri metne dÃ¶kÃ¼p Ã¶zetlemeye yardÄ±mcÄ± olan konuÅŸma not aracÄ±.",
-        longDescription: "Otter.ai, toplantÄ± notu ve Ã¶zet akÄ±ÅŸlarÄ± iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle toplantÄ± ve ders notlarÄ±nÄ± otomatik Ã§Ä±karma iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "ToplantÄ± ve ders notlarÄ±nÄ± otomatik Ã§Ä±karma",
+        shortDescription: "Toplantı, ders ve görüşmeleri metne döküp özetlemeye yardımcı olan konuşma not aracı.",
+        longDescription: "Otter.ai, toplantı notu ve özet akışları iş akışlarında öne çıkan bir AI aracıdır. Özellikle toplantı ve ders notlarını otomatik çıkarma için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Toplantı ve ders notlarını otomatik çıkarma",
         whoShouldUse: [
-          "Ã–ÄŸrenciler",
-          "SatÄ±ÅŸ ekipleri",
+          "Öğrenciler",
+          "Satış ekipleri",
           "Operasyon ekipleri"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Otter.ai, mÃ¼ÅŸteri gÃ¶rÃ¼ÅŸmesi Ã¶zetleri veya araÅŸtÄ±rma notlarÄ± Ã¼retme odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Otter.ai, müşteri görüşmesi özetleri veya araştırma notları üretme odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Otter.ai ile toplantÄ± notu ve Ã¶zet akÄ±ÅŸlarÄ± iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Otter.ai ile toplantı notu ve özet akışları için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Otter.ai, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Otter.ai, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "ToplantÄ± ve ders notlarÄ±nÄ± otomatik Ã§Ä±karma",
-          "Operasyon ve verimlilik iÅŸleri",
-          "AraÅŸtÄ±rma veya otomasyon desteÄŸi",
-          "Tekrarlanan iÅŸleri azaltma"
+          "Toplantı ve ders notlarını otomatik çıkarma",
+          "Operasyon ve verimlilik işleri",
+          "Araştırma veya otomasyon desteği",
+          "Tekrarlanan işleri azaltma"
         ],
         pros: [
-          "ToplantÄ± ve ders notlarÄ±nÄ± otomatik Ã§Ä±karma iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Toplantı ve ders notlarını otomatik çıkarma için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Otter.ai incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Otter.ai iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Otter.ai incelemesi ve kullanım alanları",
+        seoDescription: "Otter.ai için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Otter.ai",
@@ -1644,45 +1644,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Fireflies.ai",
-        shortDescription: "ToplantÄ± kayÄ±tlarÄ±nÄ± Ã¶zetleyip aksiyonlara dÃ¶nÃ¼ÅŸtÃ¼rmeye odaklanan AI toplantÄ± asistanÄ±.",
-        longDescription: "Fireflies.ai, toplantÄ± ve mÃ¼ÅŸteri gÃ¶rÃ¼ÅŸmesi yÃ¶netimi iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle toplantÄ± Ã¶zeti ve aksiyon takibi iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "ToplantÄ± Ã¶zeti ve aksiyon takibi",
+        shortDescription: "Toplantı kayıtlarını özetleyip aksiyonlara dönüştürmeye odaklanan AI toplantı asistanı.",
+        longDescription: "Fireflies.ai, toplantı ve müşteri görüşmesi yönetimi iş akışlarında öne çıkan bir AI aracıdır. Özellikle toplantı özeti ve aksiyon takibi için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Toplantı özeti ve aksiyon takibi",
         whoShouldUse: [
           "Ajans ekipleri",
           "Operasyon ekipleri",
-          "DanÄ±ÅŸmanlar"
+          "Danışmanlar"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Fireflies.ai, danÄ±ÅŸmanlÄ±k, satÄ±ÅŸ ve operasyon teslimlerini daha dÃ¼zenli hale getirme odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Fireflies.ai, danışmanlık, satış ve operasyon teslimlerini daha düzenli hale getirme odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Fireflies.ai ile toplantÄ± ve mÃ¼ÅŸteri gÃ¶rÃ¼ÅŸmesi yÃ¶netimi iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Fireflies.ai ile toplantı ve müşteri görüşmesi yönetimi için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Fireflies.ai, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Fireflies.ai, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "ToplantÄ± Ã¶zeti ve aksiyon takibi",
-          "Operasyon ve verimlilik iÅŸleri",
-          "AraÅŸtÄ±rma veya otomasyon desteÄŸi",
-          "Tekrarlanan iÅŸleri azaltma"
+          "Toplantı özeti ve aksiyon takibi",
+          "Operasyon ve verimlilik işleri",
+          "Araştırma veya otomasyon desteği",
+          "Tekrarlanan işleri azaltma"
         ],
         pros: [
-          "ToplantÄ± Ã¶zeti ve aksiyon takibi iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Toplantı özeti ve aksiyon takibi için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Fireflies.ai incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Fireflies.ai iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Fireflies.ai incelemesi ve kullanım alanları",
+        seoDescription: "Fireflies.ai için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Fireflies.ai",
@@ -1754,45 +1754,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "NotebookLM",
-        shortDescription: "Kaynak dokÃ¼manlarla Ã§alÄ±ÅŸan, Ã¶zet ve iÃ§gÃ¶rÃ¼ Ã¼retimine odaklÄ± not araÅŸtÄ±rma aracÄ±.",
-        longDescription: "NotebookLM, dokÃ¼man tabanlÄ± araÅŸtÄ±rma ve bilgi sentezi iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle kaynak bazlÄ± araÅŸtÄ±rma ve Ã¶zet Ã§Ä±karma iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "Kaynak bazlÄ± araÅŸtÄ±rma ve Ã¶zet Ã§Ä±karma",
+        shortDescription: "Kaynak dokümanlarla çalışan, özet ve içgörü üretimine odaklı not araştırma aracı.",
+        longDescription: "NotebookLM, doküman tabanlı araştırma ve bilgi sentezi iş akışlarında öne çıkan bir AI aracıdır. Özellikle kaynak bazlı araştırma ve özet çıkarma için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Kaynak bazlı araştırma ve özet çıkarma",
         whoShouldUse: [
-          "Ã–ÄŸrenciler",
-          "AraÅŸtÄ±rmacÄ±lar",
-          "Ä°Ã§ ekipler"
+          "Öğrenciler",
+          "Araştırmacılar",
+          "İç ekipler"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "NotebookLM, araÅŸtÄ±rma Ã¶zetleri ve bilgi paketleri hazÄ±rlama odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "NotebookLM, araştırma özetleri ve bilgi paketleri hazırlama odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "NotebookLM ile dokÃ¼man tabanlÄ± araÅŸtÄ±rma ve bilgi sentezi iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "NotebookLM ile doküman tabanlı araştırma ve bilgi sentezi için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "NotebookLM, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "NotebookLM, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "Kaynak bazlÄ± araÅŸtÄ±rma ve Ã¶zet Ã§Ä±karma",
-          "Operasyon ve verimlilik iÅŸleri",
-          "AraÅŸtÄ±rma veya otomasyon desteÄŸi",
-          "Tekrarlanan iÅŸleri azaltma"
+          "Kaynak bazlı araştırma ve özet çıkarma",
+          "Operasyon ve verimlilik işleri",
+          "Araştırma veya otomasyon desteği",
+          "Tekrarlanan işleri azaltma"
         ],
         pros: [
-          "Kaynak bazlÄ± araÅŸtÄ±rma ve Ã¶zet Ã§Ä±karma iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Kaynak bazlı araştırma ve özet çıkarma için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "NotebookLM incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "NotebookLM iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "NotebookLM incelemesi ve kullanım alanları",
+        seoDescription: "NotebookLM için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "NotebookLM",
@@ -1864,45 +1864,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "DeepSeek",
-        shortDescription: "AraÅŸtÄ±rma, teknik soru-cevap ve genel yazÄ± akÄ±ÅŸlarÄ±nda kullanÄ±lan hÄ±zlÄ± bir AI model arayÃ¼zÃ¼.",
-        longDescription: "DeepSeek, araÅŸtÄ±rma ve teknik keÅŸif iÅŸ akÄ±ÅŸlarÄ± iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle araÅŸtÄ±rma ve teknik cevap Ã¼retimi iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "AraÅŸtÄ±rma ve teknik cevap Ã¼retimi",
+        shortDescription: "Araştırma, teknik soru-cevap ve genel yazı akışlarında kullanılan hızlı bir AI model arayüzü.",
+        longDescription: "DeepSeek, araştırma ve teknik keşif iş akışları iş akışlarında öne çıkan bir AI aracıdır. Özellikle araştırma ve teknik cevap üretimi için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Araştırma ve teknik cevap üretimi",
         whoShouldUse: [
-          "AraÅŸtÄ±rmacÄ±lar",
-          "GeliÅŸtiriciler",
-          "Ä°Ã§erik ekipleri"
+          "Araştırmacılar",
+          "Geliştiriciler",
+          "İçerik ekipleri"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "DeepSeek, araÅŸtÄ±rma yoÄŸun iÃ§erik ve teknik hizmet Ã¼retimi odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "DeepSeek, araştırma yoğun içerik ve teknik hizmet üretimi odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "DeepSeek ile araÅŸtÄ±rma ve teknik keÅŸif iÅŸ akÄ±ÅŸlarÄ± iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "DeepSeek ile araştırma ve teknik keşif iş akışları için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "DeepSeek, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "DeepSeek, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "AraÅŸtÄ±rma ve teknik cevap Ã¼retimi",
-          "Metin odaklÄ± iÅŸ akÄ±ÅŸlarÄ±",
-          "DÃ¼zenleme ve yeniden yazÄ±m",
-          "HÄ±zlÄ± taslak Ã¼retimi"
+          "Araştırma ve teknik cevap üretimi",
+          "Metin odaklı iş akışları",
+          "Düzenleme ve yeniden yazım",
+          "Hızlı taslak üretimi"
         ],
         pros: [
-          "AraÅŸtÄ±rma ve teknik cevap Ã¼retimi iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Araştırma ve teknik cevap üretimi için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "DeepSeek incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "DeepSeek iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "DeepSeek incelemesi ve kullanım alanları",
+        seoDescription: "DeepSeek için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "DeepSeek",
@@ -1973,45 +1973,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Grok",
-        shortDescription: "HÄ±zlÄ± cevap, gÃ¼ndem takibi ve genel soru-cevap iÃ§in kullanÄ±lan sohbet odaklÄ± AI aracÄ±.",
-        longDescription: "Grok, hÄ±zlÄ± fikir, araÅŸtÄ±rma ve gÃ¼ndem tarama iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle hÄ±zlÄ± soru-cevap ve gÃ¼ndem odaklÄ± araÅŸtÄ±rma iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "HÄ±zlÄ± soru-cevap ve gÃ¼ndem odaklÄ± araÅŸtÄ±rma",
+        shortDescription: "Hızlı cevap, gündem takibi ve genel soru-cevap için kullanılan sohbet odaklı AI aracı.",
+        longDescription: "Grok, hızlı fikir, araştırma ve gündem tarama iş akışlarında öne çıkan bir AI aracıdır. Özellikle hızlı soru-cevap ve gündem odaklı araştırma için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Hızlı soru-cevap ve gündem odaklı araştırma",
         whoShouldUse: [
-          "Ä°Ã§erik Ã¼reticileri",
-          "AraÅŸtÄ±rmacÄ±lar",
-          "Merak odaklÄ± kullanÄ±cÄ±lar"
+          "İçerik üreticileri",
+          "Araştırmacılar",
+          "Merak odaklı kullanıcılar"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Grok, trend iÃ§erik ve hÄ±zlÄ± araÅŸtÄ±rma destekli Ã¼retim odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Grok, trend içerik ve hızlı araştırma destekli üretim odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Grok ile hÄ±zlÄ± fikir, araÅŸtÄ±rma ve gÃ¼ndem tarama iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Grok ile hızlı fikir, araştırma ve gündem tarama için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Grok, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Grok, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "HÄ±zlÄ± soru-cevap ve gÃ¼ndem odaklÄ± araÅŸtÄ±rma",
-          "Metin odaklÄ± iÅŸ akÄ±ÅŸlarÄ±",
-          "DÃ¼zenleme ve yeniden yazÄ±m",
-          "HÄ±zlÄ± taslak Ã¼retimi"
+          "Hızlı soru-cevap ve gündem odaklı araştırma",
+          "Metin odaklı iş akışları",
+          "Düzenleme ve yeniden yazım",
+          "Hızlı taslak üretimi"
         ],
         pros: [
-          "HÄ±zlÄ± soru-cevap ve gÃ¼ndem odaklÄ± araÅŸtÄ±rma iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Hızlı soru-cevap ve gündem odaklı araştırma için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretli plan gerektirebilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretli plan gerektirebilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Grok incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Grok iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Grok incelemesi ve kullanım alanları",
+        seoDescription: "Grok için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Grok",
@@ -2083,45 +2083,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Poe",
-        shortDescription: "FarklÄ± AI modellerine tek arayÃ¼zden eriÅŸim saÄŸlayan Ã§ok modelli sohbet platformu.",
-        longDescription: "Poe, farklÄ± model cevaplarÄ±nÄ± hÄ±zlÄ± karÅŸÄ±laÅŸtÄ±rma iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle farklÄ± modelleri tek akÄ±ÅŸta denemek iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "FarklÄ± modelleri tek akÄ±ÅŸta denemek",
+        shortDescription: "Farklı AI modellerine tek arayüzden erişim sağlayan çok modelli sohbet platformu.",
+        longDescription: "Poe, farklı model cevaplarını hızlı karşılaştırma iş akışlarında öne çıkan bir AI aracıdır. Özellikle farklı modelleri tek akışta denemek için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Farklı modelleri tek akışta denemek",
         whoShouldUse: [
-          "Ã–ÄŸrenciler",
-          "Ä°Ã§erik Ã¼reticileri",
-          "MeraklÄ± kullanÄ±cÄ±lar"
+          "Öğrenciler",
+          "İçerik üreticileri",
+          "Meraklı kullanıcılar"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Poe, mÃ¼ÅŸteri iÅŸi veya iÃ§erik Ã¼retiminde en uygun modeli seÃ§me odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Poe, müşteri işi veya içerik üretiminde en uygun modeli seçme odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Poe ile farklÄ± model cevaplarÄ±nÄ± hÄ±zlÄ± karÅŸÄ±laÅŸtÄ±rma iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Poe ile farklı model cevaplarını hızlı karşılaştırma için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Poe, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Poe, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "FarklÄ± modelleri tek akÄ±ÅŸta denemek",
-          "Metin odaklÄ± iÅŸ akÄ±ÅŸlarÄ±",
-          "DÃ¼zenleme ve yeniden yazÄ±m",
-          "HÄ±zlÄ± taslak Ã¼retimi"
+          "Farklı modelleri tek akışta denemek",
+          "Metin odaklı iş akışları",
+          "Düzenleme ve yeniden yazım",
+          "Hızlı taslak üretimi"
         ],
         pros: [
-          "FarklÄ± modelleri tek akÄ±ÅŸta denemek iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Farklı modelleri tek akışta denemek için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Poe incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Poe iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Poe incelemesi ve kullanım alanları",
+        seoDescription: "Poe için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Poe",
@@ -2192,45 +2192,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Zapier",
-        shortDescription: "FarklÄ± araÃ§larÄ± baÄŸlayÄ±p otomasyon kurmak iÃ§in kullanÄ±lan popÃ¼ler no-code otomasyon platformu.",
-        longDescription: "Zapier, otomasyon ve tekrar eden iÅŸ akÄ±ÅŸlarÄ± iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle araÃ§lar arasÄ± otomasyon kurma iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "AraÃ§lar arasÄ± otomasyon kurma",
+        shortDescription: "Farklı araçları bağlayıp otomasyon kurmak için kullanılan popüler no-code otomasyon platformu.",
+        longDescription: "Zapier, otomasyon ve tekrar eden iş akışları iş akışlarında öne çıkan bir AI aracıdır. Özellikle araçlar arası otomasyon kurma için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Araçlar arası otomasyon kurma",
         whoShouldUse: [
           "Operasyon ekipleri",
           "Freelancer'lar",
-          "KÃ¼Ã§Ã¼k iÅŸletmeler"
+          "Küçük işletmeler"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Zapier, mÃ¼ÅŸterilere otomasyon kurulumu veya iÃ§ operasyon iyileÅŸtirme hizmeti odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Zapier, müşterilere otomasyon kurulumu veya iç operasyon iyileştirme hizmeti odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Zapier ile otomasyon ve tekrar eden iÅŸ akÄ±ÅŸlarÄ± iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Zapier ile otomasyon ve tekrar eden iş akışları için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Zapier, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Zapier, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "AraÃ§lar arasÄ± otomasyon kurma",
-          "Operasyon ve verimlilik iÅŸleri",
-          "AraÅŸtÄ±rma veya otomasyon desteÄŸi",
-          "Tekrarlanan iÅŸleri azaltma"
+          "Araçlar arası otomasyon kurma",
+          "Operasyon ve verimlilik işleri",
+          "Araştırma veya otomasyon desteği",
+          "Tekrarlanan işleri azaltma"
         ],
         pros: [
-          "AraÃ§lar arasÄ± otomasyon kurma iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Araçlar arası otomasyon kurma için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Zapier incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Zapier iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Zapier incelemesi ve kullanım alanları",
+        seoDescription: "Zapier için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Zapier",
@@ -2301,9 +2301,9 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Make",
-        shortDescription: "GÃ¶rsel akÄ±ÅŸ mantÄ±ÄŸÄ±yla geliÅŸmiÅŸ otomasyon senaryolarÄ± kurmaya uygun no-code platform.",
-        longDescription: "Make, otomasyon ve sÃ¼reÃ§ tasarÄ±mÄ± iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle gÃ¶rsel otomasyon senaryolarÄ± kurma iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "GÃ¶rsel otomasyon senaryolarÄ± kurma",
+        shortDescription: "Görsel akış mantığıyla gelişmiş otomasyon senaryoları kurmaya uygun no-code platform.",
+        longDescription: "Make, otomasyon ve süreç tasarımı iş akışlarında öne çıkan bir AI aracıdır. Özellikle görsel otomasyon senaryoları kurma için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Görsel otomasyon senaryoları kurma",
         whoShouldUse: [
           "Ajans ekipleri",
           "Operasyon ekipleri",
@@ -2311,35 +2311,35 @@ export const tools: ToolEntry[] = [
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Make, mÃ¼ÅŸteri sÃ¼reÃ§lerini otomatikleÅŸtirerek hizmet satÄ±ÅŸÄ± odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Make, müşteri süreçlerini otomatikleştirerek hizmet satışı odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Make ile otomasyon ve sÃ¼reÃ§ tasarÄ±mÄ± iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Make ile otomasyon ve süreç tasarımı için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Make, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Make, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "GÃ¶rsel otomasyon senaryolarÄ± kurma",
-          "Operasyon ve verimlilik iÅŸleri",
-          "AraÅŸtÄ±rma veya otomasyon desteÄŸi",
-          "Tekrarlanan iÅŸleri azaltma"
+          "Görsel otomasyon senaryoları kurma",
+          "Operasyon ve verimlilik işleri",
+          "Araştırma veya otomasyon desteği",
+          "Tekrarlanan işleri azaltma"
         ],
         pros: [
-          "GÃ¶rsel otomasyon senaryolarÄ± kurma iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Görsel otomasyon senaryoları kurma için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Make incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Make iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Make incelemesi ve kullanım alanları",
+        seoDescription: "Make için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Make",
@@ -2411,45 +2411,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Tome",
-        shortDescription: "Sunum, anlatÄ± ve hÄ±zlÄ± gÃ¶rsel dokÃ¼man Ã¼retimi iÃ§in kullanÄ±lan AI destekli anlatÄ±m aracÄ±.",
-        longDescription: "Tome, sunum ve mÃ¼ÅŸteri anlatÄ±mÄ± hazÄ±rlama iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle sunum ve anlatÄ± odaklÄ± dokÃ¼man Ã¼retimi iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "Sunum ve anlatÄ± odaklÄ± dokÃ¼man Ã¼retimi",
+        shortDescription: "Sunum, anlatı ve hızlı görsel doküman üretimi için kullanılan AI destekli anlatım aracı.",
+        longDescription: "Tome, sunum ve müşteri anlatımı hazırlama iş akışlarında öne çıkan bir AI aracıdır. Özellikle sunum ve anlatı odaklı doküman üretimi için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Sunum ve anlatı odaklı doküman üretimi",
         whoShouldUse: [
-          "SatÄ±ÅŸ ekipleri",
+          "Satış ekipleri",
           "Freelancer'lar",
-          "Kurucu adaylarÄ±"
+          "Kurucu adayları"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Tome, pitch deck, teklif ve sunum teslimleri hazÄ±rlama odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Tome, pitch deck, teklif ve sunum teslimleri hazırlama odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Tome ile sunum ve mÃ¼ÅŸteri anlatÄ±mÄ± hazÄ±rlama iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Tome ile sunum ve müşteri anlatımı hazırlama için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Tome, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Tome, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "Sunum ve anlatÄ± odaklÄ± dokÃ¼man Ã¼retimi",
-          "Operasyon ve verimlilik iÅŸleri",
-          "AraÅŸtÄ±rma veya otomasyon desteÄŸi",
-          "Tekrarlanan iÅŸleri azaltma"
+          "Sunum ve anlatı odaklı doküman üretimi",
+          "Operasyon ve verimlilik işleri",
+          "Araştırma veya otomasyon desteği",
+          "Tekrarlanan işleri azaltma"
         ],
         pros: [
-          "Sunum ve anlatÄ± odaklÄ± dokÃ¼man Ã¼retimi iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Sunum ve anlatı odaklı doküman üretimi için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Tome incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Tome iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Tome incelemesi ve kullanım alanları",
+        seoDescription: "Tome için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Tome",
@@ -2521,45 +2521,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Gamma",
-        shortDescription: "Sunum, dokÃ¼man ve web-benzeri sayfa Ã¼retimini hÄ±zlandÄ±ran AI iÃ§erik sunum aracÄ±.",
-        longDescription: "Gamma, sunum ve iÃ§erik anlatÄ±mÄ± akÄ±ÅŸlarÄ± iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle sunum ve dokÃ¼man Ã¼retimini hÄ±zlandÄ±rma iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "Sunum ve dokÃ¼man Ã¼retimini hÄ±zlandÄ±rma",
+        shortDescription: "Sunum, doküman ve web-benzeri sayfa üretimini hızlandıran AI içerik sunum aracı.",
+        longDescription: "Gamma, sunum ve içerik anlatımı akışları iş akışlarında öne çıkan bir AI aracıdır. Özellikle sunum ve doküman üretimini hızlandırma için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Sunum ve doküman üretimini hızlandırma",
         whoShouldUse: [
           "Ajans ekipleri",
           "Freelancer'lar",
-          "SatÄ±ÅŸ ekipleri"
+          "Satış ekipleri"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Gamma, mÃ¼ÅŸteri sunumu ve bilgi paketi teslimleri odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Gamma, müşteri sunumu ve bilgi paketi teslimleri odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Gamma ile sunum ve iÃ§erik anlatÄ±mÄ± akÄ±ÅŸlarÄ± iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Gamma ile sunum ve içerik anlatımı akışları için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Gamma, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Gamma, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "Sunum ve dokÃ¼man Ã¼retimini hÄ±zlandÄ±rma",
-          "Operasyon ve verimlilik iÅŸleri",
-          "AraÅŸtÄ±rma veya otomasyon desteÄŸi",
-          "Tekrarlanan iÅŸleri azaltma"
+          "Sunum ve doküman üretimini hızlandırma",
+          "Operasyon ve verimlilik işleri",
+          "Araştırma veya otomasyon desteği",
+          "Tekrarlanan işleri azaltma"
         ],
         pros: [
-          "Sunum ve dokÃ¼man Ã¼retimini hÄ±zlandÄ±rma iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Sunum ve doküman üretimini hızlandırma için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Gamma incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Gamma iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Gamma incelemesi ve kullanım alanları",
+        seoDescription: "Gamma için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Gamma",
@@ -2631,9 +2631,9 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Framer",
-        shortDescription: "Modern landing page ve site tasarÄ±mÄ±nÄ± hÄ±zlandÄ±ran AI destekli web tasarÄ±m aracÄ±.",
-        longDescription: "Framer, landing page ve hÄ±zlÄ± site teslimi iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle hÄ±zlÄ± landing page ve site Ã¼retimi iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "HÄ±zlÄ± landing page ve site Ã¼retimi",
+        shortDescription: "Modern landing page ve site tasarımını hızlandıran AI destekli web tasarım aracı.",
+        longDescription: "Framer, landing page ve hızlı site teslimi iş akışlarında öne çıkan bir AI aracıdır. Özellikle hızlı landing page ve site üretimi için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Hızlı landing page ve site üretimi",
         whoShouldUse: [
           "Freelancer'lar",
           "Ajans ekipleri",
@@ -2641,35 +2641,35 @@ export const tools: ToolEntry[] = [
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Framer, mÃ¼ÅŸterilere landing page ve site tasarÄ±m hizmeti sunma odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Framer, müşterilere landing page ve site tasarım hizmeti sunma odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Framer ile landing page ve hÄ±zlÄ± site teslimi iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Framer ile landing page ve hızlı site teslimi için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Framer, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Framer, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "HÄ±zlÄ± landing page ve site Ã¼retimi",
-          "Operasyon ve verimlilik iÅŸleri",
-          "AraÅŸtÄ±rma veya otomasyon desteÄŸi",
-          "Tekrarlanan iÅŸleri azaltma"
+          "Hızlı landing page ve site üretimi",
+          "Operasyon ve verimlilik işleri",
+          "Araştırma veya otomasyon desteği",
+          "Tekrarlanan işleri azaltma"
         ],
         pros: [
-          "HÄ±zlÄ± landing page ve site Ã¼retimi iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Hızlı landing page ve site üretimi için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Framer incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Framer iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Framer incelemesi ve kullanım alanları",
+        seoDescription: "Framer için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Framer",
@@ -2739,45 +2739,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Synthesia",
-        shortDescription: "Avatar tabanlÄ± anlatÄ±m videolarÄ± ve eÄŸitim iÃ§erikleri Ã¼retmeye odaklÄ± AI video aracÄ±.",
-        longDescription: "Synthesia, eÄŸitim, onboarding ve anlatÄ±m videolarÄ± iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle avatar tabanlÄ± eÄŸitim ve anlatÄ±m videolarÄ± iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "Avatar tabanlÄ± eÄŸitim ve anlatÄ±m videolarÄ±",
+        shortDescription: "Avatar tabanlı anlatım videoları ve eğitim içerikleri üretmeye odaklı AI video aracı.",
+        longDescription: "Synthesia, eğitim, onboarding ve anlatım videoları iş akışlarında öne çıkan bir AI aracıdır. Özellikle avatar tabanlı eğitim ve anlatım videoları için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Avatar tabanlı eğitim ve anlatım videoları",
         whoShouldUse: [
-          "EÄŸitim ekipleri",
+          "Eğitim ekipleri",
           "Pazarlama ekipleri",
           "Ajanslar"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Synthesia, mÃ¼ÅŸterilere eÄŸitim, onboarding veya tanÄ±tÄ±m videosu Ã¼retme odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Synthesia, müşterilere eğitim, onboarding veya tanıtım videosu üretme odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Synthesia ile eÄŸitim, onboarding ve anlatÄ±m videolarÄ± iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Synthesia ile eğitim, onboarding ve anlatım videoları için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Synthesia, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Synthesia, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "Avatar tabanlÄ± eÄŸitim ve anlatÄ±m videolarÄ±",
-          "Video veya medya Ã¼retimi",
-          "KÄ±sa teslim akÄ±ÅŸlarÄ±",
-          "Ä°Ã§erik tekrar kullanÄ±mÄ±"
+          "Avatar tabanlı eğitim ve anlatım videoları",
+          "Video veya medya üretimi",
+          "Kısa teslim akışları",
+          "İçerik tekrar kullanımı"
         ],
         pros: [
-          "Avatar tabanlÄ± eÄŸitim ve anlatÄ±m videolarÄ± iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Avatar tabanlı eğitim ve anlatım videoları için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretli plan gerektirebilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretli plan gerektirebilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Synthesia incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Synthesia iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Synthesia incelemesi ve kullanım alanları",
+        seoDescription: "Synthesia için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Synthesia",
@@ -2847,45 +2847,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "HeyGen",
-        shortDescription: "Avatar, dublaj ve pazarlama odaklÄ± kÄ±sa video Ã¼retimi iÃ§in kullanÄ±lan AI video platformu.",
-        longDescription: "HeyGen, avatar video ve dublaj odaklÄ± Ã¼retim iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle kÄ±sa pazarlama ve avatar videolarÄ± iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "KÄ±sa pazarlama ve avatar videolarÄ±",
+        shortDescription: "Avatar, dublaj ve pazarlama odaklı kısa video üretimi için kullanılan AI video platformu.",
+        longDescription: "HeyGen, avatar video ve dublaj odaklı üretim iş akışlarında öne çıkan bir AI aracıdır. Özellikle kısa pazarlama ve avatar videoları için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Kısa pazarlama ve avatar videoları",
         whoShouldUse: [
           "Pazarlama ekipleri",
-          "Ä°Ã§erik Ã¼reticileri",
+          "İçerik üreticileri",
           "Ajanslar"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "HeyGen, mÃ¼ÅŸterilere Ã§ok dilli tanÄ±tÄ±m veya satÄ±ÅŸ videosu hazÄ±rlama odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "HeyGen, müşterilere çok dilli tanıtım veya satış videosu hazırlama odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "HeyGen ile avatar video ve dublaj odaklÄ± Ã¼retim iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "HeyGen ile avatar video ve dublaj odaklı üretim için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "HeyGen, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "HeyGen, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "KÄ±sa pazarlama ve avatar videolarÄ±",
-          "Video veya medya Ã¼retimi",
-          "KÄ±sa teslim akÄ±ÅŸlarÄ±",
-          "Ä°Ã§erik tekrar kullanÄ±mÄ±"
+          "Kısa pazarlama ve avatar videoları",
+          "Video veya medya üretimi",
+          "Kısa teslim akışları",
+          "İçerik tekrar kullanımı"
         ],
         pros: [
-          "KÄ±sa pazarlama ve avatar videolarÄ± iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Kısa pazarlama ve avatar videoları için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretli plan gerektirebilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretli plan gerektirebilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "HeyGen incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "HeyGen iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "HeyGen incelemesi ve kullanım alanları",
+        seoDescription: "HeyGen için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "HeyGen",
@@ -2957,45 +2957,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Descript",
-        shortDescription: "Podcast, video ve ses dÃ¼zenleme akÄ±ÅŸÄ±nÄ± metin odaklÄ± ÅŸekilde hÄ±zlandÄ±ran medya aracÄ±.",
-        longDescription: "Descript, video, podcast ve ses dÃ¼zenleme iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle metin tabanlÄ± video ve podcast dÃ¼zenleme iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "Metin tabanlÄ± video ve podcast dÃ¼zenleme",
+        shortDescription: "Podcast, video ve ses düzenleme akışını metin odaklı şekilde hızlandıran medya aracı.",
+        longDescription: "Descript, video, podcast ve ses düzenleme iş akışlarında öne çıkan bir AI aracıdır. Özellikle metin tabanlı video ve podcast düzenleme için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Metin tabanlı video ve podcast düzenleme",
         whoShouldUse: [
-          "Podcast Ã¼reticileri",
+          "Podcast üreticileri",
           "YouTube ekipleri",
           "Ajanslar"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Descript, podcast, video veya kÄ±sa iÃ§erik dÃ¼zenleme hizmeti sunma odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Descript, podcast, video veya kısa içerik düzenleme hizmeti sunma odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Descript ile video, podcast ve ses dÃ¼zenleme iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Descript ile video, podcast ve ses düzenleme için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Descript, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Descript, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "Metin tabanlÄ± video ve podcast dÃ¼zenleme",
-          "Video veya medya Ã¼retimi",
-          "KÄ±sa teslim akÄ±ÅŸlarÄ±",
-          "Ä°Ã§erik tekrar kullanÄ±mÄ±"
+          "Metin tabanlı video ve podcast düzenleme",
+          "Video veya medya üretimi",
+          "Kısa teslim akışları",
+          "İçerik tekrar kullanımı"
         ],
         pros: [
-          "Metin tabanlÄ± video ve podcast dÃ¼zenleme iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Metin tabanlı video ve podcast düzenleme için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Descript incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Descript iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Descript incelemesi ve kullanım alanları",
+        seoDescription: "Descript için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Descript",
@@ -3066,45 +3066,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "VEED",
-        shortDescription: "Sosyal medya videolarÄ±, altyazÄ± ve hÄ±zlÄ± kurgu akÄ±ÅŸlarÄ± iÃ§in kullanÄ±lan Ã§evrim iÃ§i video aracÄ±.",
-        longDescription: "VEED, altyazÄ±, kÄ±sa video ve sosyal kurgu iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle hÄ±zlÄ± sosyal video Ã¼retimi iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "HÄ±zlÄ± sosyal video Ã¼retimi",
+        shortDescription: "Sosyal medya videoları, altyazı ve hızlı kurgu akışları için kullanılan çevrim içi video aracı.",
+        longDescription: "VEED, altyazı, kısa video ve sosyal kurgu iş akışlarında öne çıkan bir AI aracıdır. Özellikle hızlı sosyal video üretimi için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Hızlı sosyal video üretimi",
         whoShouldUse: [
-          "Ä°Ã§erik Ã¼reticileri",
+          "İçerik üreticileri",
           "Sosyal medya ekipleri",
           "Freelancer'lar"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "VEED, mÃ¼ÅŸterilere kÄ±sa video ve sosyal medya teslimi hazÄ±rlama odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "VEED, müşterilere kısa video ve sosyal medya teslimi hazırlama odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "VEED ile altyazÄ±, kÄ±sa video ve sosyal kurgu iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "VEED ile altyazı, kısa video ve sosyal kurgu için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "VEED, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "VEED, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "HÄ±zlÄ± sosyal video Ã¼retimi",
-          "Video veya medya Ã¼retimi",
-          "KÄ±sa teslim akÄ±ÅŸlarÄ±",
-          "Ä°Ã§erik tekrar kullanÄ±mÄ±"
+          "Hızlı sosyal video üretimi",
+          "Video veya medya üretimi",
+          "Kısa teslim akışları",
+          "İçerik tekrar kullanımı"
         ],
         pros: [
-          "HÄ±zlÄ± sosyal video Ã¼retimi iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Hızlı sosyal video üretimi için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "VEED incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "VEED iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "VEED incelemesi ve kullanım alanları",
+        seoDescription: "VEED için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "VEED",
@@ -3175,45 +3175,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "InVideo",
-        shortDescription: "Åablon tabanlÄ± video Ã¼retimi ve hÄ±zlÄ± reklam/sosyal iÃ§erik hazÄ±rlÄ±ÄŸÄ± iÃ§in kullanÄ±lan platform.",
-        longDescription: "InVideo, reklam ve sosyal video Ã¼retimi iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle ÅŸablon tabanlÄ± hÄ±zlÄ± video Ã¼retimi iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "Åablon tabanlÄ± hÄ±zlÄ± video Ã¼retimi",
+        shortDescription: "Şablon tabanlı video üretimi ve hızlı reklam/sosyal içerik hazırlığı için kullanılan platform.",
+        longDescription: "InVideo, reklam ve sosyal video üretimi iş akışlarında öne çıkan bir AI aracıdır. Özellikle şablon tabanlı hızlı video üretimi için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Şablon tabanlı hızlı video üretimi",
         whoShouldUse: [
-          "KÃ¼Ã§Ã¼k iÅŸletmeler",
+          "Küçük işletmeler",
           "Ajans ekipleri",
-          "Ä°Ã§erik Ã¼reticileri"
+          "İçerik üreticileri"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "InVideo, reklam, Ã¼rÃ¼n tanÄ±tÄ±mÄ± veya sosyal medya video paketleri sunma odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "InVideo, reklam, ürün tanıtımı veya sosyal medya video paketleri sunma odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "InVideo ile reklam ve sosyal video Ã¼retimi iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "InVideo ile reklam ve sosyal video üretimi için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "InVideo, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "InVideo, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "Åablon tabanlÄ± hÄ±zlÄ± video Ã¼retimi",
-          "Video veya medya Ã¼retimi",
-          "KÄ±sa teslim akÄ±ÅŸlarÄ±",
-          "Ä°Ã§erik tekrar kullanÄ±mÄ±"
+          "Şablon tabanlı hızlı video üretimi",
+          "Video veya medya üretimi",
+          "Kısa teslim akışları",
+          "İçerik tekrar kullanımı"
         ],
         pros: [
-          "Åablon tabanlÄ± hÄ±zlÄ± video Ã¼retimi iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Şablon tabanlı hızlı video üretimi için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "InVideo incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "InVideo iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "InVideo incelemesi ve kullanım alanları",
+        seoDescription: "InVideo için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "InVideo",
@@ -3284,45 +3284,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Kapwing",
-        shortDescription: "KÄ±sa video dÃ¼zenleme, altyazÄ± ve sosyal medya iÃ§eriÄŸi hazÄ±rlamak iÃ§in pratik bir online editÃ¶r.",
-        longDescription: "Kapwing, kÄ±sa video ve altyazÄ± teslimi iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle kÄ±sa video dÃ¼zenleme ve altyazÄ± iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "KÄ±sa video dÃ¼zenleme ve altyazÄ±",
+        shortDescription: "Kısa video düzenleme, altyazı ve sosyal medya içeriği hazırlamak için pratik bir online editör.",
+        longDescription: "Kapwing, kısa video ve altyazı teslimi iş akışlarında öne çıkan bir AI aracıdır. Özellikle kısa video düzenleme ve altyazı için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Kısa video düzenleme ve altyazı",
         whoShouldUse: [
-          "Sosyal medya Ã¼reticileri",
+          "Sosyal medya üreticileri",
           "Freelancer'lar",
-          "KÃ¼Ã§Ã¼k ekipler"
+          "Küçük ekipler"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Kapwing, mÃ¼ÅŸterilere hÄ±zlÄ± kÄ±sa video ve altyazÄ± teslimleri Ã¼retme odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Kapwing, müşterilere hızlı kısa video ve altyazı teslimleri üretme odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Kapwing ile kÄ±sa video ve altyazÄ± teslimi iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Kapwing ile kısa video ve altyazı teslimi için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Kapwing, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Kapwing, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "KÄ±sa video dÃ¼zenleme ve altyazÄ±",
-          "Video veya medya Ã¼retimi",
-          "KÄ±sa teslim akÄ±ÅŸlarÄ±",
-          "Ä°Ã§erik tekrar kullanÄ±mÄ±"
+          "Kısa video düzenleme ve altyazı",
+          "Video veya medya üretimi",
+          "Kısa teslim akışları",
+          "İçerik tekrar kullanımı"
         ],
         pros: [
-          "KÄ±sa video dÃ¼zenleme ve altyazÄ± iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Kısa video düzenleme ve altyazı için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Kapwing incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Kapwing iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Kapwing incelemesi ve kullanım alanları",
+        seoDescription: "Kapwing için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Kapwing",
@@ -3392,45 +3392,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "D-ID",
-        shortDescription: "KonuÅŸan avatar ve anlatÄ±m videosu Ã¼retimine odaklanan AI medya platformu.",
-        longDescription: "D-ID, avatar anlatÄ±mÄ± ve sunum videolarÄ± iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle konuÅŸan avatar iÃ§erikleri iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "KonuÅŸan avatar iÃ§erikleri",
+        shortDescription: "Konuşan avatar ve anlatım videosu üretimine odaklanan AI medya platformu.",
+        longDescription: "D-ID, avatar anlatımı ve sunum videoları iş akışlarında öne çıkan bir AI aracıdır. Özellikle konuşan avatar içerikleri için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Konuşan avatar içerikleri",
         whoShouldUse: [
           "Kurumsal ekipler",
           "Ajanslar",
-          "Ä°Ã§erik ekipleri"
+          "İçerik ekipleri"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "D-ID, mÃ¼ÅŸterilere aÃ§Ä±klayÄ±cÄ± avatar video veya eÄŸitim iÃ§eriÄŸi sunma odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "D-ID, müşterilere açıklayıcı avatar video veya eğitim içeriği sunma odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "D-ID ile avatar anlatÄ±mÄ± ve sunum videolarÄ± iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "D-ID ile avatar anlatımı ve sunum videoları için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "D-ID, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "D-ID, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "KonuÅŸan avatar iÃ§erikleri",
-          "Video veya medya Ã¼retimi",
-          "KÄ±sa teslim akÄ±ÅŸlarÄ±",
-          "Ä°Ã§erik tekrar kullanÄ±mÄ±"
+          "Konuşan avatar içerikleri",
+          "Video veya medya üretimi",
+          "Kısa teslim akışları",
+          "İçerik tekrar kullanımı"
         ],
         pros: [
-          "KonuÅŸan avatar iÃ§erikleri iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Konuşan avatar içerikleri için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretli plan gerektirebilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretli plan gerektirebilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "D-ID incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "D-ID iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "D-ID incelemesi ve kullanım alanları",
+        seoDescription: "D-ID için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "D-ID",
@@ -3502,45 +3502,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Luma AI",
-        shortDescription: "GÃ¶rsel kalite odaklÄ± video ve yaratÄ±cÄ± Ã¼retim akÄ±ÅŸlarÄ±nda kullanÄ±lan AI aracÄ±.",
-        longDescription: "Luma AI, sinematik video ve yaratÄ±cÄ± teslim iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle sinematik video ve yaratÄ±cÄ± gÃ¶rsel Ã¼retim iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "Sinematik video ve yaratÄ±cÄ± gÃ¶rsel Ã¼retim",
+        shortDescription: "Görsel kalite odaklı video ve yaratıcı üretim akışlarında kullanılan AI aracı.",
+        longDescription: "Luma AI, sinematik video ve yaratıcı teslim iş akışlarında öne çıkan bir AI aracıdır. Özellikle sinematik video ve yaratıcı görsel üretim için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Sinematik video ve yaratıcı görsel üretim",
         whoShouldUse: [
-          "YaratÄ±cÄ± ekipler",
-          "YouTube Ã¼reticileri",
-          "TasarÄ±m freelancer'larÄ±"
+          "Yaratıcı ekipler",
+          "YouTube üreticileri",
+          "Tasarım freelancer'ları"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Luma AI, mÃ¼ÅŸterilere dikkat Ã§ekici video veya konsept teslimleri hazÄ±rlama odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Luma AI, müşterilere dikkat çekici video veya konsept teslimleri hazırlama odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Luma AI ile sinematik video ve yaratÄ±cÄ± teslim iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Luma AI ile sinematik video ve yaratıcı teslim için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Luma AI, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Luma AI, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "Sinematik video ve yaratÄ±cÄ± gÃ¶rsel Ã¼retim",
-          "Video veya medya Ã¼retimi",
-          "KÄ±sa teslim akÄ±ÅŸlarÄ±",
-          "Ä°Ã§erik tekrar kullanÄ±mÄ±"
+          "Sinematik video ve yaratıcı görsel üretim",
+          "Video veya medya üretimi",
+          "Kısa teslim akışları",
+          "İçerik tekrar kullanımı"
         ],
         pros: [
-          "Sinematik video ve yaratÄ±cÄ± gÃ¶rsel Ã¼retim iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Sinematik video ve yaratıcı görsel üretim için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Luma AI incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Luma AI iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Luma AI incelemesi ve kullanım alanları",
+        seoDescription: "Luma AI için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Luma AI",
@@ -3611,45 +3611,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Suno",
-        shortDescription: "ÅarkÄ± ve mÃ¼zik Ã¼retimini hÄ±zlandÄ±ran yapay zeka mÃ¼zik aracÄ±.",
-        longDescription: "Suno, mÃ¼zik ve iÃ§erik ses tasarÄ±mÄ± iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle hÄ±zlÄ± mÃ¼zik ve demo Ã¼retimi iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "HÄ±zlÄ± mÃ¼zik ve demo Ã¼retimi",
+        shortDescription: "Şarkı ve müzik üretimini hızlandıran yapay zeka müzik aracı.",
+        longDescription: "Suno, müzik ve içerik ses tasarımı iş akışlarında öne çıkan bir AI aracıdır. Özellikle hızlı müzik ve demo üretimi için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Hızlı müzik ve demo üretimi",
         whoShouldUse: [
-          "Ä°Ã§erik Ã¼reticileri",
-          "BaÄŸÄ±msÄ±z Ã¼reticiler",
-          "KÃ¼Ã§Ã¼k ajanslar"
+          "İçerik üreticileri",
+          "Bağımsız üreticiler",
+          "Küçük ajanslar"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Suno, mÃ¼ÅŸterilere demo mÃ¼zik, jingle veya iÃ§erik sesi Ã¼retme odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Suno, müşterilere demo müzik, jingle veya içerik sesi üretme odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Suno ile mÃ¼zik ve iÃ§erik ses tasarÄ±mÄ± iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Suno ile müzik ve içerik ses tasarımı için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Suno, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Suno, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "HÄ±zlÄ± mÃ¼zik ve demo Ã¼retimi",
-          "Video veya medya Ã¼retimi",
-          "KÄ±sa teslim akÄ±ÅŸlarÄ±",
-          "Ä°Ã§erik tekrar kullanÄ±mÄ±"
+          "Hızlı müzik ve demo üretimi",
+          "Video veya medya üretimi",
+          "Kısa teslim akışları",
+          "İçerik tekrar kullanımı"
         ],
         pros: [
-          "HÄ±zlÄ± mÃ¼zik ve demo Ã¼retimi iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Hızlı müzik ve demo üretimi için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Suno incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Suno iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Suno incelemesi ve kullanım alanları",
+        seoDescription: "Suno için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Suno",
@@ -3720,45 +3720,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Udio",
-        shortDescription: "MÃ¼zik fikri, demo ve yaratÄ±cÄ± ses Ã¼retiminde kullanÄ±lan AI mÃ¼zik aracÄ±.",
-        longDescription: "Udio, mÃ¼zik fikri ve ses Ã¼retimi iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle yaratÄ±cÄ± mÃ¼zik fikirleri ve demo Ã¼retimi iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "YaratÄ±cÄ± mÃ¼zik fikirleri ve demo Ã¼retimi",
+        shortDescription: "Müzik fikri, demo ve yaratıcı ses üretiminde kullanılan AI müzik aracı.",
+        longDescription: "Udio, müzik fikri ve ses üretimi iş akışlarında öne çıkan bir AI aracıdır. Özellikle yaratıcı müzik fikirleri ve demo üretimi için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Yaratıcı müzik fikirleri ve demo üretimi",
         whoShouldUse: [
-          "YaratÄ±cÄ± Ã¼reticiler",
+          "Yaratıcı üreticiler",
           "Video ekipleri",
-          "BaÄŸÄ±msÄ±z mÃ¼zisyenler"
+          "Bağımsız müzisyenler"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Udio, iÃ§erik sesleri, arka plan mÃ¼zikleri ve demo teslimleri Ã¼retme odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Udio, içerik sesleri, arka plan müzikleri ve demo teslimleri üretme odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Udio ile mÃ¼zik fikri ve ses Ã¼retimi iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Udio ile müzik fikri ve ses üretimi için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Udio, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Udio, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "YaratÄ±cÄ± mÃ¼zik fikirleri ve demo Ã¼retimi",
-          "Video veya medya Ã¼retimi",
-          "KÄ±sa teslim akÄ±ÅŸlarÄ±",
-          "Ä°Ã§erik tekrar kullanÄ±mÄ±"
+          "Yaratıcı müzik fikirleri ve demo üretimi",
+          "Video veya medya üretimi",
+          "Kısa teslim akışları",
+          "İçerik tekrar kullanımı"
         ],
         pros: [
-          "YaratÄ±cÄ± mÃ¼zik fikirleri ve demo Ã¼retimi iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Yaratıcı müzik fikirleri ve demo üretimi için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Udio incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Udio iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Udio incelemesi ve kullanım alanları",
+        seoDescription: "Udio için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Udio",
@@ -3829,45 +3829,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Adobe Firefly",
-        shortDescription: "GÃ¶rsel Ã¼retim, dÃ¼zenleme ve Adobe ekosistemi iÃ§inde kreatif hÄ±z kazanmak iÃ§in kullanÄ±lan araÃ§.",
-        longDescription: "Adobe Firefly, tasarÄ±m, kreatif varyasyon ve gÃ¶rsel dÃ¼zenleme iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle adobe tabanlÄ± gÃ¶rsel Ã¼retim ve dÃ¼zenleme iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "Adobe tabanlÄ± gÃ¶rsel Ã¼retim ve dÃ¼zenleme",
+        shortDescription: "Görsel üretim, düzenleme ve Adobe ekosistemi içinde kreatif hız kazanmak için kullanılan araç.",
+        longDescription: "Adobe Firefly, tasarım, kreatif varyasyon ve görsel düzenleme iş akışlarında öne çıkan bir AI aracıdır. Özellikle adobe tabanlı görsel üretim ve düzenleme için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Adobe tabanlı görsel üretim ve düzenleme",
         whoShouldUse: [
-          "TasarÄ±m ekipleri",
+          "Tasarım ekipleri",
           "Ajanslar",
-          "Ä°Ã§erik Ã¼reticileri"
+          "İçerik üreticileri"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Adobe Firefly, mÃ¼ÅŸterilere hÄ±zlÄ± kreatif varyasyon ve gÃ¶rsel teslim Ã¼retme odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Adobe Firefly, müşterilere hızlı kreatif varyasyon ve görsel teslim üretme odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Adobe Firefly ile tasarÄ±m, kreatif varyasyon ve gÃ¶rsel dÃ¼zenleme iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Adobe Firefly ile tasarım, kreatif varyasyon ve görsel düzenleme için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Adobe Firefly, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Adobe Firefly, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "Adobe tabanlÄ± gÃ¶rsel Ã¼retim ve dÃ¼zenleme",
-          "GÃ¶rsel Ã¼retim veya dÃ¼zenleme",
-          "Kreatif teslim sÃ¼reÃ§leri",
-          "HÄ±zlÄ± varyasyon Ã¼retimi"
+          "Adobe tabanlı görsel üretim ve düzenleme",
+          "Görsel üretim veya düzenleme",
+          "Kreatif teslim süreçleri",
+          "Hızlı varyasyon üretimi"
         ],
         pros: [
-          "Adobe tabanlÄ± gÃ¶rsel Ã¼retim ve dÃ¼zenleme iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Adobe tabanlı görsel üretim ve düzenleme için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Adobe Firefly incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Adobe Firefly iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Adobe Firefly incelemesi ve kullanım alanları",
+        seoDescription: "Adobe Firefly için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Adobe Firefly",
@@ -3938,45 +3938,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Ideogram",
-        shortDescription: "YazÄ± iÃ§eren gÃ¶rseller, posterler ve sosyal kreatifler iÃ§in kullanÄ±lan gÃ¶rsel Ã¼retim aracÄ±.",
-        longDescription: "Ideogram, poster, sosyal kreatif ve metinli gÃ¶rsel Ã¼retimi iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle metin iÃ§eren gÃ¶rsel ve poster Ã¼retimi iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "Metin iÃ§eren gÃ¶rsel ve poster Ã¼retimi",
+        shortDescription: "Yazı içeren görseller, posterler ve sosyal kreatifler için kullanılan görsel üretim aracı.",
+        longDescription: "Ideogram, poster, sosyal kreatif ve metinli görsel üretimi iş akışlarında öne çıkan bir AI aracıdır. Özellikle metin içeren görsel ve poster üretimi için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Metin içeren görsel ve poster üretimi",
         whoShouldUse: [
-          "Sosyal medya Ã¼reticileri",
-          "TasarÄ±m freelancer'larÄ±",
-          "KÃ¼Ã§Ã¼k markalar"
+          "Sosyal medya üreticileri",
+          "Tasarım freelancer'ları",
+          "Küçük markalar"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Ideogram, mÃ¼ÅŸterilere poster, sosyal kreatif veya thumbnail teslimi hazÄ±rlama odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Ideogram, müşterilere poster, sosyal kreatif veya thumbnail teslimi hazırlama odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Ideogram ile poster, sosyal kreatif ve metinli gÃ¶rsel Ã¼retimi iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Ideogram ile poster, sosyal kreatif ve metinli görsel üretimi için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Ideogram, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Ideogram, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "Metin iÃ§eren gÃ¶rsel ve poster Ã¼retimi",
-          "GÃ¶rsel Ã¼retim veya dÃ¼zenleme",
-          "Kreatif teslim sÃ¼reÃ§leri",
-          "HÄ±zlÄ± varyasyon Ã¼retimi"
+          "Metin içeren görsel ve poster üretimi",
+          "Görsel üretim veya düzenleme",
+          "Kreatif teslim süreçleri",
+          "Hızlı varyasyon üretimi"
         ],
         pros: [
-          "Metin iÃ§eren gÃ¶rsel ve poster Ã¼retimi iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Metin içeren görsel ve poster üretimi için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Ideogram incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Ideogram iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Ideogram incelemesi ve kullanım alanları",
+        seoDescription: "Ideogram için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Ideogram",
@@ -4047,45 +4047,45 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Playground AI",
-        shortDescription: "HÄ±zlÄ± gÃ¶rsel denemeleri, Ã¼rÃ¼n mockup'larÄ± ve sosyal medya kreatifleri iÃ§in kullanÄ±lan Ã¼retim aracÄ±.",
-        longDescription: "Playground AI, mockup, gÃ¶rsel deneme ve hÄ±zlÄ± kreatif Ã¼retim iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle hÄ±zlÄ± kreatif varyasyon ve mockup Ã¼retimi iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "HÄ±zlÄ± kreatif varyasyon ve mockup Ã¼retimi",
+        shortDescription: "Hızlı görsel denemeleri, ürün mockup'ları ve sosyal medya kreatifleri için kullanılan üretim aracı.",
+        longDescription: "Playground AI, mockup, görsel deneme ve hızlı kreatif üretim iş akışlarında öne çıkan bir AI aracıdır. Özellikle hızlı kreatif varyasyon ve mockup üretimi için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Hızlı kreatif varyasyon ve mockup üretimi",
         whoShouldUse: [
-          "TasarÄ±mcÄ±lar",
+          "Tasarımcılar",
           "Freelancer'lar",
           "E-ticaret ekipleri"
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Playground AI, mÃ¼ÅŸterilere Ã¼rÃ¼n gÃ¶rseli, mockup ve sosyal kreatif teslimleri Ã¼retme odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Playground AI, müşterilere ürün görseli, mockup ve sosyal kreatif teslimleri üretme odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Playground AI ile mockup, gÃ¶rsel deneme ve hÄ±zlÄ± kreatif Ã¼retim iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Playground AI ile mockup, görsel deneme ve hızlı kreatif üretim için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Playground AI, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Playground AI, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "HÄ±zlÄ± kreatif varyasyon ve mockup Ã¼retimi",
-          "GÃ¶rsel Ã¼retim veya dÃ¼zenleme",
-          "Kreatif teslim sÃ¼reÃ§leri",
-          "HÄ±zlÄ± varyasyon Ã¼retimi"
+          "Hızlı kreatif varyasyon ve mockup üretimi",
+          "Görsel üretim veya düzenleme",
+          "Kreatif teslim süreçleri",
+          "Hızlı varyasyon üretimi"
         ],
         pros: [
-          "HÄ±zlÄ± kreatif varyasyon ve mockup Ã¼retimi iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Hızlı kreatif varyasyon ve mockup üretimi için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Playground AI incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Playground AI iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Playground AI incelemesi ve kullanım alanları",
+        seoDescription: "Playground AI için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Playground AI",
@@ -4156,9 +4156,9 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Remove.bg",
-        shortDescription: "Arka plan kaldÄ±rma ve Ã¼rÃ¼n gÃ¶rseli temizleme iÅŸlerini hÄ±zlandÄ±ran pratik gÃ¶rsel aracÄ±.",
-        longDescription: "Remove.bg, Ã¼rÃ¼n gÃ¶rseli ve hÄ±zlÄ± kreatif hazÄ±rlama iÅŸ akÄ±ÅŸlarÄ±nda Ã¶ne Ã§Ä±kan bir AI aracÄ±dÄ±r. Ã–zellikle arka plan kaldÄ±rma ve Ã¼rÃ¼n gÃ¶rseli temizleme iÃ§in tercih edilebilir ve doÄŸru kullanÄ±mda zaman kazandÄ±rabilir.",
-        bestUseCase: "Arka plan kaldÄ±rma ve Ã¼rÃ¼n gÃ¶rseli temizleme",
+        shortDescription: "Arka plan kaldırma ve ürün görseli temizleme işlerini hızlandıran pratik görsel aracı.",
+        longDescription: "Remove.bg, ürün görseli ve hızlı kreatif hazırlama iş akışlarında öne çıkan bir AI aracıdır. Özellikle arka plan kaldırma ve ürün görseli temizleme için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        bestUseCase: "Arka plan kaldırma ve ürün görseli temizleme",
         whoShouldUse: [
           "E-ticaret ekipleri",
           "Freelancer'lar",
@@ -4166,35 +4166,35 @@ export const tools: ToolEntry[] = [
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hÄ±zlandÄ±rma",
-            description: "Remove.bg, Ã¼rÃ¼n gÃ¶rseli dÃ¼zenleme ve sosyal kreatif hizmetleri odaklÄ± iÅŸlerde teslim sÃ¼resini kÄ±saltmanÄ±za yardÄ±mcÄ± olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Remove.bg, ürün görseli düzenleme ve sosyal kreatif hizmetleri odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet Ã¼retme",
-            description: "Remove.bg ile Ã¼rÃ¼n gÃ¶rseli ve hÄ±zlÄ± kreatif hazÄ±rlama iÃ§in daha hÄ±zlÄ± paket Ã§Ä±ktÄ± Ã¼retebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Remove.bg ile ürün görseli ve hızlı kreatif hazırlama için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan iÅŸleri Ã¶lÃ§ekleme",
-            description: "Remove.bg, benzer iÅŸleri daha az manuel eforla Ã§oÄŸaltÄ±p ek gelir akÄ±ÅŸlarÄ±nÄ± destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Remove.bg, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
-          "Arka plan kaldÄ±rma ve Ã¼rÃ¼n gÃ¶rseli temizleme",
-          "GÃ¶rsel Ã¼retim veya dÃ¼zenleme",
-          "Kreatif teslim sÃ¼reÃ§leri",
-          "HÄ±zlÄ± varyasyon Ã¼retimi"
+          "Arka plan kaldırma ve ürün görseli temizleme",
+          "Görsel üretim veya düzenleme",
+          "Kreatif teslim süreçleri",
+          "Hızlı varyasyon üretimi"
         ],
         pros: [
-          "Arka plan kaldÄ±rma ve Ã¼rÃ¼n gÃ¶rseli temizleme iÃ§in gÃ¼Ã§lÃ¼ olabilir",
-          "Tekrarlanan iÅŸleri hÄ±zlandÄ±rabilir",
-          "DoÄŸru senaryoda Ã¼retim sÃ¼resini kÄ±saltabilir"
+          "Arka plan kaldırma ve ürün görseli temizleme için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ãœcretsiz katman bazÄ± iÅŸlerde sÄ±nÄ±rlÄ± kalabilir",
-          "Ã‡Ä±ktÄ±lar yayÄ±na almadan Ã¶nce kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Remove.bg incelemesi ve kullanÄ±m alanlarÄ±",
-        seoDescription: "Remove.bg iÃ§in fiyat, kullanÄ±m alanlarÄ±, artÄ±lar ve eksiler dahil kÄ±sa bir inceleme okuyun."
+        seoTitle: "Remove.bg incelemesi ve kullanım alanları",
+        seoDescription: "Remove.bg için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Remove.bg",
@@ -4266,22 +4266,22 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "GitHub Copilot",
-        shortDescription: "Kod tamamlama, refactor ve geliÅŸtirme akÄ±ÅŸÄ±nÄ± hÄ±zlandÄ±ran popÃ¼ler AI coding aracÄ±.",
-        longDescription: "GitHub Copilot, kod Ã¼retimi, refactor ve teslim hÄ±zlandÄ±rma is akislarinda one cikan bir AI aracidir. Ozellikle ai destekli kod Ã¼retimi ve geliÅŸtirme icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
-        bestUseCase: "AI destekli kod Ã¼retimi ve geliÅŸtirme",
+        shortDescription: "Kod tamamlama, refactor ve geliştirme akışını hızlandıran popüler AI coding aracı.",
+        longDescription: "GitHub Copilot, kod üretimi, refactor ve teslim hızlandırma is akislarinda one cikan bir AI aracidir. Ozellikle ai destekli kod üretimi ve geliştirme icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        bestUseCase: "AI destekli kod üretimi ve geliştirme",
         whoShouldUse: [
-          "GeliÅŸtiriciler",
+          "Geliştiriciler",
           "Freelancer'lar",
-          "ÃœrÃ¼n ekipleri"
+          "Ürün ekipleri"
         ],
         moneyUseCases: [
           {
             title: "Hizmet teslimini hizlandirma",
-            description: "GitHub Copilot, kod Ã¼retimi, refactor ve teslim hÄ±zlandÄ±rma odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+            description: "GitHub Copilot, kod üretimi, refactor ve teslim hızlandırma odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
           },
           {
             title: "Paket hizmet uretme",
-            description: "GitHub Copilot ile ai destekli kod Ã¼retimi ve geliÅŸtirme icin daha hizli paket cikti uretebilirsiniz."
+            description: "GitHub Copilot ile ai destekli kod üretimi ve geliştirme icin daha hizli paket cikti uretebilirsiniz."
           },
           {
             title: "Tekrarlanan isleri olcekleme",
@@ -4289,13 +4289,13 @@ export const tools: ToolEntry[] = [
           }
         ],
         features: [
-          "AI destekli kod Ã¼retimi ve geliÅŸtirme",
+          "AI destekli kod üretimi ve geliştirme",
           "Operasyon ve verimlilik isleri",
           "Arastirma veya otomasyon destegi",
           "Tekrarlanan isleri azaltma"
         ],
         pros: [
-          "AI destekli kod Ã¼retimi ve geliÅŸtirme icin guclu olabilir",
+          "AI destekli kod üretimi ve geliştirme icin guclu olabilir",
           "Tekrarlanan isleri hizlandirabilir",
           "Dogru senaryoda uretim suresini kisaltabilir"
         ],
@@ -4376,9 +4376,9 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Bolt.new",
-        shortDescription: "TarayÄ±cÄ± iÃ§inde tam yÄ±ÄŸÄ±n uygulama ve hÄ±zlÄ± web Ã¼rÃ¼nÃ¼ Ã¼retmeye odaklanan AI builder.",
-        longDescription: "Bolt.new, hÄ±zlÄ± MVP, demo ve web Ã¼rÃ¼n Ã¼retimi is akislarinda one cikan bir AI aracidir. Ozellikle hÄ±zlÄ± web uygulamasÄ± ve mvp Ã¼retimi icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
-        bestUseCase: "HÄ±zlÄ± web uygulamasÄ± ve MVP Ã¼retimi",
+        shortDescription: "Tarayıcı içinde tam yığın uygulama ve hızlı web ürünü üretmeye odaklanan AI builder.",
+        longDescription: "Bolt.new, hızlı MVP, demo ve web ürün üretimi is akislarinda one cikan bir AI aracidir. Ozellikle hızlı web uygulaması ve mvp üretimi icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        bestUseCase: "Hızlı web uygulaması ve MVP üretimi",
         whoShouldUse: [
           "Kurucular",
           "Freelancer'lar",
@@ -4387,11 +4387,11 @@ export const tools: ToolEntry[] = [
         moneyUseCases: [
           {
             title: "Hizmet teslimini hizlandirma",
-            description: "Bolt.new, hÄ±zlÄ± MVP, demo ve web Ã¼rÃ¼n Ã¼retimi odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+            description: "Bolt.new, hızlı MVP, demo ve web ürün üretimi odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
           },
           {
             title: "Paket hizmet uretme",
-            description: "Bolt.new ile hÄ±zlÄ± web uygulamasÄ± ve mvp Ã¼retimi icin daha hizli paket cikti uretebilirsiniz."
+            description: "Bolt.new ile hızlı web uygulaması ve mvp üretimi icin daha hizli paket cikti uretebilirsiniz."
           },
           {
             title: "Tekrarlanan isleri olcekleme",
@@ -4399,13 +4399,13 @@ export const tools: ToolEntry[] = [
           }
         ],
         features: [
-          "HÄ±zlÄ± web uygulamasÄ± ve MVP Ã¼retimi",
+          "Hızlı web uygulaması ve MVP üretimi",
           "Operasyon ve verimlilik isleri",
           "Arastirma veya otomasyon destegi",
           "Tekrarlanan isleri azaltma"
         ],
         pros: [
-          "HÄ±zlÄ± web uygulamasÄ± ve MVP Ã¼retimi icin guclu olabilir",
+          "Hızlı web uygulaması ve MVP üretimi icin guclu olabilir",
           "Tekrarlanan isleri hizlandirabilir",
           "Dogru senaryoda uretim suresini kisaltabilir"
         ],
@@ -4486,22 +4486,22 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Lovable",
-        shortDescription: "DoÄŸal dille uygulama ve web sitesi Ã¼retimini hÄ±zlandÄ±ran full-stack AI builder.",
-        longDescription: "Lovable, uygulama, iÃ§ araÃ§ ve hÄ±zlÄ± site Ã¼retimi is akislarinda one cikan bir AI aracidir. Ozellikle doÄŸal dille Ã¼rÃ¼n ve site geliÅŸtirme icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
-        bestUseCase: "DoÄŸal dille Ã¼rÃ¼n ve site geliÅŸtirme",
+        shortDescription: "Doğal dille uygulama ve web sitesi üretimini hızlandıran full-stack AI builder.",
+        longDescription: "Lovable, uygulama, iç araç ve hızlı site üretimi is akislarinda one cikan bir AI aracidir. Ozellikle doğal dille ürün ve site geliştirme icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        bestUseCase: "Doğal dille ürün ve site geliştirme",
         whoShouldUse: [
           "Kurucular",
           "Freelancer'lar",
-          "ÃœrÃ¼n ekipleri"
+          "Ürün ekipleri"
         ],
         moneyUseCases: [
           {
             title: "Hizmet teslimini hizlandirma",
-            description: "Lovable, uygulama, iÃ§ araÃ§ ve hÄ±zlÄ± site Ã¼retimi odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+            description: "Lovable, uygulama, iç araç ve hızlı site üretimi odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
           },
           {
             title: "Paket hizmet uretme",
-            description: "Lovable ile doÄŸal dille Ã¼rÃ¼n ve site geliÅŸtirme icin daha hizli paket cikti uretebilirsiniz."
+            description: "Lovable ile doğal dille ürün ve site geliştirme icin daha hizli paket cikti uretebilirsiniz."
           },
           {
             title: "Tekrarlanan isleri olcekleme",
@@ -4509,13 +4509,13 @@ export const tools: ToolEntry[] = [
           }
         ],
         features: [
-          "DoÄŸal dille Ã¼rÃ¼n ve site geliÅŸtirme",
+          "Doğal dille ürün ve site geliştirme",
           "Operasyon ve verimlilik isleri",
           "Arastirma veya otomasyon destegi",
           "Tekrarlanan isleri azaltma"
         ],
         pros: [
-          "DoÄŸal dille Ã¼rÃ¼n ve site geliÅŸtirme icin guclu olabilir",
+          "Doğal dille ürün ve site geliştirme icin guclu olabilir",
           "Tekrarlanan isleri hizlandirabilir",
           "Dogru senaryoda uretim suresini kisaltabilir"
         ],
@@ -4595,22 +4595,22 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Murf AI",
-        shortDescription: "Voice-over, dublaj ve anlatÄ±m odaklÄ± ses Ã¼retimi iÃ§in kullanÄ±lan AI voice platformu.",
-        longDescription: "Murf AI, seslendirme, dublaj ve anlatÄ±m iÃ§erikleri is akislarinda one cikan bir AI aracidir. Ozellikle voice-over ve dublaj Ã¼retimi icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
-        bestUseCase: "Voice-over ve dublaj Ã¼retimi",
+        shortDescription: "Voice-over, dublaj ve anlatım odaklı ses üretimi için kullanılan AI voice platformu.",
+        longDescription: "Murf AI, seslendirme, dublaj ve anlatım içerikleri is akislarinda one cikan bir AI aracidir. Ozellikle voice-over ve dublaj üretimi icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        bestUseCase: "Voice-over ve dublaj üretimi",
         whoShouldUse: [
-          "Ä°Ã§erik Ã¼reticileri",
+          "İçerik üreticileri",
           "Ajanslar",
-          "EÄŸitim ekipleri"
+          "Eğitim ekipleri"
         ],
         moneyUseCases: [
           {
             title: "Hizmet teslimini hizlandirma",
-            description: "Murf AI, seslendirme, dublaj ve anlatÄ±m iÃ§erikleri odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+            description: "Murf AI, seslendirme, dublaj ve anlatım içerikleri odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
           },
           {
             title: "Paket hizmet uretme",
-            description: "Murf AI ile voice-over ve dublaj Ã¼retimi icin daha hizli paket cikti uretebilirsiniz."
+            description: "Murf AI ile voice-over ve dublaj üretimi icin daha hizli paket cikti uretebilirsiniz."
           },
           {
             title: "Tekrarlanan isleri olcekleme",
@@ -4618,13 +4618,13 @@ export const tools: ToolEntry[] = [
           }
         ],
         features: [
-          "Voice-over ve dublaj Ã¼retimi",
+          "Voice-over ve dublaj üretimi",
           "Video veya medya uretimi",
           "Kisa teslim akisleri",
           "Icerik tekrar kullanimi"
         ],
         pros: [
-          "Voice-over ve dublaj Ã¼retimi icin guclu olabilir",
+          "Voice-over ve dublaj üretimi icin guclu olabilir",
           "Tekrarlanan isleri hizlandirabilir",
           "Dogru senaryoda uretim suresini kisaltabilir"
         ],
@@ -4704,22 +4704,22 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Surfer",
-        shortDescription: "SEO odaklÄ± iÃ§erik planlama, optimizasyon ve gÃ¶rÃ¼nÃ¼rlÃ¼k takibi iÃ§in kullanÄ±lan iÃ§erik aracÄ±.",
-        longDescription: "Surfer, SEO iÃ§erik planlama ve optimizasyon is akislarinda one cikan bir AI aracidir. Ozellikle seo odaklÄ± iÃ§erik planlama ve optimizasyon icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
-        bestUseCase: "SEO odaklÄ± iÃ§erik planlama ve optimizasyon",
+        shortDescription: "SEO odaklı içerik planlama, optimizasyon ve görünürlük takibi için kullanılan içerik aracı.",
+        longDescription: "Surfer, SEO içerik planlama ve optimizasyon is akislarinda one cikan bir AI aracidir. Ozellikle seo odaklı içerik planlama ve optimizasyon icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        bestUseCase: "SEO odaklı içerik planlama ve optimizasyon",
         whoShouldUse: [
           "SEO ekipleri",
-          "Ä°Ã§erik pazarlamacÄ±larÄ±",
+          "İçerik pazarlamacıları",
           "Freelancer'lar"
         ],
         moneyUseCases: [
           {
             title: "Hizmet teslimini hizlandirma",
-            description: "Surfer, SEO iÃ§erik planlama ve optimizasyon odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+            description: "Surfer, SEO içerik planlama ve optimizasyon odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
           },
           {
             title: "Paket hizmet uretme",
-            description: "Surfer ile seo odaklÄ± iÃ§erik planlama ve optimizasyon icin daha hizli paket cikti uretebilirsiniz."
+            description: "Surfer ile seo odaklı içerik planlama ve optimizasyon icin daha hizli paket cikti uretebilirsiniz."
           },
           {
             title: "Tekrarlanan isleri olcekleme",
@@ -4727,13 +4727,13 @@ export const tools: ToolEntry[] = [
           }
         ],
         features: [
-          "SEO odaklÄ± iÃ§erik planlama ve optimizasyon",
+          "SEO odaklı içerik planlama ve optimizasyon",
           "Metin odakli is akislar",
           "Duzenleme ve yeniden yazim",
-          "HÄ±zlÄ± taslak Ã¼retimi"
+          "Hızlı taslak üretimi"
         ],
         pros: [
-          "SEO odaklÄ± iÃ§erik planlama ve optimizasyon icin guclu olabilir",
+          "SEO odaklı içerik planlama ve optimizasyon icin guclu olabilir",
           "Tekrarlanan isleri hizlandirabilir",
           "Dogru senaryoda uretim suresini kisaltabilir"
         ],
@@ -4813,22 +4813,22 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Clearscope",
-        shortDescription: "Arama gÃ¶rÃ¼nÃ¼rlÃ¼ÄŸÃ¼ ve iÃ§erik kalitesini iyileÅŸtirmek iÃ§in kullanÄ±lan iÃ§erik strateji aracÄ±.",
-        longDescription: "Clearscope, arama gÃ¶rÃ¼nÃ¼rlÃ¼ÄŸÃ¼ ve iÃ§erik geliÅŸtirme is akislarinda one cikan bir AI aracidir. Ozellikle arama gÃ¶rÃ¼nÃ¼rlÃ¼ÄŸÃ¼ ve iÃ§erik stratejisi icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
-        bestUseCase: "Arama gÃ¶rÃ¼nÃ¼rlÃ¼ÄŸÃ¼ ve iÃ§erik stratejisi",
+        shortDescription: "Arama görünürlüğü ve içerik kalitesini iyileştirmek için kullanılan içerik strateji aracı.",
+        longDescription: "Clearscope, arama görünürlüğü ve içerik geliştirme is akislarinda one cikan bir AI aracidir. Ozellikle arama görünürlüğü ve içerik stratejisi icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        bestUseCase: "Arama görünürlüğü ve içerik stratejisi",
         whoShouldUse: [
-          "Ä°Ã§erik ekipleri",
-          "SEO uzmanlarÄ±",
-          "AraÅŸtÄ±rma odaklÄ± ekipler"
+          "İçerik ekipleri",
+          "SEO uzmanları",
+          "Araştırma odaklı ekipler"
         ],
         moneyUseCases: [
           {
             title: "Hizmet teslimini hizlandirma",
-            description: "Clearscope, arama gÃ¶rÃ¼nÃ¼rlÃ¼ÄŸÃ¼ ve iÃ§erik geliÅŸtirme odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+            description: "Clearscope, arama görünürlüğü ve içerik geliştirme odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
           },
           {
             title: "Paket hizmet uretme",
-            description: "Clearscope ile arama gÃ¶rÃ¼nÃ¼rlÃ¼ÄŸÃ¼ ve iÃ§erik stratejisi icin daha hizli paket cikti uretebilirsiniz."
+            description: "Clearscope ile arama görünürlüğü ve içerik stratejisi icin daha hizli paket cikti uretebilirsiniz."
           },
           {
             title: "Tekrarlanan isleri olcekleme",
@@ -4836,13 +4836,13 @@ export const tools: ToolEntry[] = [
           }
         ],
         features: [
-          "Arama gÃ¶rÃ¼nÃ¼rlÃ¼ÄŸÃ¼ ve iÃ§erik stratejisi",
+          "Arama görünürlüğü ve içerik stratejisi",
           "Metin odakli is akislar",
           "Duzenleme ve yeniden yazim",
-          "HÄ±zlÄ± taslak Ã¼retimi"
+          "Hızlı taslak üretimi"
         ],
         pros: [
-          "Arama gÃ¶rÃ¼nÃ¼rlÃ¼ÄŸÃ¼ ve iÃ§erik stratejisi icin guclu olabilir",
+          "Arama görünürlüğü ve içerik stratejisi icin guclu olabilir",
           "Tekrarlanan isleri hizlandirabilir",
           "Dogru senaryoda uretim suresini kisaltabilir"
         ],

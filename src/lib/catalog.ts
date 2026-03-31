@@ -117,9 +117,9 @@ export function formatPricing(pricing: PricingTier, locale: Locale) {
       PAID: "Ücretli"
     },
     en: {
-      FREE: "Free",
-      FREEMIUM: "Freemium",
-      PAID: "Paid"
+      FREE: "Ücretsiz",
+      FREEMIUM: "Kısmen ücretsiz",
+      PAID: "Ücretli"
     }
   };
 

@@ -74,7 +74,7 @@ export default async function DiscoveryPage({
 
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/${page.slug}`);
   const toolCount = getToolCount();
-  const bestForLabel = safeLocale === "tr" ? "Uygun kullan?m" : "Best for";
+  const bestForLabel = safeLocale === "tr" ? "Uygun kullanım" : "Best for";
   const collectionSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
