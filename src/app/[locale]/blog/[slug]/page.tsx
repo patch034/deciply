@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { SectionShell } from "@/components/ui/section-shell";
 import { blogArticles } from "@/data/blog";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
 import {
   formatBlogDate,
   getBlogCopy,
@@ -266,6 +267,12 @@ export default async function BlogDetailPage({
               categoryNames={tool.categorySlugs.map((item) => categoryNamesMap.get(item) ?? item)}
               pricingLabel={formatPricing(tool.pricing, safeLocale)}
               detailLabel={content.common.viewDetailsLabel}
+              compareHref={
+                (() => {
+                  const target = getComparisonTargetTools(safeLocale, tool.slug, 1)[0];
+                  return target ? buildComparisonPath(safeLocale, tool.slug, target.slug) : undefined;
+                })()
+              }
             />
           ))}
         </SectionShell>

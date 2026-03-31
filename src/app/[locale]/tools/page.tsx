@@ -11,6 +11,7 @@ import {
   getToolCount,
   parseToolsQueryFilters
 } from "@/lib/catalog";
+import { buildComparisonPath, getComparisonTargetSlugs } from "@/lib/comparisons";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
 import { buildToolsIndexMetaDescription, buildToolsPageTitle } from "@/lib/seo";
 
@@ -85,12 +86,16 @@ export default async function ToolsPage({
       (item) => toolCategoryLabelMap.get(item) ?? item
     );
     const useCaseLabels = tool.useCaseSlugs.map((item) => useCaseLabelMap.get(item) ?? item);
+    const primaryComparisonTarget = getComparisonTargetSlugs(tool.slug, 1)[0];
 
     return {
       ...tool,
       pricingLabel: formatPricing(tool.pricing, safeLocale),
       toolCategoryLabels,
       useCaseLabels,
+      compareHref: primaryComparisonTarget
+        ? buildComparisonPath(safeLocale, tool.slug, primaryComparisonTarget)
+        : undefined,
       searchKeywords: [
         tool.name,
         tool.shortDescription,

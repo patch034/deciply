@@ -27,6 +27,7 @@ type ExplorerTool = {
   toolCategoryLabels: string[];
   useCaseSlugs: string[];
   useCaseLabels: string[];
+  compareHref?: string;
   searchKeywords: string[];
 };
 
@@ -382,6 +383,7 @@ export function ToolsExplorer({
                 detailLabel={detailLabel}
                 bestForLabel={copy.bestForLabel}
                 useCaseLabel={tool.useCaseLabels[0]}
+                compareHref={tool.compareHref}
               />
             ))}
           </section>

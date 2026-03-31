@@ -31,6 +31,7 @@ type ToolCardProps = {
   detailLabel: string;
   bestForLabel?: string;
   useCaseLabel?: string;
+  compareHref?: string;
 };
 
 export function ToolCard({
@@ -40,9 +41,11 @@ export function ToolCard({
   pricingLabel,
   detailLabel,
   bestForLabel,
-  useCaseLabel
+  useCaseLabel,
+  compareHref
 }: ToolCardProps) {
   const pricingSignal = getPricingSignal(pricingLabel);
+  const compareLabel = locale === "tr" ? "Karşılaştır" : "Compare";
 
   return (
     <GlassPanel className="ui-card ui-card-hover flex h-full flex-col overflow-hidden p-4 sm:p-6">
@@ -67,13 +70,19 @@ export function ToolCard({
         </div>
       ) : null}
 
-      <div className="mt-auto flex flex-col gap-3 border-t border-white/10 pt-5 sm:pt-6 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-auto flex flex-col gap-3 border-t border-white/10 pt-5 sm:pt-6">
         <p className="text-sm font-semibold text-amber-100 drop-shadow-[0_0_10px_rgba(251,191,36,0.2)]">{tool.rating.toFixed(1)}/5</p>
-        <Link href={`/${locale}/tools/${tool.slug}`} className="inline-flex min-h-[44px] w-full items-center justify-center rounded-xl border border-white/12 bg-white/[0.03] px-4 py-2.5 text-sm font-semibold text-slate-200 transition duration-150 hover:bg-white/[0.05] hover:text-white sm:w-auto">
-          {detailLabel}
-        </Link>
+        <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+          <Link href={`/${locale}/tools/${tool.slug}`} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-xl border border-white/12 bg-white/[0.03] px-4 py-2.5 text-sm font-semibold text-slate-200 transition duration-150 hover:bg-white/[0.05] hover:text-white">
+            {detailLabel}
+          </Link>
+          {compareHref ? (
+            <Link href={compareHref} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.06] px-4 py-2.5 text-sm font-semibold text-cyan-200 transition duration-150 hover:border-cyan-400/35 hover:bg-cyan-400/[0.1] hover:text-cyan-100">
+              {compareLabel}
+            </Link>
+          ) : null}
+        </div>
       </div>
     </GlassPanel>
   );
 }
-

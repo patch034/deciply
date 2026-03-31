@@ -23,6 +23,7 @@ import {
   getToolsByCategory
 } from "@/lib/catalog";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
 import { getToolTrustIndicators } from "@/lib/tool-ui";
 
 export function generateStaticParams() {
@@ -296,6 +297,7 @@ export default async function CategoryDetailPage({
                     categoryNames={tool.categorySlugs.map((item) => categoryNamesMap.get(item) ?? item)}
                     pricingLabel={formatPricing(tool.pricing, safeLocale)}
                     detailLabel={content.common.viewDetailsLabel}
+                    compareHref={buildComparisonPath(safeLocale, primaryTool.slug, secondaryTool.slug)}
                   />
                 ))}
               </div>
@@ -367,6 +369,12 @@ export default async function CategoryDetailPage({
               categoryNames={tool.categorySlugs.map((item) => categoryNamesMap.get(item) ?? item)}
               pricingLabel={formatPricing(tool.pricing, safeLocale)}
               detailLabel={content.common.viewDetailsLabel}
+              compareHref={
+                (() => {
+                  const target = getComparisonTargetTools(safeLocale, tool.slug, 1)[0];
+                  return target ? buildComparisonPath(safeLocale, tool.slug, target.slug) : undefined;
+                })()
+              }
             />
           ))}
         </div>

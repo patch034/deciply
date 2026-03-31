@@ -14,6 +14,7 @@ import {
   getLocalizedTools,
   getToolCount
 } from "@/lib/catalog";
+import { buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
 import { stripBrandSuffix } from "@/lib/seo";
 
@@ -166,6 +167,12 @@ export default async function DiscoveryPage({
                   detailLabel={content.common.viewDetailsLabel}
                   bestForLabel={bestForLabel}
                   useCaseLabel={tool.bestUseCase}
+                  compareHref={
+                    (() => {
+                      const target = getComparisonTargetTools(safeLocale, tool.slug, 1)[0];
+                      return target ? buildComparisonPath(safeLocale, tool.slug, target.slug) : undefined;
+                    })()
+                  }
                 />
               ))}
             </div>
