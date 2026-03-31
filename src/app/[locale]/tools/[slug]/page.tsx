@@ -8,7 +8,9 @@ import { FloatingAffiliateBar } from "@/components/catalog/floating-affiliate-ba
 import { InfoSection } from "@/components/catalog/info-section";
 import { ProsConsCard } from "@/components/catalog/pros-cons-card";
 import { ToolCard } from "@/components/catalog/tool-card";
+import { ComparisonFaq } from "@/components/comparison/comparison-faq";
 import { Badge } from "@/components/ui/badge";
+import type { ComparisonFaqItem } from "@/data/comparisons";
 import { tools } from "@/data/tools";
 import { toolCategoryOptions } from "@/data/tool-taxonomy";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
@@ -73,6 +75,11 @@ type UseCaseCard = {
 };
 
 type HowToStep = {
+  title: string;
+  description: string;
+};
+
+type PricingSummaryCard = {
   title: string;
   description: string;
 };
@@ -276,6 +283,87 @@ function getAudienceCards(locale: Locale, tool: LocalizedTool, dictionary: Detai
   ];
 }
 
+function getPricingSummaryCards(locale: Locale, tool: LocalizedTool, pricingValue: string): PricingSummaryCard[] {
+  if (locale === "tr") {
+    const pricingFit =
+      tool.pricing === "FREE"
+        ? "Maliyet bariyeri olmadan denemek isteyen bireysel kullanıcılar ve küçük ekipler için mantıklı bir başlangıç olabilir."
+        : tool.pricing === "FREEMIUM"
+          ? "Önce temel akışı test edip sonra ihtiyaç oldukça ücretli plana geçmek isteyen kullanıcılar için dengeli bir modeldir."
+          : "Net teslim hedefi olan ve zaman kazancını yazılım maliyetinden daha önemli gören profesyoneller için daha anlamlıdır.";
+
+    const commercialAngle =
+      tool.pricing === "PAID"
+        ? `${tool.name}, müşteri işi, ekip teslimi veya düzenli içerik üretimi yapan ekiplerde maliyetini daha kolay haklı çıkarabilir.`
+        : `${tool.name}, düşük giriş bariyeri sayesinde önce workflow uyumunu test edip sonra ticari senaryolarda genişletilebilecek bir araçtır.`;
+
+    return [
+      { title: "Fiyat modeli", description: `${pricingValue}.` },
+      { title: "Kimler için mantıklı?", description: pricingFit },
+      { title: "Ticari bakış", description: commercialAngle }
+    ];
+  }
+
+  const pricingFit =
+    tool.pricing === "FREE"
+      ? "A practical starting point for solo users and small teams that want to test the workflow without upfront cost."
+      : tool.pricing === "FREEMIUM"
+        ? "A balanced model for teams that want to validate the workflow first, then upgrade when output or volume justifies it."
+        : "Usually makes more sense for professionals and teams that already know the time saved is worth paying for.";
+
+  const commercialAngle =
+    tool.pricing === "PAID"
+      ? `${tool.name} is easier to justify when it supports client work, repeatable delivery, or a high-volume content workflow.`
+      : `${tool.name} is easier to test before committing, which lowers the risk for commercial workflows that still need validation.`;
+
+  return [
+    { title: "Pricing model", description: `${pricingValue}.` },
+    { title: "Best pricing fit", description: pricingFit },
+    { title: "Commercial angle", description: commercialAngle }
+  ];
+}
+
+function buildToolFaq(locale: Locale, tool: LocalizedTool, pricingValue: string): ComparisonFaqItem[] {
+  if (locale === "tr") {
+    return [
+      {
+        question: `${tool.name} ne için en mantıklı seçimdir?`,
+        answer: `${tool.name}, en çok ${tool.bestUseCase.toLocaleLowerCase("tr-TR")} tarafında hızlı çıktı almak isteyen kullanıcılar için mantıklıdır.`
+      },
+      {
+        question: `${tool.name} kimler için uygun?`,
+        answer: `${tool.whoShouldUseSummary} Bu nedenle aracın değeri, en çok gerçek bir teslim veya düzenli workflow içinde ortaya çıkar.`
+      },
+      {
+        question: `${tool.name} fiyat açısından mantıklı mı?`,
+        answer: `${pricingValue} modelinde çalışan bu araç, özellikle zaman tasarrufu ürettiği tekrar eden işlerde daha mantıklı hale gelir.`
+      },
+      {
+        question: `${tool.name} yerine ne zaman alternatif bakılmalı?`,
+        answer: `Eğer ana ihtiyacınız ${tool.cons[0]?.toLocaleLowerCase("tr-TR") ?? "bu aracın zayıf kaldığı bir workflow"} ise, alternatifler ve karşılaştırma sayfaları daha net karar vermenize yardımcı olur.`
+      }
+    ];
+  }
+
+  return [
+    {
+      question: `When is ${tool.name} the right choice?`,
+      answer: `${tool.name} makes the most sense when you need ${tool.bestUseCase.toLowerCase()} and want a faster path to a usable first output.`
+    },
+    {
+      question: `Who should use ${tool.name}?`,
+      answer: `${tool.whoShouldUseSummary} Its value is usually clearest when the tool becomes part of a real delivery workflow.`
+    },
+    {
+      question: `Is ${tool.name} worth the pricing?`,
+      answer: `With a ${pricingValue.toLowerCase()} model, the tool becomes easier to justify when it saves time on repeatable work or client-facing output.`
+    },
+    {
+      question: `When should you look at alternatives instead?`,
+      answer: `If your workflow is centered on ${tool.cons[0]?.toLowerCase() ?? "an area where this tool is weaker"}, the alternatives and comparison pages can help narrow the decision faster.`
+    }
+  ];
+}
 export function generateStaticParams() {
   return locales.flatMap((locale) => tools.map((tool) => ({ locale, slug: tool.slug })));
 }
@@ -344,9 +432,11 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   const decisionTags = getToolUseCaseTags(safeLocale, tool);
   const useCaseCards = getUseCaseCards(safeLocale, tool, dictionary);
   const howToUseSteps = getHowToUseSteps(safeLocale, tool);
+  const pricingSummaryCards = getPricingSummaryCards(safeLocale, tool, pricingValue);
   const audienceCards = getAudienceCards(safeLocale, tool, dictionary);
   const comparisonTargets = getComparisonTargetTools(safeLocale, tool.slug, 3);
   const useCasePages = getUseCasePagesForTool(safeLocale, tool.useCaseSlugs, 2);
+  const faqItems = buildToolFaq(safeLocale, tool, pricingValue);
   const alternativesHubHref = buildAlternativesPath(safeLocale, tool.slug);
   const alternativesTitle = safeLocale === "tr" ? `${tool.name} alternatifleri` : `Alternatives to ${tool.name}`;
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/tools/${tool.slug}`);
@@ -425,10 +515,24 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
     ]
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer
+      }
+    }))
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-8 pb-40 sm:px-6 sm:py-10 sm:pb-32 lg:gap-10 lg:px-8 lg:py-14 lg:pb-14">
       <Breadcrumb
         items={[
@@ -537,8 +641,16 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       </InfoSection>
 
       <InfoSection title={dictionary.overviewTitle} description={dictionary.overviewDescription}>
-        <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 text-[15px] leading-7 text-slate-300 sm:p-5 sm:text-base">
-          {tool.longDescription}
+        <div className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+          <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 text-[15px] leading-7 text-slate-300 sm:p-5 sm:text-base">
+            <p className="text-base font-semibold text-slate-100">{tool.whatItActuallyDoes}</p>
+            <p className="mt-4">{tool.longDescription}</p>
+          </div>
+          <div className="rounded-[24px] border border-cyan-400/15 bg-cyan-400/[0.06] p-4 text-sm leading-7 text-slate-300 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.18)] sm:p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{dictionary.bestForLabel}</p>
+            <p className="mt-3 text-base font-semibold text-slate-100">{tool.bestUseCase}</p>
+            <p className="mt-4 text-sm leading-7 text-slate-300">{tool.whoShouldUseSummary}</p>
+          </div>
         </div>
       </InfoSection>
 
@@ -553,6 +665,23 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </div>
       </InfoSection>
 
+      <InfoSection
+        title={safeLocale === "tr" ? "Fiyat özeti" : "Pricing summary"}
+        description={
+          safeLocale === "tr"
+            ? "Fiyat modelini, kimler için mantıklı olduğunu ve ticari kullanım açısından nasıl düşünülmesi gerektiğini hızlıca değerlendirin."
+            : "Review the pricing model, who it makes sense for, and how to think about it from a commercial workflow angle."
+        }
+      >
+        <div className="grid gap-4 md:grid-cols-3">
+          {pricingSummaryCards.map((item) => (
+            <div key={item.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
+              <p className="text-base font-semibold text-slate-100">{item.title}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </InfoSection>
       <InfoSection title={dictionary.moneyTitle} description={dictionary.moneyDescription}>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {tool.moneyUseCases.map((item) => (
@@ -564,6 +693,38 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </div>
       </InfoSection>
 
+      <InfoSection
+        title={safeLocale === "tr" ? "Gerçek workflow örneği" : "Real workflow example"}
+        description={
+          safeLocale === "tr"
+            ? "Aracın gerçek bir iş akışında nasıl kullanılabileceğini ve ilk sonuca daha hızlı nasıl gidilebileceğini görün."
+            : "See how this tool can fit into a real process and help you reach the first useful output faster."
+        }
+      >
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">
+              {safeLocale === "tr" ? "Gerçek senaryo" : "Real scenario"}
+            </p>
+            <p className="mt-3 text-xl font-semibold tracking-tight text-slate-100">{tool.realUseCaseExample.title}</p>
+            <p className="mt-4 text-sm leading-7 text-slate-300">{tool.realUseCaseExample.description}</p>
+          </div>
+          <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">
+              {safeLocale === "tr" ? "Workflow akışı" : "Workflow steps"}
+            </p>
+            <div className="mt-4 grid gap-4">
+              {howToUseSteps.map((step, index) => (
+                <div key={step.title} className="rounded-[20px] border border-white/10 bg-black/10 p-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">0{index + 1}</p>
+                  <p className="mt-2 text-base font-semibold text-slate-100">{step.title}</p>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </InfoSection>
       <InfoSection title={dictionary.howToUseTitle} description={dictionary.howToUseDescription}>
         <div className="grid gap-4 md:grid-cols-3">
           {howToUseSteps.map((step, index) => (
@@ -628,10 +789,10 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       ) : null}
 
       <InfoSection
-        title={safeLocale === "tr" ? "Dahili karar yollar?" : "Internal decision paths"}
+        title={safeLocale === "tr" ? "Dahili karar yolları" : "Internal decision paths"}
         description={
           safeLocale === "tr"
-            ? "Alternatif ve use-case sayfalarina gecerek bu araci farkli karar acilarindan degerlendirebilirsiniz."
+            ? "Alternatif ve use-case sayfalarına geçerek bu aracı farklı karar açılarından değerlendirebilirsiniz."
             : "Use the alternatives and use-case pages to evaluate this tool from a few different decision angles."
         }
       >
@@ -682,6 +843,15 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </InfoSection>
       ) : null}
 
+      <ComparisonFaq
+        title={safeLocale === "tr" ? "Sık sorulan sorular" : "FAQ"}
+        description={
+          safeLocale === "tr"
+            ? "Bu aracı seçmeden önce en sık sorulan karar sorularına kısa cevaplar."
+            : "Short answers to the most common decision questions before you choose this tool."
+        }
+        items={faqItems}
+      />
       <section className="rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-5 py-8 text-white shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
@@ -712,7 +882,3 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
     </>
   );
 }
-
-
-
-

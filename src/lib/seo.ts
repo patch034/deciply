@@ -118,8 +118,8 @@ export function buildToolsPageTitle(locale: Locale, currentPage: number) {
 
 export function buildToolPageTitle(locale: Locale, tool: LocalizedTool) {
   return locale === "tr"
-    ? `${tool.name} incelemesi (2026): ${tool.bestUseCase}`
-    : `${tool.name} Review (2026): ${tool.bestUseCase}`;
+    ? `${tool.name} incelemesi (2026): fiyat, artılar, eksiler ve ${tool.bestUseCase}`
+    : `${tool.name} Review (2026): Pricing, Pros & Cons for ${tool.bestUseCase}`;
 }
 
 export function buildHomeMetaDescription(locale: Locale) {
@@ -155,12 +155,12 @@ export function buildBlogIndexMetaDescription(locale: Locale, currentPage = 1) {
 }
 
 export function buildToolMetaDescription(locale: Locale, tool: LocalizedTool) {
-  const base = ensureSentence(tool.shortDescription);
+  const base = ensureSentence(tool.whatItActuallyDoes || tool.shortDescription);
   const example = ensureSentence(tool.realUseCaseExample.description);
   const tail =
     locale === "tr"
-      ? `${tool.name} i\u00e7in g\u00fc\u00e7l\u00fc y\u00f6nleri, s\u0131n\u0131rlamalar\u0131 ve en mant\u0131kl\u0131 kullan\u0131m alanlar\u0131n\u0131 g\u00f6r\u00fcn.`
-      : `See ${tool.name}'s strengths, trade-offs, and the workflows where it makes the most sense.`;
+      ? `${tool.name} için fiyat özeti, güçlü yönler, zayıf yönler, alternatifler ve en mantıklı kullanım alanlarını görün.`
+      : `See ${tool.name}'s pricing, strengths, weaknesses, alternatives, and the workflows where it makes the most sense.`;
 
   return clipMetaDescription(`${base} ${example} ${tail}`);
 }
