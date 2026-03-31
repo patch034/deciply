@@ -1,4 +1,4 @@
-﻿const suspiciousEncodingPattern = /[\u00C2\u00C3\u00C4\u00C5\u00E2\uFFFD]/;
+const suspiciousEncodingPattern = /(?:[\u00C2\u00C3\u00C4\u00C5\uFFFD]|\u00E2\u20AC|\u00E2\u20AC\u2122|\u00E2\u20AC\u0153|\u00E2\u20AC\u009D|\u00E2\u20AC\u00A2|\u00E2\u20AC\u201C|\u00E2\u20AC\u201D)/;
 const TURKISH_ENCODING_SAMPLE = "\u015E\u011F\u0130\u00E7\u00F6\u00FC";
 
 const windows1252ReverseMap = new Map<string, number>([
@@ -51,15 +51,28 @@ function encodeWindows1252(value: string) {
       continue;
     }
 
-    const codePoint = character.codePointAt(0) ?? 0x3f;
-    bytes.push(codePoint <= 0xff ? codePoint : 0x3f);
+    const codePoint = character.codePointAt(0);
+
+    if (codePoint === undefined || codePoint > 0xff) {
+      return null;
+    }
+
+    bytes.push(codePoint);
   }
 
   return Buffer.from(bytes);
 }
 
 function decodeWindows1252Utf8(value: string) {
-  return encodeWindows1252(value).toString("utf8");
+  const encoded = encodeWindows1252(value);
+  return encoded ? encoded.toString("utf8") : value;
+}
+
+function scoreEncodingCandidate(value: string) {
+  const suspiciousCount = value.match(suspiciousEncodingPattern)?.length ?? 0;
+  const questionMarkCount = value.match(/\?/g)?.length ?? 0;
+
+  return suspiciousCount + questionMarkCount;
 }
 
 export function repairSuspiciousEncoding(value: string) {
@@ -69,6 +82,11 @@ export function repairSuspiciousEncoding(value: string) {
     const decoded = decodeWindows1252Utf8(current).normalize("NFC");
 
     if (decoded === current) {
+      break;
+    }
+
+    // Do not replace unknown bytes with literal question marks when the source data is already lossy.
+    if (scoreEncodingCandidate(decoded) > scoreEncodingCandidate(current)) {
       break;
     }
 
