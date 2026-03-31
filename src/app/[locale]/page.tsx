@@ -18,13 +18,26 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 
   const safeLocale = locale as Locale;
   const content = getHomeContent(safeLocale);
+  const title = buildHomeTitle(safeLocale);
+  const description = buildHomeMetaDescription(safeLocale);
+  const canonicalUrl = buildCanonicalUrl(`/${safeLocale}`);
 
   return {
-    title: buildHomeTitle(safeLocale),
-    description: buildHomeMetaDescription(safeLocale),
+    title,
+    description,
+    keywords:
+      safeLocale === "tr"
+        ? ["AI araçları", "AI karşılaştırma", "AI alternatifleri", "AI use case", "en iyi AI araçları"]
+        : ["AI tools", "AI comparisons", "AI alternatives", "AI use cases", "best AI tools"],
     alternates: {
-      canonical: buildCanonicalUrl(`/${safeLocale}`),
+      canonical: canonicalUrl,
       languages: buildAlternates("")
+    },
+    openGraph: {
+      type: "website",
+      url: canonicalUrl,
+      title,
+      description
     }
   };
 }
@@ -41,5 +54,3 @@ export default async function LocaleHomePage({ params }: LocalePageProps) {
 
   return <HomePage locale={safeLocale} content={content} />;
 }
-
-

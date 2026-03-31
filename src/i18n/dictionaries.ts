@@ -1,4 +1,4 @@
-﻿import type { Locale } from "@/i18n/config";
+import type { Locale } from "@/i18n/config";
 
 const dictionaries = {
   tr: {
@@ -21,23 +21,33 @@ const dictionaries = {
           title: "Araçlar",
           links: [
             { label: "Tüm araçlar", href: "/tools" },
-            { label: "Öne çıkan AI araçları", href: "/categories/ai-tools" },
-            { label: "Karşılaştırmalar", href: "/categories/comparisons" }
+            { label: "ChatGPT", href: "/tools/chatgpt" },
+            { label: "Claude", href: "/tools/claude" },
+            { label: "Midjourney", href: "/tools/midjourney" }
           ]
         },
         {
-          title: "İçerik",
+          title: "Karşılaştır",
           links: [
-            { label: "Blog", href: "/blog" },
-            { label: "AI ile para kazanma", href: "/categories/make-money-with-ai" },
-            { label: "Ücretsiz araçlar", href: "/categories/free-tools" }
+            { label: "Tüm karşılaştırmalar", href: "/categories/comparisons" },
+            { label: "ChatGPT vs Claude", href: "/compare/chatgpt-vs-claude" },
+            { label: "ChatGPT vs Gemini", href: "/compare/chatgpt-vs-gemini" },
+            { label: "Midjourney vs Adobe Firefly", href: "/compare/adobe-firefly-vs-midjourney" }
+          ]
+        },
+        {
+          title: "Niyet sayfaları",
+          links: [
+            { label: "ChatGPT alternatifleri", href: "/alternatives/chatgpt" },
+            { label: "Öğrenciler için AI araçları", href: "/use-cases/students" },
+            { label: "Freelancer'lar için AI araçları", href: "/use-cases/freelancers" },
+            { label: "İçerik üreticileri için AI araçları", href: "/use-cases/content-creators" }
           ]
         },
         {
           title: "Güven",
           links: [
-            { label: "Hakkımızda", href: "/about" },
-            { label: "İletişim", href: "/contact" },
+            { label: "Blog", href: "/blog" },
             { label: "Affiliate açıklaması", href: "/affiliate-disclosure" },
             { label: "Gizlilik politikası", href: "/privacy-policy" },
             { label: "Kullanım şartları", href: "/terms" }
@@ -68,23 +78,33 @@ const dictionaries = {
           title: "Tools",
           links: [
             { label: "All tools", href: "/tools" },
-            { label: "Featured AI tools", href: "/categories/ai-tools" },
-            { label: "Comparisons", href: "/categories/comparisons" }
+            { label: "ChatGPT", href: "/tools/chatgpt" },
+            { label: "Claude", href: "/tools/claude" },
+            { label: "Midjourney", href: "/tools/midjourney" }
           ]
         },
         {
-          title: "Content",
+          title: "Compare",
           links: [
-            { label: "Blog", href: "/blog" },
-            { label: "Make money with AI", href: "/categories/make-money-with-ai" },
-            { label: "Free tools", href: "/categories/free-tools" }
+            { label: "All comparisons", href: "/categories/comparisons" },
+            { label: "ChatGPT vs Claude", href: "/compare/chatgpt-vs-claude" },
+            { label: "ChatGPT vs Gemini", href: "/compare/chatgpt-vs-gemini" },
+            { label: "Midjourney vs Adobe Firefly", href: "/compare/adobe-firefly-vs-midjourney" }
+          ]
+        },
+        {
+          title: "Intent pages",
+          links: [
+            { label: "ChatGPT alternatives", href: "/alternatives/chatgpt" },
+            { label: "Best AI tools for students", href: "/use-cases/students" },
+            { label: "Best AI tools for freelancers", href: "/use-cases/freelancers" },
+            { label: "Best AI tools for content creators", href: "/use-cases/content-creators" }
           ]
         },
         {
           title: "Trust",
           links: [
-            { label: "About", href: "/about" },
-            { label: "Contact", href: "/contact" },
+            { label: "Blog", href: "/blog" },
             { label: "Affiliate disclosure", href: "/affiliate-disclosure" },
             { label: "Privacy policy", href: "/privacy-policy" },
             { label: "Terms", href: "/terms" }

@@ -16,9 +16,13 @@ import { SectionShell } from "@/components/ui/section-shell";
 import { StatBadge } from "@/components/ui/stat-badge";
 import type { HomeContent } from "@/data/home";
 import type { Locale } from "@/i18n/config";
-import { getLocalizedTools } from "@/lib/catalog";
 import { getLocalizedBlogArticles } from "@/lib/blog";
+import { formatPricing, getLocalizedTools } from "@/lib/catalog";
+import { buildComparisonPath } from "@/lib/comparisons";
+import { buildAlternativesPath, buildUseCasePath, getUseCasePage } from "@/lib/intent-pages";
 import { toHomeToolCard } from "@/lib/tool-ui";
+import type { CategoryCard as HomeCategoryCard, ComparisonCard as HomeComparisonCard } from "@/types/home";
+import type { LocalizedTool } from "@/types/catalog";
 
 type HomePageProps = {
   locale: Locale;
@@ -27,39 +31,79 @@ type HomePageProps = {
 
 const sectionCopy = {
   tr: {
-    selectorTitle: "Öne çıkan kullanım alanları",
+    selectorTitle: "Öne çıkan yollar",
     selectorOptions: [
-      { label: "Yazı", href: "#featured-tools" },
-      { label: "Tasarım", href: "#category-tools" },
-      { label: "Gelir odaklı", href: "#money-tools" },
-      { label: "Araştırma", href: "#popular-tools" }
+      { label: "Compare", href: "#featured-comparisons" },
+      { label: "Alternatifler", href: "#top-alternatives" },
+      { label: "Use-case", href: "#use-case-paths" },
+      { label: "Editör seçimleri", href: "#editor-picks" },
+      { label: "Top tool'lar", href: "#featured-tools" }
     ],
-    topToolsEyebrow: "En \u00e7ok incelenenler",
-    topToolsTitle: "Karar verirken en \u00e7ok a\u00e7\u0131lan AI ara\u00e7lar\u0131",
-    topToolsDescription: "Kullan\u0131c\u0131lar\u0131n karar a\u015famas\u0131nda s\u0131k a\u00e7t\u0131\u011f\u0131 ara\u00e7lar\u0131 senaryo bazl\u0131 ve n\u00f6tr \u015fekilde g\u00f6r\u00fcn.",
-    beginnersEyebrow: "Ba\u015flang\u0131\u00e7 odakl\u0131",
-    beginnersTitle: "Yeni ba\u015flayanlar i\u00e7in AI ara\u00e7lar\u0131",
-    beginnersDescription: "D\u00fc\u015f\u00fck s\u00fcrt\u00fcnme, daha anla\u015f\u0131l\u0131r kullan\u0131m ve h\u0131zl\u0131 ilk sonu\u00e7 arayanlar i\u00e7in uygun se\u00e7enekler.",
-    freelancersEyebrow: "Servis odakl\u0131",
-    freelancersTitle: "Freelancer'lar i\u00e7in AI ara\u00e7lar\u0131",
-    freelancersDescription: "\u0130\u00e7erik, ara\u015ft\u0131rma, sunum ve g\u00f6rsel teslim s\u00fcre\u00e7lerinde zaman kazand\u0131rabilecek ara\u00e7lar\u0131 yan yana g\u00f6r\u00fcn.",
-    moneyEyebrow: "Gelir odakl\u0131",
-    moneyTitle: "Para kazanmak i\u00e7in AI ara\u00e7lar\u0131",
-    moneyDescription: "\u0130\u00e7erik \u00fcretimi, g\u00f6rsel teslim, ara\u015ft\u0131rma ve paket hizmet senaryolar\u0131nda gelir \u00fcretmeye yard\u0131mc\u0131 olabilecek ara\u00e7lar.",
-    latestPostsEyebrow: "Son i\u00e7erikler",
-    latestPostsTitle: "En yeni blog yaz\u0131lar\u0131",
-    latestPostsDescription: "Yeni yay\u0131nlanan rehberleri, kar\u015f\u0131la\u015ft\u0131rmalar\u0131 ve para odakl\u0131 i\u00e7erikleri ana sayfadan h\u0131zl\u0131ca a\u00e7\u0131n.",
-    latestPostsViewAll: "T\u00fcm yaz\u0131lar\u0131 g\u00f6r",
-    latestPostsReadMore: "Devam\u0131n\u0131 oku"
+    featuredComparisonsEyebrow: "Conversion odaklı compare sayfaları",
+    featuredComparisonsTitle: "Karar niyeti yüksek compare sayfalarına hızlı geçiş",
+    featuredComparisonsDescription: "Kullanıcıları doğrudan en güçlü karşılaştırma sayfalarına yönlendirerek homepage'i daha iyi bir dağıtım katmanına dönüştürün.",
+    featuredComparisonsAction: "Tüm karşılaştırmaları gör",
+    featuredComparisonsLinkLabel: "Karşılaştırmayı aç",
+    alternativesEyebrow: "Alternatif sayfaları",
+    alternativesTitle: "Yüksek niyetli alternatif aramalarını doğru sayfalara yönlendirin",
+    alternativesDescription: "Araç bazlı alternatives sayfaları kullanıcıyı hem benzer seçeneklere hem compare ve tool detaylarına taşır.",
+    alternativesAction: "Araç dizinine git",
+    alternativesLinkLabel: "Alternatifleri gör",
+    useCasesEyebrow: "Use-case SEO yolları",
+    useCasesTitle: "En iyi araçları kullanım senaryosuna göre açın",
+    useCasesDescription: "Öğrenci, freelancer, içerik üreticisi ve ekip odaklı use-case sayfaları homepage'den güçlü iç link akışı almalı.",
+    useCasesAction: "Use-case sayfalarını aç",
+    useCasesLinkLabel: "Use-case sayfasını aç",
+    editorPicksEyebrow: "Editör seçimleri",
+    editorPicksTitle: "Top rated ve karar aşamasında en çok açılan araçlar",
+    editorPicksDescription: "Affiliate dönüşüm için güçlü görünen, yüksek puanlı ve discovery aşamasında sık açılan araçları burada öne çıkarın.",
+    editorPicksAction: "Tüm araçları gör",
+    topToolsEyebrow: "En çok incelenenler",
+    topToolsTitle: "Karar verirken en çok açılan AI araçları",
+    topToolsDescription: "Kullanıcıların karar aşamasında sık açtığı araçları senaryo bazlı ve nötr şekilde görün.",
+    beginnersEyebrow: "Başlangıç odaklı",
+    beginnersTitle: "Yeni başlayanlar için AI araçları",
+    beginnersDescription: "Düşük sürtünme, daha anlaşılır kullanım ve hızlı ilk sonuç arayanlar için uygun seçenekler.",
+    freelancersEyebrow: "Servis odaklı",
+    freelancersTitle: "Freelancer'lar için AI araçları",
+    freelancersDescription: "İçerik, araştırma, sunum ve görsel teslim süreçlerinde zaman kazandırabilecek araçları yan yana görün.",
+    moneyEyebrow: "Gelir odaklı",
+    moneyTitle: "Para kazanmak için AI araçları",
+    moneyDescription: "İçerik üretimi, görsel teslim, araştırma ve paket hizmet senaryolarında gelir üretmeye yardımcı olabilecek araçlar.",
+    latestPostsEyebrow: "Son içerikler",
+    latestPostsTitle: "En yeni blog yazıları",
+    latestPostsDescription: "Yeni yayınlanan rehberleri, karşılaştırmaları ve para odaklı içerikleri ana sayfadan hızlıca açın.",
+    latestPostsViewAll: "Tüm yazıları gör",
+    latestPostsReadMore: "Devamını oku"
   },
   en: {
-    selectorTitle: "Popular use cases",
+    selectorTitle: "Fast paths",
     selectorOptions: [
-      { label: "Writing", href: "#featured-tools" },
-      { label: "Design", href: "#category-tools" },
-      { label: "Monetization", href: "#money-tools" },
-      { label: "Research", href: "#popular-tools" }
+      { label: "Compare", href: "#featured-comparisons" },
+      { label: "Alternatives", href: "#top-alternatives" },
+      { label: "Use cases", href: "#use-case-paths" },
+      { label: "Editor picks", href: "#editor-picks" },
+      { label: "Top tools", href: "#featured-tools" }
     ],
+    featuredComparisonsEyebrow: "High-intent compare pages",
+    featuredComparisonsTitle: "Send users into the comparison pages closest to the decision",
+    featuredComparisonsDescription: "These pages are built to capture direct comparison intent and move users deeper into tool and affiliate paths.",
+    featuredComparisonsAction: "View all comparisons",
+    featuredComparisonsLinkLabel: "Open comparison",
+    alternativesEyebrow: "Alternatives pages",
+    alternativesTitle: "Distribute alternative-intent traffic into stronger decision paths",
+    alternativesDescription: "Tool-specific alternatives pages give users a cleaner next step into tools, comparisons, and affiliate-driven decisions.",
+    alternativesAction: "Browse all tools",
+    alternativesLinkLabel: "See alternatives",
+    useCasesEyebrow: "Use-case SEO paths",
+    useCasesTitle: "Open the best tools by real user scenario",
+    useCasesDescription: "Student, freelancer, creator, and team-focused use-case pages should receive strong homepage internal links.",
+    useCasesAction: "Open use-case pages",
+    useCasesLinkLabel: "Open use case",
+    editorPicksEyebrow: "Editor picks",
+    editorPicksTitle: "Top-rated tools people open most while deciding",
+    editorPicksDescription: "Highlight the strongest conversion candidates by mixing rating, feature depth, and real discovery demand.",
+    editorPicksAction: "View all tools",
     topToolsEyebrow: "Most explored",
     topToolsTitle: "AI tools people open most while deciding",
     topToolsDescription: "Review the tools users open most often during discovery in a neutral, scenario-based layout.",
@@ -80,22 +124,126 @@ const sectionCopy = {
   }
 } as const;
 
-function getToolsBySlugs(locale: Locale, slugs: string[]) {
-  const map = new Map(getLocalizedTools(locale).map((tool) => [tool.slug, tool]));
+function buildToolMap(locale: Locale) {
+  return new Map(getLocalizedTools(locale).map((tool) => [tool.slug, tool]));
+}
+
+function getToolsBySlugs(toolMap: Map<string, LocalizedTool>, locale: Locale, slugs: string[]) {
   return slugs
-    .map((slug) => map.get(slug))
-    .filter((tool): tool is NonNullable<ReturnType<typeof map.get>> => Boolean(tool))
+    .map((slug) => toolMap.get(slug))
+    .filter((tool): tool is LocalizedTool => Boolean(tool))
+    .map((tool) => toHomeToolCard(locale, tool));
+}
+
+function buildFeaturedComparisonCards(locale: Locale, toolMap: Map<string, LocalizedTool>): HomeComparisonCard[] {
+  const pairs: Array<[string, string, string]> = [
+    ["chatgpt", "claude", locale === "tr" ? "Yazi" : "Writing"],
+    ["chatgpt", "gemini", locale === "tr" ? "Genel kullanim" : "General"],
+    ["midjourney", "adobe-firefly", locale === "tr" ? "G?rsel" : "Visual"]
+  ];
+
+  return pairs.reduce<HomeComparisonCard[]>((items, [leftSlug, rightSlug, highlight]) => {
+    const left = toolMap.get(leftSlug);
+    const right = toolMap.get(rightSlug);
+
+    if (!left || !right) {
+      return items;
+    }
+
+    items.push({
+      icon: "VS",
+      eyebrow: locale === "tr" ? "?ne ?ikan compare" : "Featured compare",
+      title: `${left.name} vs ${right.name}`,
+      description:
+        locale === "tr"
+          ? `${left.name} ve ${right.name} i?in fiyat, g??l? y?nler ve hangi workflow'da daha mantikli olduklarini hizlica g?r?n.`
+          : `Compare ${left.name} and ${right.name} across pricing, strengths, and which workflow each tool fits better.`,
+      href: buildComparisonPath(locale, left.slug, right.slug),
+      highlight
+    });
+
+    return items;
+  }, []);
+}
+
+function buildAlternativeCards(locale: Locale, toolMap: Map<string, LocalizedTool>): HomeComparisonCard[] {
+  const toolSlugs = ["chatgpt", "midjourney", "notion-ai"];
+
+  return toolSlugs
+    .map((slug) => toolMap.get(slug))
+    .filter((tool): tool is LocalizedTool => Boolean(tool))
+    .map((tool) => ({
+      icon: "ALT",
+      eyebrow: locale === "tr" ? "Alternatifler" : "Alternatives",
+      title: locale === "tr" ? `${tool.name} alternatifleri` : `Alternatives to ${tool.name}`,
+      description:
+        locale === "tr"
+          ? `${tool.name} yerine bakılabilecek araçları, compare sayfalarını ve en mantıklı kullanım alanlarını tek hub içinde görün.`
+          : `Review the strongest alternatives to ${tool.name}, then move into comparison pages and tool details from one hub.`,
+      href: buildAlternativesPath(locale, tool.slug),
+      highlight: tool.name
+    } satisfies HomeComparisonCard));
+}
+
+function buildUseCaseCards(locale: Locale): HomeCategoryCard[] {
+  const items = [
+    { slug: "students", icon: "ST", metric: locale === "tr" ? "Öğrenci" : "Student" },
+    { slug: "freelancers", icon: "FR", metric: locale === "tr" ? "Freelance" : "Freelance" },
+    { slug: "content-creators", icon: "CR", metric: locale === "tr" ? "İçerik" : "Content" },
+    { slug: "business-teams", icon: "TM", metric: locale === "tr" ? "Ekip" : "Teams" }
+  ];
+
+  return items
+    .map((item) => {
+      const page = getUseCasePage(locale, item.slug);
+
+      if (!page) {
+        return null;
+      }
+
+      return {
+        icon: item.icon,
+        eyebrow: page.eyebrow,
+        title: page.title,
+        description: page.description,
+        href: buildUseCasePath(locale, item.slug),
+        metric: item.metric,
+        bestFor: page.intro
+      } satisfies HomeCategoryCard;
+    })
+    .filter((item): item is HomeCategoryCard => item !== null);
+}
+
+function getEditorPickTools(toolMap: Map<string, LocalizedTool>, locale: Locale) {
+  return [...toolMap.values()]
+    .sort((left, right) => {
+      if (left.featured !== right.featured) {
+        return left.featured ? -1 : 1;
+      }
+
+      if (left.rating !== right.rating) {
+        return right.rating - left.rating;
+      }
+
+      return left.slug.localeCompare(right.slug);
+    })
+    .slice(0, 4)
     .map((tool) => toHomeToolCard(locale, tool));
 }
 
 export function HomePage({ locale, content }: HomePageProps) {
   const ui = sectionCopy[locale];
-  const featuredTools = getToolsBySlugs(locale, ["chatgpt", "claude", "midjourney", "gemini"]);
-  const topTools = getToolsBySlugs(locale, ["chatgpt", "claude", "perplexity"]);
-  const trendingTools = getToolsBySlugs(locale, ["chatgpt", "claude", "perplexity", "midjourney"]);
-  const moneyTools = getToolsBySlugs(locale, ["jasper", "copy-ai", "canva-ai"]);
-  const beginnerTools = getToolsBySlugs(locale, ["chatgpt", "gemini", "canva-ai"]);
-  const freelancerTools = getToolsBySlugs(locale, ["chatgpt", "claude", "midjourney"]);
+  const toolMap = buildToolMap(locale);
+  const featuredTools = getToolsBySlugs(toolMap, locale, ["chatgpt", "claude", "midjourney", "gemini"]);
+  const topTools = getToolsBySlugs(toolMap, locale, ["chatgpt", "claude", "perplexity"]);
+  const trendingTools = getToolsBySlugs(toolMap, locale, ["chatgpt", "claude", "perplexity", "midjourney"]);
+  const moneyTools = getToolsBySlugs(toolMap, locale, ["jasper", "copy-ai", "canva-ai"]);
+  const beginnerTools = getToolsBySlugs(toolMap, locale, ["chatgpt", "gemini", "canva-ai"]);
+  const freelancerTools = getToolsBySlugs(toolMap, locale, ["chatgpt", "claude", "midjourney"]);
+  const editorPicks = getEditorPickTools(toolMap, locale);
+  const featuredComparisons = buildFeaturedComparisonCards(locale, toolMap);
+  const alternativeCards = buildAlternativeCards(locale, toolMap);
+  const useCaseCards = buildUseCaseCards(locale);
   const latestArticles = getLocalizedBlogArticles(locale).slice(0, 4);
 
   return (
@@ -143,7 +291,77 @@ export function HomePage({ locale, content }: HomePageProps) {
           </AnimatedSection>
         ) : null}
 
-        <AnimatedSection delay={0.06}>
+        <div id="featured-comparisons" className="scroll-mt-28">
+          <AnimatedSection delay={0.05}>
+            <SectionShell
+              className="section-tint-cyan"
+              eyebrow={ui.featuredComparisonsEyebrow}
+              title={ui.featuredComparisonsTitle}
+              description={ui.featuredComparisonsDescription}
+              actions={
+                <PremiumButton href={`/${locale}/categories/comparisons`} variant="secondary">
+                  {ui.featuredComparisonsAction}
+                </PremiumButton>
+              }
+            >
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {featuredComparisons.map((item) => (
+                  <div key={item.href} className="h-full">
+                    <ComparisonCard locale={locale} item={item} linkLabel={ui.featuredComparisonsLinkLabel} featured />
+                  </div>
+                ))}
+              </div>
+            </SectionShell>
+          </AnimatedSection>
+        </div>
+
+        <div id="top-alternatives" className="scroll-mt-28">
+          <AnimatedSection delay={0.055}>
+            <SectionShell
+              className="section-tint-violet"
+              eyebrow={ui.alternativesEyebrow}
+              title={ui.alternativesTitle}
+              description={ui.alternativesDescription}
+              actions={
+                <PremiumButton href={`/${locale}/tools`} variant="secondary">
+                  {ui.alternativesAction}
+                </PremiumButton>
+              }
+            >
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {alternativeCards.map((item) => (
+                  <div key={item.href} className="h-full">
+                    <ComparisonCard locale={locale} item={item} linkLabel={ui.alternativesLinkLabel} />
+                  </div>
+                ))}
+              </div>
+            </SectionShell>
+          </AnimatedSection>
+        </div>
+
+        <div id="use-case-paths" className="scroll-mt-28">
+          <AnimatedSection delay={0.06}>
+            <SectionShell
+              className="section-tint-cyan"
+              eyebrow={ui.useCasesEyebrow}
+              title={ui.useCasesTitle}
+              description={ui.useCasesDescription}
+              actions={
+                <PremiumButton href={`/${locale}/use-cases/students`} variant="secondary">
+                  {ui.useCasesAction}
+                </PremiumButton>
+              }
+            >
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                {useCaseCards.map((item) => (
+                  <CategoryCard key={item.href} locale={locale} category={item} linkLabel={ui.useCasesLinkLabel} />
+                ))}
+              </div>
+            </SectionShell>
+          </AnimatedSection>
+        </div>
+
+        <AnimatedSection delay={0.07}>
           <SectionShell className="section-tint-cyan">
             <GlassPanel className="ui-card-strong overflow-hidden rounded-2xl px-4 py-6 sm:px-6 sm:py-8">
               <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
@@ -175,6 +393,37 @@ export function HomePage({ locale, content }: HomePageProps) {
         <AnimatedSection delay={0.1}>
           <HowItWorksSection locale={locale} />
         </AnimatedSection>
+
+        <div id="editor-picks" className="scroll-mt-28">
+          <AnimatedSection delay={0.11}>
+            <SectionShell
+              className="section-tint-violet"
+              eyebrow={ui.editorPicksEyebrow}
+              title={ui.editorPicksTitle}
+              description={ui.editorPicksDescription}
+              actions={
+                <PremiumButton href={`/${locale}/tools`} variant="secondary">
+                  {ui.editorPicksAction}
+                </PremiumButton>
+              }
+            >
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                {editorPicks.map((tool) => (
+                  <div key={tool.name} className="h-full">
+                    <ToolCard
+                      locale={locale}
+                      tool={tool}
+                      detailLabel={content.sections.tools.detailLabel}
+                      tryLabel={content.sections.tools.tryLabel}
+                      bestForLabel={content.sections.tools.bestForLabel}
+                      ratingLabel={content.sections.tools.ratingLabel}
+                    />
+                  </div>
+                ))}
+              </div>
+            </SectionShell>
+          </AnimatedSection>
+        </div>
 
         <div id="featured-tools" className="scroll-mt-28">
           <AnimatedSection delay={0.12}>
@@ -402,6 +651,7 @@ export function HomePage({ locale, content }: HomePageProps) {
             />
           </SectionShell>
         </AnimatedSection>
+
         <AnimatedSection delay={0.26}>
           <SectionShell className="section-tint-cyan">
             <div className="ui-card-strong overflow-hidden rounded-2xl px-4 py-6 text-white sm:px-6 sm:py-8">

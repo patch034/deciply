@@ -5,6 +5,8 @@ import Link from "next/link";
 
 import type { HomeContent } from "@/data/home";
 import type { Locale } from "@/i18n/config";
+import { buildComparisonPath } from "@/lib/comparisons";
+import { buildAlternativesPath, buildUseCasePath } from "@/lib/intent-pages";
 
 import { Badge } from "@/components/ui/badge";
 import { GlassPanel } from "@/components/ui/glass-panel";
@@ -16,8 +18,30 @@ type HeroSectionProps = {
   content: HomeContent["hero"];
 };
 
+function getQuickLinks(locale: Locale) {
+  return [
+    {
+      label: locale === "tr" ? "ChatGPT vs Claude" : "ChatGPT vs Claude",
+      href: buildComparisonPath(locale, "chatgpt", "claude")
+    },
+    {
+      label: locale === "tr" ? "ChatGPT alternatifleri" : "ChatGPT alternatives",
+      href: buildAlternativesPath(locale, "chatgpt")
+    },
+    {
+      label: locale === "tr" ? "Öğrenciler için araçlar" : "Tools for students",
+      href: buildUseCasePath(locale, "students")
+    },
+    {
+      label: locale === "tr" ? "Editör seçimleri" : "Editor picks",
+      href: `/${locale}#editor-picks`
+    }
+  ];
+}
+
 export function HeroSection({ locale, content }: HeroSectionProps) {
   const hasStarterHint = Boolean(content.starterHint && content.starterHintLabel && content.starterHintHref);
+  const quickLinks = getQuickLinks(locale);
 
   return (
     <section className="relative mx-auto w-full max-w-[1200px] px-4 pt-6 sm:px-6 sm:pt-8 lg:pt-12">
@@ -85,11 +109,28 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
               </PremiumButton>
             </motion.div>
 
+            <motion.div
+              className="mt-4 flex flex-wrap gap-2"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.42, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {quickLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="inline-flex min-h-[40px] items-center rounded-full border border-white/10 bg-white/[0.03] px-4 text-sm font-semibold text-slate-200 transition duration-200 hover:border-cyan-400/25 hover:text-cyan-200"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </motion.div>
+
             <motion.p
               className="mt-3 text-sm font-medium leading-6 text-cyan-200/88"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.42, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.42, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
             >
               {content.trustLine}
             </motion.p>
@@ -99,7 +140,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
                 className="mt-4 flex flex-wrap items-center gap-2 text-sm leading-6 text-slate-300/84"
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.46, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.46, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
               >
                 <span>{content.starterHint}</span>
                 <Link
@@ -116,7 +157,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
               className="mt-7 flex flex-wrap gap-2 sm:mt-8"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.46, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.46, delay: 0.26, ease: [0.22, 1, 0.36, 1] }}
             >
               {content.trustBadges.map((item) => (
                 <Badge key={item} variant="muted">
@@ -129,7 +170,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
               className="mt-7 grid gap-3 sm:mt-8 sm:grid-cols-3"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.46, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.46, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
               {content.stats.map((stat) => (
                 <StatBadge key={stat.label} value={stat.value} label={stat.label} />
@@ -142,7 +183,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="ui-card-strong rounded-2xl p-4 sm:p-6 text-white">
+            <div className="ui-card-strong rounded-2xl p-4 text-white sm:p-6">
               <div className="flex items-center justify-between gap-3">
                 <div className="min-w-0">
                   <p className="text-xs font-medium uppercase tracking-[0.18em] text-cyan-200/78">
