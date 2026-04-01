@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 
@@ -20,9 +20,13 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   manifest: "/site.webmanifest",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" }
+    ],
     shortcut: "/favicon.ico",
-    apple: "/icon.png"
+    apple: "/apple-touch-icon.png"
   }
 };
 
@@ -36,7 +40,21 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: siteConfig.name,
+              url: siteConfig.url,
+              logo: siteConfig.url + "/deciply-logo.png"
+            })
+          }}
+        />
       </head>
       <body className={inter.className}>
         {children}
@@ -45,4 +63,3 @@ export default function RootLayout({
     </html>
   );
 }
-
