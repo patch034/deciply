@@ -96,9 +96,76 @@ function joinList(locale: Locale, items: string[]) {
   return locale === "tr" ? `${head} ve ${tail}` : `${head}, and ${tail}`;
 }
 
-function extractCapabilityFragment(locale: Locale, tool: Pick<ToolCopySource, "name" | "shortDescription" | "longDescription" | "bestUseCase">) {
+
+type CategorySlug = "writing" | "image" | "video" | "productivity";
+
+const categoryLabels: Record<Locale, Record<CategorySlug, string>> = {
+  tr: {
+    writing: "yazı",
+    image: "görsel",
+    video: "video",
+    productivity: "verimlilik"
+  },
+  en: {
+    writing: "writing",
+    image: "image",
+    video: "video",
+    productivity: "productivity"
+  }
+};
+
+const categoryActions: Record<Locale, Record<CategorySlug, string>> = {
+  tr: {
+    writing: "taslak yazma, yeniden yazım, özetleme ve araştırma destekli metin üretimi",
+    image: "konsept görsel, sosyal medya varlığı ve yaratıcı varyasyon üretimi",
+    video: "senaryo hazırlama, kısa form video akışı ve kurgu taslağı",
+    productivity: "not, doküman, görev ve toplantı özeti düzenleme"
+  },
+  en: {
+    writing: "draft writing, rewriting, summarization, and research-assisted text work",
+    image: "concept visuals, social assets, and creative variation generation",
+    video: "script drafting, short-form video workflows, and rough-cut planning",
+    productivity: "notes, documents, tasks, and meeting summary workflows"
+  }
+};
+
+function getPrimaryCategorySlug(tool: Pick<ToolCopySource, "toolCategorySlugs">): CategorySlug {
+  return (tool.toolCategorySlugs[0] as CategorySlug | undefined) ?? "writing";
+}
+
+function getCategoryLabel(locale: Locale, tool: Pick<ToolCopySource, "toolCategorySlugs">) {
+  return categoryLabels[locale][getPrimaryCategorySlug(tool)];
+}
+
+function getCategoryAction(locale: Locale, tool: Pick<ToolCopySource, "toolCategorySlugs">) {
+  return categoryActions[locale][getPrimaryCategorySlug(tool)];
+}
+
+function isMeaningfulText(locale: Locale, value: string) {
+  const text = stripTrailingPunctuation(value).toLocaleLowerCase(locale === "tr" ? "tr-TR" : "en-US");
+
+  if (text.length < 8) {
+    return false;
+  }
+
+  const markers = locale === "tr" ? genericTurkishMarkers : genericEnglishMarkers;
+  return !markers.some((marker) => text.includes(marker));
+}
+function extractCapabilityFragment(
+  locale: Locale,
+  tool: Pick<ToolCopySource, "name" | "shortDescription" | "longDescription" | "bestUseCase" | "features">
+) {
   const namePattern = new RegExp(`^${escapeRegExp(tool.name)}[, ]*`, "i");
-  const candidates = [tool.shortDescription, tool.longDescription]
+  const featureCandidates = tool.features
+    .map((feature) => stripTrailingPunctuation(feature))
+    .filter((feature) => isMeaningfulText(locale, feature))
+    .slice(0, 3);
+
+  if (featureCandidates.length > 0) {
+    return joinList(locale, featureCandidates);
+  }
+
+  const candidates = [tool.shortDescription, tool.longDescription, tool.bestUseCase]
     .map((value) => normalizeText(value).replace(namePattern, ""))
     .filter(Boolean);
 
@@ -134,7 +201,7 @@ function extractCapabilityFragment(locale: Locale, tool: Pick<ToolCopySource, "n
     }
   }
 
-  return stripTrailingPunctuation(tool.bestUseCase);
+  return stripTrailingPunctuation(tool.bestUseCase) || (locale === "tr" ? "net iş akışları" : "clear workflows");
 }
 
 function detectWorkflowKind(locale: Locale, tool: Pick<ToolCopySource, "toolCategorySlugs" | "bestUseCase">, capability: string): WorkflowKind {
@@ -179,18 +246,18 @@ function detectWorkflowKind(locale: Locale, tool: Pick<ToolCopySource, "toolCate
   return "writing";
 }
 
-function buildWhatItActuallyDoes(locale: Locale, tool: Pick<ToolCopySource, "name">, capability: string) {
+function buildWhatItActuallyDoes(
+  locale: Locale,
+  tool: Pick<ToolCopySource, "name" | "toolCategorySlugs">,
+  capability: string
+) {
   const cleanCapability = stripTrailingPunctuation(capability);
+  const categoryLabel = getCategoryLabel(locale, tool);
+  const categoryAction = getCategoryAction(locale, tool);
 
-  if (locale === "tr") {
-    if (/(için kullanılır|sağlar|hızlandırır|oluşturur|üretir|sunar)$/i.test(cleanCapability)) {
-      return ensureSentence(`${tool.name}, ${cleanCapability}`);
-    }
-
-    return `${tool.name}, ${cleanCapability} için kullanılır.`;
-  }
-
-  return `${tool.name} helps with ${cleanCapability}.`;
+  return locale === "tr"
+    ? `${tool.name}, ${categoryAction} için kullanılan bir ${categoryLabel} aracıdır. Öne çıkan tarafı ${cleanCapability}.`
+    : `${tool.name} is a ${categoryLabel} tool built for ${categoryAction}. Its standout angle is ${cleanCapability}.`;
 }
 
 function buildWhoShouldUseSummary(locale: Locale, tool: Pick<ToolCopySource, "whoShouldUse" | "bestUseCase">) {
@@ -198,20 +265,21 @@ function buildWhoShouldUseSummary(locale: Locale, tool: Pick<ToolCopySource, "wh
   const bestUseCase = lowerFirst(locale, stripTrailingPunctuation(tool.bestUseCase));
 
   return locale === "tr"
-    ? `En çok ${audience} için uygundur; özellikle ${bestUseCase} tarafında.`
-    : `Best for ${audience} who need ${bestUseCase} workflows.`;
+    ? `En çok ${audience} için uygundur; özellikle ${bestUseCase} tarafında hızlı değer verir.`
+    : `Best for ${audience} that need ${bestUseCase} workflows.`;
 }
 
-function buildRealUseCaseExample(locale: Locale, tool: Pick<ToolCopySource, "name">, workflowKind: WorkflowKind): RealUseCaseExample {
+function buildRealUseCaseExample(locale: Locale, tool: Pick<ToolCopySource, "name" | "bestUseCase">, workflowKind: WorkflowKind): RealUseCaseExample {
+  const bestUseCase = lowerFirst(locale, stripTrailingPunctuation(tool.bestUseCase));
   const examples: Record<Locale, Record<WorkflowKind, RealUseCaseExample>> = {
     tr: {
       writing: {
         title: "İlk müşteri taslağını hızlıca çıkar",
-        description: `Bir freelancer ${tool.name} ile landing page, e-posta veya blog taslağının ilk versiyonunu hazırlayıp final düzenlemeyi sonra yapabilir.`
+        description: `Bir freelancer ${tool.name} ile ${bestUseCase} için ilk taslağı hazırlayıp final düzenlemeyi sonra yapabilir.`
       },
       research: {
         title: "Yazıdan önce araştırma brifi hazırla",
-        description: `Bir araştırmacı ${tool.name} ile kaynakları toparlayıp kısa bir araştırma brifi çıkarabilir, sonra asıl teslimi daha hızlı yazabilir.`
+        description: `Bir araştırmacı ${tool.name} ile kaynakları toparlayıp kısa bir brif çıkarabilir, sonra asıl teslimi daha hızlı yazabilir.`
       },
       docs: {
         title: "Görevleri ve dokümanları tek taslakta topla",
@@ -297,7 +365,7 @@ function isGenericMoneyUseCase(locale: Locale, item: MoneyUseCase) {
   const text = `${item.title} ${item.description}`.toLocaleLowerCase(locale === "tr" ? "tr-TR" : "en-US");
   const markers = locale === "tr" ? genericTurkishMarkers : genericEnglishMarkers;
 
-  return text.includes("?") || markers.some((marker) => text.includes(marker));
+  return text.includes("?") || text.length < 35 || markers.some((marker) => text.includes(marker));
 }
 
 function buildMoneyUseCaseTemplates(locale: Locale, tool: Pick<ToolCopySource, "name" | "bestUseCase">, workflowKind: WorkflowKind) {
