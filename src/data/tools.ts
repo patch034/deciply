@@ -1098,7 +1098,7 @@ export const tools: ToolEntry[] = [
       tr: {
         name: "Replit",
         shortDescription: "Tarayıcı içinde hızlı kod, demo ve küçük ürün geliştirme akışları sunan platform.",
-        longDescription: "Replit, demo, eğitim ve küçük ürün geliştirme iş akışlarında öne çıkan bir AI aracıdır. Özellikle hızlı demo ve mvp oluşturma için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        longDescription: "Replit, demo, eğitim ve küçük ürün geliştirme iş akışlarında öne çıkan bir AI aracıdır. Özellikle hızlı demo ve MVP oluşturma için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
         bestUseCase: "Hızlı demo ve MVP oluşturma",
         whoShouldUse: [
           "Öğrenciler",
@@ -1140,7 +1140,7 @@ export const tools: ToolEntry[] = [
       en: {
         name: "Replit",
         shortDescription: "A browser-based development platform for quick code, demos, and lightweight product building.",
-        longDescription: "Replit is an AI tool used in demo, educational, and lightweight product workflows. It can be a practical fit for fast demos and mvp building when speed and repeatability matter.",
+        longDescription: "Replit is an AI tool used in demo, educational, and lightweight product workflows. It can be a practical fit for fast demos and MVP building when speed and repeatability matter.",
         bestUseCase: "Fast demos and MVP building",
         whoShouldUse: [
           "Students",
@@ -1168,7 +1168,7 @@ export const tools: ToolEntry[] = [
           "Reducing repeated tasks"
         ],
         pros: [
-          "Can be strong for fast demos and mvp building",
+          "Can be strong for fast demos and MVP building",
           "Can speed up repeated work",
           "Can shorten production time in the right workflow"
         ],
@@ -4267,7 +4267,7 @@ export const tools: ToolEntry[] = [
       tr: {
         name: "GitHub Copilot",
         shortDescription: "Kod tamamlama, refactor ve geliştirme akışını hızlandıran popüler AI coding aracı.",
-        longDescription: "GitHub Copilot, kod üretimi, refactor ve teslim hızlandırma is akislarinda one cikan bir AI aracidir. Ozellikle ai destekli kod üretimi ve geliştirme icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        longDescription: "GitHub Copilot, kod üretimi, refactor ve teslim hızlandırma iş akışlarında öne çıkan bir AI aracıdır. Özellikle AI destekli kod üretimi ve geliştirme için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
         bestUseCase: "AI destekli kod üretimi ve geliştirme",
         whoShouldUse: [
           "Geliştiriciler",
@@ -4276,35 +4276,35 @@ export const tools: ToolEntry[] = [
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hizlandirma",
-            description: "GitHub Copilot, kod üretimi, refactor ve teslim hızlandırma odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "GitHub Copilot, kod üretimi, refactor ve teslim hızlandırma odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet uretme",
-            description: "GitHub Copilot ile ai destekli kod üretimi ve geliştirme icin daha hizli paket cikti uretebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "GitHub Copilot ile AI destekli kod üretimi ve geliştirme için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan isleri olcekleme",
-            description: "GitHub Copilot, benzer isleri daha az manuel eforla cogaltip ek gelir akislarini destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "GitHub Copilot, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
           "AI destekli kod üretimi ve geliştirme",
-          "Operasyon ve verimlilik isleri",
-          "Arastirma veya otomasyon destegi",
-          "Tekrarlanan isleri azaltma"
+          "Operasyon ve verimlilik işleri",
+          "Araştırma veya otomasyon desteği",
+          "Tekrarlanan işleri azaltma"
         ],
         pros: [
-          "AI destekli kod üretimi ve geliştirme icin guclu olabilir",
-          "Tekrarlanan isleri hizlandirabilir",
-          "Dogru senaryoda uretim suresini kisaltabilir"
+          "AI destekli kod üretimi ve geliştirme için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ucretsiz katman bazi islerde sinirli kalabilir",
-          "Ciktilar yayina almadan once kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "GitHub Copilot incelemesi ve kullanim alanlari",
-        seoDescription: "GitHub Copilot icin fiyat, kullanim alanlari, artilar ve eksiler dahil kisa bir inceleme okuyun."
+        seoTitle: "GitHub Copilot incelemesi ve kullanım alanları",
+        seoDescription: "GitHub Copilot için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "GitHub Copilot",
@@ -4377,7 +4377,7 @@ export const tools: ToolEntry[] = [
       tr: {
         name: "Bolt.new",
         shortDescription: "Tarayıcı içinde tam yığın uygulama ve hızlı web ürünü üretmeye odaklanan AI builder.",
-        longDescription: "Bolt.new, hızlı MVP, demo ve web ürün üretimi is akislarinda one cikan bir AI aracidir. Ozellikle hızlı web uygulaması ve mvp üretimi icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        longDescription: "Bolt.new, hızlı MVP, demo ve web ürün üretimi iş akışlarında öne çıkan bir AI aracıdır. Özellikle hızlı web uygulaması ve MVP üretimi için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
         bestUseCase: "Hızlı web uygulaması ve MVP üretimi",
         whoShouldUse: [
           "Kurucular",
@@ -4386,40 +4386,40 @@ export const tools: ToolEntry[] = [
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hizlandirma",
-            description: "Bolt.new, hızlı MVP, demo ve web ürün üretimi odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Bolt.new, hızlı MVP, demo ve web ürün üretimi odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet uretme",
-            description: "Bolt.new ile hızlı web uygulaması ve mvp üretimi icin daha hizli paket cikti uretebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Bolt.new ile hızlı web uygulaması ve MVP üretimi için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan isleri olcekleme",
-            description: "Bolt.new, benzer isleri daha az manuel eforla cogaltip ek gelir akislarini destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Bolt.new, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
           "Hızlı web uygulaması ve MVP üretimi",
-          "Operasyon ve verimlilik isleri",
-          "Arastirma veya otomasyon destegi",
-          "Tekrarlanan isleri azaltma"
+          "Operasyon ve verimlilik işleri",
+          "Araştırma veya otomasyon desteği",
+          "Tekrarlanan işleri azaltma"
         ],
         pros: [
-          "Hızlı web uygulaması ve MVP üretimi icin guclu olabilir",
-          "Tekrarlanan isleri hizlandirabilir",
-          "Dogru senaryoda uretim suresini kisaltabilir"
+          "Hızlı web uygulaması ve MVP üretimi için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ucretsiz katman bazi islerde sinirli kalabilir",
-          "Ciktilar yayina almadan once kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Bolt.new incelemesi ve kullanim alanlari",
-        seoDescription: "Bolt.new icin fiyat, kullanim alanlari, artilar ve eksiler dahil kisa bir inceleme okuyun."
+        seoTitle: "Bolt.new incelemesi ve kullanım alanları",
+        seoDescription: "Bolt.new için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Bolt.new",
         shortDescription: "An AI builder focused on creating full-stack apps and fast web products directly in the browser.",
-        longDescription: "Bolt.new is an AI tool used in fast MVP, demo, and web-product workflows. It can be a practical fit for fast web app and mvp creation when speed and repeatability matter.",
+        longDescription: "Bolt.new is an AI tool used in fast MVP, demo, and web-product workflows. It can be a practical fit for fast web app and MVP creation when speed and repeatability matter.",
         bestUseCase: "Fast web app and MVP creation",
         whoShouldUse: [
           "Founders",
@@ -4433,7 +4433,7 @@ export const tools: ToolEntry[] = [
           },
           {
             title: "Build repeatable service packages",
-            description: "Bolt.new can help you package fast web app and mvp creation into faster repeatable client work."
+            description: "Bolt.new can help you package fast web app and MVP creation into faster repeatable client work."
           },
           {
             title: "Scale repeated output",
@@ -4447,7 +4447,7 @@ export const tools: ToolEntry[] = [
           "Reducing repeated tasks"
         ],
         pros: [
-          "Can be strong for fast web app and mvp creation",
+          "Can be strong for fast web app and MVP creation",
           "Can speed up repeated work",
           "Can shorten production time in the right workflow"
         ],
@@ -4487,7 +4487,7 @@ export const tools: ToolEntry[] = [
       tr: {
         name: "Lovable",
         shortDescription: "Doğal dille uygulama ve web sitesi üretimini hızlandıran full-stack AI builder.",
-        longDescription: "Lovable, uygulama, iç araç ve hızlı site üretimi is akislarinda one cikan bir AI aracidir. Ozellikle doğal dille ürün ve site geliştirme icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        longDescription: "Lovable, uygulama, iç araç ve hızlı site üretimi iş akışlarında öne çıkan bir AI aracıdır. Özellikle doğal dille ürün ve site geliştirme için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
         bestUseCase: "Doğal dille ürün ve site geliştirme",
         whoShouldUse: [
           "Kurucular",
@@ -4496,35 +4496,35 @@ export const tools: ToolEntry[] = [
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hizlandirma",
-            description: "Lovable, uygulama, iç araç ve hızlı site üretimi odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Lovable, uygulama, iç araç ve hızlı site üretimi odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet uretme",
-            description: "Lovable ile doğal dille ürün ve site geliştirme icin daha hizli paket cikti uretebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Lovable ile doğal dille ürün ve site geliştirme için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan isleri olcekleme",
-            description: "Lovable, benzer isleri daha az manuel eforla cogaltip ek gelir akislarini destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Lovable, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
           "Doğal dille ürün ve site geliştirme",
-          "Operasyon ve verimlilik isleri",
-          "Arastirma veya otomasyon destegi",
-          "Tekrarlanan isleri azaltma"
+          "Operasyon ve verimlilik işleri",
+          "Araştırma veya otomasyon desteği",
+          "Tekrarlanan işleri azaltma"
         ],
         pros: [
-          "Doğal dille ürün ve site geliştirme icin guclu olabilir",
-          "Tekrarlanan isleri hizlandirabilir",
-          "Dogru senaryoda uretim suresini kisaltabilir"
+          "Doğal dille ürün ve site geliştirme için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ucretsiz katman bazi islerde sinirli kalabilir",
-          "Ciktilar yayina almadan once kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Lovable incelemesi ve kullanim alanlari",
-        seoDescription: "Lovable icin fiyat, kullanim alanlari, artilar ve eksiler dahil kisa bir inceleme okuyun."
+        seoTitle: "Lovable incelemesi ve kullanım alanları",
+        seoDescription: "Lovable için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Lovable",
@@ -4596,7 +4596,7 @@ export const tools: ToolEntry[] = [
       tr: {
         name: "Murf AI",
         shortDescription: "Voice-over, dublaj ve anlatım odaklı ses üretimi için kullanılan AI voice platformu.",
-        longDescription: "Murf AI, seslendirme, dublaj ve anlatım içerikleri is akislarinda one cikan bir AI aracidir. Ozellikle voice-over ve dublaj üretimi icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        longDescription: "Murf AI, seslendirme, dublaj ve anlatım içerikleri iş akışlarında öne çıkan bir AI aracıdır. Özellikle voice-over ve dublaj üretimi için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
         bestUseCase: "Voice-over ve dublaj üretimi",
         whoShouldUse: [
           "İçerik üreticileri",
@@ -4605,35 +4605,35 @@ export const tools: ToolEntry[] = [
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hizlandirma",
-            description: "Murf AI, seslendirme, dublaj ve anlatım içerikleri odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Murf AI, seslendirme, dublaj ve anlatım içerikleri odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet uretme",
-            description: "Murf AI ile voice-over ve dublaj üretimi icin daha hizli paket cikti uretebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Murf AI ile voice-over ve dublaj üretimi için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan isleri olcekleme",
-            description: "Murf AI, benzer isleri daha az manuel eforla cogaltip ek gelir akislarini destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Murf AI, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
           "Voice-over ve dublaj üretimi",
-          "Video veya medya uretimi",
-          "Kisa teslim akisleri",
-          "Icerik tekrar kullanimi"
+          "Video veya medya üretimi",
+          "Kısa teslim akışları",
+          "İçerik tekrar kullanımı"
         ],
         pros: [
-          "Voice-over ve dublaj üretimi icin guclu olabilir",
-          "Tekrarlanan isleri hizlandirabilir",
-          "Dogru senaryoda uretim suresini kisaltabilir"
+          "Voice-over ve dublaj üretimi için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ucretsiz katman bazi islerde sinirli kalabilir",
-          "Ciktilar yayina almadan once kontrol edilmelidir"
+          "Ücretsiz katman bazı işlerde sınırlı kalabilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Murf AI incelemesi ve kullanim alanlari",
-        seoDescription: "Murf AI icin fiyat, kullanim alanlari, artilar ve eksiler dahil kisa bir inceleme okuyun."
+        seoTitle: "Murf AI incelemesi ve kullanım alanları",
+        seoDescription: "Murf AI için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Murf AI",
@@ -4705,7 +4705,7 @@ export const tools: ToolEntry[] = [
       tr: {
         name: "Surfer",
         shortDescription: "SEO odaklı içerik planlama, optimizasyon ve görünürlük takibi için kullanılan içerik aracı.",
-        longDescription: "Surfer, SEO içerik planlama ve optimizasyon is akislarinda one cikan bir AI aracidir. Ozellikle seo odaklı içerik planlama ve optimizasyon icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        longDescription: "Surfer, SEO içerik planlama ve optimizasyon iş akışlarında öne çıkan bir AI aracıdır. Özellikle SEO odaklı içerik planlama ve optimizasyon için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
         bestUseCase: "SEO odaklı içerik planlama ve optimizasyon",
         whoShouldUse: [
           "SEO ekipleri",
@@ -4714,35 +4714,35 @@ export const tools: ToolEntry[] = [
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hizlandirma",
-            description: "Surfer, SEO içerik planlama ve optimizasyon odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Surfer, SEO içerik planlama ve optimizasyon odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet uretme",
-            description: "Surfer ile seo odaklı içerik planlama ve optimizasyon icin daha hizli paket cikti uretebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Surfer ile SEO odaklı içerik planlama ve optimizasyon için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan isleri olcekleme",
-            description: "Surfer, benzer isleri daha az manuel eforla cogaltip ek gelir akislarini destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Surfer, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
           "SEO odaklı içerik planlama ve optimizasyon",
-          "Metin odakli is akislar",
-          "Duzenleme ve yeniden yazim",
+          "Metin odaklı iş akışları",
+          "Düzenleme ve yeniden yazım",
           "Hızlı taslak üretimi"
         ],
         pros: [
-          "SEO odaklı içerik planlama ve optimizasyon icin guclu olabilir",
-          "Tekrarlanan isleri hizlandirabilir",
-          "Dogru senaryoda uretim suresini kisaltabilir"
+          "SEO odaklı içerik planlama ve optimizasyon için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ucretli plan gerektirebilir",
-          "Ciktilar yayina almadan once kontrol edilmelidir"
+          "Ücretli plan gerektirebilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Surfer incelemesi ve kullanim alanlari",
-        seoDescription: "Surfer icin fiyat, kullanim alanlari, artilar ve eksiler dahil kisa bir inceleme okuyun."
+        seoTitle: "Surfer incelemesi ve kullanım alanları",
+        seoDescription: "Surfer için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Surfer",
@@ -4814,7 +4814,7 @@ export const tools: ToolEntry[] = [
       tr: {
         name: "Clearscope",
         shortDescription: "Arama görünürlüğü ve içerik kalitesini iyileştirmek için kullanılan içerik strateji aracı.",
-        longDescription: "Clearscope, arama görünürlüğü ve içerik geliştirme is akislarinda one cikan bir AI aracidir. Ozellikle arama görünürlüğü ve içerik stratejisi icin tercih edilebilir ve dogru kullanimda zaman kazandirabilir.",
+        longDescription: "Clearscope, arama görünürlüğü ve içerik geliştirme iş akışlarında öne çıkan bir AI aracıdır. Özellikle arama görünürlüğü ve içerik stratejisi için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
         bestUseCase: "Arama görünürlüğü ve içerik stratejisi",
         whoShouldUse: [
           "İçerik ekipleri",
@@ -4823,35 +4823,35 @@ export const tools: ToolEntry[] = [
         ],
         moneyUseCases: [
           {
-            title: "Hizmet teslimini hizlandirma",
-            description: "Clearscope, arama görünürlüğü ve içerik geliştirme odakli islerde teslim suresini kisaltmaniza yardimci olabilir."
+            title: "Hizmet teslimini hızlandırma",
+            description: "Clearscope, arama görünürlüğü ve içerik geliştirme odaklı işlerde teslim süresini kısaltmanıza yardımcı olabilir."
           },
           {
-            title: "Paket hizmet uretme",
-            description: "Clearscope ile arama görünürlüğü ve içerik stratejisi icin daha hizli paket cikti uretebilirsiniz."
+            title: "Paket hizmet üretme",
+            description: "Clearscope ile arama görünürlüğü ve içerik stratejisi için daha hızlı paket çıktı üretebilirsiniz."
           },
           {
-            title: "Tekrarlanan isleri olcekleme",
-            description: "Clearscope, benzer isleri daha az manuel eforla cogaltip ek gelir akislarini destekleyebilir."
+            title: "Tekrarlanan işleri ölçekleme",
+            description: "Clearscope, benzer işleri daha az manuel eforla çoğaltıp ek gelir akışlarını destekleyebilir."
           }
         ],
         features: [
           "Arama görünürlüğü ve içerik stratejisi",
-          "Metin odakli is akislar",
-          "Duzenleme ve yeniden yazim",
+          "Metin odaklı iş akışları",
+          "Düzenleme ve yeniden yazım",
           "Hızlı taslak üretimi"
         ],
         pros: [
-          "Arama görünürlüğü ve içerik stratejisi icin guclu olabilir",
-          "Tekrarlanan isleri hizlandirabilir",
-          "Dogru senaryoda uretim suresini kisaltabilir"
+          "Arama görünürlüğü ve içerik stratejisi için güçlü olabilir",
+          "Tekrarlanan işleri hızlandırabilir",
+          "Doğru senaryoda üretim süresini kısaltabilir"
         ],
         cons: [
-          "Ucretli plan gerektirebilir",
-          "Ciktilar yayina almadan once kontrol edilmelidir"
+          "Ücretli plan gerektirebilir",
+          "Çıktılar yayına almadan önce kontrol edilmelidir"
         ],
-        seoTitle: "Clearscope incelemesi ve kullanim alanlari",
-        seoDescription: "Clearscope icin fiyat, kullanim alanlari, artilar ve eksiler dahil kisa bir inceleme okuyun."
+        seoTitle: "Clearscope incelemesi ve kullanım alanları",
+        seoDescription: "Clearscope için fiyat, kullanım alanları, artılar ve eksiler dahil kısa bir inceleme okuyun."
       },
       en: {
         name: "Clearscope",

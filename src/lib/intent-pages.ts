@@ -1,4 +1,4 @@
-﻿import { useCaseOptions } from "@/data/tool-taxonomy";
+import { useCaseOptions } from "@/data/tool-taxonomy";
 import { tools } from "@/data/tools";
 import type { Locale } from "@/i18n/config";
 import { getLocalizedBlogArticles } from "@/lib/blog";
@@ -30,15 +30,15 @@ const useCasePageDefinitions: UseCasePageDefinition[] = [
     matchUseCaseSlugs: ["students"],
     locales: {
       tr: {
-        eyebrow: "Ogrenci is akislari",
-        title: "Ogrenciler icin en uygun AI araclari",
-        intro: "Arastirma, not duzeni, sunum hazirligi ve ozetleme gibi ogrenci akislarinda hangi AI araclarinin daha mantikli oldugunu hizlica gorun.",
-        description: "Bu sayfa ogrenci odakli kararlar icin dusuk surtunmeli, hizli sonuc veren ve gercek kullanim senaryosuna oturan araclari bir araya getirir.",
-        whyTitle: "Bu use-case icin neden uygunlar?",
-        whyDescription: "Her arac ayni ogrenci ihtiyacina cevap vermez. Asagida hangi arac hangi ihtiyaca daha iyi uyuyor gorebilirsiniz.",
-        workflowTitle: "Onerilen ogrenci workflow'u",
-        workflowDescription: "En iyi sonuc genelde tek araca degil, arastirma, taslak ve duzen akisini dogru siralamaya baglidir.",
-        workflowSteps: ["Arastir", "Taslak cikar", "Duzenle ve teslim et"]
+        eyebrow: "Öğrenci iş akışları",
+        title: "Öğrenciler için en uygun AI araçları",
+        intro: "Araştırma, not düzeni, sunum hazırlığı ve özetleme gibi öğrenci akışlarında hangi AI araçlarının daha mantıklı olduğunu hızlıca görün.",
+        description: "Bu sayfa öğrenci odaklı kararlar için düşük sürtünmeli, hızlı sonuç veren ve gerçek kullanım senaryosuna oturan araçları bir araya getirir.",
+        whyTitle: "Bu use-case için neden uygunlar?",
+        whyDescription: "Her araç aynı öğrenci ihtiyacına cevap vermez. Aşağıda hangi aracın hangi ihtiyaca daha iyi uyduğunu görebilirsiniz.",
+        workflowTitle: "Önerilen öğrenci workflow'u",
+        workflowDescription: "En iyi sonuç genelde tek araca değil, araştırma, taslak ve düzen akışını doğru sıralamaya bağlıdır.",
+        workflowSteps: ["Araştır", "Taslak çıkar", "Düzenle ve teslim et"]
       },
       en: {
         eyebrow: "Student workflows",
@@ -59,14 +59,14 @@ const useCasePageDefinitions: UseCasePageDefinition[] = [
     locales: {
       tr: {
         eyebrow: "Freelance teslimler",
-        title: "Freelancer'lar icin en uygun AI araclari",
-        intro: "Musteri teslimi, daha hizli uretim ve daha guclu paket ciktisi isteyen freelancer'lar icin mantikli AI araclarini karsilastirin.",
-        description: "Bu sayfa yazi, gorsel, arastirma ve tekrar eden teslim akislarinda daha hizli marj korumak isteyen freelancer'lara odaklanir.",
-        whyTitle: "Hangi arac neden uyuyor?",
-        whyDescription: "Bazilari arastirma ve metinde, bazilari gorsel veya teslim hizi tarafinda daha mantikli olabilir.",
-        workflowTitle: "Onerilen freelance workflow'u",
-        workflowDescription: "Freelance islerde hiz kazanmak icin once brief, sonra uretim, sonra paketleme akisini netlestirmek daha etkilidir.",
-        workflowSteps: ["Brief'i netlestir", "Uretimi hizlandir", "Paketi parlat ve teslim et"]
+        title: "Freelancer'lar için en uygun AI araçları",
+        intro: "Müşteri teslimi, daha hızlı üretim ve daha güçlü paket çıktısı isteyen freelancer'lar için mantıklı AI araçlarını karşılaştırın.",
+        description: "Bu sayfa yazı, görsel, araştırma ve tekrar eden teslim akışlarında daha hızlı marj korumak isteyen freelancer'lara odaklanır.",
+        whyTitle: "Hangi araç neden uyuyor?",
+        whyDescription: "Bazıları araştırma ve metinde, bazıları görsel veya teslim hızı tarafında daha mantıklı olabilir.",
+        workflowTitle: "Önerilen freelance workflow'u",
+        workflowDescription: "Freelance işlerde hız kazanmak için önce brief, sonra üretim, sonra paketleme akışını netleştirmek daha etkilidir.",
+        workflowSteps: ["Brief'i netleştir", "Üretimi hızlandır", "Paketi parlat ve teslim et"]
       },
       en: {
         eyebrow: "Freelance delivery",
@@ -86,15 +86,15 @@ const useCasePageDefinitions: UseCasePageDefinition[] = [
     matchUseCaseSlugs: ["content", "creators"],
     locales: {
       tr: {
-        eyebrow: "Icerik uretimi",
-        title: "Icerik ureticileri icin en uygun AI araclari",
-        intro: "Blog, sosyal medya, gorsel ve yaratici teslim akislarinda hangi araclarin daha guclu oldugunu tek sayfada karsilastirin.",
-        description: "Bu sayfa fikir bulma, yazi, kreatif uretim ve paketleme tarafinda birbiriyle iyi calisan AI araclarini listeler.",
-        whyTitle: "Neden bu araclar one cikiyor?",
-        whyDescription: "Icerik ekipleri ve solo ureticiler genelde tek araca degil, goreve gore degisen guclu kombinasyonlara ihtiyac duyar.",
-        workflowTitle: "Onerilen content workflow'u",
-        workflowDescription: "En verimli akista once fikir ve aci bulunur, sonra uretim yapilir, sonunda dagitim veya paketleme netlestirilir.",
-        workflowSteps: ["Fikir ve aciyi bul", "Icerigi uret", "Dagitima veya teslimata hazirla"]
+        eyebrow: "İçerik üretimi",
+        title: "İçerik üreticileri için en uygun AI araçları",
+        intro: "Blog, sosyal medya, görsel ve yaratıcı teslim akışlarında hangi araçların daha güçlü olduğunu tek sayfada karşılaştırın.",
+        description: "Bu sayfa fikir bulma, yazı, kreatif üretim ve paketleme tarafında birbiriyle iyi çalışan AI araçlarını listeler.",
+        whyTitle: "Neden bu araçlar öne çıkıyor?",
+        whyDescription: "İçerik ekipleri ve solo üreticiler genelde tek araca değil, göreve göre değişen güçlü kombinasyonlara ihtiyaç duyar.",
+        workflowTitle: "Önerilen content workflow'u",
+        workflowDescription: "En verimli akışta önce fikir ve açı bulunur, sonra üretim yapılır, sonunda dağıtım veya paketleme netleştirilir.",
+        workflowSteps: ["Fikir ve açıyı bul", "İçeriği üret", "Dağıtıma veya teslimata hazırla"]
       },
       en: {
         eyebrow: "Content workflows",
@@ -114,15 +114,15 @@ const useCasePageDefinitions: UseCasePageDefinition[] = [
     matchUseCaseSlugs: ["business"],
     locales: {
       tr: {
-        eyebrow: "Is ekipleri",
-        title: "Is ekipleri icin en uygun AI araclari",
-        intro: "Arastirma, dokumantasyon, toplanti ozetleri ve ekip ici icerik akislari icin daha duzenli AI araclarini inceleyin.",
-        description: "Bu sayfa ekip benimsenmesi, surekli kullanim ve mevcut is akisina dusuk surtunmeyle oturan araclara odaklanir.",
-        whyTitle: "Ekipler icin neden mantiklilar?",
-        whyDescription: "Is ortaminda model gucunden cok benimsenme, tutarlilik ve surekli kullanim belirleyici olur.",
-        workflowTitle: "Onerilen ekip workflow'u",
-        workflowDescription: "Daha duzenli bir AI akisi icin once bilgi toplanir, sonra dokumante edilir, en son paylasim veya uygulama adimina gecilir.",
-        workflowSteps: ["Bilgiyi topla", "Ozetle ve dokumante et", "Takima dagit veya uygula"]
+        eyebrow: "İş ekipleri",
+        title: "İş ekipleri için en uygun AI araçları",
+        intro: "Araştırma, dokümantasyon, toplantı özetleri ve ekip içi içerik akışları için daha düzenli AI araçlarını inceleyin.",
+        description: "Bu sayfa ekip benimsenmesi, sürekli kullanım ve mevcut iş akışına düşük sürtünmeyle oturan araçlara odaklanır.",
+        whyTitle: "Ekipler için neden mantıklılar?",
+        whyDescription: "İş ortamında model gücünden çok benimsenme, tutarlılık ve sürekli kullanım belirleyici olur.",
+        workflowTitle: "Önerilen ekip workflow'u",
+        workflowDescription: "Daha düzenli bir AI akışı için önce bilgi toplanır, sonra dokümante edilir, en son paylaşım veya uygulama adımına geçilir.",
+        workflowSteps: ["Bilgiyi topla", "Özetle ve dokümante et", "Takıma dağıt veya uygula"]
       },
       en: {
         eyebrow: "Business workflows",
@@ -142,15 +142,15 @@ const useCasePageDefinitions: UseCasePageDefinition[] = [
     matchUseCaseSlugs: ["research"],
     locales: {
       tr: {
-        eyebrow: "Arastirma akislari",
-        title: "Arastirma odakli isler icin en uygun AI araclari",
-        intro: "Kaynak bulma, aciklama, uzun ozetler ve daha duzenli bilgi akisi icin mantikli AI araclarini bir arada gorun.",
-        description: "Bu sayfa arastirma hizini artiran ama karar kalitesini dusurmeyen araclara odaklanir.",
-        whyTitle: "Neden bu araclar uygun?",
-        whyDescription: "Arastirma islerinde hiz kadar kaynak bulma, aciklama kalitesi ve duzenli dusunce akisi da onemlidir.",
-        workflowTitle: "Onerilen research workflow'u",
-        workflowDescription: "Daha iyi arastirma akisi once kaynak bulmayi, sonra analiz etmeyi, en son ozetleyip paylasmayi gerektirir.",
-        workflowSteps: ["Kaynaklari bul", "Analiz et", "Ozetle ve aktar"]
+        eyebrow: "Araştırma akışları",
+        title: "Araştırma odaklı işler için en uygun AI araçları",
+        intro: "Kaynak bulma, açıklama, uzun özetler ve daha düzenli bilgi akışı için mantıklı AI araçlarını bir arada görün.",
+        description: "Bu sayfa araştırma hızını artıran ama karar kalitesini düşürmeyen araçlara odaklanır.",
+        whyTitle: "Neden bu araçlar uygun?",
+        whyDescription: "Araştırma işlerinde hız kadar kaynak bulma, açıklama kalitesi ve düzenli düşünce akışı da önemlidir.",
+        workflowTitle: "Önerilen research workflow'u",
+        workflowDescription: "Daha iyi araştırma akışı önce kaynak bulmayı, sonra analiz etmeyi, en son özetleyip paylaşmayı gerektirir.",
+        workflowSteps: ["Kaynakları bul", "Analiz et", "Özetle ve aktar"]
       },
       en: {
         eyebrow: "Research workflows",

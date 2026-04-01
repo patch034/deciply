@@ -4,7 +4,8 @@ import path from "node:path";
 const root = process.cwd();
 const fixMode = process.argv.includes("--fix");
 const exts = new Set([".ts", ".tsx", ".json", ".md"]);
-const ignoreDirs = new Set([".git", ".next", "node_modules", "public"]);
+const ignoreDirs = new Set([".git", ".next", "node_modules", "public", "review-bundle"]);
+const ignoreFiles = new Set(["toolnova-full-code-export.md", "deciply-full-code-export.md"]);
 const suspiciousEncodingPattern = /(?:[\u00C2\u00C3\u00C4\u00C5\uFFFD]|\u00E2\u20AC|\u00E2\u20AC\u2122|\u00E2\u20AC\u0153|\u00E2\u20AC\u009D|\u00E2\u20AC\u00A2|\u00E2\u20AC\u201C|\u00E2\u20AC\u201D)/;
 const turkishUpper = "A-Z\\u00C7\\u011E\\u0130\\u00D6\\u015E\\u00DC";
 const turkishLower = "a-z\\u00E7\\u011F\\u0131\\u00F6\\u015F\\u00FC";
@@ -62,6 +63,7 @@ function walk(dir, files = []) {
       walk(fullPath, files);
       continue;
     }
+    if (ignoreFiles.has(entry.name)) continue;
     if (exts.has(path.extname(entry.name))) files.push(fullPath);
   }
   return files;
