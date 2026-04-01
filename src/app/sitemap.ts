@@ -16,12 +16,7 @@ function withLocale(locale: string, path = "") {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const entries: MetadataRoute.Sitemap = [
-    {
-      url: siteUrl,
-      lastModified: staticLastModified
-    }
-  ];
+  const entries: MetadataRoute.Sitemap = [];
 
   for (const locale of locales) {
     entries.push(
