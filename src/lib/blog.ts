@@ -1,7 +1,9 @@
 import { blogArticles } from "@/data/blog";
 import { getBlogPlaybookSections } from "@/data/blog-playbooks";
+import { useCaseOptions } from "@/data/tool-taxonomy";
 import type { Locale } from "@/i18n/config";
 import { getLocalizedToolBySlug, getLocalizedTools } from "@/lib/catalog";
+import { buildComparisonPath } from "@/lib/comparisons";
 import { assertEncodingHealth, normalizeEncodingTree } from "@/lib/encoding";
 import { buildBlogIntroParagraph } from "@/lib/seo";
 import type { BlogEntry, LocalizedBlogArticle } from "@/types/blog";
@@ -12,29 +14,29 @@ const rawBlogCopy = {
   tr: {
     breadcrumbsHome: "Ana sayfa",
     blogLabel: "Blog",
-    listEyebrow: "SEO içerikleri",
-    listTitle: "Trafik ve dönüşüm odaklı AI rehberleri",
+    listEyebrow: "SEO i����erikleri",
+    listTitle: "Trafik ve d����n�����&�&�����m odakl���?�� AI rehberleri",
     listDescription:
-      "Deciply blog bölümünde öne çıkan AI araçları, karşılaştırmalar, ücretsiz araç listeleri ve para kazandıran kullanım senaryoları yer alır.",
-    readMoreLabel: "Devamını oku",
-    heroPrimaryCta: "Bu aracı incele",
-    heroSecondaryCta: "Öne çıkan AI araçlarını gör",
-    comparisonCtaLabel: "Karşılaştırmaya git",
-    relatedToolsTitle: "Bu içerikte geçen araçlar",
+      "Deciply blog b����l����m����nde ����ne �������?��kan AI ara����lar���?��, kar�&�&����?��la�&�&�t���?��rmalar, ����cretsiz ara���� listeleri ve para kazand���?��ran kullan���?��m senaryolar���?�� yer al���?��r.",
+    readMoreLabel: "Devam���?��n���?�� oku",
+    heroPrimaryCta: "Bu arac���?�� incele",
+    heroSecondaryCta: "������Sne �������?��kan AI ara����lar���?��n���?�� g����r",
+    comparisonCtaLabel: "Kar�&�&����?��la�&�&�t���?��rmaya git",
+    relatedToolsTitle: "Bu i����erikte ge����en ara����lar",
     relatedToolsDescription:
-      "Makaledeki önerileri doğrudan araç detay sayfalarında inceleyin ve kullanım alanlarını daha net görün.",
+      "Makaledeki ����nerileri do���?�&�rudan ara���� detay sayfalar���?��nda inceleyin ve kullan���?��m alanlar���?��n���?�� daha net g����r����n.",
     relatedArticlesTitle: "Benzer rehberler",
     relatedArticlesDescription:
-      "Aynı konu etrafındaki diğer içeriklere geçerek hem daha fazla fikir toplayabilir hem de doğru aracı daha hızlı seçebilirsiniz.",
-    comparisonBlockTitle: "Karşılaştırma kısayolu",
+      "Ayn���?�� konu etraf���?��ndaki di���?�&�er i����eriklere ge����erek hem daha fazla fikir toplayabilir hem de do���?�&�ru arac���?�� daha h���?��zl���?�� se����ebilirsiniz.",
+    comparisonBlockTitle: "Kar�&�&����?��la�&�&�t���?��rma k���?��sayolu",
     comparisonBlockDescription:
-      "Araçları yan yana görmek istiyorsanız Deciply comparison sayfasına geçin.",
-    articleLeadLabel: "Güncel rehber",
-    toolPageRelatedTitle: "İlgili rehberler",
+      "Ara����lar���?�� yan yana g����rmek istiyorsan���?��z Deciply comparison sayfas���?��na ge����in.",
+    articleLeadLabel: "G����ncel rehber",
+    toolPageRelatedTitle: "���?��lgili rehberler",
     toolPageRelatedDescription:
-      "Bu araçla ilgili rehber ve SEO odaklı içeriklere geçerek kullanım senaryolarını daha hızlı değerlendirebilirsiniz.",
-    backToBlog: "Tüm yazılara dön",
-    previousPage: "Önceki",
+      "Bu ara����la ilgili rehber ve SEO odakl���?�� i����eriklere ge����erek kullan���?��m senaryolar���?��n���?�� daha h���?��zl���?�� de���?�&�erlendirebilirsiniz.",
+    backToBlog: "T����m yaz���?��lara d����n",
+    previousPage: "������Snceki",
     nextPage: "Sonraki",
     pageLabel: "Sayfa"
   },
@@ -106,6 +108,7 @@ function localizeArticle(article: BlogEntry, locale: Locale): LocalizedBlogArtic
     createdAt: article.createdAt,
     updatedAt: article.updatedAt,
     relatedToolSlugs: article.relatedToolSlugs,
+    contentGraph: article.contentGraph,
     ...article.locales[locale],
     sections: playbookSections ?? article.locales[locale].sections
   };
@@ -172,41 +175,151 @@ export function getLocalizedBlogArticleBySlug(locale: Locale, slug: string) {
   return localizeArticle(article, locale);
 }
 
+function sharedCount(left: string[], right: string[]) {
+  const rightSet = new Set(right);
+  return left.filter((item) => rightSet.has(item)).length;
+}
+
+function normalizeRelationTokens(values?: Array<string | undefined>) {
+  return (values?.filter((value): value is string => Boolean(value)) ?? []);
+}
+
+function getArticleRelationScore(currentArticle: LocalizedBlogArticle, candidate: LocalizedBlogArticle) {
+  let score = 0;
+
+  if (candidate.categorySlug === currentArticle.categorySlug) {
+    score += 4;
+  }
+
+  score += sharedCount(candidate.relatedToolSlugs, currentArticle.relatedToolSlugs) * 6;
+
+  if (candidate.contentGraph?.kind && currentArticle.contentGraph?.kind === candidate.contentGraph.kind) {
+    score += 3;
+  }
+
+  if (currentArticle.contentGraph?.relatedArticleSlugs?.includes(candidate.slug)) {
+    score += 8;
+  }
+
+  if (candidate.contentGraph?.relatedArticleSlugs?.includes(currentArticle.slug)) {
+    score += 6;
+  }
+
+  if (
+    currentArticle.contentGraph?.useCaseSlug &&
+    normalizeRelationTokens([candidate.contentGraph?.useCaseSlug, ...(candidate.contentGraph?.keywords ?? [])]).includes(currentArticle.contentGraph.useCaseSlug)
+  ) {
+    score += 4;
+  }
+
+  score += sharedCount(
+    normalizeRelationTokens(currentArticle.contentGraph?.alternativeToolSlugs),
+    candidate.relatedToolSlugs
+  ) * 3;
+
+  score += sharedCount(
+    normalizeRelationTokens(currentArticle.contentGraph?.useCasePageSlugs),
+    normalizeRelationTokens(candidate.contentGraph?.useCasePageSlugs)
+  ) * 4;
+
+  score += sharedCount(
+    normalizeRelationTokens(currentArticle.contentGraph?.keywords),
+    normalizeRelationTokens(candidate.contentGraph?.keywords)
+  ) * 2;
+
+  return score;
+}
+
+function buildArticlePageLinks(locale: Locale, article: LocalizedBlogArticle) {
+  const comparePages = (article.contentGraph?.comparePairs ?? [])
+    .map((pair) => {
+      const leftTool = getLocalizedToolBySlug(locale, pair.leftSlug);
+      const rightTool = getLocalizedToolBySlug(locale, pair.rightSlug);
+
+      if (!leftTool || !rightTool) {
+        return null;
+      }
+
+      return {
+        label: `${leftTool.name} vs ${rightTool.name}`,
+        href: buildComparisonPath(locale, leftTool.slug, rightTool.slug)
+      };
+    })
+    .filter((item): item is NonNullable<typeof item> => item !== null);
+
+  const alternativePages = normalizeRelationTokens(article.contentGraph?.alternativeToolSlugs)
+    .map((toolSlug) => getLocalizedToolBySlug(locale, toolSlug))
+    .filter((tool): tool is NonNullable<typeof tool> => tool !== null)
+    .map((tool) => ({
+      label: locale === "tr" ? `${tool.name} alternatifleri` : `${tool.name} alternatives`,
+      href: `/${locale}/alternatives/${tool.slug}`
+    }));
+
+  const useCasePages = normalizeRelationTokens(article.contentGraph?.useCasePageSlugs).map((slug) => ({
+    label: useCaseOptions[locale].find((item) => item.slug === slug)?.label ?? slug,
+    href: `/${locale}/use-cases/${slug}`
+  }));
+
+  return { comparePages, alternativePages, useCasePages };
+}
+
 export function getRelatedArticles(locale: Locale, slug: string, limit = 3) {
-  const currentArticle = blogArticles.find((item) => item.slug === slug);
+  const currentArticle = getLocalizedBlogArticleBySlug(locale, slug);
 
   if (!currentArticle) {
     return [];
   }
 
   return getLocalizedBlogArticles(locale)
-    .filter(
-      (article) =>
-        article.slug !== slug &&
-        (article.categorySlug === currentArticle.categorySlug ||
-          article.relatedToolSlugs.some((toolSlug) => currentArticle.relatedToolSlugs.includes(toolSlug)))
-    )
-    .slice(0, limit);
+    .filter((article) => article.slug !== slug)
+    .map((article) => ({ article, score: getArticleRelationScore(currentArticle, article) }))
+    .sort((left, right) => {
+      if (right.score !== left.score) {
+        return right.score - left.score;
+      }
+
+      return new Date(right.article.publishDate).getTime() - new Date(left.article.publishDate).getTime();
+    })
+    .slice(0, limit)
+    .map((item) => item.article);
 }
 
 export function getRelatedArticlesByTool(locale: Locale, toolSlug: string, limit = 3) {
-  const directMatches = getLocalizedBlogArticles(locale).filter((article) => article.relatedToolSlugs.includes(toolSlug));
+  return getLocalizedBlogArticles(locale)
+    .map((article) => {
+      let score = article.relatedToolSlugs.includes(toolSlug) ? 10 : 0;
 
-  if (directMatches.length >= limit) {
-    return directMatches.slice(0, limit);
-  }
+      if (article.contentGraph?.primaryToolSlug === toolSlug) {
+        score += 6;
+      }
 
-  const pickedSlugs = new Set(directMatches.map((article) => article.slug));
-  const fallbackArticles = getLocalizedBlogArticles(locale).filter((article) => !pickedSlugs.has(article.slug));
+      if (article.contentGraph?.secondaryToolSlug === toolSlug) {
+        score += 5;
+      }
 
-  return [...directMatches, ...fallbackArticles].slice(0, limit);
+      if (article.contentGraph?.alternativeToolSlugs?.includes(toolSlug)) {
+        score += 4;
+      }
+
+      return { article, score };
+    })
+    .filter((item) => item.score > 0)
+    .sort((left, right) => {
+      if (right.score !== left.score) {
+        return right.score - left.score;
+      }
+
+      return new Date(right.article.publishDate).getTime() - new Date(left.article.publishDate).getTime();
+    })
+    .slice(0, limit)
+    .map((item) => item.article);
 }
 
 export function getBlogSupportingLinks(locale: Locale, slug: string, toolLimit = 2, articleLimit = 2) {
   const currentArticle = getLocalizedBlogArticleBySlug(locale, slug);
 
   if (!currentArticle) {
-    return { tools: [], articles: [] };
+    return { tools: [], articles: [], comparePages: [], alternativePages: [], useCasePages: [] };
   }
 
   const pickedToolSlugs = new Set<string>();
@@ -237,7 +350,7 @@ export function getBlogSupportingLinks(locale: Locale, slug: string, toolLimit =
     }
   }
 
-  const articleCandidates = getRelatedArticles(locale, slug, Math.max(articleLimit, 3));
+  const articleCandidates = getRelatedArticles(locale, slug, Math.max(articleLimit, 4));
   const pickedArticleSlugs = new Set(articleCandidates.map((article) => article.slug));
 
   if (articleCandidates.length < articleLimit) {
@@ -255,6 +368,8 @@ export function getBlogSupportingLinks(locale: Locale, slug: string, toolLimit =
     }
   }
 
+  const pageLinks = buildArticlePageLinks(locale, currentArticle);
+
   return {
     tools: tools.slice(0, toolLimit).map((tool) => ({
       label: tool.name,
@@ -263,6 +378,9 @@ export function getBlogSupportingLinks(locale: Locale, slug: string, toolLimit =
     articles: articleCandidates.slice(0, articleLimit).map((article) => ({
       label: article.title,
       href: `/${locale}/blog/${article.slug}`
-    }))
+    })),
+    comparePages: pageLinks.comparePages.slice(0, 2),
+    alternativePages: pageLinks.alternativePages.slice(0, 2),
+    useCasePages: pageLinks.useCasePages.slice(0, 2)
   };
 }

@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 import type { Locale } from "@/i18n/config";
@@ -6,7 +6,7 @@ import { getLocalizedTools } from "@/lib/catalog";
 import type { BlogSection } from "@/types/blog";
 
 function escapeRegExp(value: string) {
-  return value.replace(/[.*+?^\${}()|[\]\\]/g, "\\$&");
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 type InlineLinkItem = {
@@ -20,40 +20,39 @@ type ArticleContentProps = {
   supportingLinks?: {
     tools?: InlineLinkItem[];
     articles?: InlineLinkItem[];
+    comparePages?: InlineLinkItem[];
+    alternativePages?: InlineLinkItem[];
+    useCasePages?: InlineLinkItem[];
   };
 };
 
 export function ArticleContent({ locale, sections, supportingLinks }: ArticleContentProps) {
   const toolLinks = getLocalizedTools(locale)
-    .map((tool) => ({
-      slug: tool.slug,
-      name: tool.name,
-      href: "/" + locale + "/tools/" + tool.slug
-    }))
+    .map((tool) => ({ slug: tool.slug, name: tool.name, href: `/${locale}/tools/${tool.slug}` }))
     .sort((a, b) => b.name.length - a.name.length);
 
   const seenToolSlugs = new Set<string>();
 
-  function renderLinkedText(text: string): ReactNode {
+  function renderPlainText(text: string): ReactNode[] {
     if (!toolLinks.length) {
-      return text;
+      return [text];
     }
 
-    const pattern = new RegExp("(" + toolLinks.map((item) => escapeRegExp(item.name)).join("|") + ")", "g");
+    const pattern = new RegExp(`(${toolLinks.map((item) => escapeRegExp(item.name)).join("|")})`, "g");
     const parts = text.split(pattern);
 
     return parts.map((part, index) => {
       const match = toolLinks.find((item) => item.name === part);
 
       if (!match || seenToolSlugs.has(match.slug)) {
-        return <span key={part + "-" + index}>{part}</span>;
+        return <span key={`${part}-${index}`}>{part}</span>;
       }
 
       seenToolSlugs.add(match.slug);
 
       return (
         <Link
-          key={part + "-" + index}
+          key={`${part}-${index}`}
           href={match.href}
           className="font-medium text-cyan-200 underline decoration-cyan-400/40 underline-offset-4 transition hover:text-cyan-100 hover:decoration-cyan-300"
         >
@@ -63,10 +62,43 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
     });
   }
 
+  function renderLinkedText(text: string): ReactNode[] {
+    const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const nodes: ReactNode[] = [];
+    let lastIndex = 0;
+    let match: RegExpExecArray | null;
+
+    while ((match = linkPattern.exec(text)) !== null) {
+      const [fullMatch, label, href] = match;
+
+      if (match.index > lastIndex) {
+        nodes.push(...renderPlainText(text.slice(lastIndex, match.index)));
+      }
+
+      nodes.push(
+        <Link
+          key={`${href}-${match.index}`}
+          href={href}
+          className="font-medium text-cyan-200 underline decoration-cyan-400/40 underline-offset-4 transition hover:text-cyan-100 hover:decoration-cyan-300"
+        >
+          {label}
+        </Link>
+      );
+
+      lastIndex = match.index + fullMatch.length;
+    }
+
+    if (lastIndex < text.length) {
+      nodes.push(...renderPlainText(text.slice(lastIndex)));
+    }
+
+    return nodes.length ? nodes : [text];
+  }
+
   function renderLinkList(items: InlineLinkItem[]) {
     return items.map((item, index) => (
       <span key={item.href}>
-        {index > 0 ? (locale === "tr" ? ", " : ", ") : null}
+        {index > 0 ? ", " : null}
         <Link
           href={item.href}
           className="font-medium text-cyan-200 underline decoration-cyan-400/40 underline-offset-4 transition hover:text-cyan-100 hover:decoration-cyan-300"
@@ -78,23 +110,64 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
   }
 
   function renderSupportingLinks() {
-    if (!supportingLinks?.tools?.length && !supportingLinks?.articles?.length) {
+    if (!supportingLinks) {
       return null;
     }
 
-    const toolItems = supportingLinks?.tools ?? [];
-    const articleItems = supportingLinks?.articles ?? [];
+    const toolItems = supportingLinks.tools ?? [];
+    const articleItems = supportingLinks.articles ?? [];
+    const compareItems = supportingLinks.comparePages ?? [];
+    const alternativeItems = supportingLinks.alternativePages ?? [];
+    const useCaseItems = supportingLinks.useCasePages ?? [];
+
+    if (!toolItems.length && !articleItems.length && !compareItems.length && !alternativeItems.length && !useCaseItems.length) {
+      return null;
+    }
 
     return (
       <div className="mt-5 rounded-[20px] border border-cyan-400/14 bg-cyan-400/[0.04] px-4 py-3 text-sm leading-7 text-slate-300">
         {locale === "tr" ? (
-          <p>
-            Bu konuyla ilgili olarak {renderLinkList(toolItems)} detay sayfalarına ve {renderLinkList(articleItems)} rehberlerine de göz atabilirsiniz.
-          </p>
+          <>
+            {(toolItems.length || articleItems.length) ? (
+              <p>
+                Bu konuyla ilgili olarak {toolItems.length ? renderLinkList(toolItems) : null}
+                {toolItems.length && articleItems.length ? " detay sayfalarina ve " : toolItems.length ? " detay sayfalarina" : ""}
+                {articleItems.length ? renderLinkList(articleItems) : null}
+                {articleItems.length ? " rehberlerine de g�z atabilirsiniz." : "."}
+              </p>
+            ) : null}
+            {(compareItems.length || alternativeItems.length || useCaseItems.length) ? (
+              <p className="mt-2">
+                Karari derinlestirmek i�in {compareItems.length ? renderLinkList(compareItems) : null}
+                {compareItems.length && (alternativeItems.length || useCaseItems.length) ? ", " : ""}
+                {alternativeItems.length ? renderLinkList(alternativeItems) : null}
+                {alternativeItems.length && useCaseItems.length ? ", " : ""}
+                {useCaseItems.length ? renderLinkList(useCaseItems) : null}
+                {" sayfalarina da ge�ebilirsiniz."}
+              </p>
+            ) : null}
+          </>
         ) : (
-          <p>
-            For this topic, you can also explore {renderLinkList(toolItems)} tool pages and {renderLinkList(articleItems)} related guides.
-          </p>
+          <>
+            {(toolItems.length || articleItems.length) ? (
+              <p>
+                For this topic, you can also explore {toolItems.length ? renderLinkList(toolItems) : null}
+                {toolItems.length && articleItems.length ? " tool pages and " : toolItems.length ? " tool pages" : ""}
+                {articleItems.length ? renderLinkList(articleItems) : null}
+                {articleItems.length ? " related guides." : "."}
+              </p>
+            ) : null}
+            {(compareItems.length || alternativeItems.length || useCaseItems.length) ? (
+              <p className="mt-2">
+                To go deeper, open {compareItems.length ? renderLinkList(compareItems) : null}
+                {compareItems.length && (alternativeItems.length || useCaseItems.length) ? ", " : ""}
+                {alternativeItems.length ? renderLinkList(alternativeItems) : null}
+                {alternativeItems.length && useCaseItems.length ? ", " : ""}
+                {useCaseItems.length ? renderLinkList(useCaseItems) : null}
+                {" next."}
+              </p>
+            ) : null}
+          </>
         )}
       </div>
     );

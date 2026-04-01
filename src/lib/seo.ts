@@ -104,6 +104,10 @@ export function buildHomeTitle(locale: Locale) {
 }
 
 export function buildBlogPageTitle(article: LocalizedBlogArticle) {
+  if (normalizeMetaText(article.seoTitle)) {
+    return article.seoTitle;
+  }
+
   const base = cleanTitleTopic(article.title);
 
   return /\b2026\b/.test(base)
@@ -118,7 +122,7 @@ export function buildToolsPageTitle(locale: Locale, currentPage: number) {
 
 export function buildToolPageTitle(locale: Locale, tool: LocalizedTool) {
   return locale === "tr"
-    ? `${tool.name} incelemesi (2026): fiyat, artÄ±lar, eksiler ve ${tool.bestUseCase}`
+    ? `${tool.name} incelemesi (2026): fiyat, artılar, eksiler ve ${tool.bestUseCase}`
     : `${tool.name} Review (2026): Pricing, Pros & Cons for ${tool.bestUseCase}`;
 }
 
@@ -159,13 +163,17 @@ export function buildToolMetaDescription(locale: Locale, tool: LocalizedTool) {
   const example = ensureSentence(tool.realUseCaseExample.description);
   const tail =
     locale === "tr"
-      ? `${tool.name} iÃ§in fiyat Ã¶zeti, gÃ¼Ã§lÃ¼ yÃ¶nler, zayÄ±f yÃ¶nler, alternatifler ve en mantÄ±klÄ± kullanÄ±m alanlarÄ±nÄ± gÃ¶rÃ¼n.`
+      ? `${tool.name} için fiyat özeti, güçlü yönler, zayıf yönler, alternatifler ve en mantıklı kullanım alanlarını görün.`
       : `See ${tool.name}'s pricing, strengths, weaknesses, alternatives, and the workflows where it makes the most sense.`;
 
   return clipMetaDescription(`${base} ${example} ${tail}`);
 }
 
 export function buildBlogMetaDescription(locale: Locale, article: LocalizedBlogArticle) {
+  if (normalizeMetaText(article.seoDescription)) {
+    return clipMetaDescription(article.seoDescription);
+  }
+
   const lead = buildBlogSeoLead(locale, article);
   const excerptLead = getFirstSentence(article.excerpt);
   return clipMetaDescription(`${lead} ${excerptLead}`);

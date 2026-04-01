@@ -24,6 +24,40 @@ export type BlogSection = {
   };
 };
 
+export type BlogTemplateKind =
+  | "MANUAL"
+  | "BEST_TOOLS"
+  | "TOOL_COMPARISON"
+  | "ALTERNATIVES"
+  | "USE_CASE_GUIDE";
+
+export type BlogComparisonPair = {
+  leftSlug: string;
+  rightSlug: string;
+};
+
+export type BlogContentGraph = {
+  kind: BlogTemplateKind;
+  primaryToolSlug?: string;
+  secondaryToolSlug?: string;
+  useCaseSlug?: string;
+  comparePairs?: BlogComparisonPair[];
+  alternativeToolSlugs?: string[];
+  useCasePageSlugs?: string[];
+  relatedArticleSlugs?: string[];
+  keywords?: string[];
+};
+
+export type BlogLocalizedContent = {
+  title: string;
+  excerpt: string;
+  intro: string;
+  categoryLabel: string;
+  seoTitle: string;
+  seoDescription: string;
+  sections: BlogSection[];
+};
+
 export type BlogEntry = {
   slug: string;
   categorySlug: string;
@@ -31,18 +65,8 @@ export type BlogEntry = {
   createdAt?: string;
   updatedAt?: string;
   relatedToolSlugs: string[];
-  locales: Record<
-    Locale,
-    {
-      title: string;
-      excerpt: string;
-      intro: string;
-      categoryLabel: string;
-      seoTitle: string;
-      seoDescription: string;
-      sections: BlogSection[];
-    }
-  >;
+  contentGraph?: BlogContentGraph;
+  locales: Record<Locale, BlogLocalizedContent>;
 };
 
 export type LocalizedBlogArticle = {
@@ -52,6 +76,7 @@ export type LocalizedBlogArticle = {
   createdAt?: string;
   updatedAt?: string;
   relatedToolSlugs: string[];
+  contentGraph?: BlogContentGraph;
   title: string;
   excerpt: string;
   intro: string;

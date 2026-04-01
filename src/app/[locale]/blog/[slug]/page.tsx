@@ -104,11 +104,11 @@ export default async function BlogDetailPage({
   const primaryTool = relatedTools[0];
   const relatedArticles = getRelatedArticles(safeLocale, article.slug, 3);
   const heroPrimaryHref = primaryTool ? getToolOutboundUrl(primaryTool) : `/${safeLocale}/tools`;
-  const comparisonHref = `/${safeLocale}/categories/comparisons`;
   const leadSections = article.sections.slice(0, 2);
   const tailSections = article.sections.slice(2);
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/blog/${article.slug}`);
   const inlineSupportingLinks = getBlogSupportingLinks(safeLocale, article.slug, 2, 2);
+  const comparisonHref = inlineSupportingLinks.comparePages[0]?.href ?? `/${safeLocale}/categories/comparisons`;
   const publishedLabel = safeLocale === "tr" ? "Yayınlandı" : "Published";
   const updatedLabel = safeLocale === "tr" ? "Güncellendi" : "Updated";
   const publishedSource = resolveBlogPublishDate(article);
