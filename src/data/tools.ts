@@ -1,4 +1,5 @@
 import type { ToolEntry } from "@/types/catalog";
+import { premiumTools } from "@/data/tools-premium";
 
 export const tools: ToolEntry[] = [
   {
@@ -7836,5 +7837,6 @@ export const tools: ToolEntry[] = [
             seoDescription: "Review AdCreative.ai with practical use cases, pros, cons, and real workflow fit in one short summary."
       }
 }
-  }
+  },
+  ...premiumTools
 ];
