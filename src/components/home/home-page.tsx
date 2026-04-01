@@ -137,9 +137,9 @@ function getToolsBySlugs(toolMap: Map<string, LocalizedTool>, locale: Locale, sl
 
 function buildFeaturedComparisonCards(locale: Locale, toolMap: Map<string, LocalizedTool>): HomeComparisonCard[] {
   const pairs: Array<[string, string, string]> = [
-    ["chatgpt", "claude", locale === "tr" ? "Yazi" : "Writing"],
-    ["chatgpt", "gemini", locale === "tr" ? "Genel kullanim" : "General"],
-    ["midjourney", "adobe-firefly", locale === "tr" ? "G?rsel" : "Visual"]
+    ["chatgpt", "claude", locale === "tr" ? "Yazı" : "Writing"],
+    ["chatgpt", "gemini", locale === "tr" ? "Genel kullanım" : "General"],
+    ["midjourney", "adobe-firefly", locale === "tr" ? "Görsel" : "Visual"]
   ];
 
   return pairs.reduce<HomeComparisonCard[]>((items, [leftSlug, rightSlug, highlight]) => {
@@ -152,11 +152,11 @@ function buildFeaturedComparisonCards(locale: Locale, toolMap: Map<string, Local
 
     items.push({
       icon: "VS",
-      eyebrow: locale === "tr" ? "?ne ?ikan compare" : "Featured compare",
+      eyebrow: locale === "tr" ? "öne ?ikan compare" : "Featured compare",
       title: `${left.name} vs ${right.name}`,
       description:
         locale === "tr"
-          ? `${left.name} ve ${right.name} i?in fiyat, g??l? y?nler ve hangi workflow'da daha mantikli olduklarini hizlica g?r?n.`
+          ? `${left.name} ve ${right.name} için fiyat, güçlü yönler ve hangi workflow'da daha mantıklı olduklarini hızlıca görün.`
           : `Compare ${left.name} and ${right.name} across pricing, strengths, and which workflow each tool fits better.`,
       href: buildComparisonPath(locale, left.slug, right.slug),
       highlight

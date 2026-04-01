@@ -131,19 +131,19 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
             {(toolItems.length || articleItems.length) ? (
               <p>
                 Bu konuyla ilgili olarak {toolItems.length ? renderLinkList(toolItems) : null}
-                {toolItems.length && articleItems.length ? " detay sayfalarina ve " : toolItems.length ? " detay sayfalarina" : ""}
+                {toolItems.length && articleItems.length ? " detay sayfalarına ve " : toolItems.length ? " detay sayfalarına" : ""}
                 {articleItems.length ? renderLinkList(articleItems) : null}
-                {articleItems.length ? " rehberlerine de g�z atabilirsiniz." : "."}
+                {articleItems.length ? " rehberlerine de göz atabilirsiniz." : "."}
               </p>
             ) : null}
             {(compareItems.length || alternativeItems.length || useCaseItems.length) ? (
               <p className="mt-2">
-                Karari derinlestirmek i�in {compareItems.length ? renderLinkList(compareItems) : null}
+                Karar? derinle?tirmek için {compareItems.length ? renderLinkList(compareItems) : null}
                 {compareItems.length && (alternativeItems.length || useCaseItems.length) ? ", " : ""}
                 {alternativeItems.length ? renderLinkList(alternativeItems) : null}
                 {alternativeItems.length && useCaseItems.length ? ", " : ""}
                 {useCaseItems.length ? renderLinkList(useCaseItems) : null}
-                {" sayfalarina da ge�ebilirsiniz."}
+                {" sayfalar?na da ge?ebilirsiniz."}
               </p>
             ) : null}
           </>

@@ -54,7 +54,7 @@ function buildUseCaseDescription(locale: Locale, title: string, tools: string[])
   const toolNames = tools.slice(0, 3).join(locale === "tr" ? ", " : ", ");
 
   return locale === "tr"
-    ? `${title} icin en mantikli AI araclarini, compare linklerini ve rehber iceriklerini inceleyin: ${toolNames}.`
+    ? `${title} icin en mantıklı AI araclarini, compare linklerini ve rehber iceriklerini inceleyin: ${toolNames}.`
     : `Review the best AI tools, comparison links, and supporting guides for ${title}: ${toolNames}.`;
 }
 
@@ -64,7 +64,7 @@ function buildWorkflowDescriptions(locale: Locale, stepLabels: [string, string, 
   if (locale === "tr") {
     return [
       `${stepLabels[0]} asamasinda ${first ?? "ilk araci"} ile baslayip hedef ciktinin cercevesini daha hizli kurabilirsiniz.`,
-      `${stepLabels[1]} adiminda ${second ?? first ?? "ikinci araci"} ile ana uretimi hizlandirmak daha mantikli olabilir.`,
+      `${stepLabels[1]} adiminda ${second ?? first ?? "ikinci araci"} ile ana uretimi hizlandirmak daha mantıklı olabilir.`,
       `${stepLabels[2]} bolumunde ${third ?? second ?? first ?? "son araci"} ile son kontrolu veya teslim akisina gecmek daha duzenli bir sonuc verir.`
     ];
   }
@@ -78,7 +78,7 @@ function buildWorkflowDescriptions(locale: Locale, stepLabels: [string, string, 
 
 function buildWhyItFits(locale: Locale, toolName: string, bestUseCase: string, summary: string) {
   return locale === "tr"
-    ? `${toolName}, ${bestUseCase.toLowerCase()} tarafinda daha guclu oldugu icin bu use-case icinde mantikli bir adaydir. ${summary}`
+    ? `${toolName}, ${bestUseCase.toLowerCase()} tarafinda daha guclu oldugu icin bu use-case icinde mantıklı bir adaydir. ${summary}`
     : `${toolName} is a strong candidate here because it fits ${bestUseCase.toLowerCase()} particularly well. ${summary}`;
 }
 

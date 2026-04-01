@@ -8,21 +8,18 @@ function repairContentText(value) {
 }
 
 const root = process.cwd();
-const fixMode = process.argv.includes("--fix");
 const files = walkContentFiles(root);
-const changedFiles = [];
+const repairedFiles = [];
+
 for (const file of files) {
   const original = fs.readFileSync(file, "utf8");
   const repaired = repairContentText(original);
   const relativeFile = path.relative(root, file).replace(/\\/g, "/");
 
   if (repaired !== original) {
-    changedFiles.push(relativeFile);
-    if (fixMode) {
-      writeUtf8File(file, repaired);
-    }
+    writeUtf8File(file, repaired);
+    repairedFiles.push(relativeFile);
   }
-
 }
 
 const sentinelCheck = repairContentText(turkishSentinel);
@@ -31,18 +28,11 @@ if (sentinelCheck !== turkishSentinel) {
   process.exit(1);
 }
 
-if (changedFiles.length) {
-  const label = fixMode ? "repaired" : "detected";
-  console.log(`[encoding] ${label} suspicious mojibake files:`);
-  for (const file of changedFiles) {
+if (repairedFiles.length) {
+  console.log("[encoding] repaired suspicious mojibake files:");
+  for (const file of repairedFiles) {
     console.log(`- ${file}`);
   }
-  if (!fixMode) {
-    process.exit(1);
-  }
-}
-
-
-if (!changedFiles.length) {
+} else {
   console.log("[encoding] No suspicious encoding found.");
 }
