@@ -6486,7 +6486,7 @@ export const tools: ToolEntry[] = [
             whoShouldUse: [
                   "Video üreticileri",
                   "Ajans ekipleri",
-                  "??erik üreticileri"
+                  "İçerik üreticileri",
             ],
             moneyUseCases: [
                   {
@@ -6584,7 +6584,7 @@ export const tools: ToolEntry[] = [
             whoShouldUse: [
                   "Video üreticileri",
                   "Ajans ekipleri",
-                  "??erik üreticileri"
+                  "İçerik üreticileri",
             ],
             moneyUseCases: [
                   {
@@ -6682,7 +6682,7 @@ export const tools: ToolEntry[] = [
             whoShouldUse: [
                   "Video üreticileri",
                   "Ajans ekipleri",
-                  "??erik üreticileri"
+                  "İçerik üreticileri",
             ],
             moneyUseCases: [
                   {
@@ -6780,7 +6780,7 @@ export const tools: ToolEntry[] = [
             whoShouldUse: [
                   "Video üreticileri",
                   "Ajans ekipleri",
-                  "??erik üreticileri"
+                  "İçerik üreticileri",
             ],
             moneyUseCases: [
                   {
@@ -6798,7 +6798,7 @@ export const tools: ToolEntry[] = [
             ],
             features: [
                   "Generative kısa video için odaklı kullanım",
-                  "K?sa generative video üretimi ve görsel hareket efektleri",
+                  "Kısa generative video üretimi ve görsel hareket efektleri",
                   "Tekrarlayan iş akışlarında hız kazanımı",
                   "Gerçek teslim senaryolarına uygun çıktı desteği"
             ],
@@ -6872,12 +6872,12 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
             name: "Recraft",
-            shortDescription: "Recraft, marka stili görseller, ikonlar ve d?zenlenebilir tasar?m assetleri için kullanılan bir AI aracıdır.",
-            longDescription: "Recraft, marka stili görseller, ikonlar ve d?zenlenebilir tasar?m assetleri tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle marka görselleri ve asset üretimi odağında gerçek iş akışlarına kolayca uyarlanabilir.",
+            shortDescription: "Recraft, marka stili görseller, ikonlar ve düzenlenebilir tasarım assetleri için kullanılan bir AI aracıdır.",
+            longDescription: "Recraft, marka stili görseller, ikonlar ve düzenlenebilir tasarım assetleri tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle marka görselleri ve asset üretimi odağında gerçek iş akışlarına kolayca uyarlanabilir.",
             bestUseCase: "Marka görselleri ve asset üretimi",
             whoShouldUse: [
                   "Tasarımcılar",
-                  "??erik üreticileri",
+                  "İçerik üreticileri",
                   "Freelancer'lar"
             ],
             moneyUseCases: [
@@ -6896,7 +6896,7 @@ export const tools: ToolEntry[] = [
             ],
             features: [
                   "Marka görselleri ve asset üretimi için odaklı kullanım",
-                  "Marka stili görseller, ikonlar ve d?zenlenebilir tasar?m assetleri",
+                  "Marka stili görseller, ikonlar ve düzenlenebilir tasarım assetleri",
                   "Tekrarlayan iş akışlarında hız kazanımı",
                   "Gerçek teslim senaryolarına uygun çıktı desteği"
             ],
@@ -6975,7 +6975,7 @@ export const tools: ToolEntry[] = [
             bestUseCase: "Görsel üretim denemeleri",
             whoShouldUse: [
                   "Tasarımcılar",
-                  "??erik üreticileri",
+                  "İçerik üreticileri",
                   "Freelancer'lar"
             ],
             moneyUseCases: [
@@ -7068,8 +7068,8 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
             name: "Phind",
-            shortDescription: "Phind, geliştirici odaklı arama ve teknik araştırma cevaplar? için kullanılan bir AI aracıdır.",
-            longDescription: "Phind, geliştirici odaklı arama ve teknik araştırma cevaplar? tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle teknik araştırma ve arama odağında gerçek iş akışlarına kolayca uyarlanabilir.",
+            shortDescription: "Phind, geliştirici odaklı arama ve teknik araştırma cevapları için kullanılan bir AI aracıdır.",
+            longDescription: "Phind, geliştirici odaklı arama ve teknik araştırma cevapları tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle teknik araştırma ve arama odağında gerçek iş akışlarına kolayca uyarlanabilir.",
             bestUseCase: "Teknik araştırma ve arama",
             whoShouldUse: [
                   "Araştırmac?lar",
@@ -7092,7 +7092,7 @@ export const tools: ToolEntry[] = [
             ],
             features: [
                   "Teknik araştırma ve arama için odaklı kullanım",
-                  "Geli?tirici odaklı arama ve teknik araştırma cevaplar?",
+                  "Geliştirici odaklı arama ve teknik araştırma cevapları",
                   "Tekrarlayan iş akışlarında hız kazanımı",
                   "Gerçek teslim senaryolarına uygun çıktı desteği"
             ],
@@ -7362,7 +7362,7 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
             name: "BLACKBOX AI",
-            shortDescription: "BLACKBOX AI, kod yard?m?, snippet üretimi ve geliştirici kısayollar? için kullanılan bir AI aracıdır.",
+            shortDescription: "BLACKBOX AI, kod yardımı, snippet üretimi ve geliştirici kısayolları için kullanılan bir AI aracıdır.",
             longDescription: "BLACKBOX AI, kod yard?m?, snippet üretimi ve geliştirici kısayollar? tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle geliştirici kısayollar? ve kod yard?m? odağında gerçek iş akışlarına kolayca uyarlanabilir.",
             bestUseCase: "Geli?tirici kısayollar? ve kod yard?m?",
             whoShouldUse: [
@@ -7386,7 +7386,7 @@ export const tools: ToolEntry[] = [
             ],
             features: [
                   "Geli?tirici kısayollar? ve kod yard?m? için odaklı kullanım",
-                  "Kod yard?m?, snippet üretimi ve geliştirici kısayollar?",
+                  "Kod yardımı, snippet üretimi ve geliştirici kısayolları",
                   "Tekrarlayan iş akışlarında hız kazanımı",
                   "Gerçek teslim senaryolarına uygun çıktı desteği"
             ],
@@ -7460,9 +7460,9 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
             name: "HARPA AI",
-            shortDescription: "HARPA AI, tarayıcı otomasyonu, sayfa özetleri ve iş akışı promptlar? için kullanılan bir AI aracıdır.",
-            longDescription: "HARPA AI, tarayıcı otomasyonu, sayfa özetleri ve iş akışı promptlar? tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle tarayıcı tabanl? iş akışı otomasyonu odağında gerçek iş akışlarına kolayca uyarlanabilir.",
-            bestUseCase: "Taray?c? tabanl? iş akışı otomasyonu",
+            shortDescription: "HARPA AI, tarayıcı otomasyonu, sayfa özetleri ve iş akışı promptları için kullanılan bir AI aracıdır.",
+            longDescription: "HARPA AI, tarayıcı otomasyonu, sayfa özetleri ve iş akışı promptları tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle tarayıcı tabanlı iş akışı otomasyonu odağında gerçek iş akışlarına kolayca uyarlanabilir.",
+            bestUseCase: "Tarayıcı tabanlı iş akışı otomasyonu",
             whoShouldUse: [
                   "Araştırmac?lar",
                   "Operasyon ekipleri",
@@ -7483,8 +7483,8 @@ export const tools: ToolEntry[] = [
                   }
             ],
             features: [
-                  "Taray?c? tabanl? iş akışı otomasyonu için odaklı kullanım",
-                  "Taray?c? otomasyonu, sayfa özetleri ve iş akışı promptlar?",
+                  "Tarayıcı tabanlı iş akışı otomasyonu için odaklı kullanım",
+                  "Tarayıcı otomasyonu, sayfa özetleri ve iş akışı promptları",
                   "Tekrarlayan iş akışlarında hız kazanımı",
                   "Gerçek teslim senaryolarına uygun çıktı desteği"
             ],
@@ -7558,8 +7558,8 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
             name: "Beautiful.ai",
-            shortDescription: "Beautiful.ai, daha temiz slayt yap?s?yla AI destekli sunum hazırlama için kullanılan bir AI aracıdır.",
-            longDescription: "Beautiful.ai, daha temiz slayt yap?s?yla AI destekli sunum hazırlama tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle sunum hazırlama odağında gerçek iş akışlarına kolayca uyarlanabilir.",
+            shortDescription: "Beautiful.ai, daha temiz slayt yapısıyla AI destekli sunum hazırlama için kullanılan bir AI aracıdır.",
+            longDescription: "Beautiful.ai, daha temiz slayt yapısıyla AI destekli sunum hazırlama tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle sunum hazırlama odağında gerçek iş akışlarına kolayca uyarlanabilir.",
             bestUseCase: "Sunum hazırlama",
             whoShouldUse: [
                   "Araştırmac?lar",
@@ -7582,7 +7582,7 @@ export const tools: ToolEntry[] = [
             ],
             features: [
                   "Sunum hazırlama için odaklı kullanım",
-                  "Daha temiz slayt yap?s?yla AI destekli sunum hazırlama",
+                  "Daha temiz slayt yapısıyla AI destekli sunum hazırlama",
                   "Tekrarlayan iş akışlarında hız kazanımı",
                   "Gerçek teslim senaryolarına uygun çıktı desteği"
             ],
@@ -7656,8 +7656,8 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
             name: "Pitch",
-            shortDescription: "Pitch, ekip sunumları, deck hazırlama ve ortak hikâye anlat?m? için kullanılan bir AI aracıdır.",
-            longDescription: "Pitch, ekip sunumları, deck hazırlama ve ortak hikâye anlat?m? tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle ekip sunumları ve deck hazırlama odağında gerçek iş akışlarına kolayca uyarlanabilir.",
+            shortDescription: "Pitch, ekip sunumları, deck hazırlama ve ortak hikâye anlatımı için kullanılan bir AI aracıdır.",
+            longDescription: "Pitch, ekip sunumları, deck hazırlama ve ortak hikâye anlatımı tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle ekip sunumları ve deck hazırlama odağında gerçek iş akışlarına kolayca uyarlanabilir.",
             bestUseCase: "Ekip sunumları ve deck hazırlama",
             whoShouldUse: [
                   "Araştırmac?lar",
@@ -7680,7 +7680,7 @@ export const tools: ToolEntry[] = [
             ],
             features: [
                   "Ekip sunumları ve deck hazırlama için odaklı kullanım",
-                  "Ekip sunumları, deck hazırlama ve ortak hikâye anlat?m?",
+                  "Ekip sunumları, deck hazırlama ve ortak hikâye anlatımı",
                   "Tekrarlayan iş akışlarında hız kazanımı",
                   "Gerçek teslim senaryolarına uygun çıktı desteği"
             ],
@@ -7754,12 +7754,12 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
             name: "AdCreative.ai",
-            shortDescription: "AdCreative.ai, reklam kreatifleri, metin varyasyonlar? ve kampanya assetleri için kullanılan bir AI aracıdır.",
-            longDescription: "AdCreative.ai, reklam kreatifleri, metin varyasyonlar? ve kampanya assetleri tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle reklam kreatifleri ve kampanya assetleri odağında gerçek iş akışlarına kolayca uyarlanabilir.",
+            shortDescription: "AdCreative.ai, reklam kreatifleri, metin varyasyonları ve kampanya assetleri için kullanılan bir AI aracıdır.",
+            longDescription: "AdCreative.ai, reklam kreatifleri, metin varyasyonları ve kampanya assetleri tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle reklam kreatifleri ve kampanya assetleri odağında gerçek iş akışlarına kolayca uyarlanabilir.",
             bestUseCase: "Reklam kreatifleri ve kampanya assetleri",
             whoShouldUse: [
                   "Tasarımcılar",
-                  "??erik üreticileri",
+                  "İçerik üreticileri",
                   "Freelancer'lar"
             ],
             moneyUseCases: [
@@ -7778,7 +7778,7 @@ export const tools: ToolEntry[] = [
             ],
             features: [
                   "Reklam kreatifleri ve kampanya assetleri için odaklı kullanım",
-                  "Reklam kreatifleri, metin varyasyonlar? ve kampanya assetleri",
+                  "Reklam kreatifleri, metin varyasyonları ve kampanya assetleri",
                   "Tekrarlayan iş akışlarında hız kazanımı",
                   "Gerçek teslim senaryolarına uygun çıktı desteği"
             ],

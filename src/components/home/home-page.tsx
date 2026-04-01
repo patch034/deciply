@@ -152,11 +152,11 @@ function buildFeaturedComparisonCards(locale: Locale, toolMap: Map<string, Local
 
     items.push({
       icon: "VS",
-      eyebrow: locale === "tr" ? "öne ?ikan compare" : "Featured compare",
+      eyebrow: locale === "tr" ? "öne çıkan compare" : "Featured compare",
       title: `${left.name} vs ${right.name}`,
       description:
         locale === "tr"
-          ? `${left.name} ve ${right.name} için fiyat, güçlü yönler ve hangi workflow'da daha mantıklı olduklarini hızlıca görün.`
+          ? `${left.name} ve ${right.name} için fiyat, güçlü yönler ve hangi workflow'da daha mantıklı olduklarını hızlıca görün.`
           : `Compare ${left.name} and ${right.name} across pricing, strengths, and which workflow each tool fits better.`,
       href: buildComparisonPath(locale, left.slug, right.slug),
       highlight

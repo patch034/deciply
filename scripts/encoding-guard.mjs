@@ -15,6 +15,10 @@ const suspiciousAsciiFallbackPattern = new RegExp(
   `\\b(?:[${turkishUpper}]?[${turkishLower}]*[1_][${turkishLower}]+(?:[1_][${turkishLower}]+)*|0[${turkishUpper}${turkishLower}]{2,})\\b`,
   "gu"
 );
+const suspiciousQuestionFallbackPattern = new RegExp(
+  `\\b(?:[${turkishUpper}${turkishLower}]*\\?[${turkishLower}]+(?:\\?[${turkishLower}]+)*|\\?+[${turkishLower}]+)\\b`,
+  "gu"
+);
 const ignoredAsciiFallbackTokens = new Set(["_blank", "1fr_auto"]);
 
 const windows1252ReverseMap = new Map([
@@ -78,8 +82,9 @@ function decodeWindows1252Utf8(value) {
 function scoreEncodingCandidate(value) {
   const suspiciousCount = value.match(suspiciousEncodingPattern)?.length ?? 0;
   const fallbackCount = value.match(suspiciousAsciiFallbackPattern)?.length ?? 0;
+  const questionFallbackCount = value.match(suspiciousQuestionFallbackPattern)?.length ?? 0;
 
-  return suspiciousCount + fallbackCount;
+  return suspiciousCount + fallbackCount + questionFallbackCount;
 }
 
 export function hasSuspiciousEncoding(value) {
@@ -88,12 +93,13 @@ export function hasSuspiciousEncoding(value) {
 
 export function hasTurkishAsciiFallback(value) {
   const matches = value.match(suspiciousAsciiFallbackPattern);
+  const questionMatches = value.match(suspiciousQuestionFallbackPattern);
 
-  if (!matches) {
-    return false;
+  if (matches && matches.some((token) => !ignoredAsciiFallbackTokens.has(token))) {
+    return true;
   }
 
-  return matches.some((token) => !ignoredAsciiFallbackTokens.has(token));
+  return Boolean(questionMatches?.length);
 }
 
 export function repairSuspiciousEncoding(value) {
