@@ -13,7 +13,8 @@
     "prisma:studio": "prisma studio",
     "verify:encoding": "node scripts/verify-encoding.mjs",
     "repair:encoding": "node scripts/repair-encoding.mjs",
-    "fix:encoding": "npm run repair:encoding"
+    "fix:encoding": "npm run repair:encoding",
+    "generate:favicon": "node scripts/generate-favicon-assets.mjs"
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",
