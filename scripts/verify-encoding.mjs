@@ -19,6 +19,7 @@ const blogAsciiFallbackScopes = [
   "src/data/blog.ts",
   "src/data/blog-playbooks.ts",
   "src/data/blog-generated.ts",
+  "src/data/blog-generated-seo.ts",
   "src/lib/blog.ts",
   "src/lib/seo.ts",
   "src/app/[locale]/blog/",

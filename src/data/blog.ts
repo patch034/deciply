@@ -1,4 +1,5 @@
 import { generatedBlogArticles } from "@/data/blog-generated";
+import { seoGeneratedBlogArticles } from "@/data/blog-generated-seo";
 import { assertEncodingHealth, normalizeEncodingTree } from "@/lib/encoding";
 import type { BlogEntry, BlogSection, BlogSubSection } from "@/types/blog";
 
@@ -2625,4 +2626,4 @@ const curatedManualBlogArticles = allBlogArticles
   .filter((article) => approvedBlogSlugs.has(article.slug))
   .map(withBlogMeta);
 
-export const blogArticles: BlogEntry[] = [...curatedManualBlogArticles, ...generatedBlogArticles].map(withBlogMeta);
+export const blogArticles: BlogEntry[] = [...curatedManualBlogArticles, ...generatedBlogArticles, ...seoGeneratedBlogArticles].map(withBlogMeta);
