@@ -17,6 +17,7 @@ const ignoredAsciiFallbackTokens = new Set(["_blank", "1fr_auto"]);
 const blogAsciiFallbackScopes = [
   "src/data/blog.ts",
   "src/data/blog-playbooks.ts",
+  "src/data/blog-generated.ts",
   "src/lib/blog.ts",
   "src/lib/seo.ts",
   "src/app/[locale]/blog/",
