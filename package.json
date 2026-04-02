@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npm run verify:encoding",
+    "prebuild": "npm run verify:encoding && npm run verify:blog-dates",
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
@@ -12,6 +12,7 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio",
     "verify:encoding": "node scripts/verify-encoding.mjs",
+    "verify:blog-dates": "node scripts/verify-blog-dates.mjs",
     "repair:encoding": "node scripts/repair-encoding.mjs",
     "fix:encoding": "npm run repair:encoding",
     "generate:favicon": "node scripts/generate-favicon-assets.mjs"
@@ -39,3 +40,7 @@
     "typescript": "^5.8.2"
   }
 }
+
+
+
+

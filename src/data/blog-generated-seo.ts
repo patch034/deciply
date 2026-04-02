@@ -1,4 +1,4 @@
-import { tools } from "@/data/tools";
+﻿import { tools } from "@/data/tools";
 import { useCaseOptions } from "@/data/tool-taxonomy";
 import { buildComparisonPath } from "@/lib/comparisons";
 import type { Locale } from "@/i18n/config";
@@ -39,9 +39,9 @@ const categoryLabels = {
 
 const pricingLabels = {
   tr: {
-    FREE: "Ücretsiz",
+    FREE: "Ãœcretsiz",
     FREEMIUM: "Freemium",
-    PAID: "Ücretli"
+    PAID: "Ãœcretli"
   },
   en: {
     FREE: "Free",
@@ -126,23 +126,23 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
   const firstPair = buildFirstPairLabel(locale, seed);
 
   const title = locale === "tr"
-    ? `${topicLabel} için en iyi AI araçları`
+    ? `${topicLabel} iÃ§in en iyi AI araÃ§larÄ±`
     : `Best AI tools for ${topicLabel}`;
 
   const excerpt = locale === "tr"
-    ? `${topicLabel} için hızlı ama gerçekçi bir iş akışı kurmak isteyenler için pratik araç rehberi.`
+    ? `${topicLabel} iÃ§in hÄ±zlÄ± ama gerÃ§ekÃ§i bir iÅŸ akÄ±ÅŸÄ± kurmak isteyenler iÃ§in pratik araÃ§ rehberi.`
     : `A practical guide for building a fast but realistic workflow around ${topicLower}.`;
 
   const intro = locale === "tr"
-    ? `${items.map((item) => item.name).join(", ")} aynı işi aynı şekilde yapmaz. ${topicLabel} için doğru seçim, önce hedef çıktıyı, sonra edit ve yayın akışını netleştirmekten geçer.`
+    ? `${items.map((item) => item.name).join(", ")} aynÄ± iÅŸi aynÄ± ÅŸekilde yapmaz. ${topicLabel} iÃ§in doÄŸru seÃ§im, Ã¶nce hedef Ã§Ä±ktÄ±yÄ±, sonra edit ve yayÄ±n akÄ±ÅŸÄ±nÄ± netleÅŸtirmekten geÃ§er.`
     : `${items.map((item) => item.name).join(", ")} do not solve the same job in the same way. The better choice for ${topicLower} starts with defining the output, then the editing and publishing flow.`;
 
   const seoTitle = locale === "tr"
-    ? `${topicLabel} için en iyi AI araçları | Deciply`
+    ? `${topicLabel} iÃ§in en iyi AI araÃ§larÄ± | Deciply`
     : `Best AI tools for ${topicLabel} | Deciply`;
 
   const seoDescription = locale === "tr"
-    ? `${topicLabel} için en iyi araçları, gerçek workflow adımlarını, compare linklerini ve tool sayfalarını inceleyin.`
+    ? `${topicLabel} iÃ§in en iyi araÃ§larÄ±, gerÃ§ek workflow adÄ±mlarÄ±nÄ±, compare linklerini ve tool sayfalarÄ±nÄ± inceleyin.`
     : `Review the best tools for ${topicLower}, plus the workflow steps, compare links, and tool pages worth opening next.`;
 
   const workflowSteps = seed.workflow[locale];
@@ -157,32 +157,32 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
     seoDescription,
     sections: [
       section(
-        locale === "tr" ? "Bu rehber kimler için?" : "Who is this guide for?",
+        locale === "tr" ? "Bu rehber kimler iÃ§in?" : "Who is this guide for?",
         [
           seed.audience[locale],
           locale === "tr"
-            ? `${topicLabel} tarafında asıl amaç daha hızlı üretmek değil, daha az revizyonla yayınlanabilir çıktı almak.`
+            ? `${topicLabel} tarafÄ±nda asÄ±l amaÃ§ daha hÄ±zlÄ± Ã¼retmek deÄŸil, daha az revizyonla yayÄ±nlanabilir Ã§Ä±ktÄ± almak.`
             : `The real goal is not just speed; it is creating publishable output with fewer revisions in ${topicLower}.`
         ],
         {
           comparison: {
-            title: locale === "tr" ? "Hızlı karar özeti" : "Quick decision map",
+            title: locale === "tr" ? "HÄ±zlÄ± karar Ã¶zeti" : "Quick decision map",
             items: items.slice(0, 4).map((item) => ({
               label: item.name,
-              value: `${item.bestUseCase} · ${item.pricingLabel}`
+              value: `${item.bestUseCase} Â· ${item.pricingLabel}`
             }))
           }
         }
       ),
       section(
-        locale === "tr" ? "İlk bakılacak araçlar" : "Tools to check first",
+        locale === "tr" ? "Ä°lk bakÄ±lacak araÃ§lar" : "Tools to check first",
         [
           locale === "tr"
-            ? `${topicLabel} için ilk turda ${items.slice(0, 3).map((item) => toolLink(locale, item.slug)).join(", ")} açmak, tek araca takılı kalmadan kısa liste oluşturmanı sağlar.`
+            ? `${topicLabel} iÃ§in ilk turda ${items.slice(0, 3).map((item) => toolLink(locale, item.slug)).join(", ")} aÃ§mak, tek araca takÄ±lÄ± kalmadan kÄ±sa liste oluÅŸturmanÄ± saÄŸlar.`
             : `For ${topicLower}, opening ${items.slice(0, 3).map((item) => toolLink(locale, item.slug)).join(", ")} first helps you build a shortlist without locking onto one app too early.`,
           compareLinks.length
             ? locale === "tr"
-              ? `Karar yakın kaldığında ${compareLinks.join(", ")} linkleri en hızlı ayrımı yapar.`
+              ? `Karar yakÄ±n kaldÄ±ÄŸÄ±nda ${compareLinks.join(", ")} linkleri en hÄ±zlÄ± ayrÄ±mÄ± yapar.`
               : `When the decision stays close, ${compareLinks.join(", ")} gives the fastest comparison path.`
             : ""
         ].filter(Boolean),
@@ -193,50 +193,50 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
               [
                 item.shortDescription,
                 locale === "tr"
-                  ? `${item.name}, ${topicLabel} işinde daha iyi sonuç için ${item.bestUseCase.toLowerCase()} tarafında kullanıldığında daha anlamlı olur.`
+                  ? `${item.name}, ${topicLabel} iÅŸinde daha iyi sonuÃ§ iÃ§in ${item.bestUseCase.toLowerCase()} tarafÄ±nda kullanÄ±ldÄ±ÄŸÄ±nda daha anlamlÄ± olur.`
                   : `${item.name} tends to work better when you use it for ${item.bestUseCase.toLowerCase()} within the ${topicLower} workflow.`
               ],
               [item.pros[0] ?? item.bestUseCase, item.cons[0] ?? item.pricingLabel],
-              locale === "tr" ? "Tool sayfası" : "Open tool page",
+              locale === "tr" ? "Tool sayfasÄ±" : "Open tool page",
               `/${locale}/tools/${item.slug}`
             )
           )
         }
       ),
       section(
-        locale === "tr" ? "Pratik workflow örneği" : "Practical workflow example",
+        locale === "tr" ? "Pratik workflow Ã¶rneÄŸi" : "Practical workflow example",
         [
           locale === "tr"
-            ? `${workflowSteps[0]} aşamasında ${workflowPairs[0]?.name ?? items[0].name} ile ilk taslağı kur, ${workflowSteps[1]} aşamasında ${workflowPairs[1]?.name ?? items[1].name} ile tonu ve yapıyı düzelt, ${workflowSteps[2]} aşamasında ${workflowPairs[2]?.name ?? items[2].name} ile son kontrolü yap.`
+            ? `${workflowSteps[0]} aÅŸamasÄ±nda ${workflowPairs[0]?.name ?? items[0].name} ile ilk taslaÄŸÄ± kur, ${workflowSteps[1]} aÅŸamasÄ±nda ${workflowPairs[1]?.name ?? items[1].name} ile tonu ve yapÄ±yÄ± dÃ¼zelt, ${workflowSteps[2]} aÅŸamasÄ±nda ${workflowPairs[2]?.name ?? items[2].name} ile son kontrolÃ¼ yap.`
             : `At ${workflowSteps[0].toLowerCase()}, use ${workflowPairs[0]?.name ?? items[0].name} to get the first draft moving, then use ${workflowPairs[1]?.name ?? items[1].name} for tone and structure, and finish with ${workflowPairs[2]?.name ?? items[2].name} for the final pass.`,
           locale === "tr"
-            ? `Bu akış, ${topicLabel} için tek araca yüklenmeden daha tutarlı ve daha hızlı bir üretim hattı kurar.`
+            ? `Bu akÄ±ÅŸ, ${topicLabel} iÃ§in tek araca yÃ¼klenmeden daha tutarlÄ± ve daha hÄ±zlÄ± bir Ã¼retim hattÄ± kurar.`
             : `That flow builds a more consistent and faster production line for ${topicLower} without forcing one tool to do everything.`
         ],
         {
           bullets: workflowSteps,
           subSections: [
             sub(
-              locale === "tr" ? "Araştır ve planla" : "Research and plan",
+              locale === "tr" ? "AraÅŸtÄ±r ve planla" : "Research and plan",
               [
                 locale === "tr"
-                  ? `İlk adımda brief'i netleştir. ${items[0].name} veya ${items[1].name} ile kapsamı daralt, ardından hangi bilgi eksiklerini tamamlayacağını belirle.`
+                  ? `Ä°lk adÄ±mda brief'i netleÅŸtir. ${items[0].name} veya ${items[1].name} ile kapsamÄ± daralt, ardÄ±ndan hangi bilgi eksiklerini tamamlayacaÄŸÄ±nÄ± belirle.`
                   : `Start by clarifying the brief. Use ${items[0].name} or ${items[1].name} to narrow scope, then decide which gaps still need research.`
               ]
             ),
             sub(
-              locale === "tr" ? "İlk taslağı üret" : "Produce the first draft",
+              locale === "tr" ? "Ä°lk taslaÄŸÄ± Ã¼ret" : "Produce the first draft",
               [
                 locale === "tr"
-                  ? `${items[1].name} veya ${items[2].name}, ilk versiyonu çıkarmak için iyi bir ikinci adım olabilir; burada amaç kusursuzluk değil, düzenli bir başlangıçtır.`
+                  ? `${items[1].name} veya ${items[2].name}, ilk versiyonu Ã§Ä±karmak iÃ§in iyi bir ikinci adÄ±m olabilir; burada amaÃ§ kusursuzluk deÄŸil, dÃ¼zenli bir baÅŸlangÄ±Ã§tÄ±r.`
                   : `${items[1].name} or ${items[2].name} can be a good second step for creating the first version; the goal here is structure, not perfection.`
               ]
             ),
             sub(
-              locale === "tr" ? "Kontrol et ve yayınla" : "Review and publish",
+              locale === "tr" ? "Kontrol et ve yayÄ±nla" : "Review and publish",
               [
                 locale === "tr"
-                  ? `${items[3]?.name ?? items[2].name} ile son kontrolü yap, ardından tonu, doğruluğu ve marka dilini gözden geçir.`
+                  ? `${items[3]?.name ?? items[2].name} ile son kontrolÃ¼ yap, ardÄ±ndan tonu, doÄŸruluÄŸu ve marka dilini gÃ¶zden geÃ§ir.`
                   : `Do one last check with ${items[3]?.name ?? items[2].name}, then review tone, accuracy, and brand voice before publishing.`
               ]
             )
@@ -244,16 +244,16 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
         }
       ),
       section(
-        locale === "tr" ? "Yayınlamadan önce kontrol listesi" : "Checklist before publishing",
+        locale === "tr" ? "YayÄ±nlamadan Ã¶nce kontrol listesi" : "Checklist before publishing",
         [seed.caution[locale]],
         {
           bullets:
             locale === "tr"
               ? [
-                  "Ürün veya iş verisi doğru mu?",
-                  "Ton, hedef kitleye ve mağaza diline uyuyor mu?",
-                  "Yapay görünen tekrarlar veya aşırı vaatler var mı?",
-                  "Kullanım, yayın veya teslim öncesi son insan kontrolü yapıldı mı?"
+                  "ÃœrÃ¼n veya iÅŸ verisi doÄŸru mu?",
+                  "Ton, hedef kitleye ve maÄŸaza diline uyuyor mu?",
+                  "Yapay gÃ¶rÃ¼nen tekrarlar veya aÅŸÄ±rÄ± vaatler var mÄ±?",
+                  "KullanÄ±m, yayÄ±n veya teslim Ã¶ncesi son insan kontrolÃ¼ yapÄ±ldÄ± mÄ±?"
                 ]
               : [
                   "Is the product or job data accurate?",
@@ -264,21 +264,21 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
         }
       ),
       section(
-        locale === "tr" ? "Sonraki tıklamalar" : "Next clicks",
+        locale === "tr" ? "Sonraki tÄ±klamalar" : "Next clicks",
         [
           compareLinks.length
             ? locale === "tr"
-              ? `Karar yakın kaldıysa ${compareLinks.join(", ")} ile doğrudan karşılaştırma yap.`
+              ? `Karar yakÄ±n kaldÄ±ysa ${compareLinks.join(", ")} ile doÄŸrudan karÅŸÄ±laÅŸtÄ±rma yap.`
               : `If the decision is still close, use ${compareLinks.join(", ")} for a direct comparison.`
             : "",
           useCasePage
             ? locale === "tr"
-              ? `${useCasePage} bu konuyu daha geniş workflow bağlamına taşır.`
+              ? `${useCasePage} bu konuyu daha geniÅŸ workflow baÄŸlamÄ±na taÅŸÄ±r.`
               : `${useCasePage} moves the topic into a broader workflow context.`
             : "",
           relatedArticles.length
             ? locale === "tr"
-              ? `Bağlamı genişletmek için ${relatedArticles.join(", ")} rehberlerine de bak.`
+              ? `BaÄŸlamÄ± geniÅŸletmek iÃ§in ${relatedArticles.join(", ")} rehberlerine de bak.`
               : `Open ${relatedArticles.join(", ")} for more supporting context.`
             : ""
         ].filter(Boolean),
@@ -288,11 +288,11 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
               item.name,
               [
                 locale === "tr"
-                  ? `${toolLink(locale, item.slug)} sayfasında fiyat, artılar, eksiler ve alternatifler tek yerde bulunur.`
+                  ? `${toolLink(locale, item.slug)} sayfasÄ±nda fiyat, artÄ±lar, eksiler ve alternatifler tek yerde bulunur.`
                   : `${toolLink(locale, item.slug)} brings pricing, strengths, weaknesses, and alternatives together in one place.`
               ],
               undefined,
-              locale === "tr" ? "Tool sayfası" : "Open tool page",
+              locale === "tr" ? "Tool sayfasÄ±" : "Open tool page",
               `/${locale}/tools/${item.slug}`
             )
           )
@@ -327,9 +327,9 @@ function buildArticle(seed: ArticleSeed): BlogEntry {
 const seeds: ArticleSeed[] = [
   {
     slug: "best-ai-tools-for-shopify-product-descriptions-2026",
-    publishDate: "2026-04-01",
+    publishDate: "2026-04-02",
     topic: {
-      tr: "Shopify ürün açıklamaları",
+      tr: "Shopify Ã¼rÃ¼n aÃ§Ä±klamalarÄ±",
       en: "Shopify product descriptions"
     },
     categorySlug: "guides",
@@ -343,27 +343,27 @@ const seeds: ArticleSeed[] = [
     relatedArticleSlugs: ["ai-tools-to-make-money-2026", "ai-tools-for-freelancers"],
     keywords: ["shopify", "product descriptions", "ecommerce", "product copy"],
     audience: {
-      tr: "Shopify mağaza sahipleri, e-ticaret freelancer'ları ve çok sayıda ürün için tutarlı açıklama üretmek isteyen ekipler için uygundur.",
+      tr: "Shopify maÄŸaza sahipleri, e-ticaret freelancer'larÄ± ve Ã§ok sayÄ±da Ã¼rÃ¼n iÃ§in tutarlÄ± aÃ§Ä±klama Ã¼retmek isteyen ekipler iÃ§in uygundur.",
       en: "This fits Shopify store owners, e-commerce freelancers, and teams that need consistent product copy across many SKUs."
     },
     workflow: {
-      tr: ["ürün bilgilerini toparla", "ilk açıklamayı üret", "SEO ve ton kontrolü yap"],
+      tr: ["Ã¼rÃ¼n bilgilerini toparla", "ilk aÃ§Ä±klamayÄ± Ã¼ret", "SEO ve ton kontrolÃ¼ yap"],
       en: ["gather product data", "generate the first draft", "check SEO and brand tone"]
     },
     caution: {
-      tr: "Ürün açıklamalarında hız önemli olsa da teknik özellikler, beden, malzeme ve iade bilgileri gibi gerçek detayları mutlaka insan gözüyle doğrulamak gerekir.",
+      tr: "ÃœrÃ¼n aÃ§Ä±klamalarÄ±nda hÄ±z Ã¶nemli olsa da teknik Ã¶zellikler, beden, malzeme ve iade bilgileri gibi gerÃ§ek detaylarÄ± mutlaka insan gÃ¶zÃ¼yle doÄŸrulamak gerekir.",
       en: "Speed matters, but technical specs, size details, materials, and return information still need a human accuracy check."
     },
     nextStep: {
-      tr: "En yakın karşılaştırmayı açmadan önce tool sayfalarındaki artı ve eksileri incele.",
+      tr: "En yakÄ±n karÅŸÄ±laÅŸtÄ±rmayÄ± aÃ§madan Ã¶nce tool sayfalarÄ±ndaki artÄ± ve eksileri incele.",
       en: "Review the tool pages first, then open the closest comparison to narrow the choice."
     }
   },
   {
     slug: "best-ai-tools-for-youtube-script-writing-2026",
-    publishDate: "2026-04-01",
+    publishDate: "2026-04-02",
     topic: {
-      tr: "YouTube senaryo yazımı",
+      tr: "YouTube senaryo yazÄ±mÄ±",
       en: "YouTube script writing"
     },
     categorySlug: "guides",
@@ -377,27 +377,27 @@ const seeds: ArticleSeed[] = [
     relatedArticleSlugs: ["best-ai-tools-for-content-creation-2026", "en-iyi-ai-araclari-2026"],
     keywords: ["youtube", "script writing", "hooks", "retention", "video planning"],
     audience: {
-      tr: "YouTube içerik üreticileri, ajanslar ve video senaryosunu daha düzenli yazmak isteyen solo üreticiler için uygundur.",
+      tr: "YouTube iÃ§erik Ã¼reticileri, ajanslar ve video senaryosunu daha dÃ¼zenli yazmak isteyen solo Ã¼reticiler iÃ§in uygundur.",
       en: "This is for YouTube creators, agencies, and solo operators who want a more structured way to write video scripts."
     },
     workflow: {
-      tr: ["konuyu ve açıyı belirle", "senaryo taslağını çıkar", "hook ve akış kontrolü yap"],
+      tr: ["konuyu ve aÃ§Ä±yÄ± belirle", "senaryo taslaÄŸÄ±nÄ± Ã§Ä±kar", "hook ve akÄ±ÅŸ kontrolÃ¼ yap"],
       en: ["define the topic and angle", "draft the script", "check the hook and pacing"]
     },
     caution: {
-      tr: "YouTube senaryosunda asıl risk fazla genel konuşmak veya gereksiz uzatmaktır; özellikle hook ve ilk 30 saniyeyi manuel olarak sıkılaştırın.",
+      tr: "YouTube senaryosunda asÄ±l risk fazla genel konuÅŸmak veya gereksiz uzatmaktÄ±r; Ã¶zellikle hook ve ilk 30 saniyeyi manuel olarak sÄ±kÄ±laÅŸtÄ±rÄ±n.",
       en: "The main risk in YouTube scripts is being too generic or too long; tighten the hook and the first 30 seconds manually."
     },
     nextStep: {
-      tr: "Senaryo tarafını netleştirdikten sonra aynı konuyla ilgili video ve içerik rehberlerini de aç.",
+      tr: "Senaryo tarafÄ±nÄ± netleÅŸtirdikten sonra aynÄ± konuyla ilgili video ve iÃ§erik rehberlerini de aÃ§.",
       en: "After the script is clear, open the related video and content guides to widen the workflow."
     }
   },
   {
     slug: "best-ai-tools-for-resume-writing-2026",
-    publishDate: "2026-04-01",
+    publishDate: "2026-04-02",
     topic: {
-      tr: "CV ve resume yazımı",
+      tr: "CV ve resume yazÄ±mÄ±",
       en: "resume and CV writing"
     },
     categorySlug: "guides",
@@ -411,27 +411,27 @@ const seeds: ArticleSeed[] = [
     relatedArticleSlugs: ["best-ai-tools-for-beginners-2026", "ai-tools-for-freelancers"],
     keywords: ["resume", "cv", "ats", "job search", "career"],
     audience: {
-      tr: "İş arayanlar, kariyer değiştirenler ve başvuru metinlerini daha net hale getirmek isteyen profesyoneller için uygundur.",
+      tr: "Ä°ÅŸ arayanlar, kariyer deÄŸiÅŸtirenler ve baÅŸvuru metinlerini daha net hale getirmek isteyen profesyoneller iÃ§in uygundur.",
       en: "This fits job seekers, career switchers, and professionals who want clearer application materials."
     },
     workflow: {
-      tr: ["iş ilanını ve hedef rolü incele", "özet ve madde maddeleri yaz", "ATS ve dil kontrolü yap"],
+      tr: ["iÅŸ ilanÄ±nÄ± ve hedef rolÃ¼ incele", "Ã¶zet ve madde maddeleri yaz", "ATS ve dil kontrolÃ¼ yap"],
       en: ["review the job post and target role", "draft summary bullets", "run ATS and language checks"]
     },
     caution: {
-      tr: "CV metninde en önemli konu doğruluk ve ölçülebilir başarıdır; AI çıktısını her zaman gerçek deneyimle eşleştir.",
+      tr: "CV metninde en Ã¶nemli konu doÄŸruluk ve Ã¶lÃ§Ã¼lebilir baÅŸarÄ±dÄ±r; AI Ã§Ä±ktÄ±sÄ±nÄ± her zaman gerÃ§ek deneyimle eÅŸleÅŸtir.",
       en: "Accuracy and measurable achievements matter most in a resume, so always align the draft with real experience."
     },
     nextStep: {
-      tr: "Başvuru metnini yazdıktan sonra karşılaştırma sayfalarıyla ton farkını kontrol et.",
+      tr: "BaÅŸvuru metnini yazdÄ±ktan sonra karÅŸÄ±laÅŸtÄ±rma sayfalarÄ±yla ton farkÄ±nÄ± kontrol et.",
       en: "Once the draft is ready, use comparison pages to check tone and editing style."
     }
   },
   {
     slug: "best-ai-tools-for-social-media-planning-2026",
-    publishDate: "2026-04-01",
+    publishDate: "2026-04-02",
     topic: {
-      tr: "Sosyal medya içerik planlaması",
+      tr: "Sosyal medya iÃ§erik planlamasÄ±",
       en: "social media content planning"
     },
     categorySlug: "guides",
@@ -445,27 +445,27 @@ const seeds: ArticleSeed[] = [
     relatedArticleSlugs: ["best-ai-tools-for-content-creation-2026", "ai-tools-to-make-money-2026"],
     keywords: ["social media", "content planning", "content calendar", "campaign planning", "creative brief"],
     audience: {
-      tr: "Sosyal medya yöneticileri, içerik ekipleri ve takvimli üretim yapan freelancer'lar için uygundur.",
+      tr: "Sosyal medya yÃ¶neticileri, iÃ§erik ekipleri ve takvimli Ã¼retim yapan freelancer'lar iÃ§in uygundur.",
       en: "This fits social media managers, content teams, and freelancers who work from a calendar."
     },
     workflow: {
-      tr: ["içerik sütunlarını netleştir", "haftalık plan ve başlıkları çıkar", "görsel ve yayın kontrolü yap"],
+      tr: ["iÃ§erik sÃ¼tunlarÄ±nÄ± netleÅŸtir", "haftalÄ±k plan ve baÅŸlÄ±klarÄ± Ã§Ä±kar", "gÃ¶rsel ve yayÄ±n kontrolÃ¼ yap"],
       en: ["define content pillars", "build the weekly plan and hooks", "check visuals and publishing details"]
     },
     caution: {
-      tr: "Sosyal medya planlamasında en büyük risk tekrar ve benzer tonlara düşmektir; marka sesini sabit tutarken varyasyon üretmeye odaklanın.",
+      tr: "Sosyal medya planlamasÄ±nda en bÃ¼yÃ¼k risk tekrar ve benzer tonlara dÃ¼ÅŸmektir; marka sesini sabit tutarken varyasyon Ã¼retmeye odaklanÄ±n.",
       en: "The biggest risk in social planning is repetitive tone, so keep brand voice consistent while varying the angles."
     },
     nextStep: {
-      tr: "İçerik planını kurduktan sonra araç karşılaştırmalarıyla görsel ve metin dengesini kontrol et.",
+      tr: "Ä°Ã§erik planÄ±nÄ± kurduktan sonra araÃ§ karÅŸÄ±laÅŸtÄ±rmalarÄ±yla gÃ¶rsel ve metin dengesini kontrol et.",
       en: "After the plan is set, use comparison pages to balance writing and visual output."
     }
   },
   {
     slug: "best-ai-tools-for-cold-email-writing-2026",
-    publishDate: "2026-04-01",
+    publishDate: "2026-04-02",
     topic: {
-      tr: "Soğuk e-posta yazımı",
+      tr: "SoÄŸuk e-posta yazÄ±mÄ±",
       en: "cold email writing"
     },
     categorySlug: "guides",
@@ -479,22 +479,23 @@ const seeds: ArticleSeed[] = [
     relatedArticleSlugs: ["ai-tools-for-business", "ai-tools-for-freelancers"],
     keywords: ["cold email", "outreach", "sales email", "personalization", "follow-up"],
     audience: {
-      tr: "Outbound yapan satış ekipleri, freelancer'lar ve teklif gönderiminde daha net mesaj yazmak isteyen kullanıcılar için uygundur.",
+      tr: "Outbound yapan satÄ±ÅŸ ekipleri, freelancer'lar ve teklif gÃ¶nderiminde daha net mesaj yazmak isteyen kullanÄ±cÄ±lar iÃ§in uygundur.",
       en: "This fits outbound sales teams, freelancers, and anyone who needs clearer outreach messages."
     },
     workflow: {
-      tr: ["hedef kitleyi ve tetikleyiciyi belirle", "ilk mesajı ve follow-up'ı yaz", "teslim edilebilirlik ve ton kontrolü yap"],
+      tr: ["hedef kitleyi ve tetikleyiciyi belirle", "ilk mesajÄ± ve follow-up'Ä± yaz", "teslim edilebilirlik ve ton kontrolÃ¼ yap"],
       en: ["define the audience and trigger", "write the first message and follow-up", "check deliverability and tone"]
     },
     caution: {
-      tr: "Soğuk e-postada aşırı otomatik görünen metinler dönüşümü düşürür; kişiselleştirme ve net teklif insan eliyle son kontrol ister.",
+      tr: "SoÄŸuk e-postada aÅŸÄ±rÄ± otomatik gÃ¶rÃ¼nen metinler dÃ¶nÃ¼ÅŸÃ¼mÃ¼ dÃ¼ÅŸÃ¼rÃ¼r; kiÅŸiselleÅŸtirme ve net teklif insan eliyle son kontrol ister.",
       en: "Over-automated copy hurts cold email performance, so personalization and the core offer should always get a human review."
     },
     nextStep: {
-      tr: "Mesajı yazdıktan sonra ilgili tool ve comparison sayfalarıyla ton ve netlik farkını karşılaştır.",
+      tr: "MesajÄ± yazdÄ±ktan sonra ilgili tool ve comparison sayfalarÄ±yla ton ve netlik farkÄ±nÄ± karÅŸÄ±laÅŸtÄ±r.",
       en: "After drafting the message, compare tone and clarity with the related tool and comparison pages."
     }
   }
 ];
 
 export const seoGeneratedBlogArticles: BlogEntry[] = seeds.map(buildArticle);
+

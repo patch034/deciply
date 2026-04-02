@@ -1,4 +1,4 @@
-import { tools } from "@/data/tools";
+﻿import { tools } from "@/data/tools";
 import { useCaseOptions } from "@/data/tool-taxonomy";
 import { buildComparisonPairSlug } from "@/lib/comparisons";
 import type { Locale } from "@/i18n/config";
@@ -30,8 +30,8 @@ const sub = (
 
 const categoryLabels = {
   tr: {
-    "ai-tools": "AI Araçları",
-    comparisons: "Karşılaştırmalar",
+    "ai-tools": "AI AraÃ§larÄ±",
+    comparisons: "KarÅŸÄ±laÅŸtÄ±rmalar",
     guides: "Rehberler"
   },
   en: {
@@ -43,9 +43,9 @@ const categoryLabels = {
 
 const pricingLabels = {
   tr: {
-    FREE: "Ücretsiz",
+    FREE: "Ãœcretsiz",
     FREEMIUM: "Freemium",
-    PAID: "Ücretli"
+    PAID: "Ãœcretli"
   },
   en: {
     FREE: "Free",
@@ -127,9 +127,9 @@ const alternativeLink = (locale: Locale, slug: string) =>
 const blogLink = (locale: Locale, slug: string) => link(locale === "tr" ? "ilgili rehber" : "related guide", `/${locale}/blog/${slug}`);
 const buildUseCaseLink = (locale: Locale, slug: string) => {
   const labels: Record<string, Record<Locale, string>> = {
-    students: { tr: "öğrenci use-case sayfası", en: "student use-case page" },
-    freelancers: { tr: "freelancer use-case sayfası", en: "freelancer use-case page" },
-    "content-creators": { tr: "içerik üreticisi use-case sayfası", en: "content creator use-case page" }
+    students: { tr: "Ã¶ÄŸrenci use-case sayfasÄ±", en: "student use-case page" },
+    freelancers: { tr: "freelancer use-case sayfasÄ±", en: "freelancer use-case page" },
+    "content-creators": { tr: "iÃ§erik Ã¼reticisi use-case sayfasÄ±", en: "content creator use-case page" }
   };
 
   return link(labels[slug]?.[locale] ?? slug, `/${locale}/use-cases/${slug}`);
@@ -145,16 +145,16 @@ function bestToolsContent(locale: Locale, seed: Extract<Seed, { kind: "BEST_TOOL
 
   if (locale === "tr") {
     return {
-      title: `2026'da ${useCaseLabel.toLowerCase()} için en iyi AI araçları`,
-      excerpt: `${useCaseLabel} için öne çıkan araçları, görev farklarını ve hangi sayfanın sonraki adım olduğunu hızlıca gösteren rehber.`,
-      intro: `${items.map((item) => item.name).join(", ")} gibi araçlar aynı işi yapmıyor. ${useCaseLabel} için doğru seçim, önce görevi sonra aracı ayırmaktan geçer.`,
+      title: `2026'da ${useCaseLabel.toLowerCase()} iÃ§in en iyi AI araÃ§larÄ±`,
+      excerpt: `${useCaseLabel} iÃ§in Ã¶ne Ã§Ä±kan araÃ§larÄ±, gÃ¶rev farklarÄ±nÄ± ve hangi sayfanÄ±n sonraki adÄ±m olduÄŸunu hÄ±zlÄ±ca gÃ¶steren rehber.`,
+      intro: `${items.map((item) => item.name).join(", ")} gibi araÃ§lar aynÄ± iÅŸi yapmÄ±yor. ${useCaseLabel} iÃ§in doÄŸru seÃ§im, Ã¶nce gÃ¶revi sonra aracÄ± ayÄ±rmaktan geÃ§er.`,
       categoryLabel: categoryLabels[locale][seed.categorySlug],
-      seoTitle: `2026'da ${useCaseLabel.toLowerCase()} için en iyi AI araçları | Deciply`,
-      seoDescription: `${useCaseLabel} için en mantıklı AI araçlarını, fiyat sinyallerini ve açılması gereken comparison sayfalarını inceleyin.`,
+      seoTitle: `2026'da ${useCaseLabel.toLowerCase()} iÃ§in en iyi AI araÃ§larÄ± | Deciply`,
+      seoDescription: `${useCaseLabel} iÃ§in en mantÄ±klÄ± AI araÃ§larÄ±nÄ±, fiyat sinyallerini ve aÃ§Ä±lmasÄ± gereken comparison sayfalarÄ±nÄ± inceleyin.`,
       sections: [
-        section("Kısa liste", [`${items.map((item) => toolLink(locale, item.slug)).join(", ")} farklı görevlerde öne çıkar.`, `İki aday arasında kalırsan ${firstPair} sayfası en hızlı karar yoludur.`], { comparison: { title: "Hızlı karar haritası", items: items.slice(0, 3).map((item) => ({ label: item.name, value: `${item.bestUseCase} · ${item.pricingLabel}` })) } }),
-        section("Araçları nasıl ayırmalısın?", ["En iyi karar, önce üretmek istediğin çıktıyı netleştirip sonra aracı seçtiğinde çıkar."], { subSections: items.map((item) => sub(item.name, [`${item.shortDescription}`, `${toolLink(locale, item.slug)} sayfasında fiyat, artılar ve alternatifler birlikte bulunur.`], [item.pros[0] ?? item.bestUseCase, item.cons[0] ?? item.pricingLabel], "Tool sayfası", `/${locale}/tools/${item.slug}`)) }),
-        section("Bir sonraki adım", [`${buildUseCaseLink(locale, seed.useCasePageSlug)} workflow tarafını genişletir.`, `${seed.relatedArticleSlugs?.[0] ? `${blogLink(locale, seed.relatedArticleSlugs[0])} ile daha geniş bağlamı aç.` : `${alternativeLink(locale, items[0].slug)} ile alternatifleri gör.`}`])
+        section("KÄ±sa liste", [`${items.map((item) => toolLink(locale, item.slug)).join(", ")} farklÄ± gÃ¶revlerde Ã¶ne Ã§Ä±kar.`, `Ä°ki aday arasÄ±nda kalÄ±rsan ${firstPair} sayfasÄ± en hÄ±zlÄ± karar yoludur.`], { comparison: { title: "HÄ±zlÄ± karar haritasÄ±", items: items.slice(0, 3).map((item) => ({ label: item.name, value: `${item.bestUseCase} Â· ${item.pricingLabel}` })) } }),
+        section("AraÃ§larÄ± nasÄ±l ayÄ±rmalÄ±sÄ±n?", ["En iyi karar, Ã¶nce Ã¼retmek istediÄŸin Ã§Ä±ktÄ±yÄ± netleÅŸtirip sonra aracÄ± seÃ§tiÄŸinde Ã§Ä±kar."], { subSections: items.map((item) => sub(item.name, [`${item.shortDescription}`, `${toolLink(locale, item.slug)} sayfasÄ±nda fiyat, artÄ±lar ve alternatifler birlikte bulunur.`], [item.pros[0] ?? item.bestUseCase, item.cons[0] ?? item.pricingLabel], "Tool sayfasÄ±", `/${locale}/tools/${item.slug}`)) }),
+        section("Bir sonraki adÄ±m", [`${buildUseCaseLink(locale, seed.useCasePageSlug)} workflow tarafÄ±nÄ± geniÅŸletir.`, `${seed.relatedArticleSlugs?.[0] ? `${blogLink(locale, seed.relatedArticleSlugs[0])} ile daha geniÅŸ baÄŸlamÄ± aÃ§.` : `${alternativeLink(locale, items[0].slug)} ile alternatifleri gÃ¶r.`}`])
       ]
     };
   }
@@ -167,7 +167,7 @@ function bestToolsContent(locale: Locale, seed: Extract<Seed, { kind: "BEST_TOOL
     seoTitle: `Best AI tools for ${useCaseLabel.toLowerCase()} in 2026 | Deciply`,
     seoDescription: `Review the best AI tools for ${useCaseLabel.toLowerCase()}, including pricing signals and the next comparison pages worth opening.`,
     sections: [
-      section("Quick shortlist", [`${items.map((item) => toolLink(locale, item.slug)).join(", ")} each fit a different job.`, `If two strong options stay close, open ${firstPair} next.`], { comparison: { title: "Fast decision map", items: items.slice(0, 3).map((item) => ({ label: item.name, value: `${item.bestUseCase} · ${item.pricingLabel}` })) } }),
+      section("Quick shortlist", [`${items.map((item) => toolLink(locale, item.slug)).join(", ")} each fit a different job.`, `If two strong options stay close, open ${firstPair} next.`], { comparison: { title: "Fast decision map", items: items.slice(0, 3).map((item) => ({ label: item.name, value: `${item.bestUseCase} Â· ${item.pricingLabel}` })) } }),
       section("How should you split the tools?", ["Choosing the task first and the tool second usually leads to a cleaner decision."], { subSections: items.map((item) => sub(item.name, [`${item.shortDescription}`, `${toolLink(locale, item.slug)} groups pricing, strengths, and alternatives in one place.`], [item.pros[0] ?? item.bestUseCase, item.cons[0] ?? item.pricingLabel], "Open tool page", `/${locale}/tools/${item.slug}`)) }),
       section("What to open next", [`${buildUseCaseLink(locale, seed.useCasePageSlug)} expands the workflow layer.`, `${seed.relatedArticleSlugs?.[0] ? `Continue into ${blogLink(locale, seed.relatedArticleSlugs[0])} for broader context.` : `Open ${alternativeLink(locale, items[0].slug)} for broader options.`}`])
     ]
@@ -182,16 +182,16 @@ function comparisonContent(locale: Locale, seed: Extract<Seed, { kind: "TOOL_COM
 
   if (locale === "tr") {
     return {
-      title: `${left.name} vs ${right.name}: hangi kullanımda hangisi daha mantıklı?`,
-      excerpt: `${left.name} ve ${right.name} arasındaki gerçek workflow farkını, fiyat sinyalini ve sonraki comparison akışını gösteren rehber.`,
-      intro: `${left.name} ve ${right.name} arasında karar verirken önce görev uyumuna, sonra fiyat ve sınırlarına bakmak en temiz yöntemdir.`,
+      title: `${left.name} vs ${right.name}: hangi kullanÄ±mda hangisi daha mantÄ±klÄ±?`,
+      excerpt: `${left.name} ve ${right.name} arasÄ±ndaki gerÃ§ek workflow farkÄ±nÄ±, fiyat sinyalini ve sonraki comparison akÄ±ÅŸÄ±nÄ± gÃ¶steren rehber.`,
+      intro: `${left.name} ve ${right.name} arasÄ±nda karar verirken Ã¶nce gÃ¶rev uyumuna, sonra fiyat ve sÄ±nÄ±rlarÄ±na bakmak en temiz yÃ¶ntemdir.`,
       categoryLabel: categoryLabels[locale][seed.categorySlug],
-      seoTitle: `${left.name} vs ${right.name}: gerçek farklar ve doğru seçim | Deciply`,
-      seoDescription: `${left.name} ve ${right.name} araçlarını fiyat, workflow uyumu ve ilgili alternatif sayfalarıyla birlikte karşılaştırın.`,
+      seoTitle: `${left.name} vs ${right.name}: gerÃ§ek farklar ve doÄŸru seÃ§im | Deciply`,
+      seoDescription: `${left.name} ve ${right.name} araÃ§larÄ±nÄ± fiyat, workflow uyumu ve ilgili alternatif sayfalarÄ±yla birlikte karÅŸÄ±laÅŸtÄ±rÄ±n.`,
       sections: [
-        section("Hızlı karar özeti", [`${left.name} genelde ${left.bestUseCase.toLowerCase()} tarafında, ${right.name} ise ${right.bestUseCase.toLowerCase()} tarafında daha güçlü görünür.`, `${direct} sayfası yan yana karar için en kısa yoldur.`], { comparison: { title: "Yan yana bakış", items: [{ label: left.name, value: `${left.bestUseCase} · ${left.pricingLabel}` }, { label: right.name, value: `${right.bestUseCase} · ${right.pricingLabel}` }] } }),
-        section("Güçlü taraflar ve sınırlamalar", ["Asıl fark genelde model tartışması değil, senin işinde daha temiz çıktıyı hangisinin verdiğidir."], { subSections: [sub(left.name, [`${left.shortDescription}`, `${toolLink(locale, left.slug)} ile artı ve eksileri aç.`], [left.pros[0] ?? left.bestUseCase, left.cons[0] ?? left.pricingLabel], "Tool detayı", `/${locale}/tools/${left.slug}`), sub(right.name, [`${right.shortDescription}`, `${toolLink(locale, right.slug)} ile artı ve eksileri aç.`], [right.pros[0] ?? right.bestUseCase, right.cons[0] ?? right.pricingLabel], "Tool detayı", `/${locale}/tools/${right.slug}`)] }),
-        section("Daha geniş karar akışı", [`${alternatives.map((item) => alternativeLink(locale, item.slug)).join(", ")} daha geniş bağlam sağlar.`, `${seed.useCasePageSlugs?.[0] ? `${buildUseCaseLink(locale, seed.useCasePageSlugs[0])} workflow uyumunu da gösterir.` : "Sonraki mantıklı adım alternatives sayfasıdır."}`])
+        section("HÄ±zlÄ± karar Ã¶zeti", [`${left.name} genelde ${left.bestUseCase.toLowerCase()} tarafÄ±nda, ${right.name} ise ${right.bestUseCase.toLowerCase()} tarafÄ±nda daha gÃ¼Ã§lÃ¼ gÃ¶rÃ¼nÃ¼r.`, `${direct} sayfasÄ± yan yana karar iÃ§in en kÄ±sa yoldur.`], { comparison: { title: "Yan yana bakÄ±ÅŸ", items: [{ label: left.name, value: `${left.bestUseCase} Â· ${left.pricingLabel}` }, { label: right.name, value: `${right.bestUseCase} Â· ${right.pricingLabel}` }] } }),
+        section("GÃ¼Ã§lÃ¼ taraflar ve sÄ±nÄ±rlamalar", ["AsÄ±l fark genelde model tartÄ±ÅŸmasÄ± deÄŸil, senin iÅŸinde daha temiz Ã§Ä±ktÄ±yÄ± hangisinin verdiÄŸidir."], { subSections: [sub(left.name, [`${left.shortDescription}`, `${toolLink(locale, left.slug)} ile artÄ± ve eksileri aÃ§.`], [left.pros[0] ?? left.bestUseCase, left.cons[0] ?? left.pricingLabel], "Tool detayÄ±", `/${locale}/tools/${left.slug}`), sub(right.name, [`${right.shortDescription}`, `${toolLink(locale, right.slug)} ile artÄ± ve eksileri aÃ§.`], [right.pros[0] ?? right.bestUseCase, right.cons[0] ?? right.pricingLabel], "Tool detayÄ±", `/${locale}/tools/${right.slug}`)] }),
+        section("Daha geniÅŸ karar akÄ±ÅŸÄ±", [`${alternatives.map((item) => alternativeLink(locale, item.slug)).join(", ")} daha geniÅŸ baÄŸlam saÄŸlar.`, `${seed.useCasePageSlugs?.[0] ? `${buildUseCaseLink(locale, seed.useCasePageSlugs[0])} workflow uyumunu da gÃ¶sterir.` : "Sonraki mantÄ±klÄ± adÄ±m alternatives sayfasÄ±dÄ±r."}`])
       ]
     };
   }
@@ -204,7 +204,7 @@ function comparisonContent(locale: Locale, seed: Extract<Seed, { kind: "TOOL_COM
     seoTitle: `${left.name} vs ${right.name}: real differences and better fit | Deciply`,
     seoDescription: `Compare ${left.name} and ${right.name} across pricing, workflow fit, and the alternatives pages worth checking next.`,
     sections: [
-      section("Fast decision summary", [`${left.name} often fits ${left.bestUseCase.toLowerCase()}, while ${right.name} often feels stronger for ${right.bestUseCase.toLowerCase()}.`, `${direct} is the shortest path for a side-by-side decision.`], { comparison: { title: "Side-by-side snapshot", items: [{ label: left.name, value: `${left.bestUseCase} · ${left.pricingLabel}` }, { label: right.name, value: `${right.bestUseCase} · ${right.pricingLabel}` }] } }),
+      section("Fast decision summary", [`${left.name} often fits ${left.bestUseCase.toLowerCase()}, while ${right.name} often feels stronger for ${right.bestUseCase.toLowerCase()}.`, `${direct} is the shortest path for a side-by-side decision.`], { comparison: { title: "Side-by-side snapshot", items: [{ label: left.name, value: `${left.bestUseCase} Â· ${left.pricingLabel}` }, { label: right.name, value: `${right.bestUseCase} Â· ${right.pricingLabel}` }] } }),
       section("Strengths and tradeoffs", ["The real difference is usually about which tool gives cleaner output with less friction for your job."], { subSections: [sub(left.name, [`${left.shortDescription}`, `Use ${toolLink(locale, left.slug)} to review strengths and limits.`], [left.pros[0] ?? left.bestUseCase, left.cons[0] ?? left.pricingLabel], "Open tool page", `/${locale}/tools/${left.slug}`), sub(right.name, [`${right.shortDescription}`, `Use ${toolLink(locale, right.slug)} to review strengths and limits.`], [right.pros[0] ?? right.bestUseCase, right.cons[0] ?? right.pricingLabel], "Open tool page", `/${locale}/tools/${right.slug}`)] }),
       section("Broader next steps", [`${alternatives.map((item) => alternativeLink(locale, item.slug)).join(", ")} add more context.`, `${seed.useCasePageSlugs?.[0] ? `${buildUseCaseLink(locale, seed.useCasePageSlugs[0])} also helps map workflow fit.` : "The next best step is opening the alternatives page."}`])
     ]
@@ -218,16 +218,16 @@ function alternativesContent(locale: Locale, seed: Extract<Seed, { kind: "ALTERN
 
   if (locale === "tr") {
     return {
-      title: `${primary.name} yerine bakılabilecek en mantıklı alternatifler`,
-      excerpt: `${primary.name} yerine hangi aracın daha uygun olabileceğini, güçlü farkları ve comparison akışını toplayan rehber.`,
-      intro: `${primary.name} yerine başka bir araca bakarken asıl konu, hangi adayın mevcut workflow sürtünmesini azalttığıdır.`,
+      title: `${primary.name} yerine bakÄ±labilecek en mantÄ±klÄ± alternatifler`,
+      excerpt: `${primary.name} yerine hangi aracÄ±n daha uygun olabileceÄŸini, gÃ¼Ã§lÃ¼ farklarÄ± ve comparison akÄ±ÅŸÄ±nÄ± toplayan rehber.`,
+      intro: `${primary.name} yerine baÅŸka bir araca bakarken asÄ±l konu, hangi adayÄ±n mevcut workflow sÃ¼rtÃ¼nmesini azalttÄ±ÄŸÄ±dÄ±r.`,
       categoryLabel: categoryLabels[locale][seed.categorySlug],
-      seoTitle: `${primary.name} alternatifleri: daha uygun seçenekler | Deciply`,
-      seoDescription: `${primary.name} yerine bakılabilecek alternatifleri, fiyat sinyallerini ve ilgili comparison sayfalarını inceleyin.`,
+      seoTitle: `${primary.name} alternatifleri: daha uygun seÃ§enekler | Deciply`,
+      seoDescription: `${primary.name} yerine bakÄ±labilecek alternatifleri, fiyat sinyallerini ve ilgili comparison sayfalarÄ±nÄ± inceleyin.`,
       sections: [
-        section("Neden alternatif bakılır?", [`${primary.name} kötü olduğu için değil, workflow uyumu değiştiği için alternatif aranır.`, `${alternatives.map((item) => toolLink(locale, item.slug)).join(", ")} en sık açılan adaylardır.`], { comparison: { title: "İlk adaylar", items: alternatives.map((item) => ({ label: item.name, value: `${item.bestUseCase} · ${item.pricingLabel}` })) } }),
-        section("Hangi alternatif hangi boşluğu kapatır?", ["En iyi alternatif, en popüler olan değil mevcut sürtünmeyi azaltandır."], { subSections: alternatives.map((item) => sub(item.name, [`${item.shortDescription}`, `${toolLink(locale, item.slug)} sayfası pricing ve zayıf yönleri birlikte gösterir.`], [item.pros[0] ?? item.bestUseCase, item.cons[0] ?? item.pricingLabel], "Tool detayı", `/${locale}/tools/${item.slug}`)) }),
-        section("Bir sonraki sayfa", [`${firstCompare} çoğu zaman en kısa karar yoludur.`, `${seed.useCasePageSlugs?.[0] ? `${buildUseCaseLink(locale, seed.useCasePageSlugs[0])} ile workflow uyumunu da kontrol et.` : `${alternativeLink(locale, seed.primaryToolSlug)} ile daha geniş alternatif listesini aç.`}`])
+        section("Neden alternatif bakÄ±lÄ±r?", [`${primary.name} kÃ¶tÃ¼ olduÄŸu iÃ§in deÄŸil, workflow uyumu deÄŸiÅŸtiÄŸi iÃ§in alternatif aranÄ±r.`, `${alternatives.map((item) => toolLink(locale, item.slug)).join(", ")} en sÄ±k aÃ§Ä±lan adaylardÄ±r.`], { comparison: { title: "Ä°lk adaylar", items: alternatives.map((item) => ({ label: item.name, value: `${item.bestUseCase} Â· ${item.pricingLabel}` })) } }),
+        section("Hangi alternatif hangi boÅŸluÄŸu kapatÄ±r?", ["En iyi alternatif, en popÃ¼ler olan deÄŸil mevcut sÃ¼rtÃ¼nmeyi azaltandÄ±r."], { subSections: alternatives.map((item) => sub(item.name, [`${item.shortDescription}`, `${toolLink(locale, item.slug)} sayfasÄ± pricing ve zayÄ±f yÃ¶nleri birlikte gÃ¶sterir.`], [item.pros[0] ?? item.bestUseCase, item.cons[0] ?? item.pricingLabel], "Tool detayÄ±", `/${locale}/tools/${item.slug}`)) }),
+        section("Bir sonraki sayfa", [`${firstCompare} Ã§oÄŸu zaman en kÄ±sa karar yoludur.`, `${seed.useCasePageSlugs?.[0] ? `${buildUseCaseLink(locale, seed.useCasePageSlugs[0])} ile workflow uyumunu da kontrol et.` : `${alternativeLink(locale, seed.primaryToolSlug)} ile daha geniÅŸ alternatif listesini aÃ§.`}`])
       ]
     };
   }
@@ -240,7 +240,7 @@ function alternativesContent(locale: Locale, seed: Extract<Seed, { kind: "ALTERN
     seoTitle: `${primary.name} alternatives: better-fit options | Deciply`,
     seoDescription: `Review the best alternatives to ${primary.name}, including pricing signals and the comparison pages worth opening next.`,
     sections: [
-      section("Why do users look for alternatives?", [`Users usually switch because workflow fit changes, not because ${primary.name} is universally bad.`, `${alternatives.map((item) => toolLink(locale, item.slug)).join(", ")} are common next candidates.`], { comparison: { title: "First candidates", items: alternatives.map((item) => ({ label: item.name, value: `${item.bestUseCase} · ${item.pricingLabel}` })) } }),
+      section("Why do users look for alternatives?", [`Users usually switch because workflow fit changes, not because ${primary.name} is universally bad.`, `${alternatives.map((item) => toolLink(locale, item.slug)).join(", ")} are common next candidates.`], { comparison: { title: "First candidates", items: alternatives.map((item) => ({ label: item.name, value: `${item.bestUseCase} Â· ${item.pricingLabel}` })) } }),
       section("Which alternative solves which gap?", ["The best alternative is the one that removes the friction in your current workflow."], { subSections: alternatives.map((item) => sub(item.name, [`${item.shortDescription}`, `${toolLink(locale, item.slug)} shows pricing and tradeoffs in one place.`], [item.pros[0] ?? item.bestUseCase, item.cons[0] ?? item.pricingLabel], "Open tool page", `/${locale}/tools/${item.slug}`)) }),
       section("What should you open next?", [`${firstCompare} is usually the fastest comparison path.`, `${seed.useCasePageSlugs?.[0] ? `Check ${buildUseCaseLink(locale, seed.useCasePageSlugs[0])} for workflow fit too.` : `Open ${alternativeLink(locale, seed.primaryToolSlug)} for the broader list.`}`])
     ]
@@ -250,20 +250,20 @@ function alternativesContent(locale: Locale, seed: Extract<Seed, { kind: "ALTERN
 function buildUseCaseGuideContent(locale: Locale, seed: Extract<Seed, { kind: "USE_CASE_GUIDE" }>): BlogLocalizedContent {
   const items = seed.toolSlugs.map((slug) => tool(locale, slug));
   const compareItems = seed.comparePairs.map((pair) => compareLink(locale, pair.leftSlug, pair.rightSlug));
-  const useCaseLabel = seed.useCasePageSlug === "content-creators" ? (locale === "tr" ? "içerik üreticileri" : "content creators") : getUseCaseLabel(locale, seed.useCaseSlug).toLowerCase();
+  const useCaseLabel = seed.useCasePageSlug === "content-creators" ? (locale === "tr" ? "iÃ§erik Ã¼reticileri" : "content creators") : getUseCaseLabel(locale, seed.useCaseSlug).toLowerCase();
 
   if (locale === "tr") {
     return {
-      title: `${useCaseLabel} için AI workflow rehberi`,
-      excerpt: `Bu use-case için hangi aracın hangi adımda yer alması gerektiğini ve hangi compare sayfalarının kararı hızlandırdığını gösteren rehber.`,
-      intro: `${items.map((item) => item.name).join(", ")} gibi araçları görev bazlı sıralamak, tek araçla her işi çözmeye çalışmaktan daha verimli olur.`,
+      title: `${useCaseLabel} iÃ§in AI workflow rehberi`,
+      excerpt: `Bu use-case iÃ§in hangi aracÄ±n hangi adÄ±mda yer almasÄ± gerektiÄŸini ve hangi compare sayfalarÄ±nÄ±n kararÄ± hÄ±zlandÄ±rdÄ±ÄŸÄ±nÄ± gÃ¶steren rehber.`,
+      intro: `${items.map((item) => item.name).join(", ")} gibi araÃ§larÄ± gÃ¶rev bazlÄ± sÄ±ralamak, tek araÃ§la her iÅŸi Ã§Ã¶zmeye Ã§alÄ±ÅŸmaktan daha verimli olur.`,
       categoryLabel: categoryLabels[locale][seed.categorySlug],
-      seoTitle: `${useCaseLabel} için AI workflow rehberi | Deciply`,
-      seoDescription: `Bu use-case için AI workflow'unu, araç sıralamasını, compare linklerini ve ilgili tool sayfalarını inceleyin.`,
+      seoTitle: `${useCaseLabel} iÃ§in AI workflow rehberi | Deciply`,
+      seoDescription: `Bu use-case iÃ§in AI workflow'unu, araÃ§ sÄ±ralamasÄ±nÄ±, compare linklerini ve ilgili tool sayfalarÄ±nÄ± inceleyin.`,
       sections: [
-        section("Workflow özeti", ["İyi bir akış tek araçtan değil, doğru sıradan gelir.", `${compareItems.join(", ")} kritik karar noktalarını kısaltır.`], { bullets: ["Araştırma veya fikir aşamasını netleştir", "Üretim aracını seç", "Paketleme ve yayın akışını tamamla"] }),
-        section("Bu akışta hangi araç ne yapar?", ["Her araç daha dar bir görevde daha net değer üretir."], { subSections: items.map((item) => sub(item.name, [`${item.shortDescription}`, `${toolLink(locale, item.slug)} sayfası artılar, eksiler ve alternatifleri gösterir.`], [item.pros[0] ?? item.bestUseCase, item.cons[0] ?? item.pricingLabel], "Tool sayfası", `/${locale}/tools/${item.slug}`)) }),
-        section("Sonraki tıklamalar", [`${compareItems.join(", ")} ile iki güçlü adayı ayır.`, `${seed.relatedArticleSlugs?.[0] ? `${blogLink(locale, seed.relatedArticleSlugs[0])} ile bağlamı genişlet.` : `${alternativeLink(locale, items[0].slug)} ile alternatifleri aç.`}`])
+        section("Workflow Ã¶zeti", ["Ä°yi bir akÄ±ÅŸ tek araÃ§tan deÄŸil, doÄŸru sÄ±radan gelir.", `${compareItems.join(", ")} kritik karar noktalarÄ±nÄ± kÄ±saltÄ±r.`], { bullets: ["AraÅŸtÄ±rma veya fikir aÅŸamasÄ±nÄ± netleÅŸtir", "Ãœretim aracÄ±nÄ± seÃ§", "Paketleme ve yayÄ±n akÄ±ÅŸÄ±nÄ± tamamla"] }),
+        section("Bu akÄ±ÅŸta hangi araÃ§ ne yapar?", ["Her araÃ§ daha dar bir gÃ¶revde daha net deÄŸer Ã¼retir."], { subSections: items.map((item) => sub(item.name, [`${item.shortDescription}`, `${toolLink(locale, item.slug)} sayfasÄ± artÄ±lar, eksiler ve alternatifleri gÃ¶sterir.`], [item.pros[0] ?? item.bestUseCase, item.cons[0] ?? item.pricingLabel], "Tool sayfasÄ±", `/${locale}/tools/${item.slug}`)) }),
+        section("Sonraki tÄ±klamalar", [`${compareItems.join(", ")} ile iki gÃ¼Ã§lÃ¼ adayÄ± ayÄ±r.`, `${seed.relatedArticleSlugs?.[0] ? `${blogLink(locale, seed.relatedArticleSlugs[0])} ile baÄŸlamÄ± geniÅŸlet.` : `${alternativeLink(locale, items[0].slug)} ile alternatifleri aÃ§.`}`])
       ]
     };
   }
@@ -375,7 +375,7 @@ const seeds: Seed[] = [
   {
     kind: "BEST_TOOLS",
     slug: "best-ai-tools-for-students-2026",
-    publishDate: "2026-04-01",
+    publishDate: "2026-04-02",
     categorySlug: "ai-tools",
     useCaseSlug: "students",
     useCasePageSlug: "students",
@@ -385,7 +385,7 @@ const seeds: Seed[] = [
   {
     kind: "TOOL_COMPARISON",
     slug: "chatgpt-vs-claude-for-writing",
-    publishDate: "2026-04-01",
+    publishDate: "2026-04-02",
     categorySlug: "comparisons",
     leftSlug: "chatgpt",
     rightSlug: "claude",
@@ -396,7 +396,7 @@ const seeds: Seed[] = [
   {
     kind: "ALTERNATIVES",
     slug: "chatgpt-alternatives-2026",
-    publishDate: "2026-04-01",
+    publishDate: "2026-04-02",
     categorySlug: "guides",
     primaryToolSlug: "chatgpt",
     alternativeToolSlugs: ["claude", "gemini", "perplexity"],
@@ -406,7 +406,7 @@ const seeds: Seed[] = [
   {
     kind: "USE_CASE_GUIDE",
     slug: "ai-workflow-for-content-creators",
-    publishDate: "2026-04-01",
+    publishDate: "2026-04-02",
     categorySlug: "guides",
     useCaseSlug: "content",
     useCasePageSlug: "content-creators",

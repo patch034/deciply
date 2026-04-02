@@ -1,4 +1,4 @@
-import { blogArticles } from "@/data/blog";
+﻿import { blogArticles } from "@/data/blog";
 import { getBlogPlaybookSections } from "@/data/blog-playbooks";
 import { useCaseOptions } from "@/data/tool-taxonomy";
 import type { Locale } from "@/i18n/config";
@@ -14,29 +14,29 @@ const rawBlogCopy = {
   tr: {
     breadcrumbsHome: "Ana sayfa",
     blogLabel: "Blog",
-    listEyebrow: "SEO içerikleri",
-    listTitle: "Trafik ve dönüşüm odaklı AI rehberleri",
+    listEyebrow: "SEO iÃ§erikleri",
+    listTitle: "Trafik ve dÃ¶nÃ¼ÅŸÃ¼m odaklÄ± AI rehberleri",
     listDescription:
-      "Deciply blog bölümünde öne çıkan AI araçları, karşılaştırmalar, ücretsiz araç listeleri ve para kazandıran kullanım senaryoları yer alır.",
-    readMoreLabel: "Devamını oku",
-    heroPrimaryCta: "Bu aracı incele",
-    heroSecondaryCta: "Öne çıkan AI araçlarını gör",
-    comparisonCtaLabel: "Karşılaştırmaya git",
-    relatedToolsTitle: "Bu içerikte geçen araçlar",
+      "Deciply blog bÃ¶lÃ¼mÃ¼nde Ã¶ne Ã§Ä±kan AI araÃ§larÄ±, karÅŸÄ±laÅŸtÄ±rmalar, Ã¼cretsiz araÃ§ listeleri ve para kazandÄ±ran kullanÄ±m senaryolarÄ± yer alÄ±r.",
+    readMoreLabel: "DevamÄ±nÄ± oku",
+    heroPrimaryCta: "Bu aracÄ± incele",
+    heroSecondaryCta: "Ã–ne Ã§Ä±kan AI araÃ§larÄ±nÄ± gÃ¶r",
+    comparisonCtaLabel: "KarÅŸÄ±laÅŸtÄ±rmaya git",
+    relatedToolsTitle: "Bu iÃ§erikte geÃ§en araÃ§lar",
     relatedToolsDescription:
-      "Makaledeki önerileri doğrudan araç detay sayfalarında inceleyin ve kullanım alanlarını daha net görün.",
+      "Makaledeki Ã¶nerileri doÄŸrudan araÃ§ detay sayfalarÄ±nda inceleyin ve kullanÄ±m alanlarÄ±nÄ± daha net gÃ¶rÃ¼n.",
     relatedArticlesTitle: "Benzer rehberler",
     relatedArticlesDescription:
-      "Aynı konu etrafındaki diğer içeriklere geçerek hem daha fazla fikir toplayabilir hem de doğru aracı daha hızlı seçebilirsiniz.",
-    comparisonBlockTitle: "Karşılaştırma kısayolu",
+      "AynÄ± konu etrafÄ±ndaki diÄŸer iÃ§eriklere geÃ§erek hem daha fazla fikir toplayabilir hem de doÄŸru aracÄ± daha hÄ±zlÄ± seÃ§ebilirsiniz.",
+    comparisonBlockTitle: "KarÅŸÄ±laÅŸtÄ±rma kÄ±sayolu",
     comparisonBlockDescription:
-      "Araçları yan yana görmek istiyorsanız Deciply comparison sayfasına geçin.",
-    articleLeadLabel: "Güncel rehber",
-    toolPageRelatedTitle: "İlgili rehberler",
+      "AraÃ§larÄ± yan yana gÃ¶rmek istiyorsanÄ±z Deciply comparison sayfasÄ±na geÃ§in.",
+    articleLeadLabel: "GÃ¼ncel rehber",
+    toolPageRelatedTitle: "Ä°lgili rehberler",
     toolPageRelatedDescription:
-      "Bu araçla ilgili rehber ve SEO odaklı içeriklere geçerek kullanım senaryolarını daha hızlı değerlendirebilirsiniz.",
-    backToBlog: "Tüm yazılara dön",
-    previousPage: "Önceki",
+      "Bu araÃ§la ilgili rehber ve SEO odaklÄ± iÃ§eriklere geÃ§erek kullanÄ±m senaryolarÄ±nÄ± daha hÄ±zlÄ± deÄŸerlendirebilirsiniz.",
+    backToBlog: "TÃ¼m yazÄ±lara dÃ¶n",
+    previousPage: "Ã–nceki",
     nextPage: "Sonraki",
     pageLabel: "Sayfa"
   },
@@ -79,8 +79,8 @@ export function getBlogCopy(locale: Locale) {
   return blogCopy[locale];
 }
 
-export function resolveBlogPublishDate(article: Pick<BlogEntry, "publishDate" | "createdAt">) {
-  return article.publishDate ?? article.createdAt;
+export function resolveBlogPublishDate(article: Pick<BlogEntry, "publishDate">) {
+  return article.publishDate;
 }
 
 export function formatBlogDate(locale: Locale, value: string) {
@@ -93,10 +93,10 @@ export function formatBlogDate(locale: Locale, value: string) {
 }
 
 function localizeArticle(article: BlogEntry, locale: Locale): LocalizedBlogArticle {
-  const publishDate = resolveBlogPublishDate(article);
+  const publishDate = article.publishDate;
 
   if (!publishDate) {
-    throw new Error(`Blog article is missing publishDate and createdAt: ${article.slug}`);
+    throw new Error(`Blog article is missing an explicit publishDate: ${article.slug}`);
   }
 
   const playbookSections = getBlogPlaybookSections(article.slug, locale);
@@ -129,8 +129,8 @@ function localizeArticle(article: BlogEntry, locale: Locale): LocalizedBlogArtic
 
 function sortArticlesByPublishDate(articles: LocalizedBlogArticle[]) {
   return [...articles].sort((left, right) => {
-    const leftTimestamp = new Date(resolveBlogPublishDate(left) ?? 0).getTime();
-    const rightTimestamp = new Date(resolveBlogPublishDate(right) ?? 0).getTime();
+    const leftTimestamp = new Date(left.publishDate).getTime();
+    const rightTimestamp = new Date(right.publishDate).getTime();
 
     return rightTimestamp - leftTimestamp;
   });
@@ -384,3 +384,6 @@ export function getBlogSupportingLinks(locale: Locale, slug: string, toolLimit =
     useCasePages: pageLinks.useCasePages.slice(0, 2)
   };
 }
+
+
+
