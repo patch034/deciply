@@ -410,6 +410,70 @@ export const comparisonContent: Record<Locale, ComparisonPageContent> = {
 
 
 
+export type TripleComparisonPageContent = {
+  title: string;
+  summary: string;
+  eyebrow: string;
+  toolCtaLabel: string;
+  selectionTitle: string;
+  selectionDescription: string;
+  tableTitle: string;
+  tableDescription: string;
+  pricingTitle: string;
+  pricingDescription: string;
+  strengthsTitle: string;
+  strengthsDescription: string;
+  limitationsTitle: string;
+  limitationsDescription: string;
+  verdictTitle: string;
+  verdictDescription: string;
+  relatedTitle: string;
+  relatedDescription: string;
+};
+
+export const tripleComparisonContent: Record<Locale, TripleComparisonPageContent> = {
+  tr: {
+    title: "ChatGPT vs Claude vs Gemini",
+    summary: "Bu üç genel amaçlı AI aracı benzer görünse de farklı iş akışlarında farklı şekilde öne çıkar. Hız, uzun form yazı ve Google ekosistemi arasındaki farkı netleştirin.",
+    eyebrow: "Üçlü karşılaştırma",
+    toolCtaLabel: "Araç sayfası",
+    selectionTitle: "Kim hangisini seçmeli?",
+    selectionDescription: "Bir karar vermeden önce hangi iş akışının öncelik olduğunu netleştirin; bu sayfa da tam olarak bunu sadeleştirir.",
+    tableTitle: "Temel farklar",
+    tableDescription: "Kullanım alanı, fiyat, güçlü taraflar ve sınırlamaları tek bir tablo içinde görün.",
+    pricingTitle: "Fiyat farkı nasıl?",
+    pricingDescription: "Freemium başlangıç, ücretli plan ve ticari kullanım tarafındaki sinyalleri karşılaştırın.",
+    strengthsTitle: "Güçlü yanlar",
+    strengthsDescription: "Her aracın öne çıktığı alanı hızlıca görün ve işinize en yakın olanı seçin.",
+    limitationsTitle: "Sınırlamalar",
+    limitationsDescription: "En sık yaşanan sürtünme noktalarını ve hangi durumda dikkat etmeniz gerektiğini kontrol edin.",
+    verdictTitle: "Pratik sonuç",
+    verdictDescription: "En iyi seçim çoğu zaman tek bir kazanan değil, iş akışınıza en az sürtünme ekleyen araçtır.",
+    relatedTitle: "Yakın alternatifler",
+    relatedDescription: "Daha dar bir karar için komşu seçenekleri ve ilgili araç sayfalarını da açın."
+  },
+  en: {
+    title: "ChatGPT vs Claude vs Gemini",
+    summary: "These three general-purpose AI assistants may look similar, but they stand out in different workflows. Compare speed, long-form writing, and Google-ecosystem fit clearly.",
+    eyebrow: "Three-way comparison",
+    toolCtaLabel: "Tool page",
+    selectionTitle: "Who should choose which?",
+    selectionDescription: "Before choosing, clarify which workflow matters most; this page is designed to make that decision easier.",
+    tableTitle: "Core differences",
+    tableDescription: "Review use case, pricing, strengths, and limitations in one clean table.",
+    pricingTitle: "How does pricing differ?",
+    pricingDescription: "Compare the freemium starting point, paid plan signals, and commercial fit across the three tools.",
+    strengthsTitle: "Strengths",
+    strengthsDescription: "See where each tool stands out so you can pick the one closest to your workflow.",
+    limitationsTitle: "Limitations",
+    limitationsDescription: "Review the most common friction points and when each tool may fall short.",
+    verdictTitle: "Practical result",
+    verdictDescription: "The best choice is often not a single winner, but the tool that adds the least friction to your workflow.",
+    relatedTitle: "Nearby alternatives",
+    relatedDescription: "Open nearby options and related tool pages if you want to narrow the decision further."
+  }
+};
+
 assertEncodingHealth("comparisons");
 
 export function getComparisonContent(locale: Locale) {

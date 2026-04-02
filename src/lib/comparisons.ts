@@ -1,4 +1,4 @@
-import { tools } from "@/data/tools";
+﻿import { tools } from "@/data/tools";
 import type { Locale } from "@/i18n/config";
 import { getLocalizedToolBySlug } from "@/lib/catalog";
 import type { LocalizedTool, ToolEntry } from "@/types/catalog";
@@ -14,6 +14,8 @@ type ComparableToolLike = {
 };
 
 const COMPARISON_CATEGORY_SLUG = "comparisons";
+export const FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS = ["chatgpt", "claude", "gemini"] as const;
+export const FEATURED_TRIPLE_COMPARISON_SLUG = FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.join("-vs-");
 
 function sharedCount(left: string[], right: string[]) {
   const rightSet = new Set(right);
@@ -73,6 +75,12 @@ export function parseComparisonPairSlug(pair: string) {
   return { leftSlug, rightSlug };
 }
 
+export function parseComparisonSlugs(path: string) {
+  const slugs = path.split("-vs-").filter(Boolean);
+
+  return slugs.length >= 2 ? slugs : null;
+}
+
 export function buildComparisonPairSlug(leftSlug: string, rightSlug: string) {
   const leftTool = tools.find((tool) => tool.slug === leftSlug);
   const rightTool = tools.find((tool) => tool.slug === rightSlug);
@@ -86,8 +94,26 @@ export function buildComparisonPairSlug(leftSlug: string, rightSlug: string) {
   return `${left.slug}-vs-${right.slug}`;
 }
 
-export function buildComparisonPath(locale: Locale, leftSlug: string, rightSlug: string) {
-  return `/${locale}/compare/${buildComparisonPairSlug(leftSlug, rightSlug)}`;
+function buildComparisonSlug(slugs: string[]) {
+  if (
+    slugs.length === 3 &&
+    FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.every((slug) => slugs.includes(slug)) &&
+    new Set(slugs).size === FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.length
+  ) {
+    return FEATURED_TRIPLE_COMPARISON_SLUG;
+  }
+
+  if (slugs.length === 2) {
+    return buildComparisonPairSlug(slugs[0], slugs[1]);
+  }
+
+  return slugs.join("-vs-");
+}
+
+export function buildComparisonPath(locale: Locale, leftSlug: string, rightSlug: string, thirdSlug?: string) {
+  const slugs = thirdSlug ? [leftSlug, rightSlug, thirdSlug] : [leftSlug, rightSlug];
+
+  return `/${locale}/compare/${buildComparisonSlug(slugs)}`;
 }
 
 export function pickBestComparisonTarget<T extends ComparableToolLike>(primary: T, candidates: T[]) {
@@ -136,17 +162,37 @@ export function getComparisonTargetTools(locale: Locale, toolSlug: string, limit
 }
 
 export function getComparisonAlternativeTools(locale: Locale, leftSlug: string, rightSlug: string, limit = 4) {
-  const picked = new Set([leftSlug, rightSlug]);
-  const alternativeSlugs = [...getComparisonTargetSlugs(leftSlug, limit + 2), ...getComparisonTargetSlugs(rightSlug, limit + 2)]
-    .filter((slug) => {
-      if (picked.has(slug)) {
-        return false;
+  return getComparisonAlternativeToolsForSlugs(locale, [leftSlug, rightSlug], limit);
+}
+
+function getMultiComparisonScore(primaryTools: ComparableToolLike[], candidate: ComparableToolLike) {
+  return primaryTools.reduce((score, tool) => score + getComparisonScore(tool, candidate), 0);
+}
+
+export function getComparisonAlternativeToolsForSlugs(locale: Locale, slugs: string[], limit = 4) {
+  const primaryTools = slugs
+    .map((slug) => tools.find((tool) => tool.slug === slug))
+    .filter((tool): tool is ToolEntry => Boolean(tool));
+
+  if (primaryTools.length === 0) {
+    return [];
+  }
+
+  const picked = new Set(slugs);
+  const alternativeSlugs = tools
+    .filter((tool) => !picked.has(tool.slug))
+    .filter((tool) => isComparisonEligible(tool))
+    .sort((left, right) => {
+      const scoreDifference = getMultiComparisonScore(primaryTools, right) - getMultiComparisonScore(primaryTools, left);
+
+      if (scoreDifference !== 0) {
+        return scoreDifference;
       }
 
-      picked.add(slug);
-      return true;
+      return byCanonicalPriority(left, right);
     })
-    .slice(0, limit);
+    .slice(0, limit)
+    .map((tool) => tool.slug);
 
   return alternativeSlugs
     .map((slug) => getLocalizedToolBySlug(locale, slug))
@@ -171,6 +217,10 @@ export function getStaticComparisonPairSlugs() {
   }
 
   return pairs;
+}
+
+export function getStaticComparisonSlugs() {
+  return [...getStaticComparisonPairSlugs(), FEATURED_TRIPLE_COMPARISON_SLUG];
 }
 
 export function getComparisonToolsFromPair(locale: Locale, pair: string) {
@@ -199,6 +249,41 @@ export function getComparisonToolsFromPair(locale: Locale, pair: string) {
     canonicalPairSlug,
     isCanonical: canonicalPairSlug === pair
   };
+}
+
+export function getComparisonPageData(locale: Locale, path: string) {
+  const parsed = parseComparisonSlugs(path);
+
+  if (!parsed) {
+    return null;
+  }
+
+  if (
+    parsed.length === 3 &&
+    FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.every((slug) => parsed.includes(slug)) &&
+    new Set(parsed).size === FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.length
+  ) {
+    const toolsForPage = FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.map((slug) => getLocalizedToolBySlug(locale, slug));
+
+    if (toolsForPage.some((tool) => tool === null)) {
+      return null;
+    }
+
+    return {
+      kind: "triple" as const,
+      tools: toolsForPage as [LocalizedTool, LocalizedTool, LocalizedTool],
+      canonicalSlug: FEATURED_TRIPLE_COMPARISON_SLUG,
+      isCanonical: path === FEATURED_TRIPLE_COMPARISON_SLUG
+    };
+  }
+
+  if (parsed.length !== 2) {
+    return null;
+  }
+
+  const comparison = getComparisonToolsFromPair(locale, path);
+
+  return comparison ? { kind: "pair" as const, ...comparison } : null;
 }
 
 export function getComparisonRawTool(slug: string) {

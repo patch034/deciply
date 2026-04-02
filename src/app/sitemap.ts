@@ -5,7 +5,7 @@ import { discoveryPages } from "@/data/discovery-pages";
 import { categories } from "@/data/categories";
 import { locales } from "@/i18n/config";
 import { tools } from "@/data/tools";
-import { getStaticComparisonPairSlugs } from "@/lib/comparisons";
+import { getStaticComparisonSlugs } from "@/lib/comparisons";
 import { getStaticAlternativeSlugs, getStaticUseCaseSlugs } from "@/lib/intent-pages";
 
 const siteUrl = "https://deciply.com";
@@ -52,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
 
-    for (const pair of getStaticComparisonPairSlugs()) {
+    for (const pair of getStaticComparisonSlugs()) {
       entries.push({
         url: withLocale(locale, `/compare/${pair}`),
         lastModified: staticLastModified

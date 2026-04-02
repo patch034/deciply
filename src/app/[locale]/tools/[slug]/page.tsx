@@ -15,7 +15,7 @@ import { tools } from "@/data/tools";
 import { toolCategoryOptions } from "@/data/tool-taxonomy";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
 import { getBlogCopy, getRelatedArticlesByTool } from "@/lib/blog";
-import { buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
+import { FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS, buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
 import { buildAlternativesPath, buildUseCasePath, getSafeComparisonPath, getUseCasePagesForTool } from "@/lib/intent-pages";
 import { buildToolMetaDescription, buildToolPageTitle } from "@/lib/seo";
 import { getToolTrustIndicators, getToolUseCaseTags } from "@/lib/tool-ui";
@@ -435,7 +435,10 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   const pricingSummaryCards = getPricingSummaryCards(safeLocale, tool, pricingValue);
   const audienceCards = getAudienceCards(safeLocale, tool, dictionary);
   const comparisonTargets = getComparisonTargetTools(safeLocale, tool.slug, 3);
-  const useCasePages = getUseCasePagesForTool(safeLocale, tool.useCaseSlugs, 2);
+    const featuredTripleComparisonHref = FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.includes(tool.slug as (typeof FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS)[number])
+      ? buildComparisonPath(safeLocale, FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[0], FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[1], FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[2])
+      : null;
+    const useCasePages = getUseCasePagesForTool(safeLocale, tool.useCaseSlugs, 2);
   const faqItems = buildToolFaq(safeLocale, tool, pricingValue);
   const alternativesHubHref = buildAlternativesPath(safeLocale, tool.slug);
   const alternativesTitle = safeLocale === "tr" ? `${tool.name} alternatifleri` : `Alternatives to ${tool.name}`;
@@ -774,8 +777,16 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
 
       {comparisonTargets.length ? (
         <InfoSection title={dictionary.compareTitle} description={dictionary.compareDescription}>
-          <div className="grid gap-4 md:grid-cols-3">
-            {comparisonTargets.map((item) => (
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {featuredTripleComparisonHref ? (
+                <Link
+                  href={featuredTripleComparisonHref}
+                  className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 text-sm font-semibold leading-7 text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300"
+                >
+                  {safeLocale === "tr" ? "ChatGPT, Claude ve Gemini" : "ChatGPT, Claude and Gemini"}
+                </Link>
+              ) : null}
+              {comparisonTargets.map((item) => (
               <Link
                 key={item.slug}
                 href={buildComparisonPath(safeLocale, tool.slug, item.slug)}

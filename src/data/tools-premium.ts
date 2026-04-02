@@ -1492,6 +1492,191 @@ const premiumSeeds: ToolSeed[] = [  {
     }
   },
   {
+    name: "Mistral AI",
+    slug: "mistral-ai",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://mistral.ai/",
+    affiliateUrl: "https://mistral.ai/",
+    primaryCategorySlug: "writing",
+    categorySlugs: ["ai-tools", "comparisons", "guides"],
+    toolCategorySlugs: ["writing", "productivity"],
+    useCaseSlugs: ["research", "business", "students"],
+    rating: 4.7,
+    featured: true,
+    locales: {
+      tr: {
+        shortDescription: "Hızlı taslak, çok dilli yazı ve araştırma destekli cevaplar için sade ama güçlü bir model ailesi.",
+        bestUseCase: "Çok dilli yazı ve hızlı taslak",
+        whoShouldUse: ["İçerik ekipleri", "Araştırmacılar", "Freelancer'lar"],
+        workflowExampleTitle: "İlk taslağı hızla kurun",
+        workflowExampleDescription: "Bir ekip Mistral AI ile kısa brief, özet ve çok dilli taslakları daha hızlı çıkarabilir.",
+        strengths: ["Hızlı taslak", "Çok dilli kullanım", "Temiz yanıtlar"],
+        limitations: ["Her kullanımda tek başına yeterli olmayabilir", "Derin ürün iş akışları için ek araç gerekebilir"],
+        seoTitle: "Mistral AI incelemesi",
+        seoDescription: "Mistral AI'nin yazı, araştırma ve çok dilli üretim iş akışlarındaki değerini inceleyin."
+      },
+      en: {
+        shortDescription: "A clean, fast model family for drafting, multilingual writing, and research-assisted answers.",
+        bestUseCase: "Multilingual writing and fast drafting",
+        whoShouldUse: ["Content teams", "Researchers", "Freelancers"],
+        workflowExampleTitle: "Draft faster",
+        workflowExampleDescription: "A team can use Mistral AI to produce short briefs, summaries, and multilingual drafts more quickly.",
+        strengths: ["Fast drafting", "Multilingual fit", "Clean outputs"],
+        limitations: ["Not always enough on its own", "Deep product workflows may still need other tools"],
+        seoTitle: "Mistral AI review",
+        seoDescription: "Review Mistral AI for writing, research, and multilingual production workflows."
+      }
+    }
+  },
+  {
+    name: "Cline",
+    slug: "cline",
+    pricing: "FREE",
+    websiteUrl: "https://cline.bot/",
+    affiliateUrl: "https://cline.bot/",
+    primaryCategorySlug: "productivity",
+    categorySlugs: ["ai-tools", "comparisons", "guides"],
+    toolCategorySlugs: ["productivity", "writing"],
+    useCaseSlugs: ["business", "research", "freelancers"],
+    rating: 4.6,
+    featured: true,
+    locales: {
+      tr: {
+        shortDescription: "Kod düzenleme, görev planlama ve geliştirici odaklı iş akışlarını IDE içinde destekleyen bir yardımcı.",
+        bestUseCase: "Kodlama yardımı ve görev akışı",
+        whoShouldUse: ["Frontend geliştiriciler", "Kurucu ekipler", "Teknik freelancer'lar"],
+        workflowExampleTitle: "Kod görevini parçalara ayırın",
+        workflowExampleDescription: "Bir geliştirici Cline ile küçük kod görevlerini daha net adımlara bölüp ilerleyebilir.",
+        strengths: ["IDE içinde çalışma", "Görev bazlı akış", "Geliştirici dostu"],
+        limitations: ["Teknik kullanıcılar için daha anlamlıdır", "Kısa metin üretimi için ana araç değildir"],
+        seoTitle: "Cline incelemesi",
+        seoDescription: "Cline'ın kodlama yardımı, görev akışı ve geliştirici işlerinde nasıl konumlandığını inceleyin."
+      },
+      en: {
+        shortDescription: "An IDE-friendly helper for coding tasks, task planning, and developer-first workflows.",
+        bestUseCase: "Coding help and task flow",
+        whoShouldUse: ["Frontend developers", "Founding teams", "Technical freelancers"],
+        workflowExampleTitle: "Break the coding task down",
+        workflowExampleDescription: "A developer can use Cline to split small coding tasks into clearer steps.",
+        strengths: ["Works in the IDE", "Task-oriented flow", "Developer friendly"],
+        limitations: ["Most useful for technical users", "Not a primary short-form writing tool"],
+        seoTitle: "Cline review",
+        seoDescription: "Review Cline for coding assistance, task flow, and developer workflows."
+      }
+    }
+  },
+  {
+    name: "CapCut",
+    slug: "capcut",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://www.capcut.com/",
+    affiliateUrl: "https://www.capcut.com/",
+    primaryCategorySlug: "video",
+    categorySlugs: ["ai-tools", "comparisons", "guides"],
+    toolCategorySlugs: ["video", "productivity"],
+    useCaseSlugs: ["creators", "content", "freelancers"],
+    rating: 4.7,
+    featured: true,
+    locales: {
+      tr: {
+        shortDescription: "Kısa video düzenleme, altyazı ve sosyal medya teslimi için hızlı bir üretim aracı.",
+        bestUseCase: "Kısa video düzenleme",
+        whoShouldUse: ["İçerik üreticileri", "Sosyal medya ekipleri", "Freelancer'lar"],
+        workflowExampleTitle: "Kısa videoyu yayına hazırlayın",
+        workflowExampleDescription: "Bir ekip CapCut ile kesme, altyazı ve kısa sosyal video versiyonlarını hızla hazırlayabilir.",
+        strengths: ["Hızlı kurgu", "Altyazı desteği", "Sosyal video odaklı"],
+        limitations: ["Uzun kurgu işleri için sınırlı kalabilir", "Tam sinema düzeyi kurgu arayanlara yetmeyebilir"],
+        seoTitle: "CapCut incelemesi",
+        seoDescription: "CapCut'un kısa video, altyazı ve sosyal medya kurgu işlerinde nasıl çalıştığını inceleyin."
+      },
+      en: {
+        shortDescription: "A fast video editing tool for short-form clips, subtitles, and social delivery.",
+        bestUseCase: "Short-form video editing",
+        whoShouldUse: ["Creators", "Social teams", "Freelancers"],
+        workflowExampleTitle: "Prepare the clip for publishing",
+        workflowExampleDescription: "A team can use CapCut to quickly prepare cuts, subtitles, and short social versions.",
+        strengths: ["Fast editing", "Subtitle support", "Short-form focus"],
+        limitations: ["Less ideal for long edits", "May not satisfy cinema-grade editing needs"],
+        seoTitle: "CapCut review",
+        seoDescription: "Review CapCut for short-form video editing, subtitles, and social delivery workflows."
+      }
+    }
+  },
+  {
+    name: "Fathom AI",
+    slug: "fathom-ai",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://fathom.video/",
+    affiliateUrl: "https://fathom.video/",
+    primaryCategorySlug: "productivity",
+    categorySlugs: ["ai-tools", "comparisons", "guides"],
+    toolCategorySlugs: ["productivity", "writing"],
+    useCaseSlugs: ["business", "research", "freelancers"],
+    rating: 4.6,
+    featured: true,
+    locales: {
+      tr: {
+        shortDescription: "Toplantı notları, özetler ve aksiyon maddeleri için toplantı merkezli pratik bir yardımcı.",
+        bestUseCase: "Toplantı özeti ve aksiyon takibi",
+        whoShouldUse: ["Kurucular", "Satış ekipleri", "Ajanslar"],
+        workflowExampleTitle: "Toplantı kaydını özete çevirin",
+        workflowExampleDescription: "Bir ekip Fathom AI ile toplantı sonrası özet ve takip görevlerini daha hızlı çıkarabilir.",
+        strengths: ["Toplantı özeti", "Aksiyon çıkarma", "Zaman tasarrufu"],
+        limitations: ["Toplantı olmayan akışlarda değeri düşer", "Tek başına proje yönetimi yerine geçmez"],
+        seoTitle: "Fathom AI incelemesi",
+        seoDescription: "Fathom AI'nin toplantı notları, özetler ve takip akışlarındaki değerini inceleyin."
+      },
+      en: {
+        shortDescription: "A meeting-first helper for notes, summaries, and action items.",
+        bestUseCase: "Meeting summaries and follow-up tracking",
+        whoShouldUse: ["Founders", "Sales teams", "Agencies"],
+        workflowExampleTitle: "Turn a meeting into a summary",
+        workflowExampleDescription: "A team can use Fathom AI to pull summaries and follow-up tasks faster after meetings.",
+        strengths: ["Meeting summaries", "Action extraction", "Time savings"],
+        limitations: ["Less useful without meetings", "Not a replacement for project management"],
+        seoTitle: "Fathom AI review",
+        seoDescription: "Review Fathom AI for meeting notes, summaries, and follow-up workflows."
+      }
+    }
+  },
+  {
+    name: "PhotoRoom",
+    slug: "photoroom",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://www.photoroom.com/",
+    affiliateUrl: "https://www.photoroom.com/",
+    primaryCategorySlug: "image",
+    categorySlugs: ["ai-tools", "comparisons", "guides"],
+    toolCategorySlugs: ["image", "productivity"],
+    useCaseSlugs: ["creators", "content", "freelancers"],
+    rating: 4.7,
+    featured: true,
+    locales: {
+      tr: {
+        shortDescription: "Ürün görselleri, arka plan temizleme ve hızlı sosyal görsel teslimi için pratik bir araç.",
+        bestUseCase: "Ürün görseli ve arka plan düzenleme",
+        whoShouldUse: ["E-ticaret ekipleri", "Freelancer tasarımcılar", "İçerik üreticileri"],
+        workflowExampleTitle: "Ürün fotoğrafını satışa hazır hale getirin",
+        workflowExampleDescription: "Bir ekip PhotoRoom ile arka planı temizleyip sosyal veya mağaza görselini hızla hazırlayabilir.",
+        strengths: ["Arka plan temizleme", "E-ticaret uyumu", "Hızlı teslim"],
+        limitations: ["Uzun form tasarım işleri için yeterli değildir", "Konsept üretiminden çok düzenleme odaklıdır"],
+        seoTitle: "PhotoRoom incelemesi",
+        seoDescription: "PhotoRoom'un ürün görseli, arka plan düzenleme ve hızlı teslim işlerinde nasıl çalıştığını inceleyin."
+      },
+      en: {
+        shortDescription: "A practical tool for product photos, background cleanup, and fast visual delivery.",
+        bestUseCase: "Product visuals and background editing",
+        whoShouldUse: ["Ecommerce teams", "Freelance designers", "Content creators"],
+        workflowExampleTitle: "Make the product photo ready to sell",
+        workflowExampleDescription: "A team can use PhotoRoom to remove the background and prepare a social or store visual quickly.",
+        strengths: ["Background cleanup", "Ecommerce fit", "Fast delivery"],
+        limitations: ["Not for long-form design work", "More editing-focused than concept-led"],
+        seoTitle: "PhotoRoom review",
+        seoDescription: "Review PhotoRoom for product visuals, background editing, and fast delivery workflows."
+      }
+    }
+  },
+  {
     name: "Lindy",
     slug: "lindy",
     pricing: "FREEMIUM",
@@ -1568,4 +1753,6 @@ const premiumSeeds: ToolSeed[] = [  {
 ];
 
 export const premiumTools: ToolEntry[] = premiumSeeds.map(buildTool);
+
+
 
