@@ -41,7 +41,7 @@ const copy = {
     strengthsDescription: "Her iki aracın öne çıktığı alanları ayrı ayrı değerlendirin.",
     limitationsTitle: "Sınırlamalar",
     limitationsDescription: "Karar vermeden önce darboğaz yaratabilecek noktaları görün.",
-    verdictTitle: "Final verdict",
+    verdictTitle: "Son karar",
     verdictDescription: "Kazananı zorla seçmek yerine hangi senaryoda hangi aracın daha mantıklı olduğunu özetler.",
     relatedAlternativesTitle: "İlgili alternatifler",
     relatedAlternativesDescription: "Karar alanını biraz daha daraltmak isterseniz bu araçlara da göz atın.",

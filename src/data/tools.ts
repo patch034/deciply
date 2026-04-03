@@ -288,7 +288,7 @@ export const tools: ToolEntry[] = [
     websiteUrl: "https://www.notion.com/product/ai",
     affiliateUrl: "https://www.notion.com/product/ai",
     primaryCategorySlug: "productivity",
-    categorySlugs: ["ai-tools", "guides", "make-money-with-ai"],
+    categorySlugs: ["ai-tools", "comparisons", "guides", "make-money-with-ai"],
     toolCategorySlugs: ["productivity", "writing"],
     useCaseSlugs: ["business", "content", "freelancers"],
     rating: 4.5,
@@ -296,7 +296,7 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Notion AI",
-        shortDescription: "Notion içinde yazı, özet ve dokümantasyon süreçlerini hızlandıran üretkenlik aracı.",
+        shortDescription: "Notion içinde yazı, özet ve dokümantasyon akışlarını hızlandıran entegre üretkenlik katmanı.",
         longDescription:
           "Notion AI; notlar, içerik taslakları, toplantı özetleri ve bilgi tabanı işleri için kullanılan entegre bir AI katmanıdır. Özellikle Notion ile çalışan ekipler ve freelancer'lar için düzenli üretim sağlar.",
         bestUseCase: "Notion içinde yazı ve dokümantasyon işleri",
@@ -492,7 +492,7 @@ export const tools: ToolEntry[] = [
     websiteUrl: "https://www.jasper.ai",
     affiliateUrl: "https://www.jasper.ai",
     primaryCategorySlug: "writing",
-    categorySlugs: ["ai-tools", "make-money-with-ai", "guides"],
+    categorySlugs: ["ai-tools", "comparisons", "make-money-with-ai", "guides"],
     toolCategorySlugs: ["writing"],
     useCaseSlugs: ["business", "content", "freelancers"],
     rating: 4.5,
@@ -500,7 +500,7 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Jasper",
-        shortDescription: "Pazarlama ekipleri için reklam, satış ve marka odaklı içerik üretimini hızlandıran AI yazı aracı.",
+        shortDescription: "Pazarlama ekipleri için reklam, satış ve marka odaklı içerik üretimini hızlandıran premium AI yazı platformu.",
         longDescription:
           "Jasper; pazarlama metinleri, kampanya içerikleri ve marka dili korunan yazı akışları için kullanılan bir AI yazı aracıdır. Özellikle ajanslar ve gelir odaklı içerik ekipleri için verimlidir.",
         bestUseCase: "Pazarlama ve satış odaklı metin üretimi",
@@ -560,7 +560,7 @@ export const tools: ToolEntry[] = [
     websiteUrl: "https://www.copy.ai",
     affiliateUrl: "https://www.copy.ai",
     primaryCategorySlug: "writing",
-    categorySlugs: ["ai-tools", "make-money-with-ai", "guides"],
+    categorySlugs: ["ai-tools", "comparisons", "make-money-with-ai", "guides"],
     toolCategorySlugs: ["writing"],
     useCaseSlugs: ["business", "content", "freelancers"],
     rating: 4.4,
@@ -568,7 +568,7 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "Copy.ai",
-        shortDescription: "Kısa pazarlama metinleri, satış mesajları ve hızlı içerik üretimi için pratik bir AI aracı.",
+        shortDescription: "Kısa format pazarlama copy, satış mesajları ve hızlı içerik üretimi için pratik bir AI yazı platformu.",
         longDescription:
           "Copy.ai; kısa formatlı pazarlama metinleri, e-posta ve satış odaklı içerikler için hız sağlayan bir AI yazı aracıdır. Özellikle hızlı üretim isteyen freelancer'lar ve küçük ekipler için uygundur.",
         bestUseCase: "Kısa pazarlama metni ve satış mesajları",
@@ -4249,6 +4249,7 @@ export const tools: ToolEntry[] = [
     primaryCategorySlug: "productivity",
     categorySlugs: [
       "ai-tools",
+      "comparisons",
       "guides",
       "free-tools",
       "make-money-with-ai"
@@ -4267,8 +4268,8 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
         name: "GitHub Copilot",
-        shortDescription: "Kod tamamlama, refactor ve geliştirme akışını hızlandıran popüler AI coding aracı.",
-        longDescription: "GitHub Copilot, kod üretimi, refactor ve teslim hızlandırma iş akışlarında öne çıkan bir AI aracıdır. Özellikle AI destekli kod üretimi ve geliştirme için tercih edilebilir ve doğru kullanımda zaman kazandırabilir.",
+        shortDescription: "Kod tamamlama, refactor ve geliştirme akışını hızlandıran premium AI coding asistanı.",
+        longDescription: "GitHub Copilot; kod üretimi, refactor ve teslim hızlandırma iş akışlarında öne çıkan bir AI aracıdır. Özellikle sık teslim yapan geliştiriciler ve ürün ekipleri için pratik bir hız katmanı sunar.",
         bestUseCase: "AI destekli kod üretimi ve geliştirme",
         whoShouldUse: [
           "Geliştiriciler",
@@ -5002,7 +5003,7 @@ export const tools: ToolEntry[] = [
     websiteUrl: "https://rytr.me",
     affiliateUrl: "https://rytr.me",
     primaryCategorySlug: "writing",
-    categorySlugs: ["ai-tools","guides","free-tools","make-money-with-ai"],
+    categorySlugs: ["ai-tools","comparisons","guides","free-tools","make-money-with-ai"],
     toolCategorySlugs: ["writing"],
     useCaseSlugs: ["content","freelancers"],
     rating: 4.2,
@@ -7256,97 +7257,97 @@ export const tools: ToolEntry[] = [
     websiteUrl: "https://codeium.com",
     affiliateUrl: "https://codeium.com",
     primaryCategorySlug: "productivity",
-    categorySlugs: ["ai-tools","guides","free-tools","make-money-with-ai"],
+    categorySlugs: ["ai-tools", "comparisons", "guides", "free-tools", "make-money-with-ai"],
     toolCategorySlugs: ["productivity"],
-    useCaseSlugs: ["freelancers","business"],
+    useCaseSlugs: ["freelancers", "business"],
     rating: 4.4,
     featured: false,
     locales: {
       tr: {
-            name: "Codeium",
-            shortDescription: "Codeium, hızlı kod desteği, autocomplete ve repo işi yard?m için kullanılan bir AI aracıdır.",
-            longDescription: "Codeium, hızlı kod desteği, autocomplete ve repo işi yard?m tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle hızlı kod desteği odağında gerçek iş akışlarına kolayca uyarlanabilir.",
-            bestUseCase: "Hızlı kod desteği",
-            whoShouldUse: [
-                  "Araştırmac?lar",
-                  "Operasyon ekipleri",
-                  "Danışmanlar"
-            ],
-            moneyUseCases: [
-                  {
-                        title: "Müşteri işi hızlandırma",
-                        description: "Codeium ile hızlı kod desteği tarafında daha hızlı teslim üretip bunu hizmet olarak sunabilirsiniz."
-                  },
-                  {
-                        title: "Paket hizmet üretimi",
-                        description: "Tekrarlayan çıktıları paketleyip freelance veya ajans işi olarak satmak daha kolay hale gelebilir."
-                  },
-                  {
-                        title: "iş süreçleri verimli hale getirme",
-                        description: "Daha kısa üretim süresiyle aynı zamanda daha fazla müşteri veya içerik kapasitesi oluşturabilirsiniz."
-                  }
-            ],
-            features: [
-                  "Hızlı kod desteği için odaklı kullanım",
-                  "Hızlı kod desteği, autocomplete ve repo işi yard?m",
-                  "Tekrarlayan iş akışlarında hız kazanımı",
-                  "Gerçek teslim senaryolarına uygun çıktı desteği"
-            ],
-            pros: [
-                  "Belirli bir iş akışında net değer üretir",
-                  "Teslim süresini kısaltabilir",
-                  "Doğru kullanımda tekrar eden işleri hızlandırır"
-            ],
-            cons: [
-                  "Her kullanıcı için en geniş çözüm olmayabilir",
-                  "En iyi sonuç için iş akışına uygun kullanım gerekir"
-            ],
-            seoTitle: "Codeium incelemesi ve kullanım alanları",
-            seoDescription: "Codeium için kullanım alanları, artılar, eksiler ve gerçek i? senaryolarını kısa şekilde inceleyin."
+        name: "Codeium",
+        shortDescription: "Hızlı kod desteği, autocomplete ve repo farkındalığıyla geliştirme akışını hızlandıran AI coding aracı.",
+        longDescription: "Codeium, hızlı kod desteği, autocomplete ve repo farkındalığı gereken geliştirme akışlarında tekrar eden işleri kısaltmaya yardımcı olur. Özellikle daha hızlı teslim, daha az manuel yazım ve daha düzenli çıktı arayan ekipler için anlamlıdır.",
+        bestUseCase: "Hızlı kod desteği ve autocomplete",
+        whoShouldUse: [
+          "Geliştiriciler",
+          "Freelancer'lar",
+          "Ürün ekipleri"
+        ],
+        moneyUseCases: [
+          {
+            title: "Müşteri işi hızlandırma",
+            description: "Codeium ile hızlı kod desteği tarafında daha hızlı teslim üretip bunu hizmet olarak sunabilirsiniz."
+          },
+          {
+            title: "Paket hizmet üretimi",
+            description: "Tekrarlayan çıktıları paketleyip freelance veya ajans işi olarak satmak daha kolay hale gelebilir."
+          },
+          {
+            title: "İş süreçlerini verimli hale getirme",
+            description: "Daha kısa üretim süresiyle aynı zamanda daha fazla müşteri veya içerik kapasitesi oluşturabilirsiniz."
+          }
+        ],
+        features: [
+          "Hızlı kod desteği için odaklı kullanım",
+          "Autocomplete ve repo farkındalığı",
+          "Tekrarlayan iş akışlarında hız kazanımı",
+          "Gerçek teslim senaryolarına uygun çıktı desteği"
+        ],
+        pros: [
+          "Belirli bir iş akışında net değer üretir",
+          "Teslim süresini kısaltabilir",
+          "Doğru kullanımda tekrar eden işleri hızlandırır"
+        ],
+        cons: [
+          "Her kullanıcı için en geniş çözüm olmayabilir",
+          "En iyi sonuç için iş akışına uygun kullanım gerekir"
+        ],
+        seoTitle: "Codeium incelemesi ve kullanım alanları",
+        seoDescription: "Codeium için kod tamamlama, autocomplete, hız ve gerçek geliştirme iş akışlarını kısa şekilde inceleyin."
       },
       en: {
-            name: "Codeium",
-            shortDescription: "Codeium is an AI tool used for fast coding assistance, autocomplete, and repo-aware help.",
-            longDescription: "Codeium is built for fast coding assistance, autocomplete, and repo-aware help. It can be a strong fit for people who want more consistent output and faster execution around fast coding support.",
-            bestUseCase: "Fast coding support",
-            whoShouldUse: [
-                  "Researchers",
-                  "Operations teams",
-                  "Consultants"
-            ],
-            moneyUseCases: [
-                  {
-                        title: "Speed up client delivery",
-                        description: "Use Codeium to move faster in fast coding support workflows and package that speed into a paid service."
-                  },
-                  {
-                        title: "Build repeatable service packages",
-                        description: "Turn recurring outputs into a cleaner freelance or agency offer."
-                  },
-                  {
-                        title: "Improve internal throughput",
-                        description: "Shorter production time can create room for more clients, campaigns, or content volume."
-                  }
-            ],
-            features: [
-                  "Focused support for fast coding support",
-                  "Fast coding assistance, autocomplete, and repo-aware help",
-                  "Time savings in repeatable workflows",
-                  "Helpful output support for real deliverables"
-            ],
-            pros: [
-                  "Clear value inside a defined workflow",
-                  "Can reduce delivery time",
-                  "Useful for speeding up repeatable tasks"
-            ],
-            cons: [
-                  "May not be the broadest option for everyone",
-                  "Works best when matched to the right workflow"
-            ],
-            seoTitle: "Codeium review and use cases",
-            seoDescription: "Review Codeium with practical use cases, pros, cons, and real workflow fit in one short summary."
+        name: "Codeium",
+        shortDescription: "An AI coding tool that speeds up autocomplete, repo-aware help, and fast developer workflows.",
+        longDescription: "Codeium helps reduce repetitive work in coding workflows where speed, autocomplete, and repo-aware context matter. It is especially useful for teams that want faster delivery, less manual typing, and more consistent output.",
+        bestUseCase: "Fast coding support and autocomplete",
+        whoShouldUse: [
+          "Developers",
+          "Freelancers",
+          "Product teams"
+        ],
+        moneyUseCases: [
+          {
+            title: "Speed up client delivery",
+            description: "Use Codeium to move faster in fast coding support workflows and package that speed into a paid service."
+          },
+          {
+            title: "Build repeatable service packages",
+            description: "Turn recurring outputs into a cleaner freelance or agency offer."
+          },
+          {
+            title: "Improve internal throughput",
+            description: "Shorter production time can create room for more clients, campaigns, or content volume."
+          }
+        ],
+        features: [
+          "Focused support for fast coding workflows",
+          "Autocomplete and repo-aware help",
+          "Time savings in repeatable workflows",
+          "Helpful output support for real deliverables"
+        ],
+        pros: [
+          "Clear value inside a defined workflow",
+          "Can reduce delivery time",
+          "Useful for speeding up repeatable tasks"
+        ],
+        cons: [
+          "May not be the broadest option for everyone",
+          "Works best when matched to the right workflow"
+        ],
+        seoTitle: "Codeium review and use cases",
+        seoDescription: "Review Codeium with practical use cases, pros, cons, and real workflow fit in one short summary."
       }
-}
+    }
   },
   {
     slug: "blackbox-ai",
