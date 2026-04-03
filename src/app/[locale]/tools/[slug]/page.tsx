@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -9,6 +9,7 @@ import { InfoSection } from "@/components/catalog/info-section";
 import { ProsConsCard } from "@/components/catalog/pros-cons-card";
 import { ToolCard } from "@/components/catalog/tool-card";
 import { ComparisonFaq } from "@/components/comparison/comparison-faq";
+import { ConversionCtaStrip } from "@/components/ui/conversion-cta-strip";
 import { Badge } from "@/components/ui/badge";
 import type { ComparisonFaqItem } from "@/data/comparisons";
 import { tools } from "@/data/tools";
@@ -422,6 +423,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   const categoryNamesMap = getCategoryNamesMap(safeLocale);
   const relatedTools = getRelatedTools(safeLocale, tool.slug, 4);
   const relatedArticles = getRelatedArticlesByTool(safeLocale, tool.slug, 4);
+  const featuredBlogHref = relatedArticles[0] ? `/${safeLocale}/blog/${relatedArticles[0].slug}` : `/${safeLocale}/blog`;
   const blogCopy = getBlogCopy(safeLocale);
   const pricingValue = formatPricing(tool.pricing, safeLocale);
   const supportText = safeLocale === "tr" ? "Hızlı başlangıç | Net fiyat bilgisi" : "Fast start | Clear pricing signal";
@@ -576,7 +578,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-400/10 px-4 py-2 text-sm font-semibold text-amber-200">
-              <span aria-hidden="true">★</span>
+              <span aria-hidden="true">â˜…</span>
               <span>{tool.rating.toFixed(1)}/5</span>
             </div>
             <p className="text-sm font-medium text-slate-400">
@@ -844,6 +846,21 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </div>
       </InfoSection>
 
+      <ConversionCtaStrip
+        eyebrow={safeLocale === "tr" ? "Dönüşüm odaklı sonraki adım" : "Conversion-ready next step"}
+        title={safeLocale === "tr" ? "İlgili aracı açın, alternatifleri karşılaştırın" : "Open the tool, compare the alternatives"}
+        description={
+          safeLocale === "tr"
+            ? "Resmî aracı hemen açın, benzer seçenekleri inceleyin ve gerekirse ilgili incelemeyi okuyun."
+            : "Open the official tool, review nearby alternatives, and read the related review if you need more context."
+        }
+        buttons={[
+          { label: safeLocale === "tr" ? "Resmî aracı aç" : "Visit official tool", href: outboundUrl },
+          { label: safeLocale === "tr" ? "Alternatifleri karşılaştır" : "Compare alternatives", href: alternativesHubHref, variant: "secondary" },
+          { label: safeLocale === "tr" ? "Tam incelemeyi oku" : "Read full review", href: featuredBlogHref, variant: "ghost" }
+        ]}
+      />
+
       {relatedArticles.length ? (
         <InfoSection title={blogCopy.toolPageRelatedTitle} description={blogCopy.toolPageRelatedDescription}>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -893,3 +910,5 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
     </>
   );
 }
+
+

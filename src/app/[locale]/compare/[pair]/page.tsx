@@ -8,7 +8,9 @@ import { InfoSection } from "@/components/catalog/info-section";
 import { ProsConsCard } from "@/components/catalog/pros-cons-card";
 import { ToolCard } from "@/components/catalog/tool-card";
 import { ComparisonBreakdownTable } from "@/components/comparison/comparison-breakdown-table";
+import { ComparisonDecisionBoxes } from "@/components/comparison/comparison-decision-boxes";
 import { ComparisonFaq } from "@/components/comparison/comparison-faq";
+import { ConversionCtaStrip } from "@/components/ui/conversion-cta-strip";
 import { Badge } from "@/components/ui/badge";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
@@ -23,7 +25,7 @@ import {
   parseComparisonPairSlug
 } from "@/lib/comparisons";
 import { getLocalizedBlogArticleBySlug } from "@/lib/blog";
-import { formatPricing, getCatalogContent, getCategoryNamesMap } from "@/lib/catalog";
+import { formatPricing, getCatalogContent, getCategoryNamesMap, getToolOutboundUrl } from "@/lib/catalog";
 import type { LocalizedTool } from "@/types/catalog";
 
 const copy = {
@@ -306,6 +308,10 @@ export default async function ComparisonPage({
     label: safeLocale === "tr" ? `${tool.name} alternatifleri` : `${tool.name} alternatives`,
     href: `/${safeLocale}/alternatives/${tool.slug}`
   }));
+  const compareAlternativesHref = relatedAlternativePages[0]?.href ?? `/${safeLocale}/alternatives/${leftTool.slug}`;
+  const leftOfficialHref = getToolOutboundUrl(leftTool);
+  const rightOfficialHref = getToolOutboundUrl(rightTool);
+  const relatedBlogHref = relatedBlogArticles[0] ? `/${safeLocale}/blog/${relatedBlogArticles[0].slug}` : `/${safeLocale}/blog`;
   const description = buildComparisonDescription(safeLocale, leftTool, rightTool);
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/compare/${canonicalPairSlug}`);
   const breadcrumbSchema = {
@@ -419,6 +425,13 @@ export default async function ComparisonPage({
           rows={comparisonRows}
         />
 
+        <ComparisonDecisionBoxes
+          locale={safeLocale}
+          leftTool={leftTool}
+          rightTool={rightTool}
+          alternativesHref={compareAlternativesHref}
+        />
+
         <InfoSection title={dictionary.bestForTitle} description={dictionary.bestForDescription}>
           <div className="grid gap-4 md:grid-cols-2">
             {[leftTool, rightTool].map((tool) => (
@@ -520,6 +533,22 @@ export default async function ComparisonPage({
           </div>
         </section>
 
+        <ConversionCtaStrip
+          eyebrow={safeLocale === "tr" ? "Dönüşüm odaklı karar" : "Conversion-ready decision"}
+          title={safeLocale === "tr" ? "Bir sonraki adımı şimdi seçin" : "Choose the next step now"}
+          description={
+            safeLocale === "tr"
+              ? "Resmî aracı açın, alternatifleri karşılaştırın veya ilgili incelemeyi okuyun."
+              : "Open the official tool, compare alternatives, or read the related review."
+          }
+          buttons={[
+            { label: safeLocale === "tr" ? "Resmî aracı aç" : "Visit official tool", href: leftOfficialHref },
+            { label: "Try now", href: rightOfficialHref, variant: "secondary" },
+            { label: safeLocale === "tr" ? "Alternatifleri karşılaştır" : "Compare alternatives", href: compareAlternativesHref, variant: "ghost" },
+            { label: safeLocale === "tr" ? "Tam incelemeyi oku" : "Read full review", href: relatedBlogHref, variant: "ghost" }
+          ]}
+        />
+
         {alternatives.length ? (
           <InfoSection title={dictionary.relatedAlternativesTitle} description={dictionary.relatedAlternativesDescription}>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -620,3 +649,5 @@ export default async function ComparisonPage({
     </>
   );
 }
+
+

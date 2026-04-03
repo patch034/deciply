@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ArticleContent } from "@/components/blog/article-content";
 import { ArticleCtaBlock } from "@/components/blog/article-cta-block";
+import { ConversionCtaStrip } from "@/components/ui/conversion-cta-strip";
 import { BlogCard } from "@/components/blog/blog-card";
 import { Breadcrumb } from "@/components/catalog/breadcrumb";
 import { ToolCard } from "@/components/catalog/tool-card";
@@ -109,6 +110,7 @@ export default async function BlogDetailPage({
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/blog/${article.slug}`);
   const inlineSupportingLinks = getBlogSupportingLinks(safeLocale, article.slug, 2, 2);
   const comparisonHref = inlineSupportingLinks.comparePages[0]?.href ?? `/${safeLocale}/categories/comparisons`;
+  const alternativesHref = inlineSupportingLinks.alternativePages[0]?.href ?? `/${safeLocale}/alternatives/${primaryTool?.slug ?? "chatgpt"}`;
   const publishedLabel = safeLocale === "tr" ? "Yayınlandı" : "Published";
   const updatedLabel = safeLocale === "tr" ? "Güncellendi" : "Updated";
   const publishedSource = resolveBlogPublishDate(article);
@@ -249,6 +251,21 @@ export default async function BlogDetailPage({
           secondaryLabel={copy.heroSecondaryCta}
           secondaryHref={`/${safeLocale}/tools`}
         />
+        <ConversionCtaStrip
+          eyebrow={safeLocale === "tr" ? "Karar akışı" : "Decision flow"}
+          title={safeLocale === "tr" ? "İlgili aracı ve alternatifleri açın" : "Open the related tool and alternatives"}
+          description={
+            safeLocale === "tr"
+              ? "Resmî aracı açın, compare sayfasını inceleyin ve alternatifleri ayrı sekmede görüntüleyin."
+              : "Open the official tool, review the comparison page, and view the alternatives in a dedicated step."
+          }
+          buttons={[
+            { label: safeLocale === "tr" ? "Resmî aracı aç" : "Visit official tool", href: heroPrimaryHref },
+            { label: safeLocale === "tr" ? "Karşılaştırmaları aç" : "Compare alternatives", href: comparisonHref, variant: "secondary" },
+            { label: safeLocale === "tr" ? "Alternatifleri aç" : "Explore alternatives", href: alternativesHref, variant: "ghost" }
+          ]}
+        />
+
 
         {tailSections.length ? <ArticleContent locale={safeLocale} sections={tailSections} /> : null}
 
@@ -326,6 +343,9 @@ export default async function BlogDetailPage({
     </>
   );
 }
+
+
+
 
 
 
