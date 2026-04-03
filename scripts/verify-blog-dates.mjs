@@ -1,4 +1,4 @@
-import fs from "node:fs";
+﻿import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
@@ -45,8 +45,13 @@ for (const file of files) {
       continue;
     }
 
-    if (currentSlug && /^    publishDate:\s*"/.test(line)) {
+    if (currentSlug && /^    publishDate:\s*"\d{4}-\d{2}-\d{2}"[,]?\s*$/.test(line)) {
       hasPublishDate = true;
+      continue;
+    }
+
+    if (currentSlug && /^    publishDate:\s*/.test(line)) {
+      errors.push(`${relativeFile}: publishDate for "${currentSlug}" must be a literal YYYY-MM-DD string`);
     }
   }
 
@@ -62,6 +67,3 @@ if (errors.length) {
 }
 
 console.log("[dates] All blog publish dates are explicit and locked.");
-
-
-

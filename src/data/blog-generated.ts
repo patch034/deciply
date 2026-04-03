@@ -375,7 +375,7 @@ const seeds: Seed[] = [
   {
     kind: "BEST_TOOLS",
     slug: "best-ai-tools-for-students-2026",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     categorySlug: "ai-tools",
     useCaseSlug: "students",
     useCasePageSlug: "students",
@@ -385,7 +385,7 @@ const seeds: Seed[] = [
   {
     kind: "TOOL_COMPARISON",
     slug: "chatgpt-vs-claude-for-writing",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     categorySlug: "comparisons",
     leftSlug: "chatgpt",
     rightSlug: "claude",
@@ -396,7 +396,7 @@ const seeds: Seed[] = [
   {
     kind: "ALTERNATIVES",
     slug: "chatgpt-alternatives-2026",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     categorySlug: "guides",
     primaryToolSlug: "chatgpt",
     alternativeToolSlugs: ["claude", "gemini", "perplexity"],
@@ -406,7 +406,7 @@ const seeds: Seed[] = [
   {
     kind: "USE_CASE_GUIDE",
     slug: "ai-workflow-for-content-creators",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     categorySlug: "guides",
     useCaseSlug: "content",
     useCasePageSlug: "content-creators",

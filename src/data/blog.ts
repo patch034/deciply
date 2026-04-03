@@ -2285,7 +2285,7 @@ const allBlogArticles: BlogEntry[] = [
 ,
   {
     slug: "ai-tools-for-passive-income-2026",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     categorySlug: "make-money-with-ai",
     relatedToolSlugs: ["chatgpt", "perplexity", "copy-ai", "canva-ai", "elevenlabs", "pictory"],
     locales: {
@@ -2325,7 +2325,7 @@ const allBlogArticles: BlogEntry[] = [
   },
   {
     slug: "ai-side-hustles-you-can-start-today",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     categorySlug: "make-money-with-ai",
     relatedToolSlugs: ["chatgpt", "copy-ai", "canva-ai", "runway", "elevenlabs", "perplexity"],
     locales: {
@@ -2365,7 +2365,7 @@ const allBlogArticles: BlogEntry[] = [
   },
   {
     slug: "free-ai-tools-that-actually-make-money",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     categorySlug: "free-tools",
     relatedToolSlugs: ["chatgpt", "gemini", "perplexity", "canva-ai", "notion-ai"],
     locales: {
@@ -2405,7 +2405,7 @@ const allBlogArticles: BlogEntry[] = [
   },
   {
     slug: "best-ai-tools-for-beginners-2026",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     categorySlug: "guides",
     relatedToolSlugs: ["chatgpt", "gemini", "canva-ai", "notion-ai", "perplexity"],
     locales: {
@@ -2445,7 +2445,7 @@ const allBlogArticles: BlogEntry[] = [
   },
   {
     slug: "how-to-make-1000-a-month-with-ai-tools",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     categorySlug: "make-money-with-ai",
     relatedToolSlugs: ["chatgpt", "claude", "perplexity", "canva-ai", "elevenlabs", "runway"],
     locales: {
@@ -2486,7 +2486,7 @@ const allBlogArticles: BlogEntry[] = [
 ,
   {
     slug: "ai-tools-for-freelancers",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     categorySlug: "guides",
     relatedToolSlugs: ["chatgpt", "claude", "perplexity", "canva-ai", "runway", "notion-ai"],
     locales: {
@@ -2527,7 +2527,7 @@ const allBlogArticles: BlogEntry[] = [
 ,
   {
     slug: "best-free-ai-tools-2026",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     categorySlug: "free-tools",
     relatedToolSlugs: ["chatgpt", "gemini", "perplexity", "canva-ai", "notion-ai", "elevenlabs"],
     locales: {
@@ -2568,7 +2568,7 @@ const allBlogArticles: BlogEntry[] = [
 ,
   {
     slug: "ai-tools-to-make-money-2026",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     categorySlug: "make-money-with-ai",
     relatedToolSlugs: ["chatgpt", "claude", "perplexity", "canva-ai", "elevenlabs", "runway"],
     locales: {

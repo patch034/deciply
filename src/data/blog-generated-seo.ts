@@ -327,7 +327,7 @@ function buildArticle(seed: ArticleSeed): BlogEntry {
 const seeds: ArticleSeed[] = [
   {
     slug: "best-ai-tools-for-shopify-product-descriptions-2026",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     topic: {
       tr: "Shopify ürün açıklamaları",
       en: "Shopify product descriptions"
@@ -361,7 +361,7 @@ const seeds: ArticleSeed[] = [
   },
   {
     slug: "best-ai-tools-for-youtube-script-writing-2026",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     topic: {
       tr: "YouTube senaryo yazımı",
       en: "YouTube script writing"
@@ -395,7 +395,7 @@ const seeds: ArticleSeed[] = [
   },
   {
     slug: "best-ai-tools-for-resume-writing-2026",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     topic: {
       tr: "CV ve resume yazımı",
       en: "resume and CV writing"
@@ -429,7 +429,7 @@ const seeds: ArticleSeed[] = [
   },
   {
     slug: "best-ai-tools-for-social-media-planning-2026",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     topic: {
       tr: "Sosyal medya içerik planlaması",
       en: "social media content planning"
@@ -463,7 +463,7 @@ const seeds: ArticleSeed[] = [
   },
   {
     slug: "best-ai-tools-for-cold-email-writing-2026",
-    publishDate: "2026-04-02",
+    publishDate: "2026-04-01",
     topic: {
       tr: "SoÄŸuk e-posta yazımı",
       en: "cold email writing"
