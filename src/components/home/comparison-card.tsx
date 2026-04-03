@@ -15,10 +15,28 @@ type ComparisonCardProps = {
   featured?: boolean;
 };
 
+function normalizeComparisonHref(locale: string, href: string) {
+  if (/^https?:\/\//.test(href)) {
+    return href;
+  }
+
+  if (href.startsWith(`/${locale}/`)) {
+    return href;
+  }
+
+  if (href.startsWith("/")) {
+    return `/${locale}${href}`;
+  }
+
+  return `/${locale}/${href}`;
+}
+
 export function ComparisonCard({ locale, item, linkLabel, featured = false }: ComparisonCardProps) {
+  const href = normalizeComparisonHref(locale, item.href);
+
   return (
     <motion.div whileHover={{ y: -4, scale: 1.012 }} transition={{ duration: 0.22 }} className="h-full">
-      <Link href={`/${locale}${item.href}`} className="group block h-full">
+      <Link href={href} className="group block h-full">
         <GlassPanel className={`home-card-glow flex h-full flex-col justify-between overflow-hidden p-6 ${featured ? "ui-card-strong ui-card-hover" : "ui-card ui-card-hover"}`}>
           <div className="flex min-h-[40px] items-center justify-between gap-3 overflow-hidden">
             <div className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">

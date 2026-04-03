@@ -1,7 +1,8 @@
 ﻿import { tools } from "@/data/tools";
 import type { Locale } from "@/i18n/config";
-import { getLocalizedToolBySlug } from "@/lib/catalog";
+import { getCategoryNamesMap, getLocalizedToolBySlug } from "@/lib/catalog";
 import type { LocalizedTool, ToolEntry } from "@/types/catalog";
+import type { ComparisonCard as HomeComparisonCard } from "@/types/home";
 
 type ComparableToolLike = {
   slug: string;
@@ -355,8 +356,108 @@ export function getStaticComparisonPairSlugs() {
   return pairs;
 }
 
+const HIGH_INTENT_COMPARISON_DIRECTORY_SLUGS = [
+  FEATURED_TRIPLE_COMPARISON_SLUG,
+  'chatgpt-vs-claude',
+  'chatgpt-vs-gemini',
+  'claude-vs-gemini',
+  'chatgpt-vs-perplexity',
+  'perplexity-vs-gemini',
+  'github-copilot-vs-codeium',
+  'codeium-vs-cursor',
+  'cursor-vs-codeium',
+  'cursor-vs-replit',
+  'replit-vs-copilot',
+  'cursor-vs-codeium-for-teams',
+  'midjourney-vs-leonardo-ai',
+  'midjourney-vs-dalle',
+  'dalle-vs-leonardo-ai',
+  'leonardo-ai-vs-recraft',
+  'recraft-vs-midjourney',
+  'runway-vs-pika',
+  'pika-vs-capcut-ai',
+  'grammarly-vs-quillbot',
+  'notion-ai-vs-chatgpt',
+  'jasper-vs-copy-ai',
+  'shopify-magic-vs-copy-ai'
+] as const;
+
 export function getStaticComparisonSlugs() {
   return [...getStaticComparisonPairSlugs(), FEATURED_TRIPLE_COMPARISON_SLUG];
+}
+
+function buildComparisonDirectoryPairCard(locale: Locale, leftSlug: string, rightSlug: string, categoryNamesMap: Map<string, string>): HomeComparisonCard | null {
+  const leftTool = getLocalizedToolBySlug(locale, leftSlug);
+  const rightTool = getLocalizedToolBySlug(locale, rightSlug);
+
+  if (!leftTool || !rightTool) {
+    return null;
+  }
+
+  return {
+    icon: 'VS',
+    eyebrow: locale === 'tr' ? 'Karşılaştırma' : 'Comparison',
+    title: leftTool.name + ' vs ' + rightTool.name,
+    description:
+      locale === 'tr'
+        ? 'Fiyat, güçlü yönler, kullanım senaryoları ve alternatifleri tek sayfada görün.'
+        : 'Review pricing, strengths, workflow fit, and alternatives on one page.',
+    href: '/compare/' + buildComparisonPairSlug(leftTool.slug, rightTool.slug),
+    highlight: categoryNamesMap.get(leftTool.primaryCategorySlug) ?? (locale === 'tr' ? 'Karşılaştırma' : 'Comparison')
+  };
+}
+
+function buildComparisonDirectoryTripleCard(locale: Locale): HomeComparisonCard | null {
+  const trio = FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.map((slug) => getLocalizedToolBySlug(locale, slug));
+
+  if (trio.some((tool) => tool === null)) {
+    return null;
+  }
+
+  const [firstTool, secondTool, thirdTool] = trio as [LocalizedTool, LocalizedTool, LocalizedTool];
+
+  return {
+    icon: 'VS',
+    eyebrow: locale === 'tr' ? 'Üçlü karşılaştırma' : 'Three-way comparison',
+    title: firstTool.name + ' vs ' + secondTool.name + ' vs ' + thirdTool.name,
+    description:
+      locale === 'tr'
+        ? 'Hız, uzun form yazı ve ekosistem farklarını tek sayfada karşılaştırın.'
+        : 'Compare speed, long-form writing, and ecosystem fit in one page.',
+    href: '/compare/' + FEATURED_TRIPLE_COMPARISON_SLUG,
+    highlight: locale === 'tr' ? 'Üçlü' : 'Three-way'
+  };
+}
+
+export function getComparisonDirectoryCards(locale: Locale) {
+  const categoryNamesMap = getCategoryNamesMap(locale);
+  const cards: HomeComparisonCard[] = [];
+
+  for (const slug of HIGH_INTENT_COMPARISON_DIRECTORY_SLUGS) {
+    if (slug === FEATURED_TRIPLE_COMPARISON_SLUG) {
+      const tripleCard = buildComparisonDirectoryTripleCard(locale);
+
+      if (tripleCard) {
+        cards.push(tripleCard);
+      }
+
+      continue;
+    }
+
+    const parsed = parseComparisonPairSlug(slug);
+
+    if (!parsed) {
+      continue;
+    }
+
+    const pairCard = buildComparisonDirectoryPairCard(locale, parsed.leftSlug, parsed.rightSlug, categoryNamesMap);
+
+    if (pairCard) {
+      cards.push(pairCard);
+    }
+  }
+
+  return cards;
 }
 
 export function getComparisonToolsFromPair(locale: Locale, pair: string) {
@@ -451,5 +552,8 @@ export function getComparisonRawTool(slug: string) {
 }
 
 export type ComparisonEligibleTool = ToolEntry;
+
+
+
 
 

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/catalog/breadcrumb";
 import { CategoryHero } from "@/components/catalog/category-hero";
 import { InfoSection } from "@/components/catalog/info-section";
 import { ToolCard } from "@/components/catalog/tool-card";
+import { ComparisonCard } from "@/components/home/comparison-card";
 import { ComparisonBreakdownTable } from "@/components/comparison/comparison-breakdown-table";
 import { ComparisonFaq } from "@/components/comparison/comparison-faq";
 import { RelatedComparisonCard } from "@/components/comparison/related-comparison-card";
@@ -23,7 +24,7 @@ import {
   getToolsByCategory
 } from "@/lib/catalog";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
-import { buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
+import { buildComparisonPath, getComparisonDirectoryCards, getComparisonTargetTools } from "@/lib/comparisons";
 import { getToolTrustIndicators } from "@/lib/tool-ui";
 
 export function generateStaticParams() {
@@ -95,6 +96,7 @@ export default async function CategoryDetailPage({
   }
 
   const categoryNamesMap = getCategoryNamesMap(safeLocale);
+  const comparisonDirectoryCards = slug === "comparisons" ? getComparisonDirectoryCards(safeLocale) : [];
 
   if (slug === "comparisons") {
     const comparison = getComparisonContent(safeLocale);
@@ -304,6 +306,26 @@ export default async function CategoryDetailPage({
             </InfoSection>
           </section>
 
+          <SectionShell
+            eyebrow={safeLocale === "tr" ? "Tüm karşılaştırmalar" : "All comparisons"}
+            title={safeLocale === "tr" ? "Compare dizini" : "Comparison directory"}
+            description={
+              safeLocale === "tr"
+                ? "Bu kategorideki tüm compare sayfalarını tek bir görünümde açın."
+                : "Open every comparison page in this category from one hub."
+            }
+          >
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {comparisonDirectoryCards.map((item) => (
+                <ComparisonCard
+                  key={item.href}
+                  locale={safeLocale}
+                  item={item}
+                  linkLabel={safeLocale === "tr" ? "Karşılaştırmayı aç" : "Open comparison"}
+                />
+              ))}
+            </div>
+          </SectionShell>
           <ComparisonFaq
             title={comparison.faq.title}
             description={comparison.faq.description}
@@ -404,6 +426,9 @@ export default async function CategoryDetailPage({
     </div>
   );
 }
+
+
+
 
 
 

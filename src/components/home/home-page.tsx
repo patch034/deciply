@@ -1,4 +1,4 @@
-import { BlogCard } from "@/components/blog/blog-card";
+﻿import { BlogCard } from "@/components/blog/blog-card";
 import { CategoryCard } from "@/components/home/category-card";
 import { ComparisonCard } from "@/components/home/comparison-card";
 import { ComparisonTable } from "@/components/home/comparison-table";
@@ -18,7 +18,7 @@ import type { HomeContent } from "@/data/home";
 import type { Locale } from "@/i18n/config";
 import { getLocalizedBlogArticles } from "@/lib/blog";
 import { formatPricing, getLocalizedTools } from "@/lib/catalog";
-import { buildComparisonPath } from "@/lib/comparisons";
+import { buildComparisonPath, getComparisonDirectoryCards } from "@/lib/comparisons";
 import { buildAlternativesPath, buildUseCasePath, getUseCasePage } from "@/lib/intent-pages";
 import { toHomeToolCard } from "@/lib/tool-ui";
 import type { CategoryCard as HomeCategoryCard, ComparisonCard as HomeComparisonCard } from "@/types/home";
@@ -242,6 +242,7 @@ export function HomePage({ locale, content }: HomePageProps) {
   const freelancerTools = getToolsBySlugs(toolMap, locale, ["chatgpt", "claude", "midjourney"]);
   const editorPicks = getEditorPickTools(toolMap, locale);
   const featuredComparisons = buildFeaturedComparisonCards(locale, toolMap);
+  const comparisonDirectoryCards = getComparisonDirectoryCards(locale);
   const alternativeCards = buildAlternativeCards(locale, toolMap);
   const useCaseCards = buildUseCaseCards(locale);
   const latestArticles = getLocalizedBlogArticles(locale).slice(0, 4);
@@ -315,6 +316,29 @@ export function HomePage({ locale, content }: HomePageProps) {
           </AnimatedSection>
         </div>
 
+        <AnimatedSection delay={0.052}>
+          <SectionShell
+            className="section-tint-cyan"
+            eyebrow={locale === "tr" ? "Tüm karşılaştırmalar" : "All comparisons"}
+            title={locale === "tr" ? "Compare dizini" : "Comparison directory"}
+            description={
+              locale === "tr"
+                ? "Tüm compare sayfalarını tek yerde görün ve doğrudan ilgili sayfaya geçin."
+                : "Browse every compare page in one place and open the next decision page directly."
+            }
+            actions={
+              <PremiumButton href={'/' + locale + '/categories/comparisons'} variant="secondary">
+                {locale === "tr" ? "Tüm karşılaştırmaları gör" : "View all comparisons"}
+              </PremiumButton>
+            }
+          >
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {comparisonDirectoryCards.map((item) => (
+                <ComparisonCard key={item.href} locale={locale} item={item} linkLabel={locale === "tr" ? "Karşılaştırmayı aç" : "Open comparison"} />
+              ))}
+            </div>
+          </SectionShell>
+        </AnimatedSection>
         <div id="top-alternatives" className="scroll-mt-28">
           <AnimatedSection delay={0.055}>
             <SectionShell
@@ -684,3 +708,4 @@ export function HomePage({ locale, content }: HomePageProps) {
     </div>
   );
 }
+

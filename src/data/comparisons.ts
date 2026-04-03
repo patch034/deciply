@@ -1,4 +1,4 @@
-import type { Locale } from "@/i18n/config";
+﻿import type { Locale } from "@/i18n/config";
 import { assertEncodingHealth, normalizeLocalizedContent } from "@/lib/encoding";
 
 export type ComparisonRow = {
@@ -223,21 +223,21 @@ export const comparisonContent: Record<Locale, ComparisonPageContent> = {
         {
           title: "Gemini vs ChatGPT",
           description: "Google ekosistemi ile genel AI asistan deneyimini yan yana gör.",
-          href: "/tools/gemini",
+          href: "/compare/chatgpt-vs-gemini",
           ctaLabel: "Gemini'yi incele",
           highlight: "Verimlilik"
         },
         {
-          title: "Midjourney vs DALL·E",
+          title: "Midjourney vs DALLÂ·E",
           description: "Görsel kalite ve yaratıcı kontrol açısından iki popüler aracı değerlendir.",
-          href: "/tools/midjourney",
+          href: "/compare/midjourney-vs-dalle",
           ctaLabel: "Midjourney'yi incele",
           highlight: "Görsel AI"
         },
         {
           title: "2026'da farklı işler için AI araçları",
           description: "İkiden fazla seçenek görmek istersen geniş listeye geç.",
-          href: "/categories/ai-tools",
+          href: "/compare/chatgpt-vs-claude-vs-gemini",
           ctaLabel: "Araç listesini aç",
           highlight: "Genel görünüm"
         }
@@ -385,21 +385,21 @@ export const comparisonContent: Record<Locale, ComparisonPageContent> = {
         {
           title: "Gemini vs ChatGPT",
           description: "See Google ecosystem workflows next to a broader AI assistant workflow.",
-          href: "/tools/gemini",
+          href: "/compare/chatgpt-vs-gemini",
           ctaLabel: "Review Gemini",
           highlight: "Productivity"
         },
         {
-          title: "Midjourney vs DALL·E",
+          title: "Midjourney vs DALLÂ·E",
           description: "Compare two popular visual tools through image quality and creative control.",
-          href: "/tools/midjourney",
+          href: "/compare/midjourney-vs-dalle",
           ctaLabel: "Review Midjourney",
           highlight: "Image AI"
         },
         {
           title: "AI tools for different jobs in 2026",
           description: "Open the broader list if you want to compare more than two options.",
-          href: "/categories/ai-tools",
+          href: "/compare/chatgpt-vs-claude-vs-gemini",
           ctaLabel: "Open tool list",
           highlight: "Overview"
         }
@@ -479,6 +479,7 @@ assertEncodingHealth("comparisons");
 export function getComparisonContent(locale: Locale) {
   return normalizeLocalizedContent(`comparison:${locale}`, comparisonContent[locale]);
 }
+
 
 
 
