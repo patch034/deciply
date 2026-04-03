@@ -19,6 +19,14 @@ export const FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS = ["chatgpt", "claude", "gemi
 export const FEATURED_TRIPLE_COMPARISON_SLUG = FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.join("-vs-");
 export const SPECIAL_TEAM_COMPARISON_SLUG = "cursor-vs-codeium-for-teams";
 const SPECIAL_TEAM_COMPARISON_PAIR = { leftSlug: "cursor", rightSlug: "codeium" } as const;
+const MANUAL_COMPARISON_PAIR_TOOL_SLUGS = [
+  ["cursor", "replit"],
+  ["leonardo-ai", "recraft"],
+  ["recraft", "midjourney"],
+  ["runway", "pika"],
+  ["pika", "capcut-ai"],
+  ["grammarly", "quillbot"]
+] as const;
 
 const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
   [FEATURED_TRIPLE_COMPARISON_SLUG]: [
@@ -167,6 +175,10 @@ function normalizeComparableTools<T extends ComparableToolLike>(left: T, right: 
   return byCanonicalPriority(left, right) <= 0 ? [left, right] : [right, left];
 }
 
+function getManualComparisonPairSlugs() {
+  return MANUAL_COMPARISON_PAIR_TOOL_SLUGS.map(([leftSlug, rightSlug]) => buildComparisonPairSlug(leftSlug, rightSlug));
+}
+
 function getComparisonScore(primary: ComparableToolLike, candidate: ComparableToolLike) {
   const sharedToolCategories = sharedCount(primary.toolCategorySlugs, candidate.toolCategorySlugs);
   const sharedUseCases = sharedCount(primary.useCaseSlugs, candidate.useCaseSlugs);
@@ -196,8 +208,11 @@ export function areComparableTools(left: ComparableToolLike, right: ComparableTo
 
 const COMPARE_SLUG_ALIASES: Record<string, string> = {
   "cursor-vs-codeium": SPECIAL_TEAM_COMPARISON_SLUG,
+  "codeium-vs-cursor": SPECIAL_TEAM_COMPARISON_SLUG,
   "adobe-firefly-vs-midjourney": "midjourney-vs-adobe-express",
-  "midjourney-vs-adobe-firefly": "midjourney-vs-adobe-express"
+  "midjourney-vs-adobe-firefly": "midjourney-vs-adobe-express",
+  "recraft-vs-midjourney": "midjourney-vs-recraft",
+  "notion-ai-vs-chatgpt": "chatgpt-vs-notion-ai"
 };
 
 function normalizeComparisonPairSlug(pair: string) {
@@ -369,6 +384,12 @@ export function getStaticComparisonPairSlugs() {
     pairs.push(SPECIAL_TEAM_COMPARISON_SLUG);
   }
 
+  for (const slug of getManualComparisonPairSlugs()) {
+    if (!pairs.includes(slug)) {
+      pairs.push(slug);
+    }
+  }
+
   return pairs;
 }
 
@@ -486,7 +507,14 @@ export function getComparisonToolsFromPair(locale: Locale, pair: string) {
   const leftTool = getLocalizedToolBySlug(locale, parsed.leftSlug);
   const rightTool = getLocalizedToolBySlug(locale, parsed.rightSlug);
 
-  if (!leftTool || !rightTool || !areComparableTools(leftTool, rightTool)) {
+  if (!leftTool || !rightTool) {
+    return null;
+  }
+
+  const canonicalPairSlug = buildComparisonPairSlug(leftTool.slug, rightTool.slug);
+  const staticPairSlugs = getStaticComparisonPairSlugs();
+
+  if (!areComparableTools(leftTool, rightTool) && !staticPairSlugs.includes(pair) && !staticPairSlugs.includes(canonicalPairSlug)) {
     return null;
   }
 
@@ -499,7 +527,6 @@ export function getComparisonToolsFromPair(locale: Locale, pair: string) {
     };
   }
 
-  const canonicalPairSlug = buildComparisonPairSlug(leftTool.slug, rightTool.slug);
   const canonicalLeftSlug = canonicalPairSlug.split("-vs-")[0] ?? leftTool.slug;
   const canonicalRightSlug = canonicalPairSlug.split("-vs-")[1] ?? rightTool.slug;
   const canonicalLeftTool = canonicalLeftSlug === leftTool.slug ? leftTool : rightTool;
