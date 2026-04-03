@@ -16,6 +16,14 @@ const dictionaries = {
       description:
         "Deciply, AI araçlarını daha hızlı karşılaştırmak, doğru aracı seçmek ve gelir odaklı kullanım senaryolarını keşfetmek için tasarlanmış modern bir platformdur.",
       badge: "Deciply",
+      contactBlock: {
+        title: "İletişim",
+        links: [
+          { label: "İletişim için", href: "mailto:hello@deciply.com" },
+          { label: "Yardım için", href: "mailto:feedback@deciply.com" },
+          { label: "İş birliği için", href: "mailto:partners@deciply.com" }
+        ]
+      },
       groups: [
         {
           title: "Araçlar",
@@ -45,13 +53,9 @@ const dictionaries = {
           ]
         },
         {
-          title: "Destek ve güven",
+          title: "Güven",
           links: [
             { label: "Blog", href: "/blog" },
-            { label: "İletişim", href: "/contact" },
-            { label: "Yardım / destek", href: "mailto:feedback@deciply.com" },
-            { label: "İş birlikleri", href: "mailto:partners@deciply.com" },
-            { label: "E-posta", href: "mailto:hello@deciply.com" },
             { label: "Affiliate açıklaması", href: "/affiliate-disclosure" },
             { label: "Gizlilik politikası", href: "/privacy-policy" },
             { label: "Kullanım şartları", href: "/terms" }
@@ -77,6 +81,14 @@ const dictionaries = {
       description:
         "Deciply is a modern AI discovery platform built to help users compare tools faster, choose with confidence, and explore revenue-focused AI workflows.",
       badge: "Deciply",
+      contactBlock: {
+        title: "Contact",
+        links: [
+          { label: "Contact", href: "mailto:hello@deciply.com" },
+          { label: "Help / support", href: "mailto:feedback@deciply.com" },
+          { label: "Partnerships", href: "mailto:partners@deciply.com" }
+        ]
+      },
       groups: [
         {
           title: "Tools",
@@ -106,13 +118,9 @@ const dictionaries = {
           ]
         },
         {
-          title: "Support & trust",
+          title: "Trust",
           links: [
             { label: "Blog", href: "/blog" },
-            { label: "Contact", href: "/contact" },
-            { label: "Help / support", href: "mailto:feedback@deciply.com" },
-            { label: "Partnerships", href: "mailto:partners@deciply.com" },
-            { label: "Email", href: "mailto:hello@deciply.com" },
             { label: "Affiliate disclosure", href: "/affiliate-disclosure" },
             { label: "Privacy policy", href: "/privacy-policy" },
             { label: "Terms", href: "/terms" }
@@ -131,6 +139,7 @@ const dictionaries = {
     footer: {
       description: string;
       badge: string;
+      contactBlock: { title: string; links: { label: string; href: string }[] };
       groups: { title: string; links: { label: string; href: string }[] }[];
       bottomNote: string;
       copyright: string;

@@ -18,22 +18,14 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
   function renderFooterLink(item: { href: string; label: string }) {
     if (isExternalHref(item.href)) {
       return (
-        <a
-          key={item.href + item.label}
-          href={item.href}
-          className="truncate transition duration-200 hover:text-white"
-        >
+        <a key={item.href + item.label} href={item.href} className="truncate transition duration-200 hover:text-white">
           {item.label}
         </a>
       );
     }
 
     return (
-      <Link
-        key={item.href + item.label}
-        href={`/${locale}${item.href}`}
-        className="truncate transition duration-200 hover:text-white"
-      >
+      <Link key={item.href + item.label} href={`/${locale}${item.href}`} className="truncate transition duration-200 hover:text-white">
         {item.label}
       </Link>
     );
@@ -54,6 +46,15 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
             <p className="mt-4 max-w-lg text-sm leading-7 text-slate-300/88 md:text-base md:leading-8">
               {dictionary.footer.description}
             </p>
+
+            <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                {dictionary.footer.contactBlock.title}
+              </p>
+              <div className="mt-4 grid gap-3 text-sm text-slate-200 sm:grid-cols-2 lg:grid-cols-1">
+                {dictionary.footer.contactBlock.links.map((item) => renderFooterLink(item))}
+              </div>
+            </div>
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 sm:gap-10">
@@ -73,9 +74,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
             <p className="max-w-2xl">{dictionary.footer.bottomNote}</p>
             <p className="shrink-0">{dictionary.footer.copyright}</p>
           </div>
-          <p className="mt-3 text-[10px] opacity-50">
-            Impact-Site-Verification: cc3ef693-e846-43e9-8663-c0af7be7810c
-          </p>
+          <p className="mt-3 text-[10px] opacity-50">Impact-Site-Verification: cc3ef693-e846-43e9-8663-c0af7be7810c</p>
         </div>
       </GlassPanel>
     </footer>
