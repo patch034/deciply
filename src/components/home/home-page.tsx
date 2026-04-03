@@ -1,4 +1,5 @@
 import { BlogCard } from "@/components/blog/blog-card";
+import { HomeBoostSections } from "@/components/home/home-boost-sections";
 import { CategoryCard } from "@/components/home/category-card";
 import { ComparisonCard } from "@/components/home/comparison-card";
 import { ComparisonTable } from "@/components/home/comparison-table";
@@ -16,7 +17,8 @@ import { SectionShell } from "@/components/ui/section-shell";
 import { StatBadge } from "@/components/ui/stat-badge";
 import type { HomeContent } from "@/data/home";
 import type { Locale } from "@/i18n/config";
-import { getLocalizedBlogArticles } from "@/lib/blog";
+import { getBlogBoostSections, getLocalizedBlogArticles } from "@/lib/blog";
+import { getHomepageDiscoveryGuides } from "@/data/discovery-pages";
 import { formatPricing, getLocalizedTools } from "@/lib/catalog";
 import { buildComparisonPath, getComparisonDirectoryCards } from "@/lib/comparisons";
 import { buildAlternativesPath, buildUseCasePath, getUseCasePage } from "@/lib/intent-pages";
@@ -245,7 +247,11 @@ export function HomePage({ locale, content }: HomePageProps) {
   const comparisonDirectoryCards = getComparisonDirectoryCards(locale);
   const alternativeCards = buildAlternativeCards(locale, toolMap);
   const useCaseCards = buildUseCaseCards(locale);
+  const blogBoostSections = getBlogBoostSections(locale);
+  const homepageDiscoveryGuides = getHomepageDiscoveryGuides(locale);
   const latestArticles = getLocalizedBlogArticles(locale).slice(0, 4);
+  const latestComparisonCards = comparisonDirectoryCards.slice(0, 4);
+  const popularTools = editorPicks.slice(0, 4);
 
   return (
     <div className="relative overflow-x-clip pb-16 sm:pb-20">
@@ -267,6 +273,14 @@ export function HomePage({ locale, content }: HomePageProps) {
           </div>
         </GlassPanel>
       </div>
+
+      <HomeBoostSections
+        locale={locale}
+        comparisonCards={latestComparisonCards}
+        trendingGuides={homepageDiscoveryGuides.slice(0, 4)}
+        latestGuides={blogBoostSections.latestGuides}
+        popularTools={popularTools}
+      />
 
       <div className="mt-12 space-y-12 md:mt-20 md:space-y-20">
         <AnimatedSection delay={0.02}>

@@ -1,8 +1,9 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { BlogCard } from "@/components/blog/blog-card";
+import { ComparisonCard } from "@/components/home/comparison-card";
 import { Breadcrumb } from "@/components/catalog/breadcrumb";
 import { FloatingAffiliateBar } from "@/components/catalog/floating-affiliate-bar";
 import { InfoSection } from "@/components/catalog/info-section";
@@ -10,6 +11,7 @@ import { ProsConsCard } from "@/components/catalog/pros-cons-card";
 import { ToolCard } from "@/components/catalog/tool-card";
 import { ComparisonFaq } from "@/components/comparison/comparison-faq";
 import { ConversionCtaStrip } from "@/components/ui/conversion-cta-strip";
+import { PremiumButton } from "@/components/ui/premium-button";
 import { Badge } from "@/components/ui/badge";
 import type { ComparisonFaqItem } from "@/data/comparisons";
 import { tools } from "@/data/tools";
@@ -436,12 +438,23 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   const howToUseSteps = getHowToUseSteps(safeLocale, tool);
   const pricingSummaryCards = getPricingSummaryCards(safeLocale, tool, pricingValue);
   const audienceCards = getAudienceCards(safeLocale, tool, dictionary);
-  const comparisonTargets = getComparisonTargetTools(safeLocale, tool.slug, 3);
+  const comparisonTargets = getComparisonTargetTools(safeLocale, tool.slug, 6);
     const featuredTripleComparisonHref = FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.includes(tool.slug as (typeof FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS)[number])
       ? buildComparisonPath(safeLocale, FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[0], FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[1], FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[2])
       : null;
     const useCasePages = getUseCasePagesForTool(safeLocale, tool.useCaseSlugs, 2);
   const faqItems = buildToolFaq(safeLocale, tool, pricingValue);
+  const comparisonCards = comparisonTargets.map((item) => ({
+    icon: "VS",
+    eyebrow: tool.name,
+    title: `${tool.name} vs ${item.name}`,
+    description:
+      safeLocale === "tr"
+        ? `${tool.name} ile ${item.name} arasındaki fiyat, kullanım alanı ve workflow farklarını tek sayfada görün.`
+        : `Review the pricing, workflow fit, and trade-offs between ${tool.name} and ${item.name} on one page.`,
+    href: buildComparisonPath(safeLocale, tool.slug, item.slug),
+    highlight: item.bestUseCase
+  }));
   const alternativesHubHref = buildAlternativesPath(safeLocale, tool.slug);
   const alternativesTitle = safeLocale === "tr" ? `${tool.name} alternatifleri` : `Alternatives to ${tool.name}`;
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/tools/${tool.slug}`);
@@ -777,27 +790,20 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </InfoSection>
       </section>
 
-      {comparisonTargets.length ? (
+      {comparisonCards.length ? (
         <InfoSection title={dictionary.compareTitle} description={dictionary.compareDescription}>
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {featuredTripleComparisonHref ? (
-                <Link
-                  href={featuredTripleComparisonHref}
-                  className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 text-sm font-semibold leading-7 text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300"
-                >
-                  {safeLocale === "tr" ? "ChatGPT, Claude ve Gemini" : "ChatGPT, Claude and Gemini"}
-                </Link>
-              ) : null}
-              {comparisonTargets.map((item) => (
-              <Link
-                key={item.slug}
-                href={buildComparisonPath(safeLocale, tool.slug, item.slug)}
-                className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 text-sm font-semibold leading-7 text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300"
-              >
-                {tool.name} vs {item.name}
-              </Link>
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {comparisonCards.map((item) => (
+              <ComparisonCard key={item.href} locale={safeLocale} item={item} linkLabel={safeLocale === "tr" ? "Karşılaştırmayı aç" : "Open comparison"} />
             ))}
           </div>
+          {featuredTripleComparisonHref ? (
+            <div className="mt-6">
+              <PremiumButton href={featuredTripleComparisonHref} variant="secondary" className="w-full sm:w-auto">
+                {safeLocale === "tr" ? "Üçlü karşılaştırmayı aç" : "Open three-way comparison"}
+              </PremiumButton>
+            </div>
+          ) : null}
         </InfoSection>
       ) : null}
 

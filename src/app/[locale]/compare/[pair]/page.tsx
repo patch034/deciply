@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
@@ -311,7 +311,7 @@ export default async function ComparisonPage({
   const categoryNamesMap = getCategoryNamesMap(safeLocale);
   const comparisonRows = buildComparisonRows(safeLocale, leftTool, rightTool);
   const comparisonFaq = buildComparisonFaq(safeLocale, leftTool, rightTool);
-  const alternatives = getComparisonAlternativeTools(safeLocale, leftTool.slug, rightTool.slug, 4);
+  const alternatives = getComparisonAlternativeTools(safeLocale, leftTool.slug, rightTool.slug, 6);
   const relatedBlogArticles = getComparisonRelatedBlogSlugsForSlugs([leftTool.slug, rightTool.slug], 3)
     .map((slug) => getLocalizedBlogArticleBySlug(safeLocale, slug))
     .filter((article): article is NonNullable<typeof article> => Boolean(article));
@@ -593,7 +593,7 @@ export default async function ComparisonPage({
             className="px-0 sm:px-0 lg:px-0"
             contentClassName="grid gap-4 md:grid-cols-2 xl:grid-cols-3"
           >
-            {alternatives.slice(0, 3).map((tool) => {
+            {alternatives.slice(0, 6).map((tool) => {
               const matchedTool = getBetterMatchedPairTool(tool, leftTool, rightTool);
               const compareHref = buildComparisonPath(safeLocale, tool.slug, matchedTool.slug);
 

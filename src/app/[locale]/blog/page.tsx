@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -7,6 +7,7 @@ import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
 import {
+  getBlogBoostSections,
   getBlogCopy,
   getBlogTotalPages,
   getPaginatedLocalizedBlogArticles,
@@ -66,6 +67,7 @@ export default async function BlogPage({
   const copy = getBlogCopy(safeLocale);
   const requestedPage = parseBlogPage(page);
   const totalPages = getBlogTotalPages();
+  const boostSections = getBlogBoostSections(safeLocale);
 
   if (requestedPage > totalPages) {
     notFound();
@@ -76,6 +78,35 @@ export default async function BlogPage({
 
   return (
     <div className="w-full max-w-full overflow-x-hidden pb-10 pt-10 lg:pt-14">
+      <SectionShell
+        eyebrow={safeLocale === "tr" ? "Öne çıkan blog blokları" : "Featured blog blocks"}
+        title={safeLocale === "tr" ? "Bu hafta öne çıkan rehberler" : "This week's featured guides"}
+        description={
+          safeLocale === "tr"
+            ? "Editör seçimleri, en çok okunanlar ve yeni yayınlanan rehberler tek blokta."
+            : "Editor picks, most-read articles, and the newest guides in one premium block."
+        }
+        actions={<PremiumButton href={`/${safeLocale}/blog`}>{copy.backToBlog}</PremiumButton>}
+      >
+        <div className="grid gap-6 xl:grid-cols-3">
+          {([
+            { label: safeLocale === "tr" ? "Editör seçimleri" : "Editor's Picks", article: boostSections.editorPicks[0] },
+            { label: safeLocale === "tr" ? "Bu hafta en çok okunan" : "Most Read This Week", article: boostSections.mostRead[0] },
+            { label: safeLocale === "tr" ? "Bu hafta yeni" : "New This Week", article: boostSections.newThisWeek[0] }
+          ] as const).map((block) =>
+            block.article ? (
+              <div key={block.label} className="space-y-4">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300/90">{block.label}</p>
+                  <span className="text-xs font-medium text-slate-500">{copy.articleLeadLabel}</span>
+                </div>
+                <BlogCard locale={safeLocale} article={block.article} ctaLabel={copy.readMoreLabel} />
+              </div>
+            ) : null
+          )}
+        </div>
+      </SectionShell>
+
       <SectionShell
         eyebrow={copy.listEyebrow}
         title={copy.listTitle}
@@ -148,3 +179,4 @@ export default async function BlogPage({
     </div>
   );
 }
+

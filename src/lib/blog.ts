@@ -141,6 +141,93 @@ export function getLocalizedBlogArticles(locale: Locale): LocalizedBlogArticle[]
   return sortArticlesByPublishDate(blogArticles.map((article) => localizeArticle(article, locale)));
 }
 
+const MS_PER_DAY = 24 * 60 * 60 * 1000;
+
+function getBlogDiscoveryScore(article: LocalizedBlogArticle) {
+  const graph = article.contentGraph;
+  const kindScore =
+    graph?.kind === 'TOOL_COMPARISON' ? 6 :
+    graph?.kind === 'BEST_TOOLS' ? 5 :
+    graph?.kind === 'ALTERNATIVES' ? 4 :
+    graph?.kind === 'USE_CASE_GUIDE' ? 4 :
+    3;
+  const compareScore = graph?.comparePairs?.length ?? 0;
+  const alternativeScore = graph?.alternativeToolSlugs?.length ?? 0;
+  const useCasePageScore = graph?.useCasePageSlugs?.length ?? 0;
+  const keywordScore = graph?.keywords?.length ?? 0;
+  const relatedToolScore = article.relatedToolSlugs.length;
+
+  return kindScore * 10 + compareScore * 7 + alternativeScore * 4 + useCasePageScore * 3 + keywordScore + relatedToolScore * 2;
+}
+
+function getBlogRecencyScore(article: LocalizedBlogArticle) {
+  const publishTime = new Date(article.publishDate + 'T12:00:00+03:00').getTime();
+  const ageInDays = Math.max(0, Math.floor((Date.now() - publishTime) / MS_PER_DAY));
+
+  return Math.max(0, 30 - ageInDays);
+}
+
+function rankBlogArticlesByDiscovery(articles: LocalizedBlogArticle[]) {
+  return [...articles].sort((left, right) => {
+    const leftScore = getBlogDiscoveryScore(left);
+    const rightScore = getBlogDiscoveryScore(right);
+
+    if (leftScore !== rightScore) {
+      return rightScore - leftScore;
+    }
+
+    const leftDate = new Date(left.publishDate + 'T12:00:00+03:00').getTime();
+    const rightDate = new Date(right.publishDate + 'T12:00:00+03:00').getTime();
+
+    return rightDate - leftDate;
+  });
+}
+
+function rankBlogArticlesByTrend(articles: LocalizedBlogArticle[]) {
+  return [...articles].sort((left, right) => {
+    const leftScore = getBlogDiscoveryScore(left) + getBlogRecencyScore(left);
+    const rightScore = getBlogDiscoveryScore(right) + getBlogRecencyScore(right);
+
+    if (leftScore !== rightScore) {
+      return rightScore - leftScore;
+    }
+
+    const leftDate = new Date(left.publishDate + 'T12:00:00+03:00').getTime();
+    const rightDate = new Date(right.publishDate + 'T12:00:00+03:00').getTime();
+
+    return rightDate - leftDate;
+  });
+}
+
+export function getBlogFeaturedArticles(locale: Locale, limit = 3) {
+  return rankBlogArticlesByDiscovery(getLocalizedBlogArticles(locale)).slice(0, limit);
+}
+
+export function getBlogTrendingArticles(locale: Locale, limit = 3, excludeSlugs: string[] = []) {
+  const excluded = new Set(excludeSlugs);
+
+  return rankBlogArticlesByTrend(getLocalizedBlogArticles(locale).filter((article) => !excluded.has(article.slug))).slice(0, limit);
+}
+
+export function getBlogLatestArticles(locale: Locale, limit = 3, excludeSlugs: string[] = []) {
+  const excluded = new Set(excludeSlugs);
+
+  return getLocalizedBlogArticles(locale).filter((article) => !excluded.has(article.slug)).slice(0, limit);
+}
+
+export function getBlogBoostSections(locale: Locale) {
+  const editorPicks = getBlogFeaturedArticles(locale, 3);
+  const mostRead = getBlogTrendingArticles(locale, 3, editorPicks.map((article) => article.slug));
+  const newThisWeek = getBlogLatestArticles(locale, 3, [...editorPicks, ...mostRead].map((article) => article.slug));
+
+  return {
+    editorPicks,
+    mostRead,
+    newThisWeek,
+    latestGuides: getBlogLatestArticles(locale, 4)
+  };
+}
+
 export function parseBlogPage(value: string | string[] | undefined) {
   const rawValue = Array.isArray(value) ? value[0] : value;
   const parsed = Number.parseInt(rawValue ?? "1", 10);
