@@ -194,12 +194,24 @@ export function areComparableTools(left: ComparableToolLike, right: ComparableTo
   );
 }
 
+const COMPARE_SLUG_ALIASES: Record<string, string> = {
+  "cursor-vs-codeium": SPECIAL_TEAM_COMPARISON_SLUG,
+  "adobe-firefly-vs-midjourney": "midjourney-vs-adobe-express",
+  "midjourney-vs-adobe-firefly": "midjourney-vs-adobe-express"
+};
+
+function normalizeComparisonPairSlug(pair: string) {
+  return COMPARE_SLUG_ALIASES[pair] ?? pair;
+}
+
 export function parseComparisonPairSlug(pair: string) {
-  if (pair === SPECIAL_TEAM_COMPARISON_SLUG) {
+  const normalizedPair = normalizeComparisonPairSlug(pair);
+
+  if (normalizedPair === SPECIAL_TEAM_COMPARISON_SLUG) {
     return SPECIAL_TEAM_COMPARISON_PAIR;
   }
 
-  const [leftSlug, rightSlug] = pair.split("-vs-");
+  const [leftSlug, rightSlug] = normalizedPair.split("-vs-");
 
   if (!leftSlug || !rightSlug) {
     return null;
