@@ -1,4 +1,4 @@
-import type { Locale } from "@/i18n/config";
+﻿import type { Locale } from "@/i18n/config";
 
 const dictionaries = {
   tr: {
@@ -45,16 +45,20 @@ const dictionaries = {
           ]
         },
         {
-          title: "Güven",
+          title: "Destek ve güven",
           links: [
             { label: "Blog", href: "/blog" },
+            { label: "İletişim", href: "/contact" },
+            { label: "Yardım / destek", href: "mailto:feedback@deciply.com" },
+            { label: "İş birlikleri", href: "mailto:partners@deciply.com" },
+            { label: "E-posta", href: "mailto:hello@deciply.com" },
             { label: "Affiliate açıklaması", href: "/affiliate-disclosure" },
             { label: "Gizlilik politikası", href: "/privacy-policy" },
             { label: "Kullanım şartları", href: "/terms" }
           ]
         }
       ],
-      bottomNote: "AI tools, blog rehberleri ve karşılaştırmalar için hızlı ve güven odaklı Deciply deneyimi.",
+      bottomNote: "AI araçları, blog rehberleri ve karşılaştırmalar için hızlı ve güven odaklı Deciply deneyimi.",
       copyright: "2026 Deciply. Tüm hakları saklıdır."
     }
   },
@@ -102,9 +106,13 @@ const dictionaries = {
           ]
         },
         {
-          title: "Trust",
+          title: "Support & trust",
           links: [
             { label: "Blog", href: "/blog" },
+            { label: "Contact", href: "/contact" },
+            { label: "Help / support", href: "mailto:feedback@deciply.com" },
+            { label: "Partnerships", href: "mailto:partners@deciply.com" },
+            { label: "Email", href: "mailto:hello@deciply.com" },
             { label: "Affiliate disclosure", href: "/affiliate-disclosure" },
             { label: "Privacy policy", href: "/privacy-policy" },
             { label: "Terms", href: "/terms" }
@@ -115,7 +123,20 @@ const dictionaries = {
       copyright: "2026 Deciply. All rights reserved."
     }
   }
-};
+} as const satisfies Record<
+  Locale,
+  {
+    meta: { homeTitle: string; homeDescription: string };
+    navigation: { label: string; href: string }[];
+    footer: {
+      description: string;
+      badge: string;
+      groups: { title: string; links: { label: string; href: string }[] }[];
+      bottomNote: string;
+      copyright: string;
+    };
+  }
+>;
 
 export type Dictionary = (typeof dictionaries)[Locale];
 
