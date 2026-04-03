@@ -17,13 +17,9 @@ const dictionaries = {
         "Deciply, AI araçlarını daha hızlı karşılaştırmak, doğru aracı seçmek ve gelir odaklı kullanım senaryolarını keşfetmek için tasarlanmış modern bir platformdur.",
       badge: "Deciply",
       contactBlock: {
-        title: "İletişim",
-        links: [
-          { label: "İletişim için", href: "mailto:hello@deciply.com" },
-          { label: "Yardım için", href: "mailto:feedback@deciply.com" },
-          { label: "İş birliği için", href: "mailto:partners@deciply.com" }
-        ]
-      },
+          title: "İletişim",
+          links: [{ label: "İletişim", href: "/contact" }]
+        },
       groups: [
         {
           title: "Araçlar",
@@ -82,13 +78,9 @@ const dictionaries = {
         "Deciply is a modern AI discovery platform built to help users compare tools faster, choose with confidence, and explore revenue-focused AI workflows.",
       badge: "Deciply",
       contactBlock: {
-        title: "Contact",
-        links: [
-          { label: "Contact", href: "mailto:hello@deciply.com" },
-          { label: "Help / support", href: "mailto:feedback@deciply.com" },
-          { label: "Partnerships", href: "mailto:partners@deciply.com" }
-        ]
-      },
+          title: "Contact",
+          links: [{ label: "Contact", href: "/contact" }]
+        },
       groups: [
         {
           title: "Tools",
@@ -152,3 +144,6 @@ export type Dictionary = (typeof dictionaries)[Locale];
 export function getDictionary(locale: Locale) {
   return dictionaries[locale];
 }
+
+
+
