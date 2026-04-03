@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
 import { BlogCard } from "@/components/blog/blog-card";
@@ -301,6 +302,10 @@ export default async function ComparisonPage({
     .map((slug) => getLocalizedBlogArticleBySlug(safeLocale, slug))
     .filter((article): article is NonNullable<typeof article> => Boolean(article));
   const title = buildComparisonTitle(safeLocale, leftTool, rightTool);
+  const relatedAlternativePages = [leftTool, rightTool].map((tool) => ({
+    label: safeLocale === "tr" ? `${tool.name} alternatifleri` : `${tool.name} alternatives`,
+    href: `/${safeLocale}/alternatives/${tool.slug}`
+  }));
   const description = buildComparisonDescription(safeLocale, leftTool, rightTool);
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/compare/${canonicalPairSlug}`);
   const breadcrumbSchema = {
@@ -585,6 +590,30 @@ export default async function ComparisonPage({
             ))}
           </SectionShell>
         ) : null}
+
+        <InfoSection
+          title={safeLocale === "tr" ? "İlgili alternatifler" : "Related alternatives"}
+          description={
+            safeLocale === "tr"
+              ? "Bu karşılaştırmayı açtıktan sonra ilgili alternatif sayfalarını da inceleyin."
+              : "Review the related alternatives pages after this comparison."
+          }
+        >
+          <div className="grid gap-4 md:grid-cols-2">
+            {relatedAlternativePages.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 transition hover:border-cyan-400/30 hover:bg-white/[0.06]"
+              >
+                <p className="text-sm font-semibold text-cyan-300">{item.label}</p>
+                <p className="mt-3 text-sm leading-7 text-slate-300">
+                  {safeLocale === "tr" ? "Alternatifleri, fiyat farkını ve kullanım alanını ayrı sayfada görün." : "Review alternatives, pricing differences, and workflow fit on a dedicated page."}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </InfoSection>
 
         <ComparisonFaq title={dictionary.faqTitle} description={dictionary.faqDescription} items={comparisonFaq} />
       </div>

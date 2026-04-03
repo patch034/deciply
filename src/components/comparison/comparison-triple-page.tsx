@@ -66,6 +66,10 @@ export function ComparisonTriplePage({
     .map((slug) => getLocalizedBlogArticleBySlug(locale, slug))
     .filter((article): article is NonNullable<typeof article> => Boolean(article));
 
+  const relatedAlternativePages = tools.map((tool) => ({
+    label: locale === "tr" ? `${tool.name} alternatifleri` : `${tool.name} alternatives`,
+    href: `/${locale}/alternatives/${tool.slug}`
+  }));
   return (
     <>
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
@@ -252,6 +256,27 @@ export function ComparisonTriplePage({
             ))}
           </SectionShell>
         ) : null}
+
+        <SectionShell
+          eyebrow={locale === "tr" ? "İlgili alternatifler" : "Related alternatives"}
+          title={locale === "tr" ? "İlgili alternatifler" : "Related alternatives"}
+          description={locale === "tr" ? "Bu üçlü karşılaştırmadan sonra ilgili alternatif sayfalarını da açın." : "Review the related alternatives pages after this three-way comparison."}
+          className="px-0 sm:px-0 lg:px-0"
+          contentClassName="grid gap-4 md:grid-cols-3"
+        >
+          {relatedAlternativePages.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 transition hover:border-cyan-400/30 hover:bg-white/[0.06]"
+            >
+              <p className="text-sm font-semibold text-cyan-300">{item.label}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-300">
+                {locale === "tr" ? "Alternatifleri ve kullanım alanlarını ayrı sayfada görün." : "Review alternatives and workflow fit on a dedicated page."}
+              </p>
+            </Link>
+          ))}
+        </SectionShell>
 
         <ComparisonFaq title={locale === "tr" ? "Sık sorulan sorular" : "FAQ"} description={locale === "tr" ? "Bu üç aracı seçmeden önce en sık sorulan karar sorularına kısa cevaplar." : "Short answers to the most common decision questions before you choose one of the tools."} items={faqItems} />
 

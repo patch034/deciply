@@ -24,14 +24,22 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "how-ai-tools-are-changing-ecommerce-in-2026"
   ],
   "chatgpt-vs-gemini": [
+    "best-ai-tools-for-marketing-teams-2026",
     "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-startups-2026",
     "how-ai-tools-are-changing-ecommerce-in-2026",
     "best-ai-tools-for-agencies-2026"
   ],
   "midjourney-vs-leonardo-ai": [
     "best-ai-tools-for-content-teams-2026",
     "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-marketing-teams-2026",
     "best-ai-tools-for-social-media-planning-2026"
+  ],
+  "github-copilot-vs-codeium": [
+    "best-ai-tools-for-startups-2026",
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agencies-2026"
   ],
   "shopify-magic-vs-copy-ai": [
     "how-ai-tools-are-changing-ecommerce-in-2026",

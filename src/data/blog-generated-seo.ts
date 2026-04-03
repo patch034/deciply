@@ -1,6 +1,7 @@
 ﻿import { tools } from "@/data/tools";
 import { useCaseOptions } from "@/data/tool-taxonomy";
 import { buildComparisonPath } from "@/lib/comparisons";
+import { buildAlternativesPath } from "@/lib/intent-pages";
 import type { Locale } from "@/i18n/config";
 import type { BlogEntry, BlogLocalizedContent, BlogSection, BlogSubSection } from "@/types/blog";
 
@@ -102,6 +103,8 @@ const toolLink = (locale: Locale, slug: string) => link(getTool(locale, slug).na
 const compareLink = (locale: Locale, leftSlug: string, rightSlug: string) =>
   link(`${getTool(locale, leftSlug).name} vs ${getTool(locale, rightSlug).name}`, buildComparisonPath(locale, leftSlug, rightSlug));
 const blogLink = (locale: Locale, slug: string) => link(locale === "tr" ? "ilgili rehber" : "related guide", `/${locale}/blog/${slug}`);
+const alternativeLink = (locale: Locale, slug: string) =>
+  link(locale === "tr" ? `${getTool(locale, slug).name} alternatifleri` : `${getTool(locale, slug).name} alternatives`, buildAlternativesPath(locale, slug));
 const buildUseCaseLink = (locale: Locale, slug: string) => {
   const label = useCaseOptions[locale].find((item) => item.slug === slug)?.label ?? slug;
   return link(label, `/${locale}/use-cases/${slug}`);
@@ -122,6 +125,7 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
   const items = seed.toolSlugs.map((slug) => getTool(locale, slug));
   const compareLinks = seed.comparePairs.map((pair) => compareLink(locale, pair.leftSlug, pair.rightSlug));
   const relatedArticles = seed.relatedArticleSlugs.map((slug) => blogLink(locale, slug));
+  const alternativeLinks = seed.toolSlugs.slice(0, 2).map((slug) => alternativeLink(locale, slug));
   const useCasePage = seed.useCasePageSlug ? buildUseCaseLink(locale, seed.useCasePageSlug) : null;
   const firstPair = buildFirstPairLabel(locale, seed);
 
@@ -275,6 +279,11 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
             ? locale === "tr"
               ? `${useCasePage} bu konuyu daha geniş workflow bağlamına taşır.`
               : `${useCasePage} moves the topic into a broader workflow context.`
+            : "",
+          alternativeLinks.length
+            ? locale === "tr"
+              ? `Daha dar bir kısa liste için ${alternativeLinks.join(", ")} alternatif sayfalarını da aç.`
+              : `For a narrower shortlist, open ${alternativeLinks.join(", ")} alternatives too.`
             : "",
           relatedArticles.length
             ? locale === "tr"
@@ -528,7 +537,8 @@ const seeds: ArticleSeed[] = [
       tr: "Mesajı yazdıktan sonra ilgili tool ve comparison sayfalarıyla ton ve netlik farkını karşılaştır.",
       en: "After drafting the message, compare tone and clarity with the related tool and comparison pages."
     }
-  },
+  }
+,
   {
     slug: "best-ai-tools-for-content-teams-2026",
     publishDate: "2026-04-03",
@@ -595,6 +605,76 @@ const seeds: ArticleSeed[] = [
     nextStep: {
       tr: "Ajans akışını netleştirdikten sonra ilgili tool ve karşılaştırma sayfalarına geç.",
       en: "Once the agency workflow is clear, open the related tool and comparison pages next."
+    }
+  },
+  {
+    slug: "best-ai-tools-for-marketing-teams-2026",
+    publishDate: "2026-04-03",
+    topic: {
+      tr: "pazarlama ekipleri",
+      en: "marketing teams"
+    },
+    categorySlug: "guides",
+    useCaseSlug: "business",
+    useCasePageSlug: "business-teams",
+    toolSlugs: ["chatgpt", "claude", "canva-ai", "mailchimp-ai", "buffer-ai-assistant"],
+    comparePairs: [
+      { leftSlug: "chatgpt", rightSlug: "claude" },
+      { leftSlug: "canva-ai", rightSlug: "adobe-express" },
+      { leftSlug: "mailchimp-ai", rightSlug: "hubspot-ai" }
+    ],
+    relatedArticleSlugs: ["best-ai-tools-for-content-teams-2026", "best-ai-tools-for-agencies-2026", "how-ai-tools-are-changing-ecommerce-in-2026"],
+    keywords: ["marketing teams", "campaign planning", "content calendar", "email automation", "ad copy"],
+    audience: {
+      tr: "Pazarlama yöneticileri, içerik ekipleri ve kampanya hızını artırmak isteyen küçük ekipler için uygundur.",
+      en: "This fits marketing managers, content teams, and smaller groups that want faster campaign production."
+    },
+    workflow: {
+      tr: ["briefi ve kampanya hedefini netleştir", "metin ve görsel varyasyon üret", "yayın ve performans kontrolü yap"],
+      en: ["clarify the brief and campaign goal", "generate copy and visual variations", "check publishing and performance"]
+    },
+    caution: {
+      tr: "Pazarlamada en büyük risk aynı mesajı her kanala taşımaktır; AI çıktısını kanal bazlı düzenleyin.",
+      en: "The biggest risk in marketing is copying the same message everywhere, so tailor the output for each channel."
+    },
+    nextStep: {
+      tr: "Önce araç detaylarını, sonra compare ve alternatives sayfalarını açarak seçim alanını daralt.",
+      en: "Start with the tool pages, then open the compare and alternatives pages to narrow the shortlist."
+    }
+  },
+  {
+    slug: "best-ai-tools-for-startups-2026",
+    publishDate: "2026-04-03",
+    topic: {
+      tr: "startuplar",
+      en: "startups"
+    },
+    categorySlug: "guides",
+    useCaseSlug: "business",
+    useCasePageSlug: "business-teams",
+    toolSlugs: ["chatgpt", "claude", "github-copilot", "notion-ai", "perplexity"],
+    comparePairs: [
+      { leftSlug: "chatgpt", rightSlug: "claude" },
+      { leftSlug: "github-copilot", rightSlug: "codeium" },
+      { leftSlug: "notion-ai", rightSlug: "coda-ai" }
+    ],
+    relatedArticleSlugs: ["best-ai-tools-for-content-teams-2026", "best-ai-tools-for-agencies-2026", "best-ai-tools-for-beginners-2026"],
+    keywords: ["startups", "productivity", "product research", "coding", "planning"],
+    audience: {
+      tr: "Erken aşama kurucular, küçük ekipler ve hızlı prototip çıkaran startup'lar için uygundur.",
+      en: "This fits early-stage founders, small teams, and startups that need fast prototypes."
+    },
+    workflow: {
+      tr: ["ürün fikrini ve kullanıcı sinyalini netleştir", "taslak, kod ve planı çıkar", "geri bildirim ve öncelik sıralaması yap"],
+      en: ["clarify the product idea and user signal", "draft code, copy, and planning notes", "review feedback and priorities"]
+    },
+    caution: {
+      tr: "Startup ortamında hız önemlidir ama yanlış öncelik de aynı derecede pahalıya mal olur; AI yalnızca karar alanını hızlandırmalı.",
+      en: "Speed matters in startups, but bad priorities are just as expensive, so AI should speed up the decision space, not replace it."
+    },
+    nextStep: {
+      tr: "Kurulum ve üretim tarafını netleştirdikten sonra compare ve alternatives sayfalarıyla seçimleri daralt.",
+      en: "Once setup and production are clear, narrow the options with the compare and alternatives pages."
     }
   }
 ];
