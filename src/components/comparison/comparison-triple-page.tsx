@@ -1,5 +1,6 @@
 ﻿import Link from "next/link";
 
+import { BlogCard } from "@/components/blog/blog-card";
 import { Badge } from "@/components/ui/badge";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { InfoSection } from "@/components/catalog/info-section";
@@ -8,8 +9,10 @@ import { Breadcrumb } from "@/components/catalog/breadcrumb";
 import { ToolCard } from "@/components/catalog/tool-card";
 import { ComparisonFaq } from "@/components/comparison/comparison-faq";
 import { ComparisonThreeWayTable } from "@/components/comparison/comparison-three-way-table";
+import { SectionShell } from "@/components/ui/section-shell";
 import { tripleComparisonContent, type ComparisonFaqItem } from "@/data/comparisons";
-import { buildComparisonPath } from "@/lib/comparisons";
+import { buildComparisonPath, getComparisonRelatedBlogSlugsForSlugs } from "@/lib/comparisons";
+import { getLocalizedBlogArticleBySlug } from "@/lib/blog";
 import { formatPricing, getCatalogContent, getCategoryNamesMap } from "@/lib/catalog";
 import type { Locale } from "@/i18n/config";
 import type { LocalizedTool } from "@/types/catalog";
@@ -59,6 +62,9 @@ export function ComparisonTriplePage({
   const content = getCatalogContent(locale);
   const categoryNamesMap = getCategoryNamesMap(locale);
   const [firstTool, secondTool, thirdTool] = tools;
+  const relatedBlogArticles = getComparisonRelatedBlogSlugsForSlugs([firstTool.slug, secondTool.slug, thirdTool.slug], 3)
+    .map((slug) => getLocalizedBlogArticleBySlug(locale, slug))
+    .filter((article): article is NonNullable<typeof article> => Boolean(article));
 
   return (
     <>
@@ -228,6 +234,25 @@ export function ComparisonTriplePage({
           </InfoSection>
         ) : null}
 
+        {relatedBlogArticles.length ? (
+          <SectionShell
+            eyebrow={locale === "tr" ? "İlgili bloglar" : "Related blog posts"}
+            title={locale === "tr" ? "İlgili bloglar" : "Related blog posts"}
+            description={locale === "tr" ? "Bu üçlü karşılaştırmayı daha geniş bir içerik kümesiyle destekleyin." : "Use these guides to widen the decision context around this three-way comparison."}
+            className="px-0 sm:px-0 lg:px-0"
+            contentClassName="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+          >
+            {relatedBlogArticles.map((article) => (
+              <BlogCard
+                key={article.slug}
+                locale={locale}
+                article={article}
+                ctaLabel={locale === "tr" ? "Rehberi oku" : "Read guide"}
+              />
+            ))}
+          </SectionShell>
+        ) : null}
+
         <ComparisonFaq title={locale === "tr" ? "Sık sorulan sorular" : "FAQ"} description={locale === "tr" ? "Bu üç aracı seçmeden önce en sık sorulan karar sorularına kısa cevaplar." : "Short answers to the most common decision questions before you choose one of the tools."} items={faqItems} />
 
         <section className="rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-5 py-8 text-white shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
@@ -250,3 +275,5 @@ export function ComparisonTriplePage({
     </>
   );
 }
+
+

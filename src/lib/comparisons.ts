@@ -17,6 +17,34 @@ const COMPARISON_CATEGORY_SLUG = "comparisons";
 export const FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS = ["chatgpt", "claude", "gemini"] as const;
 export const FEATURED_TRIPLE_COMPARISON_SLUG = FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.join("-vs-");
 
+const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
+  [FEATURED_TRIPLE_COMPARISON_SLUG]: [
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agencies-2026",
+    "how-ai-tools-are-changing-ecommerce-in-2026"
+  ],
+  "chatgpt-vs-gemini": [
+    "best-ai-tools-for-content-teams-2026",
+    "how-ai-tools-are-changing-ecommerce-in-2026",
+    "best-ai-tools-for-agencies-2026"
+  ],
+  "midjourney-vs-leonardo-ai": [
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-social-media-planning-2026"
+  ],
+  "shopify-magic-vs-copy-ai": [
+    "how-ai-tools-are-changing-ecommerce-in-2026",
+    "best-ai-tools-for-shopify-stores-2026",
+    "best-ai-tools-for-shopify-product-descriptions-2026"
+  ],
+  default: [
+    "how-ai-tools-are-changing-ecommerce-in-2026",
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agencies-2026"
+  ]
+};
+
 function sharedCount(left: string[], right: string[]) {
   const rightSet = new Set(right);
   return left.filter((item) => rightSet.has(item)).length;
@@ -249,6 +277,21 @@ export function getComparisonToolsFromPair(locale: Locale, pair: string) {
     canonicalPairSlug,
     isCanonical: canonicalPairSlug === pair
   };
+}
+
+export function getComparisonRelatedBlogSlugsForSlugs(slugs: string[], limit = 3) {
+  const canonicalKey =
+    slugs.length === 3 &&
+    FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.every((slug) => slugs.includes(slug)) &&
+    new Set(slugs).size === FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.length
+      ? FEATURED_TRIPLE_COMPARISON_SLUG
+      : slugs.length === 2
+        ? buildComparisonPairSlug(slugs[0], slugs[1])
+        : slugs.join("-vs-");
+
+  const clusteredSlugs = COMPARISON_BLOG_CLUSTERS[canonicalKey] ?? COMPARISON_BLOG_CLUSTERS.default;
+
+  return [...new Set(clusteredSlugs)].slice(0, limit);
 }
 
 export function getComparisonPageData(locale: Locale, path: string) {

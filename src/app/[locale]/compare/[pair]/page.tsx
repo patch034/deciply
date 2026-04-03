@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 
+import { BlogCard } from "@/components/blog/blog-card";
 import { Breadcrumb } from "@/components/catalog/breadcrumb";
 import { InfoSection } from "@/components/catalog/info-section";
 import { ProsConsCard } from "@/components/catalog/pros-cons-card";
@@ -15,10 +16,12 @@ import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale
 import {
   buildComparisonPath,
   getComparisonAlternativeTools,
+  getComparisonRelatedBlogSlugsForSlugs,
   getComparisonToolsFromPair,
   getStaticComparisonPairSlugs,
   parseComparisonPairSlug
 } from "@/lib/comparisons";
+import { getLocalizedBlogArticleBySlug } from "@/lib/blog";
 import { formatPricing, getCatalogContent, getCategoryNamesMap } from "@/lib/catalog";
 import type { LocalizedTool } from "@/types/catalog";
 
@@ -43,6 +46,11 @@ const copy = {
     limitationsDescription: "Karar vermeden önce darboğaz yaratabilecek noktaları görün.",
     verdictTitle: "Son karar",
     verdictDescription: "Kazananı zorla seçmek yerine hangi senaryoda hangi aracın daha mantıklı olduğunu özetler.",
+    relatedComparisonsTitle: "İlgili karşılaştırmalar",
+    relatedComparisonsDescription: "Kıyaslama alanını genişletmek için bu benzer karşılaştırmaları da açın.",
+    relatedBlogsTitle: "İlgili bloglar",
+    relatedBlogsDescription: "Kararı daha geniş bir içerik kümesiyle desteklemek için bu rehberleri de inceleyin.",
+    relatedBlogCtaLabel: "Rehberi oku",
     relatedAlternativesTitle: "İlgili alternatifler",
     relatedAlternativesDescription: "Karar alanını biraz daha daraltmak isterseniz bu araçlara da göz atın.",
     faqTitle: "Sık sorulan sorular",
@@ -82,6 +90,11 @@ const copy = {
     limitationsDescription: "See the trade-offs that may slow the workflow or weaken the fit.",
     verdictTitle: "Final verdict",
     verdictDescription: "Instead of forcing one winner, this section shows where each tool makes more sense.",
+    relatedComparisonsTitle: "Related comparisons",
+    relatedComparisonsDescription: "Open these nearby comparisons to widen the decision context.",
+    relatedBlogsTitle: "Related blog posts",
+    relatedBlogsDescription: "Use these guides to add more context before you decide.",
+    relatedBlogCtaLabel: "Read guide",
     relatedAlternativesTitle: "Related alternatives",
     relatedAlternativesDescription: "If you want to narrow the decision further, review these nearby options too.",
     faqTitle: "FAQ",
@@ -284,6 +297,9 @@ export default async function ComparisonPage({
   const comparisonRows = buildComparisonRows(safeLocale, leftTool, rightTool);
   const comparisonFaq = buildComparisonFaq(safeLocale, leftTool, rightTool);
   const alternatives = getComparisonAlternativeTools(safeLocale, leftTool.slug, rightTool.slug, 4);
+  const relatedBlogArticles = getComparisonRelatedBlogSlugsForSlugs([leftTool.slug, rightTool.slug], 3)
+    .map((slug) => getLocalizedBlogArticleBySlug(safeLocale, slug))
+    .filter((article): article is NonNullable<typeof article> => Boolean(article));
   const title = buildComparisonTitle(safeLocale, leftTool, rightTool);
   const description = buildComparisonDescription(safeLocale, leftTool, rightTool);
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/compare/${canonicalPairSlug}`);
@@ -521,6 +537,53 @@ export default async function ComparisonPage({
               })}
             </div>
           </InfoSection>
+        ) : null}
+
+        {alternatives.length ? (
+          <SectionShell
+            eyebrow={dictionary.relatedComparisonsTitle}
+            title={dictionary.relatedComparisonsTitle}
+            description={dictionary.relatedComparisonsDescription}
+            className="px-0 sm:px-0 lg:px-0"
+            contentClassName="grid gap-4 md:grid-cols-2 xl:grid-cols-3"
+          >
+            {alternatives.slice(0, 3).map((tool) => {
+              const matchedTool = getBetterMatchedPairTool(tool, leftTool, rightTool);
+              const compareHref = buildComparisonPath(safeLocale, tool.slug, matchedTool.slug);
+
+              return (
+                <div key={tool.slug} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{tool.name}</p>
+                  <h2 className="mt-3 text-xl font-semibold text-slate-100">{matchedTool.name} {safeLocale === "tr" ? "ile karşılaştır" : "comparison"}</h2>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">{safeLocale === "tr" ? "İlgili compare sayfasını açarak farklı kullanım ve fiyat sinyallerini yan yana görün." : "Open the related comparison page to review use-case and pricing signals side by side."}</p>
+                  <div className="mt-5">
+                    <PremiumButton href={compareHref} className="w-full" variant="secondary">
+                      {dictionary.compareLabel}
+                    </PremiumButton>
+                  </div>
+                </div>
+              );
+            })}
+          </SectionShell>
+        ) : null}
+
+        {relatedBlogArticles.length ? (
+          <SectionShell
+            eyebrow={dictionary.relatedBlogsTitle}
+            title={dictionary.relatedBlogsTitle}
+            description={dictionary.relatedBlogsDescription}
+            className="px-0 sm:px-0 lg:px-0"
+            contentClassName="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+          >
+            {relatedBlogArticles.map((article) => (
+              <BlogCard
+                key={article.slug}
+                locale={safeLocale}
+                article={article}
+                ctaLabel={dictionary.relatedBlogCtaLabel}
+              />
+            ))}
+          </SectionShell>
         ) : null}
 
         <ComparisonFaq title={dictionary.faqTitle} description={dictionary.faqDescription} items={comparisonFaq} />
