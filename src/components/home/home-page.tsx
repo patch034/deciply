@@ -1,4 +1,4 @@
-﻿import { BlogCard } from "@/components/blog/blog-card";
+import { BlogCard } from "@/components/blog/blog-card";
 import { CategoryCard } from "@/components/home/category-card";
 import { ComparisonCard } from "@/components/home/comparison-card";
 import { ComparisonTable } from "@/components/home/comparison-table";
@@ -139,7 +139,7 @@ function buildFeaturedComparisonCards(locale: Locale, toolMap: Map<string, Local
   const pairs: Array<[string, string, string]> = [
     ["chatgpt", "claude", locale === "tr" ? "Yazı" : "Writing"],
     ["chatgpt", "gemini", locale === "tr" ? "Genel kullanım" : "General"],
-    ["midjourney", "adobe-firefly", locale === "tr" ? "Görsel" : "Visual"]
+    ["midjourney", "adobe-express", locale === "tr" ? "Görsel" : "Visual"]
   ];
 
   return pairs.reduce<HomeComparisonCard[]>((items, [leftSlug, rightSlug, highlight]) => {
@@ -708,4 +708,3 @@ export function HomePage({ locale, content }: HomePageProps) {
     </div>
   );
 }
-

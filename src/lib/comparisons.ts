@@ -1,4 +1,4 @@
-﻿import { tools } from "@/data/tools";
+import { tools } from "@/data/tools";
 import type { Locale } from "@/i18n/config";
 import { getCategoryNamesMap, getLocalizedToolBySlug } from "@/lib/catalog";
 import type { LocalizedTool, ToolEntry } from "@/types/catalog";
@@ -215,6 +215,10 @@ export function parseComparisonSlugs(path: string) {
 }
 
 export function buildComparisonPairSlug(leftSlug: string, rightSlug: string) {
+  if ((leftSlug === "cursor" && rightSlug === "codeium") || (leftSlug === "codeium" && rightSlug === "cursor")) {
+    return SPECIAL_TEAM_COMPARISON_SLUG;
+  }
+
   const leftTool = tools.find((tool) => tool.slug === leftSlug);
   const rightTool = tools.find((tool) => tool.slug === rightSlug);
 
@@ -365,7 +369,7 @@ const HIGH_INTENT_COMPARISON_DIRECTORY_SLUGS = [
   'perplexity-vs-gemini',
   'github-copilot-vs-codeium',
   'codeium-vs-cursor',
-  'cursor-vs-codeium',
+  'microsoft-copilot-vs-github-copilot',
   'cursor-vs-replit',
   'replit-vs-copilot',
   'cursor-vs-codeium-for-teams',
@@ -552,8 +556,3 @@ export function getComparisonRawTool(slug: string) {
 }
 
 export type ComparisonEligibleTool = ToolEntry;
-
-
-
-
-

@@ -1,4 +1,4 @@
-﻿import type { Locale } from "@/i18n/config";
+import type { Locale } from "@/i18n/config";
 
 const dictionaries = {
   tr: {
@@ -36,7 +36,7 @@ const dictionaries = {
             { label: "Tüm karşılaştırmalar", href: "/categories/comparisons" },
             { label: "ChatGPT vs Claude", href: "/compare/chatgpt-vs-claude" },
             { label: "ChatGPT vs Gemini", href: "/compare/chatgpt-vs-gemini" },
-            { label: "Midjourney vs Adobe Firefly", href: "/compare/adobe-firefly-vs-midjourney" }
+            { label: "Midjourney vs Adobe Express", href: "/compare/midjourney-vs-adobe-express" }
           ]
         },
         {
@@ -97,7 +97,7 @@ const dictionaries = {
             { label: "All comparisons", href: "/categories/comparisons" },
             { label: "ChatGPT vs Claude", href: "/compare/chatgpt-vs-claude" },
             { label: "ChatGPT vs Gemini", href: "/compare/chatgpt-vs-gemini" },
-            { label: "Midjourney vs Adobe Firefly", href: "/compare/adobe-firefly-vs-midjourney" }
+            { label: "Midjourney vs Adobe Express", href: "/compare/midjourney-vs-adobe-express" }
           ]
         },
         {
@@ -144,6 +144,3 @@ export type Dictionary = (typeof dictionaries)[Locale];
 export function getDictionary(locale: Locale) {
   return dictionaries[locale];
 }
-
-
-
