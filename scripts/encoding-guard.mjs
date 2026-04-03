@@ -23,16 +23,28 @@ const ignoredAsciiFallbackTokens = new Set(["_blank", "1fr_auto"]);
 const turkishMojibakeReplacements = [
   [String.fromCharCode(195, 188), String.fromCharCode(252)],
   [String.fromCharCode(195, 156), String.fromCharCode(220)],
+  [String.fromCharCode(195, 339), String.fromCharCode(220)],
   [String.fromCharCode(195, 182), String.fromCharCode(246)],
   [String.fromCharCode(195, 150), String.fromCharCode(214)],
+  [String.fromCharCode(195, 8211), String.fromCharCode(214)],
   [String.fromCharCode(195, 167), String.fromCharCode(231)],
   [String.fromCharCode(195, 135), String.fromCharCode(199)],
+  [String.fromCharCode(195, 8225), String.fromCharCode(199)],
   [String.fromCharCode(196, 177), String.fromCharCode(305)],
   [String.fromCharCode(196, 176), String.fromCharCode(304)],
   [String.fromCharCode(197, 376), String.fromCharCode(351)],
   [String.fromCharCode(197, 381), String.fromCharCode(350)],
+  [String.fromCharCode(197, 382), String.fromCharCode(350)],
   [String.fromCharCode(196, 159), String.fromCharCode(287)],
-  [String.fromCharCode(196, 158), String.fromCharCode(286)]
+  [String.fromCharCode(196, 376), String.fromCharCode(287)],
+  [String.fromCharCode(196, 158), String.fromCharCode(286)],
+  [String.fromCharCode(196, 382), String.fromCharCode(286)],
+  [String.fromCharCode(195, 162), String.fromCharCode(226)],
+  [String.fromCharCode(195, 170), String.fromCharCode(234)],
+  [String.fromCharCode(195, 174), String.fromCharCode(238)],
+  [String.fromCharCode(195, 180), String.fromCharCode(244)],
+  [String.fromCharCode(195, 187), String.fromCharCode(251)],
+  [String.fromCharCode(197, 158), String.fromCharCode(350)]
 ];
 
 function repairTurkishMojibake(value) {
@@ -130,7 +142,18 @@ export function hasTurkishAsciiFallback(value) {
 export function repairSuspiciousEncoding(value) {
   let current = value.normalize("NFC");
 
-  for (let index = 0; index < 6 && hasSuspiciousEncoding(current); index += 1) {
+  for (let index = 0; index < 6; index += 1) {
+    const directRepair = repairTurkishMojibake(current);
+
+    if (directRepair !== current) {
+      current = directRepair;
+      continue;
+    }
+
+    if (!hasSuspiciousEncoding(current)) {
+      break;
+    }
+
     const decoded = repairTurkishMojibake(decodeWindows1252Utf8(current).normalize("NFC"));
 
     if (decoded === current) {

@@ -20,23 +20,23 @@ const rawBlogCopy = {
       "Deciply blog bölümünde öne çıkan AI araçları, karşılaştırmalar, ücretsiz araç listeleri ve para kazandıran kullanım senaryoları yer alır.",
     readMoreLabel: "Devamını oku",
     heroPrimaryCta: "Bu aracı incele",
-    heroSecondaryCta: "Ã–ne çıkan AI araçlarını gör",
+    heroSecondaryCta: "Öne çıkan AI araçlarını gör",
     comparisonCtaLabel: "Karşılaştırmaya git",
     relatedToolsTitle: "Bu içerikte geçen araçlar",
     relatedToolsDescription:
-      "Makaledeki önerileri doÄŸrudan araç detay sayfalarında inceleyin ve kullanım alanlarını daha net görün.",
+      "Makaledeki önerileri doğrudan araç detay sayfalarında inceleyin ve kullanım alanlarını daha net görün.",
     relatedArticlesTitle: "Benzer rehberler",
     relatedArticlesDescription:
-      "Aynı konu etrafındaki diÄŸer içeriklere geçerek hem daha fazla fikir toplayabilir hem de doÄŸru aracı daha hızlı seçebilirsiniz.",
+      "Aynı konu etrafındaki diğer içeriklere geçerek hem daha fazla fikir toplayabilir hem de doğru aracı daha hızlı seçebilirsiniz.",
     comparisonBlockTitle: "Karşılaştırma kısayolu",
     comparisonBlockDescription:
       "Araçları yan yana görmek istiyorsanız Deciply comparison sayfasına geçin.",
     articleLeadLabel: "Güncel rehber",
     toolPageRelatedTitle: "İlgili rehberler",
     toolPageRelatedDescription:
-      "Bu araçla ilgili rehber ve SEO odaklı içeriklere geçerek kullanım senaryolarını daha hızlı deÄŸerlendirebilirsiniz.",
+      "Bu araçla ilgili rehber ve SEO odaklı içeriklere geçerek kullanım senaryolarını daha hızlı değerlendirebilirsiniz.",
     backToBlog: "Tüm yazılara dön",
-    previousPage: "Ã–nceki",
+    previousPage: "Önceki",
     nextPage: "Sonraki",
     pageLabel: "Sayfa"
   },

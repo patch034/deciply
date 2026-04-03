@@ -59,19 +59,19 @@ const allBlogArticles: BlogEntry[] = [
       tr: {
         title: "2026'da hangi AI aracı hangi iş için kullanılmalı?",
         excerpt:
-          "Bu rehber, yazı, araştırma, görsel, video ve gelir odaklı senaryolarda hangi AI aracının daha uygun olduÄŸunu hızlıca görmen için hazırlandı.",
+          "Bu rehber, yazı, araştırma, görsel, video ve gelir odaklı senaryolarda hangi AI aracının daha uygun olduğunu hızlıca görmen için hazırlandı.",
         intro:
-          "Bugün AI aracı seçmek zor çünkü pazar sadece büyümüyor, aynı zamanda birbirine benzeyen onlarca ürünle daha kalabalık hale geliyor. Kullanıcı için asıl sorun seçenek azlıÄŸı deÄŸil, karar yorgunluÄŸu. Bir araç hızlı olabilir ama uzun içerikte zayıf kalabilir. Bir diÄŸeri görsel kalitede etkileyici olabilir ama günlük iş akışında gereksiz yavaş hissettirebilir. Bu yüzden burada tek bir aracı öne çıkarmak yerine, farklı senaryolarda hangi araçların daha mantıklı olduÄŸunu sade biçimde gösteriyoruz.",
+          "Bugün AI aracı seçmek zor çünkü pazar sadece büyümüyor, aynı zamanda birbirine benzeyen onlarca ürünle daha kalabalık hale geliyor. Kullanıcı için asıl sorun seçenek azlığı değil, karar yorgunluğu. Bir araç hızlı olabilir ama uzun içerikte zayıf kalabilir. Bir diğeri görsel kalitede etkileyici olabilir ama günlük iş akışında gereksiz yavaş hissettirebilir. Bu yüzden burada tek bir aracı öne çıkarmak yerine, farklı senaryolarda hangi araçların daha mantıklı olduğunu sade biçimde gösteriyoruz.",
         categoryLabel: "AI Araçları",
         seoTitle: "2026'da hangi AI aracı hangi iş için kullanılmalı? | Deciply",
         seoDescription:
           "ChatGPT, Claude, Gemini, Midjourney, Perplexity ve Runway için kullanım senaryolarını, güçlü tarafları ve para kazanma fırsatlarını inceleyin.",
         sections: [
           section(
-            "DoÄŸru aracı seçmek neden bu kadar önemli?",
+            "Doğru aracı seçmek neden bu kadar önemli?",
             [
-              "DoÄŸru araç seçimi sadece birkaç dakika kazandırmaz; bazen iş modelini tamamen deÄŸiştirir. Ã–rneÄŸin hızlı taslak çıkaran bir araç, freelance içerik paketlerini daha karlı hale getirebilir. Kaynak odaklı araştırma aracı ise müşteri sunumlarında daha güvenilir çalışma üretmeni saÄŸlayabilir. Görsel tarafta doÄŸru araç seçimi, sunum kalitesini ve müşteri algısını doÄŸrudan etkiler.",
-              "Birçok kullanıcı burada hata yapıyor: aracı deÄŸil, sonucu seçmek gerekiyor. 'En iyi AI aracı hangisi?' sorusu çoÄŸu zaman yanlış sorudur. DoÄŸru soru şudur: 'Ben ne üretmek istiyorum, ne kadar hızlı ilerlemek istiyorum ve bunu gelir ya da verimlilik açısından nasıl kullanacaÄŸım?' Deciply'nın amacı da bu soruya cevap vermeyi kolaylaştırmak."
+              "Doğru araç seçimi sadece birkaç dakika kazandırmaz; bazen iş modelini tamamen değiştirir. Örneğin hızlı taslak çıkaran bir araç, freelance içerik paketlerini daha karlı hale getirebilir. Kaynak odaklı araştırma aracı ise müşteri sunumlarında daha güvenilir çalışma üretmeni sağlayabilir. Görsel tarafta doğru araç seçimi, sunum kalitesini ve müşteri algısını doğrudan etkiler.",
+              "Birçok kullanıcı burada hata yapıyor: aracı değil, sonucu seçmek gerekiyor. 'En iyi AI aracı hangisi?' sorusu çoğu zaman yanlış sorudur. Doğru soru şudur: 'Ben ne üretmek istiyorum, ne kadar hızlı ilerlemek istiyorum ve bunu gelir ya da verimlilik açısından nasıl kullanacağım?' Deciply'nın amacı da bu soruya cevap vermeyi kolaylaştırmak."
             ],
             {
               comparison: {
@@ -88,8 +88,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Farklı kullanım senaryolarında hangi araçlar öne çıkıyor?",
             [
-              "Yazı üretimi için tek bir doÄŸru seçenek yok. Hızlı taslak, özet ve çok yönlü kullanım istiyorsan ChatGPT çoÄŸu kullanıcı için güçlü bir başlangıç sunar. Daha düzenli, açıklayıcı ve uzun yazılar için Claude daha rahat bir çalışma hissi verebilir. Google araçlarıyla çalışan ekiplerde Gemini pratikliÄŸiyle öne çıkabilir. Araştırma tarafında ise Perplexity, kaynak odaklı yaklaşımı sayesinde özellikle bilgi toplama ve rakip analizi işlerinde zaman kazandırır.",
-              "Görsel ve video üretiminde karar daha senaryo bazlıdır. Midjourney daha yaratıcı ve stil odaklı sonuçlar isteyen kullanıcılar için uygundur. Hızlı video fikirlerini üretmek, sahne akışı görmek veya kısa form içerik hazırlamak isteyen kullanıcılar ise Runway tarafında daha fazla deÄŸer bulabilir. Burada önemli olan 'hangisi en iyi?' sorusu deÄŸil, hangi aracın senin iş akışını daha az sürtünmeyle ileri taşıdıÄŸıdır."
+              "Yazı üretimi için tek bir doğru seçenek yok. Hızlı taslak, özet ve çok yönlü kullanım istiyorsan ChatGPT çoğu kullanıcı için güçlü bir başlangıç sunar. Daha düzenli, açıklayıcı ve uzun yazılar için Claude daha rahat bir çalışma hissi verebilir. Google araçlarıyla çalışan ekiplerde Gemini pratikliğiyle öne çıkabilir. Araştırma tarafında ise Perplexity, kaynak odaklı yaklaşımı sayesinde özellikle bilgi toplama ve rakip analizi işlerinde zaman kazandırır.",
+              "Görsel ve video üretiminde karar daha senaryo bazlıdır. Midjourney daha yaratıcı ve stil odaklı sonuçlar isteyen kullanıcılar için uygundur. Hızlı video fikirlerini üretmek, sahne akışı görmek veya kısa form içerik hazırlamak isteyen kullanıcılar ise Runway tarafında daha fazla değer bulabilir. Burada önemli olan 'hangisi en iyi?' sorusu değil, hangi aracın senin iş akışını daha az sürtünmeyle ileri taşıdığıdır."
             ],
             {
               subSections: [
@@ -97,7 +97,7 @@ const allBlogArticles: BlogEntry[] = [
                   "Yazı ve araştırma için",
                   [
                     "ChatGPT çok yönlü kullanım isteyenler için, Claude daha uzun ve kontrollü yazı isteyenler için, Perplexity ise araştırma destekli içerik üretenler için mantıklı olabilir.",
-                    "EÄŸer çıktıyı doÄŸrudan müşteriye teslim edeceksen, sadece hız deÄŸil düzen de önemlidir. Bu noktada araç seçimini teslim formatına göre yapman daha saÄŸlıklıdır."
+                    "Eğer çıktıyı doğrudan müşteriye teslim edeceksen, sadece hız değil düzen de önemlidir. Bu noktada araç seçimini teslim formatına göre yapman daha sağlıklıdır."
                   ],
                   ["Hızlı taslak için ChatGPT", "Uzun anlatım için Claude", "Kaynaklı araştırma için Perplexity"],
                   "Yazı araçlarını incele",
@@ -120,7 +120,7 @@ const allBlogArticles: BlogEntry[] = [
             "Bu araçlarla gerçek hayatta nasıl para kazanılır?",
             [
               "AI araçları para kazandırmaz; bu araçlarla daha hızlı üretilen sonuçlar para kazandırır. İçerik paketi hazırlamak, müşteri için araştırma yapmak, sosyal medya görselleri üretmek, kısa video kurgusu çıkarmak veya ürün açıklamaları yazmak gibi işler gerçek hayatta satılabilir çıktılardır. Bu yüzden araç seçerken önce gelir modelini düşünmek gerekir. Blog yazıp affiliate gelir elde etmek istiyorsan yazı ve araştırma araçları öne çıkar. Müşteri için kreatif üretmek istiyorsan görsel ve video araçları daha anlamlı olur.",
-              "En saÄŸlıklı yaklaşım tek araçtan mucize beklemek deÄŸil, işin farklı aşamalarında farklı araçları eşleştirmektir. Ã–rneÄŸin Perplexity ile araştırma, ChatGPT ile taslak, Canva AI ile görsel ve Runway ile kısa video üretimi bir araya geldiÄŸinde aynı içeriÄŸi farklı kanallarda deÄŸerlendirmen mümkün olur. Bu yaklaşım hem gelir potansiyelini artırır hem de tek bir araca baÄŸımlılıÄŸı azaltır."
+              "En sağlıklı yaklaşım tek araçtan mucize beklemek değil, işin farklı aşamalarında farklı araçları eşleştirmektir. Örneğin Perplexity ile araştırma, ChatGPT ile taslak, Canva AI ile görsel ve Runway ile kısa video üretimi bir araya geldiğinde aynı içeriği farklı kanallarda değerlendirmen mümkün olur. Bu yaklaşım hem gelir potansiyelini artırır hem de tek bir araca bağımlılığı azaltır."
             ],
             {
               bullets: [
@@ -135,8 +135,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Hızlı seçim yapmak isteyen kullanıcı için pratik çerçeve",
             [
-              "EÄŸer sıfırdan başlıyorsan önce tek araç seç, sonra kullanım sınırlarına göre ikinci aracı ekle. Yazı ve araştırma tarafında genelde ilk seçimin bir genel amaçlı araç olur. Görsel ya da video işi yapıyorsan ise proje teslimi için doÄŸrudan üretim aracına gitmek daha mantıklıdır. Burada önemli olan, karar süresini kısaltırken yanlış beklentiye girmemektir.",
-              "Kısa formda düşün: hızlı yazı için bir araç, kaynaklı araştırma için bir araç, görsel kalite için bir araç, video akışı için bir araç. Bu çerçeve kullanıcıyı manipüle etmeden net karar vermesini saÄŸlar. Araçları tek bir sıralama listesi gibi deÄŸil, işini yapan ekip arkadaşları gibi görmek çok daha doÄŸru bir yaklaşımdır."
+              "Eğer sıfırdan başlıyorsan önce tek araç seç, sonra kullanım sınırlarına göre ikinci aracı ekle. Yazı ve araştırma tarafında genelde ilk seçimin bir genel amaçlı araç olur. Görsel ya da video işi yapıyorsan ise proje teslimi için doğrudan üretim aracına gitmek daha mantıklıdır. Burada önemli olan, karar süresini kısaltırken yanlış beklentiye girmemektir.",
+              "Kısa formda düşün: hızlı yazı için bir araç, kaynaklı araştırma için bir araç, görsel kalite için bir araç, video akışı için bir araç. Bu çerçeve kullanıcıyı manipüle etmeden net karar vermesini sağlar. Araçları tek bir sıralama listesi gibi değil, işini yapan ekip arkadaşları gibi görmek çok daha doğru bir yaklaşımdır."
             ],
             {
               subSections: [
@@ -144,15 +144,15 @@ const allBlogArticles: BlogEntry[] = [
                   "Tek araçla başlamak istiyorsan",
                   [
                     "Yazı, özet, fikir üretimi ve günlük işler için bir genel amaçlı araçla başla. Ardından işin büyüdükçe araştırma veya görsel tarafına ikinci araç ekle.",
-                    "Bu yaklaşım hem maliyeti düşük tutar hem de gereksiz araç kalabalıÄŸını önler."
+                    "Bu yaklaşım hem maliyeti düşük tutar hem de gereksiz araç kalabalığını önler."
                   ],
-                  ["Ã–nce kullanım alanını seç", "Sonra teslim çıktısını düşün", "Son olarak ikinci araca gerek olup olmadıÄŸına bak"]
+                  ["Önce kullanım alanını seç", "Sonra teslim çıktısını düşün", "Son olarak ikinci araca gerek olup olmadığına bak"]
                 ),
                 sub(
                   "Daha hızlı keşif için",
                   [
-                    "Her araç sayfasında artılar, eksiler, kullanım alanları ve para kazanma fikirleri var. Ã–nce detay sayfasını açıp sonra ilgili karşılaştırmaya geçmek en hızlı karar akışıdır.",
-                    "Bu yöntem, sadece popüler olanı deÄŸil, senin işine uyan aracı seçmeni saÄŸlar."
+                    "Her araç sayfasında artılar, eksiler, kullanım alanları ve para kazanma fikirleri var. Önce detay sayfasını açıp sonra ilgili karşılaştırmaya geçmek en hızlı karar akışıdır.",
+                    "Bu yöntem, sadece popüler olanı değil, senin işine uyan aracı seçmeni sağlar."
                   ],
                   undefined,
                   "Araç detaylarına git",
@@ -259,9 +259,9 @@ const allBlogArticles: BlogEntry[] = [
       tr: {
         title: "ChatGPT ile para kazanmanın gerçek yolları",
         excerpt:
-          "ChatGPT ile para kazanmak mümkün, ama bunun yolu aracı satmak deÄŸil; hızlı ve satılabilir çıktılar üretmekten geçiyor.",
+          "ChatGPT ile para kazanmak mümkün, ama bunun yolu aracı satmak değil; hızlı ve satılabilir çıktılar üretmekten geçiyor.",
         intro:
-          "ChatGPT hakkında en yaygın yanlış anlama şu: insanlar bu aracı açınca gelirin otomatik başlayacaÄŸını düşünüyor. Oysa ChatGPT tek başına bir gelir modeli deÄŸildir. Gerçek gelir, onunla daha hızlı üretilen sonuçlardan gelir. Yazı paketi hazırlamak, müşteri için araştırma yapmak, ürün açıklamaları yazmak, e-posta akışları kurmak ve küçük bilgi ürünleri oluşturmak gibi işler somut deÄŸer taşır. Bu yazıda tam olarak hangi modellerin gerçekçi olduÄŸunu, nerede zaman kazandırdıÄŸını ve nasıl başlangıç yapılacaÄŸını net biçimde inceleyeceÄŸiz.",
+          "ChatGPT hakkında en yaygın yanlış anlama şu: insanlar bu aracı açınca gelirin otomatik başlayacağını düşünüyor. Oysa ChatGPT tek başına bir gelir modeli değildir. Gerçek gelir, onunla daha hızlı üretilen sonuçlardan gelir. Yazı paketi hazırlamak, müşteri için araştırma yapmak, ürün açıklamaları yazmak, e-posta akışları kurmak ve küçük bilgi ürünleri oluşturmak gibi işler somut değer taşır. Bu yazıda tam olarak hangi modellerin gerçekçi olduğunu, nerede zaman kazandırdığını ve nasıl başlangıç yapılacağını net biçimde inceleyeceğiz.",
         categoryLabel: "AI ile Para Kazanma",
         seoTitle: "ChatGPT ile para kazanmanın gerçek yolları | Deciply",
         seoDescription:
@@ -270,12 +270,12 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "İnsanlar neden para öder?",
             [
-              "İnsanlar ChatGPT kullandıÄŸın için para ödemez. Daha hızlı teslim aldıkları, daha net metin gördükleri veya daha az revizyon yaptıkları için para öder. Bu ayrım kritik. EÄŸer kendini 'AI kullanan biri' olarak deÄŸil, 'daha hızlı ve daha düzenli çıktı sunan biri' olarak konumlandırırsan pazarda çok daha rahat hareket edersin.",
-              "Bu yüzden hizmetini tanımlarken araç adını deÄŸil sonucu öne çıkarmak gerekir. 'ChatGPT ile içerik yazıyorum' demek yerine 'haftalık blog paketi hazırlıyorum', 'ürün sayfası metinleri yazıyorum' veya 'LinkedIn içerik sistemi kuruyorum' demek daha satış odaklıdır."
+              "İnsanlar ChatGPT kullandığın için para ödemez. Daha hızlı teslim aldıkları, daha net metin gördükleri veya daha az revizyon yaptıkları için para öder. Bu ayrım kritik. Eğer kendini 'AI kullanan biri' olarak değil, 'daha hızlı ve daha düzenli çıktı sunan biri' olarak konumlandırırsan pazarda çok daha rahat hareket edersin.",
+              "Bu yüzden hizmetini tanımlarken araç adını değil sonucu öne çıkarmak gerekir. 'ChatGPT ile içerik yazıyorum' demek yerine 'haftalık blog paketi hazırlıyorum', 'ürün sayfası metinleri yazıyorum' veya 'LinkedIn içerik sistemi kuruyorum' demek daha satış odaklıdır."
             ],
             {
               bullets: [
-                "Aracı deÄŸil sonucu sat",
+                "Aracı değil sonucu sat",
                 "Teslim süresini kısalt",
                 "Revizyonu azaltacak net süreç kur",
                 "Tek seferlik iş yerine paket hizmet düşün"
@@ -285,8 +285,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Gerçekçi para kazanma senaryoları",
             [
-              "Freelance içerik üretimi en hızlı giriş modelidir. Küçük işletmeler, ajanslar ve kişisel markalar sürekli içerik ister. ChatGPT burada taslak, başlık, içerik planı ve ilk versiyon üretiminde ciddi hız saÄŸlar. Ãœrün açıklamaları, e-posta akışları, kısa reklam metinleri ve landing page kopyaları da hızlıca satılabilen hizmetlerdir.",
-              "İkinci model dijital ürün üretimidir. Niş bir kitle için mini rehber, şablon seti, kontrol listesi veya eÄŸitim notu üretebilirsin. Burada ChatGPT'nin görevi yazıyı tamamen senin yerine yazmak deÄŸil; araştırmayı düzenlemek, taslak çıkarmak ve ilk sürümü hızlandırmaktır. Ãœçüncü model ise araştırma destekli işlerdir. Pazar araştırması özeti, rakip analizi veya sektör notları hazırlamak küçük işletmeler için doÄŸrudan parasal deÄŸer taşır."
+              "Freelance içerik üretimi en hızlı giriş modelidir. Küçük işletmeler, ajanslar ve kişisel markalar sürekli içerik ister. ChatGPT burada taslak, başlık, içerik planı ve ilk versiyon üretiminde ciddi hız sağlar. Ürün açıklamaları, e-posta akışları, kısa reklam metinleri ve landing page kopyaları da hızlıca satılabilen hizmetlerdir.",
+              "İkinci model dijital ürün üretimidir. Niş bir kitle için mini rehber, şablon seti, kontrol listesi veya eğitim notu üretebilirsin. Burada ChatGPT'nin görevi yazıyı tamamen senin yerine yazmak değil; araştırmayı düzenlemek, taslak çıkarmak ve ilk sürümü hızlandırmaktır. Üçüncü model ise araştırma destekli işlerdir. Pazar araştırması özeti, rakip analizi veya sektör notları hazırlamak küçük işletmeler için doğrudan parasal değer taşır."
             ],
             {
               subSections: [
@@ -294,15 +294,15 @@ const allBlogArticles: BlogEntry[] = [
                   "Freelance yazı hizmeti",
                   [
                     "Blog yazısı, e-posta sekansı, LinkedIn post paketi ve ürün açıklamaları gibi teslimleri haftalık veya aylık paket olarak sunabilirsin.",
-                    "Burada kritik nokta, taslaÄŸı hızlı üretip son düzenlemeyi insan kalitesiyle yapmaktır."
+                    "Burada kritik nokta, taslağı hızlı üretip son düzenlemeyi insan kalitesiyle yapmaktır."
                   ],
                   ["Blog paketi", "E-posta serisi", "LinkedIn içerik sistemi"]
                 ),
                 sub(
                   "Dijital ürün üretimi",
                   [
-                    "Åablon, mini rehber, prompt kütüphanesi veya içerik planı gibi dijital ürünler hazırlayabilirsin.",
-                    "Bu model yavaş başlar ama ölçeklenebilir olduÄŸu için uzun vadede daha karlı olabilir."
+                    "Şablon, mini rehber, prompt kütüphanesi veya içerik planı gibi dijital ürünler hazırlayabilirsin.",
+                    "Bu model yavaş başlar ama ölçeklenebilir olduğu için uzun vadede daha karlı olabilir."
                   ],
                   ["Kontrol listesi", "Mini e-kitap", "Prompt seti"]
                 )
@@ -310,17 +310,17 @@ const allBlogArticles: BlogEntry[] = [
             }
           ),
           section(
-            "Başlangıç için doÄŸru teklif nasıl seçilir?",
+            "Başlangıç için doğru teklif nasıl seçilir?",
             [
-              "Yeni başlayan biri için en doÄŸru teklif, sonucu net ve teslimi kolay olan küçük bir hizmettir. Ã–rneÄŸin 'haftalık 8 LinkedIn gönderisi', 'ürün açıklaması paketi' veya '3 blog taslaÄŸı + başlık önerileri' gibi teklifler daha kolay satılır. Ã‡ünkü müşteri ne alacaÄŸını hızlıca anlar.",
-              "Fiyatlandırmada da aynı mantık geçerlidir. Saat satmak yerine çıktı satmak daha doÄŸrudur. Müşteri için önemli olan senin kaç dakika harcadıÄŸın deÄŸil, ne kadar iş bitirdiÄŸindir. ChatGPT burada kÃ¢rlılıÄŸı artırır çünkü aynı sürede daha fazla teslim yapmanı saÄŸlar."
+              "Yeni başlayan biri için en doğru teklif, sonucu net ve teslimi kolay olan küçük bir hizmettir. Örneğin 'haftalık 8 LinkedIn gönderisi', 'ürün açıklaması paketi' veya '3 blog taslağı + başlık önerileri' gibi teklifler daha kolay satılır. Çünkü müşteri ne alacağını hızlıca anlar.",
+              "Fiyatlandırmada da aynı mantık geçerlidir. Saat satmak yerine çıktı satmak daha doğrudur. Müşteri için önemli olan senin kaç dakika harcadığın değil, ne kadar iş bitirdiğindir. ChatGPT burada kârlılığı artırır çünkü aynı sürede daha fazla teslim yapmanı sağlar."
             ]
           ),
           section(
             "Hangi hatalardan kaçınmalısın?",
             [
-              "En büyük hata, kontrol etmeden teslim etmektir. ChatGPT hız kazandırır ama son kalite kontrolü insan yapmalıdır. İkinci hata, herkese aynı hizmeti satmaktır. Niş seçmek, örneÄŸin sadece SaaS blogları ya da sadece e-ticaret ürün açıklamaları yazmak, seni daha güvenilir gösterir.",
-              "Ãœçüncü hata ise araca fazla baÄŸımlı kalmaktır. Araştırma için Perplexity, dokümantasyon için Notion AI gibi tamamlayıcı araçlar kullanmak teslim kalitesini yükseltir. En iyi sistem tek araç deÄŸil, birbiriyle uyumlu küçük bir iş akışıdır."
+              "En büyük hata, kontrol etmeden teslim etmektir. ChatGPT hız kazandırır ama son kalite kontrolü insan yapmalıdır. İkinci hata, herkese aynı hizmeti satmaktır. Niş seçmek, örneğin sadece SaaS blogları ya da sadece e-ticaret ürün açıklamaları yazmak, seni daha güvenilir gösterir.",
+              "Üçüncü hata ise araca fazla bağımlı kalmaktır. Araştırma için Perplexity, dokümantasyon için Notion AI gibi tamamlayıcı araçlar kullanmak teslim kalitesini yükseltir. En iyi sistem tek araç değil, birbiriyle uyumlu küçük bir iş akışıdır."
             ],
             {
               comparison: {
@@ -361,26 +361,26 @@ const allBlogArticles: BlogEntry[] = [
     relatedToolSlugs: ["chatgpt", "gemini", "perplexity", "canva-ai"],
     locales: {
       tr: {
-        title: "Denemeye deÄŸer ücretsiz AI araçları",
+        title: "Denemeye değer ücretsiz AI araçları",
         excerpt:
-          "Ãœcretsiz plan sunan araçlar arasında gerçekten iş yapanlarla sadece kullanıcı çekmek isteyenleri ayırmak için bu rehberi kullanabilirsin.",
+          "Ücretsiz plan sunan araçlar arasında gerçekten iş yapanlarla sadece kullanıcı çekmek isteyenleri ayırmak için bu rehberi kullanabilirsin.",
         intro:
-          "Ãœcretsiz AI araçları kullanıcı için iyi bir başlangıç noktasıdır ama her ücretsiz plan aynı deÄŸeri üretmez. Bazıları gerçekten denemeye, öÄŸrenmeye ve ilk çıktıları üretmeye izin verir. Bazıları ise sadece tadımlık bir deneyim sunar ve gerçek iş akışında hızla yetersiz kalır. Bu yazıda ücretsiz ya da freemium planların ne zaman yeterli olduÄŸunu, hangi senaryolarda iş gördüÄŸünü ve para harcamadan önce neye bakman gerektiÄŸini sade biçimde ele alıyoruz.",
-        categoryLabel: "Ãœcretsiz Araçlar",
-        seoTitle: "Denemeye deÄŸer ücretsiz AI araçları | Deciply",
+          "Ücretsiz AI araçları kullanıcı için iyi bir başlangıç noktasıdır ama her ücretsiz plan aynı değeri üretmez. Bazıları gerçekten denemeye, öğrenmeye ve ilk çıktıları üretmeye izin verir. Bazıları ise sadece tadımlık bir deneyim sunar ve gerçek iş akışında hızla yetersiz kalır. Bu yazıda ücretsiz ya da freemium planların ne zaman yeterli olduğunu, hangi senaryolarda iş gördüğünü ve para harcamadan önce neye bakman gerektiğini sade biçimde ele alıyoruz.",
+        categoryLabel: "Ücretsiz Araçlar",
+        seoTitle: "Denemeye değer ücretsiz AI araçları | Deciply",
         seoDescription:
-          "ChatGPT, Gemini, Perplexity ve Canva AI gibi ücretsiz veya freemium araçları gerçek kullanım senaryolarıyla deÄŸerlendirin.",
+          "ChatGPT, Gemini, Perplexity ve Canva AI gibi ücretsiz veya freemium araçları gerçek kullanım senaryolarıyla değerlendirin.",
         sections: [
           section(
-            "Ãœcretsiz planda neye bakılmalı?",
+            "Ücretsiz planda neye bakılmalı?",
             [
-              "İlk bakman gereken şey kullanım limiti deÄŸil, limitin işini yapmana yetip yetmediÄŸidir. Günlük birkaç kısa çıktı alan biri için sınırlı plan yeterli olabilir. Ama düzenli blog, müşteri işi ya da tasarım teslimi yapan biri için aynı plan birkaç gün içinde dar gelmeye başlar.",
-              "İkinci nokta arayüz ve iş akışıdır. Ãœcretsiz plan iyi görünse bile çıktı kalitesi tutarsızsa veya araç seni sürekli ücretliye itiyorsa uzun vadede verimli deÄŸildir. Bu yüzden ücretsiz araçları deÄŸerlendirirken sadece 'var mı?' deÄŸil 'gerçekten kullanılabilir mi?' sorusunu sormak gerekir."
+              "İlk bakman gereken şey kullanım limiti değil, limitin işini yapmana yetip yetmediğidir. Günlük birkaç kısa çıktı alan biri için sınırlı plan yeterli olabilir. Ama düzenli blog, müşteri işi ya da tasarım teslimi yapan biri için aynı plan birkaç gün içinde dar gelmeye başlar.",
+              "İkinci nokta arayüz ve iş akışıdır. Ücretsiz plan iyi görünse bile çıktı kalitesi tutarsızsa veya araç seni sürekli ücretliye itiyorsa uzun vadede verimli değildir. Bu yüzden ücretsiz araçları değerlendirirken sadece 'var mı?' değil 'gerçekten kullanılabilir mi?' sorusunu sormak gerekir."
             ],
             {
               bullets: [
                 "Günlük limit işine yetiyor mu?",
-                "Ã‡ıktı kalitesi tutarlı mı?",
+                "Çıktı kalitesi tutarlı mı?",
                 "Teslim akışında gerçekten kullanılabilir mi?",
                 "Yükseltme baskısı çok erken mi geliyor?"
               ]
@@ -389,8 +389,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Hangi ücretsiz araç hangi senaryoda mantıklı?",
             [
-              "ChatGPT ve Gemini yeni başlayanlar için hızlı deneme alanı sunar. Genel soru-cevap, kısa yazı, özet ve fikir üretimi için başlangıçta yeterli olabilirler. Perplexity ise araştırma ve bilgi toplama tarafında ücretsiz planla bile ciddi deÄŸer saÄŸlar. Canva AI, hızlı görsel düzenleme veya basit sosyal medya teslimleri için ücretsiz tarafta iyi bir giriş sunabilir.",
-              "Burada önemli olan ücretsiz planı ana iş modeli gibi görmek deÄŸil, karar verme ve deneme aşaması olarak kullanmaktır. Bir araç ücretsiz planda bile sana zaman kazandırıyorsa, o araç ücretli aşamada daha güçlü bir yatırım olabilir."
+              "ChatGPT ve Gemini yeni başlayanlar için hızlı deneme alanı sunar. Genel soru-cevap, kısa yazı, özet ve fikir üretimi için başlangıçta yeterli olabilirler. Perplexity ise araştırma ve bilgi toplama tarafında ücretsiz planla bile ciddi değer sağlar. Canva AI, hızlı görsel düzenleme veya basit sosyal medya teslimleri için ücretsiz tarafta iyi bir giriş sunabilir.",
+              "Burada önemli olan ücretsiz planı ana iş modeli gibi görmek değil, karar verme ve deneme aşaması olarak kullanmaktır. Bir araç ücretsiz planda bile sana zaman kazandırıyorsa, o araç ücretli aşamada daha güçlü bir yatırım olabilir."
             ],
             {
               comparison: {
@@ -404,23 +404,23 @@ const allBlogArticles: BlogEntry[] = [
             }
           ),
           section(
-            "Ãœcretsiz planla nasıl para kazanılır?",
+            "Ücretsiz planla nasıl para kazanılır?",
             [
-              "İlk müşteri işini almak için çoÄŸu zaman tam ücretli stack gerekmez. Kısa sosyal medya metinleri, temel araştırma özeti, sunum taslaÄŸı veya basit görsel paketleri gibi küçük teslimlerde ücretsiz planlar iş görebilir. Bu da özellikle sıfır bütçeyle başlayan kullanıcı için önemlidir.",
-              "Ancak ücretsiz planı büyüme planı gibi deÄŸil, doÄŸrulama aracı gibi görmek gerekir. Yani önce teklifin satılıyor mu, müşteri çıktıdan memnun mu ve süreç çalışıyor mu bunları test et. Süreç çalışıyorsa ücretliye geçmek rasyonel hale gelir."
+              "İlk müşteri işini almak için çoğu zaman tam ücretli stack gerekmez. Kısa sosyal medya metinleri, temel araştırma özeti, sunum taslağı veya basit görsel paketleri gibi küçük teslimlerde ücretsiz planlar iş görebilir. Bu da özellikle sıfır bütçeyle başlayan kullanıcı için önemlidir.",
+              "Ancak ücretsiz planı büyüme planı gibi değil, doğrulama aracı gibi görmek gerekir. Yani önce teklifin satılıyor mu, müşteri çıktıdan memnun mu ve süreç çalışıyor mu bunları test et. Süreç çalışıyorsa ücretliye geçmek rasyonel hale gelir."
             ],
             {
               subSections: [
-                sub("Yeni başlayanlar için", ["Ã–nce küçük ve net teslimler sat. Sosyal medya açıklaması, kısa blog taslaÄŸı veya araştırma özeti iyi başlangıçtır.", "Bu aşamada amaç maksimum kalite deÄŸil, minimum sürtünmeyle ilk geri bildirimi almaktır."]),
-                sub("Freelancer'lar için", ["Var olan müşteri akışında ücretsiz planı hız kazanmak için kullanabilirsin. Ã–zellikle özet, araştırma ve basit görsel teslimlerde işe yarar.", "Ancak kapasite büyürse ücretli plana geçmek kaçınılmaz olur."], ["Küçük teslimlerde ücretsiz plan", "Tekrarlayan müşteride ücretli geçiş", "Araç maliyetini hizmet fiyatına yedir"]) 
+                sub("Yeni başlayanlar için", ["Önce küçük ve net teslimler sat. Sosyal medya açıklaması, kısa blog taslağı veya araştırma özeti iyi başlangıçtır.", "Bu aşamada amaç maksimum kalite değil, minimum sürtünmeyle ilk geri bildirimi almaktır."]),
+                sub("Freelancer'lar için", ["Var olan müşteri akışında ücretsiz planı hız kazanmak için kullanabilirsin. Özellikle özet, araştırma ve basit görsel teslimlerde işe yarar.", "Ancak kapasite büyürse ücretli plana geçmek kaçınılmaz olur."], ["Küçük teslimlerde ücretsiz plan", "Tekrarlayan müşteride ücretli geçiş", "Araç maliyetini hizmet fiyatına yedir"]) 
               ]
             }
           ),
           section(
             "Ne zaman ücretli plana geçmek gerekir?",
             [
-              "EÄŸer araç günlük iş akışının parçası olduysa, limitler yüzünden yavaşlamaya başladıysan veya daha kaliteli teslim için daha fazla kontrol istiyorsan ücretliye geçmek mantıklıdır. Bu geçişi maliyet deÄŸil yatırım gibi düşünmek gerekir.",
-              "En saÄŸlıklı yaklaşım, önce ücretsiz planla öÄŸrenmek ve ilk küçük çıktıları almak; sonra gerçek darboÄŸaz ortaya çıktıÄŸında yükseltmektir. Böylece araç harcaması, üretim kapasitesini gerçekten artırdıÄŸı noktada yapılır."
+              "Eğer araç günlük iş akışının parçası olduysa, limitler yüzünden yavaşlamaya başladıysan veya daha kaliteli teslim için daha fazla kontrol istiyorsan ücretliye geçmek mantıklıdır. Bu geçişi maliyet değil yatırım gibi düşünmek gerekir.",
+              "En sağlıklı yaklaşım, önce ücretsiz planla öğrenmek ve ilk küçük çıktıları almak; sonra gerçek darboğaz ortaya çıktığında yükseltmektir. Böylece araç harcaması, üretim kapasitesini gerçekten artırdığı noktada yapılır."
             ]
           )
         ]
@@ -453,19 +453,19 @@ const allBlogArticles: BlogEntry[] = [
       tr: {
         title: "Claude ve ChatGPT hangi durumda daha uygun?",
         excerpt:
-          "Bu karşılaştırma tek bir kazanan ilan etmez; hangi işte hangi aracın daha mantıklı olduÄŸunu netleştirir.",
+          "Bu karşılaştırma tek bir kazanan ilan etmez; hangi işte hangi aracın daha mantıklı olduğunu netleştirir.",
         intro:
-          "Claude ve ChatGPT aynı kullanıcı kitlesine hitap ediyor gibi görünse de gerçek fark kullanım sırasında ortaya çıkar. Biri daha hızlı ve çok yönlü hissettirebilir, diÄŸeri daha sakin ve daha düzenli çıktı verebilir. Bu fark özellikle uzun yazı, müşteri teslimi, araştırma, günlük kullanım ve öÄŸrenme eÄŸrisi açısından önemlidir. Buradaki amaç bir kazanan seçmek deÄŸil, hangi iş için hangi aracın daha mantıklı olduÄŸunu görmektir.",
+          "Claude ve ChatGPT aynı kullanıcı kitlesine hitap ediyor gibi görünse de gerçek fark kullanım sırasında ortaya çıkar. Biri daha hızlı ve çok yönlü hissettirebilir, diğeri daha sakin ve daha düzenli çıktı verebilir. Bu fark özellikle uzun yazı, müşteri teslimi, araştırma, günlük kullanım ve öğrenme eğrisi açısından önemlidir. Buradaki amaç bir kazanan seçmek değil, hangi iş için hangi aracın daha mantıklı olduğunu görmektir.",
         categoryLabel: "Karşılaştırmalar",
         seoTitle: "Claude ve ChatGPT hangi durumda daha uygun? | Deciply",
         seoDescription:
-          "Claude ve ChatGPT'yi yazı kalitesi, hız, kullanım kolaylıÄŸı ve gerçek kullanım senaryoları üzerinden nötr biçimde karşılaştırın.",
+          "Claude ve ChatGPT'yi yazı kalitesi, hız, kullanım kolaylığı ve gerçek kullanım senaryoları üzerinden nötr biçimde karşılaştırın.",
         sections: [
           section(
             "Temel fark nerede başlıyor?",
             [
-              "ChatGPT çok yönlü kullanım isteyen kullanıcılar için hızlı bir çalışma hissi verir. Taslak, soru-cevap, özet ve fikir üretimi tarafında hızlı dönüt almak isteyenler için rahattır. Claude ise daha uzun, daha düzenli ve daha sakin yazı isteyen kullanıcılar için farklı bir deÄŸer sunar. Bu yüzden fark ilk bakışta deÄŸil, teslim türünde ortaya çıkar.",
-              "EÄŸer hedefin müşteri için açıklayıcı rehber hazırlamaksa Claude daha uygun hissedebilir. EÄŸer gün içinde birçok farklı küçük işi aynı araçla halletmek istiyorsan ChatGPT daha akıcı olabilir. Burada belirleyici olan kalite tanımın: hız mı, yapı mı, yoksa esneklik mi?"
+              "ChatGPT çok yönlü kullanım isteyen kullanıcılar için hızlı bir çalışma hissi verir. Taslak, soru-cevap, özet ve fikir üretimi tarafında hızlı dönüt almak isteyenler için rahattır. Claude ise daha uzun, daha düzenli ve daha sakin yazı isteyen kullanıcılar için farklı bir değer sunar. Bu yüzden fark ilk bakışta değil, teslim türünde ortaya çıkar.",
+              "Eğer hedefin müşteri için açıklayıcı rehber hazırlamaksa Claude daha uygun hissedebilir. Eğer gün içinde birçok farklı küçük işi aynı araçla halletmek istiyorsan ChatGPT daha akıcı olabilir. Burada belirleyici olan kalite tanımın: hız mı, yapı mı, yoksa esneklik mi?"
             ],
             {
               comparison: {
@@ -474,7 +474,7 @@ const allBlogArticles: BlogEntry[] = [
                   { label: "Hız", value: "ChatGPT tarafı daha pratik olabilir" },
                   { label: "Uzun yapı", value: "Claude tarafı daha rahat olabilir" },
                   { label: "Genel kullanım", value: "ChatGPT" },
-                  { label: "Açıklama netliÄŸi", value: "Claude" }
+                  { label: "Açıklama netliği", value: "Claude" }
                 ]
               }
             }
@@ -482,28 +482,28 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Yazı kalitesi, araştırma ve iş akışı açısından bakış",
             [
-              "Yazı kalitesinde tek bir araç otomatik üstün deÄŸildir. Kısa ve hızlı üretimde ChatGPT güçlü olabilir. Uzun rehber, daha kontrollü paragraf akışı ve daha ölçülü ton gerektiÄŸinde Claude daha rahat sonuç verebilir. Araştırma tarafında ikisi de iş görebilir; ancak kaynak odaklı bir iş yapıyorsan bu iki araca Perplexity gibi bir araç eşlik ettiÄŸinde kalite artar.",
-              "Günlük iş akışında karar verirken şu soruya bakmak gerekir: Bu aracı gün içinde tek iş için mi kullanacaÄŸım, yoksa çok farklı küçük görevlerde mi açacaÄŸım? İkinci durumda ChatGPT daha uygun olabilir. Birinci durumda ise Claude daha tatmin edici bir kalite deneyimi sunabilir."
+              "Yazı kalitesinde tek bir araç otomatik üstün değildir. Kısa ve hızlı üretimde ChatGPT güçlü olabilir. Uzun rehber, daha kontrollü paragraf akışı ve daha ölçülü ton gerektiğinde Claude daha rahat sonuç verebilir. Araştırma tarafında ikisi de iş görebilir; ancak kaynak odaklı bir iş yapıyorsan bu iki araca Perplexity gibi bir araç eşlik ettiğinde kalite artar.",
+              "Günlük iş akışında karar verirken şu soruya bakmak gerekir: Bu aracı gün içinde tek iş için mi kullanacağım, yoksa çok farklı küçük görevlerde mi açacağım? İkinci durumda ChatGPT daha uygun olabilir. Birinci durumda ise Claude daha tatmin edici bir kalite deneyimi sunabilir."
             ]
           ),
           section(
             "Kim hangisini seçmeli?",
             [
               "Yeni başlayan biri için daha hızlı alışılan araç genelde daha mantıklı olur. Düzenli freelance teslim yapan ve özellikle uzun içerik hazırlayan kullanıcı için ise yazının yapısı daha önemlidir. Bu yüzden karar; deneyim seviyesi, teslim şekli ve iş modeli üzerinden verilmelidir.",
-              "EÄŸer müşteriye hızlı taslak, e-posta ve kısa içerik teslim ediyorsan ChatGPT tarafı daha mantıklı gelebilir. EÄŸer kapsamlı açıklama, rehber veya daha kontrollü ton gerekiyorsa Claude tarafı daha uyumlu olabilir."
+              "Eğer müşteriye hızlı taslak, e-posta ve kısa içerik teslim ediyorsan ChatGPT tarafı daha mantıklı gelebilir. Eğer kapsamlı açıklama, rehber veya daha kontrollü ton gerekiyorsa Claude tarafı daha uyumlu olabilir."
             ],
             {
               subSections: [
-                sub("Claude'u deÄŸerlendirmesi mantıklı olanlar", ["Uzun rehber, açıklayıcı analiz ve daha düzenli metin isteyen kullanıcılar.", "Ã–zellikle editorial kalite ve yapı arayan ekipler burada daha fazla deÄŸer bulabilir."]),
-                sub("ChatGPT'yi deÄŸerlendirmesi mantıklı olanlar", ["Hızlı üretim, genel amaçlı kullanım ve farklı görevleri tek araçta toplamak isteyen kullanıcılar.", "Günlük iş akışında sürtünmeyi azaltmak isteyenler için daha pratik olabilir."])
+                sub("Claude'u değerlendirmesi mantıklı olanlar", ["Uzun rehber, açıklayıcı analiz ve daha düzenli metin isteyen kullanıcılar.", "Özellikle editorial kalite ve yapı arayan ekipler burada daha fazla değer bulabilir."]),
+                sub("ChatGPT'yi değerlendirmesi mantıklı olanlar", ["Hızlı üretim, genel amaçlı kullanım ve farklı görevleri tek araçta toplamak isteyen kullanıcılar.", "Günlük iş akışında sürtünmeyi azaltmak isteyenler için daha pratik olabilir."])
               ]
             }
           ),
           section(
             "Kısa sonuç",
             [
-              "Bu karşılaştırmada tek bir kazanan yok. Hız, çok yönlülük ve günlük kullanım senaryolarında ChatGPT daha uygun olabilir. Uzun ve daha düzenli metinlerde Claude daha rahat hissettirebilir. En iyi yaklaşım, önce kendi önceliÄŸini netleştirip sonra ilgili detay sayfasına geçmektir.",
-              "Deciply'nın yaklaşımı tam olarak budur: kullanıcıyı tek araca itmek deÄŸil, kararını kendi işine göre vermesini saÄŸlamak."
+              "Bu karşılaştırmada tek bir kazanan yok. Hız, çok yönlülük ve günlük kullanım senaryolarında ChatGPT daha uygun olabilir. Uzun ve daha düzenli metinlerde Claude daha rahat hissettirebilir. En iyi yaklaşım, önce kendi önceliğini netleştirip sonra ilgili detay sayfasına geçmektir.",
+              "Deciply'nın yaklaşımı tam olarak budur: kullanıcıyı tek araca itmek değil, kararını kendi işine göre vermesini sağlamak."
             ]
           )
         ]
@@ -535,30 +535,30 @@ const allBlogArticles: BlogEntry[] = [
       tr: {
         title: "Midjourney nasıl kullanılır ve ne zaman mantıklıdır?",
         excerpt:
-          "Midjourney'i sadece görsel üretmek için deÄŸil, müşteri işleri, konsept sunumları ve satılabilir tasarımlar için nasıl kullanacaÄŸını sade biçimde öÄŸren.",
+          "Midjourney'i sadece görsel üretmek için değil, müşteri işleri, konsept sunumları ve satılabilir tasarımlar için nasıl kullanacağını sade biçimde öğren.",
         intro:
-          "Midjourney çoÄŸu kullanıcı için ilk anda etkileyici görünür çünkü çok kısa sürede güçlü görseller üretebilir. Ama gerçek deÄŸer, aracın güzel resim üretmesinde deÄŸil; o görselleri bir iş akışına baÄŸlayabilmendedir. EÄŸer ne tür prompt yazacaÄŸını, hangi tür çıktıların satılabilir olduÄŸunu ve hangi noktada manuel düzenleme gerektiÄŸini anlarsan Midjourney sadece eÄŸlenceli bir araç deÄŸil, profesyonel bir üretim parçası haline gelir.",
+          "Midjourney çoğu kullanıcı için ilk anda etkileyici görünür çünkü çok kısa sürede güçlü görseller üretebilir. Ama gerçek değer, aracın güzel resim üretmesinde değil; o görselleri bir iş akışına bağlayabilmendedir. Eğer ne tür prompt yazacağını, hangi tür çıktıların satılabilir olduğunu ve hangi noktada manuel düzenleme gerektiğini anlarsan Midjourney sadece eğlenceli bir araç değil, profesyonel bir üretim parçası haline gelir.",
         categoryLabel: "Rehberler",
         seoTitle: "Midjourney nasıl kullanılır ve ne zaman mantıklıdır? | Deciply",
         seoDescription:
-          "Midjourney kullanımı, prompt mantıÄŸı, müşteri işleri ve görsel odaklı para kazanma senaryoları için pratik rehber.",
+          "Midjourney kullanımı, prompt mantığı, müşteri işleri ve görsel odaklı para kazanma senaryoları için pratik rehber.",
         sections: [
           section(
             "Midjourney'e başlarken neyi anlamalısın?",
             [
-              "Midjourney'i verimli kullanmak için önce şu gerçeÄŸi kabul etmek gerekir: bu araç, nihai tasarımı tek başına bitiren bir sistem deÄŸil; hızlı konsept ve güçlü görsel yön üreten bir üretim katmanıdır. Bu bakış açısı seni yanlış beklentiden korur. İlk amaç kusursuz tek görsel almak deÄŸil, hızlı varyasyon görmek ve içlerinden işine yarayan yönü seçmektir.",
+              "Midjourney'i verimli kullanmak için önce şu gerçeği kabul etmek gerekir: bu araç, nihai tasarımı tek başına bitiren bir sistem değil; hızlı konsept ve güçlü görsel yön üreten bir üretim katmanıdır. Bu bakış açısı seni yanlış beklentiden korur. İlk amaç kusursuz tek görsel almak değil, hızlı varyasyon görmek ve içlerinden işine yarayan yönü seçmektir.",
               "Bu nedenle başlangıçta prompt yazarken netlik önemlidir. Konu, stil, ışık, kompozisyon ve çıktı hissini ne kadar açık tarif edersen sonuçlar o kadar kullanılabilir olur. Ama burada da aşırı detay yerine yön veren ana unsurları seçmek daha verimli olur."
             ]
           ),
           section(
             "Daha iyi prompt nasıl yazılır?",
             [
-              "İyi prompt, şiir gibi süslü olmak zorunda deÄŸildir; net ve niyetli olması yeterlidir. Ã–rneÄŸin 'modern SaaS dashboard hero image, dark premium lighting, cyan accents, clean composition' gibi bir prompt; sadece 'güzel teknoloji görseli' demekten çok daha kullanışlıdır. Ã‡ünkü Midjourney neyin önemli olduÄŸunu daha net anlar.",
-              "Pratikte en iyi yöntem kısa bir çekirdek prompt ile başlamak, sonra sonucu görüp küçük düzeltmelerle ilerlemektir. Başlangıçta tek prompta her şeyi doldurmaya çalışmak yerine iterasyon yapmak daha doÄŸru sonuç verir."
+              "İyi prompt, şiir gibi süslü olmak zorunda değildir; net ve niyetli olması yeterlidir. Örneğin 'modern SaaS dashboard hero image, dark premium lighting, cyan accents, clean composition' gibi bir prompt; sadece 'güzel teknoloji görseli' demekten çok daha kullanışlıdır. Çünkü Midjourney neyin önemli olduğunu daha net anlar.",
+              "Pratikte en iyi yöntem kısa bir çekirdek prompt ile başlamak, sonra sonucu görüp küçük düzeltmelerle ilerlemektir. Başlangıçta tek prompta her şeyi doldurmaya çalışmak yerine iterasyon yapmak daha doğru sonuç verir."
             ],
             {
               bullets: [
-                "Ã–nce konu ve amaç yaz",
+                "Önce konu ve amaç yaz",
                 "Sonra stil ve ışık ekle",
                 "Gerekirse kamera / kompozisyon hissi ver",
                 "İlk sonucu görmeden aşırı detay ekleme"
@@ -568,21 +568,21 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Midjourney ile nasıl para kazanılır?",
             [
-              "Midjourney en çok müşteri görselleri, konsept sunumları, thumbnail üretimi, poster taslakları ve print-on-demand tasarımlarında deÄŸer üretir. Burada asıl kazanç, tek bir görsel satmaktan çok, hızlı konsept ve kreatif teslim paketi oluşturmaktan gelir. Müşteri çoÄŸu zaman 'AI görseli' satın almaz; daha hızlı kreatif yön, daha fazla seçenek ve daha etkileyici sunum satın alır.",
-              "Freelance çalışıyorsan kapak görseli, sosyal medya kreatifi ve reklam taslaÄŸı gibi hizmetler satabilirsin. Kendi işin için çalışıyorsan da görsel fikirleri içerik, ürün sayfası veya dijital maÄŸaza tasarımlarında kullanabilirsin."
+              "Midjourney en çok müşteri görselleri, konsept sunumları, thumbnail üretimi, poster taslakları ve print-on-demand tasarımlarında değer üretir. Burada asıl kazanç, tek bir görsel satmaktan çok, hızlı konsept ve kreatif teslim paketi oluşturmaktan gelir. Müşteri çoğu zaman 'AI görseli' satın almaz; daha hızlı kreatif yön, daha fazla seçenek ve daha etkileyici sunum satın alır.",
+              "Freelance çalışıyorsan kapak görseli, sosyal medya kreatifi ve reklam taslağı gibi hizmetler satabilirsin. Kendi işin için çalışıyorsan da görsel fikirleri içerik, ürün sayfası veya dijital mağaza tasarımlarında kullanabilirsin."
             ],
             {
               subSections: [
                 sub("Freelance tasarım işleri", ["Müşteri için hızlı moodboard, sosyal medya kreatifi veya sunum görseli hazırlayabilirsin.", "En büyük avantaj çok kısa sürede birden fazla yön gösterebilmendir."], ["Kapak tasarımı", "Poster fikri", "Reklam kreatifi"]),
-                sub("Satılabilir tasarım fikirleri", ["Poster, tişört, dijital duvar kÃ¢ÄŸıdı veya stok benzeri ürünlere dönüştürülebilecek yaratıcı görseller üretebilirsin.", "Burada ayırt edici olan tek görsel deÄŸil, niş ve tutarlı bir koleksiyon oluşturmaktır."])
+                sub("Satılabilir tasarım fikirleri", ["Poster, tişört, dijital duvar kâğıdı veya stok benzeri ürünlere dönüştürülebilecek yaratıcı görseller üretebilirsin.", "Burada ayırt edici olan tek görsel değil, niş ve tutarlı bir koleksiyon oluşturmaktır."])
               ]
             }
           ),
           section(
-            "Ne zaman Midjourney deÄŸil başka bir araç seçilmeli?",
+            "Ne zaman Midjourney değil başka bir araç seçilmeli?",
             [
-              "EÄŸer ihtiyacın hızlı sosyal medya düzeni, sunum revizyonu veya şablon odaklı teslimse Canva AI bazen daha pratiktir. EÄŸer asset üretimi veya varyasyon odaklı yaratıcı akış gerekiyorsa Leonardo AI deÄŸerlendirilebilir. Hareketli içerik ya da video gerekiyorsa ise Runway daha doÄŸru araç olur.",
-              "Bu yüzden Midjourney'i tüm görsel işler için varsayılan seçenek görmek yerine, estetik kalite ve yaratıcı yön ihtiyacında güçlü araçlardan biri olarak düşünmek daha doÄŸru olur."
+              "Eğer ihtiyacın hızlı sosyal medya düzeni, sunum revizyonu veya şablon odaklı teslimse Canva AI bazen daha pratiktir. Eğer asset üretimi veya varyasyon odaklı yaratıcı akış gerekiyorsa Leonardo AI değerlendirilebilir. Hareketli içerik ya da video gerekiyorsa ise Runway daha doğru araç olur.",
+              "Bu yüzden Midjourney'i tüm görsel işler için varsayılan seçenek görmek yerine, estetik kalite ve yaratıcı yön ihtiyacında güçlü araçlardan biri olarak düşünmek daha doğru olur."
             ]
           )
         ]
@@ -614,25 +614,25 @@ const allBlogArticles: BlogEntry[] = [
       tr: {
         title: "Freelancer'lar için hangi AI aracı hangi işte daha uygun?",
         excerpt:
-          "Freelance çalışıyorsan doÄŸru AI aracı seçimi hem teslim hızını hem de kÃ¢rlılıÄŸı ciddi biçimde etkiler.",
+          "Freelance çalışıyorsan doğru AI aracı seçimi hem teslim hızını hem de kârlılığı ciddi biçimde etkiler.",
         intro:
-          "Freelancer için AI araç seçimi, merak deÄŸil operasyon meselesidir. Hangi aracı kullandıÄŸın; teklif hızını, teslim süresini, revizyon miktarını ve gün sonunda kÃ¢rını etkiler. Yazı odaklı biri ile görsel odaklı biri aynı araçlardan aynı deÄŸeri almaz. Bu nedenle burada freelancer için tek bir aracı öne çıkarmak yerine, iş türüne göre hangi araçların daha mantıklı olduÄŸunu gösteriyoruz.",
+          "Freelancer için AI araç seçimi, merak değil operasyon meselesidir. Hangi aracı kullandığın; teklif hızını, teslim süresini, revizyon miktarını ve gün sonunda kârını etkiler. Yazı odaklı biri ile görsel odaklı biri aynı araçlardan aynı değeri almaz. Bu nedenle burada freelancer için tek bir aracı öne çıkarmak yerine, iş türüne göre hangi araçların daha mantıklı olduğunu gösteriyoruz.",
         categoryLabel: "AI ile Para Kazanma",
         seoTitle: "Freelancer'lar için hangi AI aracı hangi işte daha uygun? | Deciply",
         seoDescription:
-          "Freelance yazı, araştırma, tasarım ve müşteri teslimlerinde hangi AI araçlarının daha uygun olduÄŸunu senaryo bazlı inceleyin.",
+          "Freelance yazı, araştırma, tasarım ve müşteri teslimlerinde hangi AI araçlarının daha uygun olduğunu senaryo bazlı inceleyin.",
         sections: [
           section(
             "Freelancer için en önemli kriterler",
             [
-              "Freelancer açısından araç seçiminin ilk kriteri hızdır ama tek kriter bu deÄŸildir. Hızlı üretip çok revizyon alıyorsan kÃ¢r düşer. O yüzden hızla birlikte yapı, doÄŸruluk ve teslim kalitesi de önemlidir. İkinci kriter çok yönlülük deÄŸil, senin gelir modeline uyumdur. Ã–rneÄŸin uzun blog yazıyorsan Claude daha rahat olabilir; hızlı müşteri çıktısı gerekiyorsa ChatGPT daha pratik olabilir.",
-              "Ãœçüncü kriter ise paketlenebilirliktir. SeçtiÄŸin araç tekrar eden bir hizmete dönüşebiliyorsa deÄŸerlidir. Ã–rneÄŸin haftalık içerik paketi, aylık sosyal medya tasarım paketi veya düzenli araştırma özeti hizmeti gibi." ]
+              "Freelancer açısından araç seçiminin ilk kriteri hızdır ama tek kriter bu değildir. Hızlı üretip çok revizyon alıyorsan kâr düşer. O yüzden hızla birlikte yapı, doğruluk ve teslim kalitesi de önemlidir. İkinci kriter çok yönlülük değil, senin gelir modeline uyumdur. Örneğin uzun blog yazıyorsan Claude daha rahat olabilir; hızlı müşteri çıktısı gerekiyorsa ChatGPT daha pratik olabilir.",
+              "Üçüncü kriter ise paketlenebilirliktir. Seçtiğin araç tekrar eden bir hizmete dönüşebiliyorsa değerlidir. Örneğin haftalık içerik paketi, aylık sosyal medya tasarım paketi veya düzenli araştırma özeti hizmeti gibi." ]
           ),
           section(
             "Yazı, araştırma ve görsel üretimde uygun araçlar",
             [
-              "Yazı işlerinde ChatGPT hızlı ve çok yönlü kullanım sunar. Claude daha uzun, daha açıklayıcı ve daha editorial odaklı teslimler için rahat olabilir. Araştırma temelli içerik ve rakip analizi gibi işlerde Perplexity iş akışına ciddi deÄŸer katar. Görsel tarafta ise Midjourney kreatif kalite için, Canva AI daha hızlı teslim ve düzen için, Leonardo AI ise asset odaklı üretim için mantıklı olabilir.",
-              "Buradaki doÄŸru yaklaşım tek araç deÄŸil, çekirdek akış kurmaktır. Araştırma, taslak, görsel destek ve son teslim için farklı araçları kontrollü şekilde kullanmak freelancer'ın hem hızını hem de güvenilirliÄŸini artırır."
+              "Yazı işlerinde ChatGPT hızlı ve çok yönlü kullanım sunar. Claude daha uzun, daha açıklayıcı ve daha editorial odaklı teslimler için rahat olabilir. Araştırma temelli içerik ve rakip analizi gibi işlerde Perplexity iş akışına ciddi değer katar. Görsel tarafta ise Midjourney kreatif kalite için, Canva AI daha hızlı teslim ve düzen için, Leonardo AI ise asset odaklı üretim için mantıklı olabilir.",
+              "Buradaki doğru yaklaşım tek araç değil, çekirdek akış kurmaktır. Araştırma, taslak, görsel destek ve son teslim için farklı araçları kontrollü şekilde kullanmak freelancer'ın hem hızını hem de güvenilirliğini artırır."
             ],
             {
               comparison: {
@@ -647,14 +647,14 @@ const allBlogArticles: BlogEntry[] = [
             }
           ),
           section(
-            "KÃ¢rlılıÄŸı artıran sistem nasıl kurulur?",
+            "Kârlılığı artıran sistem nasıl kurulur?",
             [
-              "Birçok freelancer tek seferlik üretimle takılır. Oysa asıl kazanç, tekrar eden sistem kurmaktan gelir. Müşteri brief'ini Notion AI ile özetlemek, Perplexity ile araştırmayı toplamak, ChatGPT ile ilk taslaÄŸı çıkarmak ve Canva AI ile sunumu hazırlamak gibi küçük bir akış; teslim süresini ciddi biçimde azaltabilir.",
+              "Birçok freelancer tek seferlik üretimle takılır. Oysa asıl kazanç, tekrar eden sistem kurmaktan gelir. Müşteri brief'ini Notion AI ile özetlemek, Perplexity ile araştırmayı toplamak, ChatGPT ile ilk taslağı çıkarmak ve Canva AI ile sunumu hazırlamak gibi küçük bir akış; teslim süresini ciddi biçimde azaltabilir.",
               "Bu yapı sayesinde aynı sürede daha fazla iş alabilir veya aynı sayıda işte daha yüksek kalite sunabilirsin. İkisi de gelir açısından olumlu sonuç verir."
             ],
             {
               subSections: [
-                sub("Teklif aşaması", ["Teklif öncesi araştırmayı AI ile hızlandırırsan müşteriye daha güçlü öneri sunabilirsin.", "Bu, dönüşüm oranını doÄŸrudan etkiler."], ["Hızlı sektör araştırması", "Kısa teklif taslaÄŸı", "Ã–rnek çıktı hazırlıÄŸı"]),
+                sub("Teklif aşaması", ["Teklif öncesi araştırmayı AI ile hızlandırırsan müşteriye daha güçlü öneri sunabilirsin.", "Bu, dönüşüm oranını doğrudan etkiler."], ["Hızlı sektör araştırması", "Kısa teklif taslağı", "Örnek çıktı hazırlığı"]),
                 sub("Teslim aşaması", ["Teslim sırasında AI'ı ilk taslak ve destek katmanı olarak kullanmak revizyon yükünü azaltır.", "Ama son kalite kontrolünü senin yapman gerekir."], ["Taslak", "Kontrol", "Sunum"])
               ]
             }
@@ -662,8 +662,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Hangi durumda daha az araç daha iyidir?",
             [
-              "Freelancer için her yeni araç ek verimlilik getirmez. Bazen iki iyi araç, altı ortalama araçtan daha deÄŸerlidir. İş modeli oturmadan fazla araç almak dikkat daÄŸıtır ve maliyeti artırır.",
-              "En iyi yöntem, gelir üreten akışta eksik kalan adımı görüp o eksik için araç seçmektir. Yani önce sorun, sonra araç. Bu yaklaşım Deciply'nın genel seçim mantıÄŸıyla da uyumludur."
+              "Freelancer için her yeni araç ek verimlilik getirmez. Bazen iki iyi araç, altı ortalama araçtan daha değerlidir. İş modeli oturmadan fazla araç almak dikkat dağıtır ve maliyeti artırır.",
+              "En iyi yöntem, gelir üreten akışta eksik kalan adımı görüp o eksik için araç seçmektir. Yani önce sorun, sonra araç. Bu yaklaşım Deciply'nın genel seçim mantığıyla da uyumludur."
             ]
           )
         ]
@@ -695,9 +695,9 @@ const allBlogArticles: BlogEntry[] = [
       tr: {
         title: "AI ile blog yazarak para kazanmak nasıl mümkün olur?",
         excerpt:
-          "Blog gelirinin mantıÄŸını, AI destekli içerik sürecini ve hangi araçların hangi aşamada daha mantıklı olduÄŸunu bu rehberde bulabilirsin.",
+          "Blog gelirinin mantığını, AI destekli içerik sürecini ve hangi araçların hangi aşamada daha mantıklı olduğunu bu rehberde bulabilirsin.",
         intro:
-          "AI ile blog yazmak kolaylaştı ama gelir üretmek hÃ¢lÃ¢ strateji gerektiriyor. Sorun içerik yazamamak deÄŸil; doÄŸru konu seçimi, doÄŸru arama niyeti ve doÄŸru içerik sistemi kuramamak. Bu yüzden bu yazıda sadece 'AI ile yazı yaz' demiyoruz. Hangi içeriklerin gelir ürettiÄŸini, hangi araçların araştırma ve yazı aşamasında iş gördüÄŸünü ve blog işini ölçeklemek için nasıl düşünmek gerektiÄŸini pratik biçimde anlatıyoruz.",
+          "AI ile blog yazmak kolaylaştı ama gelir üretmek hâlâ strateji gerektiriyor. Sorun içerik yazamamak değil; doğru konu seçimi, doğru arama niyeti ve doğru içerik sistemi kuramamak. Bu yüzden bu yazıda sadece 'AI ile yazı yaz' demiyoruz. Hangi içeriklerin gelir ürettiğini, hangi araçların araştırma ve yazı aşamasında iş gördüğünü ve blog işini ölçeklemek için nasıl düşünmek gerektiğini pratik biçimde anlatıyoruz.",
         categoryLabel: "AI ile Para Kazanma",
         seoTitle: "AI ile blog yazarak para kazanmak nasıl mümkün olur? | Deciply",
         seoDescription:
@@ -706,15 +706,15 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Blog geliri gerçekten nereden gelir?",
             [
-              "Blog geliri çoÄŸu zaman reklam, affiliate baÄŸlantılar, lead toplama veya dolaylı hizmet satışı üzerinden gelir. AI burada geliri doÄŸrudan üretmez; ama araştırma, taslak ve içerik planı süresini kısaltarak üretim kapasitesini artırır. EÄŸer aynı sürede daha fazla kaliteli içerik yayınlayabiliyorsan, gelir ihtimali de artar.",
-              "Yine de burada kritik nokta miktar deÄŸil niyettir. Trafik çeken ama karar niyeti düşük içerikler gelir üretmekte zorlanır. Buna karşılık 'hangi araç ne iş için uygun', 'x vs y', 'nasıl kullanılır', 'para kazanma yolları' gibi içerikler hem merak hem karar niyeti taşır."
+              "Blog geliri çoğu zaman reklam, affiliate bağlantılar, lead toplama veya dolaylı hizmet satışı üzerinden gelir. AI burada geliri doğrudan üretmez; ama araştırma, taslak ve içerik planı süresini kısaltarak üretim kapasitesini artırır. Eğer aynı sürede daha fazla kaliteli içerik yayınlayabiliyorsan, gelir ihtimali de artar.",
+              "Yine de burada kritik nokta miktar değil niyettir. Trafik çeken ama karar niyeti düşük içerikler gelir üretmekte zorlanır. Buna karşılık 'hangi araç ne iş için uygun', 'x vs y', 'nasıl kullanılır', 'para kazanma yolları' gibi içerikler hem merak hem karar niyeti taşır."
             ]
           ),
           section(
             "AI destekli içerik süreci nasıl kurulur?",
             [
-              "En saÄŸlıklı akış genelde dört adımdan oluşur: araştırma, yapı çıkarma, taslak yazımı ve düzenleme. Perplexity araştırma için, ChatGPT veya Claude taslak için, Notion AI ise içerik organizasyonu için iyi tamamlayıcı olabilir. Böylece tek araçla her şeyi zorlamak yerine her adımda daha uygun sistemi kullanırsın.",
-              "Burada kaliteyi artıran şey AI deÄŸil, editoryal çerçevedir. Başlık yapısı, arama niyeti, iç link ve CTA akışı hÃ¢lÃ¢ insan kararına ihtiyaç duyar."
+              "En sağlıklı akış genelde dört adımdan oluşur: araştırma, yapı çıkarma, taslak yazımı ve düzenleme. Perplexity araştırma için, ChatGPT veya Claude taslak için, Notion AI ise içerik organizasyonu için iyi tamamlayıcı olabilir. Böylece tek araçla her şeyi zorlamak yerine her adımda daha uygun sistemi kullanırsın.",
+              "Burada kaliteyi artıran şey AI değil, editoryal çerçevedir. Başlık yapısı, arama niyeti, iç link ve CTA akışı hâlâ insan kararına ihtiyaç duyar."
             ],
             {
               comparison: {
@@ -731,8 +731,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Gelir odaklı blog fikirleri nasıl seçilir?",
             [
-              "Gelir potansiyeli genelde karar anına yakın aramalarda yükselir. Ã–rneÄŸin araç karşılaştırmaları, kullanım rehberleri, kategori listeleri ve para kazanma senaryoları daha yüksek ticari niyet taşır. Buna karşılık çok genel ve bilgi amaçlı içerikler trafiÄŸe katkı saÄŸlasa da tıklama ve dönüşüm tarafında daha zayıf olabilir.",
-              "Burada yapılması gereken şey, sadece anahtar kelime kovalamak deÄŸil; kullanıcıyı bir sonraki adıma götüren içerik dizisi kurmaktır. Liste yazısından detay sayfasına, detaydan karşılaştırmaya ve karşılaştırmadan CTA'ya giden net bir akış daha güçlü sonuç verir."
+              "Gelir potansiyeli genelde karar anına yakın aramalarda yükselir. Örneğin araç karşılaştırmaları, kullanım rehberleri, kategori listeleri ve para kazanma senaryoları daha yüksek ticari niyet taşır. Buna karşılık çok genel ve bilgi amaçlı içerikler trafiğe katkı sağlasa da tıklama ve dönüşüm tarafında daha zayıf olabilir.",
+              "Burada yapılması gereken şey, sadece anahtar kelime kovalamak değil; kullanıcıyı bir sonraki adıma götüren içerik dizisi kurmaktır. Liste yazısından detay sayfasına, detaydan karşılaştırmaya ve karşılaştırmadan CTA'ya giden net bir akış daha güçlü sonuç verir."
             ],
             {
               subSections: [
@@ -744,8 +744,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "AI ile blog yazarken en sık yapılan hatalar",
             [
-              "En büyük hata, çok fazla içerik üretip zayıf editoryal kaliteyle yayınlamaktır. İkinci hata, aynı formatı tekrar edip iç linkleme kurmamaktır. Ãœçüncü hata ise CTA'ları geç düşünmektir. EÄŸer kullanıcı neye tıklayacaÄŸını anlamıyorsa trafik tek başına gelir yaratmaz.",
-              "En saÄŸlıklı model; daha az ama daha niyetli içerik, güçlü iç linkleme ve senaryo bazlı CTA akışıdır. Deciply'nın blog tarafı da bu yaklaşım üzerine kuruludur."
+              "En büyük hata, çok fazla içerik üretip zayıf editoryal kaliteyle yayınlamaktır. İkinci hata, aynı formatı tekrar edip iç linkleme kurmamaktır. Üçüncü hata ise CTA'ları geç düşünmektir. Eğer kullanıcı neye tıklayacağını anlamıyorsa trafik tek başına gelir yaratmaz.",
+              "En sağlıklı model; daha az ama daha niyetli içerik, güçlü iç linkleme ve senaryo bazlı CTA akışıdır. Deciply'nın blog tarafı da bu yaklaşım üzerine kuruludur."
             ]
           )
         ]
@@ -777,26 +777,26 @@ const allBlogArticles: BlogEntry[] = [
       tr: {
         title: "Görsel üretim için hangi AI aracı hangi durumda daha mantıklı?",
         excerpt:
-          "Midjourney, Leonardo AI, Canva AI ve Runway gibi araçların hangi görsel işlerde daha mantıklı olduÄŸunu, para kazanma senaryolarıyla birlikte bu rehberde bulabilirsin.",
+          "Midjourney, Leonardo AI, Canva AI ve Runway gibi araçların hangi görsel işlerde daha mantıklı olduğunu, para kazanma senaryolarıyla birlikte bu rehberde bulabilirsin.",
         intro:
-          "Görsel AI araçları aynı işi yapıyormuş gibi görünse de pratikte aralarında ciddi farklar var. Bazısı daha sanatsal ve konsept odaklı sonuçlar verirken, bazısı daha hızlı üretim, kolay düzenleme veya müşteri teslimi için daha mantıklı olabilir. Bu yüzden görsel üretim tarafında asıl soru 'hangi araç daha iyi' deÄŸil, 'hangi iş için hangi araç daha mantıklı' sorusudur. Ã–zellikle satış, freelance üretim, sosyal medya görselleri ve dijital ürün hazırlıÄŸı gibi para kazanma odaklı alanlarda yanlış araç seçmek zaman kaybettirir. Bu rehberde karar sürecini sadeleştiriyor ve her aracın daha uygun olduÄŸu kullanım alanlarını net biçimde ayırıyoruz.",
+          "Görsel AI araçları aynı işi yapıyormuş gibi görünse de pratikte aralarında ciddi farklar var. Bazısı daha sanatsal ve konsept odaklı sonuçlar verirken, bazısı daha hızlı üretim, kolay düzenleme veya müşteri teslimi için daha mantıklı olabilir. Bu yüzden görsel üretim tarafında asıl soru 'hangi araç daha iyi' değil, 'hangi iş için hangi araç daha mantıklı' sorusudur. Özellikle satış, freelance üretim, sosyal medya görselleri ve dijital ürün hazırlığı gibi para kazanma odaklı alanlarda yanlış araç seçmek zaman kaybettirir. Bu rehberde karar sürecini sadeleştiriyor ve her aracın daha uygun olduğu kullanım alanlarını net biçimde ayırıyoruz.",
         categoryLabel: "AI Araçları",
         seoTitle: "Görsel üretim için hangi AI aracı hangi durumda daha mantıklı? | Deciply",
         seoDescription:
-          "Midjourney, Leonardo AI, Canva AI ve Runway araçlarını görsel kalite, teslim kolaylıÄŸı, para kazanma senaryoları ve kullanım akışı açısından deÄŸerlendir.",
+          "Midjourney, Leonardo AI, Canva AI ve Runway araçlarını görsel kalite, teslim kolaylığı, para kazanma senaryoları ve kullanım akışı açısından değerlendir.",
         sections: [
           section(
             "Görsel AI seçerken asıl bakılması gereken şey nedir?",
             [
-              "Ã‡oÄŸu kullanıcı ilk olarak çıktının güzel görünüp görünmediÄŸine bakıyor. Oysa gelir üreten kullanımda tek ölçüt estetik deÄŸil; hız, teslim biçimi, düzenleme kolaylıÄŸı ve ticari amaca uygunluk da en az kalite kadar önemlidir. Bir portföy kapaÄŸı hazırlamakla bir e-ticaret kreatifi üretmek aynı akış deÄŸildir.",
-              "Bu nedenle araç seçimini önce iş modeline göre yapmak gerekir. Sosyal medya ajansıysan hızlı varyasyon üretimi daha önemlidir. Dijital baskı satıyorsan stil kalitesi ve özgünlük daha öne çıkar. Video odaklı içerik üretiyorsan duraÄŸan görsel yerine hareketli çıktı ve sahne akışı önemli hale gelir. Kısacası görsel araçları doÄŸru seçmenin yolu, önce üretmek istediÄŸin sonuca bakmaktır."
+              "Çoğu kullanıcı ilk olarak çıktının güzel görünüp görünmediğine bakıyor. Oysa gelir üreten kullanımda tek ölçüt estetik değil; hız, teslim biçimi, düzenleme kolaylığı ve ticari amaca uygunluk da en az kalite kadar önemlidir. Bir portföy kapağı hazırlamakla bir e-ticaret kreatifi üretmek aynı akış değildir.",
+              "Bu nedenle araç seçimini önce iş modeline göre yapmak gerekir. Sosyal medya ajansıysan hızlı varyasyon üretimi daha önemlidir. Dijital baskı satıyorsan stil kalitesi ve özgünlük daha öne çıkar. Video odaklı içerik üretiyorsan durağan görsel yerine hareketli çıktı ve sahne akışı önemli hale gelir. Kısacası görsel araçları doğru seçmenin yolu, önce üretmek istediğin sonuca bakmaktır."
             ]
           ),
           section(
             "Hangi araç hangi görsel işte daha mantıklı?",
             [
-              "Midjourney hÃ¢lÃ¢ güçlü stil ve atmosfer üretimi arayan kullanıcılar için mantıklı olabilir. Leonardo AI daha kontrollü üretim ve oyun, ürün, karakter gibi ticari çıktılarda pratik olabilir. Canva AI ise kusursuz estetikten çok hız, düzenleme kolaylıÄŸı ve sunum tarafında öne çıkabilir. Runway ise görseli videoya taşıman gereken akışlarda anlamlı hale gelir.",
-              "Buradaki doÄŸru seçim, üretilen görselin tek başına güzel görünmesi deÄŸil; satış, teslim veya içerik üretim sürecine ne kadar iyi oturduÄŸudur. Bir freelancer müşteri için revizyona açık kreatif üretmek istiyorsa Canva AI ile daha hızlı yol alabilir. Buna karşılık portföy veya maÄŸaza için daha karakterli illüstrasyonlar üretmek isteyen biri Midjourney veya Leonardo AI tarafında daha rahat ilerleyebilir."
+              "Midjourney hâlâ güçlü stil ve atmosfer üretimi arayan kullanıcılar için mantıklı olabilir. Leonardo AI daha kontrollü üretim ve oyun, ürün, karakter gibi ticari çıktılarda pratik olabilir. Canva AI ise kusursuz estetikten çok hız, düzenleme kolaylığı ve sunum tarafında öne çıkabilir. Runway ise görseli videoya taşıman gereken akışlarda anlamlı hale gelir.",
+              "Buradaki doğru seçim, üretilen görselin tek başına güzel görünmesi değil; satış, teslim veya içerik üretim sürecine ne kadar iyi oturduğudur. Bir freelancer müşteri için revizyona açık kreatif üretmek istiyorsa Canva AI ile daha hızlı yol alabilir. Buna karşılık portföy veya mağaza için daha karakterli illüstrasyonlar üretmek isteyen biri Midjourney veya Leonardo AI tarafında daha rahat ilerleyebilir."
             ],
             {
               comparison: {
@@ -813,8 +813,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Bu araçlarla nasıl para kazanılır?",
             [
-              "Görsel AI araçlarının para üretme potansiyeli en çok üç yerde öne çıkar: müşteri işi, şablon/dijital ürün satışı ve içerik üretimi. Müşteri tarafında sosyal medya tasarımı, reklam kreatifi, sunum kapaÄŸı veya ürün görseli hazırlamak hızlı gelir üretir. Dijital ürün tarafında poster, mockup, thumbnail paketi veya Canva şablonları gibi teslim edilebilir varlıklar satılabilir.",
-              "İçerik üretimi tarafında ise YouTube kapakları, Instagram carousel görselleri, kısa video sahneleri ve bülten kapak görselleri gibi düzenli ihtiyaçlar vardır. Burada AI aracı tek başına para basmaz; ama üretim süresini kısalttıÄŸı için marjı yükseltir. Yani kazanç çoÄŸu zaman araçtan deÄŸil, aracın hızlandırdıÄŸı servis veya ürün sisteminden gelir."
+              "Görsel AI araçlarının para üretme potansiyeli en çok üç yerde öne çıkar: müşteri işi, şablon/dijital ürün satışı ve içerik üretimi. Müşteri tarafında sosyal medya tasarımı, reklam kreatifi, sunum kapağı veya ürün görseli hazırlamak hızlı gelir üretir. Dijital ürün tarafında poster, mockup, thumbnail paketi veya Canva şablonları gibi teslim edilebilir varlıklar satılabilir.",
+              "İçerik üretimi tarafında ise YouTube kapakları, Instagram carousel görselleri, kısa video sahneleri ve bülten kapak görselleri gibi düzenli ihtiyaçlar vardır. Burada AI aracı tek başına para basmaz; ama üretim süresini kısalttığı için marjı yükseltir. Yani kazanç çoğu zaman araçtan değil, aracın hızlandırdığı servis veya ürün sisteminden gelir."
             ],
             {
               subSections: [
@@ -822,23 +822,23 @@ const allBlogArticles: BlogEntry[] = [
                   "Freelance kreatif üretimi",
                   [
                     "Ajanslar ve küçük markalar hızlı tasarım isteyen ama tam zamanlı tasarımcı bütçesi olmayan müşteriler bulundurur. Canva AI veya Leonardo AI ile kampanya görselleri, sosyal medya setleri ve ürün lansman paketleri hazırlayarak gelir üretilebilir.",
-                    "Burada kritik konu, müşteriye sadece tek görsel deÄŸil bir kullanım paketi sunmaktır. Paket mantıÄŸı geliri büyütür."
+                    "Burada kritik konu, müşteriye sadece tek görsel değil bir kullanım paketi sunmaktır. Paket mantığı geliri büyütür."
                   ],
-                  ["Instagram paketleri", "Reklam kreatifleri", "Ãœrün lansman görselleri"]
+                  ["Instagram paketleri", "Reklam kreatifleri", "Ürün lansman görselleri"]
                 ),
                 sub(
                   "Dijital ürün satışı",
                   [
-                    "Etsy, Gumroad veya kendi maÄŸazan üzerinden poster, wallpaper, prompt paketi, template veya stock benzeri ürünler satabilirsin. Bu model yavaş başlayabilir ama iyi kategori seçilirse pasif gelir tarafında anlamlı olabilir.",
-                    "Ã–zellikle niş tema seçmek burada fark yaratır; herkesin yaptıÄŸı genel tasarımlar yerine belirli kitlelere hitap eden setler daha iyi sonuç verir."
+                    "Etsy, Gumroad veya kendi mağazan üzerinden poster, wallpaper, prompt paketi, template veya stock benzeri ürünler satabilirsin. Bu model yavaş başlayabilir ama iyi kategori seçilirse pasif gelir tarafında anlamlı olabilir.",
+                    "Özellikle niş tema seçmek burada fark yaratır; herkesin yaptığı genel tasarımlar yerine belirli kitlelere hitap eden setler daha iyi sonuç verir."
                   ],
                   ["Poster setleri", "Template paketleri", "Thumbnail kitleri"]
                 ),
                 sub(
                   "İçerik üreticileri için üretim hızlandırma",
                   [
-                    "Kendi içerik işini büyütmek de doÄŸrudan gelir modelidir. YouTube, Instagram veya newsletter görsellerini AI ile hızlandırarak daha düzenli yayın yapabilir ve sponsorluk ya da affiliate geliri için daha istikrarlı çıktı üretebilirsin.",
-                    "Bu senaryoda araç seçimi tamamen yayın ritmine göre yapılmalıdır. En güzel sonuç deÄŸil, en sürdürülebilir akış daha deÄŸerlidir."
+                    "Kendi içerik işini büyütmek de doğrudan gelir modelidir. YouTube, Instagram veya newsletter görsellerini AI ile hızlandırarak daha düzenli yayın yapabilir ve sponsorluk ya da affiliate geliri için daha istikrarlı çıktı üretebilirsin.",
+                    "Bu senaryoda araç seçimi tamamen yayın ritmine göre yapılmalıdır. En güzel sonuç değil, en sürdürülebilir akış daha değerlidir."
                   ],
                   ["YouTube kapakları", "Carousel görselleri", "Bülten kapakları"]
                 )
@@ -848,8 +848,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Yeni başlayan biri hangi mantıkla seçim yapmalı?",
             [
-              "Yeni başlayan biri için ilk seçim genelde iki soruya göre yapılmalı: düzenleme ihtiyacı yüksek mi, yoksa stil kalitesi mi daha önemli? EÄŸer hızlıca görsel üretip düzenlemek, yazı eklemek, yeniden boyutlandırmak ve teslim etmek gerekiyorsa Canva AI daha rahat olabilir. EÄŸer daha karakterli, çarpıcı ve portföy kalitesi hissi veren sonuçlar aranıyorsa Midjourney veya Leonardo AI daha uygun olabilir.",
-              "Burada hata, ilk günden en karmaşık araca koşmaktır. Ã–nce hangi işten gelir üretmek istediÄŸini belirlemek, sonra o işi en hızlı teslim ettiren aracı seçmek daha mantıklıdır. Birçok kullanıcı araçları deÄŸil, teslim edilebilir sonucu satmayı hedeflediÄŸinde daha hızlı ilerler."
+              "Yeni başlayan biri için ilk seçim genelde iki soruya göre yapılmalı: düzenleme ihtiyacı yüksek mi, yoksa stil kalitesi mi daha önemli? Eğer hızlıca görsel üretip düzenlemek, yazı eklemek, yeniden boyutlandırmak ve teslim etmek gerekiyorsa Canva AI daha rahat olabilir. Eğer daha karakterli, çarpıcı ve portföy kalitesi hissi veren sonuçlar aranıyorsa Midjourney veya Leonardo AI daha uygun olabilir.",
+              "Burada hata, ilk günden en karmaşık araca koşmaktır. Önce hangi işten gelir üretmek istediğini belirlemek, sonra o işi en hızlı teslim ettiren aracı seçmek daha mantıklıdır. Birçok kullanıcı araçları değil, teslim edilebilir sonucu satmayı hedeflediğinde daha hızlı ilerler."
             ]
           )
         ]
@@ -882,26 +882,26 @@ const allBlogArticles: BlogEntry[] = [
       tr: {
         title: "AI araçlarına yeni başlayan biri nereden başlamalı?",
         excerpt:
-          "Yeni başlayan biri için AI araçları karmaşık görünebilir. Bu rehber, neye göre araç seçileceÄŸini ve ilk 30 günde nasıl verimli ilerlenebileceÄŸini gösterir.",
+          "Yeni başlayan biri için AI araçları karmaşık görünebilir. Bu rehber, neye göre araç seçileceğini ve ilk 30 günde nasıl verimli ilerlenebileceğini gösterir.",
         intro:
-          "AI dünyasına yeni giren biri için asıl sorun araç azlıÄŸı deÄŸil, fazla seçenek ve daÄŸınık tavsiyelerdir. Biri ChatGPT önerir, diÄŸeri Gemini der, bir başkası otomasyon veya görsel araçlardan bahseder. Oysa yeni başlayan biri için en doÄŸru başlangıç, en çok konuşulan aracı seçmek deÄŸil; kendi günlük ihtiyacına en hızlı uyum saÄŸlayan aracı seçmektir. Bu rehberde yeni başlayanların hangi iş için hangi tip araca yönelmesi gerektiÄŸini, hangi hatalardan kaçınması gerektiÄŸini ve AI'ı gerçekten faydalı hale getirmek için nasıl bir öÄŸrenme sırası izleyebileceÄŸini anlatıyoruz.",
+          "AI dünyasına yeni giren biri için asıl sorun araç azlığı değil, fazla seçenek ve dağınık tavsiyelerdir. Biri ChatGPT önerir, diğeri Gemini der, bir başkası otomasyon veya görsel araçlardan bahseder. Oysa yeni başlayan biri için en doğru başlangıç, en çok konuşulan aracı seçmek değil; kendi günlük ihtiyacına en hızlı uyum sağlayan aracı seçmektir. Bu rehberde yeni başlayanların hangi iş için hangi tip araca yönelmesi gerektiğini, hangi hatalardan kaçınması gerektiğini ve AI'ı gerçekten faydalı hale getirmek için nasıl bir öğrenme sırası izleyebileceğini anlatıyoruz.",
         categoryLabel: "AI Rehberi",
         seoTitle: "AI araçlarına yeni başlayan biri nereden başlamalı? | Deciply",
         seoDescription:
-          "AI araçlarına yeni başlayanlar için sade başlangıç rehberi. Hangi araç hangi iş için uygun, nasıl öÄŸrenilir ve nasıl verim alınır?",
+          "AI araçlarına yeni başlayanlar için sade başlangıç rehberi. Hangi araç hangi iş için uygun, nasıl öğrenilir ve nasıl verim alınır?",
         sections: [
           section(
-            "Yeni başlayanların en sık yaptıÄŸı hata nedir?",
+            "Yeni başlayanların en sık yaptığı hata nedir?",
             [
-              "En sık hata, tek seferde çok fazla araç denemek ve her birinden uzman seviyesi sonuç beklemektir. Bu yaklaşım hem kafa karıştırır hem de gerçek faydayı geciktirir. AI araçlarının çoÄŸu ilk bakışta kolay görünür, ama hangi komutla hangi sonucu aldıÄŸını görmek biraz tekrar ister.",
-              "Daha iyi yaklaşım, önce tek bir kullanım alanı seçmektir. Ã–rneÄŸin yazı yazmak, araştırma yapmak, sunum hazırlamak veya görsel üretmek. Ã–nce ne yapmak istediÄŸini netleştirirsen, hangi araçla başlaman gerektiÄŸi de basitleşir."
+              "En sık hata, tek seferde çok fazla araç denemek ve her birinden uzman seviyesi sonuç beklemektir. Bu yaklaşım hem kafa karıştırır hem de gerçek faydayı geciktirir. AI araçlarının çoğu ilk bakışta kolay görünür, ama hangi komutla hangi sonucu aldığını görmek biraz tekrar ister.",
+              "Daha iyi yaklaşım, önce tek bir kullanım alanı seçmektir. Örneğin yazı yazmak, araştırma yapmak, sunum hazırlamak veya görsel üretmek. Önce ne yapmak istediğini netleştirirsen, hangi araçla başlaman gerektiği de basitleşir."
             ]
           ),
           section(
             "İlk araç seçimi nasıl yapılmalı?",
             [
-              "Yazı ve soru-cevap odaklı başlamak isteyen biri ChatGPT, Claude veya Gemini gibi sohbet tabanlı araçları deÄŸerlendirebilir. Araştırma tarafı aÄŸır basıyorsa Perplexity daha mantıklı olabilir. Sunum, not ve düzen tarafında çalışan biri Notion AI veya Canva AI ile daha hızlı sonuç alabilir.",
-              "Buradaki amaç en gelişmiş aracı bulmak deÄŸil; ilk hafta içinde somut fayda gösteren aracı seçmektir. Ã‡ünkü yeni başlayanlar için motivasyonu sürdüren şey, küçük ama hızlı kazanımlardır. İlk kazanç görüldüÄŸünde ikinci ve üçüncü araçlara geçmek daha saÄŸlıklı olur."
+              "Yazı ve soru-cevap odaklı başlamak isteyen biri ChatGPT, Claude veya Gemini gibi sohbet tabanlı araçları değerlendirebilir. Araştırma tarafı ağır basıyorsa Perplexity daha mantıklı olabilir. Sunum, not ve düzen tarafında çalışan biri Notion AI veya Canva AI ile daha hızlı sonuç alabilir.",
+              "Buradaki amaç en gelişmiş aracı bulmak değil; ilk hafta içinde somut fayda gösteren aracı seçmektir. Çünkü yeni başlayanlar için motivasyonu sürdüren şey, küçük ama hızlı kazanımlardır. İlk kazanç görüldüğünde ikinci ve üçüncü araçlara geçmek daha sağlıklı olur."
             ],
             {
               comparison: {
@@ -918,26 +918,26 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Yeni başlayan biri AI ile nasıl para kazanabilir?",
             [
-              "Yeni başlayan biri için doÄŸrudan büyük gelir hedeflemek yerine küçük servisleri test etmek daha mantıklıdır. Ã–rneÄŸin sosyal medya metni hazırlama, araştırma özeti çıkarma, basit blog taslaÄŸı yazma, sunum düzenleme veya thumbnail hazırlama gibi işler AI ile hızlandırılarak sunulabilir. Böylece hem araç kullanımı gelişir hem de küçük gelir akışı oluşabilir.",
-              "Burada önemli olan, AI çıktısını doÄŸrudan satmak deÄŸil; AI destekli bir hizmet paketi sunmaktır. İnsan dokunuşu eklenmeden yapılan saf çıktı çoÄŸu zaman yeterince güçlü olmaz. Ama düzenleme, seçme ve paketleme işi eklendiÄŸinde AI gerçek bir verim çarpanı haline gelir."
+              "Yeni başlayan biri için doğrudan büyük gelir hedeflemek yerine küçük servisleri test etmek daha mantıklıdır. Örneğin sosyal medya metni hazırlama, araştırma özeti çıkarma, basit blog taslağı yazma, sunum düzenleme veya thumbnail hazırlama gibi işler AI ile hızlandırılarak sunulabilir. Böylece hem araç kullanımı gelişir hem de küçük gelir akışı oluşabilir.",
+              "Burada önemli olan, AI çıktısını doğrudan satmak değil; AI destekli bir hizmet paketi sunmaktır. İnsan dokunuşu eklenmeden yapılan saf çıktı çoğu zaman yeterince güçlü olmaz. Ama düzenleme, seçme ve paketleme işi eklendiğinde AI gerçek bir verim çarpanı haline gelir."
             ],
             {
               subSections: [
                 sub(
                   "Mikro hizmet modeli",
                   [
-                    "Yeni başlayan biri için küçük ama tekrarlanabilir hizmetler en güvenli başlangıç olabilir. Kısa sosyal medya planı, başlık önerileri, araştırma özeti ve içerik taslaÄŸı gibi teslimler düşük bariyerli bir başlangıç sunar.",
-                    "Bu modelin avantajı, hem öÄŸrenirken para kazanmaya izin vermesidir hem de müşteri geri bildirimleriyle hangi araçların gerçekten iş gördüÄŸünü anlamanı saÄŸlamasıdır."
+                    "Yeni başlayan biri için küçük ama tekrarlanabilir hizmetler en güvenli başlangıç olabilir. Kısa sosyal medya planı, başlık önerileri, araştırma özeti ve içerik taslağı gibi teslimler düşük bariyerli bir başlangıç sunar.",
+                    "Bu modelin avantajı, hem öğrenirken para kazanmaya izin vermesidir hem de müşteri geri bildirimleriyle hangi araçların gerçekten iş gördüğünü anlamanı sağlamasıdır."
                   ],
-                  ["İçerik taslaÄŸı", "Araştırma özeti", "Sosyal medya fikir paketi"]
+                  ["İçerik taslağı", "Araştırma özeti", "Sosyal medya fikir paketi"]
                 ),
                 sub(
                   "Kendi işini hızlandırma",
                   [
-                    "EÄŸer zaten öÄŸrenci, freelancer veya küçük işletme sahibiysen AI'ı doÄŸrudan kendi iş akışında kullanmak da para kazanmaktır. Ã‡ünkü zaman tasarrufu çoÄŸu zaman dolaylı gelir artışı anlamına gelir.",
-                    "Ã–rneÄŸin teklif hazırlamak, sunum düzenlemek, ilk taslak çıkarmak veya e-posta yazmak için AI kullanmak doÄŸrudan verim üretir."
+                    "Eğer zaten öğrenci, freelancer veya küçük işletme sahibiysen AI'ı doğrudan kendi iş akışında kullanmak da para kazanmaktır. Çünkü zaman tasarrufu çoğu zaman dolaylı gelir artışı anlamına gelir.",
+                    "Örneğin teklif hazırlamak, sunum düzenlemek, ilk taslak çıkarmak veya e-posta yazmak için AI kullanmak doğrudan verim üretir."
                   ],
-                  ["Teklif hazırlıÄŸı", "Sunum üretimi", "Yazı taslaÄŸı", "E-posta akışı"]
+                  ["Teklif hazırlığı", "Sunum üretimi", "Yazı taslağı", "E-posta akışı"]
                 )
               ]
             }
@@ -945,8 +945,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "İlk 30 günde nasıl ilerlemek daha mantıklı?",
             [
-              "İlk hafta tek araçla tek iş çöz. İkinci hafta aynı işte daha iyi sonuç almak için prompt ve yapı dene. Ãœçüncü hafta ikinci bir tamamlayıcı araç ekle. Dördüncü hafta ise bunları günlük akışa yerleştir. Bu kadar basit bir sıra bile daÄŸınık başlangıçtan çok daha verimli sonuç verir.",
-              "Yeni başlayan biri için başarı ölçütü 'kaç araç biliyorum' deÄŸil, 'hangi işi daha hızlı ve daha iyi yapabiliyorum' sorusudur. Deciply'nın tarafsız seçim mantıÄŸı da tam olarak bunu destekler."
+              "İlk hafta tek araçla tek iş çöz. İkinci hafta aynı işte daha iyi sonuç almak için prompt ve yapı dene. Üçüncü hafta ikinci bir tamamlayıcı araç ekle. Dördüncü hafta ise bunları günlük akışa yerleştir. Bu kadar basit bir sıra bile dağınık başlangıçtan çok daha verimli sonuç verir.",
+              "Yeni başlayan biri için başarı ölçütü 'kaç araç biliyorum' değil, 'hangi işi daha hızlı ve daha iyi yapabiliyorum' sorusudur. Deciply'nın tarafsız seçim mantığı da tam olarak bunu destekler."
             ]
           )
         ]
@@ -979,26 +979,26 @@ const allBlogArticles: BlogEntry[] = [
       tr: {
         title: "Son dönemde en hızlı dikkat çeken AI araçları neye göre öne çıkıyor?",
         excerpt:
-          "Büyüyen AI araçlarını sadece popüler oldukları için deÄŸil, hangi kullanım senaryosunda dikkat çektikleri için deÄŸerlendirmek daha saÄŸlıklıdır.",
+          "Büyüyen AI araçlarını sadece popüler oldukları için değil, hangi kullanım senaryosunda dikkat çektikleri için değerlendirmek daha sağlıklıdır.",
         intro:
-          "Bazı AI araçları kısa sürede çok görünür hale geliyor. Ama hızlı büyüme her zaman herkes için uygun oldukları anlamına gelmez. Bir araç sosyal medyada çok konuşulabilir, yatırım alabilir veya yeni özelliklerle dikkat çekebilir; yine de senin işin için doÄŸru araç olmayabilir. Bu yüzden hızlı büyüyen AI araçlarını deÄŸerlendirirken popülerliÄŸi deÄŸil, hangi ihtiyaca cevap verdiklerini görmek gerekir. Bu yazıda büyüme sinyalini merak olarak deÄŸil, seçim filtresi olarak kullanıyoruz: hangi araç neden hızla dikkat çekiyor ve bu dikkat senin işine gerçekten yarar mı?",
+          "Bazı AI araçları kısa sürede çok görünür hale geliyor. Ama hızlı büyüme her zaman herkes için uygun oldukları anlamına gelmez. Bir araç sosyal medyada çok konuşulabilir, yatırım alabilir veya yeni özelliklerle dikkat çekebilir; yine de senin işin için doğru araç olmayabilir. Bu yüzden hızlı büyüyen AI araçlarını değerlendirirken popülerliği değil, hangi ihtiyaca cevap verdiklerini görmek gerekir. Bu yazıda büyüme sinyalini merak olarak değil, seçim filtresi olarak kullanıyoruz: hangi araç neden hızla dikkat çekiyor ve bu dikkat senin işine gerçekten yarar mı?",
         categoryLabel: "AI Araçları",
         seoTitle: "Son dönemde en hızlı dikkat çeken AI araçları neye göre öne çıkıyor? | Deciply",
         seoDescription:
-          "Perplexity, Runway, ElevenLabs, Leonardo AI ve benzeri araçların neden hızlı büyüdüÄŸünü ve hangi kullanım senaryolarında anlamlı olduÄŸunu incele.",
+          "Perplexity, Runway, ElevenLabs, Leonardo AI ve benzeri araçların neden hızlı büyüdüğünü ve hangi kullanım senaryolarında anlamlı olduğunu incele.",
         sections: [
           section(
             "Bir AI aracının hızlı büyümesi ne anlama gelir?",
             [
-              "Hızlı büyüme genelde üç şeye işaret eder: kullanıcıların gerçek bir sorunu çözmesi, paylaşılabilir sonuç üretmesi veya yeni bir kategori alışkanlıÄŸı oluşturması. Ã–rneÄŸin Perplexity araştırma akışını hızlandırdıÄŸı için, ElevenLabs ses üretimini erişilebilir hale getirdiÄŸi için, Runway ise video tarafında üretimi kolaylaştırdıÄŸı için öne çıkabilir.",
-              "Ama bu büyüme sinyali tek başına karar kriteri olmamalıdır. Bazı araçlar merak etkisiyle hızlı yükselir ama günlük iş akışında kalıcı olmayabilir. Kullanıcı açısından asıl soru, bu büyümenin kendi kullanım senaryosuna fayda saÄŸlayıp saÄŸlamadıÄŸıdır."
+              "Hızlı büyüme genelde üç şeye işaret eder: kullanıcıların gerçek bir sorunu çözmesi, paylaşılabilir sonuç üretmesi veya yeni bir kategori alışkanlığı oluşturması. Örneğin Perplexity araştırma akışını hızlandırdığı için, ElevenLabs ses üretimini erişilebilir hale getirdiği için, Runway ise video tarafında üretimi kolaylaştırdığı için öne çıkabilir.",
+              "Ama bu büyüme sinyali tek başına karar kriteri olmamalıdır. Bazı araçlar merak etkisiyle hızlı yükselir ama günlük iş akışında kalıcı olmayabilir. Kullanıcı açısından asıl soru, bu büyümenin kendi kullanım senaryosuna fayda sağlayıp sağlamadığıdır."
             ]
           ),
           section(
             "Hangi araç neden dikkat çekiyor?",
             [
-              "Perplexity araştırma ve hızlı kaynak toplama tarafında öne çıktıÄŸı için sık konuşuluyor. Runway video ve hareketli içerik akışına daha erişilebilir bir kapı açtıÄŸı için büyüyor. ElevenLabs seslendirme, demo ve içerik üretiminde kolay kullanım sunduÄŸu için dikkat çekiyor. Leonardo AI ise kontrollü görsel üretim ve ticari kullanım hissiyle belirli kitlelerde hızla yayılıyor.",
-              "Bu farklılık önemli çünkü kullanıcıların hepsi aynı aracı aramıyor. Bir YouTube üreticisi ile bir araştırma odaklı danışmanın dikkat ettiÄŸi sinyaller aynı deÄŸil. Bu yüzden 'hızlı büyüyen araç' etiketi ancak doÄŸru senaryo ile birlikte anlam kazanır."
+              "Perplexity araştırma ve hızlı kaynak toplama tarafında öne çıktığı için sık konuşuluyor. Runway video ve hareketli içerik akışına daha erişilebilir bir kapı açtığı için büyüyor. ElevenLabs seslendirme, demo ve içerik üretiminde kolay kullanım sunduğu için dikkat çekiyor. Leonardo AI ise kontrollü görsel üretim ve ticari kullanım hissiyle belirli kitlelerde hızla yayılıyor.",
+              "Bu farklılık önemli çünkü kullanıcıların hepsi aynı aracı aramıyor. Bir YouTube üreticisi ile bir araştırma odaklı danışmanın dikkat ettiği sinyaller aynı değil. Bu yüzden 'hızlı büyüyen araç' etiketi ancak doğru senaryo ile birlikte anlam kazanır."
             ],
             {
               comparison: {
@@ -1015,15 +1015,15 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Bu araçlarla nasıl para kazanılır?",
             [
-              "Hızlı büyüyen araçlar genelde yeni hizmet alanları açtıÄŸı için para kazanma fırsatı yaratır. Ã–rneÄŸin Perplexity ile araştırma hızlandırılmış danışmanlık ve içerik özetleme hizmetleri sunulabilir. Runway ile kısa video üretimi ve reklam kreatifi hazırlama işleri alınabilir. ElevenLabs ile seslendirme, demo anlatım ve çok dilli içerik akışları kurulabilir.",
-              "Burada fırsatın kaynaÄŸı aracın popülerliÄŸi deÄŸil, müşterilerin henüz tam oturmamış ama hızla büyüyen talepleridir. Talep artarken süreç kurabilen kullanıcılar daha hızlı gelir üretebilir. Bu yüzden büyüyen araçları sadece denemek için deÄŸil, iş modeli filtresiyle deÄŸerlendirmek gerekir."
+              "Hızlı büyüyen araçlar genelde yeni hizmet alanları açtığı için para kazanma fırsatı yaratır. Örneğin Perplexity ile araştırma hızlandırılmış danışmanlık ve içerik özetleme hizmetleri sunulabilir. Runway ile kısa video üretimi ve reklam kreatifi hazırlama işleri alınabilir. ElevenLabs ile seslendirme, demo anlatım ve çok dilli içerik akışları kurulabilir.",
+              "Burada fırsatın kaynağı aracın popülerliği değil, müşterilerin henüz tam oturmamış ama hızla büyüyen talepleridir. Talep artarken süreç kurabilen kullanıcılar daha hızlı gelir üretebilir. Bu yüzden büyüyen araçları sadece denemek için değil, iş modeli filtresiyle değerlendirmek gerekir."
             ],
             {
               subSections: [
                 sub(
                   "Yeni kategori fırsatları",
                   [
-                    "Yeni büyüyen araçlar, henüz kalabalıklaşmamış hizmet alanları açabilir. Ã–rneÄŸin AI voice-over paketleri veya kısa video varyasyon hizmetleri birkaç ay içinde yoÄŸun rekabete girebilir; erken davrananlar avantaj yakalar.",
+                    "Yeni büyüyen araçlar, henüz kalabalıklaşmamış hizmet alanları açabilir. Örneğin AI voice-over paketleri veya kısa video varyasyon hizmetleri birkaç ay içinde yoğun rekabete girebilir; erken davrananlar avantaj yakalar.",
                     "Yine de burada sürdürülebilirlik önemlidir. Geçici trend ile kalıcı ihtiyaç arasındaki farkı görmek gerekir."
                   ],
                   ["Seslendirme hizmeti", "Kısa video üretimi", "Araştırma hızlandırma"]
@@ -1031,8 +1031,8 @@ const allBlogArticles: BlogEntry[] = [
                 sub(
                   "Trend yerine sistem kurmak",
                   [
-                    "Araç hızlı büyüyor diye her kullanıcıya uygun deÄŸildir. En iyi yaklaşım, büyüyen aracı kendi mevcut becerine ve müşteri kitlene baÄŸlayıp tekrarlanabilir teklif haline getirmektir.",
-                    "Sadece trendi takip etmek yerine, trendin içinden sana uyan alt kullanım alanını çıkarmak daha saÄŸlıklıdır."
+                    "Araç hızlı büyüyor diye her kullanıcıya uygun değildir. En iyi yaklaşım, büyüyen aracı kendi mevcut becerine ve müşteri kitlene bağlayıp tekrarlanabilir teklif haline getirmektir.",
+                    "Sadece trendi takip etmek yerine, trendin içinden sana uyan alt kullanım alanını çıkarmak daha sağlıklıdır."
                   ],
                   ["Niş teklif", "Tekrarlanabilir süreç", "Paket hizmet"]
                 )
@@ -1042,8 +1042,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Hızlı büyüyen araçları seçerken neye dikkat etmelisin?",
             [
-              "Bir aracın yükseliyor olması ilgini çekebilir ama seçim yaparken şu sorular daha deÄŸerlidir: Bu araç benim günlük akışıma oturuyor mu? Müşteri veya içerik tarafında somut çıktı üretiyor mu? Ã–ÄŸrenme süresi kabul edilebilir mi? Ãœcretsiz veya deneme sürümü karar vermeme yetiyor mu?",
-              "Bu sorulara olumlu cevap veremeyen araçlar ne kadar popüler olursa olsun dikkat daÄŸıtıcı olabilir. Deciply'nın amacı da tam olarak bu noktada yardımcı olmaktır: ilgiyi deÄŸil, uygunluÄŸu merkeze almak."
+              "Bir aracın yükseliyor olması ilgini çekebilir ama seçim yaparken şu sorular daha değerlidir: Bu araç benim günlük akışıma oturuyor mu? Müşteri veya içerik tarafında somut çıktı üretiyor mu? Öğrenme süresi kabul edilebilir mi? Ücretsiz veya deneme sürümü karar vermeme yetiyor mu?",
+              "Bu sorulara olumlu cevap veremeyen araçlar ne kadar popüler olursa olsun dikkat dağıtıcı olabilir. Deciply'nın amacı da tam olarak bu noktada yardımcı olmaktır: ilgiyi değil, uygunluğu merkeze almak."
             ]
           )
         ]
@@ -1076,19 +1076,19 @@ const allBlogArticles: BlogEntry[] = [
       tr: {
         title: "AI ile para kazanmak için hangi araçlar daha mantıklı?",
         excerpt:
-          "Gelir odaklı kullanımda tek bir kazanan yok. Bu rehber, içerik, tasarım, video ve servis satışı tarafında hangi AI aracının hangi iş için daha mantıklı olduÄŸunu gösterir.",
+          "Gelir odaklı kullanımda tek bir kazanan yok. Bu rehber, içerik, tasarım, video ve servis satışı tarafında hangi AI aracının hangi iş için daha mantıklı olduğunu gösterir.",
         intro:
-          "AI ile para kazanmak isteyen çoÄŸu kullanıcı aynı hatayı yapıyor: aracı seçmeye çalışıyor ama iş modelini tanımlamıyor. Oysa önce ne satacaÄŸını, sonra hangi aracın o teslimi daha hızlı ve daha tutarlı hale getirdiÄŸini görmek gerekir. Bu rehberde blog içeriÄŸi, kısa video, müşteri işi, tasarım teslimi ve ses üretimi gibi gerçek para kazanma senaryoları üzerinden ilerliyoruz.",
+          "AI ile para kazanmak isteyen çoğu kullanıcı aynı hatayı yapıyor: aracı seçmeye çalışıyor ama iş modelini tanımlamıyor. Oysa önce ne satacağını, sonra hangi aracın o teslimi daha hızlı ve daha tutarlı hale getirdiğini görmek gerekir. Bu rehberde blog içeriği, kısa video, müşteri işi, tasarım teslimi ve ses üretimi gibi gerçek para kazanma senaryoları üzerinden ilerliyoruz.",
         categoryLabel: "AI ile Para Kazanma",
         seoTitle: "AI ile para kazanmak için hangi araçlar daha mantıklı? | Deciply",
         seoDescription:
           "Jasper, Copy.ai, ChatGPT, Canva AI, Runway ve ElevenLabs için gelir odaklı kullanım senaryolarını kısa ve net biçimde inceleyin.",
         sections: [
           section(
-            "AI ile para kazanırken aracı deÄŸil sonucu seçmek gerekir",
+            "AI ile para kazanırken aracı değil sonucu seçmek gerekir",
             [
-              "AI aracının kendisi gelir üretmez; onunla daha hızlı hazırlanan teslimler gelir üretir. Blog paketi, müşteri sunumu, kısa video, satış mesajı veya voice-over gibi çıktılar satılır. Bu yüzden seçim yaparken ilk soru 'hangi araç popüler?' deÄŸil, 'hangi teslimi daha hızlı satabilirim?' olmalıdır.",
-              "Yazı odaklı gelir akışlarında ChatGPT, Jasper ve Copy.ai gibi araçlar öne çıkabilir. Görsel ve sunum tarafında Canva AI daha pratik olabilir. Video ve anlatım tarafında ise Runway ile ElevenLabs daha mantıklı hale gelir. Burada doÄŸru karar, iş modeline en az sürtünmeyle uyan aracı bulmaktır."
+              "AI aracının kendisi gelir üretmez; onunla daha hızlı hazırlanan teslimler gelir üretir. Blog paketi, müşteri sunumu, kısa video, satış mesajı veya voice-over gibi çıktılar satılır. Bu yüzden seçim yaparken ilk soru 'hangi araç popüler?' değil, 'hangi teslimi daha hızlı satabilirim?' olmalıdır.",
+              "Yazı odaklı gelir akışlarında ChatGPT, Jasper ve Copy.ai gibi araçlar öne çıkabilir. Görsel ve sunum tarafında Canva AI daha pratik olabilir. Video ve anlatım tarafında ise Runway ile ElevenLabs daha mantıklı hale gelir. Burada doğru karar, iş modeline en az sürtünmeyle uyan aracı bulmaktır."
             ],
             {
               comparison: {
@@ -1105,16 +1105,16 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Hangi araç hangi gelir modeli için daha uygun?",
             [
-              "Blog ve içerik paketleri satıyorsan ChatGPT ve Jasper daha esnek olabilir. Kısa satış metni, e-posta ve reklam kopyası için Copy.ai daha pratik hissettirebilir. Sunum, teklif dosyası ve sosyal medya görselleri hazırlıyorsan Canva AI zaman kazandırır. Video içerik ve kısa reklam varyasyonları için Runway, anlatım ve seslendirme tarafında ise ElevenLabs deÄŸer üretir.",
-              "Burada amaç tek aracı kutsamak deÄŸil; her aracın hangi ticari iş için daha mantıklı olduÄŸunu görmek. Bir freelancer çoÄŸu zaman tek araçla deÄŸil, küçük bir üretim stack'i ile daha yüksek marj üretir."
+              "Blog ve içerik paketleri satıyorsan ChatGPT ve Jasper daha esnek olabilir. Kısa satış metni, e-posta ve reklam kopyası için Copy.ai daha pratik hissettirebilir. Sunum, teklif dosyası ve sosyal medya görselleri hazırlıyorsan Canva AI zaman kazandırır. Video içerik ve kısa reklam varyasyonları için Runway, anlatım ve seslendirme tarafında ise ElevenLabs değer üretir.",
+              "Burada amaç tek aracı kutsamak değil; her aracın hangi ticari iş için daha mantıklı olduğunu görmek. Bir freelancer çoğu zaman tek araçla değil, küçük bir üretim stack'i ile daha yüksek marj üretir."
             ],
             {
               subSections: [
                 sub(
                   "İçerik ve copy odaklı işler",
                   [
-                    "ChatGPT, Jasper ve Copy.ai blog, e-posta, reklam ve landing page akışlarında zaman kazandırabilir. Ã–zellikle düzenli müşteri işi alan kullanıcılar için teslim süresini kısaltmak doÄŸrudan karlılıÄŸı etkiler.",
-                    "Burada en iyi seçim, hangi formatı daha sık sattıÄŸına baÄŸlıdır. Uzun içerik mi, kısa satış mesajı mı, yoksa paketlenmiş içerik sistemi mi?"
+                    "ChatGPT, Jasper ve Copy.ai blog, e-posta, reklam ve landing page akışlarında zaman kazandırabilir. Özellikle düzenli müşteri işi alan kullanıcılar için teslim süresini kısaltmak doğrudan karlılığı etkiler.",
+                    "Burada en iyi seçim, hangi formatı daha sık sattığına bağlıdır. Uzun içerik mi, kısa satış mesajı mı, yoksa paketlenmiş içerik sistemi mi?"
                   ],
                   ["Blog yazıları", "E-posta serileri", "Reklam metinleri"],
                   "Yazı araçlarını gör",
@@ -1124,7 +1124,7 @@ const allBlogArticles: BlogEntry[] = [
                   "Görsel, video ve ses odaklı işler",
                   [
                     "Canva AI hızlı sosyal medya ve sunum teslimleri için daha pratik olabilir. Runway kısa video üretimini hızlandırır. ElevenLabs ise seslendirme hizmetini daha erişilebilir hale getirir.",
-                    "Bu araçlar özellikle hizmet satışı yapan freelancer'lar ve küçük ajanslar için doÄŸrudan gelir destekleyici olabilir."
+                    "Bu araçlar özellikle hizmet satışı yapan freelancer'lar ve küçük ajanslar için doğrudan gelir destekleyici olabilir."
                   ],
                   ["Sosyal medya paketleri", "Kısa video üretimi", "Voice-over hizmeti"],
                   "Para kazandıran araçları incele",
@@ -1136,15 +1136,15 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Başlamak için en düşük riskli yol nedir?",
             [
-              "Yeni başlayan biri için en düşük riskli yol, tek bir teslim seçip tek bir araçla başlamaktır. Ã–rneÄŸin haftalık blog paketi, kısa video üretimi veya sosyal medya tasarımı gibi net bir çıktı seçip bunu 2-3 müşteriye satmayı test etmek daha mantıklıdır.",
-              "İlk kazancı görmek, araç sayısını artırmaktan daha deÄŸerlidir. Sonra ikinci aracı ekleyip teslim kalitesini veya üretim hızını artırabilirsin."
+              "Yeni başlayan biri için en düşük riskli yol, tek bir teslim seçip tek bir araçla başlamaktır. Örneğin haftalık blog paketi, kısa video üretimi veya sosyal medya tasarımı gibi net bir çıktı seçip bunu 2-3 müşteriye satmayı test etmek daha mantıklıdır.",
+              "İlk kazancı görmek, araç sayısını artırmaktan daha değerlidir. Sonra ikinci aracı ekleyip teslim kalitesini veya üretim hızını artırabilirsin."
             ],
             {
               bullets: [
-                "Ã–nce tek teslim seç",
+                "Önce tek teslim seç",
                 "Sonra tek araçla süreç kur",
                 "İlk müşteriden sonra ikinci aracı ekle",
-                "Geliri araca deÄŸil pakete baÄŸla"
+                "Geliri araca değil pakete bağla"
               ]
             }
           )
@@ -1238,19 +1238,19 @@ const allBlogArticles: BlogEntry[] = [
       tr: {
         title: "ChatGPT vs Claude vs Gemini karşılaştırma (2026)",
         excerpt:
-          "Bu rehber tek bir kazanan seçmez. Yazı, araştırma, hız, doÄŸruluk ve günlük kullanım tarafında üç aracı senaryo bazlı ayırır.",
+          "Bu rehber tek bir kazanan seçmez. Yazı, araştırma, hız, doğruluk ve günlük kullanım tarafında üç aracı senaryo bazlı ayırır.",
         intro:
-          "ChatGPT, Claude ve Gemini aynı ihtiyacı çözüyor gibi görünse de pratikte farklı güçlü yönler taşır. Biri hızlı taslak ve çok yönlü kullanımda rahat olabilir, biri daha uzun ve düzenli anlatımda öne çıkabilir, biri ise Google tabanlı akışlarda daha doÄŸal hissedebilir. Bu karşılaştırma, fanboy dili kullanmadan hangi senaryoda hangisinin daha mantıklı olduÄŸunu göstermek için hazırlandı.",
+          "ChatGPT, Claude ve Gemini aynı ihtiyacı çözüyor gibi görünse de pratikte farklı güçlü yönler taşır. Biri hızlı taslak ve çok yönlü kullanımda rahat olabilir, biri daha uzun ve düzenli anlatımda öne çıkabilir, biri ise Google tabanlı akışlarda daha doğal hissedebilir. Bu karşılaştırma, fanboy dili kullanmadan hangi senaryoda hangisinin daha mantıklı olduğunu göstermek için hazırlandı.",
         categoryLabel: "Karşılaştırmalar",
         seoTitle: "ChatGPT vs Claude vs Gemini karşılaştırma (2026) | Deciply",
         seoDescription:
-          "ChatGPT, Claude ve Gemini araçlarını yazı, araştırma, kullanım kolaylıÄŸı, fiyat ve iş akışı açısından tarafsız biçimde karşılaştırın.",
+          "ChatGPT, Claude ve Gemini araçlarını yazı, araştırma, kullanım kolaylığı, fiyat ve iş akışı açısından tarafsız biçimde karşılaştırın.",
         sections: [
           section(
-            "Ãœç araç arasındaki temel fark nedir?",
+            "Üç araç arasındaki temel fark nedir?",
             [
-              "ChatGPT çoÄŸu kullanıcı için geniş görev kapsaması nedeniyle esnek bir merkez araç olabilir. Claude daha uzun ve daha sakin anlatım gerektiren içeriklerde daha rahat hissedilebilir. Gemini ise Google ekosistemi içinde çalışan kullanıcılar için düşük sürtünmeli bir üretkenlik katmanı gibi çalışabilir.",
-              "Karşılaştırmayı doÄŸru yapmak için araçları aynı soruya deÄŸil, aynı iş akışına koymak gerekir. Ã‡ünkü kullanım deneyimi sadece cevabın kalitesiyle deÄŸil, aracın günlük işe nasıl oturduÄŸuyla da ilgilidir."
+              "ChatGPT çoğu kullanıcı için geniş görev kapsaması nedeniyle esnek bir merkez araç olabilir. Claude daha uzun ve daha sakin anlatım gerektiren içeriklerde daha rahat hissedilebilir. Gemini ise Google ekosistemi içinde çalışan kullanıcılar için düşük sürtünmeli bir üretkenlik katmanı gibi çalışabilir.",
+              "Karşılaştırmayı doğru yapmak için araçları aynı soruya değil, aynı iş akışına koymak gerekir. Çünkü kullanım deneyimi sadece cevabın kalitesiyle değil, aracın günlük işe nasıl oturduğuyla da ilgilidir."
             ],
             {
               comparison: {
@@ -1259,13 +1259,13 @@ const allBlogArticles: BlogEntry[] = [
                   { label: "Esnek genel kullanım", value: "ChatGPT" },
                   { label: "Uzun anlatım", value: "Claude" },
                   { label: "Google akışı", value: "Gemini" },
-                  { label: "Araştırma desteÄŸi", value: "Perplexity ile birlikte" }
+                  { label: "Araştırma desteği", value: "Perplexity ile birlikte" }
                 ]
               }
             }
           ),
           section(
-            "Yazı, araştırma ve kullanım kolaylıÄŸı açısından farklar",
+            "Yazı, araştırma ve kullanım kolaylığı açısından farklar",
             [
               "Yazı tarafında ChatGPT hızlı taslak ve çok yönlü işlerde güçlü olabilir. Claude daha uzun anlatım ve daha düzenli yapı isteyen kullanıcılar için rahat bir seçenek haline gelir. Gemini ise özellikle Workspace kullanan ekiplerde not, özet ve günlük bilgi akışında pratik olabilir.",
               "Araştırma odaklı kullanıcılar için bu üç araç bazen tek başına yeterli olmaz. Böyle senaryolarda Perplexity gibi kaynak odaklı bir araçla birlikte kullanmak daha mantıklı olabilir."
@@ -1276,7 +1276,7 @@ const allBlogArticles: BlogEntry[] = [
                   "Yazı odaklı kullanıcı için",
                   [
                     "Hızlı taslak, yeniden yazım ve çok amaçlı kullanım için ChatGPT daha esnek olabilir. Uzun anlatım ve daha sakin metin yapısı için Claude daha iyi hissedilebilir.",
-                    "Buradaki seçim, teslimin uzunluÄŸu ve istenen düzen seviyesine göre yapılmalıdır."
+                    "Buradaki seçim, teslimin uzunluğu ve istenen düzen seviyesine göre yapılmalıdır."
                   ],
                   ["Taslak hızında ChatGPT", "Uzun akışta Claude"],
                   "Yazı araçlarını incele",
@@ -1285,8 +1285,8 @@ const allBlogArticles: BlogEntry[] = [
                 sub(
                   "Günlük üretkenlik kullanıcı için",
                   [
-                    "Gemini, Google araçlarıyla yakın çalışan kullanıcılar için daha doÄŸal bir akış sunabilir. Ã–zellikle Docs, Gmail ve Workspace içinde hız kazanmak isteyenler için deÄŸerlidir.",
-                    "EÄŸer işin ana omurgası zaten Google ise, araç seçimi kalite kadar entegrasyon rahatlıÄŸına da bakılarak yapılmalıdır."
+                    "Gemini, Google araçlarıyla yakın çalışan kullanıcılar için daha doğal bir akış sunabilir. Özellikle Docs, Gmail ve Workspace içinde hız kazanmak isteyenler için değerlidir.",
+                    "Eğer işin ana omurgası zaten Google ise, araç seçimi kalite kadar entegrasyon rahatlığına da bakılarak yapılmalıdır."
                   ],
                   ["Google Workspace", "Hızlı özet", "Günlük verimlilik"],
                   "Gemini detayını aç",
@@ -1299,14 +1299,14 @@ const allBlogArticles: BlogEntry[] = [
             "Hangi kullanıcı için hangisi daha mantıklı?",
             [
               "Tek cümlelik karar çerçevesi şöyle kurulabilir: hızlı ve esnek genel kullanım istiyorsan ChatGPT, uzun ve daha kontrollü yazı istiyorsan Claude, Google tabanlı iş akışında düşük sürtünme istiyorsan Gemini daha mantıklı olabilir.",
-              "Ama bu mutlak bir sıralama deÄŸildir. Teslim tipi, ekip alışkanlıÄŸı, maliyet ve diÄŸer araçlarla birlikte kullanım şekli son kararı deÄŸiştirebilir."
+              "Ama bu mutlak bir sıralama değildir. Teslim tipi, ekip alışkanlığı, maliyet ve diğer araçlarla birlikte kullanım şekli son kararı değiştirebilir."
             ],
             {
               bullets: [
                 "Hızlı ve çok yönlü iş akışı için ChatGPT",
                 "Uzun ve düzenli yazı için Claude",
                 "Google merkezli akışlar için Gemini",
-                "Kaynaklı araştırma için Perplexity desteÄŸi"
+                "Kaynaklı araştırma için Perplexity desteği"
               ]
             }
           )
@@ -1398,20 +1398,20 @@ const allBlogArticles: BlogEntry[] = [
     relatedToolSlugs: ["chatgpt", "gemini", "perplexity", "canva-ai", "copy-ai"],
     locales: {
       tr: {
-        title: "2026'da gerçekten bakmaya deÄŸer ücretsiz AI araçları",
+        title: "2026'da gerçekten bakmaya değer ücretsiz AI araçları",
         excerpt:
-          "Ãœcretsiz AI aracı arayan kullanıcı için asıl mesele sıfır maliyet deÄŸil, düşük riskle gerçek fayda görmek. Bu liste o mantıkla hazırlandı.",
+          "Ücretsiz AI aracı arayan kullanıcı için asıl mesele sıfır maliyet değil, düşük riskle gerçek fayda görmek. Bu liste o mantıkla hazırlandı.",
         intro:
-          "Ãœcretsiz AI araçları çoÄŸu zaman iki uçta kalır: ya çok sınırlı olur ya da başlangıç için yeterince iyi olur. Kullanıcı için önemli olan, sıfır ödeme ile gerçekten anlamlı bir ilk sonuç alıp alamamaktır. Bu rehberde ücretsiz veya freemium giriş sunan araçları, hangi iş için daha mantıklı olduklarına göre ele alıyoruz.",
-        categoryLabel: "Ãœcretsiz Araçlar",
-        seoTitle: "2026'da gerçekten bakmaya deÄŸer ücretsiz AI araçları | Deciply",
+          "Ücretsiz AI araçları çoğu zaman iki uçta kalır: ya çok sınırlı olur ya da başlangıç için yeterince iyi olur. Kullanıcı için önemli olan, sıfır ödeme ile gerçekten anlamlı bir ilk sonuç alıp alamamaktır. Bu rehberde ücretsiz veya freemium giriş sunan araçları, hangi iş için daha mantıklı olduklarına göre ele alıyoruz.",
+        categoryLabel: "Ücretsiz Araçlar",
+        seoTitle: "2026'da gerçekten bakmaya değer ücretsiz AI araçları | Deciply",
         seoDescription:
           "ChatGPT, Gemini, Perplexity, Canva AI ve Copy.ai gibi ücretsiz veya freemium giriş sunan AI araçlarını senaryo bazlı olarak inceleyin.",
         sections: [
           section(
-            "Ãœcretsiz araç seçerken nelere bakılmalı?",
+            "Ücretsiz araç seçerken nelere bakılmalı?",
             [
-              "Ãœcretsiz olması tek başına avantaj deÄŸildir. Asıl deÄŸer, ücretsiz katmanın gerçek bir iş çıkarıp çıkarmadıÄŸıdır. EÄŸer ilk hafta içinde yazı, araştırma, görsel veya sunum gibi somut bir çıktı üretemiyorsa ücretsiz olması çok anlamlı deÄŸildir.",
+              "Ücretsiz olması tek başına avantaj değildir. Asıl değer, ücretsiz katmanın gerçek bir iş çıkarıp çıkarmadığıdır. Eğer ilk hafta içinde yazı, araştırma, görsel veya sunum gibi somut bir çıktı üretemiyorsa ücretsiz olması çok anlamlı değildir.",
               "Bu yüzden seçim yaparken iki şeyi birlikte düşünmek gerekir: ücretsiz erişim ne kadar kullanılabilir ve ileride ücretli plana geçmeden önce sana yeterince net sinyal veriyor mu?"
             ],
             {
@@ -1429,19 +1429,19 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Hangi ücretsiz araç hangi iş için mantıklı?",
             [
-              "ChatGPT ücretsiz başlayan kullanıcı için yazı, fikir üretimi ve günlük soru-cevap tarafında güçlü bir ilk durak olabilir. Perplexity kaynaklı araştırma isteyen kullanıcı için daha net deÄŸer sunabilir. Gemini, Google kullananlar için düşük bariyerli bir giriş olabilir. Canva AI ise tasarım ve sunum tarafında ücretsiz denemeyle hız kazandırabilir.",
-              "Copy.ai gibi araçlar kısa metin ve pazarlama copy tarafında freemium deneme sunarak hangi teslim formatında daha rahat çalıştıÄŸını anlamaya yardımcı olabilir."
+              "ChatGPT ücretsiz başlayan kullanıcı için yazı, fikir üretimi ve günlük soru-cevap tarafında güçlü bir ilk durak olabilir. Perplexity kaynaklı araştırma isteyen kullanıcı için daha net değer sunabilir. Gemini, Google kullananlar için düşük bariyerli bir giriş olabilir. Canva AI ise tasarım ve sunum tarafında ücretsiz denemeyle hız kazandırabilir.",
+              "Copy.ai gibi araçlar kısa metin ve pazarlama copy tarafında freemium deneme sunarak hangi teslim formatında daha rahat çalıştığını anlamaya yardımcı olabilir."
             ],
             {
               subSections: [
                 sub(
                   "Yazı ve araştırma için ücretsiz başlangıç",
                   [
-                    "EÄŸer amaç hızlı yazı, özet ve araştırma ise ChatGPT, Gemini ve Perplexity üçlüsü çoÄŸu kullanıcı için yeterli bir başlangıç zemini sunabilir.",
-                    "Burada seçim, hangi iş akışında daha çok zaman kazandıÄŸına göre yapılmalıdır."
+                    "Eğer amaç hızlı yazı, özet ve araştırma ise ChatGPT, Gemini ve Perplexity üçlüsü çoğu kullanıcı için yeterli bir başlangıç zemini sunabilir.",
+                    "Burada seçim, hangi iş akışında daha çok zaman kazandığına göre yapılmalıdır."
                   ],
                   ["ChatGPT", "Gemini", "Perplexity"],
-                  "Ãœcretsiz araçları gör",
+                  "Ücretsiz araçları gör",
                   "/tr/categories/free-tools"
                 ),
                 sub(
@@ -1458,17 +1458,17 @@ const allBlogArticles: BlogEntry[] = [
             }
           ),
           section(
-            "Ãœcretsizden ücretliye ne zaman geçmek mantıklı?",
+            "Ücretsizden ücretliye ne zaman geçmek mantıklı?",
             [
-              "Bir araç ücretsiz katmanda sana haftalık çıktı üretiyor, zaman kazandırıyor ve müşteri işine dönüşüyorsa ücretli plana geçmek yatırım olabilir. Ama ücretsiz sürümde bile net fayda görmüyorsan ücretliye geçmek genelde sadece karmaşıklıÄŸı artırır.",
-              "En doÄŸru eşik, üretimin düzenli hale geldiÄŸi ve aracın sınırlarının doÄŸrudan işini yavaşlatmaya başladıÄŸı andır."
+              "Bir araç ücretsiz katmanda sana haftalık çıktı üretiyor, zaman kazandırıyor ve müşteri işine dönüşüyorsa ücretli plana geçmek yatırım olabilir. Ama ücretsiz sürümde bile net fayda görmüyorsan ücretliye geçmek genelde sadece karmaşıklığı artırır.",
+              "En doğru eşik, üretimin düzenli hale geldiği ve aracın sınırlarının doğrudan işini yavaşlatmaya başladığı andır."
             ],
             {
               bullets: [
-                "Ã–nce ücretsiz katmanda gerçek iş dene",
-                "Sonra düzenli çıktı alıp almadıÄŸına bak",
+                "Önce ücretsiz katmanda gerçek iş dene",
+                "Sonra düzenli çıktı alıp almadığına bak",
                 "Sınır işini yavaşlatıyorsa yükselt",
-                "Sinyal yoksa araç deÄŸiştir"
+                "Sinyal yoksa araç değiştir"
               ]
             }
           )
@@ -1563,8 +1563,8 @@ const allBlogArticles: BlogEntry[] = [
     locales: {
       tr: {
         title: "2026'da para kazanmak için en mantıklı AI araçları",
-        excerpt: "Gelir üretme odaklı işlerde hangi AI aracının hangi kullanım senaryosuna daha uygun olduÄŸunu sade şekilde gösteren rehber.",
-        intro: "AI ile para kazanmak isteyen kullanıcı için asıl mesele bir aracı ezbere seçmek deÄŸil, hangi işi daha hızlı ve daha temiz teslim edebileceÄŸini bilmektir. Blog içerik paketleri, reklam metinleri, sosyal medya tasarımları, kısa videolar ve araştırma odaklı hizmetler farklı araçlar ister. Bu yüzden burada tek bir kazanan aramak yerine, gelir modeli ile araç uyumuna bakıyoruz.",
+        excerpt: "Gelir üretme odaklı işlerde hangi AI aracının hangi kullanım senaryosuna daha uygun olduğunu sade şekilde gösteren rehber.",
+        intro: "AI ile para kazanmak isteyen kullanıcı için asıl mesele bir aracı ezbere seçmek değil, hangi işi daha hızlı ve daha temiz teslim edebileceğini bilmektir. Blog içerik paketleri, reklam metinleri, sosyal medya tasarımları, kısa videolar ve araştırma odaklı hizmetler farklı araçlar ister. Bu yüzden burada tek bir kazanan aramak yerine, gelir modeli ile araç uyumuna bakıyoruz.",
         categoryLabel: "AI ile Para Kazanma",
         seoTitle: "2026'da para kazanmak için en mantıklı AI araçları | Deciply",
         seoDescription: "Jasper, Copy.ai, Canva AI, Runway, Perplexity ve Writesonic için para kazanma odaklı kullanım senaryolarını inceleyin.",
@@ -1572,8 +1572,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Gelir için önce kullanım senaryosu seçilmeli",
             [
-              "Bir aracı gelir odaklı deÄŸerlendirmek için önce ne satılacaÄŸını belirlemek gerekir. Blog paketi, kısa reklam metni, sosyal medya görseli, kısa video ya da araştırma raporu gibi çıktılar farklı araçlarla daha rahat üretilir.",
-              "Bu nedenle araç seçimi sonuçtan başlamalıdır. Daha hızlı içerik teslimi için bir yazı aracı mantıklı olabilirken, müşteriye doÄŸrudan görsel ya da video teslim eden kullanıcı için tasarım ve video araçları daha yüksek deÄŸer üretir."
+              "Bir aracı gelir odaklı değerlendirmek için önce ne satılacağını belirlemek gerekir. Blog paketi, kısa reklam metni, sosyal medya görseli, kısa video ya da araştırma raporu gibi çıktılar farklı araçlarla daha rahat üretilir.",
+              "Bu nedenle araç seçimi sonuçtan başlamalıdır. Daha hızlı içerik teslimi için bir yazı aracı mantıklı olabilirken, müşteriye doğrudan görsel ya da video teslim eden kullanıcı için tasarım ve video araçları daha yüksek değer üretir."
             ],
             {
               comparison: {
@@ -1592,7 +1592,7 @@ const allBlogArticles: BlogEntry[] = [
             "Hangi araç hangi gelir akışına daha uygun?",
             [
               "Jasper ve Writesonic, tekrar eden içerik ve pazarlama üretiminde zaman kazandırabilir. Copy.ai daha kısa ve dönüşüm odaklı copy işlerinde rahat olabilir. Canva AI, sosyal medya tasarımları ve sunum teslimlerinde pratiklik sunar. Runway ise kısa video üretimi ve hareketli içerik tarafında daha mantıklıdır.",
-              "Perplexity, araştırma temelli danışmanlık, rakip analizi ya da kaynaklı içerik üretimi yapan kullanıcı için deÄŸerli olabilir. Buradaki karar, en popüler aracı deÄŸil, satılan çıktıya en az sürtünmeyle hizmet eden aracı seçmektir."
+              "Perplexity, araştırma temelli danışmanlık, rakip analizi ya da kaynaklı içerik üretimi yapan kullanıcı için değerli olabilir. Buradaki karar, en popüler aracı değil, satılan çıktıya en az sürtünmeyle hizmet eden aracı seçmektir."
             ],
             {
               subSections: [
@@ -1610,7 +1610,7 @@ const allBlogArticles: BlogEntry[] = [
                   "Görsel, video ve araştırma işleri",
                   [
                     "Canva AI hızlı tasarım teslimi için, Runway kısa video üretimi için, Perplexity ise araştırma ve raporlama için mantıklı bir seçim olabilir.",
-                    "Ã–zellikle bir hizmeti farklı formatlarda sunan kullanıcı için bu araçlar birlikte de çalışabilir."
+                    "Özellikle bir hizmeti farklı formatlarda sunan kullanıcı için bu araçlar birlikte de çalışabilir."
                   ],
                   ["Canva AI", "Runway", "Perplexity"],
                   "Gelir odaklı araçları gör",
@@ -1622,11 +1622,11 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Pratik başlangıç çerçevesi",
             [
-              "Yeni başlayan bir kullanıcı için en mantıklı yaklaşım, sattıÄŸı ana çıktıya en yakın araçla başlamaktır. Yazı satıyorsan yazı aracıyla, araştırma satıyorsan araştırma aracıyla, görsel satıyorsan tasarım aracıyla başlamak daha düşük risklidir.",
-              "Daha sonra iş modeli netleştikçe ikinci bir destek aracı eklenebilir. Böylece gereksiz araç kalabalıÄŸı yerine daha net ve daha karlı bir akış kurulmuş olur."
+              "Yeni başlayan bir kullanıcı için en mantıklı yaklaşım, sattığı ana çıktıya en yakın araçla başlamaktır. Yazı satıyorsan yazı aracıyla, araştırma satıyorsan araştırma aracıyla, görsel satıyorsan tasarım aracıyla başlamak daha düşük risklidir.",
+              "Daha sonra iş modeli netleştikçe ikinci bir destek aracı eklenebilir. Böylece gereksiz araç kalabalığı yerine daha net ve daha karlı bir akış kurulmuş olur."
             ],
             {
-              bullets: ["Ã–nce sattıÄŸın sonucu belirle", "Sonra aracı seç", "İkinci aracı ihtiyaç doÄŸunca ekle", "Araçları akış olarak düşün"]
+              bullets: ["Önce sattığın sonucu belirle", "Sonra aracı seç", "İkinci aracı ihtiyaç doğunca ekle", "Araçları akış olarak düşün"]
             }
           )
         ]
@@ -1713,7 +1713,7 @@ const allBlogArticles: BlogEntry[] = [
       tr: {
         title: "ChatGPT alternatifleri: 2026'da hangi araç daha mantıklı?",
         excerpt: "ChatGPT'ye alternatif arayan kullanıcı için farklı araçları kullanım senaryosuna göre sade biçimde karşılaştıran rehber.",
-        intro: "ChatGPT çoÄŸu kullanıcı için tanıdık bir başlangıç noktası. Ama bu, her senaryoda en uygun araç olduÄŸu anlamına gelmez. Uzun içerik, kaynak odaklı araştırma, Google ekosistemiyle çalışma veya pazarlama copy üretimi gibi işlerde farklı araçlar daha doÄŸal hissedebilir. Bu içerik, alternatif arayan kullanıcıyı tek bir araca yönlendirmek yerine doÄŸru kullanım senaryosunu bulmasına yardım eder.",
+        intro: "ChatGPT çoğu kullanıcı için tanıdık bir başlangıç noktası. Ama bu, her senaryoda en uygun araç olduğu anlamına gelmez. Uzun içerik, kaynak odaklı araştırma, Google ekosistemiyle çalışma veya pazarlama copy üretimi gibi işlerde farklı araçlar daha doğal hissedebilir. Bu içerik, alternatif arayan kullanıcıyı tek bir araca yönlendirmek yerine doğru kullanım senaryosunu bulmasına yardım eder.",
         categoryLabel: "Karşılaştırmalar",
         seoTitle: "ChatGPT alternatifleri: 2026'da hangi araç daha mantıklı? | Deciply",
         seoDescription: "Claude, Gemini, Perplexity ve Jasper gibi ChatGPT alternatiflerini yazı, araştırma ve iş akışı uyumuna göre karşılaştırın.",
@@ -1721,7 +1721,7 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Alternatif ararken hangi kriterler önemli?",
             [
-              "Bir araca alternatif aramak çoÄŸu zaman daha iyi uyum aramak demektir. Hız, yazı yapısı, araştırma kalitesi, entegrasyon rahatlıÄŸı ve günlük iş akışında ne kadar sürtünme yarattıÄŸı bu kararı belirler.",
+              "Bir araca alternatif aramak çoğu zaman daha iyi uyum aramak demektir. Hız, yazı yapısı, araştırma kalitesi, entegrasyon rahatlığı ve günlük iş akışında ne kadar sürtünme yarattığı bu kararı belirler.",
               "Bu yüzden 'hangisi daha iyi?' sorusundan çok 'hangi durumda hangisi daha mantıklı?' sorusu daha işe yarar."
             ],
             {
@@ -1739,8 +1739,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Hangi durumda hangi alternatif daha mantıklı?",
             [
-              "Claude daha sakin, daha uzun ve daha düzenli yazı üretmek isteyen kullanıcı için mantıklı olabilir. Gemini, Workspace kullanan ekipler ve öÄŸrenciler için daha doÄŸal bir akış saÄŸlayabilir. Perplexity, kaynak odaklı araştırma için güçlü bir tamamlayıcı veya alternatif olabilir. Jasper ise süreçli pazarlama içeriÄŸi üreten ekipler için daha anlamlı olabilir.",
-              "Buradaki amaç ChatGPT'yi tamamen bırakmak deÄŸildir. Ã‡oÄŸu kullanıcı için asıl kazanç, ikinci bir aracı sadece güçlü olduÄŸu senaryoda devreye almaktır."
+              "Claude daha sakin, daha uzun ve daha düzenli yazı üretmek isteyen kullanıcı için mantıklı olabilir. Gemini, Workspace kullanan ekipler ve öğrenciler için daha doğal bir akış sağlayabilir. Perplexity, kaynak odaklı araştırma için güçlü bir tamamlayıcı veya alternatif olabilir. Jasper ise süreçli pazarlama içeriği üreten ekipler için daha anlamlı olabilir.",
+              "Buradaki amaç ChatGPT'yi tamamen bırakmak değildir. Çoğu kullanıcı için asıl kazanç, ikinci bir aracı sadece güçlü olduğu senaryoda devreye almaktır."
             ],
             {
               subSections: [
@@ -1757,8 +1757,8 @@ const allBlogArticles: BlogEntry[] = [
                 sub(
                   "Araştırma ve günlük akış için",
                   [
-                    "Perplexity araştırma odaklı kullanıcı için, Gemini ise Google temelli günlük akış için daha doÄŸal bir alternatif olabilir.",
-                    "Günlük iş akışında konfor çoÄŸu zaman ham kalite kadar belirleyicidir."
+                    "Perplexity araştırma odaklı kullanıcı için, Gemini ise Google temelli günlük akış için daha doğal bir alternatif olabilir.",
+                    "Günlük iş akışında konfor çoğu zaman ham kalite kadar belirleyicidir."
                   ],
                   ["Perplexity", "Gemini"],
                   "Alternatif araçları incele",
@@ -1770,10 +1770,10 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Pratik karar çerçevesi",
             [
-              "EÄŸer ChatGPT genel olarak işini görüyorsa, onu bırakmak yerine eksik kalan alan için ikinci bir araç eklemek daha mantıklıdır. Uzun yazı için Claude, araştırma için Perplexity, Google odaklı akış için Gemini gibi eşleşmeler daha düşük risklidir.",
-              "En saÄŸlıklı karar, popüler olana gitmek deÄŸil, seni daha az sürtünmeyle sonuca götüren aracı bulmaktır."
+              "Eğer ChatGPT genel olarak işini görüyorsa, onu bırakmak yerine eksik kalan alan için ikinci bir araç eklemek daha mantıklıdır. Uzun yazı için Claude, araştırma için Perplexity, Google odaklı akış için Gemini gibi eşleşmeler daha düşük risklidir.",
+              "En sağlıklı karar, popüler olana gitmek değil, seni daha az sürtünmeyle sonuca götüren aracı bulmaktır."
             ],
-            { bullets: ["Sorun yaşadıÄŸın alanı belirle", "Alternatifi sadece o işte test et", "Tek kazanan arama", "Gerekirse araçları birlikte kullan"] }
+            { bullets: ["Sorun yaşadığın alanı belirle", "Alternatifi sadece o işte test et", "Tek kazanan arama", "Gerekirse araçları birlikte kullan"] }
           )
         ]
       },
@@ -1854,18 +1854,18 @@ const allBlogArticles: BlogEntry[] = [
     relatedToolSlugs: ["chatgpt", "gemini", "perplexity", "canva-ai", "copy-ai", "elevenlabs"],
     locales: {
       tr: {
-        title: "Bugün kullanmaya başlayabileceÄŸin ücretsiz AI araçları",
+        title: "Bugün kullanmaya başlayabileceğin ücretsiz AI araçları",
         excerpt: "Yazı, araştırma, tasarım ve ses tarafında ücretsiz veya freemium giriş sunan araçları kullanım senaryosuna göre inceleyen rehber.",
-        intro: "Ãœcretsiz bir araca başlamak cazip görünür, ama asıl soru ücretsiz katmanın gerçekten işe yarayıp yaramadıÄŸıdır. Kullanıcı için deÄŸer, ilk gün içinde somut bir sonuç alabilmekte yatar. Bu rehber, ücretsiz veya freemium giriş sunan araçları hangi işte mantıklı olduklarına göre ele alır.",
-        categoryLabel: "Ãœcretsiz Araçlar",
-        seoTitle: "Bugün kullanmaya başlayabileceÄŸin ücretsiz AI araçları | Deciply",
+        intro: "Ücretsiz bir araca başlamak cazip görünür, ama asıl soru ücretsiz katmanın gerçekten işe yarayıp yaramadığıdır. Kullanıcı için değer, ilk gün içinde somut bir sonuç alabilmekte yatar. Bu rehber, ücretsiz veya freemium giriş sunan araçları hangi işte mantıklı olduklarına göre ele alır.",
+        categoryLabel: "Ücretsiz Araçlar",
+        seoTitle: "Bugün kullanmaya başlayabileceğin ücretsiz AI araçları | Deciply",
         seoDescription: "ChatGPT, Gemini, Perplexity, Canva AI, Copy.ai ve ElevenLabs gibi ücretsiz başlangıç sunan AI araçlarını senaryo bazlı inceleyin.",
         sections: [
           section(
-            "Ãœcretsiz araçta asıl deÄŸer ne?",
+            "Ücretsiz araçta asıl değer ne?",
             [
-              "Ãœcretsiz olması tek başına avantaj deÄŸildir. Asıl avantaj, ilk gün içinde gerçekten bir çıktı üretebilmesidir. EÄŸer araç yazı, araştırma, sunum veya ses tarafında somut iş yaptırıyorsa ücretsiz katman anlamlı hale gelir.",
-              "Bu yüzden ücretsiz araçları fiyat sıfır diye deÄŸil, düşük riskle gerçek sinyal verdiÄŸi için deÄŸerlendirmek gerekir."
+              "Ücretsiz olması tek başına avantaj değildir. Asıl avantaj, ilk gün içinde gerçekten bir çıktı üretebilmesidir. Eğer araç yazı, araştırma, sunum veya ses tarafında somut iş yaptırıyorsa ücretsiz katman anlamlı hale gelir.",
+              "Bu yüzden ücretsiz araçları fiyat sıfır diye değil, düşük riskle gerçek sinyal verdiği için değerlendirmek gerekir."
             ],
             {
               comparison: {
@@ -1883,7 +1883,7 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Hangi ücretsiz araç hangi işte mantıklı?",
             [
-              "ChatGPT günlük yazı ve özet işlerinde güçlü bir başlangıç sunabilir. Perplexity araştırma odaklı kullanıcı için daha net deÄŸer verebilir. Gemini, Google kullanan kullanıcı için daha düşük sürtünme yaratabilir.",
+              "ChatGPT günlük yazı ve özet işlerinde güçlü bir başlangıç sunabilir. Perplexity araştırma odaklı kullanıcı için daha net değer verebilir. Gemini, Google kullanan kullanıcı için daha düşük sürtünme yaratabilir.",
               "Canva AI görsel teslim, sunum ve hızlı tasarım için; ElevenLabs ise seslendirme denemeleri ve ses tabanlı içerik testleri için daha anlamlı olabilir. Copy.ai da kısa metin denemeleri için freemium bir giriş noktası sunabilir."
             ],
             {
@@ -1891,18 +1891,18 @@ const allBlogArticles: BlogEntry[] = [
                 sub(
                   "Yazı ve araştırma için",
                   [
-                    "İçerik taslaÄŸı, özet ve araştırma için ChatGPT, Gemini ve Perplexity çoÄŸu kullanıcıya yeterli bir başlangıç seti sunabilir.",
-                    "Buradaki fark, hangi aracın senin çalışma şekline daha doÄŸal uyduÄŸudur."
+                    "İçerik taslağı, özet ve araştırma için ChatGPT, Gemini ve Perplexity çoğu kullanıcıya yeterli bir başlangıç seti sunabilir.",
+                    "Buradaki fark, hangi aracın senin çalışma şekline daha doğal uyduğudur."
                   ],
                   ["ChatGPT", "Gemini", "Perplexity"],
-                  "Ãœcretsiz araçları gör",
+                  "Ücretsiz araçları gör",
                   "/tr/categories/free-tools"
                 ),
                 sub(
                   "Tasarım ve ses için",
                   [
                     "Canva AI ve ElevenLabs, ödeme yapmadan önce teslime yakın çıktılar görmek isteyen kullanıcı için daha pratik olabilir.",
-                    "Ã–zellikle içerik üreticileri için bunlar düşük bariyerli deneme alanlarıdır."
+                    "Özellikle içerik üreticileri için bunlar düşük bariyerli deneme alanlarıdır."
                   ],
                   ["Canva AI", "ElevenLabs"],
                   "Canva AI detayını aç",
@@ -1912,12 +1912,12 @@ const allBlogArticles: BlogEntry[] = [
             }
           ),
           section(
-            "Ãœcretsizden ücretliye geçiş ne zaman mantıklı?",
+            "Ücretsizden ücretliye geçiş ne zaman mantıklı?",
             [
-              "Bir araç ücretsiz katmanda gerçek deÄŸer üretmeye başladıysa ve sınırlar artık iş akışını yavaşlatıyorsa ücretli geçiş mantıklı olabilir. EÄŸer ücretsiz kullanımda bile net fayda görünmüyorsa sorun büyük ihtimalle plan deÄŸil araç uyumudur.",
-              "Bu yüzden önce gerçek görevle denemek, sonra yükseltme düşünmek daha saÄŸlıklıdır."
+              "Bir araç ücretsiz katmanda gerçek değer üretmeye başladıysa ve sınırlar artık iş akışını yavaşlatıyorsa ücretli geçiş mantıklı olabilir. Eğer ücretsiz kullanımda bile net fayda görünmüyorsa sorun büyük ihtimalle plan değil araç uyumudur.",
+              "Bu yüzden önce gerçek görevle denemek, sonra yükseltme düşünmek daha sağlıklıdır."
             ],
-            { bullets: ["Gerçek görevle test et", "Sinyal varsa devam et", "Sınır yavaşlatıyorsa yükselt", "Uyum yoksa araç deÄŸiştir"] }
+            { bullets: ["Gerçek görevle test et", "Sinyal varsa devam et", "Sınır yavaşlatıyorsa yükselt", "Uyum yoksa araç değiştir"] }
           )
         ]
       },
@@ -1994,14 +1994,14 @@ const allBlogArticles: BlogEntry[] = [
   ,{
     slug: "best-ai-tools-for-freelancers-2026",
     categorySlug: "guides",
-    publishDate: "2026-03-28",
+    publishDate: "2026-03-29",
     updatedAt: "2026-03-29",
     relatedToolSlugs: ["chatgpt", "claude", "canva-ai", "runway", "perplexity", "notion-ai"],
     locales: {
       tr: {
         title: "Freelancer'lar için en mantıklı AI araçları",
-        excerpt: "Freelance iş akışında hangi AI aracının hangi teslim tipine daha uygun olduÄŸunu gösteren kullanım senaryosu odaklı rehber.",
-        intro: "Freelance çalışan kullanıcı için araç seçimi doÄŸrudan marjı etkiler. Aynı işi daha kısa sürede teslim etmek, aynı hafta içinde daha fazla iş almak anlamına gelir. Ama her freelancer aynı araca ihtiyaç duymaz. Yazı, görsel, video, araştırma ve proje düzeni gibi farklı işlerde farklı araçlar daha mantıklı olabilir. Bu rehber, freelancer için daha pratik karar vermeyi kolaylaştırır.",
+        excerpt: "Freelance iş akışında hangi AI aracının hangi teslim tipine daha uygun olduğunu gösteren kullanım senaryosu odaklı rehber.",
+        intro: "Freelance çalışan kullanıcı için araç seçimi doğrudan marjı etkiler. Aynı işi daha kısa sürede teslim etmek, aynı hafta içinde daha fazla iş almak anlamına gelir. Ama her freelancer aynı araca ihtiyaç duymaz. Yazı, görsel, video, araştırma ve proje düzeni gibi farklı işlerde farklı araçlar daha mantıklı olabilir. Bu rehber, freelancer için daha pratik karar vermeyi kolaylaştırır.",
         categoryLabel: "Rehberler",
         seoTitle: "Freelancer'lar için en mantıklı AI araçları | Deciply",
         seoDescription: "ChatGPT, Claude, Canva AI, Runway, Perplexity ve Notion AI için freelance iş akışı odaklı kullanım senaryolarını inceleyin.",
@@ -2009,8 +2009,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Freelance dünyasında araç seçimi neden önemli?",
             [
-              "Freelancer için zaman doÄŸrudan para demektir. Taslak hazırlamak, müşteri araştırması yapmak, görsel üretmek veya sunum düzenlemek için harcanan süre düştükçe iş kapasitesi artar.",
-              "Bu yüzden karar verirken popülerliÄŸe deÄŸil, teslim tipine bakmak gerekir. Yazı teslim eden biriyle görsel ya da video üreten biri aynı araçtan aynı deÄŸeri almaz."
+              "Freelancer için zaman doğrudan para demektir. Taslak hazırlamak, müşteri araştırması yapmak, görsel üretmek veya sunum düzenlemek için harcanan süre düştükçe iş kapasitesi artar.",
+              "Bu yüzden karar verirken popülerliğe değil, teslim tipine bakmak gerekir. Yazı teslim eden biriyle görsel ya da video üreten biri aynı araçtan aynı değeri almaz."
             ],
             {
               comparison: {
@@ -2028,8 +2028,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Hangi freelancer hangi araca bakmalı?",
             [
-              "Metin yazan veya danışmanlık veren freelancer için ChatGPT ve Claude çoÄŸu zaman ilk duraktır. Hızlı taslak için ChatGPT, daha düzenli uzun anlatım için Claude daha rahat olabilir. Araştırma yoÄŸun işlerde Perplexity ciddi zaman kazandırabilir.",
-              "Tasarım, sunum ve sosyal medya tarafında çalışan kullanıcı için Canva AI daha pratik olabilir. Kısa video ve hareketli içerik teslim eden kullanıcı için Runway daha mantıklıdır. Notion AI ise müşteri işleri ve proje düzeni tarafında destek saÄŸlayabilir."
+              "Metin yazan veya danışmanlık veren freelancer için ChatGPT ve Claude çoğu zaman ilk duraktır. Hızlı taslak için ChatGPT, daha düzenli uzun anlatım için Claude daha rahat olabilir. Araştırma yoğun işlerde Perplexity ciddi zaman kazandırabilir.",
+              "Tasarım, sunum ve sosyal medya tarafında çalışan kullanıcı için Canva AI daha pratik olabilir. Kısa video ve hareketli içerik teslim eden kullanıcı için Runway daha mantıklıdır. Notion AI ise müşteri işleri ve proje düzeni tarafında destek sağlayabilir."
             ],
             {
               subSections: [
@@ -2047,7 +2047,7 @@ const allBlogArticles: BlogEntry[] = [
                   "Tasarım ve içerik teslimi",
                   [
                     "Canva AI hızlı görsel teslimde, Runway kısa video akışında, Notion AI ise düzen tarafında faydalı olabilir.",
-                    "Freelancer için sadece üretim deÄŸil, işin düzeni de karlılıÄŸı etkiler."
+                    "Freelancer için sadece üretim değil, işin düzeni de karlılığı etkiler."
                   ],
                   ["Canva AI", "Runway", "Notion AI"],
                   "Freelancer araçlarını incele",
@@ -2059,8 +2059,8 @@ const allBlogArticles: BlogEntry[] = [
           section(
             "Daha sade bir başlangıç seti",
             [
-              "Yeni başlayan bir freelancer için tek seferde çok fazla araç toplamak yerine bir üretim aracı ve bir destek aracıyla başlamak daha mantıklıdır. Böylece hem maliyet daha düşük kalır hem de öÄŸrenme yükü azalır.",
-              "İş büyüdükçe ikinci veya üçüncü aracı eklemek çok daha saÄŸlıklı bir yaklaşımdır."
+              "Yeni başlayan bir freelancer için tek seferde çok fazla araç toplamak yerine bir üretim aracı ve bir destek aracıyla başlamak daha mantıklıdır. Böylece hem maliyet daha düşük kalır hem de öğrenme yükü azalır.",
+              "İş büyüdükçe ikinci veya üçüncü aracı eklemek çok daha sağlıklı bir yaklaşımdır."
             ],
             { bullets: ["Teslim tipini merkeze al", "Bir üretim aracıyla başla", "Gerekiyorsa araştırma ya da düzen aracı ekle", "Araç setini büyürken genişlet"] }
           )
@@ -2144,24 +2144,24 @@ const allBlogArticles: BlogEntry[] = [
     relatedToolSlugs: ["chatgpt", "gemini", "perplexity", "notion-ai", "canva-ai"],
     locales: {
       tr: {
-        title: "Ã–ÄŸrenciler için en mantıklı AI araçları",
-        excerpt: "Ã–ÄŸrenciler için hangi AI aracının not çıkarma, araştırma, sunum ve günlük ders çalışma akışında daha uygun olduÄŸunu gösteren rehber.",
-        intro: "Ã–ÄŸrenciler için AI aracı seçimi sadece hızlı cevap almakla ilgili deÄŸildir. Asıl deÄŸer; daha net özet çıkarmak, araştırmayı düzenli yapmak, notları toparlamak ve sunum hazırlıÄŸını kolaylaştırmaktır. Bu rehber, öÄŸrenciler için farklı araçların hangi işte daha mantıklı olduÄŸunu tarafsız biçimde ele alır.",
+        title: "Öğrenciler için en mantıklı AI araçları",
+        excerpt: "Öğrenciler için hangi AI aracının not çıkarma, araştırma, sunum ve günlük ders çalışma akışında daha uygun olduğunu gösteren rehber.",
+        intro: "Öğrenciler için AI aracı seçimi sadece hızlı cevap almakla ilgili değildir. Asıl değer; daha net özet çıkarmak, araştırmayı düzenli yapmak, notları toparlamak ve sunum hazırlığını kolaylaştırmaktır. Bu rehber, öğrenciler için farklı araçların hangi işte daha mantıklı olduğunu tarafsız biçimde ele alır.",
         categoryLabel: "Rehberler",
-        seoTitle: "Ã–ÄŸrenciler için en mantıklı AI araçları | Deciply",
-        seoDescription: "ChatGPT, Gemini, Perplexity, Notion AI ve Canva AI için öÄŸrenci kullanım senaryolarını araştırma, not alma ve sunum açısından inceleyin.",
+        seoTitle: "Öğrenciler için en mantıklı AI araçları | Deciply",
+        seoDescription: "ChatGPT, Gemini, Perplexity, Notion AI ve Canva AI için öğrenci kullanım senaryolarını araştırma, not alma ve sunum açısından inceleyin.",
         sections: [
           section(
-            "Ã–ÄŸrenci için araç seçimi neden farklıdır?",
+            "Öğrenci için araç seçimi neden farklıdır?",
             [
-              "Ã–ÄŸrenci için önemli olan sadece daha hızlı metin üretmek deÄŸildir. Bilgiyi daha iyi anlamak, daha temiz not tutmak, daha güvenilir araştırma yapmak ve teslimleri daha az stresle hazırlamak da önemlidir.",
-              "Bu yüzden düşük maliyet, düşük öÄŸrenme bariyeri ve günlük kullanım kolaylıÄŸı öÄŸrenci için daha kritik hale gelir."
+              "Öğrenci için önemli olan sadece daha hızlı metin üretmek değildir. Bilgiyi daha iyi anlamak, daha temiz not tutmak, daha güvenilir araştırma yapmak ve teslimleri daha az stresle hazırlamak da önemlidir.",
+              "Bu yüzden düşük maliyet, düşük öğrenme bariyeri ve günlük kullanım kolaylığı öğrenci için daha kritik hale gelir."
             ],
             {
               comparison: {
-                title: "Ã–ÄŸrenci kullanım haritası",
+                title: "Öğrenci kullanım haritası",
                 items: [
-                  { label: "Genel ders desteÄŸi", value: "ChatGPT" },
+                  { label: "Genel ders desteği", value: "ChatGPT" },
                   { label: "Google ile çalışma", value: "Gemini" },
                   { label: "Kaynak araştırması", value: "Perplexity" },
                   { label: "Not düzeni", value: "Notion AI" },
@@ -2171,9 +2171,9 @@ const allBlogArticles: BlogEntry[] = [
             }
           ),
           section(
-            "Hangi araç hangi öÄŸrenci ihtiyacına daha uygun?",
+            "Hangi araç hangi öğrenci ihtiyacına daha uygun?",
             [
-              "ChatGPT genel ders soruları ve özet çıkarmada pratik olabilir. Gemini, Google Docs ve Drive kullanan öÄŸrenciler için daha akıcı bir deneyim sunabilir. Perplexity ise makale tarama ve kaynaklı araştırma için daha mantıklı olabilir.",
+              "ChatGPT genel ders soruları ve özet çıkarmada pratik olabilir. Gemini, Google Docs ve Drive kullanan öğrenciler için daha akıcı bir deneyim sunabilir. Perplexity ise makale tarama ve kaynaklı araştırma için daha mantıklı olabilir.",
               "Notion AI notları ve proje parçalarını düzenlemek için faydalıdır. Canva AI ise sunum, poster ve görsel destek gereken okul işlerinde zaman kazandırabilir."
             ],
             {
@@ -2182,7 +2182,7 @@ const allBlogArticles: BlogEntry[] = [
                   "Araştırma ve ders çalışma için",
                   [
                     "Konu anlamak, özet çıkarmak ve kaynak toplamak için ChatGPT, Gemini ve Perplexity iyi bir başlangıç kombinasyonu sunabilir.",
-                    "Buradaki fark, hangi aracın senin öÄŸrenme ve çalışma şekline daha iyi uyduÄŸudur."
+                    "Buradaki fark, hangi aracın senin öğrenme ve çalışma şekline daha iyi uyduğudur."
                   ],
                   ["ChatGPT", "Gemini", "Perplexity"],
                   "Araçları incele",
@@ -2192,7 +2192,7 @@ const allBlogArticles: BlogEntry[] = [
                   "Düzen ve sunum için",
                   [
                     "Notion AI çalışma düzeni kurmak için, Canva AI ise sunum ve görsel teslimleri hazırlamak için daha uygundur.",
-                    "Ã–zellikle son dakika teslimlerinde bu iki araç ciddi rahatlık saÄŸlayabilir."
+                    "Özellikle son dakika teslimlerinde bu iki araç ciddi rahatlık sağlayabilir."
                   ],
                   ["Notion AI", "Canva AI"],
                   "Notion AI detayını aç",
@@ -2202,10 +2202,10 @@ const allBlogArticles: BlogEntry[] = [
             }
           ),
           section(
-            "Sade bir öÄŸrenci araç seti",
+            "Sade bir öğrenci araç seti",
             [
-              "Ã–ÄŸrenci için en mantıklı yapı genelde bir genel amaçlı araç, gerekiyorsa bir araştırma aracı ve bir düzen aracıdır. Ã‡ok sayıda uygulama toplamak yerine daha az ama daha net bir sistem kurmak daha faydalıdır.",
-              "Amaç, araç öÄŸrenmek deÄŸil; çalışma sürtünmesini azaltmaktır."
+              "Öğrenci için en mantıklı yapı genelde bir genel amaçlı araç, gerekiyorsa bir araştırma aracı ve bir düzen aracıdır. Çok sayıda uygulama toplamak yerine daha az ama daha net bir sistem kurmak daha faydalıdır.",
+              "Amaç, araç öğrenmek değil; çalışma sürtünmesini azaltmaktır."
             ],
             { bullets: ["Bir genel araçla başla", "Araştırma gerekiyorsa ikinci aracı ekle", "Not düzenini sade tut", "Dersi merkeze al"] }
           )
@@ -2291,18 +2291,18 @@ const allBlogArticles: BlogEntry[] = [
     locales: {
       tr: {
         title: "2026'da pasif gelir için en mantıklı AI araçları",
-        excerpt: "Pasif gelir tarafında hangi AI araçlarının niş içerik, template, ses ve video akışlarında daha mantıklı olduÄŸunu gösteren rehber.",
-        intro: "Pasif gelir için araç seçerken popüler olanı deÄŸil, tekrar tekrar üretim saÄŸlayanı seçmek gerekir. Bu rehber, içerik siteleri, dijital ürünler, sesli içerikler ve repurpose video akışları için hangi araçların daha mantıklı olabileceÄŸini sade biçimde açıklar.",
+        excerpt: "Pasif gelir tarafında hangi AI araçlarının niş içerik, template, ses ve video akışlarında daha mantıklı olduğunu gösteren rehber.",
+        intro: "Pasif gelir için araç seçerken popüler olanı değil, tekrar tekrar üretim sağlayanı seçmek gerekir. Bu rehber, içerik siteleri, dijital ürünler, sesli içerikler ve repurpose video akışları için hangi araçların daha mantıklı olabileceğini sade biçimde açıklar.",
         categoryLabel: "AI ile Para Kazanma",
         seoTitle: "2026'da pasif gelir için en mantıklı AI araçları | Deciply",
-        seoDescription: "ChatGPT, Perplexity, Copy.ai, Canva AI, ElevenLabs ve Pictory'nin pasif gelir senaryolarında nerede mantıklı olduÄŸunu görün.",
+        seoDescription: "ChatGPT, Perplexity, Copy.ai, Canva AI, ElevenLabs ve Pictory'nin pasif gelir senaryolarında nerede mantıklı olduğunu görün.",
         sections: [
-          section("Hızlı özet", ["Pasif gelir için en iyi araç genelde tek bir uygulama deÄŸil, küçük bir üretim stack'idir. Araştırma için [Perplexity](/tr/tools/perplexity), yazı için [ChatGPT](/tr/tools/chatgpt) veya [Copy.ai](/tr/tools/copy-ai), daÄŸıtım için [Canva AI](/tr/tools/canva-ai), ses için [ElevenLabs](/tr/tools/elevenlabs) ve video repurpose için [Pictory](/tr/tools/pictory) öne çıkabilir.", "Burada kilit nokta aracın tekrar üretimi kolaylaştırmasıdır. Aynı formatı haftalık olarak çıkarabiliyorsan, araç pasif gelire daha yakın bir deÄŸer üretir."], { comparison: { title: "Pasif gelir haritası", items: [ { label: "Niş içerik", value: "ChatGPT / Perplexity" }, { label: "Landing ve ürün metni", value: "Copy.ai" }, { label: "Template ve görsel", value: "Canva AI" }, { label: "Sesli içerik", value: "ElevenLabs" }, { label: "Video repurpose", value: "Pictory" } ] } }),
-          section("Bu içerik kimler için?", ["Niş site kurmak, dijital ürün çıkarmak, faceless içerik üretmek veya bilgi ürünleriyle ölçeklenebilir sistem kurmak isteyen kullanıcılar için uygundur.", "Hedefi günlük müşteri işi deÄŸil de zamanla biriken içerik ve ürün akışı olan kullanıcı burada daha net seçim yapabilir."], { bullets: ["Niş blog kuranlar", "Template ve prompt paketi hazırlayanlar", "Sesli içerik üretenler", "Faceless video akışı deneyenler"] }),
-          section("En mantıklı araçlar ve stratejiler", ["Yazı ve araştırma odaklı modellerde [ChatGPT](/tr/tools/chatgpt) ve [Perplexity](/tr/tools/perplexity) güçlü bir başlangıçtır. Blog rehberi, affiliate içerik ve newsletter üretimi için bu ikili genelde yeterlidir.", "Görsel, ses ve repurpose tarafta [Canva AI](/tr/tools/canva-ai), [ElevenLabs](/tr/tools/elevenlabs) ve [Pictory](/tr/tools/pictory) daha mantıklı hale gelir. Bu araçlar özellikle tekrar kullanılabilen asset ve medya akışlarında faydalıdır."], { subSections: [ sub("Yazı ve bilgi ürünü akışı", ["Araştırma + taslak + daÄŸıtım modeli pasif gelir tarafında en düşük bariyerli başlangıçtır.", "Ã–nce niş rehber veya lead magnet, sonra buna baÄŸlı affiliate veya küçük dijital ürün eklemek daha mantıklıdır."], ["Blog içerik", "Mini rehber", "Lead magnet"], "View tool", "/tr/tools/chatgpt"), sub("Ses ve video odaklı akış", ["Sesli özet, mini anlatım veya videoya çevrilen metinler daha sistemli pasif içerik üretimi saÄŸlar.", "Bu yüzden ElevenLabs ve Pictory daha çok ikinci aşamada deÄŸer üretir."], ["Sesli içerik", "Repurpose video"], "See details", "/tr/tools/elevenlabs") ] }),
-          section("DoÄŸru seçimi nasıl yaparsın?", ["Ã–nce gelir modelini seç: niş blog mu, template maÄŸazası mı, yoksa ses/video akışı mı? Sonra o modele en yakın aracı seç.", "İkinci kriter tekrar üretim hızıdır. Güzel ama zor tekrar edilen çıktı, pasif gelir için çoÄŸu zaman yeterli deÄŸildir."]),
-          section("Gerçekçi kullanım senaryoları", ["Niş bir blogda karşılaştırma içerikleri yayımlamak, Gumroad için template paketi hazırlamak, blog yazılarını sesli anlatıma çevirmek veya aynı içeriÄŸi kısa videolara dönüştürmek daha gerçekçi senaryolardır.", "Bu modellerde amaç tek seferlik mükemmel üretim deÄŸil, düşük ek maliyetle tekrar üretimdir."], { bullets: ["Affiliate içerik sitesi", "Prompt/template paketi", "Sesli mini içerik", "Repurpose short video"] }),
-          section("Son not", ["Pasif gelir için doÄŸru araç, senin tekrar etmek istediÄŸin formatı kolaylaştıran araçtır. Tek araca deÄŸil, iş akışına bakmak daha saÄŸlıklıdır.", "Kararsızsan ilgili tool detail sayfalarını açıp artılar, eksiler ve kullanım alanlarını karşılaştır."], { subSections: [ sub("Sonraki adım", ["Ã–nce gelir modelini seç, sonra o modele en yakın aracı açıp detaylara bak."], undefined, "View tool", "/tr/tools") ] })
+          section("Hızlı özet", ["Pasif gelir için en iyi araç genelde tek bir uygulama değil, küçük bir üretim stack'idir. Araştırma için [Perplexity](/tr/tools/perplexity), yazı için [ChatGPT](/tr/tools/chatgpt) veya [Copy.ai](/tr/tools/copy-ai), dağıtım için [Canva AI](/tr/tools/canva-ai), ses için [ElevenLabs](/tr/tools/elevenlabs) ve video repurpose için [Pictory](/tr/tools/pictory) öne çıkabilir.", "Burada kilit nokta aracın tekrar üretimi kolaylaştırmasıdır. Aynı formatı haftalık olarak çıkarabiliyorsan, araç pasif gelire daha yakın bir değer üretir."], { comparison: { title: "Pasif gelir haritası", items: [ { label: "Niş içerik", value: "ChatGPT / Perplexity" }, { label: "Landing ve ürün metni", value: "Copy.ai" }, { label: "Template ve görsel", value: "Canva AI" }, { label: "Sesli içerik", value: "ElevenLabs" }, { label: "Video repurpose", value: "Pictory" } ] } }),
+          section("Bu içerik kimler için?", ["Niş site kurmak, dijital ürün çıkarmak, faceless içerik üretmek veya bilgi ürünleriyle ölçeklenebilir sistem kurmak isteyen kullanıcılar için uygundur.", "Hedefi günlük müşteri işi değil de zamanla biriken içerik ve ürün akışı olan kullanıcı burada daha net seçim yapabilir."], { bullets: ["Niş blog kuranlar", "Template ve prompt paketi hazırlayanlar", "Sesli içerik üretenler", "Faceless video akışı deneyenler"] }),
+          section("En mantıklı araçlar ve stratejiler", ["Yazı ve araştırma odaklı modellerde [ChatGPT](/tr/tools/chatgpt) ve [Perplexity](/tr/tools/perplexity) güçlü bir başlangıçtır. Blog rehberi, affiliate içerik ve newsletter üretimi için bu ikili genelde yeterlidir.", "Görsel, ses ve repurpose tarafta [Canva AI](/tr/tools/canva-ai), [ElevenLabs](/tr/tools/elevenlabs) ve [Pictory](/tr/tools/pictory) daha mantıklı hale gelir. Bu araçlar özellikle tekrar kullanılabilen asset ve medya akışlarında faydalıdır."], { subSections: [ sub("Yazı ve bilgi ürünü akışı", ["Araştırma + taslak + dağıtım modeli pasif gelir tarafında en düşük bariyerli başlangıçtır.", "Önce niş rehber veya lead magnet, sonra buna bağlı affiliate veya küçük dijital ürün eklemek daha mantıklıdır."], ["Blog içerik", "Mini rehber", "Lead magnet"], "View tool", "/tr/tools/chatgpt"), sub("Ses ve video odaklı akış", ["Sesli özet, mini anlatım veya videoya çevrilen metinler daha sistemli pasif içerik üretimi sağlar.", "Bu yüzden ElevenLabs ve Pictory daha çok ikinci aşamada değer üretir."], ["Sesli içerik", "Repurpose video"], "See details", "/tr/tools/elevenlabs") ] }),
+          section("Doğru seçimi nasıl yaparsın?", ["Önce gelir modelini seç: niş blog mu, template mağazası mı, yoksa ses/video akışı mı? Sonra o modele en yakın aracı seç.", "İkinci kriter tekrar üretim hızıdır. Güzel ama zor tekrar edilen çıktı, pasif gelir için çoğu zaman yeterli değildir."]),
+          section("Gerçekçi kullanım senaryoları", ["Niş bir blogda karşılaştırma içerikleri yayımlamak, Gumroad için template paketi hazırlamak, blog yazılarını sesli anlatıma çevirmek veya aynı içeriği kısa videolara dönüştürmek daha gerçekçi senaryolardır.", "Bu modellerde amaç tek seferlik mükemmel üretim değil, düşük ek maliyetle tekrar üretimdir."], { bullets: ["Affiliate içerik sitesi", "Prompt/template paketi", "Sesli mini içerik", "Repurpose short video"] }),
+          section("Son not", ["Pasif gelir için doğru araç, senin tekrar etmek istediğin formatı kolaylaştıran araçtır. Tek araca değil, iş akışına bakmak daha sağlıklıdır.", "Kararsızsan ilgili tool detail sayfalarını açıp artılar, eksiler ve kullanım alanlarını karşılaştır."], { subSections: [ sub("Sonraki adım", ["Önce gelir modelini seç, sonra o modele en yakın aracı açıp detaylara bak."], undefined, "View tool", "/tr/tools") ] })
         ]
       },
       en: {
@@ -2330,19 +2330,19 @@ const allBlogArticles: BlogEntry[] = [
     relatedToolSlugs: ["chatgpt", "copy-ai", "canva-ai", "runway", "elevenlabs", "perplexity"],
     locales: {
       tr: {
-        title: "Bugün başlayabileceÄŸin 10 AI yan gelir fikri",
+        title: "Bugün başlayabileceğin 10 AI yan gelir fikri",
         excerpt: "Hızlı test edilebilir 10 AI side hustle fikrini, uygun araçlarla ve gerçekçi kullanım senaryolarıyla bir araya getiren rehber.",
-        intro: "Yan gelir tarafında asıl avantaj hızlı denemedir. Bu yüzden ilk aşamada küçük ama satılabilir teslimler seçmek daha mantıklıdır. Bu yazı, bugün başlayabileceÄŸin AI yan gelir fikirlerini araç uyumu ve gerçekçi beklenti açısından ele alır.",
+        intro: "Yan gelir tarafında asıl avantaj hızlı denemedir. Bu yüzden ilk aşamada küçük ama satılabilir teslimler seçmek daha mantıklıdır. Bu yazı, bugün başlayabileceğin AI yan gelir fikirlerini araç uyumu ve gerçekçi beklenti açısından ele alır.",
         categoryLabel: "AI ile Para Kazanma",
-        seoTitle: "Bugün başlayabileceÄŸin 10 AI yan gelir fikri | Deciply",
+        seoTitle: "Bugün başlayabileceğin 10 AI yan gelir fikri | Deciply",
         seoDescription: "İçerik, görsel, araştırma, ses ve faceless video odaklı 10 AI yan gelir fikrini uygun araçlarla birlikte inceleyin.",
         sections: [
-          section("Hızlı özet", ["En hızlı test edilen AI yan gelir fikirleri genelde küçük teslimli modellerdir: kısa içerik paketleri, sosyal medya görselleri, araştırma özetleri, voice asset'ler ve faceless video klipleri.", "Bu modeller düşük bariyerlidir çünkü önce küçük teklif çıkarıp talebi test etmeye izin verir."], { bullets: ["Kısa içerik paketi", "Sosyal medya görsel seti", "Araştırma özeti", "Faceless video", "Voice asset", "Template paketi", "Landing page copy", "Ãœrün açıklaması", "Mini newsletter", "Lead magnet hazırlıÄŸı"] }),
-          section("Bu içerik kimler için?", ["Ã–ÄŸrenci, freelancer, küçük işletme sahibi ya da ilk ek gelirini test eden herkes için uygundur.", "Ã–zellikle büyük sistem kurmadan önce küçük bir teklif doÄŸrulamak isteyen kullanıcı için daha anlamlıdır."]),
-          section("En mantıklı araçlar ve stratejiler", ["Metin ve araştırma odaklı fikirlerde [ChatGPT](/tr/tools/chatgpt), [Copy.ai](/tr/tools/copy-ai) ve [Perplexity](/tr/tools/perplexity) mantıklı olabilir. Kısa teslim, araştırma özeti ve satış odaklı metinlerde bu araçlar deÄŸer üretir.", "Görsel ve medya odaklı fikirlerde [Canva AI](/tr/tools/canva-ai), [Runway](/tr/tools/runway) ve [ElevenLabs](/tr/tools/elevenlabs) daha iyi oturur."], { subSections: [ sub("Hızlı başlayan fikirler", ["Ãœrün açıklaması, kısa içerik, araştırma özeti veya basit görsel teslim gibi küçük işlerle başlamak daha saÄŸlıklıdır.", "Ã‡ünkü bunlar kısa sürede test edilir ve ilk geri bildirimi hızlı getirir."], ["Hızlı test", "Küçük teklif", "Düşük risk"], "View tool", "/tr/tools/chatgpt"), sub("Daha sistemli modeller", ["Faceless video veya sesli mini ürün gibi taraflar biraz daha sistem ister ama daha ölçeklenebilir olabilir.", "Bu noktada Runway ve ElevenLabs daha anlamlı hale gelir."], ["Faceless video", "Sesli içerik"], "See details", "/tr/tools/runway") ] }),
-          section("DoÄŸru seçimi nasıl yaparsın?", ["İlk soru şu olmalı: bugün kime ne teslim edebilirim? EÄŸer bu net deÄŸilse fikir henüz fazla geniştir.", "İkinci soru da şu: mevcut becerime en yakın model hangisi? Yazı biliyorsan yazı, görsel biliyorsan tasarım tarafından başlamak daha mantıklıdır."]),
-          section("Gerçekçi kullanım senaryoları", ["Bir öÄŸrenci araştırma özeti satabilir, bir freelancer haftalık sosyal medya paketi hazırlayabilir, bir içerik üreticisi blog yazılarını kısa videolara dönüştürebilir.", "Amaç ilk ayda mükemmel marka kurmak deÄŸil, ilk ödeme alan küçük teklifi bulmaktır."], { comparison: { title: "Düşük bariyerli başlangıç", items: [ { label: "En hızlı test", value: "Kısa içerik paketi" }, { label: "En görsel odaklı", value: "Canva AI teslimi" }, { label: "En sistem isteyen", value: "Faceless video" } ] } }),
-          section("Son not", ["Yan gelir için doÄŸru araç, bugün başlayabildiÄŸin küçük teklifi hızlandıran araçtır. Küçük ve net teklif, büyük ama daÄŸınık fikre göre çok daha deÄŸerlidir.", "Kararsızsan ilgili tool detail sayfasını açıp güçlü ve zayıf alanları karşılaştır."], { subSections: [ sub("Sonraki adım", ["Bir yan gelir fikri seç ve ona en yakın aracı açıp detaylara bak."], undefined, "View tool", "/tr/tools") ] })
+          section("Hızlı özet", ["En hızlı test edilen AI yan gelir fikirleri genelde küçük teslimli modellerdir: kısa içerik paketleri, sosyal medya görselleri, araştırma özetleri, voice asset'ler ve faceless video klipleri.", "Bu modeller düşük bariyerlidir çünkü önce küçük teklif çıkarıp talebi test etmeye izin verir."], { bullets: ["Kısa içerik paketi", "Sosyal medya görsel seti", "Araştırma özeti", "Faceless video", "Voice asset", "Template paketi", "Landing page copy", "Ürün açıklaması", "Mini newsletter", "Lead magnet hazırlığı"] }),
+          section("Bu içerik kimler için?", ["Öğrenci, freelancer, küçük işletme sahibi ya da ilk ek gelirini test eden herkes için uygundur.", "Özellikle büyük sistem kurmadan önce küçük bir teklif doğrulamak isteyen kullanıcı için daha anlamlıdır."]),
+          section("En mantıklı araçlar ve stratejiler", ["Metin ve araştırma odaklı fikirlerde [ChatGPT](/tr/tools/chatgpt), [Copy.ai](/tr/tools/copy-ai) ve [Perplexity](/tr/tools/perplexity) mantıklı olabilir. Kısa teslim, araştırma özeti ve satış odaklı metinlerde bu araçlar değer üretir.", "Görsel ve medya odaklı fikirlerde [Canva AI](/tr/tools/canva-ai), [Runway](/tr/tools/runway) ve [ElevenLabs](/tr/tools/elevenlabs) daha iyi oturur."], { subSections: [ sub("Hızlı başlayan fikirler", ["Ürün açıklaması, kısa içerik, araştırma özeti veya basit görsel teslim gibi küçük işlerle başlamak daha sağlıklıdır.", "Çünkü bunlar kısa sürede test edilir ve ilk geri bildirimi hızlı getirir."], ["Hızlı test", "Küçük teklif", "Düşük risk"], "View tool", "/tr/tools/chatgpt"), sub("Daha sistemli modeller", ["Faceless video veya sesli mini ürün gibi taraflar biraz daha sistem ister ama daha ölçeklenebilir olabilir.", "Bu noktada Runway ve ElevenLabs daha anlamlı hale gelir."], ["Faceless video", "Sesli içerik"], "See details", "/tr/tools/runway") ] }),
+          section("Doğru seçimi nasıl yaparsın?", ["İlk soru şu olmalı: bugün kime ne teslim edebilirim? Eğer bu net değilse fikir henüz fazla geniştir.", "İkinci soru da şu: mevcut becerime en yakın model hangisi? Yazı biliyorsan yazı, görsel biliyorsan tasarım tarafından başlamak daha mantıklıdır."]),
+          section("Gerçekçi kullanım senaryoları", ["Bir öğrenci araştırma özeti satabilir, bir freelancer haftalık sosyal medya paketi hazırlayabilir, bir içerik üreticisi blog yazılarını kısa videolara dönüştürebilir.", "Amaç ilk ayda mükemmel marka kurmak değil, ilk ödeme alan küçük teklifi bulmaktır."], { comparison: { title: "Düşük bariyerli başlangıç", items: [ { label: "En hızlı test", value: "Kısa içerik paketi" }, { label: "En görsel odaklı", value: "Canva AI teslimi" }, { label: "En sistem isteyen", value: "Faceless video" } ] } }),
+          section("Son not", ["Yan gelir için doğru araç, bugün başlayabildiğin küçük teklifi hızlandıran araçtır. Küçük ve net teklif, büyük ama dağınık fikre göre çok daha değerlidir.", "Kararsızsan ilgili tool detail sayfasını açıp güçlü ve zayıf alanları karşılaştır."], { subSections: [ sub("Sonraki adım", ["Bir yan gelir fikri seç ve ona en yakın aracı açıp detaylara bak."], undefined, "View tool", "/tr/tools") ] })
         ]
       },
       en: {
@@ -2371,18 +2371,18 @@ const allBlogArticles: BlogEntry[] = [
     locales: {
       tr: {
         title: "Gerçekten para kazandırabilen ücretsiz AI araçları",
-        excerpt: "Ãœcretsiz veya freemium planı gerçekten iş çıkaran AI araçlarının hangi senaryolarda anlamlı olduÄŸunu gösteren rehber.",
-        intro: "Ãœcretsiz AI araçları her zaman oyuncak deÄŸildir. Bazıları ilk müşteri işini test etmeye, küçük teslimler üretmeye ve iş modelini düşük riskle doÄŸrulamaya yardım edebilir. Bu yazı, ücretsiz planların nerede işe yaradıÄŸını ve nerede yetersiz kaldıÄŸını netleştirir.",
-        categoryLabel: "Ãœcretsiz Araçlar",
+        excerpt: "Ücretsiz veya freemium planı gerçekten iş çıkaran AI araçlarının hangi senaryolarda anlamlı olduğunu gösteren rehber.",
+        intro: "Ücretsiz AI araçları her zaman oyuncak değildir. Bazıları ilk müşteri işini test etmeye, küçük teslimler üretmeye ve iş modelini düşük riskle doğrulamaya yardım edebilir. Bu yazı, ücretsiz planların nerede işe yaradığını ve nerede yetersiz kaldığını netleştirir.",
+        categoryLabel: "Ücretsiz Araçlar",
         seoTitle: "Gerçekten para kazandırabilen ücretsiz AI araçları | Deciply",
-        seoDescription: "ChatGPT, Gemini, Perplexity, Canva AI ve Notion AI gibi ücretsiz veya freemium araçların hangi işlerde gerçekten deÄŸer üretebildiÄŸini görün.",
+        seoDescription: "ChatGPT, Gemini, Perplexity, Canva AI ve Notion AI gibi ücretsiz veya freemium araçların hangi işlerde gerçekten değer üretebildiğini görün.",
         sections: [
-          section("Hızlı özet", ["Ãœcretsiz planla para kazanmak mümkündür ama genelde ilk müşteri, ilk test veya düşük hacimli akış seviyesinde anlamlıdır.", "Asıl mantık ücretsiz planı son çözüm deÄŸil, düşük maliyetli doÄŸrulama aracı olarak kullanmaktır."], { comparison: { title: "Düşük bütçeli başlangıç", items: [ { label: "Genel yazı", value: "ChatGPT / Gemini" }, { label: "Araştırma", value: "Perplexity" }, { label: "Görsel", value: "Canva AI" }, { label: "Düzen", value: "Notion AI" } ] } }),
-          section("Bu içerik kimler için?", ["Sıfır bütçeyle başlamak isteyenler, ilk müşteriden önce araç maliyeti yüklenmek istemeyen freelancer'lar ve küçük side hustle akışlarını test edenler için uygundur.", "Hedef büyük ölçek deÄŸil de ilk doÄŸrulamayı almaksa ücretsiz araçlar yeterli olabilir." ]),
-          section("En mantıklı araçlar ve stratejiler", ["[ChatGPT](/tr/tools/chatgpt) ve [Gemini](/tr/tools/gemini) genel yazı, özet ve fikir üretimi için başlangıçta iş görebilir. [Perplexity](/tr/tools/perplexity) araştırma tarafında ücretsiz planda bile güçlü kalabilir.", "[Canva AI](/tr/tools/canva-ai) küçük görsel teslimler için mantıklıdır. [Notion AI](/tr/tools/notion-ai) ise not, süreç ve içerik planı tarafında faydalı olabilir."], { subSections: [ sub("İlk para için uygun işler", ["Kısa blog taslaÄŸı, araştırma özeti, basit sunum taslaÄŸı veya sosyal medya seti gibi küçük teslimler ücretsiz planlarla başlatılabilir.", "Bu aşamada amaç süreci doÄŸrulamak ve ilk geri bildirimi almaktır."], ["Kısa içerik", "Araştırma özeti", "Basit görsel teslim"], "View tool", "/tr/tools/perplexity"), sub("Ne zaman ücretliye geçmek gerekir?", ["Daha yüksek hacim, daha hızlı teslim veya tekrar eden müşteri geldiÄŸinde ücretsiz plan darboÄŸaz olmaya başlar.", "Bu noktada geçiş maliyet deÄŸil kapasite kararıdır."], ["Daha fazla hacim", "Daha az sürtünme"], "Start free", "/tr/tools/chatgpt") ] }),
-          section("DoÄŸru seçimi nasıl yaparsın?", ["Ã–nce küçük bir iş modeli seç ve ücretsiz planla gerçekten teslim üretip üretemediÄŸine bak.", "EÄŸer süreç limit yüzünden sık sık duruyorsa, araç test aşamasını tamamlamış demektir." ]),
-          section("Gerçekçi kullanım senaryoları", ["Bir öÄŸrenci [Gemini](/tr/tools/gemini) ile sunum taslaÄŸı çıkarabilir. Bir freelancer [Perplexity](/tr/tools/perplexity) ile rakip analizi satabilir. [Canva AI](/tr/tools/canva-ai) ile küçük sosyal medya görsel paketleri hazırlanabilir.", "Ãœcretsiz araçlar doÄŸrudan para basmaz; ama ilk küçük teklifi çıkarmayı kolaylaştırır."], { bullets: ["İlk müşteri testi", "Araştırma paketi", "Sosyal medya teslimi", "Sunum taslaÄŸı", "Kısa yazı paketi"] }),
-          section("Son not", ["Ãœcretsiz planlar başlangıç için deÄŸerlidir. Onları kalıcı sistem deÄŸil, doÄŸrulama katmanı gibi görmek daha doÄŸrudur.", "Karar vermek için ilgili tool detail sayfasını açıp kullanım senaryosuna göre deÄŸerlendirmek daha saÄŸlıklıdır."], { subSections: [ sub("Sonraki adım", ["Düşük bütçeyle başlayacaksan önce en yakın ücretsiz aracı açıp detaylara bak."], undefined, "Start free", "/tr/tools") ] })
+          section("Hızlı özet", ["Ücretsiz planla para kazanmak mümkündür ama genelde ilk müşteri, ilk test veya düşük hacimli akış seviyesinde anlamlıdır.", "Asıl mantık ücretsiz planı son çözüm değil, düşük maliyetli doğrulama aracı olarak kullanmaktır."], { comparison: { title: "Düşük bütçeli başlangıç", items: [ { label: "Genel yazı", value: "ChatGPT / Gemini" }, { label: "Araştırma", value: "Perplexity" }, { label: "Görsel", value: "Canva AI" }, { label: "Düzen", value: "Notion AI" } ] } }),
+          section("Bu içerik kimler için?", ["Sıfır bütçeyle başlamak isteyenler, ilk müşteriden önce araç maliyeti yüklenmek istemeyen freelancer'lar ve küçük side hustle akışlarını test edenler için uygundur.", "Hedef büyük ölçek değil de ilk doğrulamayı almaksa ücretsiz araçlar yeterli olabilir." ]),
+          section("En mantıklı araçlar ve stratejiler", ["[ChatGPT](/tr/tools/chatgpt) ve [Gemini](/tr/tools/gemini) genel yazı, özet ve fikir üretimi için başlangıçta iş görebilir. [Perplexity](/tr/tools/perplexity) araştırma tarafında ücretsiz planda bile güçlü kalabilir.", "[Canva AI](/tr/tools/canva-ai) küçük görsel teslimler için mantıklıdır. [Notion AI](/tr/tools/notion-ai) ise not, süreç ve içerik planı tarafında faydalı olabilir."], { subSections: [ sub("İlk para için uygun işler", ["Kısa blog taslağı, araştırma özeti, basit sunum taslağı veya sosyal medya seti gibi küçük teslimler ücretsiz planlarla başlatılabilir.", "Bu aşamada amaç süreci doğrulamak ve ilk geri bildirimi almaktır."], ["Kısa içerik", "Araştırma özeti", "Basit görsel teslim"], "View tool", "/tr/tools/perplexity"), sub("Ne zaman ücretliye geçmek gerekir?", ["Daha yüksek hacim, daha hızlı teslim veya tekrar eden müşteri geldiğinde ücretsiz plan darboğaz olmaya başlar.", "Bu noktada geçiş maliyet değil kapasite kararıdır."], ["Daha fazla hacim", "Daha az sürtünme"], "Start free", "/tr/tools/chatgpt") ] }),
+          section("Doğru seçimi nasıl yaparsın?", ["Önce küçük bir iş modeli seç ve ücretsiz planla gerçekten teslim üretip üretemediğine bak.", "Eğer süreç limit yüzünden sık sık duruyorsa, araç test aşamasını tamamlamış demektir." ]),
+          section("Gerçekçi kullanım senaryoları", ["Bir öğrenci [Gemini](/tr/tools/gemini) ile sunum taslağı çıkarabilir. Bir freelancer [Perplexity](/tr/tools/perplexity) ile rakip analizi satabilir. [Canva AI](/tr/tools/canva-ai) ile küçük sosyal medya görsel paketleri hazırlanabilir.", "Ücretsiz araçlar doğrudan para basmaz; ama ilk küçük teklifi çıkarmayı kolaylaştırır."], { bullets: ["İlk müşteri testi", "Araştırma paketi", "Sosyal medya teslimi", "Sunum taslağı", "Kısa yazı paketi"] }),
+          section("Son not", ["Ücretsiz planlar başlangıç için değerlidir. Onları kalıcı sistem değil, doğrulama katmanı gibi görmek daha doğrudur.", "Karar vermek için ilgili tool detail sayfasını açıp kullanım senaryosuna göre değerlendirmek daha sağlıklıdır."], { subSections: [ sub("Sonraki adım", ["Düşük bütçeyle başlayacaksan önce en yakın ücretsiz aracı açıp detaylara bak."], undefined, "Start free", "/tr/tools") ] })
         ]
       },
       en: {
@@ -2411,18 +2411,18 @@ const allBlogArticles: BlogEntry[] = [
     locales: {
       tr: {
         title: "2026'da yeni başlayanlar için en mantıklı AI araçları",
-        excerpt: "AI'a yeni başlayan kullanıcı için hangi araçların daha anlaşılır, daha rahat ve daha hızlı ilk sonuç verdiÄŸini gösteren rehber.",
-        intro: "Yeni başlayan biri için asıl sorun zayıf araç deÄŸil, fazla seçenek ve yönsüz denemedir. Bu rehber, hangi aracın hangi ilk kullanım alanında daha mantıklı olduÄŸunu ve yeni başlayan kullanıcı için hangi sırayla keşfedilmesi gerektiÄŸini sade biçimde anlatır.",
+        excerpt: "AI'a yeni başlayan kullanıcı için hangi araçların daha anlaşılır, daha rahat ve daha hızlı ilk sonuç verdiğini gösteren rehber.",
+        intro: "Yeni başlayan biri için asıl sorun zayıf araç değil, fazla seçenek ve yönsüz denemedir. Bu rehber, hangi aracın hangi ilk kullanım alanında daha mantıklı olduğunu ve yeni başlayan kullanıcı için hangi sırayla keşfedilmesi gerektiğini sade biçimde anlatır.",
         categoryLabel: "Rehberler",
         seoTitle: "2026'da yeni başlayanlar için en mantıklı AI araçları | Deciply",
-        seoDescription: "ChatGPT, Gemini, Canva AI, Notion AI ve Perplexity'nin yeni başlayan kullanıcı için hangi senaryolarda daha mantıklı olduÄŸunu görün.",
+        seoDescription: "ChatGPT, Gemini, Canva AI, Notion AI ve Perplexity'nin yeni başlayan kullanıcı için hangi senaryolarda daha mantıklı olduğunu görün.",
         sections: [
-          section("Hızlı özet", ["Yeni başlayan kullanıcı için en mantıklı araçlar düşük sürtünmeli, hızlı ilk sonuç veren ve öÄŸrenme bariyeri düşük araçlardır. Bu yüzden [ChatGPT](/tr/tools/chatgpt) ve [Gemini](/tr/tools/gemini) çoÄŸu kullanıcı için ilk durak olur.", "Araştırma için [Perplexity](/tr/tools/perplexity), görsel başlangıç için [Canva AI](/tr/tools/canva-ai), düzen ve not akışı için [Notion AI](/tr/tools/notion-ai) daha anlamlı ikinci araçlar olabilir."], { comparison: { title: "Başlangıç haritası", items: [ { label: "Genel kullanım", value: "ChatGPT / Gemini" }, { label: "Araştırma", value: "Perplexity" }, { label: "Görsel", value: "Canva AI" }, { label: "Düzen", value: "Notion AI" } ] } }),
-          section("Bu içerik kimler için?", ["Ã–ÄŸrenciler, freelancer'lar, küçük işletme sahipleri ve günlük işini AI ile rahatlatmak isteyen herkes için uygundur.", "Ã–zellikle ilk haftada net fayda görmek isteyen kullanıcıya hitap eder."], { bullets: ["İlk AI aracını seçenler", "Düşük sürtünmeyle başlamak isteyenler", "İlk hızlı sonucu görmek isteyenler"] }),
-          section("En mantıklı araçlar ve stratejiler", ["İlk araç olarak genelde genel amaçlı bir araç seçmek daha iyidir. Ã‡ünkü hızlı soru-cevap, özet ve taslak üretimi yeni başlayan kullanıcıya doÄŸrudan deÄŸer gösterir.", "İkinci araç ise ihtiyaç çıktıÄŸında eklenmelidir. Araştırma aÄŸırlıklıysa Perplexity, görsel taraf baskınsa Canva AI, not ve süreç karmaşıksa Notion AI daha mantıklı hale gelir."], { subSections: [ sub("En rahat başlangıç", ["İlk hafta için en doÄŸru kriter, aracın hızla işe yarayıp yaramadıÄŸıdır.", "Bu yüzden çoÄŸu kullanıcı için ChatGPT veya Gemini ile başlamak daha saÄŸlıklıdır."], ["Hızlı özet", "İlk taslak", "Soru-cevap"], "Start free", "/tr/tools/chatgpt"), sub("İkinci araç ne zaman eklenmeli?", ["Genel araç artık yetmiyorsa ikinci araç eklenmelidir. Ã‡ok erken çok uygulama eklemek kararı zorlaştırır.", "İhtiyaç netleşmeden stack büyütmek çoÄŸu zaman gereksizdir."], ["Ã–nce genel araç", "Sonra ihtiyaç bazlı ekleme"], "View tool", "/tr/tools/perplexity") ] }),
-          section("DoÄŸru seçimi nasıl yaparsın?", ["Ã–nce ne yapmak istediÄŸini tanımla: yazı mı, araştırma mı, görsel mi, yoksa düzen mi? Sonra bu işi en hızlı çözecek aracı seç.", "İkinci filtre de öÄŸrenme hissidir. Araç seni gereÄŸinden fazla ayar ve karmaşıklıkla uÄŸraştırıyorsa ilk seçim için doÄŸru olmayabilir." ]),
-          section("Gerçekçi kullanım senaryoları", ["Ã–ÄŸrenci not özeti çıkarabilir, freelancer teklif taslaÄŸı hazırlayabilir, küçük işletme sahibi ürün açıklamasını netleştirebilir, içerik üreticisi haftalık fikir listesi çıkarabilir.", "Yeni başlayan kullanıcı için amaç uzmanlaşmak deÄŸil, ilk net faydayı düzenli görmek olmalıdır."], { bullets: ["Ders özeti", "Teklif taslaÄŸı", "Ãœrün açıklaması", "Fikir listesi", "Sunum taslaÄŸı"] }),
-          section("Son not", ["Yeni başlayan için doÄŸru araç, ilk haftada güven veren küçük kazanımlar üreten araçtır.", "Kararsızsan ilgili tool detail sayfasını açıp güçlü ve zayıf yanları okumak daha saÄŸlıklı bir başlangıç saÄŸlar."], { subSections: [ sub("Sonraki adım", ["İlk kullanım alanını seç, sonra o alana en yakın aracı incele."], undefined, "See details", "/tr/tools") ] })
+          section("Hızlı özet", ["Yeni başlayan kullanıcı için en mantıklı araçlar düşük sürtünmeli, hızlı ilk sonuç veren ve öğrenme bariyeri düşük araçlardır. Bu yüzden [ChatGPT](/tr/tools/chatgpt) ve [Gemini](/tr/tools/gemini) çoğu kullanıcı için ilk durak olur.", "Araştırma için [Perplexity](/tr/tools/perplexity), görsel başlangıç için [Canva AI](/tr/tools/canva-ai), düzen ve not akışı için [Notion AI](/tr/tools/notion-ai) daha anlamlı ikinci araçlar olabilir."], { comparison: { title: "Başlangıç haritası", items: [ { label: "Genel kullanım", value: "ChatGPT / Gemini" }, { label: "Araştırma", value: "Perplexity" }, { label: "Görsel", value: "Canva AI" }, { label: "Düzen", value: "Notion AI" } ] } }),
+          section("Bu içerik kimler için?", ["Öğrenciler, freelancer'lar, küçük işletme sahipleri ve günlük işini AI ile rahatlatmak isteyen herkes için uygundur.", "Özellikle ilk haftada net fayda görmek isteyen kullanıcıya hitap eder."], { bullets: ["İlk AI aracını seçenler", "Düşük sürtünmeyle başlamak isteyenler", "İlk hızlı sonucu görmek isteyenler"] }),
+          section("En mantıklı araçlar ve stratejiler", ["İlk araç olarak genelde genel amaçlı bir araç seçmek daha iyidir. Çünkü hızlı soru-cevap, özet ve taslak üretimi yeni başlayan kullanıcıya doğrudan değer gösterir.", "İkinci araç ise ihtiyaç çıktığında eklenmelidir. Araştırma ağırlıklıysa Perplexity, görsel taraf baskınsa Canva AI, not ve süreç karmaşıksa Notion AI daha mantıklı hale gelir."], { subSections: [ sub("En rahat başlangıç", ["İlk hafta için en doğru kriter, aracın hızla işe yarayıp yaramadığıdır.", "Bu yüzden çoğu kullanıcı için ChatGPT veya Gemini ile başlamak daha sağlıklıdır."], ["Hızlı özet", "İlk taslak", "Soru-cevap"], "Start free", "/tr/tools/chatgpt"), sub("İkinci araç ne zaman eklenmeli?", ["Genel araç artık yetmiyorsa ikinci araç eklenmelidir. Çok erken çok uygulama eklemek kararı zorlaştırır.", "İhtiyaç netleşmeden stack büyütmek çoğu zaman gereksizdir."], ["Önce genel araç", "Sonra ihtiyaç bazlı ekleme"], "View tool", "/tr/tools/perplexity") ] }),
+          section("Doğru seçimi nasıl yaparsın?", ["Önce ne yapmak istediğini tanımla: yazı mı, araştırma mı, görsel mi, yoksa düzen mi? Sonra bu işi en hızlı çözecek aracı seç.", "İkinci filtre de öğrenme hissidir. Araç seni gereğinden fazla ayar ve karmaşıklıkla uğraştırıyorsa ilk seçim için doğru olmayabilir." ]),
+          section("Gerçekçi kullanım senaryoları", ["Öğrenci not özeti çıkarabilir, freelancer teklif taslağı hazırlayabilir, küçük işletme sahibi ürün açıklamasını netleştirebilir, içerik üreticisi haftalık fikir listesi çıkarabilir.", "Yeni başlayan kullanıcı için amaç uzmanlaşmak değil, ilk net faydayı düzenli görmek olmalıdır."], { bullets: ["Ders özeti", "Teklif taslağı", "Ürün açıklaması", "Fikir listesi", "Sunum taslağı"] }),
+          section("Son not", ["Yeni başlayan için doğru araç, ilk haftada güven veren küçük kazanımlar üreten araçtır.", "Kararsızsan ilgili tool detail sayfasını açıp güçlü ve zayıf yanları okumak daha sağlıklı bir başlangıç sağlar."], { subSections: [ sub("Sonraki adım", ["İlk kullanım alanını seç, sonra o alana en yakın aracı incele."], undefined, "See details", "/tr/tools") ] })
         ]
       },
       en: {
@@ -2451,18 +2451,18 @@ const allBlogArticles: BlogEntry[] = [
     locales: {
       tr: {
         title: "AI araçlarıyla ayda 1000 dolar kazanmak için pratik çerçeve",
-        excerpt: "Ayda 1000 dolar seviyesine AI araçlarıyla daha gerçekçi şekilde yaklaşmak için hangi hizmetlerin ve araçların daha mantıklı olduÄŸunu anlatan rehber.",
-        intro: "Ayda 1000 dolar hedefi çoÄŸu kullanıcı için motive edici ama ulaşılabilir bir eşiktir. Bu hedefe araç toplayarak deÄŸil, küçük ama tekrar edilebilir bir gelir sistemi kurarak yaklaşılır. Bu yazı, hangi AI araçlarının bu tür bir akışta daha mantıklı olduÄŸunu gösterir.",
+        excerpt: "Ayda 1000 dolar seviyesine AI araçlarıyla daha gerçekçi şekilde yaklaşmak için hangi hizmetlerin ve araçların daha mantıklı olduğunu anlatan rehber.",
+        intro: "Ayda 1000 dolar hedefi çoğu kullanıcı için motive edici ama ulaşılabilir bir eşiktir. Bu hedefe araç toplayarak değil, küçük ama tekrar edilebilir bir gelir sistemi kurarak yaklaşılır. Bu yazı, hangi AI araçlarının bu tür bir akışta daha mantıklı olduğunu gösterir.",
         categoryLabel: "AI ile Para Kazanma",
         seoTitle: "AI araçlarıyla ayda 1000 dolar kazanma | Deciply",
         seoDescription: "ChatGPT, Claude, Perplexity, Canva AI, ElevenLabs ve Runway ile ayda 1000 dolar hedefine yaklaşmak için pratik gelir modellerini inceleyin.",
         sections: [
           section("Hızlı özet", ["Ayda 1000 dolar için en mantıklı yol, küçük ama tekrarlanabilir müşteri paketi veya içerik sistemi kurmaktır.", "Araçların görevi teslim süresini azaltmak, düzeni artırmak ve aynı işi daha karlı hale getirmektir."], { comparison: { title: "1000 dolar çerçevesi", items: [ { label: "Yazı ve copy", value: "ChatGPT / Claude" }, { label: "Araştırma", value: "Perplexity" }, { label: "Görsel destek", value: "Canva AI" }, { label: "Ses ve video", value: "ElevenLabs / Runway" } ] } }),
-          section("Bu içerik kimler için?", ["Freelancer'lar, küçük operatörler, içerik üreticileri ve side hustle'ı daha düzenli gelire çevirmek isteyenler için uygundur.", "Ã–zellikle büyük vaat yerine küçük ama sürdürülebilir sistem kurmak isteyen kullanıcıya hitap eder."], { bullets: ["Freelance içerik üreticileri", "Küçük ajans mantıÄŸıyla çalışanlar", "Dijital ürün ve affiliate modeli kuranlar"] }),
-          section("En mantıklı araçlar ve stratejiler", ["[ChatGPT](/tr/tools/chatgpt) ve [Claude](/tr/tools/claude) içerik, teklif, e-posta ve yapılandırılmış müşteri teslimlerinde öne çıkar. [Perplexity](/tr/tools/perplexity) araştırma tarafında güvenilirlik ekler. [Canva AI](/tr/tools/canva-ai) aynı müşteriye görsel veya sunum teslimi eklemeyi kolaylaştırır.", "[ElevenLabs](/tr/tools/elevenlabs) ve [Runway](/tr/tools/runway) genelde ikinci aşama araçlarıdır; ilk teklif satıldıktan sonra ek deÄŸer üretir."], { subSections: [ sub("En mantıklı ilk gelir modeli", ["Aylık blog paketi, blog + e-posta seti veya sosyal medya + görsel teslimi gibi küçük ama düzenli paketler 1000 dolar hedefine daha hızlı yaklaştırabilir.", "Bu nedenle önce tekrar eden müşteri paketi kurmak genelde daha saÄŸlıklıdır."], ["Aylık içerik paketi", "Blog + e-posta", "Sosyal + görsel"], "View tool", "/tr/tools/claude"), sub("İkinci aşama büyüme", ["Temel gelir oturunca affiliate içerik, dijital ürün, sesli mini ürün veya video repurpose akışı eklenebilir.", "Bu noktada Perplexity, ElevenLabs ve Runway daha anlamlı hale gelir."], ["Affiliate içerik", "Sesli mini ürün", "Repurpose video"], "See details", "/tr/tools/perplexity") ] }),
-          section("DoÄŸru seçimi nasıl yaparsın?", ["Hedefi küçük parçalara böl: kaç müşteri, kaç paket veya kaç ürün satışı seni 1000 dolara yaklaştırır? Sonra o akışı en çok hızlandıran aracı seç.", "İkinci kriter de teslim kaldıraç etkisidir. İlham veren deÄŸil, işi hızlandıran araç daha deÄŸerlidir." ]),
-          section("Gerçekçi kullanım senaryoları", ["Dört adet 250 dolarlık aylık içerik paketi, beş adet 200 dolarlık araştırma + sunum paketi veya küçük müşteri işleriyle birleşen affiliate içerik sistemi bu hedefi gerçekçi kılar.", "Büyüme daha fazla araçla deÄŸil, daha tutarlı teklif ve daha kısa teslim süresiyle gelir."], { bullets: ["Aylık blog paketi", "Araştırma + sunum teslimi", "Sosyal medya + görsel paket", "Affiliate içerik sistemi"] }),
-          section("Son not", ["1000 dolar hedefi için doÄŸru araç, tekrar edilen işi hızlandıran araçtır. Küçük ama istikrarlı gelir akışları burada büyük vaatlerden daha deÄŸerlidir.", "Kararsızsan ilgili tool detail sayfasını açıp güçlü ve zayıf yanlara bakarak ilerle."], { subSections: [ sub("Sonraki adım", ["Ã–nce gelir modelini seç, sonra o modeli hızlandıran aracı detaylı incele."], undefined, "View tool", "/tr/tools") ] })
+          section("Bu içerik kimler için?", ["Freelancer'lar, küçük operatörler, içerik üreticileri ve side hustle'ı daha düzenli gelire çevirmek isteyenler için uygundur.", "Özellikle büyük vaat yerine küçük ama sürdürülebilir sistem kurmak isteyen kullanıcıya hitap eder."], { bullets: ["Freelance içerik üreticileri", "Küçük ajans mantığıyla çalışanlar", "Dijital ürün ve affiliate modeli kuranlar"] }),
+          section("En mantıklı araçlar ve stratejiler", ["[ChatGPT](/tr/tools/chatgpt) ve [Claude](/tr/tools/claude) içerik, teklif, e-posta ve yapılandırılmış müşteri teslimlerinde öne çıkar. [Perplexity](/tr/tools/perplexity) araştırma tarafında güvenilirlik ekler. [Canva AI](/tr/tools/canva-ai) aynı müşteriye görsel veya sunum teslimi eklemeyi kolaylaştırır.", "[ElevenLabs](/tr/tools/elevenlabs) ve [Runway](/tr/tools/runway) genelde ikinci aşama araçlarıdır; ilk teklif satıldıktan sonra ek değer üretir."], { subSections: [ sub("En mantıklı ilk gelir modeli", ["Aylık blog paketi, blog + e-posta seti veya sosyal medya + görsel teslimi gibi küçük ama düzenli paketler 1000 dolar hedefine daha hızlı yaklaştırabilir.", "Bu nedenle önce tekrar eden müşteri paketi kurmak genelde daha sağlıklıdır."], ["Aylık içerik paketi", "Blog + e-posta", "Sosyal + görsel"], "View tool", "/tr/tools/claude"), sub("İkinci aşama büyüme", ["Temel gelir oturunca affiliate içerik, dijital ürün, sesli mini ürün veya video repurpose akışı eklenebilir.", "Bu noktada Perplexity, ElevenLabs ve Runway daha anlamlı hale gelir."], ["Affiliate içerik", "Sesli mini ürün", "Repurpose video"], "See details", "/tr/tools/perplexity") ] }),
+          section("Doğru seçimi nasıl yaparsın?", ["Hedefi küçük parçalara böl: kaç müşteri, kaç paket veya kaç ürün satışı seni 1000 dolara yaklaştırır? Sonra o akışı en çok hızlandıran aracı seç.", "İkinci kriter de teslim kaldıraç etkisidir. İlham veren değil, işi hızlandıran araç daha değerlidir." ]),
+          section("Gerçekçi kullanım senaryoları", ["Dört adet 250 dolarlık aylık içerik paketi, beş adet 200 dolarlık araştırma + sunum paketi veya küçük müşteri işleriyle birleşen affiliate içerik sistemi bu hedefi gerçekçi kılar.", "Büyüme daha fazla araçla değil, daha tutarlı teklif ve daha kısa teslim süresiyle gelir."], { bullets: ["Aylık blog paketi", "Araştırma + sunum teslimi", "Sosyal medya + görsel paket", "Affiliate içerik sistemi"] }),
+          section("Son not", ["1000 dolar hedefi için doğru araç, tekrar edilen işi hızlandıran araçtır. Küçük ama istikrarlı gelir akışları burada büyük vaatlerden daha değerlidir.", "Kararsızsan ilgili tool detail sayfasını açıp güçlü ve zayıf yanlara bakarak ilerle."], { subSections: [ sub("Sonraki adım", ["Önce gelir modelini seç, sonra o modeli hızlandıran aracı detaylı incele."], undefined, "View tool", "/tr/tools") ] })
         ]
       },
       en: {
@@ -2492,18 +2492,18 @@ const allBlogArticles: BlogEntry[] = [
     locales: {
       tr: {
         title: "Freelancer'lar için AI araçları",
-        excerpt: "Freelancer olarak daha hızlı teslim vermek, daha düzenli çalışmak ve daha karlı paketler hazırlamak için hangi AI araçlarının mantıklı olduÄŸunu gösteren rehber.",
-        intro: "Freelancer için zaman doÄŸrudan marjdır. Aynı işi daha kısa sürede teslim etmek çoÄŸu zaman doÄŸru araç seçimiyle ilgilidir. Bu rehberde [ChatGPT](/tr/tools/chatgpt), [Claude](/tr/tools/claude), [Perplexity](/tr/tools/perplexity), [Canva AI](/tr/tools/canva-ai), [Runway](/tr/tools/runway) ve [Notion AI](/tr/tools/notion-ai) gibi araçların freelance iş akışındaki yerini inceliyoruz.",
+        excerpt: "Freelancer olarak daha hızlı teslim vermek, daha düzenli çalışmak ve daha karlı paketler hazırlamak için hangi AI araçlarının mantıklı olduğunu gösteren rehber.",
+        intro: "Freelancer için zaman doğrudan marjdır. Aynı işi daha kısa sürede teslim etmek çoğu zaman doğru araç seçimiyle ilgilidir. Bu rehberde [ChatGPT](/tr/tools/chatgpt), [Claude](/tr/tools/claude), [Perplexity](/tr/tools/perplexity), [Canva AI](/tr/tools/canva-ai), [Runway](/tr/tools/runway) ve [Notion AI](/tr/tools/notion-ai) gibi araçların freelance iş akışındaki yerini inceliyoruz.",
         categoryLabel: "Rehberler",
         seoTitle: "Freelancer'lar için AI araçları | Deciply",
         seoDescription: "Freelancer'lar için en mantıklı AI araçlarını yazı, araştırma, tasarım, video ve müşteri teslimi açısından inceleyin.",
         sections: [
-          section("Hızlı özet", ["Freelancer için en mantıklı araç, en popüler olan deÄŸil; teslim süresini düşüren ve teklif deÄŸerini yükselten araçtır.", "Bilgi tabanlı işlerde [ChatGPT](/tr/tools/chatgpt) ve [Claude](/tr/tools/claude), araştırma yoÄŸun işlerde [Perplexity](/tr/tools/perplexity), hızlı görsel teslimde [Canva AI](/tr/tools/canva-ai) ve kısa videoda [Runway](/tr/tools/runway) daha mantıklı hale gelebilir."], { comparison: { title: "Freelance kullanım haritası", items: [ { label: "Yazı ve taslak", value: "ChatGPT / Claude" }, { label: "Araştırma", value: "Perplexity" }, { label: "Görsel teslim", value: "Canva AI" }, { label: "Video", value: "Runway" } ] } }),
-          section("Bu içerik kimler için?", ["İçerik yazarı, danışman, sosyal medya yöneticisi, solo ajans sahibi veya küçük müşteri işleri alan herkes için uygundur.", "Ã–zellikle daha düzenli çalışmak isteyen ama araç kalabalıÄŸında boÄŸulmak istemeyen kullanıcıya hitap eder."], { bullets: ["İçerik freelancer'ları", "Danışmanlar", "Sosyal medya yöneticileri", "Solo operatörler"] }),
-          section("En mantıklı araçlar ve stratejiler", ["Metin ve içerik teslim ediyorsan ilk durak genelde [ChatGPT](/tr/tools/chatgpt) veya [Claude](/tr/tools/claude) olur.", "Müşteri öncesi araştırma ve rakip analizi gerekiyorsa [Perplexity](/tr/tools/perplexity) ciddi zaman kazandırabilir. Sosyal medya veya sunum teslimi yapıyorsan [Canva AI](/tr/tools/canva-ai) daha pratik olabilir."], { subSections: [ sub("Yazı ve araştırma odaklı işler", ["Blog, landing page, e-posta veya araştırma özeti satıyorsan yazı ve kaynak odaklı araçlara öncelik vermek daha saÄŸlıklıdır.", "Bu senaryoda önce [ChatGPT](/tr/tools/chatgpt) veya [Claude](/tr/tools/claude), sonra gerekirse [Perplexity](/tr/tools/perplexity) eklemek çoÄŸu kullanıcı için yeterlidir."], ["Blog yazısı", "E-posta seti", "Araştırma özeti"], "Yazı araçlarını gör", "/tr/categories/ai-tools"), sub("Tasarım ve içerik paketi", ["Sosyal medya görseli, sunum veya kısa video satıyorsan [Canva AI](/tr/tools/canva-ai) ve [Runway](/tr/tools/runway) daha yüksek kaldıraç saÄŸlar.", "Bu araçlar özellikle teslim hızının teklif dönüşümünü etkilediÄŸi işlerde deÄŸerlidir."], ["Sosyal medya paketi", "Sunum teslimi", "Kısa video"], "İlgili araçları aç", "/tr/tools") ] }),
-          section("DoÄŸru seçimi nasıl yaparsın?", ["Ã–nce ne sattıÄŸını netleştir: yazı mı, araştırma mı, görsel mi, video mu? Sonra bu çıktıyı en hızlı ve en tutarlı üretecek aracı seç.", "Popüler görünen aracı almak yerine teklif modeline göre karar vermek daha mantıklıdır." ]),
+          section("Hızlı özet", ["Freelancer için en mantıklı araç, en popüler olan değil; teslim süresini düşüren ve teklif değerini yükselten araçtır.", "Bilgi tabanlı işlerde [ChatGPT](/tr/tools/chatgpt) ve [Claude](/tr/tools/claude), araştırma yoğun işlerde [Perplexity](/tr/tools/perplexity), hızlı görsel teslimde [Canva AI](/tr/tools/canva-ai) ve kısa videoda [Runway](/tr/tools/runway) daha mantıklı hale gelebilir."], { comparison: { title: "Freelance kullanım haritası", items: [ { label: "Yazı ve taslak", value: "ChatGPT / Claude" }, { label: "Araştırma", value: "Perplexity" }, { label: "Görsel teslim", value: "Canva AI" }, { label: "Video", value: "Runway" } ] } }),
+          section("Bu içerik kimler için?", ["İçerik yazarı, danışman, sosyal medya yöneticisi, solo ajans sahibi veya küçük müşteri işleri alan herkes için uygundur.", "Özellikle daha düzenli çalışmak isteyen ama araç kalabalığında boğulmak istemeyen kullanıcıya hitap eder."], { bullets: ["İçerik freelancer'ları", "Danışmanlar", "Sosyal medya yöneticileri", "Solo operatörler"] }),
+          section("En mantıklı araçlar ve stratejiler", ["Metin ve içerik teslim ediyorsan ilk durak genelde [ChatGPT](/tr/tools/chatgpt) veya [Claude](/tr/tools/claude) olur.", "Müşteri öncesi araştırma ve rakip analizi gerekiyorsa [Perplexity](/tr/tools/perplexity) ciddi zaman kazandırabilir. Sosyal medya veya sunum teslimi yapıyorsan [Canva AI](/tr/tools/canva-ai) daha pratik olabilir."], { subSections: [ sub("Yazı ve araştırma odaklı işler", ["Blog, landing page, e-posta veya araştırma özeti satıyorsan yazı ve kaynak odaklı araçlara öncelik vermek daha sağlıklıdır.", "Bu senaryoda önce [ChatGPT](/tr/tools/chatgpt) veya [Claude](/tr/tools/claude), sonra gerekirse [Perplexity](/tr/tools/perplexity) eklemek çoğu kullanıcı için yeterlidir."], ["Blog yazısı", "E-posta seti", "Araştırma özeti"], "Yazı araçlarını gör", "/tr/categories/ai-tools"), sub("Tasarım ve içerik paketi", ["Sosyal medya görseli, sunum veya kısa video satıyorsan [Canva AI](/tr/tools/canva-ai) ve [Runway](/tr/tools/runway) daha yüksek kaldıraç sağlar.", "Bu araçlar özellikle teslim hızının teklif dönüşümünü etkilediği işlerde değerlidir."], ["Sosyal medya paketi", "Sunum teslimi", "Kısa video"], "İlgili araçları aç", "/tr/tools") ] }),
+          section("Doğru seçimi nasıl yaparsın?", ["Önce ne sattığını netleştir: yazı mı, araştırma mı, görsel mi, video mu? Sonra bu çıktıyı en hızlı ve en tutarlı üretecek aracı seç.", "Popüler görünen aracı almak yerine teklif modeline göre karar vermek daha mantıklıdır." ]),
           section("Gerçekçi kullanım senaryoları", ["Bir freelancer haftalık blog yazılarını [Claude](/tr/tools/claude) ile daha hızlı taslaklayabilir. Başka biri [Perplexity](/tr/tools/perplexity) ile rakip analizi sunabilir. Bir sosyal medya yöneticisi [Canva AI](/tr/tools/canva-ai) ile aynı müşteriye ekstra teslim ekleyebilir.", "Ayrıca [2026'da internetten para kazandıran AI araçları](/tr/blog/ai-tools-to-make-money-2026) rehberi bu modeli gelir açısından tamamlar."], { bullets: ["Blog + e-posta paketi", "Rakip analizi", "Sosyal medya kreatifi", "Kısa video repurpose"] }),
-          section("Son not", ["Freelancer için doÄŸru araç seti küçük ama etkili olandır.", "Benzer şekilde [2026'da yeni başlayanlar için en mantıklı AI araçları](/tr/blog/best-ai-tools-for-beginners-2026) ve [ChatGPT vs Claude vs Gemini karşılaştırma (2026)](/tr/blog/chatgpt-vs-claude-vs-gemini) yazıları da seçim sürecini hızlandırabilir."], { subSections: [ sub("Sonraki adım", ["Ã–nce hangi hizmeti satacaÄŸına karar ver, sonra o hizmeti hızlandıran araç sayfasını aç."], undefined, "See details", "/tr/tools") ] })
+          section("Son not", ["Freelancer için doğru araç seti küçük ama etkili olandır.", "Benzer şekilde [2026'da yeni başlayanlar için en mantıklı AI araçları](/tr/blog/best-ai-tools-for-beginners-2026) ve [ChatGPT vs Claude vs Gemini karşılaştırma (2026)](/tr/blog/chatgpt-vs-claude-vs-gemini) yazıları da seçim sürecini hızlandırabilir."], { subSections: [ sub("Sonraki adım", ["Önce hangi hizmeti satacağına karar ver, sonra o hizmeti hızlandıran araç sayfasını aç."], undefined, "See details", "/tr/tools") ] })
         ]
       },
       en: {
@@ -2533,18 +2533,18 @@ const allBlogArticles: BlogEntry[] = [
     locales: {
       tr: {
         title: "2026 en iyi ücretsiz AI araçları",
-        excerpt: "Ãœcretsiz veya freemium planıyla gerçekten işe yarayan AI araçlarını, hangi kullanım senaryosunda mantıklı olduklarıyla birlikte gösteren rehber.",
-        intro: "Ãœcretsiz AI araçları çok tıklanır ama çoÄŸu listede gerçek kullanım deÄŸeri anlatılmaz. Bu rehberin amacı hype üretmek deÄŸil; [ChatGPT](/tr/tools/chatgpt), [Gemini](/tr/tools/gemini), [Perplexity](/tr/tools/perplexity), [Canva AI](/tr/tools/canva-ai), [Notion AI](/tr/tools/notion-ai) ve [ElevenLabs](/tr/tools/elevenlabs) gibi araçların ücretsiz kullanımda nerede işe yaradıÄŸını net biçimde göstermektir.",
-        categoryLabel: "Ãœcretsiz Araçlar",
+        excerpt: "Ücretsiz veya freemium planıyla gerçekten işe yarayan AI araçlarını, hangi kullanım senaryosunda mantıklı olduklarıyla birlikte gösteren rehber.",
+        intro: "Ücretsiz AI araçları çok tıklanır ama çoğu listede gerçek kullanım değeri anlatılmaz. Bu rehberin amacı hype üretmek değil; [ChatGPT](/tr/tools/chatgpt), [Gemini](/tr/tools/gemini), [Perplexity](/tr/tools/perplexity), [Canva AI](/tr/tools/canva-ai), [Notion AI](/tr/tools/notion-ai) ve [ElevenLabs](/tr/tools/elevenlabs) gibi araçların ücretsiz kullanımda nerede işe yaradığını net biçimde göstermektir.",
+        categoryLabel: "Ücretsiz Araçlar",
         seoTitle: "2026 en iyi ücretsiz AI araçları | Deciply",
         seoDescription: "Gerçekten işe yarayan ücretsiz AI araçlarını yazı, araştırma, görsel ve verimlilik senaryolarına göre inceleyin.",
         sections: [
-          section("Hızlı özet", ["Ãœcretsiz planlar kusursuz deÄŸildir; ama ilk iş akışını kurmak, küçük denemeler yapmak ve hangi aracın sana uyduÄŸunu görmek için çok deÄŸerlidir.", "Genel kullanım için [ChatGPT](/tr/tools/chatgpt) veya [Gemini](/tr/tools/gemini), araştırma için [Perplexity](/tr/tools/perplexity), görsel teslim için [Canva AI](/tr/tools/canva-ai), not ve düzen için [Notion AI](/tr/tools/notion-ai) başlangıç için mantıklı olabilir."], { comparison: { title: "Ãœcretsiz kullanım haritası", items: [ { label: "Genel kullanım", value: "ChatGPT / Gemini" }, { label: "Araştırma", value: "Perplexity" }, { label: "Görsel", value: "Canva AI" }, { label: "Düzen", value: "Notion AI" } ] } }),
-          section("Bu içerik kimler için?", ["Düşük bütçeyle başlamak isteyen öÄŸrenciler, freelancer'lar, içerik üreticileri ve küçük işletme sahipleri için uygundur.", "Ã–zellikle araç test etmek isteyen ama daha başta ücretli plana geçmek istemeyen kullanıcılar için faydalıdır."], { bullets: ["Bütçesini korumak isteyenler", "İlk iş akışını test edenler", "Freemium araç arayanlar"] }),
-          section("En mantıklı ücretsiz araçlar ve stratejiler", ["[ChatGPT](/tr/tools/chatgpt) ve [Gemini](/tr/tools/gemini) hızlı soru-cevap, özet ve taslak tarafında güçlü bir başlangıç sunar. [Perplexity](/tr/tools/perplexity) kaynak odaklı araştırma gerektiÄŸinde daha anlamlı hale gelir.", "Görsel teslim veya sunum gerektiÄŸinde [Canva AI](/tr/tools/canva-ai) çoÄŸu kullanıcı için daha pratik olabilir. Ã‡alışma düzeni kurmak isteyenler için ise [Notion AI](/tr/tools/notion-ai) sade bir destek katmanı olabilir."], { subSections: [ sub("İlk ücretsiz iş akışı", ["Başlangıç için en mantıklı yöntem tek araca yüklenmek deÄŸil, küçük bir görev seçip ücretsiz planın buna yetip yetmediÄŸini görmektir.", "Ã–rneÄŸin blog taslaÄŸı, araştırma özeti veya sunum taslaÄŸı gibi küçük teslimler ücretsiz planlarla rahatça test edilebilir."], ["Blog taslaÄŸı", "Araştırma özeti", "Sunum taslaÄŸı"], "Ãœcretsiz araçları gör", "/tr/categories/free-tools"), sub("Ne zaman ücretliye geçmek gerekir?", ["EÄŸer ücretsiz plan gerçekten işe yarıyor ama limit yüzünden akış duruyorsa, ücretli plan daha mantıklı hale gelir.", "Araç henüz ücretsiz kullanımda bile zayıf geliyorsa sorun planda deÄŸil, araç uyumundadır."], ["Gerçek görevle test", "Limit gelirse yükselt", "Uyum zayıfsa deÄŸiştir"], "Detayları gör", "/tr/tools") ] }),
-          section("DoÄŸru seçimi nasıl yaparsın?", ["Ãœcretsiz planda karar verirken üç şeye bak: ilk çıktı hızı, kullanım kolaylıÄŸı ve tekrar eden görevlerde sürtünme seviyesi.", "Ayrıca [2026'da internetten para kazandıran AI araçları](/tr/blog/ai-tools-to-make-money-2026) ve [Freelancer'lar için AI araçları](/tr/blog/ai-tools-for-freelancers) yazıları ücretsiz planların gerçek iş akışındaki yerini daha net gösterir." ]),
-          section("Gerçekçi kullanım senaryoları", ["Bir öÄŸrenci [Gemini](/tr/tools/gemini) ile ders özeti çıkarabilir. Bir freelancer [Perplexity](/tr/tools/perplexity) ile ilk rakip analizini hazırlayabilir. Bir içerik üreticisi [Canva AI](/tr/tools/canva-ai) ile basit görseller oluşturabilir.", "Ãœcretsiz araçlar doÄŸrudan para üretmez; ama ilk küçük çıktıyı düşük riskle test etmeyi mümkün kılar."], { bullets: ["İlk özet ve taslak", "İlk araştırma teslimi", "İlk görsel içerik", "Düşük riskli deneme süreci"] }),
-          section("Son not", ["En iyi ücretsiz araç, sınırsız görünen deÄŸil; ücretsiz planda bile seni gerçek bir sonuca götürebilen araçtır.", "Karar vermeden önce ilgili tool sayfasını açıp limitler, artılar ve kullanım alanlarını görmek en saÄŸlıklı adımdır."], { subSections: [ sub("Sonraki adım", ["Ãœcretsiz başlayacaksan önce sana en yakın kullanım senaryosunu seç."], undefined, "Start free", "/tr/tools") ] })
+          section("Hızlı özet", ["Ücretsiz planlar kusursuz değildir; ama ilk iş akışını kurmak, küçük denemeler yapmak ve hangi aracın sana uyduğunu görmek için çok değerlidir.", "Genel kullanım için [ChatGPT](/tr/tools/chatgpt) veya [Gemini](/tr/tools/gemini), araştırma için [Perplexity](/tr/tools/perplexity), görsel teslim için [Canva AI](/tr/tools/canva-ai), not ve düzen için [Notion AI](/tr/tools/notion-ai) başlangıç için mantıklı olabilir."], { comparison: { title: "Ücretsiz kullanım haritası", items: [ { label: "Genel kullanım", value: "ChatGPT / Gemini" }, { label: "Araştırma", value: "Perplexity" }, { label: "Görsel", value: "Canva AI" }, { label: "Düzen", value: "Notion AI" } ] } }),
+          section("Bu içerik kimler için?", ["Düşük bütçeyle başlamak isteyen öğrenciler, freelancer'lar, içerik üreticileri ve küçük işletme sahipleri için uygundur.", "Özellikle araç test etmek isteyen ama daha başta ücretli plana geçmek istemeyen kullanıcılar için faydalıdır."], { bullets: ["Bütçesini korumak isteyenler", "İlk iş akışını test edenler", "Freemium araç arayanlar"] }),
+          section("En mantıklı ücretsiz araçlar ve stratejiler", ["[ChatGPT](/tr/tools/chatgpt) ve [Gemini](/tr/tools/gemini) hızlı soru-cevap, özet ve taslak tarafında güçlü bir başlangıç sunar. [Perplexity](/tr/tools/perplexity) kaynak odaklı araştırma gerektiğinde daha anlamlı hale gelir.", "Görsel teslim veya sunum gerektiğinde [Canva AI](/tr/tools/canva-ai) çoğu kullanıcı için daha pratik olabilir. Çalışma düzeni kurmak isteyenler için ise [Notion AI](/tr/tools/notion-ai) sade bir destek katmanı olabilir."], { subSections: [ sub("İlk ücretsiz iş akışı", ["Başlangıç için en mantıklı yöntem tek araca yüklenmek değil, küçük bir görev seçip ücretsiz planın buna yetip yetmediğini görmektir.", "Örneğin blog taslağı, araştırma özeti veya sunum taslağı gibi küçük teslimler ücretsiz planlarla rahatça test edilebilir."], ["Blog taslağı", "Araştırma özeti", "Sunum taslağı"], "Ücretsiz araçları gör", "/tr/categories/free-tools"), sub("Ne zaman ücretliye geçmek gerekir?", ["Eğer ücretsiz plan gerçekten işe yarıyor ama limit yüzünden akış duruyorsa, ücretli plan daha mantıklı hale gelir.", "Araç henüz ücretsiz kullanımda bile zayıf geliyorsa sorun planda değil, araç uyumundadır."], ["Gerçek görevle test", "Limit gelirse yükselt", "Uyum zayıfsa değiştir"], "Detayları gör", "/tr/tools") ] }),
+          section("Doğru seçimi nasıl yaparsın?", ["Ücretsiz planda karar verirken üç şeye bak: ilk çıktı hızı, kullanım kolaylığı ve tekrar eden görevlerde sürtünme seviyesi.", "Ayrıca [2026'da internetten para kazandıran AI araçları](/tr/blog/ai-tools-to-make-money-2026) ve [Freelancer'lar için AI araçları](/tr/blog/ai-tools-for-freelancers) yazıları ücretsiz planların gerçek iş akışındaki yerini daha net gösterir." ]),
+          section("Gerçekçi kullanım senaryoları", ["Bir öğrenci [Gemini](/tr/tools/gemini) ile ders özeti çıkarabilir. Bir freelancer [Perplexity](/tr/tools/perplexity) ile ilk rakip analizini hazırlayabilir. Bir içerik üreticisi [Canva AI](/tr/tools/canva-ai) ile basit görseller oluşturabilir.", "Ücretsiz araçlar doğrudan para üretmez; ama ilk küçük çıktıyı düşük riskle test etmeyi mümkün kılar."], { bullets: ["İlk özet ve taslak", "İlk araştırma teslimi", "İlk görsel içerik", "Düşük riskli deneme süreci"] }),
+          section("Son not", ["En iyi ücretsiz araç, sınırsız görünen değil; ücretsiz planda bile seni gerçek bir sonuca götürebilen araçtır.", "Karar vermeden önce ilgili tool sayfasını açıp limitler, artılar ve kullanım alanlarını görmek en sağlıklı adımdır."], { subSections: [ sub("Sonraki adım", ["Ücretsiz başlayacaksan önce sana en yakın kullanım senaryosunu seç."], undefined, "Start free", "/tr/tools") ] })
         ]
       },
       en: {
@@ -2574,18 +2574,18 @@ const allBlogArticles: BlogEntry[] = [
     locales: {
       tr: {
         title: "2026'da internetten para kazandıran AI araçları",
-        excerpt: "İnternetten para kazanma tarafında hangi AI araçlarının daha mantıklı olduÄŸunu, gerçek kullanım senaryoları ve gelir modelleri üzerinden anlatan rehber.",
-        intro: "AI araçları kendi başına para basmaz; ama daha hızlı teslim, daha güçlü araştırma, daha temiz görsel üretim ve daha geniş içerik paketi sunmanı saÄŸlar. Bu rehber, [ChatGPT](/tr/tools/chatgpt), [Claude](/tr/tools/claude), [Perplexity](/tr/tools/perplexity), [Canva AI](/tr/tools/canva-ai), [ElevenLabs](/tr/tools/elevenlabs) ve [Runway](/tr/tools/runway) gibi araçların internetten para kazanma tarafında nasıl konumlandıÄŸını gösterir.",
+        excerpt: "İnternetten para kazanma tarafında hangi AI araçlarının daha mantıklı olduğunu, gerçek kullanım senaryoları ve gelir modelleri üzerinden anlatan rehber.",
+        intro: "AI araçları kendi başına para basmaz; ama daha hızlı teslim, daha güçlü araştırma, daha temiz görsel üretim ve daha geniş içerik paketi sunmanı sağlar. Bu rehber, [ChatGPT](/tr/tools/chatgpt), [Claude](/tr/tools/claude), [Perplexity](/tr/tools/perplexity), [Canva AI](/tr/tools/canva-ai), [ElevenLabs](/tr/tools/elevenlabs) ve [Runway](/tr/tools/runway) gibi araçların internetten para kazanma tarafında nasıl konumlandığını gösterir.",
         categoryLabel: "AI ile Para Kazanma",
         seoTitle: "2026'da internetten para kazandıran AI araçları | Deciply",
         seoDescription: "İnternetten para kazanmak için en mantıklı AI araçlarını içerik, araştırma, görsel, video ve ses senaryolarına göre inceleyin.",
         sections: [
-          section("Hızlı özet", ["Paraya en yakın AI araçları genelde bir işi daha hızlı teslim etmeyi, aynı tekliften daha fazla çıktı üretmeyi veya tek kişilik bir sistemi daha düzenli yürütmeyi saÄŸlar.", "Yazı ve esnek üretimde [ChatGPT](/tr/tools/chatgpt), uzun anlatım ve düzenli akışta [Claude](/tr/tools/claude), araştırma tarafında [Perplexity](/tr/tools/perplexity), hızlı görsel teslimde [Canva AI](/tr/tools/canva-ai), ses ve video tarafında ise [ElevenLabs](/tr/tools/elevenlabs) ve [Runway](/tr/tools/runway) öne çıkabilir."], { comparison: { title: "Gelir odaklı araç haritası", items: [ { label: "Yazı ve copy", value: "ChatGPT / Claude" }, { label: "Araştırma", value: "Perplexity" }, { label: "Görsel teslim", value: "Canva AI" }, { label: "Ses / video", value: "ElevenLabs / Runway" } ] } }),
-          section("Bu içerik kimler için?", ["Affiliate gelir kurmak isteyenler, freelance paket hazırlayanlar, içerik üreticileri, dijital ürün deneyenler ve küçük online iş modeli kurmak isteyenler için uygundur.", "Ã–zellikle 'hangi araç para kazandırır?' yerine 'hangi araç hangi gelir modelinde işe yarar?' diye düşünen kullanıcı için faydalıdır."], { bullets: ["Freelancer'lar", "Affiliate yayıncılar", "Dijital ürün üreticileri", "İçerik üreticileri"] }),
-          section("En mantıklı araçlar ve stratejiler", ["[ChatGPT](/tr/tools/chatgpt) ve [Claude](/tr/tools/claude) blog, e-posta, landing page ve teklif metni tarafında güçlü olabilir. [Perplexity](/tr/tools/perplexity) araştırma ve kaynak tarafında fark yaratır.", "[Canva AI](/tr/tools/canva-ai) aynı teklife görsel veya sunum katmanı ekler. [ElevenLabs](/tr/tools/elevenlabs) sesli içerik, [Runway](/tr/tools/runway) kısa video üretimi ile farklı kanal gelir modellerine kapı açabilir."], { subSections: [ sub("İlk para kazandıran kullanım modelleri", ["Başlangıçta en mantıklı modeller genelde içerik paketi, araştırma özeti, sosyal medya kreatifi veya affiliate içerik üretimidir.", "Bu yüzden yazı, araştırma ve hafif tasarım araçları çoÄŸu kullanıcı için ilk katmanı oluşturur."], ["İçerik paketi", "Araştırma özeti", "Affiliate içerik", "Sosyal medya teslimi"], "Para odaklı araçları incele", "/tr/categories/make-money-with-ai"), sub("Daha ileri seviye genişleme", ["İlk sistem oturduktan sonra sesli mini ürün, video repurpose, açıklayıcı sunum ya da daha zengin içerik paketleri eklenebilir.", "Bu aşamada [ElevenLabs](/tr/tools/elevenlabs) ve [Runway](/tr/tools/runway) daha anlamlı hale gelir."], ["Sesli içerik", "Video repurpose", "Sunum destekli teslim"], "Detayları gör", "/tr/tools/elevenlabs") ] }),
-          section("DoÄŸru seçimi nasıl yaparsın?", ["Ã–nce gelir modelini seç: içerik mi satacaksın, araştırma mı, görsel mi, video mu? Sonra o modeli en hızlı ve en sürdürülebilir şekilde destekleyen aracı seç.", "Ayrıca [Freelancer'lar için AI araçları](/tr/blog/ai-tools-for-freelancers) ve [2026 en iyi ücretsiz AI araçları](/tr/blog/best-free-ai-tools-2026) yazıları bu seçimi daha pratik hale getirir." ]),
-          section("Gerçekçi kullanım senaryoları", ["Bir yayıncı [Perplexity](/tr/tools/perplexity) ile kaynaklı affiliate içerik hazırlayabilir. Bir freelancer [Claude](/tr/tools/claude) ile uzun blog paketleri üretebilir. Bir içerik üreticisi [Canva AI](/tr/tools/canva-ai) ve [Runway](/tr/tools/runway) ile daha zengin çok kanallı teslimler hazırlayabilir.", "Buradaki ortak nokta şudur: araçlar geliri otomatik üretmez, ama aynı işten daha fazla kaldıraç saÄŸlar."], { bullets: ["Affiliate blog içeriÄŸi", "Freelance içerik paketi", "Araştırma + sunum teslimi", "Video repurpose akışı"] }),
-          section("Son not", ["İnternetten para kazandıran en iyi AI aracı diye tek bir cevap yoktur. En mantıklı cevap, kurmak istediÄŸin gelir modeline ve teslim tipine göre deÄŸişir.", "Karar vermeden önce ilgili tool detay sayfasını açıp artılar, eksiler ve kullanım senaryolarını görmek daha güvenli bir adımdır."], { subSections: [ sub("Sonraki adım", ["Ã–nce gelir modelini seç, sonra ona en yakın aracı aç."], undefined, "View tool", "/tr/tools") ] })
+          section("Hızlı özet", ["Paraya en yakın AI araçları genelde bir işi daha hızlı teslim etmeyi, aynı tekliften daha fazla çıktı üretmeyi veya tek kişilik bir sistemi daha düzenli yürütmeyi sağlar.", "Yazı ve esnek üretimde [ChatGPT](/tr/tools/chatgpt), uzun anlatım ve düzenli akışta [Claude](/tr/tools/claude), araştırma tarafında [Perplexity](/tr/tools/perplexity), hızlı görsel teslimde [Canva AI](/tr/tools/canva-ai), ses ve video tarafında ise [ElevenLabs](/tr/tools/elevenlabs) ve [Runway](/tr/tools/runway) öne çıkabilir."], { comparison: { title: "Gelir odaklı araç haritası", items: [ { label: "Yazı ve copy", value: "ChatGPT / Claude" }, { label: "Araştırma", value: "Perplexity" }, { label: "Görsel teslim", value: "Canva AI" }, { label: "Ses / video", value: "ElevenLabs / Runway" } ] } }),
+          section("Bu içerik kimler için?", ["Affiliate gelir kurmak isteyenler, freelance paket hazırlayanlar, içerik üreticileri, dijital ürün deneyenler ve küçük online iş modeli kurmak isteyenler için uygundur.", "Özellikle 'hangi araç para kazandırır?' yerine 'hangi araç hangi gelir modelinde işe yarar?' diye düşünen kullanıcı için faydalıdır."], { bullets: ["Freelancer'lar", "Affiliate yayıncılar", "Dijital ürün üreticileri", "İçerik üreticileri"] }),
+          section("En mantıklı araçlar ve stratejiler", ["[ChatGPT](/tr/tools/chatgpt) ve [Claude](/tr/tools/claude) blog, e-posta, landing page ve teklif metni tarafında güçlü olabilir. [Perplexity](/tr/tools/perplexity) araştırma ve kaynak tarafında fark yaratır.", "[Canva AI](/tr/tools/canva-ai) aynı teklife görsel veya sunum katmanı ekler. [ElevenLabs](/tr/tools/elevenlabs) sesli içerik, [Runway](/tr/tools/runway) kısa video üretimi ile farklı kanal gelir modellerine kapı açabilir."], { subSections: [ sub("İlk para kazandıran kullanım modelleri", ["Başlangıçta en mantıklı modeller genelde içerik paketi, araştırma özeti, sosyal medya kreatifi veya affiliate içerik üretimidir.", "Bu yüzden yazı, araştırma ve hafif tasarım araçları çoğu kullanıcı için ilk katmanı oluşturur."], ["İçerik paketi", "Araştırma özeti", "Affiliate içerik", "Sosyal medya teslimi"], "Para odaklı araçları incele", "/tr/categories/make-money-with-ai"), sub("Daha ileri seviye genişleme", ["İlk sistem oturduktan sonra sesli mini ürün, video repurpose, açıklayıcı sunum ya da daha zengin içerik paketleri eklenebilir.", "Bu aşamada [ElevenLabs](/tr/tools/elevenlabs) ve [Runway](/tr/tools/runway) daha anlamlı hale gelir."], ["Sesli içerik", "Video repurpose", "Sunum destekli teslim"], "Detayları gör", "/tr/tools/elevenlabs") ] }),
+          section("Doğru seçimi nasıl yaparsın?", ["Önce gelir modelini seç: içerik mi satacaksın, araştırma mı, görsel mi, video mu? Sonra o modeli en hızlı ve en sürdürülebilir şekilde destekleyen aracı seç.", "Ayrıca [Freelancer'lar için AI araçları](/tr/blog/ai-tools-for-freelancers) ve [2026 en iyi ücretsiz AI araçları](/tr/blog/best-free-ai-tools-2026) yazıları bu seçimi daha pratik hale getirir." ]),
+          section("Gerçekçi kullanım senaryoları", ["Bir yayıncı [Perplexity](/tr/tools/perplexity) ile kaynaklı affiliate içerik hazırlayabilir. Bir freelancer [Claude](/tr/tools/claude) ile uzun blog paketleri üretebilir. Bir içerik üreticisi [Canva AI](/tr/tools/canva-ai) ve [Runway](/tr/tools/runway) ile daha zengin çok kanallı teslimler hazırlayabilir.", "Buradaki ortak nokta şudur: araçlar geliri otomatik üretmez, ama aynı işten daha fazla kaldıraç sağlar."], { bullets: ["Affiliate blog içeriği", "Freelance içerik paketi", "Araştırma + sunum teslimi", "Video repurpose akışı"] }),
+          section("Son not", ["İnternetten para kazandıran en iyi AI aracı diye tek bir cevap yoktur. En mantıklı cevap, kurmak istediğin gelir modeline ve teslim tipine göre değişir.", "Karar vermeden önce ilgili tool detay sayfasını açıp artılar, eksiler ve kullanım senaryolarını görmek daha güvenli bir adımdır."], { subSections: [ sub("Sonraki adım", ["Önce gelir modelini seç, sonra ona en yakın aracı aç."], undefined, "View tool", "/tr/tools") ] })
         ]
       },
       en: {

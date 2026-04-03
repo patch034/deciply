@@ -190,6 +190,9 @@
   ["??erik ?reticileri", "İçerik üreticileri"],
   ["Ara?t?rmac?lar", "Araştırmacılar"],
   ["geli?tirici", "geliştirici"],
+  ["Geli?tirici", "Geliştirici"],
+  ["Geli?tirici k?sayollar? ve kod yard?m?", "Geliştirici kısayolları ve kod yardımı"],
+  ["k?sayollar?", "kısayolları"],
 ];
 
 export function repairTurkishAsciiFallback(value) {

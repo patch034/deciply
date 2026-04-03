@@ -19,7 +19,7 @@ export const tools: ToolEntry[] = [
         shortDescription: "Yazı, araştırma ve günlük iş akışlarını hızlandıran çok yönlü bir AI asistanı.",
         longDescription:
           "ChatGPT; yazı yazma, özet çıkarma, fikir bulma ve araştırma destekli içerik üretimi için kullanılan çok yönlü bir AI aracıdır. Hızlı sonuç verdiği için bireysel kullanıcılar ve ekipler için pratik bir başlangıç noktası olur.",
-        bestUseCase: "Yazı, araştırma ve günlük üretkenlik işleri",
+        bestUseCase: "Yazı, araştırma ve günlük iş akışları için çok yönlü kullanım",
         whoShouldUse: ["Freelancer'lar", "Öğrenciler", "İçerik üreticileri"],
         moneyUseCases: [
           {
@@ -5402,8 +5402,8 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
             name: "LanguageTool",
-            shortDescription: "LanguageTool, gramer, stil ve ?ok dilli proofreading desteği için kullanılan bir AI aracıdır.",
-            longDescription: "LanguageTool, gramer, stil ve ?ok dilli proofreading desteği tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle edit ve proofreading odağında gerçek iş akışlarına kolayca uyarlanabilir.",
+            shortDescription: "LanguageTool, gramer, stil ve çok dilli proofreading desteği için kullanılan bir AI aracıdır.",
+            longDescription: "LanguageTool, gramer, stil ve çok dilli proofreading desteği tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle edit ve proofreading odağında gerçek iş akışlarına kolayca uyarlanabilir.",
             bestUseCase: "Edit ve proofreading",
             whoShouldUse: [
                   "Freelancer'lar",
@@ -5426,7 +5426,7 @@ export const tools: ToolEntry[] = [
             ],
             features: [
                   "Edit ve proofreading için odaklı kullanım",
-                  "Gramer, stil ve ?ok dilli proofreading desteği",
+                  "Gramer, stil ve çok dilli proofreading desteği",
                   "Tekrarlayan iş akışlarında hız kazanımı",
                   "Gerçek teslim senaryolarına uygun çıktı desteği"
             ],
@@ -7363,29 +7363,29 @@ export const tools: ToolEntry[] = [
       tr: {
             name: "BLACKBOX AI",
             shortDescription: "BLACKBOX AI, kod yardımı, snippet üretimi ve geliştirici kısayolları için kullanılan bir AI aracıdır.",
-            longDescription: "BLACKBOX AI, kod yard?m?, snippet üretimi ve geliştirici kısayollar? tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle geliştirici kısayollar? ve kod yard?m? odağında gerçek iş akışlarına kolayca uyarlanabilir.",
-            bestUseCase: "Geli?tirici kısayollar? ve kod yard?m?",
+            longDescription: "BLACKBOX AI, kod yardımı, snippet üretimi ve geliştirici kısayolları tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. Özellikle geliştirici kısayolları ve kod yardımı odağında gerçek iş akışlarına kolayca uyarlanabilir.",
+            bestUseCase: "Geliştirici kısayolları ve kod yardımı",
             whoShouldUse: [
-                  "Araştırmac?lar",
+                  "Araştırmacılar",
                   "Operasyon ekipleri",
                   "Danışmanlar"
             ],
             moneyUseCases: [
                   {
                         title: "Müşteri işi hızlandırma",
-                        description: "BLACKBOX AI ile geliştirici kısayollar? ve kod yard?m? tarafında daha hızlı teslim üretip bunu hizmet olarak sunabilirsiniz."
+                        description: "BLACKBOX AI ile geliştirici kısayolları ve kod yardımı tarafında daha hızlı teslim üretip bunu hizmet olarak sunabilirsiniz."
                   },
                   {
                         title: "Paket hizmet üretimi",
                         description: "Tekrarlayan çıktıları paketleyip freelance veya ajans işi olarak satmak daha kolay hale gelebilir."
                   },
                   {
-                        title: "iş süreçleri verimli hale getirme",
+                        title: "İş süreçleri verimli hale getirme",
                         description: "Daha kısa üretim süresiyle aynı zamanda daha fazla müşteri veya içerik kapasitesi oluşturabilirsiniz."
                   }
             ],
             features: [
-                  "Geli?tirici kısayollar? ve kod yard?m? için odaklı kullanım",
+                  "Geliştirici kısayolları ve kod yardımı için odaklı kullanım",
                   "Kod yardımı, snippet üretimi ve geliştirici kısayolları",
                   "Tekrarlayan iş akışlarında hız kazanımı",
                   "Gerçek teslim senaryolarına uygun çıktı desteği"
