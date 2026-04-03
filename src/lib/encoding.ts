@@ -1,6 +1,21 @@
 const suspiciousEncodingPattern = /(?:[\u00C2\u00C3\u00C4\u00C5\uFFFD]|\u00E2\u20AC|\u00E2\u20AC\u2122|\u00E2\u20AC\u0153|\u00E2\u20AC\u009D|\u00E2\u20AC\u00A2|\u00E2\u20AC\u201C|\u00E2\u20AC\u201D)/;
 const TURKISH_ENCODING_SAMPLE = "\u015E\u011F\u0130\u00E7\u00F6\u00FC";
 
+const turkishMojibakeReplacements = [
+  [String.fromCharCode(195, 188), String.fromCharCode(252)],
+  [String.fromCharCode(195, 156), String.fromCharCode(220)],
+  [String.fromCharCode(195, 182), String.fromCharCode(246)],
+  [String.fromCharCode(195, 150), String.fromCharCode(214)],
+  [String.fromCharCode(195, 167), String.fromCharCode(231)],
+  [String.fromCharCode(195, 135), String.fromCharCode(199)],
+  [String.fromCharCode(196, 177), String.fromCharCode(305)],
+  [String.fromCharCode(196, 176), String.fromCharCode(304)],
+  [String.fromCharCode(197, 376), String.fromCharCode(351)],
+  [String.fromCharCode(197, 381), String.fromCharCode(350)],
+  [String.fromCharCode(196, 159), String.fromCharCode(287)],
+  [String.fromCharCode(196, 158), String.fromCharCode(286)]
+];
+
 const windows1252ReverseMap = new Map<string, number>([
   ["\u20AC", 0x80],
   ["\u201A", 0x82],
@@ -68,6 +83,16 @@ function decodeWindows1252Utf8(value: string) {
   return encoded ? encoded.toString("utf8") : value;
 }
 
+function repairTurkishMojibake(value: string) {
+  let current = value;
+
+  for (const [pattern, replacement] of turkishMojibakeReplacements) {
+    current = current.replaceAll(pattern, replacement);
+  }
+
+  return current;
+}
+
 function scoreEncodingCandidate(value: string) {
   const suspiciousCount = value.match(suspiciousEncodingPattern)?.length ?? 0;
   const questionMarkCount = value.match(/\?/g)?.length ?? 0;
@@ -79,7 +104,7 @@ export function repairSuspiciousEncoding(value: string) {
   let current = value.normalize("NFC");
 
   for (let index = 0; index < 6 && hasSuspiciousEncoding(current); index += 1) {
-    const decoded = decodeWindows1252Utf8(current).normalize("NFC");
+    const decoded = repairTurkishMojibake(decodeWindows1252Utf8(current).normalize("NFC"));
 
     if (decoded === current) {
       break;

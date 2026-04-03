@@ -20,6 +20,31 @@ const suspiciousQuestionFallbackPattern = new RegExp(
   "gu"
 );
 const ignoredAsciiFallbackTokens = new Set(["_blank", "1fr_auto"]);
+const turkishMojibakeReplacements = [
+  [String.fromCharCode(195, 188), String.fromCharCode(252)],
+  [String.fromCharCode(195, 156), String.fromCharCode(220)],
+  [String.fromCharCode(195, 182), String.fromCharCode(246)],
+  [String.fromCharCode(195, 150), String.fromCharCode(214)],
+  [String.fromCharCode(195, 167), String.fromCharCode(231)],
+  [String.fromCharCode(195, 135), String.fromCharCode(199)],
+  [String.fromCharCode(196, 177), String.fromCharCode(305)],
+  [String.fromCharCode(196, 176), String.fromCharCode(304)],
+  [String.fromCharCode(197, 376), String.fromCharCode(351)],
+  [String.fromCharCode(197, 381), String.fromCharCode(350)],
+  [String.fromCharCode(196, 159), String.fromCharCode(287)],
+  [String.fromCharCode(196, 158), String.fromCharCode(286)]
+];
+
+function repairTurkishMojibake(value) {
+  let current = value;
+
+  for (const [pattern, replacement] of turkishMojibakeReplacements) {
+    current = current.replaceAll(pattern, replacement);
+  }
+
+  return current;
+}
+
 
 const windows1252ReverseMap = new Map([
   ["€", 0x80],
@@ -106,7 +131,7 @@ export function repairSuspiciousEncoding(value) {
   let current = value.normalize("NFC");
 
   for (let index = 0; index < 6 && hasSuspiciousEncoding(current); index += 1) {
-    const decoded = decodeWindows1252Utf8(current).normalize("NFC");
+    const decoded = repairTurkishMojibake(decodeWindows1252Utf8(current).normalize("NFC"));
 
     if (decoded === current) {
       break;
