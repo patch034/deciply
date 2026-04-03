@@ -33,7 +33,7 @@ function buildDecisionBoxes(locale: "tr" | "en", leftTool: ComparisonDecisionBox
   const lowerRightBest = rightTool.bestUseCase.toLowerCase();
   const lowerLeftSummary = leftTool.whoShouldUseSummary.toLowerCase();
   const lowerRightSummary = rightTool.whoShouldUseSummary.toLowerCase();
-  const firstFree = leftTool.pricing !== "PAID" ? leftTool : rightTool;
+  const firstAccessible = leftTool.pricing !== "PAID" ? leftTool : rightTool;
   const firstPaid = leftTool.pricing === "PAID" ? leftTool : rightTool;
 
   if (locale === "tr") {
@@ -46,9 +46,9 @@ function buildDecisionBoxes(locale: "tr" | "en", leftTool: ComparisonDecisionBox
       },
       {
         title: "Freelancer'lar için en uygun",
-        description: `${firstFree.name} daha düşük giriş bariyeriyle başlamaya yardımcı olabilir. Freelancer'lar genelde ilk teslimatı hızlandıran aracı daha kolay benimser.`,
-        ctaLabel: `(${firstFree.name}) detay`,
-        ctaHref: `/tr/tools/${firstFree.slug}`
+        description: `${firstAccessible.name} daha düşük giriş bariyeriyle başlamaya yardımcı olabilir. Freelancer'lar genelde ilk teslimatı hızlandıran aracı daha kolay benimser.`,
+        ctaLabel: `(${firstAccessible.name}) detay`,
+        ctaHref: `/tr/tools/${firstAccessible.slug}`
       },
       {
         title: "Ajanslar için en uygun",
@@ -61,6 +61,12 @@ function buildDecisionBoxes(locale: "tr" | "en", leftTool: ComparisonDecisionBox
         description: `${leftTool.name} ve ${rightTool.name} arasında görsel, içerik veya hızlı yayın akışına en iyi uyan taraf genelde içerik üretim hızını daha fazla artıran seçenektir.`,
         ctaLabel: "Alternatifleri aç",
         ctaHref: alternativesHref
+      },
+      {
+        title: "Öğrenciler için en uygun",
+        description: `${firstAccessible.name} not, özet ve araştırma gibi akışlarda daha düşük sürtünmeyle başlamak isteyen öğrenciler için daha rahat bir başlangıç olabilir.`,
+        ctaLabel: `${firstAccessible.name} aç`,
+        ctaHref: `/tr/tools/${firstAccessible.slug}`
       }
     ];
   }
@@ -74,9 +80,9 @@ function buildDecisionBoxes(locale: "tr" | "en", leftTool: ComparisonDecisionBox
     },
     {
       title: "Best for freelancers",
-      description: `${firstFree.name} usually works well when you want a lower-friction starting point and faster first delivery.`,
-      ctaLabel: `Open ${firstFree.name}`,
-      ctaHref: `/en/tools/${firstFree.slug}`
+      description: `${firstAccessible.name} usually works well when you want a lower-friction starting point and faster first delivery.`,
+      ctaLabel: `Open ${firstAccessible.name}`,
+      ctaHref: `/en/tools/${firstAccessible.slug}`
     },
     {
       title: "Best for agencies",
@@ -89,6 +95,12 @@ function buildDecisionBoxes(locale: "tr" | "en", leftTool: ComparisonDecisionBox
       description: `If your workflow is content-heavy or visual, the better option is usually the one that speeds up output without adding friction.`,
       ctaLabel: "Open alternatives",
       ctaHref: alternativesHref
+    },
+    {
+      title: "Best for students",
+      description: `${firstAccessible.name} can be a practical starting point for notes, summaries, and research-heavy work when you want lower friction.`,
+      ctaLabel: `Open ${firstAccessible.name}`,
+      ctaHref: `/en/tools/${firstAccessible.slug}`
     }
   ];
 }
@@ -112,7 +124,7 @@ export function ComparisonDecisionBoxes({ locale, leftTool, rightTool, alternati
         </p>
       </div>
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
         {boxes.map((box) => (
           <div key={box.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
             <p className="text-base font-semibold text-slate-50">{box.title}</p>

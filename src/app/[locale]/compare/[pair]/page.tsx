@@ -22,12 +22,12 @@ import {
   getComparisonRelatedBlogSlugsForSlugs,
   getComparisonToolsFromPair,
   getStaticComparisonPairSlugs,
-  parseComparisonPairSlug
+  parseComparisonPairSlug,
+  SPECIAL_TEAM_COMPARISON_SLUG
 } from "@/lib/comparisons";
 import { getLocalizedBlogArticleBySlug } from "@/lib/blog";
 import { formatPricing, getCatalogContent, getCategoryNamesMap, getToolOutboundUrl } from "@/lib/catalog";
 import type { LocalizedTool } from "@/types/catalog";
-
 const copy = {
   tr: {
     compareLabel: "Karşılaştır",
@@ -123,13 +123,25 @@ function joinItems(items: string[], locale: Locale, limit = 3) {
   return items.slice(0, limit).join(locale === "tr" ? ", " : ", ");
 }
 
-function buildComparisonTitle(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool) {
+function buildComparisonTitle(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool, pair?: string) {
+  if (pair === SPECIAL_TEAM_COMPARISON_SLUG) {
+    return locale === "tr"
+      ? `${leftTool.name} vs ${rightTool.name} ekipler için karşılaştırma (2026)`
+      : `${leftTool.name} vs ${rightTool.name} for teams (2026)`;
+  }
+
   return locale === "tr"
     ? `${leftTool.name} vs ${rightTool.name} karşılaştırması (2026)`
     : `${leftTool.name} vs ${rightTool.name} Comparison (2026)`;
 }
 
-function buildComparisonDescription(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool) {
+function buildComparisonDescription(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool, pair?: string) {
+  if (pair === SPECIAL_TEAM_COMPARISON_SLUG) {
+    return locale === "tr"
+      ? `${leftTool.name} ve ${rightTool.name} için ekip odaklı kullanım, fiyat ve iş akışı farklarını inceleyin.`
+      : `Compare ${leftTool.name} and ${rightTool.name} through a team-focused workflow lens, including pricing and practical fit.`;
+  }
+
   return locale === "tr"
     ? `${leftTool.name} ve ${rightTool.name} için fiyat, güçlü yönler, sınırlamalar, kullanım senaryoları ve final verdict özetini inceleyin.`
     : `Compare ${leftTool.name} and ${rightTool.name} across pricing, strengths, limitations, best-fit workflows, and final verdict.`;
@@ -252,8 +264,8 @@ export async function generateMetadata({
   }
 
   const canonicalPath = `/${safeLocale}/compare/${comparison.canonicalPairSlug}`;
-  const title = buildComparisonTitle(safeLocale, comparison.leftTool, comparison.rightTool);
-  const description = buildComparisonDescription(safeLocale, comparison.leftTool, comparison.rightTool);
+  const title = buildComparisonTitle(safeLocale, comparison.leftTool, comparison.rightTool, pair);
+  const description = buildComparisonDescription(safeLocale, comparison.leftTool, comparison.rightTool, pair);
 
   return {
     title,
@@ -303,7 +315,7 @@ export default async function ComparisonPage({
   const relatedBlogArticles = getComparisonRelatedBlogSlugsForSlugs([leftTool.slug, rightTool.slug], 3)
     .map((slug) => getLocalizedBlogArticleBySlug(safeLocale, slug))
     .filter((article): article is NonNullable<typeof article> => Boolean(article));
-  const title = buildComparisonTitle(safeLocale, leftTool, rightTool);
+  const title = buildComparisonTitle(safeLocale, leftTool, rightTool, pair);
   const relatedAlternativePages = [leftTool, rightTool].map((tool) => ({
     label: safeLocale === "tr" ? `${tool.name} alternatifleri` : `${tool.name} alternatives`,
     href: `/${safeLocale}/alternatives/${tool.slug}`
@@ -312,7 +324,7 @@ export default async function ComparisonPage({
   const leftOfficialHref = getToolOutboundUrl(leftTool);
   const rightOfficialHref = getToolOutboundUrl(rightTool);
   const relatedBlogHref = relatedBlogArticles[0] ? `/${safeLocale}/blog/${relatedBlogArticles[0].slug}` : `/${safeLocale}/blog`;
-  const description = buildComparisonDescription(safeLocale, leftTool, rightTool);
+  const description = buildComparisonDescription(safeLocale, leftTool, rightTool, pair);
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/compare/${canonicalPairSlug}`);
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -649,5 +661,12 @@ export default async function ComparisonPage({
     </>
   );
 }
+
+
+
+
+
+
+
 
 

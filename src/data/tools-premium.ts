@@ -1750,9 +1750,80 @@ const premiumSeeds: ToolSeed[] = [  {
       }
     }
   },
+  {
+    name: "DALL·E",
+    slug: "dalle",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://openai.com/dall-e-3",
+    affiliateUrl: "https://openai.com/dall-e-3",
+    primaryCategorySlug: "image",
+    categorySlugs: ["ai-tools", "comparisons", "guides"],
+    toolCategorySlugs: ["image"],
+    useCaseSlugs: ["content", "creators", "business"],
+    rating: 4.6,
+    featured: true,
+    locales: {
+      tr: {
+        shortDescription: "Kısa promptlarla konsept görsel, ürün fikri ve yaratıcı varyasyon üretmek için kullanılan OpenAI görsel aracı.",
+        bestUseCase: "Konsept görsel ve hızlı görsel fikir üretimi",
+        whoShouldUse: ["İçerik üreticileri", "Tasarımcılar", "Pazarlama ekipleri"],
+        workflowExampleTitle: "Hızlı görsel yön bulun",
+        workflowExampleDescription: "Bir ekip kampanya ya da ürün fikrini daha hızlı test etmek için birkaç görsel yön çıkarabilir.",
+        strengths: ["Hızlı görsel fikir", "Kolay başlangıç", "Geniş kullanım alanı"],
+        limitations: ["Detaylı stil kontrolü sınırlı olabilir", "En iyi sonuç için net prompt gerekir"],
+        seoTitle: "DALL·E incelemesi",
+        seoDescription: "DALL·E için kullanım alanları, artılar, eksiler ve gerçek iş akışlarını kısa şekilde inceleyin."
+      },
+      en: {
+        shortDescription: "OpenAI's image tool for concept visuals, product ideas, and quick creative variations.",
+        bestUseCase: "Concept visuals and fast visual ideation",
+        whoShouldUse: ["Content creators", "Designers", "Marketing teams"],
+        workflowExampleTitle: "Find a visual direction fast",
+        workflowExampleDescription: "A team can test a few visual directions to move a campaign or product idea forward faster.",
+        strengths: ["Fast visual ideation", "Easy start", "Broad use cases"],
+        limitations: ["Detailed style control can be limited", "Best results need clear prompts"],
+        seoTitle: "DALL·E review",
+        seoDescription: "Review DALL·E use cases, strengths, weaknesses, and practical workflow fit."
+      }
+    }
+  },
+  {
+    name: "CapCut AI",
+    slug: "capcut-ai",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://www.capcut.com/",
+    affiliateUrl: "https://www.capcut.com/",
+    primaryCategorySlug: "video",
+    categorySlugs: ["ai-tools", "comparisons", "guides"],
+    toolCategorySlugs: ["video"],
+    useCaseSlugs: ["creators", "content", "business"],
+    rating: 4.3,
+    featured: false,
+    locales: {
+      tr: {
+        shortDescription: "Kısa video düzenleme, altyazı, sosyal medya klibi ve hızlı yayın akışı için pratik bir AI video desteği.",
+        bestUseCase: "Kısa video düzenleme ve sosyal klip üretimi",
+        whoShouldUse: ["İçerik üreticileri", "Sosyal medya ekipleri", "Freelancer'lar"],
+        workflowExampleTitle: "Sosyal klibi hızlandırın",
+        workflowExampleDescription: "Bir ekip ham görüntüleri daha hızlı kesip altyazı ve paylaşım formatına dönüştürebilir.",
+        strengths: ["Hızlı düzenleme", "Sosyal format uyumu", "Kolay üretim"],
+        limitations: ["İleri kurgu için sınırlı kalabilir", "En güçlü tarafı kısa video akışıdır"],
+        seoTitle: "CapCut AI incelemesi",
+        seoDescription: "CapCut AI için kısa video, altyazı, hız ve gerçek workflow uyumunu inceleyin."
+      },
+      en: {
+        shortDescription: "A practical AI video helper for short editing, captions, social clips, and fast publishing workflows.",
+        bestUseCase: "Short-form video editing and social clip production",
+        whoShouldUse: ["Content creators", "Social teams", "Freelancers"],
+        workflowExampleTitle: "Speed up the social clip",
+        workflowExampleDescription: "A team can cut raw footage faster and turn it into captioned, share-ready video assets.",
+        strengths: ["Fast editing", "Social format fit", "Easy production"],
+        limitations: ["May feel limited for advanced editing", "Best fit is short-form workflows"],
+        seoTitle: "CapCut AI review",
+        seoDescription: "Review CapCut AI for short-form video, captions, speed, and workflow fit."
+      }
+    }
+  },
 ];
 
 export const premiumTools: ToolEntry[] = premiumSeeds.map(buildTool);
-
-
-

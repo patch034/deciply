@@ -16,6 +16,8 @@ type ComparableToolLike = {
 const COMPARISON_CATEGORY_SLUG = "comparisons";
 export const FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS = ["chatgpt", "claude", "gemini"] as const;
 export const FEATURED_TRIPLE_COMPARISON_SLUG = FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.join("-vs-");
+export const SPECIAL_TEAM_COMPARISON_SLUG = "cursor-vs-codeium-for-teams";
+const SPECIAL_TEAM_COMPARISON_PAIR = { leftSlug: "cursor", rightSlug: "codeium" } as const;
 
 const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
   [FEATURED_TRIPLE_COMPARISON_SLUG]: [
@@ -45,6 +47,96 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "how-ai-tools-are-changing-ecommerce-in-2026",
     "best-ai-tools-for-shopify-stores-2026",
     "best-ai-tools-for-shopify-product-descriptions-2026"
+  ],
+  "chatgpt-vs-claude": [
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agencies-2026",
+    "how-ai-tools-are-changing-ecommerce-in-2026"
+  ],
+  "claude-vs-gemini": [
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-startups-2026"
+  ],
+  "chatgpt-vs-perplexity": [
+    "best-ai-tools-for-marketing-teams-2026",
+    "best-ai-tools-for-startups-2026",
+    "how-ai-tools-are-changing-ecommerce-in-2026"
+  ],
+  "perplexity-vs-gemini": [
+    "best-ai-tools-for-marketing-teams-2026",
+    "best-ai-tools-for-startups-2026",
+    "best-ai-tools-for-content-teams-2026"
+  ],
+  "codeium-vs-cursor": [
+    "best-ai-tools-for-startups-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-content-teams-2026"
+  ],
+  "cursor-vs-codeium": [
+    "best-ai-tools-for-startups-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-content-teams-2026"
+  ],
+  "cursor-vs-codeium-for-teams": [
+    "best-ai-tools-for-startups-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-content-teams-2026"
+  ],
+  "cursor-vs-replit": [
+    "best-ai-tools-for-startups-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-content-teams-2026"
+  ],
+  "replit-vs-copilot": [
+    "best-ai-tools-for-startups-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-content-teams-2026"
+  ],
+  "midjourney-vs-dalle": [
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-marketing-teams-2026"
+  ],
+  "dalle-vs-leonardo-ai": [
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-marketing-teams-2026"
+  ],
+  "leonardo-ai-vs-recraft": [
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-marketing-teams-2026"
+  ],
+  "recraft-vs-midjourney": [
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-marketing-teams-2026"
+  ],
+  "runway-vs-pika": [
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-marketing-teams-2026"
+  ],
+  "pika-vs-capcut-ai": [
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-marketing-teams-2026"
+  ],
+  "grammarly-vs-quillbot": [
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-startups-2026"
+  ],
+  "notion-ai-vs-chatgpt": [
+    "best-ai-tools-for-startups-2026",
+    "best-ai-tools-for-content-teams-2026",
+    "how-ai-tools-are-changing-ecommerce-in-2026"
+  ],
+  "jasper-vs-copy-ai": [
+    "best-ai-tools-for-marketing-teams-2026",
+    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-content-teams-2026"
   ],
   default: [
     "how-ai-tools-are-changing-ecommerce-in-2026",
@@ -102,6 +194,10 @@ export function areComparableTools(left: ComparableToolLike, right: ComparableTo
 }
 
 export function parseComparisonPairSlug(pair: string) {
+  if (pair === SPECIAL_TEAM_COMPARISON_SLUG) {
+    return SPECIAL_TEAM_COMPARISON_PAIR;
+  }
+
   const [leftSlug, rightSlug] = pair.split("-vs-");
 
   if (!leftSlug || !rightSlug) {
@@ -252,6 +348,10 @@ export function getStaticComparisonPairSlugs() {
     }
   }
 
+  if (!pairs.includes(SPECIAL_TEAM_COMPARISON_SLUG)) {
+    pairs.push(SPECIAL_TEAM_COMPARISON_SLUG);
+  }
+
   return pairs;
 }
 
@@ -271,6 +371,15 @@ export function getComparisonToolsFromPair(locale: Locale, pair: string) {
 
   if (!leftTool || !rightTool || !areComparableTools(leftTool, rightTool)) {
     return null;
+  }
+
+  if (pair === SPECIAL_TEAM_COMPARISON_SLUG) {
+    return {
+      leftTool,
+      rightTool,
+      canonicalPairSlug: SPECIAL_TEAM_COMPARISON_SLUG,
+      isCanonical: true
+    };
   }
 
   const canonicalPairSlug = buildComparisonPairSlug(leftTool.slug, rightTool.slug);
@@ -342,3 +451,5 @@ export function getComparisonRawTool(slug: string) {
 }
 
 export type ComparisonEligibleTool = ToolEntry;
+
+
