@@ -47,11 +47,9 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
               {dictionary.footer.description}
             </p>
 
-            <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                {dictionary.footer.contactBlock.title}
-              </p>
-              <div className="mt-4 grid gap-3 text-sm text-slate-200 sm:grid-cols-2 lg:grid-cols-1">
+            <div className="mt-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{dictionary.footer.contactBlock.title}</p>
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-200">
                 {dictionary.footer.contactBlock.links.map((item) => renderFooterLink(item))}
               </div>
             </div>
