@@ -43,7 +43,7 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
   return (
     <motion.div whileHover={{ y: -4, scale: 1.012 }} transition={{ duration: 0.22 }} className="h-full">
       <GlassPanel className="group ui-card ui-card-hover home-card-glow relative flex h-full flex-col justify-between overflow-hidden p-4 sm:p-6">
-        <div className="flex min-h-[52px] flex-wrap items-center justify-between gap-3 overflow-hidden">
+        <div className="flex min-h-[48px] flex-wrap items-center justify-between gap-3 overflow-hidden sm:min-h-[52px]">
           <div className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[var(--tn-gradient-primary)] text-sm font-bold uppercase tracking-[0.14em] text-white shadow-[0_14px_30px_-16px_rgba(59,130,246,0.42)]">
               {tool.icon}
@@ -64,11 +64,11 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
             <Link
               href={`/${locale}${tool.href}`}
               aria-label={`${detailLabel}: ${tool.name}`}
-              className="clamp-2 block text-[1.32rem] font-bold leading-tight tracking-[-0.03em] text-slate-50 transition duration-200 hover:text-white sm:text-[1.48rem]"
+              className="clamp-2 block text-[1.2rem] font-bold leading-tight tracking-[-0.03em] text-slate-50 transition duration-200 hover:text-white sm:text-[1.48rem]"
             >
               {tool.name}
             </Link>
-            <p className="clamp-3 mt-4 text-[15px] leading-relaxed text-slate-300/88">{tool.description}</p>
+            <p className="mobile-clamp-2 mt-3 text-[15px] leading-relaxed text-slate-300/88 sm:mt-4">{tool.description}</p>
 
             {tool.useCaseTags.length ? (
               <div className="mt-4 flex flex-wrap gap-2">
@@ -81,15 +81,15 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
             ) : null}
           </div>
 
-          <div className="ui-inner-panel mt-4 min-w-0 p-4 sm:mt-5">
+          <div className="ui-inner-panel mt-3 min-w-0 p-4 sm:mt-5">
             <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{bestForLabel}</p>
             <p className="mt-2 truncate text-base font-semibold text-slate-100">{tool.bestFor}</p>
-            <p className="clamp-3 mt-3 text-[15px] leading-relaxed text-slate-300/84">{tool.benefit}</p>
+            <p className="mobile-clamp-2 mt-2 text-[15px] leading-relaxed text-slate-300/84">{tool.benefit}</p>
           </div>
 
-          <div className="ui-inner-panel mt-4 min-w-0 p-4 sm:mt-5">
+          <div className="ui-inner-panel mt-3 min-w-0 p-4 sm:mt-5">
             <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Deciply notu</p>
-            <p className="clamp-3 mt-2 text-[15px] leading-relaxed text-slate-200/88">{tool.editorNote}</p>
+            <p className="mobile-clamp-2 mt-2 text-[15px] leading-relaxed text-slate-200/88">{tool.editorNote}</p>
           </div>
 
           {tool.notIdealFor ? (
@@ -100,13 +100,13 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
           ) : null}
         </div>
 
-        <div className="mt-5 border-t border-white/10 pt-5 sm:mt-6 sm:pt-6">
+        <div className="mt-4 border-t border-white/10 pt-4 sm:mt-6 sm:pt-6">
           <div className="min-h-[1.5rem] overflow-hidden pb-2">
             <p className="translate-y-2 text-sm font-medium text-cyan-100/92 opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100">
               {tool.benefit}
             </p>
           </div>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div className="min-w-0 shrink-0 pb-0.5">
               <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{ratingLabel}</p>
               <RatingBadge rating={tool.rating} className="mt-1 w-fit" />

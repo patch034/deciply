@@ -271,6 +271,20 @@ svg {
   overflow: hidden;
 }
 
+.mobile-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+}
+
+@media (min-width: 640px) {
+  .mobile-clamp-2 {
+    -webkit-line-clamp: 3;
+  }
+}
+
+
 @media (max-width: 767px) {
   .ui-card,
   .ui-card-strong {

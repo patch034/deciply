@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import type { ReactNode } from "react";
 
 import type { Locale } from "@/i18n/config";
@@ -7,6 +7,15 @@ import type { BlogSection } from "@/types/blog";
 
 function escapeRegExp(value: string) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+export function buildArticleSectionId(title: string) {
+  return title
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 type InlineLinkItem = {
@@ -125,7 +134,7 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
     }
 
     return (
-      <div className="mt-5 rounded-[20px] border border-cyan-400/14 bg-cyan-400/[0.04] px-4 py-3 text-sm leading-7 text-slate-300">
+      <div className="mt-4 rounded-[18px] border border-cyan-400/14 bg-cyan-400/[0.04] px-4 py-3 text-sm leading-7 text-slate-300 sm:mt-5 sm:rounded-[20px]">
         {locale === "tr" ? (
           <>
             {(toolItems.length || articleItems.length) ? (
@@ -138,12 +147,12 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
             ) : null}
             {(compareItems.length || alternativeItems.length || useCaseItems.length) ? (
               <p className="mt-2">
-                Karar? derinle?tirmek için {compareItems.length ? renderLinkList(compareItems) : null}
+                Kararı derinleştirmek için {compareItems.length ? renderLinkList(compareItems) : null}
                 {compareItems.length && (alternativeItems.length || useCaseItems.length) ? ", " : ""}
                 {alternativeItems.length ? renderLinkList(alternativeItems) : null}
                 {alternativeItems.length && useCaseItems.length ? ", " : ""}
                 {useCaseItems.length ? renderLinkList(useCaseItems) : null}
-                {" sayfalar?na da ge?ebilirsiniz."}
+                {" sayfalarına da geçebilirsiniz."}
               </p>
             ) : null}
           </>
@@ -174,15 +183,16 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {sections.map((section, index) => (
         <section
           key={section.title}
-          className="rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-card md:p-8"
+          id={buildArticleSectionId(section.title)}
+          className="scroll-mt-24 rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-5 shadow-card md:p-8"
         >
           <h2 className="text-2xl font-bold tracking-tight text-slate-50 md:text-[2rem]">{section.title}</h2>
 
-          <div className="mt-5 space-y-4 text-base leading-8 text-slate-300">
+          <div className="mt-4 space-y-3 text-[15px] leading-7 text-slate-300 sm:mt-5 sm:space-y-4 sm:text-base sm:leading-8">
             {section.paragraphs.map((paragraph) => (
               <p key={paragraph}>{renderLinkedText(paragraph)}</p>
             ))}
@@ -191,7 +201,7 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
           {index === 0 ? renderSupportingLinks() : null}
 
           {section.bullets?.length ? (
-            <ul className="mt-6 grid gap-3">
+            <ul className="mt-5 grid gap-3 sm:mt-6">
               {section.bullets.map((item) => (
                 <li
                   key={item}
@@ -205,7 +215,7 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
           ) : null}
 
           {section.comparison ? (
-            <div className="mt-6 rounded-[24px] border border-cyan-400/16 bg-cyan-400/[0.05] p-5">
+            <div className="mt-5 rounded-[24px] border border-cyan-400/16 bg-cyan-400/[0.05] p-4 sm:mt-6 sm:p-5">
               <h3 className="text-lg font-semibold text-slate-50">{section.comparison.title}</h3>
               <div className="mt-4 grid gap-3 md:grid-cols-3">
                 {section.comparison.items.map((item) => (
@@ -219,7 +229,7 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
           ) : null}
 
           {section.subSections?.length ? (
-            <div className="mt-8 grid gap-5 lg:grid-cols-2">
+            <div className="mt-6 grid gap-4 lg:grid-cols-2 sm:mt-8 sm:gap-5">
               {section.subSections.map((subSection) => (
                 <div key={subSection.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
                   <h3 className="text-lg font-semibold text-slate-50">{subSection.title}</h3>

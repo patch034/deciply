@@ -1,13 +1,14 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ArticleContent } from "@/components/blog/article-content";
+import { ArticleContent, buildArticleSectionId } from "@/components/blog/article-content";
 import { ArticleCtaBlock } from "@/components/blog/article-cta-block";
 import { ConversionCtaStrip } from "@/components/ui/conversion-cta-strip";
 import { BlogCard } from "@/components/blog/blog-card";
 import { Breadcrumb } from "@/components/catalog/breadcrumb";
 import { ToolCard } from "@/components/catalog/tool-card";
 import { Badge } from "@/components/ui/badge";
+import { SectionJumpNav } from "@/components/ui/section-jump-nav";
 import { SectionShell } from "@/components/ui/section-shell";
 import { blogArticles } from "@/data/blog";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
@@ -117,6 +118,13 @@ export default async function BlogDetailPage({
   const publishedDate = publishedSource ? formatBlogDate(safeLocale, publishedSource) : null;
   const updatedDate = article.updatedAt ? formatBlogDate(safeLocale, article.updatedAt) : null;
   const description = buildBlogMetaDescription(safeLocale, article);
+  const sectionNavItems = [
+    { label: safeLocale === "tr" ? "Genel Bakış" : "Overview", href: "#genel-bakis" },
+    ...article.sections.slice(0, 4).map((section) => ({
+      label: section.title,
+      href: `#${buildArticleSectionId(section.title)}`
+    }))
+  ];
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -183,7 +191,7 @@ export default async function BlogDetailPage({
           ]}
         />
 
-        <section className="rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(34,211,238,0.2)] lg:px-10 lg:py-12">
+        <section id="genel-bakis" className="scroll-mt-24 rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(34,211,238,0.2)] lg:px-10 lg:py-12">
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
             <div>
               <Badge variant="ghost" className="border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
@@ -236,7 +244,6 @@ export default async function BlogDetailPage({
           </div>
         </section>
 
-        <ArticleContent locale={safeLocale} sections={leadSections} supportingLinks={inlineSupportingLinks} />
 
         <ArticleCtaBlock
           eyebrow={safeLocale === "tr" ? "Ara CTA" : "Mid CTA"}
@@ -265,7 +272,7 @@ export default async function BlogDetailPage({
             { label: safeLocale === "tr" ? "Alternatifleri aç" : "Explore alternatives", href: alternativesHref, variant: "ghost" }
           ]}
         />
-
+        <SectionJumpNav items={sectionNavItems} />
 
         {tailSections.length ? <ArticleContent locale={safeLocale} sections={tailSections} /> : null}
 
@@ -343,6 +350,10 @@ export default async function BlogDetailPage({
     </>
   );
 }
+
+
+
+
 
 
 

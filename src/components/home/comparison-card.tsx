@@ -38,7 +38,7 @@ export function ComparisonCard({ locale, item, linkLabel, featured = false }: Co
     <motion.div whileHover={{ y: -4, scale: 1.012 }} transition={{ duration: 0.22 }} className="h-full">
       <Link href={href} className="group block h-full">
         <GlassPanel className={`home-card-glow flex h-full flex-col justify-between overflow-hidden p-6 ${featured ? "ui-card-strong ui-card-hover" : "ui-card ui-card-hover"}`}>
-          <div className="flex min-h-[40px] items-center justify-between gap-3 overflow-hidden">
+          <div className="flex min-h-[38px] items-center justify-between gap-3 overflow-hidden sm:min-h-[40px]">
             <div className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--tn-gradient-primary)] text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_12px_28px_-16px_rgba(59,130,246,0.42)]">
                 {item.icon}
@@ -49,11 +49,11 @@ export function ComparisonCard({ locale, item, linkLabel, featured = false }: Co
           </div>
 
           <div className="flex flex-1 flex-col">
-            <h3 className="clamp-2 mt-6 min-h-[3.1rem] text-[1.38rem] font-bold leading-tight tracking-[-0.03em] text-slate-50">{item.title}</h3>
-            <p className="clamp-3 mt-4 flex-1 text-[15px] leading-relaxed text-slate-300/84">{item.description}</p>
+            <h3 className="clamp-2 mt-4 min-h-[2.7rem] text-[1.24rem] font-bold leading-tight tracking-[-0.03em] text-slate-50 sm:mt-6 sm:min-h-[3.1rem] sm:text-[1.38rem]">{item.title}</h3>
+            <p className="mobile-clamp-2 mt-3 flex-1 text-[15px] leading-relaxed text-slate-300/84 sm:mt-4">{item.description}</p>
           </div>
 
-          <div className="mt-7 border-t border-white/10 pt-5">
+          <div className="mt-5 border-t border-white/10 pt-4 sm:mt-7 sm:pt-5">
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-slate-100 transition duration-200 group-hover:text-white">
               {linkLabel}
               <span aria-hidden="true" className="text-cyan-300 transition duration-200 group-hover:translate-x-1">→</span>

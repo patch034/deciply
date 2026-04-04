@@ -62,18 +62,18 @@ export function ToolCard({
         </Badge>
       </div>
 
-      <h2 className="clamp-2 mt-4 min-h-[3rem] text-[1.28rem] font-bold leading-tight tracking-[-0.03em] text-slate-100 sm:mt-5 sm:min-h-[3.25rem] sm:text-[1.45rem]">{tool.name}</h2>
-      <p className="clamp-3 mt-3 text-[15px] leading-relaxed text-slate-300/88">{tool.shortDescription}</p>
+      <h2 className="clamp-2 mt-4 min-h-[2.65rem] text-[1.2rem] font-bold leading-tight tracking-[-0.03em] text-slate-100 sm:mt-5 sm:min-h-[3.15rem] sm:text-[1.45rem]">{tool.name}</h2>
+      <p className="mobile-clamp-2 mt-3 text-[15px] leading-relaxed text-slate-300/88">{tool.shortDescription}</p>
 
       {bestForLabel && useCaseLabel ? (
-        <div className="ui-inner-panel mt-4 min-w-0 px-4 py-3 text-[15px] leading-relaxed text-slate-300/88">
+        <div className="ui-inner-panel mt-3 min-w-0 px-4 py-3 text-[15px] leading-relaxed text-slate-300/88">
           <span className="font-semibold text-slate-100">{bestForLabel}:</span> {useCaseLabel}
         </div>
       ) : null}
 
-      <div className="mt-auto flex flex-col gap-3 border-t border-white/10 pt-5 sm:pt-6">
+      <div className="mt-auto flex flex-col gap-2.5 border-t border-white/10 pt-4 sm:pt-6">
         <RatingBadge rating={tool.rating} className="w-fit" />
-        <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+        <div className="grid gap-2 sm:grid-cols-2">
           <Link href={`/${locale}/tools/${tool.slug}`} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-xl border border-white/12 bg-white/[0.03] px-4 py-2.5 text-sm font-semibold text-slate-200 transition duration-150 hover:bg-white/[0.05] hover:text-white">
             {detailLabel}
           </Link>
