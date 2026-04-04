@@ -128,7 +128,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: content.summary,
     alternates: {
       canonical: buildCanonicalUrl(canonicalPath),
-      languages: buildAlternates(canonicalPath)
+      languages: buildAlternates(`/compare/${FEATURED_TRIPLE_COMPARISON_SLUG}`)
     },
     openGraph: {
       type: "website",
@@ -224,3 +224,5 @@ export default async function TripleComparisonRoutePage({ params }: { params: Pr
     </>
   );
 }
+
+

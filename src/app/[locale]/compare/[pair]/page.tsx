@@ -283,7 +283,7 @@ export async function generateMetadata({
     description,
     alternates: {
       canonical: buildCanonicalUrl(canonicalPath),
-      languages: buildAlternates(canonicalPath)
+      languages: buildAlternates(`/compare/${comparison.canonicalPairSlug}`)
     },
     openGraph: {
       type: "website",
@@ -732,6 +732,7 @@ export default async function ComparisonPage({
     </>
   );
 }
+
 
 
 
