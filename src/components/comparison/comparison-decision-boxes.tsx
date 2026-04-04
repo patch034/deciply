@@ -149,21 +149,24 @@ export function ComparisonDecisionBoxes({ locale, leftTool, rightTool, alternati
         </p>
       </div>
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+      <div className="mt-8 grid items-stretch gap-4 md:grid-cols-2 xl:grid-cols-5">
         {boxes.map((box) => (
-          <div key={box.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
+          <div key={box.title} className="flex h-full min-h-[320px] flex-col rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
             <p className="text-base font-semibold text-slate-50">{box.title}</p>
-            <p className="mt-3 text-sm leading-7 text-slate-300">{box.description}</p>
+            <p className="mt-3 flex-1 text-sm leading-7 text-slate-300">{box.description}</p>
             <div className="mt-5 grid gap-2 sm:grid-cols-2">
-              <PremiumButton href={box.leftButtonHref} variant="secondary" className="w-full">
+              <PremiumButton href={box.leftButtonHref} variant="secondary" className="min-h-[44px] w-full">
                 {box.leftButtonLabel}
               </PremiumButton>
-              <PremiumButton href={box.rightButtonHref} variant="secondary" className="w-full">
+              <PremiumButton href={box.rightButtonHref} variant="secondary" className="min-h-[44px] w-full">
                 {box.rightButtonLabel}
               </PremiumButton>
             </div>
             <div className="mt-4">
-              <Link href={alternativesHref} className="text-sm font-semibold text-cyan-300 transition hover:text-cyan-200">
+              <Link
+                href={alternativesHref}
+                className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 text-sm font-semibold text-cyan-300 transition hover:border-cyan-400/35 hover:bg-cyan-400/14 hover:text-cyan-200"
+              >
                 {helperLabel}
               </Link>
             </div>
@@ -173,4 +176,3 @@ export function ComparisonDecisionBoxes({ locale, leftTool, rightTool, alternati
     </section>
   );
 }
-
