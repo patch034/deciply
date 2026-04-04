@@ -9,6 +9,7 @@ import { Breadcrumb } from "@/components/catalog/breadcrumb";
 import { ToolCard } from "@/components/catalog/tool-card";
 import { ComparisonFaq } from "@/components/comparison/comparison-faq";
 import { ComparisonThreeWayTable } from "@/components/comparison/comparison-three-way-table";
+import { ComparisonActionGrid } from "@/components/comparison/comparison-action-grid";
 import { SectionShell } from "@/components/ui/section-shell";
 import { tripleComparisonContent, type ComparisonFaqItem } from "@/data/comparisons";
 import { buildComparisonPath, getComparisonRelatedBlogSlugsForSlugs } from "@/lib/comparisons";
@@ -109,13 +110,16 @@ export function ComparisonTriplePage({
                   </div>
                 ))}
               </div>
-              <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                {tools.map((tool) => (
-                  <PremiumButton key={tool.slug} href={`/${locale}/tools/${tool.slug}`} className="w-full" variant="secondary">
-                    {tool.name}
-                  </PremiumButton>
-                ))}
-              </div>
+              <ComparisonActionGrid
+                locale={locale}
+                tools={tools.map((tool) => ({
+                  name: tool.name,
+                  openHref: tool.websiteUrl,
+                  reviewHref: `/${locale}/tools/${tool.slug}`
+                }))}
+                neutralHref={`/${locale}/categories/comparisons`}
+                className="mt-6"
+              />
             </div>
           </div>
         </section>
@@ -142,7 +146,7 @@ export function ComparisonTriplePage({
                 <p className="mt-3 text-sm leading-7 text-slate-300">{tool.whoShouldUseSummary}</p>
                 <div className="mt-5">
                   <PremiumButton href={`/${locale}/tools/${tool.slug}`} variant="secondary" className="w-full">
-                    {dictionary.toolCtaLabel}
+                    {locale === "tr" ? tool.name + " incele" : "Review " + tool.name}
                   </PremiumButton>
                 </div>
               </div>
@@ -194,13 +198,15 @@ export function ComparisonTriplePage({
               <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{dictionary.verdictTitle}</h2>
               <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{dictionary.verdictDescription}</p>
             </div>
-            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-              {tools.map((tool) => (
-                <PremiumButton key={tool.slug} href={`/${locale}/tools/${tool.slug}`} className="w-full" variant="secondary">
-                  {tool.name}
-                </PremiumButton>
-              ))}
-            </div>
+            <ComparisonActionGrid
+              locale={locale}
+              tools={tools.map((tool) => ({
+                name: tool.name,
+                openHref: tool.websiteUrl,
+                reviewHref: `/${locale}/tools/${tool.slug}`
+              }))}
+              neutralHref={`/${locale}/categories/comparisons`}
+            />
           </div>
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">

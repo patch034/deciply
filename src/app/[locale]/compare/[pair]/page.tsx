@@ -10,7 +10,7 @@ import { ToolCard } from "@/components/catalog/tool-card";
 import { ComparisonBreakdownTable } from "@/components/comparison/comparison-breakdown-table";
 import { ComparisonDecisionBoxes } from "@/components/comparison/comparison-decision-boxes";
 import { ComparisonFaq } from "@/components/comparison/comparison-faq";
-import { ConversionCtaStrip } from "@/components/ui/conversion-cta-strip";
+import { ComparisonActionGrid } from "@/components/comparison/comparison-action-grid";
 import { Badge } from "@/components/ui/badge";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
@@ -421,14 +421,23 @@ export default async function ComparisonPage({
                   {rightTool.name}: {rightTool.rating.toFixed(1)}/5
                 </div>
               </div>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <PremiumButton href={`/${safeLocale}/tools/${leftTool.slug}`} className="w-full" variant="secondary">
-                  {safeLocale === "tr" ? leftTool.name + " aç" : "Open " + leftTool.name}
-                </PremiumButton>
-                <PremiumButton href={`/${safeLocale}/tools/${rightTool.slug}`} className="w-full" variant="secondary">
-                  {safeLocale === "tr" ? rightTool.name + " aç" : "Open " + rightTool.name}
-                </PremiumButton>
-              </div>
+              <ComparisonActionGrid
+                locale={safeLocale}
+                tools={[
+                  {
+                    name: leftTool.name,
+                    openHref: leftOfficialHref,
+                    reviewHref: `/${safeLocale}/tools/${leftTool.slug}`
+                  },
+                  {
+                    name: rightTool.name,
+                    openHref: rightOfficialHref,
+                    reviewHref: `/${safeLocale}/tools/${rightTool.slug}`
+                  }
+                ]}
+                neutralHref={`/${safeLocale}/categories/comparisons`}
+                className="mt-6"
+              />
             </div>
           </div>
         </section>
@@ -461,7 +470,7 @@ export default async function ComparisonPage({
                 <p className="mt-3 text-sm leading-7 text-slate-300">{tool.whoShouldUseSummary}</p>
                 <div className="mt-5">
                   <PremiumButton href={`/${safeLocale}/tools/${tool.slug}`} variant="secondary" className="w-full">
-                    {dictionary.primaryCta}
+                    {safeLocale === "tr" ? tool.name + " incele" : "Review " + tool.name}
                   </PremiumButton>
                 </div>
               </div>
@@ -529,14 +538,22 @@ export default async function ComparisonPage({
               <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{dictionary.verdictTitle}</h2>
               <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{dictionary.verdictDescription}</p>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <PremiumButton href={`/${safeLocale}/tools/${leftTool.slug}`} className="w-full" variant="secondary">
-                {safeLocale === "tr" ? leftTool.name + " aç" : "Open " + leftTool.name}
-              </PremiumButton>
-              <PremiumButton href={`/${safeLocale}/tools/${rightTool.slug}`} className="w-full" variant="secondary">
-                {safeLocale === "tr" ? rightTool.name + " aç" : "Open " + rightTool.name}
-              </PremiumButton>
-            </div>
+            <ComparisonActionGrid
+              locale={safeLocale}
+              tools={[
+                {
+                  name: leftTool.name,
+                  openHref: leftOfficialHref,
+                  reviewHref: `/${safeLocale}/tools/${leftTool.slug}`
+                },
+                {
+                  name: rightTool.name,
+                  openHref: rightOfficialHref,
+                  reviewHref: `/${safeLocale}/tools/${rightTool.slug}`
+                }
+              ]}
+              neutralHref={`/${safeLocale}/categories/comparisons`}
+            />
           </div>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -553,21 +570,31 @@ export default async function ComparisonPage({
           </div>
         </section>
 
-        <ConversionCtaStrip
-          eyebrow={safeLocale === "tr" ? "Dönüşüm odaklı karar" : "Conversion-ready decision"}
-          title={safeLocale === "tr" ? "Bir sonraki adımı şimdi seçin" : "Choose the next step now"}
-          description={
-            safeLocale === "tr"
-              ? "Her buton açık biçimde hangi aracı açtığını gösterir."
-              : "Open the official tool, compare alternatives, or read the related review."
-          }
-          buttons={[
-            { label: safeLocale === "tr" ? leftTool.name + " aç" : "Open " + leftTool.name, href: leftOfficialHref, variant: "secondary" },
-            { label: safeLocale === "tr" ? rightTool.name + " aç" : "Open " + rightTool.name, href: rightOfficialHref, variant: "secondary" },
-            { label: safeLocale === "tr" ? "Alternatifleri karşılaştır" : "Compare alternatives", href: compareAlternativesHref, variant: "secondary" },
-            { label: safeLocale === "tr" ? "Tam incelemeyi oku" : "Read full review", href: relatedBlogHref, variant: "secondary" }
-          ]}
-        />
+        <section className="rounded-[34px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
+          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{safeLocale === "tr" ? "Dönüşüm odaklı karar" : "Conversion-ready decision"}</p>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{safeLocale === "tr" ? "Bir sonraki adımı şimdi seçin" : "Choose the next step now"}</h2>
+              <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{safeLocale === "tr" ? "Üstteki sırayı koruyun: önce aç, sonra incele, en son alternatifleri karşılaştır." : "Keep the order clear: open first, review second, compare alternatives last."}</p>
+            </div>
+            <ComparisonActionGrid
+              locale={safeLocale}
+              tools={[
+                {
+                  name: leftTool.name,
+                  openHref: leftOfficialHref,
+                  reviewHref: `/${safeLocale}/tools/${leftTool.slug}`
+                },
+                {
+                  name: rightTool.name,
+                  openHref: rightOfficialHref,
+                  reviewHref: `/${safeLocale}/tools/${rightTool.slug}`
+                }
+              ]}
+              neutralHref={`/${safeLocale}/categories/comparisons`}
+            />
+          </div>
+        </section>
 
         {alternatives.length ? (
           <InfoSection title={dictionary.relatedAlternativesTitle} description={dictionary.relatedAlternativesDescription}>
