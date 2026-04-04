@@ -195,12 +195,53 @@
   ["k?sayollar?", "kısayolları"],
 ];
 
+const additionalReplacements = [
+  ["??erik ekipleri", "İçerik ekipleri"],
+  ["G?nl?k yaz? deste?i", "Günlük yazı desteği"],
+  ["G?nl?k taslak, yeniden yaz?m ve taray?c? i?i yaz? deste?i", "Günlük taslak, yeniden yazım ve tarayıcı işi yazı desteği"],
+  ["c?mle yeniden yaz?m?, ton temizli?i ve anlat?m netli?i", "cümle yeniden yazımı, ton temizliği ve anlatım netliği"],
+  ["C?mle yeniden yaz?m?, ton temizli?i ve anlat?m netli?i", "Cümle yeniden yazımı, ton temizliği ve anlatım netliği"],
+  ["Ara?t?rmac?lar", "Araştırmacılar"],
+  ["ara?t?rmac?lar", "araştırmacılar"],
+  ["makale ke?fi", "makale keşfi"],
+  ["dok?manlar", "dokümanlar"],
+  ["toplant? notlar?", "toplantı notları"],
+  ["g?r?lt? engelleme", "gürültü engelleme"],
+  ["kay?t, uzaktan r?portaj", "kayıt, uzaktan röportaj"],
+  ["uzun videolar? kısa sosyal medya kliplerine d?n??t?rme", "uzun videoları kısa sosyal medya kliplerine dönüştürme"],
+  ["AI klip ??kar?m?", "AI klip çıkarımı"],
+  ["taray?c? tabanl? i? ak??? otomasyonu", "tarayıcı tabanlı iş akışı otomasyonu"],
+  ["taray?c? tabanl? i? ak??? otomasyonu", "tarayıcı tabanlı iş akışı otomasyonu"],
+  ["ger?ek i? senaryolar?n?", "gerçek iş senaryolarını"],
+  ["Ger?ek i? senaryolar?n?", "Gerçek iş senaryolarını"],
+  ["i? senaryolar?n?", "iş senaryolarını"],
+  ["K?sa generative video ?retimi ve g?rsel hareket efektleri", "Kısa generative video üretimi ve görsel hareket efektleri"],
+  ["d?zenlenebilir tasar?m assetleri", "düzenlenebilir tasarım assetleri"],
+  ["Geli?tirici odakl? arama ve teknik ara?t?rma cevaplar?", "Geliştirici odaklı arama ve teknik araştırma cevapları"],
+  ["kod yard?m?, snippet ?retimi ve geli?tirici k?sayollar?", "kod yardımı, snippet üretimi ve geliştirici kısayolları"],
+  ["Daha temiz slayt yap?s?yla AI destekli sunum haz?rlama", "Daha temiz slayt yapısıyla AI destekli sunum hazırlama"],
+  ["ortak hik?ye anlat?m?", "ortak hikâye anlatımı"],
+  ["metin varyasyonlar? ve kampanya assetleri", "metin varyasyonları ve kampanya assetleri"],
+  ["i? ak??? promptlar?", "iş akışı promptları"],
+  ["yap?s?yla", "yapısıyla"],
+  ["DALLÂ·E", "DALL·E"],
+  ["g?r?n", "görün"]
+];
+
+const allReplacements = [...additionalReplacements, ...replacements];
+const issuePatterns = [...additionalReplacements, ...replacements]
+  .filter(([pattern, replacement]) => pattern !== replacement)
+  .map(([pattern]) => pattern);
+
 export function repairTurkishAsciiFallback(value) {
   let current = value;
 
-  for (const [pattern, replacement] of replacements) {
+  for (const [pattern, replacement] of allReplacements) {
     current = current.replaceAll(pattern, replacement);
   }
 
   return current;
+}
+export function findTurkishEncodingIssues(value) {
+  return issuePatterns.filter((pattern) => value.includes(pattern));
 }

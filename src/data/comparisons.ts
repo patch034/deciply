@@ -228,7 +228,7 @@ export const comparisonContent: Record<Locale, ComparisonPageContent> = {
           highlight: "Verimlilik"
         },
         {
-          title: "Midjourney vs DALLÂ·E",
+          title: "Midjourney vs DALL·E",
           description: "Görsel kalite ve yaratıcı kontrol açısından iki popüler aracı değerlendir.",
           href: "/compare/midjourney-vs-dalle",
           ctaLabel: "Midjourney'yi incele",
@@ -390,7 +390,7 @@ export const comparisonContent: Record<Locale, ComparisonPageContent> = {
           highlight: "Productivity"
         },
         {
-          title: "Midjourney vs DALLÂ·E",
+          title: "Midjourney vs DALL·E",
           description: "Compare two popular visual tools through image quality and creative control.",
           href: "/compare/midjourney-vs-dalle",
           ctaLabel: "Review Midjourney",

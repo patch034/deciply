@@ -4918,7 +4918,7 @@ export const tools: ToolEntry[] = [
             bestUseCase: "Yaratıcı yazı ve hikâye taslağı",
             whoShouldUse: [
                   "Freelancer'lar",
-                  "??erik ekipleri",
+                  "İçerik ekipleri",
                   "Pazarlama ekipleri"
             ],
             moneyUseCases: [
@@ -5016,7 +5016,7 @@ export const tools: ToolEntry[] = [
             bestUseCase: "Hızlı pazarlama ve müşteri metni",
             whoShouldUse: [
                   "Freelancer'lar",
-                  "??erik ekipleri",
+                  "İçerik ekipleri",
                   "Pazarlama ekipleri"
             ],
             moneyUseCases: [
@@ -5114,7 +5114,7 @@ export const tools: ToolEntry[] = [
             bestUseCase: "Performans odaklı pazarlama metni",
             whoShouldUse: [
                   "Freelancer'lar",
-                  "??erik ekipleri",
+                  "İçerik ekipleri",
                   "Pazarlama ekipleri"
             ],
             moneyUseCases: [
@@ -5212,7 +5212,7 @@ export const tools: ToolEntry[] = [
             bestUseCase: "G?nl?k yazı desteği",
             whoShouldUse: [
                   "Freelancer'lar",
-                  "??erik ekipleri",
+                  "İçerik ekipleri",
                   "Pazarlama ekipleri"
             ],
             moneyUseCases: [
@@ -5310,7 +5310,7 @@ export const tools: ToolEntry[] = [
             bestUseCase: "Yeniden yazım ve netlik",
             whoShouldUse: [
                   "Freelancer'lar",
-                  "??erik ekipleri",
+                  "İçerik ekipleri",
                   "Pazarlama ekipleri"
             ],
             moneyUseCases: [
@@ -5408,7 +5408,7 @@ export const tools: ToolEntry[] = [
             bestUseCase: "Edit ve proofreading",
             whoShouldUse: [
                   "Freelancer'lar",
-                  "??erik ekipleri",
+                  "İçerik ekipleri",
                   "Pazarlama ekipleri"
             ],
             moneyUseCases: [
@@ -5501,8 +5501,8 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
             name: "Elicit",
-            shortDescription: "Elicit, araştırma akışları, makale ke?fi ve kaynak destekli özetler için kullanılan bir AI aracıdır.",
-            longDescription: "Elicit, araştırma akışları, makale ke?fi ve kaynak destekli özetler tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle araştırma sentezi odağında gerçek iş akışlarına kolayca uyarlanabilir.",
+            shortDescription: "Elicit, araştırma akışları, makale keşfi ve kaynak destekli özetler için kullanılan bir AI aracıdır.",
+            longDescription: "Elicit, araştırma akışları, makale keşfi ve kaynak destekli özetler tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle araştırma sentezi odağında gerçek iş akışlarına kolayca uyarlanabilir.",
             bestUseCase: "Araştırma sentezi",
             whoShouldUse: [
                   "Araştırmac?lar",
@@ -5525,7 +5525,7 @@ export const tools: ToolEntry[] = [
             ],
             features: [
                   "Araştırma sentezi için odaklı kullanım",
-                  "Araştırma akışları, makale ke?fi ve kaynak destekli özetler",
+                  "Araştırma akışları, makale keşfi ve kaynak destekli özetler",
                   "Tekrarlayan iş akışlarında hız kazanımı",
                   "Gerçek teslim senaryolarına uygun çıktı desteği"
             ],
@@ -5893,8 +5893,8 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
             name: "Taskade",
-            shortDescription: "Taskade, AI destekli görevler, dok?manlar ve hafif iş akışı düzeni için kullanılan bir AI aracıdır.",
-            longDescription: "Taskade, AI destekli görevler, dok?manlar ve hafif iş akışı düzeni tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle hafif iş akışı düzeni odağında gerçek iş akışlarına kolayca uyarlanabilir.",
+            shortDescription: "Taskade, AI destekli görevler, dokümanlar ve hafif iş akışı düzeni için kullanılan bir AI aracıdır.",
+            longDescription: "Taskade, AI destekli görevler, dokümanlar ve hafif iş akışı düzeni tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle hafif iş akışı düzeni odağında gerçek iş akışlarına kolayca uyarlanabilir.",
             bestUseCase: "Hafif iş akışı düzeni",
             whoShouldUse: [
                   "Araştırmac?lar",
@@ -5917,7 +5917,7 @@ export const tools: ToolEntry[] = [
             ],
             features: [
                   "Hafif iş akışı düzeni için odaklı kullanım",
-                  "AI destekli görevler, dok?manlar ve hafif iş akışı düzeni",
+                  "AI destekli görevler, dokümanlar ve hafif iş akışı düzeni",
                   "Tekrarlayan iş akışlarında hız kazanımı",
                   "Gerçek teslim senaryolarına uygun çıktı desteği"
             ],
@@ -6383,8 +6383,8 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
             name: "Krisp",
-            shortDescription: "Krisp, g?r?lt? engelleme, çağrı netlişi ve toplantı desteği için kullanılan bir AI aracıdır.",
-            longDescription: "Krisp, g?r?lt? engelleme, çağrı netlişi ve toplantı desteği tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle çağrı kalitesi ve toplantılar odağında gerçek iş akışlarına kolayca uyarlanabilir.",
+            shortDescription: "Krisp, gürültü engelleme, çağrı netlişi ve toplantı desteği için kullanılan bir AI aracıdır.",
+            longDescription: "Krisp, gürültü engelleme, çağrı netlişi ve toplantı desteği tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle çağrı kalitesi ve toplantılar odağında gerçek iş akışlarına kolayca uyarlanabilir.",
             bestUseCase: "çağrı kalitesi ve toplantılar",
             whoShouldUse: [
                   "Araştırmac?lar",
@@ -6481,8 +6481,8 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
             name: "Riverside",
-            shortDescription: "Riverside, kay?t, uzaktan r?portaj ve podcast/video üretimi için kullanılan bir AI aracıdır.",
-            longDescription: "Riverside, kay?t, uzaktan r?portaj ve podcast/video üretimi tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle uzaktan kay?t ve podcast odağında gerçek iş akışlarına kolayca uyarlanabilir.",
+            shortDescription: "Riverside, kayıt, uzaktan röportaj ve podcast/video üretimi için kullanılan bir AI aracıdır.",
+            longDescription: "Riverside, kayıt, uzaktan röportaj ve podcast/video üretimi tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle uzaktan kay?t ve podcast odağında gerçek iş akışlarına kolayca uyarlanabilir.",
             bestUseCase: "Uzaktan kay?t ve podcast",
             whoShouldUse: [
                   "Video üreticileri",
@@ -6579,8 +6579,8 @@ export const tools: ToolEntry[] = [
     locales: {
       tr: {
             name: "Opus Clip",
-            shortDescription: "Opus Clip, uzun videolar? kısa sosyal medya kliplerine d?n??t?rme için kullanılan bir AI aracıdır.",
-            longDescription: "Opus Clip, uzun videolar? kısa sosyal medya kliplerine d?n??t?rme tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle uzun videodan kısa klip üretimi odağında gerçek iş akışlarına kolayca uyarlanabilir.",
+            shortDescription: "Opus Clip, uzun videoları kısa sosyal medya kliplerine dönüştürme için kullanılan bir AI aracıdır.",
+            longDescription: "Opus Clip, uzun videoları kısa sosyal medya kliplerine dönüştürme tarafında zaman kazanmak ve daha tutarlı çıktı üretmek isteyen kullanıcılar için öne çıkar. özellikle uzun videodan kısa klip üretimi odağında gerçek iş akışlarına kolayca uyarlanabilir.",
             bestUseCase: "Uzun videodan kısa klip üretimi",
             whoShouldUse: [
                   "Video üreticileri",
