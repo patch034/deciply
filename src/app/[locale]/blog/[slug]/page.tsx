@@ -110,7 +110,7 @@ export default async function BlogDetailPage({
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/blog/${article.slug}`);
   const inlineSupportingLinks = getBlogSupportingLinks(safeLocale, article.slug, 2, 2);
   const comparisonHref = inlineSupportingLinks.comparePages[0]?.href ?? `/${safeLocale}/categories/comparisons`;
-  const alternativesHref = inlineSupportingLinks.alternativePages[0]?.href ?? `/${safeLocale}/alternatives/${primaryTool?.slug ?? "chatgpt"}`;
+  const alternativesHref = inlineSupportingLinks.alternativePages[0]?.href ?? (primaryTool ? `/${safeLocale}/alternatives/${primaryTool.slug}` : `/${safeLocale}/tools`);
   const publishedLabel = safeLocale === "tr" ? "Yayınlandı" : "Published";
   const updatedLabel = safeLocale === "tr" ? "Güncellendi" : "Updated";
   const publishedSource = resolveBlogPublishDate(article);
@@ -343,6 +343,7 @@ export default async function BlogDetailPage({
     </>
   );
 }
+
 
 
 

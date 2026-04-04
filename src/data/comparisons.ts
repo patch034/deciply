@@ -85,7 +85,7 @@ export const comparisonContent: Record<Locale, ComparisonPageContent> = {
   tr: {
     title: "ChatGPT vs Claude",
     summary:
-      "ChatGPT hızlı ve çok yönlü iş akışları için uygun olabilir. Claude ise uzun yazı ve daha düzenli anlatım isteyen kullanıcılar için daha iyi uyum sağlayabilir.",
+      "ChatGPT ve Claude farklı iş akışlarında farklı avantajlar sunar. Bu hub, hız, uzun form yazı, fiyat ve çıktı düzenini senaryo üzerinden karşılaştırır.",
     primaryToolSlug: "chatgpt",
     secondaryToolSlug: "claude",
     hero: {
@@ -121,15 +121,15 @@ export const comparisonContent: Record<Locale, ComparisonPageContent> = {
       items: [
         {
           title: "Kim için daha uygun?",
-          description: "Hız, esneklik ve günlük kullanım arayanlar ChatGPT tarafına; uzun ve düzenli yazı isteyenler Claude tarafına daha yakın hissedebilir."
+          description: "Hız, esneklik ve günlük kullanım önceliği olanlar bir tarafa; uzun form yazı ve daha düzenli yapı isteyenler diğer tarafa daha yakın hissedebilir."
         },
         {
           title: "Hangi durumda hangisi daha iyi?",
-          description: "Hızlı taslak ve çok amaçlı kullanımda ChatGPT; uzun açıklama ve yapılandırılmış içerikte Claude daha uygun olabilir."
+          description: "Hızlı taslak ve çok amaçlı kullanım ile uzun açıklama ve yapılandırılmış içerik, farklı karar sinyalleri üretir."
         },
         {
           title: "Kısa özet: hangisini seçmelisin?",
-          description: "Hızlı sonuç arıyorsan ChatGPT, uzun ve daha düzenli metin arıyorsan Claude senaryosuna daha yakın olabilirsin."
+          description: "En iyi seçim çoğu zaman tek bir kazanan değil, iş akışına en az sürtünme ekleyen araçtır."
         }
       ]
     },
@@ -182,7 +182,7 @@ export const comparisonContent: Record<Locale, ComparisonPageContent> = {
     },
     finalVerdict: {
       title: "Kısa sonuç",
-      description: "Tek cümlelik özet: hızlı ve çok yönlü kullanım için ChatGPT, uzun ve düzenli yazı için Claude daha uygun olabilir.",
+      description: "Bu sayfa tek bir kazanan seçmez. Hangi aracın hangi iş akışına daha az sürtünme eklediğini gösterir.",
       leftTitle: "ChatGPT hangi durumda daha uygun?",
       leftDescription: "Hızlı üretmek, araştırma yapmak ve tek araçla birçok işi yürütmek istiyorsan ChatGPT tarafı daha uygun olabilir.",
       rightTitle: "Claude hangi durumda daha uygun?",
@@ -195,24 +195,24 @@ export const comparisonContent: Record<Locale, ComparisonPageContent> = {
       description: "Kararı hızlandıran kısa ve nötr cevaplar.",
       items: [
         {
-          question: "ChatGPT mi Claude mu daha iyi?",
-          answer: "Bu, önceliğine göre değişir. Hız ve esneklik için ChatGPT, uzun ve daha düzenli yazılar için Claude daha uygun olabilir."
+          question: "Hangi iş akışı hangi araca daha yakın?",
+          answer: "Önceliğe göre değişir. Hız ve esneklik bir tarafta, uzun ve düzenli yazı diğer tarafta daha iyi hissedebilir."
         },
         {
-          question: "Hangisi yeni başlayanlar için daha uygun?",
-          answer: "Daha hızlı alışmak isteyenler ChatGPT tarafını, daha sakin ve uzun yazı isteyenler Claude tarafını tercih edebilir."
+          question: "Yeni başlayan biri ilk olarak neye bakmalı?",
+          answer: "İlk 10 dakikada hangi aracın daha rahat başladığına bakmak daha güvenli bir sinyal verir."
         },
         {
-          question: "Hangisi daha iyi yazı yazar?",
-          answer: "Uzun ve kontrollü yazılarda Claude, çok amaçlı hızlı yazılarda ChatGPT daha uygun olabilir."
+          question: "Fiyat mı, çıktı kalitesi mi, hız mı?",
+          answer: "Hız, kalite ve tekrar üretilebilirlik birlikte değerlendirilmelidir."
         },
         {
-          question: "Fiyat açısından fark var mı?",
-          answer: "İkisi de freemium mantığıyla denenebilir; bu yüzden karar çoğu zaman kullanım tarzına göre verilir."
+          question: "Ekip veya creator işleri için neye dikkat edilmeli?",
+          answer: "Tutarlı çıktı, paylaşılabilir kullanım ve aynı brief üzerinde tekrar eden testler karar kalitesini artırır."
         },
         {
-          question: "Hangisi günlük kullanım için daha uygun?",
-          answer: "Günlük araştırma, taslak ve hızlı işler için ChatGPT; daha sakin ve düzenli anlatım için Claude değerlendirilebilir."
+          question: "Günlük kullanımda hangisi daha rahat?",
+          answer: "Günlük kullanımda en iyi sinyal, hangi aracın daha az sürtünme yarattığıdır."
         }
       ]
     },
@@ -247,7 +247,7 @@ export const comparisonContent: Record<Locale, ComparisonPageContent> = {
   en: {
     title: "ChatGPT vs Claude",
     summary:
-      "ChatGPT can be a better fit for faster, more flexible workflows. Claude may fit users better when long-form clarity and structure matter more.",
+      "ChatGPT and Claude can fit different workflows in different ways. This hub compares speed, long-form writing, pricing, and output structure.",
     primaryToolSlug: "chatgpt",
     secondaryToolSlug: "claude",
     hero: {
@@ -283,15 +283,15 @@ export const comparisonContent: Record<Locale, ComparisonPageContent> = {
       items: [
         {
           title: "Who is each tool more suitable for?",
-          description: "Users who want speed, flexibility, and everyday utility may lean toward ChatGPT. Users who care more about long-form structure may lean toward Claude."
+          description: "Users who care about speed, flexibility, and everyday utility may lean one way; users who care more about long-form structure may lean the other."
         },
         {
           title: "When does each one fit better?",
-          description: "ChatGPT may fit faster drafting and multi-purpose work. Claude may fit longer explanations and structured content better."
+          description: "Faster drafting and multi-purpose work may point one way; longer explanations and structured content may point the other."
         },
         {
           title: "Short answer: which one should you try first?",
-          description: "If speed matters more, start by evaluating ChatGPT. If structure matters more, Claude may be the better starting point."
+          description: "If speed matters more, start by evaluating the faster workflow fit. If structure matters more, start by evaluating the more structured fit."
         }
       ]
     },
@@ -344,7 +344,7 @@ export const comparisonContent: Record<Locale, ComparisonPageContent> = {
     },
     finalVerdict: {
       title: "Short conclusion",
-      description: "One-line summary: ChatGPT may fit faster, more flexible work; Claude may fit longer, more structured writing.",
+      description: "This page does not force a single winner. It shows when each tool fits better by workflow, pricing, and output style.",
       leftTitle: "When is ChatGPT more suitable?",
       leftDescription: "It may fit better if you want speed, research help, and one tool for many everyday tasks.",
       rightTitle: "When is Claude more suitable?",
@@ -357,24 +357,24 @@ export const comparisonContent: Record<Locale, ComparisonPageContent> = {
       description: "Short neutral answers to make the decision easier.",
       items: [
         {
-          question: "Is ChatGPT better than Claude?",
-          answer: "That depends on your priority. ChatGPT may fit speed and flexibility better, while Claude may fit long-form structure better."
+          question: "Which workflow is closer to each tool?",
+          answer: "That depends on the workflow. Speed and flexibility may point one way, while long-form structure may point the other."
         },
         {
-          question: "Which one is better for beginners?",
-          answer: "Users who want lower friction may prefer ChatGPT, while users who care more about calmer writing may prefer Claude."
+          question: "What should a beginner check first?",
+          answer: "Start with the first 10 minutes of use rather than the sticker price. Ease of start and clear output often provide the strongest signal."
         },
         {
-          question: "Which one writes better?",
-          answer: "Claude may fit longer structured writing better, while ChatGPT may fit faster general drafting better."
+          question: "What matters most: price, quality, or speed?",
+          answer: "All three matter, but the right choice usually comes from the combination rather than a single metric. Review speed, quality, and repeatability together."
         },
         {
-          question: "Is there a big pricing difference?",
-          answer: "Both can be tested through freemium access, so the first decision is usually based on fit rather than price alone."
+          question: "What matters most for teams or creators?",
+          answer: "Consistent output, shareable usage, and repeated tests on the same brief make team and creator decisions more reliable."
         },
         {
-          question: "Which one is better for everyday work?",
-          answer: "ChatGPT may feel more practical for quick daily tasks, while Claude may fit longer structured work better."
+          question: "Which workflow is closer to each tool?",
+          answer: "The better choice is usually the tool that adds the least friction to your workflow."
         }
       ]
     },
@@ -454,7 +454,7 @@ export const tripleComparisonContent: Record<Locale, TripleComparisonPageContent
   },
   en: {
     title: "ChatGPT vs Claude vs Gemini",
-    summary: "These three general-purpose AI assistants may look similar, but they stand out in different workflows. Compare speed, long-form writing, and Google-ecosystem fit clearly.",
+    summary: "These three general-purpose AI assistants may look similar, but they stand out in different workflows. Compare speed, long-form writing, and ecosystem fit clearly.",
     eyebrow: "Three-way comparison",
     toolCtaLabel: "Tool page",
     selectionTitle: "Who should choose which?",
@@ -479,6 +479,10 @@ assertEncodingHealth("comparisons");
 export function getComparisonContent(locale: Locale) {
   return normalizeLocalizedContent(`comparison:${locale}`, comparisonContent[locale]);
 }
+
+
+
+
 
 
 

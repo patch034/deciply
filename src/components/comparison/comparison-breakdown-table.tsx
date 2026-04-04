@@ -12,7 +12,7 @@ type ComparisonBreakdownTableProps = {
   rows: ComparisonRow[];
 };
 
-function getWinnerStyle() {
+function getComparisonCellStyle() {
   return "text-slate-200";
 }
 
@@ -44,10 +44,10 @@ export function ComparisonBreakdownTable({
             {rows.map((row) => (
               <tr key={row.label} className="transition duration-300 hover:bg-white/[0.03]">
                 <td className="px-6 py-5 text-sm font-semibold text-slate-100">{row.label}</td>
-                <td className={`px-6 py-5 text-sm leading-7 ${getWinnerStyle()}`}>
+                <td className={`px-6 py-5 text-sm leading-7 ${getComparisonCellStyle()}`}>
                   {row.left}
                 </td>
-                <td className={`px-6 py-5 text-sm leading-7 ${getWinnerStyle()}`}>
+                <td className={`px-6 py-5 text-sm leading-7 ${getComparisonCellStyle()}`}>
                   {row.right}
                 </td>
               </tr>
@@ -65,11 +65,11 @@ export function ComparisonBreakdownTable({
             <div className="mt-4 grid gap-3">
               <div className="rounded-[20px] border border-white/10 bg-slate-950/40 p-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">{columns.left}</p>
-                <p className={`mt-2 text-sm leading-7 ${getWinnerStyle()}`}>{row.left}</p>
+                <p className={`mt-2 text-sm leading-7 ${getComparisonCellStyle()}`}>{row.left}</p>
               </div>
               <div className="rounded-[20px] border border-white/10 bg-slate-950/40 p-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">{columns.right}</p>
-                <p className={`mt-2 text-sm leading-7 ${getWinnerStyle()}`}>{row.right}</p>
+                <p className={`mt-2 text-sm leading-7 ${getComparisonCellStyle()}`}>{row.right}</p>
               </div>
             </div>
           </div>
@@ -78,3 +78,4 @@ export function ComparisonBreakdownTable({
     </section>
   );
 }
+

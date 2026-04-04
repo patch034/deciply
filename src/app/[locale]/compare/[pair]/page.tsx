@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
@@ -149,8 +149,8 @@ function buildComparisonDescription(locale: Locale, leftTool: LocalizedTool, rig
 
 function buildHeroIntro(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool) {
   return locale === "tr"
-    ? `${leftTool.name}, ${leftTool.bestUseCase.toLowerCase()} için daha güçlü olabilir. ${rightTool.name} ise ${rightTool.bestUseCase.toLowerCase()} tarafında daha mantıklı durabilir.`
-    : `${leftTool.name} may fit ${leftTool.bestUseCase.toLowerCase()} better, while ${rightTool.name} may make more sense for ${rightTool.bestUseCase.toLowerCase()}.`;
+    ? `${leftTool.name} ve ${rightTool.name} arasındaki farkı iş akışı, fiyat, çıktı kalitesi ve hız üzerinden değerlendirin.`
+    : `Evaluate ${leftTool.name} and ${rightTool.name} through workflow fit, pricing, output quality, and speed.`;
 }
 
 function buildComparisonRows(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool): ComparisonRow[] {
@@ -199,32 +199,40 @@ function buildComparisonFaq(locale: Locale, leftTool: LocalizedTool, rightTool: 
   if (locale === "tr") {
     return [
       {
-        question: `${leftTool.name} mi ${rightTool.name} mi daha mantıklı?`,
-        answer: `${leftTool.name}, ${leftTool.bestUseCase.toLowerCase()} için daha mantıklı olabilir. ${rightTool.name} ise ${rightTool.bestUseCase.toLowerCase()} arayan kullanıcılar için daha iyi uyum sağlayabilir.`
+        question: `Hangi iş akışı hangi araca daha yakın?`,
+        answer: `${leftTool.name} ${leftTool.bestUseCase.toLowerCase()} tarafında, ${rightTool.name} ise ${rightTool.bestUseCase.toLowerCase()} tarafında daha doğal hissedebilir. En iyi seçim, bugünkü iş akışına en az sürtünme ekleyen araçtır.`
       },
       {
-        question: `Yeni başlayan biri önce hangisini denemeli?`,
-        answer: `${leftTool.pricing !== "PAID" ? leftTool.name : rightTool.name} daha düşük bariyerle başlanabilecek taraf olabilir; yine de karar en çok hedef çıktınıza göre verilmelidir.`
+        question: `Yeni başlayan biri ilk olarak neye bakmalı?`,
+        answer: `Önce fiyat etiketinden çok, ilk 10 dakikada hangi aracın daha rahat başladığına bakın. Kolay başlangıç ve net çıktı çoğu zaman daha iyi sinyal verir.`
       },
       {
-        question: `Affiliate veya ticari kullanım açısından fark var mı?`,
-        answer: `En doğru karar yalnızca fiyat değil, hangi aracın daha hızlı satılabilir çıktı ürettiğine göre verilir. Bu nedenle güçlü yönler ve sınırlamalar bölümünü birlikte değerlendirmek daha sağlıklıdır.`
+        question: `Fiyat mı, çıktı kalitesi mi, hız mı?`,
+        answer: `Üçü de önemlidir ama doğru seçim genelde tek bir metrikten çıkmaz. Hız, kalite ve tekrar üretilebilirlik birlikte değerlendirilmelidir.`
+      },
+      {
+        question: `Ekip veya creator işleri için neye dikkat edilmeli?`,
+        answer: `Tutarlı çıktı, paylaşılabilir kullanım ve aynı brief üzerinde tekrar eden testler, ekip ve creator kararlarını daha güvenilir hale getirir.`
       }
     ];
   }
 
   return [
     {
-      question: `${leftTool.name} or ${rightTool.name}: which makes more sense?`,
-      answer: `${leftTool.name} may be the better fit for ${leftTool.bestUseCase.toLowerCase()}, while ${rightTool.name} may work better when ${rightTool.bestUseCase.toLowerCase()} matters more.`
+      question: `Which workflow is closer to each tool?`,
+      answer: `${leftTool.name} may feel more natural for ${leftTool.bestUseCase.toLowerCase()}, while ${rightTool.name} may align better with ${rightTool.bestUseCase.toLowerCase()}. The best choice is the one that adds the least friction to today's workflow.`
     },
     {
-      question: `Which one should a beginner try first?`,
-      answer: `${leftTool.pricing !== "PAID" ? leftTool.name : rightTool.name} may be easier to start with because the barrier is lower, but the real decision should still follow the workflow you care about.`
+      question: `What should a beginner check first?`,
+      answer: `Start with the first 10 minutes of use rather than the sticker price. Ease of start and clear output often provide the strongest signal.`
     },
     {
-      question: `Is there a meaningful commercial difference?`,
-      answer: `The better decision usually depends less on the sticker price and more on which tool creates faster sellable output in your workflow.`
+      question: `What matters most: price, quality, or speed?`,
+      answer: `All three matter, but the right choice usually comes from the combination rather than a single metric. Review speed, quality, and repeatability together.`
+    },
+    {
+      question: `What matters most for teams or creators?`,
+      answer: `Consistent output, shareable usage, and repeated tests on the same brief make team and creator decisions more reliable.`
     }
   ];
 }
@@ -661,6 +669,8 @@ export default async function ComparisonPage({
     </>
   );
 }
+
+
 
 
 
