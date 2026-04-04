@@ -58,6 +58,53 @@ body::after {
   background: rgba(34, 211, 238, 0.1);
 }
 
+select.dark-select {
+  color-scheme: dark;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+    rgba(255, 255, 255, 0.035);
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(148, 163, 184, 0.95) 50%),
+    linear-gradient(135deg, rgba(148, 163, 184, 0.95) 50%, transparent 50%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%,
+    0 0;
+  background-size:
+    6px 6px,
+    6px 6px,
+    100% 100%;
+  background-repeat: no-repeat;
+  color: #e5eefc;
+  padding-right: 2.5rem;
+}
+
+select.dark-select:focus,
+select.dark-select:focus-visible {
+  outline: none;
+  border-color: rgba(34, 211, 238, 0.34);
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.12);
+}
+
+select.dark-select option {
+  background-color: #111827;
+  color: #e5eefc;
+}
+
+select.dark-select option:checked,
+select.dark-select option:hover {
+  background-color: #0f766e;
+  color: #f8fafc;
+}
+
+select.dark-select option:disabled {
+  color: #64748b;
+}
+
 a {
   color: inherit;
   text-decoration: none;

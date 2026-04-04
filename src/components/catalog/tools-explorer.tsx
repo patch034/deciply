@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -487,7 +487,7 @@ export function ToolsExplorer({
                   <select
                     value={activeSort}
                     onChange={(event) => setFilters({ sort: event.target.value as ToolsSortOption, page: 1 })}
-                    className="min-h-[40px] rounded-full border border-white/10 bg-white/[0.04] px-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400/30"
+                    className="dark-select min-h-[40px] rounded-full border border-white/10 px-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400/30"
                   >
                     {sortOptions.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -542,7 +542,7 @@ export function ToolsExplorer({
                 <select
                   value={activeSort}
                   onChange={(event) => setFilters({ sort: event.target.value as ToolsSortOption, page: 1 })}
-                  className="min-h-[40px] rounded-full border border-white/10 bg-white/[0.04] px-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400/30"
+                  className="dark-select min-h-[40px] rounded-full border border-white/10 px-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400/30"
                 >
                   {sortOptions.map((option) => (
                     <option key={option.value} value={option.value}>
