@@ -62,9 +62,9 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "how-ai-tools-are-changing-ecommerce-in-2026"
   ],
   "claude-vs-gemini": [
-    "best-ai-tools-for-small-businesses-2026",
-    "how-to-write-product-descriptions-with-ai-2026",
-    "best-ai-tools-for-marketing-teams-2026"
+    "best-ai-tools-for-students-projects-2026",
+    "best-ai-tools-for-resume-linkedin-2026",
+    "best-ai-tools-for-agency-delivery-2026"
   ],
   "chatgpt-vs-perplexity": [
     "best-ai-tools-for-small-businesses-2026",
@@ -72,9 +72,9 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "best-ai-tools-for-marketing-teams-2026"
   ],
   "perplexity-vs-gemini": [
+    "best-ai-tools-for-students-projects-2026",
     "best-ai-tools-for-small-businesses-2026",
-    "best-ai-tools-for-marketing-teams-2026",
-    "how-to-write-product-descriptions-with-ai-2026"
+    "best-ai-tools-for-agency-delivery-2026"
   ],
   "codeium-vs-cursor": [
     "best-ai-tools-for-startups-2026",
@@ -87,9 +87,9 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "best-ai-tools-for-content-teams-2026"
   ],
   "cursor-vs-codeium-for-teams": [
-    "best-ai-tools-for-startups-2026",
-    "best-ai-tools-for-agencies-2026",
-    "best-ai-tools-for-content-teams-2026"
+    "best-ai-tools-for-students-projects-2026",
+    "best-ai-tools-for-agency-delivery-2026",
+    "best-ai-tools-for-startups-2026"
   ],
   "cursor-vs-replit": [
     "best-ai-tools-for-small-businesses-2026",
@@ -132,8 +132,8 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "best-ai-tools-for-marketing-teams-2026"
   ],
   "grammarly-vs-quillbot": [
-    "best-ai-tools-for-content-teams-2026",
-    "best-ai-tools-for-agencies-2026",
+    "best-ai-tools-for-students-projects-2026",
+    "best-ai-tools-for-agency-delivery-2026",
     "best-ai-tools-for-startups-2026"
   ],
   "notion-ai-vs-chatgpt": [
@@ -142,9 +142,14 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "how-ai-tools-are-changing-ecommerce-in-2026"
   ],
   "jasper-vs-copy-ai": [
+    "best-ai-tools-for-agency-delivery-2026",
     "best-ai-tools-for-marketing-teams-2026",
-    "best-ai-tools-for-agencies-2026",
-    "best-ai-tools-for-content-teams-2026"
+    "best-ai-tools-for-small-businesses-2026"
+  ],
+  "grammarly-vs-deepl-write": [
+    "best-ai-tools-for-resume-linkedin-2026",
+    "best-ai-tools-for-students-projects-2026",
+    "best-ai-tools-for-agency-delivery-2026"
   ],
   default: [
     "how-ai-tools-are-changing-ecommerce-in-2026",
@@ -413,6 +418,7 @@ const HIGH_INTENT_COMPARISON_DIRECTORY_SLUGS = [
   'runway-vs-pika',
   'pika-vs-capcut-ai',
   'grammarly-vs-quillbot',
+  'grammarly-vs-deepl-write',
   'notion-ai-vs-chatgpt',
   'jasper-vs-copy-ai',
   'shopify-magic-vs-copy-ai'

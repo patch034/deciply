@@ -790,6 +790,226 @@ const seeds: ArticleSeed[] = [
       tr: "Kurulum ve üretim tarafını netleştirdikten sonra compare ve alternatives sayfalarıyla seçimleri daralt.",
       en: "Once setup and production are clear, narrow the options with the compare and alternatives pages."
     }
+  },
+  {
+    slug: "best-ai-tools-for-students-projects-2026",
+    publishDate: "2026-04-05",
+    topic: {
+      tr: "??renci projeleri",
+      en: "student projects"
+    },
+    title: {
+      tr: "2026?da ??renciler için proje odaklı en iyi AI araçları",
+      en: "Best AI tools for student projects in 2026"
+    },
+    excerpt: {
+      tr: "Araştırma, taslak, kod ve sunum taraf?n? aynı ak??ta toparlamak isteyen ??renciler için premium bir rehber.",
+      en: "A premium guide for students who want to combine research, drafts, code, and presentations in one workflow."
+    },
+    intro: {
+      tr: "??renci projelerinde as?l fark? yaratan ?ey tek bir aracı ezberlemek de?il, araştırmadan teslimata kadar ge?en yolu sadele?tirmektir. Doğru AI aracı; not toplama, ilk taslak çıkarma, referanslar? d?zenleme, slaytlar? netle?tirme ve son kontrol? daha az s?rt?nmeyle tamamlaman? sa?lar. Bu rehber, proje sunumu, grup ?al??mas? ve bireysel teslim senaryolarını aynı ?at? alt?nda değerlendirir.",
+      en: "In student projects, the real advantage does not come from memorizing one tool; it comes from simplifying the path from research to delivery. The right AI tool can help with note taking, first drafts, references, slides, and final review with less friction. This guide looks at presentation work, group projects, and solo assignments as one system."
+    },
+    seoTitle: {
+      tr: "2026?da ??renciler için proje odaklı en iyi AI araçları | Deciply",
+      en: "Best AI tools for student projects in 2026 | Deciply"
+    },
+    seoDescription: {
+      tr: "??renci projeleri için en iyi AI araçların?, compare linklerini, gerçek workflow ?rneklerini ve pratik kullanım senaryolarını inceleyin.",
+      en: "Review the best AI tools for student projects, plus compare links, real workflow examples, and practical use cases."
+    },
+    categorySlug: "guides",
+    useCaseSlug: "students",
+    useCasePageSlug: "students",
+    toolSlugs: ["chatgpt", "perplexity", "gemini", "notion-ai", "cursor"],
+    comparePairs: [
+      { leftSlug: "chatgpt", rightSlug: "perplexity" },
+      { leftSlug: "claude", rightSlug: "gemini" },
+      { leftSlug: "cursor", rightSlug: "codeium" }
+    ],
+    relatedArticleSlugs: ["best-ai-tools-for-youtube-shorts-2026", "best-ai-tools-for-resume-linkedin-2026", "best-ai-tools-for-beginners-2026"],
+    keywords: ["students", "projects", "research", "presentations", "coding"],
+    audience: {
+      tr: "??renciler, grup projeleri yapan ekipler ve teslim tarihini daha d?zenli yönetmek isteyen herkes için uygundur.",
+      en: "This fits students, group project teams, and anyone who wants to manage deadlines with less chaos."
+    },
+    workflow: {
+      tr: ["konuyu ve kriteri netle?tir", "taslak, araştırma ve sunum iskeletini ?ret", "kaynaklar? ve son versiyonu kontrol et"],
+      en: ["clarify the topic and rubric", "produce drafts, research, and presentation structure", "check sources and final delivery"]
+    },
+    caution: {
+      tr: "AI çıktıs?n? do?rudan teslim etmek yerine mutlaka proje kriterleri ve kaynaklarla kontrol et; aksi halde k???k hata bile puan kaybettirebilir.",
+      en: "Do not submit AI output as-is; always verify against the rubric and sources, because small mistakes can cost points."
+    },
+    nextStep: {
+      tr: "?lgili compare sayfalar?n? a??p aynı i? için hangi aracın daha az revizyon istediçini g?r.",
+      en: "Open the related comparison pages to see which tool needs fewer revisions for the same job."
+    }
+  },
+  {
+    slug: "best-ai-tools-for-youtube-shorts-2026",
+    publishDate: "2026-04-05",
+    topic: {
+      tr: "YouTube Shorts üretimi",
+      en: "YouTube Shorts production"
+    },
+    title: {
+      tr: "2026?da YouTube Shorts için en iyi AI araçları",
+      en: "Best AI tools for YouTube Shorts in 2026"
+    },
+    excerpt: {
+      tr: "K?sa video senaryosu, kurgu, altyazı ve yay?n akışın? tek bir gerçek?i sistem içinde kuran rehber.",
+      en: "A practical guide for building a realistic workflow around script writing, editing, captions, and publishing."
+    },
+    intro: {
+      tr: "YouTube Shorts üretiminde hız önemli olsa da hız?n tek ba??na değeri yoktur; önemli olan fikri izlenebilir, kısa ve tekrar edilebilir bir sisteme ?evirmektir. AI burada ba?l?k, hook, ilk kurgu, altyazı ve varyasyon üretiminde b?y?k zaman kazand?r?r. Bu rehber, tek bir uygulaman?n yeterli olmad??? kısa video akışın? daha temiz ve yönetilebilir hale getirir.",
+      en: "Speed matters in YouTube Shorts, but speed alone does not create value; what matters is turning an idea into a repeatable system that is watchable and short. AI can save a lot of time with hooks, first edits, captions, and variations. This guide makes the short-video workflow cleaner and more manageable without pretending one app can do everything."
+    },
+    seoTitle: {
+      tr: "2026?da YouTube Shorts için en iyi AI araçları | Deciply",
+      en: "Best AI tools for YouTube Shorts in 2026 | Deciply"
+    },
+    seoDescription: {
+      tr: "YouTube Shorts üretimi için en iyi AI araçların?, compare linklerini, kısa video workflow?lar?n? ve içerik üretim ak??lar?n? inceleyin.",
+      en: "Review the best AI tools for YouTube Shorts, plus compare links, short-video workflows, and production flows."
+    },
+    categorySlug: "guides",
+    useCaseSlug: "creators",
+    useCasePageSlug: "creators",
+    toolSlugs: ["runway", "pika", "capcut-ai", "canva-ai", "chatgpt"],
+    comparePairs: [
+      { leftSlug: "runway", rightSlug: "pika" },
+      { leftSlug: "pika", rightSlug: "capcut-ai" },
+      { leftSlug: "chatgpt", rightSlug: "claude" }
+    ],
+    relatedArticleSlugs: ["best-ai-tools-for-students-projects-2026", "best-ai-tools-for-agency-delivery-2026", "best-ai-tools-for-content-teams-2026"],
+    keywords: ["youtube shorts", "short-form video", "captions", "editing", "content creation"],
+    audience: {
+      tr: "??erik üreticileri, solo kanallar ve kısa video teslim süresini azaltmak isteyen ekipler için uygundur.",
+      en: "This fits creators, solo channels, and teams that want to shorten the time from idea to upload."
+    },
+    workflow: {
+      tr: ["hook ve konu c?mlesini çıkar", "ilk kurgu ve altyazıy? ?ret", "yay?nlamadan ?nce ritim ve tempo kontrol? yap"],
+      en: ["define the hook and topic", "generate the first edit and captions", "check pacing and rhythm before publishing"]
+    },
+    caution: {
+      tr: "K?sa video içerikte fazla katman eklemek izlenmeyi d???rebilir; AI çıktıs?n? gereksiz efekt yerine net mesaj için kullan.",
+      en: "Too many layers can hurt retention in short-form video, so use AI for clearer messaging rather than extra effects."
+    },
+    nextStep: {
+      tr: "?lgili compare sayfalar?yla hangi video veya yazı aracın?n senin iş akışına daha uygun oldu?unu test et.",
+      en: "Use the related comparison pages to test which video or writing tool fits your workflow best."
+    }
+  },
+  {
+    slug: "best-ai-tools-for-resume-linkedin-2026",
+    publishDate: "2026-04-05",
+    topic: {
+      tr: "CV ve LinkedIn",
+      en: "resume and LinkedIn"
+    },
+    title: {
+      tr: "2026?da CV ve LinkedIn için en iyi AI araçları",
+      en: "Best AI tools for resumes and LinkedIn in 2026"
+    },
+    excerpt: {
+      tr: "CV, LinkedIn özeti ve kariyer metinlerini daha temiz, daha net ve daha profesyonel kurmak isteyenler için rehber.",
+      en: "A guide for anyone who wants cleaner, sharper, and more professional career copy across resumes and LinkedIn profiles."
+    },
+    intro: {
+      tr: "CV ve LinkedIn yazım? yaln?zca g?zel c?mle kurmak de?ildir; do?ru rol?, do?ru sonucu ve do?ru tonu kısa alanda g?sterebilme işidir. AI bu s?reci hızlandırır ama ba?ar?, ?zge?mişi bir pazarlama metni gibi de?il, do?rulanabilir bir kariyer özeti gibi kurmaktan gelir. Bu rehber, i? arayanlar, ??renciler ve kariyer y?n?n? de?i?tirenler için daha kontroll? bir ak?? sunar.",
+      en: "Resume and LinkedIn writing is not just about nice sentences; it is about showing the right role, result, and tone in a small space. AI can speed up the process, but the win comes from treating the resume as a verifiable career summary rather than generic marketing copy. This guide gives job seekers, students, and career switchers a more controlled workflow."
+    },
+    seoTitle: {
+      tr: "2026?da CV ve LinkedIn için en iyi AI araçları | Deciply",
+      en: "Best AI tools for resumes and LinkedIn in 2026 | Deciply"
+    },
+    seoDescription: {
+      tr: "CV ve LinkedIn için en iyi AI araçların?, compare linklerini, d?zenleme ak??lar?n? ve gerçek kullanım ?rneklerini inceleyin.",
+      en: "Review the best AI tools for resumes and LinkedIn, plus compare links, editing workflows, and real use cases."
+    },
+    categorySlug: "guides",
+    useCaseSlug: "business",
+    useCasePageSlug: "business",
+    toolSlugs: ["grammarly", "deepl-write", "notion-ai", "chatgpt", "claude"],
+    comparePairs: [
+      { leftSlug: "grammarly", rightSlug: "deepl-write" },
+      { leftSlug: "notion-ai", rightSlug: "chatgpt" },
+      { leftSlug: "chatgpt", rightSlug: "claude" }
+    ],
+    relatedArticleSlugs: ["best-ai-tools-for-students-projects-2026", "best-ai-tools-for-agency-delivery-2026", "best-ai-tools-for-small-businesses-2026"],
+    keywords: ["resume", "linkedin", "career writing", "editing", "job search"],
+    audience: {
+      tr: "?? arayanlar, ??renciler, yeni mezunlar ve profiline daha g??l? bir kariyer dili eklemek isteyen herkes için uygundur.",
+      en: "This fits job seekers, students, recent graduates, and anyone who wants stronger career language on their profile."
+    },
+    workflow: {
+      tr: ["rol? ve ba?ar?lar? netle?tir", "CV ve LinkedIn özetini ?ret", "ton, do?ruluk ve tekrar eden ifadeleri kontrol et"],
+      en: ["clarify the role and wins", "draft the resume and LinkedIn summary", "check tone, accuracy, and repetition"]
+    },
+    caution: {
+      tr: "Kariyer metninde abart? yapmak ters tepebilir; AI ile ?retilen her c?mleyi gerçek deneyim ve ba?vuru hedefiyle e?le?tir.",
+      en: "Overstatement can backfire in career copy, so align every AI-written sentence with real experience and the target role."
+    },
+    nextStep: {
+      tr: "Bu sayfadaki compare ba?lant?lar?yla hangi yazı aracın?n daha net, daha az revizyon isteyen sonuç verdiçini g?r.",
+      en: "Use the compare links on this page to see which writing tool gives cleaner results with fewer revisions."
+    }
+  },
+  {
+    slug: "best-ai-tools-for-agency-delivery-2026",
+    publishDate: "2026-04-05",
+    topic: {
+      tr: "ajans teslimat?",
+      en: "agency delivery"
+    },
+    title: {
+      tr: "2026?da ajans teslimat? için en iyi AI araçları",
+      en: "Best AI tools for agency delivery in 2026"
+    },
+    excerpt: {
+      tr: "Brief, üretim, kontrol ve teslim akışın? daha d?zenli kurmak isteyen ajanslar için stratejik rehber.",
+      en: "A strategic guide for agencies that want a more organized brief, production, QA, and delivery workflow."
+    },
+    intro: {
+      tr: "Ajans teslimat?nda as?l sorun fikir eksiklişi de?il, brief ile final teslim arasında ?ok fazla tekrar ya?anmas?d?r. AI bu bo?lu?u doldurmak için de?il, akışı sadele?tirmek için kullan?lmal?d?r: brief özetleme, ilk taslak, varyasyon üretimi, kontrol listesi ve teslim notu. Bu rehber, ajans ekiplerinin daha hızlı teslimat yaparken kaliteyi nas?l koruyabilece?ini g?sterir.",
+      en: "In agency delivery, the main problem is usually not ideas; it is the amount of repetition between the brief and the final handoff. AI should be used to simplify the workflow, not replace it: brief summaries, first drafts, variation generation, QA checklists, and delivery notes. This guide shows how agencies can move faster without losing quality."
+    },
+    seoTitle: {
+      tr: "2026?da ajans teslimat? için en iyi AI araçları | Deciply",
+      en: "Best AI tools for agency delivery in 2026 | Deciply"
+    },
+    seoDescription: {
+      tr: "Ajans teslimat? için en iyi AI araçların?, compare linklerini, tak?m ak??lar?n? ve kalite kontrol ad?mlar?n? inceleyin.",
+      en: "Review the best AI tools for agency delivery, plus compare links, team workflows, and quality-control steps."
+    },
+    categorySlug: "guides",
+    useCaseSlug: "business",
+    useCasePageSlug: "business",
+    toolSlugs: ["jasper", "copy-ai", "chatgpt", "claude", "perplexity"],
+    comparePairs: [
+      { leftSlug: "jasper", rightSlug: "copy-ai" },
+      { leftSlug: "chatgpt", rightSlug: "claude" },
+      { leftSlug: "perplexity", rightSlug: "gemini" }
+    ],
+    relatedArticleSlugs: ["best-ai-tools-for-students-projects-2026", "best-ai-tools-for-youtube-shorts-2026", "best-ai-tools-for-small-businesses-2026"],
+    keywords: ["agency", "delivery", "workflow", "qa", "content ops"],
+    audience: {
+      tr: "Ajans ekipleri, müşteri hizmeti ak??lar? ve teslim kalitesini standardize etmek isteyen üretim ekipleri için uygundur.",
+      en: "This fits agency teams, client service workflows, and production teams that want more consistent delivery quality."
+    },
+    workflow: {
+      tr: ["briefi ve çıktı beklentisini özetle", "taslakları ve varyasyonlar? ?ret", "QA ve teslim notlar?n? kontrol et"],
+      en: ["summarize the brief and output expectations", "produce drafts and variations", "check QA and handoff notes"]
+    },
+    caution: {
+      tr: "Teslim kalitesini korumak için AI çıktıs?n? son müşteri metni gibi de?il, d?zenlenmesi gereken üretim taslağı gibi ele al.",
+      en: "To protect delivery quality, treat AI output as a production draft that still needs editing rather than final client copy."
+    },
+    nextStep: {
+      tr: "?lgili compare sayfalar?n? a??p ajans akışına en yak?n araçları birbiriyle k?yasla.",
+      en: "Open the related comparison pages to compare the tools that best fit agency workflows."
+    }
   }
 ];
 

@@ -970,6 +970,7 @@ export const tools: ToolEntry[] = [
     primaryCategorySlug: "productivity",
     categorySlugs: [
       "ai-tools",
+      "comparisons",
       "guides",
       "free-tools",
       "make-money-with-ai"
@@ -1080,6 +1081,7 @@ export const tools: ToolEntry[] = [
     primaryCategorySlug: "productivity",
     categorySlugs: [
       "ai-tools",
+      "comparisons",
       "guides",
       "free-tools",
       "make-money-with-ai"
@@ -1190,6 +1192,7 @@ export const tools: ToolEntry[] = [
     primaryCategorySlug: "writing",
     categorySlugs: [
       "ai-tools",
+      "comparisons",
       "guides",
       "free-tools",
       "make-money-with-ai"
@@ -1300,6 +1303,7 @@ export const tools: ToolEntry[] = [
     primaryCategorySlug: "writing",
     categorySlugs: [
       "ai-tools",
+      "comparisons",
       "guides",
       "free-tools",
       "make-money-with-ai"
@@ -1409,6 +1413,7 @@ export const tools: ToolEntry[] = [
     primaryCategorySlug: "writing",
     categorySlugs: [
       "ai-tools",
+      "comparisons",
       "guides",
       "free-tools",
       "make-money-with-ai"
@@ -6767,7 +6772,7 @@ export const tools: ToolEntry[] = [
     websiteUrl: "https://pika.art",
     affiliateUrl: "https://pika.art",
     primaryCategorySlug: "video",
-    categorySlugs: ["ai-tools","guides","free-tools","make-money-with-ai"],
+    categorySlugs: ["ai-tools", "comparisons", "guides", "free-tools", "make-money-with-ai"],
     toolCategorySlugs: ["video","image"],
     useCaseSlugs: ["creators","content"],
     rating: 4.4,
@@ -6865,7 +6870,7 @@ export const tools: ToolEntry[] = [
     websiteUrl: "https://www.recraft.ai",
     affiliateUrl: "https://www.recraft.ai",
     primaryCategorySlug: "image",
-    categorySlugs: ["ai-tools","guides","free-tools","make-money-with-ai"],
+    categorySlugs: ["ai-tools", "comparisons", "guides", "free-tools", "make-money-with-ai"],
     toolCategorySlugs: ["image"],
     useCaseSlugs: ["creators","business"],
     rating: 4.4,
