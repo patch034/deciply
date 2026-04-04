@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -13,6 +13,7 @@ import { ComparisonFaq } from "@/components/comparison/comparison-faq";
 import { ConversionCtaStrip } from "@/components/ui/conversion-cta-strip";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { Badge } from "@/components/ui/badge";
+import { RatingBadge } from "@/components/ui/rating-badge";
 import type { ComparisonFaqItem } from "@/data/comparisons";
 import { tools } from "@/data/tools";
 import { toolCategoryOptions } from "@/data/tool-taxonomy";
@@ -503,8 +504,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: tool.rating.toFixed(1),
-      bestRating: "5",
-      ratingCount: "1"
+      bestRating: "5"
     }
   };
 
@@ -590,10 +590,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-400/10 px-4 py-2 text-sm font-semibold text-amber-200">
-              <span aria-hidden="true">â˜…</span>
-              <span>{tool.rating.toFixed(1)}/5</span>
-            </div>
+            <RatingBadge rating={tool.rating} className="w-fit" />
             <p className="text-sm font-medium text-slate-400">
               {dictionary.bestForLabel}: {tool.bestUseCase}
             </p>
@@ -916,5 +913,11 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
     </>
   );
 }
+
+
+
+
+
+
 
 

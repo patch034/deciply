@@ -1,4 +1,5 @@
 ﻿import { Badge } from "@/components/ui/badge";
+import { RatingBadge } from "@/components/ui/rating-badge";
 
 type ToolMetaPanelProps = {
   pricingLabel: string;
@@ -28,7 +29,7 @@ export function ToolMetaPanel({
         </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{ratingLabel}</p>
-          <p className="mt-3 text-3xl font-bold tracking-tight text-slate-100">{ratingValue}</p>
+          <RatingBadge rating={ratingValue} className="mt-3 w-fit" />
         </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{categoryTagsLabel}</p>
@@ -42,3 +43,6 @@ export function ToolMetaPanel({
     </aside>
   );
 }
+
+
+

@@ -4,6 +4,7 @@ import type { LocalizedTool } from "@/types/catalog";
 
 import { Badge } from "@/components/ui/badge";
 import { GlassPanel } from "@/components/ui/glass-panel";
+import { RatingBadge } from "@/components/ui/rating-badge";
 
 function getPricingSignal(pricing: string) {
   const normalized = pricing.toLowerCase();
@@ -71,7 +72,7 @@ export function ToolCard({
       ) : null}
 
       <div className="mt-auto flex flex-col gap-3 border-t border-white/10 pt-5 sm:pt-6">
-        <p className="text-sm font-semibold text-amber-100 drop-shadow-[0_0_10px_rgba(251,191,36,0.2)]">{tool.rating.toFixed(1)}/5</p>
+        <RatingBadge rating={tool.rating} className="w-fit" />
         <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
           <Link href={`/${locale}/tools/${tool.slug}`} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-xl border border-white/12 bg-white/[0.03] px-4 py-2.5 text-sm font-semibold text-slate-200 transition duration-150 hover:bg-white/[0.05] hover:text-white">
             {detailLabel}
@@ -86,3 +87,5 @@ export function ToolCard({
     </GlassPanel>
   );
 }
+
+

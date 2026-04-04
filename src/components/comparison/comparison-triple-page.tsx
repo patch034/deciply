@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 import { BlogCard } from "@/components/blog/blog-card";
 import { Badge } from "@/components/ui/badge";
@@ -11,6 +11,7 @@ import { ComparisonFaq } from "@/components/comparison/comparison-faq";
 import { ComparisonThreeWayTable } from "@/components/comparison/comparison-three-way-table";
 import { ComparisonActionGrid } from "@/components/comparison/comparison-action-grid";
 import { SectionShell } from "@/components/ui/section-shell";
+import { RatingBadge } from "@/components/ui/rating-badge";
 import { tripleComparisonContent, type ComparisonFaqItem } from "@/data/comparisons";
 import { buildComparisonPath, getComparisonRelatedBlogSlugsForSlugs } from "@/lib/comparisons";
 import { getLocalizedBlogArticleBySlug } from "@/lib/blog";
@@ -106,7 +107,7 @@ export function ComparisonTriplePage({
               <div className="grid gap-3 sm:grid-cols-3">
                 {tools.map((tool) => (
                   <div key={tool.slug} className="rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-slate-100">
-                    {tool.name}: {tool.rating.toFixed(1)}/5
+                    <RatingBadge rating={tool.rating} className="w-fit" />
                   </div>
                 ))}
               </div>
@@ -306,6 +307,13 @@ export function ComparisonTriplePage({
     </>
   );
 }
+
+
+
+
+
+
+
 
 
 

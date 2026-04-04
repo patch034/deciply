@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
@@ -12,6 +12,7 @@ import { ComparisonDecisionBoxes } from "@/components/comparison/comparison-deci
 import { ComparisonFaq } from "@/components/comparison/comparison-faq";
 import { ComparisonActionGrid } from "@/components/comparison/comparison-action-grid";
 import { Badge } from "@/components/ui/badge";
+import { RatingBadge } from "@/components/ui/rating-badge";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
 import type { ComparisonFaqItem, ComparisonRow } from "@/data/comparisons";
@@ -415,10 +416,10 @@ export default async function ComparisonPage({
             <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
               <div className="grid gap-3 sm:grid-cols-2">
                 <div className="rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-slate-100">
-                  {leftTool.name}: {leftTool.rating.toFixed(1)}/5
+                  <RatingBadge rating={leftTool.rating} className="w-fit" />
                 </div>
                 <div className="rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-slate-100">
-                  {rightTool.name}: {rightTool.rating.toFixed(1)}/5
+                  <RatingBadge rating={rightTool.rating} className="w-fit" />
                 </div>
               </div>
               <ComparisonActionGrid
@@ -696,6 +697,13 @@ export default async function ComparisonPage({
     </>
   );
 }
+
+
+
+
+
+
+
 
 
 

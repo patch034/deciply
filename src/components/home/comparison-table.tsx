@@ -1,4 +1,5 @@
-import type { ToolCard } from "@/types/home";
+﻿import type { ToolCard } from "@/types/home";
+import { RatingBadge } from "@/components/ui/rating-badge";
 
 type ComparisonTableProps = {
   locale: "tr" | "en";
@@ -70,7 +71,7 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
                 <td className="px-5 py-5 text-sm leading-6 text-slate-300"><div className="min-w-0 break-words">{tool.bestFor}</div></td>
                 <td className="px-5 py-5 text-sm font-semibold text-slate-100"><div className="min-w-0 break-words">{tool.pricing}</div></td>
                 <td className="px-5 py-5 text-sm leading-6 text-slate-300"><div className="min-w-0 break-words">{tool.comparisonOutcome}</div></td>
-                <td className="px-5 py-5 text-sm font-semibold text-slate-100 whitespace-nowrap">{tool.rating}</td>
+                <td className="px-5 py-5 text-sm font-semibold text-slate-100 whitespace-nowrap"><RatingBadge rating={tool.rating} className="w-fit" /></td>
                 <td className="px-5 py-5 text-right">
                   <a href={tool.affiliateUrl ?? tool.websiteUrl} target="_blank" rel="nofollow sponsored noreferrer" className="inline-flex min-h-[44px] min-w-[92px] items-center justify-center rounded-xl bg-[var(--tn-gradient-primary)] px-4 py-2.5 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:brightness-105">
                     {tool.ctaLabel ?? actionLabel}
@@ -105,7 +106,7 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
               <p><span className="font-semibold text-slate-100">{columns.bestFor}:</span> {tool.bestFor}</p>
               <p><span className="font-semibold text-slate-100">{columns.price}:</span> {tool.pricing}</p>
               <p><span className="font-semibold text-slate-100">{columns.outcome}:</span> {tool.comparisonOutcome}</p>
-              <p><span className="font-semibold text-slate-100">{columns.rating}:</span> {tool.rating}</p>
+              <p><span className="font-semibold text-slate-100">{columns.rating}:</span> <RatingBadge rating={tool.rating} className="mt-2 w-fit" /></p>
             </div>
             <div className="mt-5">
               <a href={tool.affiliateUrl ?? tool.websiteUrl} target="_blank" rel="nofollow sponsored noreferrer" className="inline-flex min-h-[44px] w-full items-center justify-center rounded-xl bg-[var(--tn-gradient-primary)] px-4 py-2.5 text-sm font-semibold text-white transition duration-200 hover:brightness-105">
@@ -118,4 +119,6 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
     </div>
   );
 }
+
+
 

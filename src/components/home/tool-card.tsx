@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -7,6 +7,7 @@ import type { ToolCard as ToolCardType } from "@/types/home";
 
 import { Badge } from "@/components/ui/badge";
 import { GlassPanel } from "@/components/ui/glass-panel";
+import { RatingBadge } from "@/components/ui/rating-badge";
 
 function getPricingSignal(pricing: string) {
   const normalized = pricing.toLowerCase();
@@ -108,7 +109,7 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="min-w-0 shrink-0 pb-0.5">
               <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{ratingLabel}</p>
-              <p className="mt-1 whitespace-nowrap text-base font-semibold text-amber-100 drop-shadow-[0_0_10px_rgba(251,191,36,0.2)]">{tool.rating}</p>
+              <RatingBadge rating={tool.rating} className="mt-1 w-fit" />
             </div>
             <div className="min-w-0 sm:ml-4 sm:flex sm:justify-end">
               <a
@@ -126,6 +127,11 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
     </motion.div>
   );
 }
+
+
+
+
+
 
 
 
