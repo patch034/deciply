@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 
 import { BlogCard } from "@/components/blog/blog-card";
 import { Badge } from "@/components/ui/badge";
@@ -103,12 +103,10 @@ export function ComparisonTriplePage({
               <p className="mt-4 max-w-3xl text-base leading-8 text-slate-400">{dictionary.summary}</p>
             </div>
 
-            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
-              <div className="grid gap-3 sm:grid-cols-3">
+            <div className="rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,rgba(15,23,42,0.64),rgba(15,23,42,0.36))] p-4 shadow-[0_18px_50px_-36px_rgba(34,211,238,0.16)] sm:p-5">
+              <div className="flex flex-wrap gap-2">
                 {tools.map((tool) => (
-                  <div key={tool.slug} className="rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-slate-100">
-                    <RatingBadge rating={tool.rating} className="w-fit" />
-                  </div>
+                  <RatingBadge key={tool.slug} rating={tool.rating} className="shrink-0" />
                 ))}
               </div>
               <ComparisonActionGrid

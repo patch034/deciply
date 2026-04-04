@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
@@ -413,14 +413,10 @@ export default async function ComparisonPage({
               <p className="mt-4 max-w-3xl text-base leading-8 text-slate-400">{dictionary.heroSummary}</p>
             </div>
 
-            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div className="rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-slate-100">
-                  <RatingBadge rating={leftTool.rating} className="w-fit" />
-                </div>
-                <div className="rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-slate-100">
-                  <RatingBadge rating={rightTool.rating} className="w-fit" />
-                </div>
+            <div className="rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,rgba(15,23,42,0.64),rgba(15,23,42,0.36))] p-4 shadow-[0_18px_50px_-36px_rgba(34,211,238,0.16)] sm:p-5">
+              <div className="flex flex-wrap gap-2">
+                <RatingBadge rating={leftTool.rating} className="shrink-0" />
+                <RatingBadge rating={rightTool.rating} className="shrink-0" />
               </div>
               <ComparisonActionGrid
                 locale={safeLocale}
