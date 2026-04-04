@@ -1,4 +1,4 @@
-import { categories } from "@/data/categories";
+﻿import { categories } from "@/data/categories";
 import { catalogContent } from "@/data/catalog-content";
 import { tools } from "@/data/tools";
 import type { Locale } from "@/i18n/config";
@@ -9,12 +9,15 @@ type BaseLocalizedTool = Omit<LocalizedTool, "whatItActuallyDoes" | "whoShouldUs
 
 export const TOOLS_PAGE_SIZE = 20;
 
+export type ToolsSortOption = "popular" | "highest-rated" | "newest" | "free-first" | "paid-first";
+
 export type ToolsQueryFilters = {
   page: number;
   query: string;
   toolCategory: string;
   pricing: PricingTier | "all";
   useCase: string;
+  sort: ToolsSortOption;
 };
 
 assertEncodingHealth("catalog");
@@ -127,17 +130,27 @@ export function parseToolsQueryFilters(searchParams: {
   category?: string | string[];
   pricing?: string | string[];
   useCase?: string | string[];
+  sort?: string | string[];
 }): ToolsQueryFilters {
   const readValue = (value: string | string[] | undefined) =>
     Array.isArray(value) ? value[0] ?? "" : value ?? "";
   const pricingValue = readValue(searchParams.pricing);
+  const sortValue = readValue(searchParams.sort);
+  const sort =
+    sortValue === "highest-rated" ||
+    sortValue === "newest" ||
+    sortValue === "free-first" ||
+    sortValue === "paid-first"
+      ? sortValue
+      : "popular";
 
   return {
     page: parseToolsPage(searchParams.page),
     query: readValue(searchParams.q).trim(),
     toolCategory: readValue(searchParams.category).trim() || "all",
     pricing: pricingValue === "FREE" || pricingValue === "FREEMIUM" || pricingValue === "PAID" ? pricingValue : "all",
-    useCase: readValue(searchParams.useCase).trim() || "all"
+    useCase: readValue(searchParams.useCase).trim() || "all",
+    sort
   };
 }
 
@@ -161,5 +174,7 @@ export function formatPricing(pricing: PricingTier, locale: Locale) {
 export function getToolOutboundUrl(tool: { affiliateUrl?: string; websiteUrl: string }) {
   return tool.affiliateUrl?.trim() || tool.websiteUrl;
 }
+
+
 
 

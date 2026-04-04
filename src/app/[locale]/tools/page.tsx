@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 import { CategoryHero } from "@/components/catalog/category-hero";
 import { ToolsExplorer } from "@/components/catalog/tools-explorer";
@@ -26,6 +26,7 @@ export async function generateMetadata({
     category?: string | string[];
     pricing?: string | string[];
     useCase?: string | string[];
+    sort?: string | string[];
   }>;
 }): Promise<Metadata> {
   const { locale } = await params;
@@ -60,6 +61,7 @@ export default async function ToolsPage({
     category?: string | string[];
     pricing?: string | string[];
     useCase?: string | string[];
+    sort?: string | string[];
   }>;
 }) {
   const { locale } = await params;
@@ -80,7 +82,7 @@ export default async function ToolsPage({
     useCaseOptions[safeLocale].map((item): [string, string] => [item.slug, item.label])
   );
 
-  const explorerTools = toolItems.map((tool) => {
+  const explorerTools = toolItems.map((tool, index) => {
     const siteCategoryNames = tool.categorySlugs.map((item) => categoryNames.get(item) ?? item);
     const toolCategoryLabels = tool.toolCategorySlugs.map(
       (item) => toolCategoryLabelMap.get(item) ?? item
@@ -90,6 +92,7 @@ export default async function ToolsPage({
 
     return {
       ...tool,
+      sourceIndex: index,
       pricingLabel: formatPricing(tool.pricing, safeLocale),
       toolCategoryLabels,
       useCaseLabels,
@@ -143,14 +146,27 @@ export default async function ToolsPage({
           allPricingLabel: content.toolsIndex.allPricingLabel,
           resetFiltersLabel: content.toolsIndex.resetFiltersLabel,
           resultsLabel: content.toolsIndex.resultsLabel,
+          resultsSummaryLabel: content.toolsIndex.resultsSummaryLabel,
           emptyTitle: content.toolsIndex.emptyTitle,
           emptyDescription: content.toolsIndex.emptyDescription,
           bestForLabel: content.toolsIndex.bestForLabel,
           pageLabel: content.toolsIndex.pageLabel,
           previousPage: content.toolsIndex.previousPage,
-          nextPage: content.toolsIndex.nextPage
+          nextPage: content.toolsIndex.nextPage,
+          loadMoreLabel: content.toolsIndex.loadMoreLabel,
+          sortLabel: content.toolsIndex.sortLabel,
+          mostPopularLabel: content.toolsIndex.mostPopularLabel,
+          highestRatedLabel: content.toolsIndex.highestRatedLabel,
+          newestLabel: content.toolsIndex.newestLabel,
+          freeFirstLabel: content.toolsIndex.freeFirstLabel,
+          paidFirstLabel: content.toolsIndex.paidFirstLabel,
+          quickIntentLabel: content.toolsIndex.quickIntentLabel,
+          mobileFiltersLabel: content.toolsIndex.mobileFiltersLabel,
+          mobileFiltersCloseLabel: content.toolsIndex.mobileFiltersCloseLabel
         }}
       />
     </div>
   );
 }
+
+

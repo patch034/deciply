@@ -1,4 +1,4 @@
-import type { Locale } from "@/i18n/config";
+﻿import type { Locale } from "@/i18n/config";
 
 const dictionaries = {
   tr: {
@@ -17,9 +17,9 @@ const dictionaries = {
         "Deciply, AI araçlarını daha hızlı karşılaştırmak, doğru aracı seçmek ve gelir odaklı kullanım senaryolarını keşfetmek için tasarlanmış modern bir platformdur.",
       badge: "Deciply",
       contactBlock: {
-          title: "İletişim",
-          links: [{ label: "İletişim", href: "/contact" }]
-        },
+        title: "İletişim",
+        links: [{ label: "İletişim", href: "/contact" }]
+      },
       groups: [
         {
           title: "Araçlar",
@@ -78,9 +78,9 @@ const dictionaries = {
         "Deciply is a modern AI discovery platform built to help users compare tools faster, choose with confidence, and explore revenue-focused AI workflows.",
       badge: "Deciply",
       contactBlock: {
-          title: "Contact",
-          links: [{ label: "Contact", href: "/contact" }]
-        },
+        title: "Contact",
+        links: [{ label: "Contact", href: "/contact" }]
+      },
       groups: [
         {
           title: "Tools",

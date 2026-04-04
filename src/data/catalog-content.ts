@@ -1,4 +1,4 @@
-import type { Locale } from "@/i18n/config";
+﻿import type { Locale } from "@/i18n/config";
 
 export const catalogContent = {
   tr: {
@@ -57,14 +57,25 @@ export const catalogContent = {
       allUseCasesLabel: "Tüm kullanım amaçları",
       allPricingLabel: "Tüm fiyatlar",
       resetFiltersLabel: "Filtreleri temizle",
-      resultsLabel: "uygun araç bulundu",
+      resultsLabel: "araç bulundu",
+      resultsSummaryLabel: "içinden",
       emptyTitle: "Sonuç bulunamadı",
       emptyDescription:
         "Aramayı sadeleştirin veya filtreleri temizleyip yeniden deneyin.",
       bestForLabel: "En uygun kullanım",
       pageLabel: "Sayfa",
       previousPage: "Önceki",
-      nextPage: "Sonraki"
+      nextPage: "Sonraki",
+      loadMoreLabel: "Daha fazla araç yükle",
+      sortLabel: "Sırala",
+      mostPopularLabel: "En popüler",
+      highestRatedLabel: "En yüksek puanlı",
+      newestLabel: "En yeni",
+      freeFirstLabel: "Önce ücretsiz",
+      paidFirstLabel: "Önce ücretli",
+      quickIntentLabel: "Hızlı keşif",
+      mobileFiltersLabel: "Filtreler",
+      mobileFiltersCloseLabel: "Filtreleri kapat"
     },
     toolDetail: {
       overviewTitle: "Genel bakış",
@@ -132,14 +143,25 @@ export const catalogContent = {
       allUseCasesLabel: "All use cases",
       allPricingLabel: "All pricing",
       resetFiltersLabel: "Clear filters",
-      resultsLabel: "matching tools",
+      resultsLabel: "tools found",
+      resultsSummaryLabel: "of",
       emptyTitle: "No tools found",
       emptyDescription:
         "Try a broader search or reset the filters to discover more options.",
       bestForLabel: "Best fit",
       pageLabel: "Page",
       previousPage: "Previous",
-      nextPage: "Next"
+      nextPage: "Next",
+      loadMoreLabel: "Load more tools",
+      sortLabel: "Sort by",
+      mostPopularLabel: "Most popular",
+      highestRatedLabel: "Highest rated",
+      newestLabel: "Newest",
+      freeFirstLabel: "Free first",
+      paidFirstLabel: "Paid first",
+      quickIntentLabel: "Quick discovery",
+      mobileFiltersLabel: "Filters",
+      mobileFiltersCloseLabel: "Close filters"
     },
     toolDetail: {
       overviewTitle: "Overview",
