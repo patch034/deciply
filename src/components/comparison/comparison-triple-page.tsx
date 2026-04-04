@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 import { BlogCard } from "@/components/blog/blog-card";
 import { Badge } from "@/components/ui/badge";
@@ -9,8 +9,9 @@ import { Breadcrumb } from "@/components/catalog/breadcrumb";
 import { ToolCard } from "@/components/catalog/tool-card";
 import { ComparisonFaq } from "@/components/comparison/comparison-faq";
 import { ComparisonThreeWayTable } from "@/components/comparison/comparison-three-way-table";
-import { ComparisonCtaPanel } from "@/components/comparison/comparison-cta-panel";
+import { ComparisonActionGrid } from "@/components/comparison/comparison-action-grid";
 import { SectionShell } from "@/components/ui/section-shell";
+import { RatingBadge } from "@/components/ui/rating-badge";
 import { tripleComparisonContent, type ComparisonFaqItem } from "@/data/comparisons";
 import { buildComparisonPath, getComparisonRelatedBlogSlugsForSlugs } from "@/lib/comparisons";
 import { getLocalizedBlogArticleBySlug } from "@/lib/blog";
@@ -102,16 +103,25 @@ export function ComparisonTriplePage({
               <p className="mt-4 max-w-3xl text-base leading-8 text-slate-400">{dictionary.summary}</p>
             </div>
 
-            <ComparisonCtaPanel
-              locale={locale}
-              tools={tools.map((tool) => ({
-                name: tool.name,
-                rating: tool.rating,
-                openHref: tool.websiteUrl,
-                reviewHref: `/${locale}/tools/${tool.slug}`
-              }))}
-              neutralHref={`/${locale}/categories/comparisons`}
-            />
+            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
+              <div className="grid gap-3 sm:grid-cols-3">
+                {tools.map((tool) => (
+                  <div key={tool.slug} className="rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-slate-100">
+                    <RatingBadge rating={tool.rating} className="w-fit" />
+                  </div>
+                ))}
+              </div>
+              <ComparisonActionGrid
+                locale={locale}
+                tools={tools.map((tool) => ({
+                  name: tool.name,
+                  openHref: tool.websiteUrl,
+                  reviewHref: `/${locale}/tools/${tool.slug}`
+                }))}
+                neutralHref={`/${locale}/categories/comparisons`}
+                className="mt-6"
+              />
+            </div>
           </div>
         </section>
 
@@ -189,16 +199,14 @@ export function ComparisonTriplePage({
               <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{dictionary.verdictTitle}</h2>
               <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{dictionary.verdictDescription}</p>
             </div>
-            <ComparisonCtaPanel
+            <ComparisonActionGrid
               locale={locale}
               tools={tools.map((tool) => ({
                 name: tool.name,
-                rating: tool.rating,
                 openHref: tool.websiteUrl,
                 reviewHref: `/${locale}/tools/${tool.slug}`
               }))}
               neutralHref={`/${locale}/categories/comparisons`}
-              className="w-full"
             />
           </div>
 
@@ -299,7 +307,6 @@ export function ComparisonTriplePage({
     </>
   );
 }
-
 
 
 
