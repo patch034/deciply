@@ -103,7 +103,7 @@ export function ComparisonTriplePage({
               <p className="mt-4 max-w-3xl text-base leading-8 text-slate-400">{dictionary.summary}</p>
             </div>
 
-            <div className="rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,rgba(15,23,42,0.64),rgba(15,23,42,0.36))] p-4 shadow-[0_18px_50px_-36px_rgba(34,211,238,0.16)] sm:p-5">
+            <div className="rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-card md:p-8">
               <div className="flex flex-wrap gap-2">
                 {tools.map((tool) => (
                   <RatingBadge key={tool.slug} rating={tool.rating} className="shrink-0" />
@@ -117,7 +117,7 @@ export function ComparisonTriplePage({
                   reviewHref: `/${locale}/tools/${tool.slug}`
                 }))}
                 neutralHref={`/${locale}/categories/comparisons`}
-                className="mt-6"
+                className="mt-5"
               />
             </div>
           </div>
