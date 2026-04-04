@@ -15,12 +15,15 @@ export function ComparisonFaq({ title, description, items }: ComparisonFaqProps)
         <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{description}</p>
       </div>
 
-      <div className="mt-8 grid gap-4">
+      <div className="mt-8 grid gap-3">
         {items.map((item) => (
-          <article key={item.question} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
-            <h3 className="text-lg font-semibold tracking-tight text-slate-100">{item.question}</h3>
+          <details key={item.question} className="group rounded-[24px] border border-white/10 bg-white/[0.04] p-4 transition open:bg-white/[0.05] sm:p-5">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-semibold tracking-tight text-slate-100">
+              <span>{item.question}</span>
+              <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-black/10 text-slate-300 transition group-open:rotate-45 group-open:text-cyan-200">+</span>
+            </summary>
             <p className="mt-3 text-sm leading-7 text-slate-300">{item.answer}</p>
-          </article>
+          </details>
         ))}
       </div>
     </section>

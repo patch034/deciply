@@ -10,6 +10,7 @@ import { InfoSection } from "@/components/catalog/info-section";
 import { ProsConsCard } from "@/components/catalog/pros-cons-card";
 import { ToolCard } from "@/components/catalog/tool-card";
 import { ComparisonFaq } from "@/components/comparison/comparison-faq";
+import { SectionJumpNav } from "@/components/ui/section-jump-nav";
 import { ConversionCtaStrip } from "@/components/ui/conversion-cta-strip";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { Badge } from "@/components/ui/badge";
@@ -560,7 +561,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         ]}
       />
 
-      <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+      <section id="genel-bakis" className="scroll-mt-24 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
         <div className="rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.86),rgba(17,24,39,0.9),rgba(11,15,25,0.96))] p-5 shadow-[0_24px_80px_-40px_rgba(34,211,238,0.18)] sm:p-8 md:p-10">
           <div className="flex flex-wrap items-center gap-3">
             <Badge variant="accent">{pricingValue}</Badge>
@@ -644,7 +645,18 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </div>
       </section>
 
-      <InfoSection title={decisionSummaryTitle} description={decisionSummaryDescription}>
+      <SectionJumpNav
+        items={[
+          { label: safeLocale === "tr" ? "Genel Bakış" : "Overview", href: "#genel-bakis" },
+          { label: safeLocale === "tr" ? "Özellikler" : "Features", href: "#ozellikler" },
+          { label: safeLocale === "tr" ? "Fiyat" : "Pricing", href: "#fiyat" },
+          { label: safeLocale === "tr" ? "Nasıl Kullanılır" : "How to use", href: "#nasil-kullanilir" },
+          { label: safeLocale === "tr" ? "Alternatifler" : "Alternatives", href: "#alternatifler" },
+          { label: safeLocale === "tr" ? "FAQ" : "FAQ", href: "#faq" }
+        ]}
+      />
+
+      <InfoSection id="karar-ozeti" title={decisionSummaryTitle} description={decisionSummaryDescription}>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {decisionSummaryCards.map((item) => (
             <div key={item.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
@@ -655,7 +667,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </div>
       </InfoSection>
 
-      <InfoSection title={dictionary.overviewTitle} description={dictionary.overviewDescription}>
+      <InfoSection id="ozellikler" title={dictionary.overviewTitle} description={dictionary.overviewDescription}>
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
           <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 text-[15px] leading-7 text-slate-300 sm:p-5 sm:text-base">
             <p className="text-base font-semibold text-slate-100">{tool.whatItActuallyDoes}</p>
@@ -697,7 +709,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
           ))}
         </div>
       </InfoSection>
-      <InfoSection title={dictionary.moneyTitle} description={dictionary.moneyDescription}>
+      <InfoSection id="para-kazanma" title={dictionary.moneyTitle} description={dictionary.moneyDescription}>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {tool.moneyUseCases.map((item) => (
             <div key={item.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
@@ -758,7 +770,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       </section>
 
       <section className="grid gap-6 lg:grid-cols-2">
-        <InfoSection title={dictionary.whoShouldUseTitle} description={dictionary.whoShouldUseDescription}>
+        <InfoSection id="kimler-icin" title={dictionary.whoShouldUseTitle} description={dictionary.whoShouldUseDescription}>
           <div className="grid gap-4 md:grid-cols-2">
             {audienceCards.map((item) => (
               <div key={item.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
@@ -913,6 +925,9 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
     </>
   );
 }
+
+
+
 
 
 

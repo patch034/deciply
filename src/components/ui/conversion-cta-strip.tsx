@@ -30,9 +30,9 @@ export function ConversionCtaStrip({ eyebrow, title, description, buttons, class
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{title}</h2>
           <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{description}</p>
         </div>
-        <div className="flex flex-wrap gap-3">
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {buttons.map((button) => (
-            <PremiumButton key={`${button.label}-${button.href}`} href={button.href} variant={button.variant ?? "primary"}>
+            <PremiumButton key={`${button.label}-${button.href}`} href={button.href} variant={button.variant ?? "primary"} className="w-full">
               {button.label}
             </PremiumButton>
           ))}

@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 import { BlogCard } from "@/components/blog/blog-card";
 import { Badge } from "@/components/ui/badge";
@@ -10,8 +10,10 @@ import { ToolCard } from "@/components/catalog/tool-card";
 import { ComparisonFaq } from "@/components/comparison/comparison-faq";
 import { ComparisonThreeWayTable } from "@/components/comparison/comparison-three-way-table";
 import { ComparisonActionGrid } from "@/components/comparison/comparison-action-grid";
+import { ComparisonInsightPanel } from "@/components/comparison/comparison-insight-panel";
 import { SectionShell } from "@/components/ui/section-shell";
 import { RatingBadge } from "@/components/ui/rating-badge";
+import { SectionJumpNav } from "@/components/ui/section-jump-nav";
 import { tripleComparisonContent, type ComparisonFaqItem } from "@/data/comparisons";
 import { buildComparisonPath, getComparisonRelatedBlogSlugsForSlugs } from "@/lib/comparisons";
 import { getLocalizedBlogArticleBySlug } from "@/lib/blog";
@@ -72,6 +74,43 @@ export function ComparisonTriplePage({
     label: locale === "tr" ? `${tool.name} alternatifleri` : `${tool.name} alternatives`,
     href: `/${locale}/alternatives/${tool.slug}`
   }));
+  const sectionNavItems = [
+    { label: locale === "tr" ? "Genel Bakış" : "Overview", href: "#genel-bakis" },
+    { label: locale === "tr" ? "Özellikler" : "Features", href: "#ozellikler" },
+    { label: locale === "tr" ? "Fiyat" : "Pricing", href: "#fiyat" },
+    { label: locale === "tr" ? "Son Karar" : "Final verdict", href: "#son-karar" },
+    { label: locale === "tr" ? "Alternatifler" : "Alternatives", href: "#alternatifler" },
+    { label: locale === "tr" ? "FAQ" : "FAQ", href: "#faq" }
+  ];
+  const insightSlides = [
+    {
+      eyebrow: locale === "tr" ? "Hızlı karar" : "Quick decision",
+      title: locale === "tr" ? "Hangi araç daha rahat başlatıyor?" : "Which tool starts faster?",
+      description:
+        locale === "tr"
+          ? `${firstTool.name}, ${secondTool.name} ve ${thirdTool.name} arasında kısa taslak ve uzun form akışları farklı sonuçlar üretir.`
+          : `Among ${firstTool.name}, ${secondTool.name}, and ${thirdTool.name}, short drafts and long-form workflows can lead to very different results.`,
+      badges: [`${firstTool.name} ${firstTool.rating.toFixed(1)}/5`, `${secondTool.name} ${secondTool.rating.toFixed(1)}/5`, `${thirdTool.name} ${thirdTool.rating.toFixed(1)}/5`]
+    },
+    {
+      eyebrow: locale === "tr" ? "Fiyat sinyali" : "Pricing signal",
+      title: locale === "tr" ? "Ücretsiz başlangıç mı, ücretli derinlik mi?" : "Free start or paid depth?",
+      description:
+        locale === "tr"
+          ? `${firstTool.name}, ${secondTool.name} ve ${thirdTool.name} için fiyat modeli; deneme, freemium ve ücretli plan dengesini gösterir.`
+          : `For ${firstTool.name}, ${secondTool.name}, and ${thirdTool.name}, pricing often signals how far the free start goes and where paid depth matters.`,
+      badges: [formatPricing(firstTool.pricing, locale), formatPricing(secondTool.pricing, locale), formatPricing(thirdTool.pricing, locale)]
+    },
+    {
+      eyebrow: locale === "tr" ? "Workflow uyumu" : "Workflow fit",
+      title: locale === "tr" ? "Hangi iş akışı hangi araca daha yakın?" : "Which workflow fits which tool?",
+      description:
+        locale === "tr"
+          ? `${firstTool.bestUseCase}, ${secondTool.bestUseCase} ve ${thirdTool.bestUseCase} arasındaki farkı önce çıktı tipiyle sonra revizyon yüküyle okuyun.`
+          : `Compare ${firstTool.bestUseCase}, ${secondTool.bestUseCase}, and ${thirdTool.bestUseCase} by output type first, then by revision load.`,
+      badges: [firstTool.bestUseCase, secondTool.bestUseCase, thirdTool.bestUseCase]
+    }
+  ];
   return (
     <>
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
@@ -136,7 +175,7 @@ export function ComparisonTriplePage({
           rows={comparisonRows}
         />
 
-        <InfoSection title={dictionary.selectionTitle} description={dictionary.selectionDescription}>
+        <InfoSection id="son-karar" title={dictionary.selectionTitle} description={dictionary.selectionDescription}>
           <div className="grid gap-4 md:grid-cols-3">
             {tools.map((tool) => (
               <div key={tool.slug} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
@@ -153,7 +192,7 @@ export function ComparisonTriplePage({
           </div>
         </InfoSection>
 
-        <InfoSection title={dictionary.pricingTitle} description={dictionary.pricingDescription}>
+        <InfoSection id="fiyat" title={dictionary.pricingTitle} description={dictionary.pricingDescription}>
           <div className="grid gap-4 md:grid-cols-3">
             {tools.map((tool) => (
               <div key={tool.slug} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
@@ -174,7 +213,7 @@ export function ComparisonTriplePage({
           </div>
         </InfoSection>
 
-        <InfoSection title={dictionary.strengthsTitle} description={dictionary.strengthsDescription}>
+        <InfoSection id="ozellikler" title={dictionary.strengthsTitle} description={dictionary.strengthsDescription}>
           <div className="grid gap-6 lg:grid-cols-3">
             {tools.map((tool) => (
               <ProsConsCard key={tool.slug} title={`${tool.name} ${dictionary.strengthsTitle.toLowerCase()}`} items={tool.pros} tone="positive" />
@@ -182,7 +221,7 @@ export function ComparisonTriplePage({
           </div>
         </InfoSection>
 
-        <InfoSection title={dictionary.limitationsTitle} description={dictionary.limitationsDescription}>
+        <InfoSection id="sinirlamalar" title={dictionary.limitationsTitle} description={dictionary.limitationsDescription}>
           <div className="grid gap-6 lg:grid-cols-3">
             {tools.map((tool) => (
               <ProsConsCard key={tool.slug} title={`${tool.name} ${dictionary.limitationsTitle.toLowerCase()}`} items={tool.cons} tone="negative" />
@@ -190,7 +229,7 @@ export function ComparisonTriplePage({
           </div>
         </InfoSection>
 
-        <section className="rounded-[34px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
+        <section id="son-karar" className="scroll-mt-24 rounded-[34px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{dictionary.verdictTitle}</p>
@@ -220,7 +259,7 @@ export function ComparisonTriplePage({
         </section>
 
         {alternatives.length ? (
-          <InfoSection title={dictionary.relatedTitle} description={dictionary.relatedDescription}>
+          <InfoSection id="alternatifler" title={dictionary.relatedTitle} description={dictionary.relatedDescription}>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {alternatives.map((tool) => {
                 const referenceTool = getBestReferenceTool(tool, tools);
@@ -305,6 +344,11 @@ export function ComparisonTriplePage({
     </>
   );
 }
+
+
+
+
+
 
 
 

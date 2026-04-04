@@ -134,11 +134,9 @@ export function ComparisonDecisionBoxes({ locale, leftTool, rightTool, alternati
   const helperLabel = locale === "tr" ? "İlgili alternatifleri gör" : "View related alternatives";
 
   return (
-    <section className="rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-card md:p-8">
+    <section className="rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-5 shadow-card md:p-6">
       <div className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
-          {locale === "tr" ? "Karar kutuları" : "Decision boxes"}
-        </p>
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{locale === "tr" ? "Karar kutuları" : "Decision boxes"}</p>
         <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">
           {locale === "tr" ? "Hangi akış hangi aracı ister?" : "Which workflow fits which tool?"}
         </h2>
@@ -149,9 +147,9 @@ export function ComparisonDecisionBoxes({ locale, leftTool, rightTool, alternati
         </p>
       </div>
 
-      <div className="mt-8 grid items-stretch gap-4 md:grid-cols-2 xl:grid-cols-5">
+      <div className="mt-6 grid items-stretch gap-4 md:grid-cols-2 xl:grid-cols-5">
         {boxes.map((box) => (
-          <div key={box.title} className="flex h-full min-h-[320px] flex-col rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
+          <div key={box.title} className="flex h-full flex-col rounded-[24px] border border-white/10 bg-white/[0.04] p-4">
             <p className="text-base font-semibold text-slate-50">{box.title}</p>
             <p className="mt-3 flex-1 text-sm leading-7 text-slate-300">{box.description}</p>
             <div className="mt-5 grid gap-2 sm:grid-cols-2">
@@ -165,7 +163,7 @@ export function ComparisonDecisionBoxes({ locale, leftTool, rightTool, alternati
             <div className="mt-4">
               <Link
                 href={alternativesHref}
-                className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 text-sm font-semibold text-cyan-300 transition hover:border-cyan-400/35 hover:bg-cyan-400/14 hover:text-cyan-200"
+                className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 text-sm font-semibold text-cyan-300 transition hover:border-cyan-400/35 hover:bg-cyan-400/14 hover:text-cyan-200"
               >
                 {helperLabel}
               </Link>

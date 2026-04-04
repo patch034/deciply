@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
@@ -11,10 +11,12 @@ import { ComparisonBreakdownTable } from "@/components/comparison/comparison-bre
 import { ComparisonDecisionBoxes } from "@/components/comparison/comparison-decision-boxes";
 import { ComparisonFaq } from "@/components/comparison/comparison-faq";
 import { ComparisonActionGrid } from "@/components/comparison/comparison-action-grid";
+import { ComparisonInsightPanel } from "@/components/comparison/comparison-insight-panel";
 import { Badge } from "@/components/ui/badge";
 import { RatingBadge } from "@/components/ui/rating-badge";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
+import { SectionJumpNav } from "@/components/ui/section-jump-nav";
 import type { ComparisonFaqItem, ComparisonRow } from "@/data/comparisons";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
 import {
@@ -333,6 +335,43 @@ export default async function ComparisonPage({
   const leftOfficialHref = getToolOutboundUrl(leftTool);
   const rightOfficialHref = getToolOutboundUrl(rightTool);
   const relatedBlogHref = relatedBlogArticles[0] ? `/${safeLocale}/blog/${relatedBlogArticles[0].slug}` : `/${safeLocale}/blog`;
+  const sectionNavItems = [
+    { label: safeLocale === "tr" ? "Genel Bakış" : "Overview", href: "#genel-bakis" },
+    { label: safeLocale === "tr" ? "Özellikler" : "Features", href: "#ozellikler" },
+    { label: safeLocale === "tr" ? "Fiyat" : "Pricing", href: "#fiyat" },
+    { label: safeLocale === "tr" ? "Son Karar" : "Final verdict", href: "#son-karar" },
+    { label: safeLocale === "tr" ? "Alternatifler" : "Alternatives", href: "#alternatifler" },
+    { label: safeLocale === "tr" ? "FAQ" : "FAQ", href: "#faq" }
+  ];
+  const insightSlides = [
+    {
+      eyebrow: safeLocale === "tr" ? "Hızlı karar" : "Quick decision",
+      title: safeLocale === "tr" ? "Hangi araç daha rahat başlatıyor?" : "Which tool starts faster?",
+      description:
+        safeLocale === "tr"
+          ? `${leftTool.name} kısa taslak ve geniş kullanım için, ${rightTool.name} ise daha uzun ve düzenli metin akışları için daha doğal hissedebilir.`
+          : `${leftTool.name} may feel better for short drafts and broad tasks, while ${rightTool.name} can feel more natural for longer, more structured output.`,
+      badges: [`${leftTool.name} ${leftTool.rating.toFixed(1)}/5`, `${rightTool.name} ${rightTool.rating.toFixed(1)}/5`]
+    },
+    {
+      eyebrow: safeLocale === "tr" ? "Fiyat sinyali" : "Pricing signal",
+      title: safeLocale === "tr" ? "Ücretsiz başlangıç mı, ücretli derinlik mi?" : "Free start or paid depth?",
+      description:
+        safeLocale === "tr"
+          ? `Fiyat tarafında ${leftTool.name} ${formatPricing(leftTool.pricing, safeLocale)} ile, ${rightTool.name} ise ${formatPricing(rightTool.pricing, safeLocale)} ile öne çıkabilir.`
+          : `On pricing, ${leftTool.name} shows a ${formatPricing(leftTool.pricing, safeLocale)} path, while ${rightTool.name} follows a ${formatPricing(rightTool.pricing, safeLocale)} model.`,
+      badges: [formatPricing(leftTool.pricing, safeLocale), formatPricing(rightTool.pricing, safeLocale)]
+    },
+    {
+      eyebrow: safeLocale === "tr" ? "Workflow uyumu" : "Workflow fit",
+      title: safeLocale === "tr" ? "Hangi iş akışı hangi araca daha yakın?" : "Which workflow fits which tool?",
+      description:
+        safeLocale === "tr"
+          ? `${leftTool.bestUseCase} ile ${rightTool.bestUseCase} arasında seçim yaparken, hız, çıktı düzeni ve revizyon sayısı en iyi sinyali verir.`
+          : `When choosing between ${leftTool.bestUseCase} and ${rightTool.bestUseCase}, speed, output structure, and revision load usually give the clearest signal.`,
+      badges: [leftTool.bestUseCase, rightTool.bestUseCase]
+    }
+  ];
   const description = buildComparisonDescription(safeLocale, leftTool, rightTool, pair);
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/compare/${canonicalPairSlug}`);
   const breadcrumbSchema = {
@@ -413,50 +452,50 @@ export default async function ComparisonPage({
               <p className="mt-4 max-w-3xl text-base leading-8 text-slate-400">{dictionary.heroSummary}</p>
             </div>
 
-            <div className="rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-card md:p-8">
-              <div className="flex flex-wrap gap-2">
-                <RatingBadge rating={leftTool.rating} className="shrink-0" />
-                <RatingBadge rating={rightTool.rating} className="shrink-0" />
-              </div>
-              <ComparisonActionGrid
-                locale={safeLocale}
-                tools={[
-                  {
-                    name: leftTool.name,
-                    openHref: leftOfficialHref,
-                    reviewHref: `/${safeLocale}/tools/${leftTool.slug}`
-                  },
-                  {
-                    name: rightTool.name,
-                    openHref: rightOfficialHref,
-                    reviewHref: `/${safeLocale}/tools/${rightTool.slug}`
-                  }
-                ]}
-                neutralHref={`/${safeLocale}/categories/comparisons`}
-                className="mt-5"
-              />
-            </div>
+            <ComparisonInsightPanel
+              locale={safeLocale}
+              slides={insightSlides}
+              tools={[
+                {
+                  name: leftTool.name,
+                  openHref: leftOfficialHref,
+                  reviewHref: `/${safeLocale}/tools/${leftTool.slug}`
+                },
+                {
+                  name: rightTool.name,
+                  openHref: rightOfficialHref,
+                  reviewHref: `/${safeLocale}/tools/${rightTool.slug}`
+                }
+              ]}
+              neutralHref={`/${safeLocale}/categories/comparisons`}
+            />
           </div>
         </section>
 
-        <ComparisonBreakdownTable
-          locale={safeLocale}
-          title={dictionary.tableTitle}
-          description={dictionary.tableDescription}
-          columns={{
-            label: dictionary.tableLabels.criteria,
-            left: leftTool.name,
-            right: rightTool.name
-          }}
-          rows={comparisonRows}
-        />
+        <SectionJumpNav items={sectionNavItems} />
 
-        <ComparisonDecisionBoxes
-          locale={safeLocale}
-          leftTool={leftTool}
-          rightTool={rightTool}
-          alternativesHref={compareAlternativesHref}
-        />
+        <div id="ozellikler" className="scroll-mt-24">
+          <ComparisonBreakdownTable
+            locale={safeLocale}
+            title={dictionary.tableTitle}
+            description={dictionary.tableDescription}
+            columns={{
+              label: dictionary.tableLabels.criteria,
+              left: leftTool.name,
+              right: rightTool.name
+            }}
+            rows={comparisonRows}
+          />
+        </div>
+
+        <div id="son-karar" className="scroll-mt-24">
+          <ComparisonDecisionBoxes
+            locale={safeLocale}
+            leftTool={leftTool}
+            rightTool={rightTool}
+            alternativesHref={compareAlternativesHref}
+          />
+        </div>
 
         <InfoSection title={dictionary.bestForTitle} description={dictionary.bestForDescription}>
           <div className="grid gap-4 md:grid-cols-2">
@@ -473,9 +512,7 @@ export default async function ComparisonPage({
               </div>
             ))}
           </div>
-        </InfoSection>
-
-        <InfoSection title={dictionary.pricingTitle} description={dictionary.pricingDescription}>
+        </InfoSection>        <InfoSection id="fiyat" title={dictionary.pricingTitle} description={dictionary.pricingDescription}>
           <div className="grid gap-4 md:grid-cols-2">
             {[leftTool, rightTool].map((tool) => (
               <div key={tool.slug} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
@@ -594,7 +631,7 @@ export default async function ComparisonPage({
         </section>
 
         {alternatives.length ? (
-          <InfoSection title={dictionary.relatedAlternativesTitle} description={dictionary.relatedAlternativesDescription}>
+          <InfoSection id="alternatifler" title={dictionary.relatedAlternativesTitle} description={dictionary.relatedAlternativesDescription}>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {alternatives.map((tool) => {
                 const matchedTool = getBetterMatchedPairTool(tool, leftTool, rightTool);
@@ -688,11 +725,18 @@ export default async function ComparisonPage({
           </div>
         </InfoSection>
 
-        <ComparisonFaq title={dictionary.faqTitle} description={dictionary.faqDescription} items={comparisonFaq} />
+        <div id="faq" className="scroll-mt-24">
+          <ComparisonFaq title={dictionary.faqTitle} description={dictionary.faqDescription} items={comparisonFaq} />
+        </div>
       </div>
     </>
   );
 }
+
+
+
+
+
 
 
 
