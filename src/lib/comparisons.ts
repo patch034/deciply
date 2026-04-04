@@ -29,10 +29,10 @@ const MANUAL_COMPARISON_PAIR_TOOL_SLUGS = [
 ] as const;
 
 const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
-  [FEATURED_TRIPLE_COMPARISON_SLUG]: [
-    "best-ai-tools-for-content-teams-2026",
-    "best-ai-tools-for-agencies-2026",
-    "how-ai-tools-are-changing-ecommerce-in-2026"
+    [FEATURED_TRIPLE_COMPARISON_SLUG]: [
+    "best-ai-tools-for-small-businesses-2026",
+    "how-to-write-product-descriptions-with-ai-2026",
+    "best-ai-tools-for-marketing-teams-2026"
   ],
   "chatgpt-vs-gemini": [
     "best-ai-tools-for-marketing-teams-2026",
@@ -42,10 +42,9 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "best-ai-tools-for-agencies-2026"
   ],
   "midjourney-vs-leonardo-ai": [
-    "best-ai-tools-for-content-teams-2026",
-    "best-ai-tools-for-agencies-2026",
     "best-ai-tools-for-marketing-teams-2026",
-    "best-ai-tools-for-social-media-planning-2026"
+    "best-ai-tools-for-small-businesses-2026",
+    "how-to-write-product-descriptions-with-ai-2026"
   ],
   "github-copilot-vs-codeium": [
     "best-ai-tools-for-startups-2026",
@@ -63,19 +62,19 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "how-ai-tools-are-changing-ecommerce-in-2026"
   ],
   "claude-vs-gemini": [
-    "best-ai-tools-for-content-teams-2026",
-    "best-ai-tools-for-agencies-2026",
-    "best-ai-tools-for-startups-2026"
+    "best-ai-tools-for-small-businesses-2026",
+    "how-to-write-product-descriptions-with-ai-2026",
+    "best-ai-tools-for-marketing-teams-2026"
   ],
   "chatgpt-vs-perplexity": [
-    "best-ai-tools-for-marketing-teams-2026",
-    "best-ai-tools-for-startups-2026",
-    "how-ai-tools-are-changing-ecommerce-in-2026"
+    "best-ai-tools-for-small-businesses-2026",
+    "how-to-write-product-descriptions-with-ai-2026",
+    "best-ai-tools-for-marketing-teams-2026"
   ],
   "perplexity-vs-gemini": [
+    "best-ai-tools-for-small-businesses-2026",
     "best-ai-tools-for-marketing-teams-2026",
-    "best-ai-tools-for-startups-2026",
-    "best-ai-tools-for-content-teams-2026"
+    "how-to-write-product-descriptions-with-ai-2026"
   ],
   "codeium-vs-cursor": [
     "best-ai-tools-for-startups-2026",
@@ -93,9 +92,9 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "best-ai-tools-for-content-teams-2026"
   ],
   "cursor-vs-replit": [
-    "best-ai-tools-for-startups-2026",
-    "best-ai-tools-for-agencies-2026",
-    "best-ai-tools-for-content-teams-2026"
+    "best-ai-tools-for-small-businesses-2026",
+    "best-ai-tools-for-marketing-teams-2026",
+    "how-ai-tools-are-changing-ecommerce-in-2026"
   ],
   "replit-vs-copilot": [
     "best-ai-tools-for-startups-2026",

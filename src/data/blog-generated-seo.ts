@@ -65,6 +65,11 @@ type ArticleSeed = {
   slug: string;
   publishDate: string;
   topic: Record<Locale, string>;
+  title?: Partial<Record<Locale, string>>;
+  excerpt?: Partial<Record<Locale, string>>;
+  intro?: Partial<Record<Locale, string>>;
+  seoTitle?: Partial<Record<Locale, string>>;
+  seoDescription?: Partial<Record<Locale, string>>;
   categorySlug: "guides";
   useCaseSlug: string;
   useCasePageSlug?: string;
@@ -129,26 +134,25 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
   const useCasePage = seed.useCasePageSlug ? buildUseCaseLink(locale, seed.useCasePageSlug) : null;
   const firstPair = buildFirstPairLabel(locale, seed);
 
-  const title = locale === "tr"
+  const title = seed.title?.[locale] ?? (locale === "tr"
     ? `${topicLabel} için en iyi AI araçları`
-    : `Best AI tools for ${topicLabel}`;
+    : `Best AI tools for ${topicLabel}`);
 
-  const excerpt = locale === "tr"
+  const excerpt = seed.excerpt?.[locale] ?? (locale === "tr"
     ? `${topicLabel} için hızlı ama gerçekçi bir iş akışı kurmak isteyenler için pratik araç rehberi.`
-    : `A practical guide for building a fast but realistic workflow around ${topicLower}.`;
+    : `A practical guide for building a fast but realistic workflow around ${topicLower}.`);
 
-  const intro = locale === "tr"
+  const intro = seed.intro?.[locale] ?? (locale === "tr"
     ? `${items.map((item) => item.name).join(", ")} aynı işi aynı şekilde yapmaz. ${topicLabel} için doğru seçim, önce hedef çıktıyı, sonra edit ve yayın akışını netleştirmekten geçer.`
-    : `${items.map((item) => item.name).join(", ")} do not solve the same job in the same way. The better choice for ${topicLower} starts with defining the output, then the editing and publishing flow.`;
+    : `${items.map((item) => item.name).join(", ")} do not solve the same job in the same way. The better choice for ${topicLower} starts with defining the output, then the editing and publishing flow.`);
 
-  const seoTitle = locale === "tr"
+  const seoTitle = seed.seoTitle?.[locale] ?? (locale === "tr"
     ? `${topicLabel} için en iyi AI araçları | Deciply`
-    : `Best AI tools for ${topicLabel} | Deciply`;
+    : `Best AI tools for ${topicLabel} | Deciply`);
 
-  const seoDescription = locale === "tr"
+  const seoDescription = seed.seoDescription?.[locale] ?? (locale === "tr"
     ? `${topicLabel} için en iyi araçları, gerçek workflow adımlarını, compare linklerini ve tool sayfalarını inceleyin.`
-    : `Review the best tools for ${topicLower}, plus the workflow steps, compare links, and tool pages worth opening next.`;
-
+    : `Review the best tools for ${topicLower}, plus the workflow steps, compare links, and tool pages worth opening next.`);
   const workflowSteps = seed.workflow[locale];
   const workflowPairs = [items[0], items[1], items[2]].filter(Boolean);
 
@@ -640,6 +644,116 @@ const seeds: ArticleSeed[] = [
     nextStep: {
       tr: "Önce araç detaylarını, sonra compare ve alternatives sayfalarını açarak seçim alanını daralt.",
       en: "Start with the tool pages, then open the compare and alternatives pages to narrow the shortlist."
+    }
+  },
+  {
+    slug: "best-ai-tools-for-small-businesses-2026",
+    publishDate: "2026-04-04",
+    topic: {
+      tr: "küçük işletmeler",
+      en: "small businesses"
+    },
+    title: {
+      tr: "2026’da küçük işletmeler için en iyi AI araçları",
+      en: "Best AI tools for small businesses in 2026"
+    },
+    excerpt: {
+      tr: "Küçük işletmeler için otomasyon, müşteri desteği, içerik ve pazarlama işlerini gerçekçi bir sistem içinde toparlayan rehber.",
+      en: "A practical guide for small businesses that want to bring automation, support, content, and marketing into one realistic workflow."
+    },
+    intro: {
+      tr: "Küçük bir işletmede zaman çoğu zaman en büyük kısıttır. Bu yüzden doğru AI aracı, sadece daha hızlı yazı üretmekten ibaret olmaz; destek mesajlarını sadeleştirir, ürün ve hizmet açıklamalarını netleştirir, basit otomasyonlarla tekrar eden işleri hafifletir ve ekipte herkesin aynı brief üzerinden ilerlemesini kolaylaştırır. Bu rehber, küçük işletmelerin bütçe, hız ve kalite arasında daha dengeli seçim yapmasına yardım eder.",
+      en: "For small businesses, time is usually the biggest constraint. The right AI tool does more than generate text faster; it can simplify support messages, clarify product and service descriptions, reduce repetitive tasks with basic automation, and help the whole team work from the same brief. This guide is built to help smaller teams balance budget, speed, and quality with less guesswork."
+    },
+    seoTitle: {
+      tr: "2026’da küçük işletmeler için en iyi AI araçları | Deciply",
+      en: "Best AI tools for small businesses in 2026 | Deciply"
+    },
+    seoDescription: {
+      tr: "Küçük işletmeler için en iyi AI araçlarını, otomasyon ve içerik workflow'larını, compare linklerini ve pratik kullanım senaryolarını inceleyin.",
+      en: "Review the best AI tools for small businesses, plus automation and content workflows, compare links, and practical use cases."
+    },
+    categorySlug: "guides",
+    useCaseSlug: "business",
+    useCasePageSlug: "business-teams",
+    toolSlugs: ["jasper", "copy-ai", "claude", "perplexity", "grammarly", "shopify-magic"],
+    comparePairs: [
+      { leftSlug: "jasper", rightSlug: "copy-ai" },
+      { leftSlug: "claude", rightSlug: "gemini" },
+      { leftSlug: "chatgpt", rightSlug: "perplexity" }
+    ],
+    relatedArticleSlugs: ["best-ai-tools-for-marketing-teams-2026", "best-ai-tools-for-shopify-stores-2026", "how-ai-tools-are-changing-ecommerce-in-2026"],
+    keywords: ["small business", "automation", "customer support", "marketing", "operations"],
+    audience: {
+      tr: "Küçük işletme sahipleri, tek başına çalışan kurucular ve tekrar eden işleri daha düzenli hale getirmek isteyen ekipler için uygundur.",
+      en: "This fits small business owners, solo founders, and teams that want to systematize repetitive work."
+    },
+    workflow: {
+      tr: ["iş önceliklerini ve tekrar eden işleri belirle", "içerik ve destek akışını kur", "ton, doğruluk ve teslimat kontrolü yap"],
+      en: ["identify priorities and repetitive tasks", "set up content and support flows", "check tone, accuracy, and delivery"]
+    },
+    caution: {
+      tr: "Küçük işletmelerde hız cazip olsa da, yanlış otomasyon müşteri deneyimini bozabilir; her çıktıyı gerçek süreçle eşleştir.",
+      en: "Speed is tempting, but poor automation can harm customer experience; every output should map back to the real process."
+    },
+    nextStep: {
+      tr: "İşletme akışını netleştirdikten sonra compare sayfalarıyla en yakın araç farklarını karşılaştır.",
+      en: "Once the business workflow is clear, compare the closest tools to narrow the choice."
+    }
+  },
+  {
+    slug: "how-to-write-product-descriptions-with-ai-2026",
+    publishDate: "2026-04-04",
+    topic: {
+      tr: "ürün açıklamaları",
+      en: "product descriptions"
+    },
+    title: {
+      tr: "AI ile ürün açıklaması ve reklam metni hazırlama rehberi (2026)",
+      en: "How to write product descriptions with AI (2026)"
+    },
+    excerpt: {
+      tr: "Shopify ve e-ticaret ekipleri için ürün açıklaması, reklam metni ve SEO metnini birlikte kuran pratik bir rehber.",
+      en: "A practical guide for Shopify and ecommerce teams that want to build product descriptions, ad copy, and SEO copy in one flow."
+    },
+    intro: {
+      tr: "Ürün açıklaması yazmak sadece güzel cümle kurmak değildir; doğru faydayı öne çıkarmak, teknik ayrıntıları netleştirmek ve aynı ürünü farklı kanallara uyarlayabilmektir. AI burada ilk taslağı hızlandırır, ama satışa yakın metnin son hali hâlâ ürün bilgisi, marka tonu ve dönüşüm hedefi üzerinden insan kontrolü ister. Bu rehber, ürün sayfası, reklam ve SEO açıklamasını birlikte düşünen daha gerçekçi bir akış sunar.",
+      en: "Product description writing is not just about nice sentences; it is about highlighting the right benefit, clarifying technical details, and adapting the same product for different channels. AI helps speed up the first draft, but the sales-ready version still needs human review for product accuracy, brand tone, and conversion goals. This guide focuses on a more realistic workflow that treats product pages, ads, and SEO copy as one system."
+    },
+    seoTitle: {
+      tr: "AI ile ürün açıklaması ve reklam metni hazırlama rehberi (2026) | Deciply",
+      en: "How to write product descriptions with AI (2026) | Deciply"
+    },
+    seoDescription: {
+      tr: "Shopify ve e-ticaret için AI ile ürün açıklaması, reklam metni ve SEO açıklaması hazırlama akışını compare linkleri ve tool önerileriyle inceleyin.",
+      en: "Review how to use AI for product descriptions, ad copy, and SEO descriptions in ecommerce, with compare links and tool recommendations."
+    },
+    categorySlug: "guides",
+    useCaseSlug: "business",
+    useCasePageSlug: "business-teams",
+    toolSlugs: ["shopify-magic", "copy-ai", "jasper", "chatgpt", "claude", "grammarly"],
+    comparePairs: [
+      { leftSlug: "shopify-magic", rightSlug: "copy-ai" },
+      { leftSlug: "jasper", rightSlug: "copy-ai" },
+      { leftSlug: "chatgpt", rightSlug: "perplexity" }
+    ],
+    relatedArticleSlugs: ["best-ai-tools-for-small-businesses-2026", "best-ai-tools-for-shopify-stores-2026", "how-ai-tools-are-changing-ecommerce-in-2026"],
+    keywords: ["product descriptions", "shopify", "ad copy", "seo descriptions", "ecommerce"],
+    audience: {
+      tr: "Shopify mağaza sahipleri, e-ticaret yazarları ve ürün metnini daha hızlı ama daha kontrollü kurmak isteyen ekipler için uygundur.",
+      en: "This fits Shopify merchants, ecommerce writers, and teams that want faster but more controlled product copy."
+    },
+    workflow: {
+      tr: ["ürün verisini ve faydayı çıkar", "ilk taslağı ve reklam varyasyonunu üret", "SEO, ton ve ürün doğruluğunu kontrol et"],
+      en: ["extract product data and benefits", "generate the first draft and ad variations", "check SEO, tone, and product accuracy"]
+    },
+    caution: {
+      tr: "AI ile yazarken en büyük risk, teknik detayı veya vaat sınırını yanlış kurmaktır; ürün özelliklerini her zaman gerçek kaynakla doğrulayın.",
+      en: "The biggest risk is misrepresenting technical details or claims, so always verify product facts against the source."
+    },
+    nextStep: {
+      tr: "Metin akışını kurduktan sonra ilgili compare sayfalarıyla hangi aracın işine daha uygun olduğunu netleştir.",
+      en: "Once the copy flow is set, use the related comparison pages to see which tool fits your workflow best."
     }
   },
   {
