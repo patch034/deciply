@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
@@ -10,9 +10,8 @@ import { ToolCard } from "@/components/catalog/tool-card";
 import { ComparisonBreakdownTable } from "@/components/comparison/comparison-breakdown-table";
 import { ComparisonDecisionBoxes } from "@/components/comparison/comparison-decision-boxes";
 import { ComparisonFaq } from "@/components/comparison/comparison-faq";
-import { ComparisonActionGrid } from "@/components/comparison/comparison-action-grid";
+import { ComparisonCtaPanel } from "@/components/comparison/comparison-cta-panel";
 import { Badge } from "@/components/ui/badge";
-import { RatingBadge } from "@/components/ui/rating-badge";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
 import type { ComparisonFaqItem, ComparisonRow } from "@/data/comparisons";
@@ -31,48 +30,48 @@ import { formatPricing, getCatalogContent, getCategoryNamesMap, getToolOutboundU
 import type { LocalizedTool } from "@/types/catalog";
 const copy = {
   tr: {
-    compareLabel: "Karşılaştır",
+    compareLabel: "KarÃ…Å¸Ã„Â±laÃ…Å¸tÃ„Â±r",
     breadcrumbsHome: "Ana sayfa",
-    breadcrumbsTools: "Araçlar",
-    breadcrumbsCompare: "Karşılaştırmalar",
-    eyebrow: "Karar odaklı karşılaştırma",
-    heroSummary: "Bu karşılaştırma; kullanım alanı, fiyat, güçlü yönler ve sınırlamalar üzerinden daha net karar vermeniz için hazırlandı.",
-    primaryCta: "Aracı incele",
-    tableTitle: "Yan yana karşılaştırma",
-    tableDescription: "İki aracı temel karar kriterleriyle aynı tabloda görün.",
-    bestForTitle: "Hangi araç kimler için daha uygun?",
-    bestForDescription: "En iyi kullanım senaryosunu ve kullanıcı profilini hızlıca karşılaştırın.",
-    pricingTitle: "Fiyat karşılaştırması",
-    pricingDescription: "Ücretsiz başlama imkanı, fiyat modeli ve ticari kullanım açısından farkları görün.",
-    strengthsTitle: "Güçlü yönler",
-    strengthsDescription: "Her iki aracın öne çıktığı alanları ayrı ayrı değerlendirin.",
-    limitationsTitle: "Sınırlamalar",
-    limitationsDescription: "Karar vermeden önce darboğaz yaratabilecek noktaları görün.",
+    breadcrumbsTools: "AraÃƒÂ§lar",
+    breadcrumbsCompare: "KarÃ…Å¸Ã„Â±laÃ…Å¸tÃ„Â±rmalar",
+    eyebrow: "Karar odaklÃ„Â± karÃ…Å¸Ã„Â±laÃ…Å¸tÃ„Â±rma",
+    heroSummary: "Bu karÃ…Å¸Ã„Â±laÃ…Å¸tÃ„Â±rma; kullanÃ„Â±m alanÃ„Â±, fiyat, gÃƒÂ¼ÃƒÂ§lÃƒÂ¼ yÃƒÂ¶nler ve sÃ„Â±nÃ„Â±rlamalar ÃƒÂ¼zerinden daha net karar vermeniz iÃƒÂ§in hazÃ„Â±rlandÃ„Â±.",
+    primaryCta: "AracÃ„Â± incele",
+    tableTitle: "Yan yana karÃ…Å¸Ã„Â±laÃ…Å¸tÃ„Â±rma",
+    tableDescription: "Ã„Â°ki aracÃ„Â± temel karar kriterleriyle aynÃ„Â± tabloda gÃƒÂ¶rÃƒÂ¼n.",
+    bestForTitle: "Hangi araÃƒÂ§ kimler iÃƒÂ§in daha uygun?",
+    bestForDescription: "En iyi kullanÃ„Â±m senaryosunu ve kullanÃ„Â±cÃ„Â± profilini hÃ„Â±zlÃ„Â±ca karÃ…Å¸Ã„Â±laÃ…Å¸tÃ„Â±rÃ„Â±n.",
+    pricingTitle: "Fiyat karÃ…Å¸Ã„Â±laÃ…Å¸tÃ„Â±rmasÃ„Â±",
+    pricingDescription: "ÃƒÅ“cretsiz baÃ…Å¸lama imkanÃ„Â±, fiyat modeli ve ticari kullanÃ„Â±m aÃƒÂ§Ã„Â±sÃ„Â±ndan farklarÃ„Â± gÃƒÂ¶rÃƒÂ¼n.",
+    strengthsTitle: "GÃƒÂ¼ÃƒÂ§lÃƒÂ¼ yÃƒÂ¶nler",
+    strengthsDescription: "Her iki aracÃ„Â±n ÃƒÂ¶ne ÃƒÂ§Ã„Â±ktÃ„Â±Ã„Å¸Ã„Â± alanlarÃ„Â± ayrÃ„Â± ayrÃ„Â± deÃ„Å¸erlendirin.",
+    limitationsTitle: "SÃ„Â±nÃ„Â±rlamalar",
+    limitationsDescription: "Karar vermeden ÃƒÂ¶nce darboÃ„Å¸az yaratabilecek noktalarÃ„Â± gÃƒÂ¶rÃƒÂ¼n.",
     verdictTitle: "Son karar",
-    verdictDescription: "Kazananı zorla seçmek yerine hangi senaryoda hangi aracın daha mantıklı olduğunu özetler.",
-    relatedComparisonsTitle: "İlgili karşılaştırmalar",
-    relatedComparisonsDescription: "Kıyaslama alanını genişletmek için bu benzer karşılaştırmaları da açın.",
-    relatedBlogsTitle: "İlgili bloglar",
-    relatedBlogsDescription: "Kararı daha geniş bir içerik kümesiyle desteklemek için bu rehberleri de inceleyin.",
+    verdictDescription: "KazananÃ„Â± zorla seÃƒÂ§mek yerine hangi senaryoda hangi aracÃ„Â±n daha mantÃ„Â±klÃ„Â± olduÃ„Å¸unu ÃƒÂ¶zetler.",
+    relatedComparisonsTitle: "Ã„Â°lgili karÃ…Å¸Ã„Â±laÃ…Å¸tÃ„Â±rmalar",
+    relatedComparisonsDescription: "KÃ„Â±yaslama alanÃ„Â±nÃ„Â± geniÃ…Å¸letmek iÃƒÂ§in bu benzer karÃ…Å¸Ã„Â±laÃ…Å¸tÃ„Â±rmalarÃ„Â± da aÃƒÂ§Ã„Â±n.",
+    relatedBlogsTitle: "Ã„Â°lgili bloglar",
+    relatedBlogsDescription: "KararÃ„Â± daha geniÃ…Å¸ bir iÃƒÂ§erik kÃƒÂ¼mesiyle desteklemek iÃƒÂ§in bu rehberleri de inceleyin.",
     relatedBlogCtaLabel: "Rehberi oku",
-    relatedAlternativesTitle: "İlgili alternatifler",
-    relatedAlternativesDescription: "Karar alanını biraz daha daraltmak isterseniz bu araçlara da göz atın.",
-    faqTitle: "Sık sorulan sorular",
-    faqDescription: "Bu comparison sayfasında en sık sorulan karar sorularına kısa cevaplar.",
+    relatedAlternativesTitle: "Ã„Â°lgili alternatifler",
+    relatedAlternativesDescription: "Karar alanÃ„Â±nÃ„Â± biraz daha daraltmak isterseniz bu araÃƒÂ§lara da gÃƒÂ¶z atÃ„Â±n.",
+    faqTitle: "SÃ„Â±k sorulan sorular",
+    faqDescription: "Bu comparison sayfasÃ„Â±nda en sÃ„Â±k sorulan karar sorularÃ„Â±na kÃ„Â±sa cevaplar.",
     tableLabels: {
       criteria: "Kriter",
-      bestFor: "En uygun kullanım",
+      bestFor: "En uygun kullanÃ„Â±m",
       pricing: "Fiyat modeli",
       whatItDoes: "Ne yapar",
-      whoShouldUse: "Kim kullanmalı",
-      strengths: "Güçlü yönler",
-      limitations: "Sınırlamalar",
-      realUseCase: "Gerçek kullanım örneği"
+      whoShouldUse: "Kim kullanmalÃ„Â±",
+      strengths: "GÃƒÂ¼ÃƒÂ§lÃƒÂ¼ yÃƒÂ¶nler",
+      limitations: "SÃ„Â±nÃ„Â±rlamalar",
+      realUseCase: "GerÃƒÂ§ek kullanÃ„Â±m ÃƒÂ¶rneÃ„Å¸i"
     },
-    pricingFreeStart: "Ücretsiz başlangıç",
-    pricingCommercial: "Ticari kullanım açısından",
-    verdictLeftTitle: "Ne zaman bu araç daha mantıklı?",
-    verdictRightTitle: "Ne zaman diğer araç daha mantıklı?"
+    pricingFreeStart: "ÃƒÅ“cretsiz baÃ…Å¸langÃ„Â±ÃƒÂ§",
+    pricingCommercial: "Ticari kullanÃ„Â±m aÃƒÂ§Ã„Â±sÃ„Â±ndan",
+    verdictLeftTitle: "Ne zaman bu araÃƒÂ§ daha mantÃ„Â±klÃ„Â±?",
+    verdictRightTitle: "Ne zaman diÃ„Å¸er araÃƒÂ§ daha mantÃ„Â±klÃ„Â±?"
   },
   en: {
     compareLabel: "Compare",
@@ -127,30 +126,30 @@ function joinItems(items: string[], locale: Locale, limit = 3) {
 function buildComparisonTitle(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool, pair?: string) {
   if (pair === SPECIAL_TEAM_COMPARISON_SLUG) {
     return locale === "tr"
-      ? `${leftTool.name} vs ${rightTool.name} ekipler için karşılaştırma (2026)`
+      ? `${leftTool.name} vs ${rightTool.name} ekipler iÃƒÂ§in karÃ…Å¸Ã„Â±laÃ…Å¸tÃ„Â±rma (2026)`
       : `${leftTool.name} vs ${rightTool.name} for teams (2026)`;
   }
 
   return locale === "tr"
-    ? `${leftTool.name} vs ${rightTool.name} karşılaştırması (2026)`
+    ? `${leftTool.name} vs ${rightTool.name} karÃ…Å¸Ã„Â±laÃ…Å¸tÃ„Â±rmasÃ„Â± (2026)`
     : `${leftTool.name} vs ${rightTool.name} Comparison (2026)`;
 }
 
 function buildComparisonDescription(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool, pair?: string) {
   if (pair === SPECIAL_TEAM_COMPARISON_SLUG) {
     return locale === "tr"
-      ? `${leftTool.name} ve ${rightTool.name} için ekip odaklı kullanım, fiyat ve iş akışı farklarını inceleyin.`
+      ? `${leftTool.name} ve ${rightTool.name} iÃƒÂ§in ekip odaklÃ„Â± kullanÃ„Â±m, fiyat ve iÃ…Å¸ akÃ„Â±Ã…Å¸Ã„Â± farklarÃ„Â±nÃ„Â± inceleyin.`
       : `Compare ${leftTool.name} and ${rightTool.name} through a team-focused workflow lens, including pricing and practical fit.`;
   }
 
   return locale === "tr"
-    ? `${leftTool.name} ve ${rightTool.name} için fiyat, güçlü yönler, sınırlamalar, kullanım senaryoları ve final verdict özetini inceleyin.`
+    ? `${leftTool.name} ve ${rightTool.name} iÃƒÂ§in fiyat, gÃƒÂ¼ÃƒÂ§lÃƒÂ¼ yÃƒÂ¶nler, sÃ„Â±nÃ„Â±rlamalar, kullanÃ„Â±m senaryolarÃ„Â± ve final verdict ÃƒÂ¶zetini inceleyin.`
     : `Compare ${leftTool.name} and ${rightTool.name} across pricing, strengths, limitations, best-fit workflows, and final verdict.`;
 }
 
 function buildHeroIntro(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool) {
   return locale === "tr"
-    ? `${leftTool.name} ve ${rightTool.name} arasındaki farkı iş akışı, fiyat, çıktı kalitesi ve hız üzerinden değerlendirin.`
+    ? `${leftTool.name} ve ${rightTool.name} arasÃ„Â±ndaki farkÃ„Â± iÃ…Å¸ akÃ„Â±Ã…Å¸Ã„Â±, fiyat, ÃƒÂ§Ã„Â±ktÃ„Â± kalitesi ve hÃ„Â±z ÃƒÂ¼zerinden deÃ„Å¸erlendirin.`
     : `Evaluate ${leftTool.name} and ${rightTool.name} through workflow fit, pricing, output quality, and speed.`;
 }
 
@@ -200,20 +199,20 @@ function buildComparisonFaq(locale: Locale, leftTool: LocalizedTool, rightTool: 
   if (locale === "tr") {
     return [
       {
-        question: `Hangi iş akışı hangi araca daha yakın?`,
-        answer: `${leftTool.name} ${leftTool.bestUseCase.toLowerCase()} tarafında, ${rightTool.name} ise ${rightTool.bestUseCase.toLowerCase()} tarafında daha doğal hissedebilir. En iyi seçim, bugünkü iş akışına en az sürtünme ekleyen araçtır.`
+        question: `Hangi iÃ…Å¸ akÃ„Â±Ã…Å¸Ã„Â± hangi araca daha yakÃ„Â±n?`,
+        answer: `${leftTool.name} ${leftTool.bestUseCase.toLowerCase()} tarafÃ„Â±nda, ${rightTool.name} ise ${rightTool.bestUseCase.toLowerCase()} tarafÃ„Â±nda daha doÃ„Å¸al hissedebilir. En iyi seÃƒÂ§im, bugÃƒÂ¼nkÃƒÂ¼ iÃ…Å¸ akÃ„Â±Ã…Å¸Ã„Â±na en az sÃƒÂ¼rtÃƒÂ¼nme ekleyen araÃƒÂ§tÃ„Â±r.`
       },
       {
-        question: `Yeni başlayan biri ilk olarak neye bakmalı?`,
-        answer: `Önce fiyat etiketinden çok, ilk 10 dakikada hangi aracın daha rahat başladığına bakın. Kolay başlangıç ve net çıktı çoğu zaman daha iyi sinyal verir.`
+        question: `Yeni baÃ…Å¸layan biri ilk olarak neye bakmalÃ„Â±?`,
+        answer: `Ãƒ�€“nce fiyat etiketinden ÃƒÂ§ok, ilk 10 dakikada hangi aracÃ„Â±n daha rahat baÃ…Å¸ladÃ„Â±Ã„Å¸Ã„Â±na bakÃ„Â±n. Kolay baÃ…Å¸langÃ„Â±ÃƒÂ§ ve net ÃƒÂ§Ã„Â±ktÃ„Â± ÃƒÂ§oÃ„Å¸u zaman daha iyi sinyal verir.`
       },
       {
-        question: `Fiyat mı, çıktı kalitesi mi, hız mı?`,
-        answer: `Üçü de önemlidir ama doğru seçim genelde tek bir metrikten çıkmaz. Hız, kalite ve tekrar üretilebilirlik birlikte değerlendirilmelidir.`
+        question: `Fiyat mÃ„Â±, ÃƒÂ§Ã„Â±ktÃ„Â± kalitesi mi, hÃ„Â±z mÃ„Â±?`,
+        answer: `ÃƒÅ“ÃƒÂ§ÃƒÂ¼ de ÃƒÂ¶nemlidir ama doÃ„Å¸ru seÃƒÂ§im genelde tek bir metrikten ÃƒÂ§Ã„Â±kmaz. HÃ„Â±z, kalite ve tekrar ÃƒÂ¼retilebilirlik birlikte deÃ„Å¸erlendirilmelidir.`
       },
       {
-        question: `Ekip veya creator işleri için neye dikkat edilmeli?`,
-        answer: `Tutarlı çıktı, paylaşılabilir kullanım ve aynı brief üzerinde tekrar eden testler, ekip ve creator kararlarını daha güvenilir hale getirir.`
+        question: `Ekip veya creator iÃ…Å¸leri iÃƒÂ§in neye dikkat edilmeli?`,
+        answer: `TutarlÃ„Â± ÃƒÂ§Ã„Â±ktÃ„Â±, paylaÃ…Å¸Ã„Â±labilir kullanÃ„Â±m ve aynÃ„Â± brief ÃƒÂ¼zerinde tekrar eden testler, ekip ve creator kararlarÃ„Â±nÃ„Â± daha gÃƒÂ¼venilir hale getirir.`
       }
     ];
   }
@@ -413,33 +412,25 @@ export default async function ComparisonPage({
               <p className="mt-4 max-w-3xl text-base leading-8 text-slate-400">{dictionary.heroSummary}</p>
             </div>
 
-            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div className="rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-slate-100">
-                  <RatingBadge rating={leftTool.rating} className="w-fit" />
-                </div>
-                <div className="rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-slate-100">
-                  <RatingBadge rating={rightTool.rating} className="w-fit" />
-                </div>
-              </div>
-              <ComparisonActionGrid
-                locale={safeLocale}
-                tools={[
-                  {
-                    name: leftTool.name,
-                    openHref: leftOfficialHref,
-                    reviewHref: `/${safeLocale}/tools/${leftTool.slug}`
-                  },
-                  {
-                    name: rightTool.name,
-                    openHref: rightOfficialHref,
-                    reviewHref: `/${safeLocale}/tools/${rightTool.slug}`
-                  }
-                ]}
-                neutralHref={`/${safeLocale}/categories/comparisons`}
-                className="mt-6"
-              />
-            </div>
+            <ComparisonCtaPanel
+              locale={safeLocale}
+              tools={[
+                {
+                  name: leftTool.name,
+                  rating: leftTool.rating,
+                  openHref: leftOfficialHref,
+                  reviewHref: `/${safeLocale}/tools/${leftTool.slug}`
+                },
+                {
+                  name: rightTool.name,
+                  rating: rightTool.rating,
+                  openHref: rightOfficialHref,
+                  reviewHref: `/${safeLocale}/tools/${rightTool.slug}`
+                }
+              ]}
+              neutralHref={`/${safeLocale}/categories/comparisons`}
+              className="w-full"
+            />
           </div>
         </section>
 
@@ -491,10 +482,10 @@ export default async function ComparisonPage({
                     <p className="mt-2 text-sm leading-7 text-slate-300">
                       {tool.pricing === "PAID"
                         ? safeLocale === "tr"
-                          ? "Doğrudan ücretli giriş gerektirir."
+                          ? "DoÃ„Å¸rudan ÃƒÂ¼cretli giriÃ…Å¸ gerektirir."
                           : "Starts as a paid product."
                         : safeLocale === "tr"
-                          ? "Ücretsiz veya freemium giriş sunar."
+                          ? "ÃƒÅ“cretsiz veya freemium giriÃ…Å¸ sunar."
                           : "Offers a free or freemium starting point."}
                     </p>
                   </div>
@@ -539,21 +530,24 @@ export default async function ComparisonPage({
               <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{dictionary.verdictTitle}</h2>
               <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{dictionary.verdictDescription}</p>
             </div>
-            <ComparisonActionGrid
+            <ComparisonCtaPanel
               locale={safeLocale}
               tools={[
                 {
                   name: leftTool.name,
+                  rating: leftTool.rating,
                   openHref: leftOfficialHref,
                   reviewHref: `/${safeLocale}/tools/${leftTool.slug}`
                 },
                 {
                   name: rightTool.name,
+                  rating: rightTool.rating,
                   openHref: rightOfficialHref,
                   reviewHref: `/${safeLocale}/tools/${rightTool.slug}`
                 }
               ]}
               neutralHref={`/${safeLocale}/categories/comparisons`}
+              className="w-full"
             />
           </div>
 
@@ -574,25 +568,28 @@ export default async function ComparisonPage({
         <section className="rounded-[34px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{safeLocale === "tr" ? "Dönüşüm odaklı karar" : "Conversion-ready decision"}</p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{safeLocale === "tr" ? "Bir sonraki adımı şimdi seçin" : "Choose the next step now"}</h2>
-              <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{safeLocale === "tr" ? "Üstteki sırayı koruyun: önce aç, sonra incele, en son alternatifleri karşılaştır." : "Keep the order clear: open first, review second, compare alternatives last."}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{safeLocale === "tr" ? "DÃƒÂ¶nÃƒÂ¼Ã…Å¸ÃƒÂ¼m odaklÃ„Â± karar" : "Conversion-ready decision"}</p>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{safeLocale === "tr" ? "Bir sonraki adÃ„Â±mÃ„Â± Ã…Å¸imdi seÃƒÂ§in" : "Choose the next step now"}</h2>
+              <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{safeLocale === "tr" ? "ÃƒÅ“stteki sÃ„Â±rayÃ„Â± koruyun: ÃƒÂ¶nce aÃƒÂ§, sonra incele, en son alternatifleri karÃ…Å¸Ã„Â±laÃ…Å¸tÃ„Â±r." : "Keep the order clear: open first, review second, compare alternatives last."}</p>
             </div>
-            <ComparisonActionGrid
+            <ComparisonCtaPanel
               locale={safeLocale}
               tools={[
                 {
                   name: leftTool.name,
+                  rating: leftTool.rating,
                   openHref: leftOfficialHref,
                   reviewHref: `/${safeLocale}/tools/${leftTool.slug}`
                 },
                 {
                   name: rightTool.name,
+                  rating: rightTool.rating,
                   openHref: rightOfficialHref,
                   reviewHref: `/${safeLocale}/tools/${rightTool.slug}`
                 }
               ]}
               neutralHref={`/${safeLocale}/categories/comparisons`}
+              className="w-full"
             />
           </div>
         </section>
@@ -636,8 +633,8 @@ export default async function ComparisonPage({
               return (
                 <div key={tool.slug} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{tool.name}</p>
-                  <h2 className="mt-3 text-xl font-semibold text-slate-100">{matchedTool.name} {safeLocale === "tr" ? "ile karşılaştır" : "comparison"}</h2>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">{safeLocale === "tr" ? "İlgili compare sayfasını açarak farklı kullanım ve fiyat sinyallerini yan yana görün." : "Open the related comparison page to review use-case and pricing signals side by side."}</p>
+                  <h2 className="mt-3 text-xl font-semibold text-slate-100">{matchedTool.name} {safeLocale === "tr" ? "ile karÃ…Å¸Ã„Â±laÃ…Å¸tÃ„Â±r" : "comparison"}</h2>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">{safeLocale === "tr" ? "Ã„Â°lgili compare sayfasÃ„Â±nÃ„Â± aÃƒÂ§arak farklÃ„Â± kullanÃ„Â±m ve fiyat sinyallerini yan yana gÃƒÂ¶rÃƒÂ¼n." : "Open the related comparison page to review use-case and pricing signals side by side."}</p>
                   <div className="mt-5">
                     <PremiumButton href={compareHref} className="w-full" variant="secondary">
                       {dictionary.compareLabel}
@@ -669,10 +666,10 @@ export default async function ComparisonPage({
         ) : null}
 
         <InfoSection
-          title={safeLocale === "tr" ? "İlgili alternatifler" : "Related alternatives"}
+          title={safeLocale === "tr" ? "Ã„Â°lgili alternatifler" : "Related alternatives"}
           description={
             safeLocale === "tr"
-              ? "Bu karşılaştırmayı açtıktan sonra ilgili alternatif sayfalarını da inceleyin."
+              ? "Bu karÃ…Å¸Ã„Â±laÃ…Å¸tÃ„Â±rmayÃ„Â± aÃƒÂ§tÃ„Â±ktan sonra ilgili alternatif sayfalarÃ„Â±nÃ„Â± da inceleyin."
               : "Review the related alternatives pages after this comparison."
           }
         >
@@ -685,7 +682,7 @@ export default async function ComparisonPage({
               >
                 <p className="text-sm font-semibold text-cyan-300">{item.label}</p>
                 <p className="mt-3 text-sm leading-7 text-slate-300">
-                  {safeLocale === "tr" ? "Alternatifleri, fiyat farkını ve kullanım alanını ayrı sayfada görün." : "Review alternatives, pricing differences, and workflow fit on a dedicated page."}
+                  {safeLocale === "tr" ? "Alternatifleri, fiyat farkÃ„Â±nÃ„Â± ve kullanÃ„Â±m alanÃ„Â±nÃ„Â± ayrÃ„Â± sayfada gÃƒÂ¶rÃƒÂ¼n." : "Review alternatives, pricing differences, and workflow fit on a dedicated page."}
                 </p>
               </Link>
             ))}
@@ -697,7 +694,6 @@ export default async function ComparisonPage({
     </>
   );
 }
-
 
 
 
