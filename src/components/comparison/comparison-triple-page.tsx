@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 
 import { BlogCard } from "@/components/blog/blog-card";
 import { Badge } from "@/components/ui/badge";
@@ -111,7 +111,7 @@ export function ComparisonTriplePage({
               </div>
               <div className="mt-6 grid gap-3 sm:grid-cols-3">
                 {tools.map((tool) => (
-                  <PremiumButton key={tool.slug} href={`/${locale}/tools/${tool.slug}`} className="w-full" variant={tool.slug === secondTool.slug ? "secondary" : "primary"}>
+                  <PremiumButton key={tool.slug} href={`/${locale}/tools/${tool.slug}`} className="w-full" variant="secondary">
                     {tool.name}
                   </PremiumButton>
                 ))}
@@ -141,7 +141,7 @@ export function ComparisonTriplePage({
                 <h2 className="mt-3 text-xl font-semibold text-slate-100">{tool.bestUseCase}</h2>
                 <p className="mt-3 text-sm leading-7 text-slate-300">{tool.whoShouldUseSummary}</p>
                 <div className="mt-5">
-                  <PremiumButton href={`/${locale}/tools/${tool.slug}`} variant="ghost" className="w-full">
+                  <PremiumButton href={`/${locale}/tools/${tool.slug}`} variant="secondary" className="w-full">
                     {dictionary.toolCtaLabel}
                   </PremiumButton>
                 </div>
@@ -196,7 +196,7 @@ export function ComparisonTriplePage({
             </div>
             <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
               {tools.map((tool) => (
-                <PremiumButton key={tool.slug} href={`/${locale}/tools/${tool.slug}`} className="w-full">
+                <PremiumButton key={tool.slug} href={`/${locale}/tools/${tool.slug}`} className="w-full" variant="secondary">
                   {tool.name}
                 </PremiumButton>
               ))}
@@ -289,7 +289,7 @@ export function ComparisonTriplePage({
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
               {tools.map((tool) => (
-                <PremiumButton key={tool.slug} href={`/${locale}/tools/${tool.slug}`} className="w-full">
+                <PremiumButton key={tool.slug} href={`/${locale}/tools/${tool.slug}`} className="w-full" variant="secondary">
                   {tool.name}
                 </PremiumButton>
               ))}
@@ -300,5 +300,10 @@ export function ComparisonTriplePage({
     </>
   );
 }
+
+
+
+
+
 
 

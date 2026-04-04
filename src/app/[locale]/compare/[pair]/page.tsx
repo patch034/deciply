@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
@@ -422,11 +422,11 @@ export default async function ComparisonPage({
                 </div>
               </div>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <PremiumButton href={`/${safeLocale}/tools/${leftTool.slug}`} className="w-full">
-                  {leftTool.name}
+                <PremiumButton href={`/${safeLocale}/tools/${leftTool.slug}`} className="w-full" variant="secondary">
+                  {safeLocale === "tr" ? leftTool.name + " aç" : "Open " + leftTool.name}
                 </PremiumButton>
                 <PremiumButton href={`/${safeLocale}/tools/${rightTool.slug}`} className="w-full" variant="secondary">
-                  {rightTool.name}
+                  {safeLocale === "tr" ? rightTool.name + " aç" : "Open " + rightTool.name}
                 </PremiumButton>
               </div>
             </div>
@@ -460,7 +460,7 @@ export default async function ComparisonPage({
                 <h2 className="mt-3 text-xl font-semibold text-slate-100">{tool.bestUseCase}</h2>
                 <p className="mt-3 text-sm leading-7 text-slate-300">{tool.whoShouldUseSummary}</p>
                 <div className="mt-5">
-                  <PremiumButton href={`/${safeLocale}/tools/${tool.slug}`} variant="ghost" className="w-full">
+                  <PremiumButton href={`/${safeLocale}/tools/${tool.slug}`} variant="secondary" className="w-full">
                     {dictionary.primaryCta}
                   </PremiumButton>
                 </div>
@@ -530,11 +530,11 @@ export default async function ComparisonPage({
               <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{dictionary.verdictDescription}</p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
-              <PremiumButton href={`/${safeLocale}/tools/${leftTool.slug}`} className="w-full">
-                {leftTool.name}
+              <PremiumButton href={`/${safeLocale}/tools/${leftTool.slug}`} className="w-full" variant="secondary">
+                {safeLocale === "tr" ? leftTool.name + " aç" : "Open " + leftTool.name}
               </PremiumButton>
               <PremiumButton href={`/${safeLocale}/tools/${rightTool.slug}`} className="w-full" variant="secondary">
-                {rightTool.name}
+                {safeLocale === "tr" ? rightTool.name + " aç" : "Open " + rightTool.name}
               </PremiumButton>
             </div>
           </div>
@@ -558,14 +558,14 @@ export default async function ComparisonPage({
           title={safeLocale === "tr" ? "Bir sonraki adımı şimdi seçin" : "Choose the next step now"}
           description={
             safeLocale === "tr"
-              ? "Resmî aracı açın, alternatifleri karşılaştırın veya ilgili incelemeyi okuyun."
+              ? "Her buton açık biçimde hangi aracı açtığını gösterir."
               : "Open the official tool, compare alternatives, or read the related review."
           }
           buttons={[
-            { label: safeLocale === "tr" ? "Resmî aracı aç" : "Visit official tool", href: leftOfficialHref },
-            { label: "Try now", href: rightOfficialHref, variant: "secondary" },
-            { label: safeLocale === "tr" ? "Alternatifleri karşılaştır" : "Compare alternatives", href: compareAlternativesHref, variant: "ghost" },
-            { label: safeLocale === "tr" ? "Tam incelemeyi oku" : "Read full review", href: relatedBlogHref, variant: "ghost" }
+            { label: safeLocale === "tr" ? leftTool.name + " aç" : "Open " + leftTool.name, href: leftOfficialHref, variant: "secondary" },
+            { label: safeLocale === "tr" ? rightTool.name + " aç" : "Open " + rightTool.name, href: rightOfficialHref, variant: "secondary" },
+            { label: safeLocale === "tr" ? "Alternatifleri karşılaştır" : "Compare alternatives", href: compareAlternativesHref, variant: "secondary" },
+            { label: safeLocale === "tr" ? "Tam incelemeyi oku" : "Read full review", href: relatedBlogHref, variant: "secondary" }
           ]}
         />
 
@@ -669,6 +669,13 @@ export default async function ComparisonPage({
     </>
   );
 }
+
+
+
+
+
+
+
 
 
 
