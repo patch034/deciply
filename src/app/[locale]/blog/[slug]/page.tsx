@@ -30,6 +30,79 @@ import {
 } from "@/lib/catalog";
 import { buildBlogMetaDescription, buildBlogPageTitle } from "@/lib/seo";
 
+type BlogCtaButton = {
+  label: string;
+  href: string;
+  variant?: "primary" | "secondary" | "ghost";
+};
+
+function buildToolLabel(locale: Locale, toolName: string, action: "open" | "review") {
+  if (locale === "tr") {
+    return action === "open" ? `${toolName}\u2019yi a\u00e7` : `${toolName}\u2019yi incele`;
+  }
+
+  return action === "open" ? `Open ${toolName}` : `Review ${toolName}`;
+}
+
+function buildBlogCtaButtons(
+  locale: Locale,
+  relatedTools: NonNullable<ReturnType<typeof getLocalizedToolBySlug>>[],
+  comparisonHref: string,
+  alternativesHref: string,
+  toolPageHref: string
+): BlogCtaButton[] {
+  const buttons: BlogCtaButton[] = [];
+  const primaryTool = relatedTools[0];
+  const secondaryTool = relatedTools[1];
+
+  if (primaryTool) {
+    buttons.push({
+      label: buildToolLabel(locale, primaryTool.name, "review"),
+      href: `/${locale}/tools/${primaryTool.slug}`
+    });
+  }
+
+  if (secondaryTool) {
+    buttons.push({
+      label: buildToolLabel(locale, secondaryTool.name, "review"),
+      href: `/${locale}/tools/${secondaryTool.slug}`,
+      variant: "secondary"
+    });
+  }
+
+  if (comparisonHref) {
+    buttons.push({
+      label:
+        primaryTool && secondaryTool
+          ? locale === "tr"
+            ? `${primaryTool.name} vs ${secondaryTool.name} kar\u015f\u0131la\u015ft\u0131r`
+            : `Compare ${primaryTool.name} vs ${secondaryTool.name}`
+          : locale === "tr"
+            ? "Kar\u015f\u0131la\u015ft\u0131rmay\u0131 a\u00e7"
+            : "Open comparison",
+      href: comparisonHref,
+      variant: "ghost"
+    });
+  }
+
+  if (!buttons.length) {
+    buttons.push({
+      label: locale === "tr" ? "Ara\u00e7lar\u0131 a\u00e7" : "Open tools",
+      href: toolPageHref
+    });
+  }
+
+  if (buttons.length < 3) {
+    buttons.push({
+      label: locale === "tr" ? "Alternatifleri a\u00e7" : "Explore alternatives",
+      href: alternativesHref,
+      variant: "ghost"
+    });
+  }
+
+  return buttons.slice(0, 3);
+}
+
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
     blogArticles.map((article) => ({
@@ -125,6 +198,7 @@ export default async function BlogDetailPage({
       href: `#${buildArticleSectionId(section.title)}`
     }))
   ];
+  const blogCtaButtons = buildBlogCtaButtons(safeLocale, relatedTools, comparisonHref, alternativesHref, `/${safeLocale}/tools`);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -231,13 +305,13 @@ export default async function BlogDetailPage({
                   rel={heroPrimaryHref.startsWith("http") ? "nofollow sponsored noreferrer" : undefined}
                   className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_72px_-22px_rgba(56,189,248,0.68)]"
                 >
-                  {copy.heroPrimaryCta}
+                  {primaryTool ? buildToolLabel(safeLocale, primaryTool.name, "open") : (safeLocale === "tr" ? "Aracı aç" : "Open tool")}
                 </a>
                 <a
                   href={comparisonHref}
                   className="inline-flex items-center justify-center rounded-2xl border border-white/15 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-cyan-400/30 hover:text-cyan-300"
                 >
-                  {copy.comparisonCtaLabel}
+                  {primaryTool && relatedTools[1] ? `${primaryTool.name} vs ${relatedTools[1].name} kar\u015f\u0131la\u015ft\u0131r` : (primaryTool ? `${primaryTool.name} kar\u015f\u0131la\u015ft\u0131rmalar\u0131` : copy.comparisonCtaLabel)}
                 </a>
               </div>
             </div>
@@ -253,10 +327,7 @@ export default async function BlogDetailPage({
               ? "Makalede geçen aracı detay sayfasında inceleyip fiyat, kullanım alanı ve alternatiflerini birkaç saniyede görebilirsiniz."
               : "Open the related tool page to review pricing, best-fit use cases, and alternatives in seconds."
           }
-          primaryLabel={copy.heroPrimaryCta}
-          primaryHref={heroPrimaryHref}
-          secondaryLabel={copy.heroSecondaryCta}
-          secondaryHref={`/${safeLocale}/tools`}
+          buttons={blogCtaButtons}
         />
         <ConversionCtaStrip
           eyebrow={safeLocale === "tr" ? "Karar akışı" : "Decision flow"}
@@ -266,11 +337,7 @@ export default async function BlogDetailPage({
               ? "Resmî aracı açın, compare sayfasını inceleyin ve alternatifleri ayrı sekmede görüntüleyin."
               : "Open the official tool, review the comparison page, and view the alternatives in a dedicated step."
           }
-          buttons={[
-            { label: safeLocale === "tr" ? "Resmî aracı aç" : "Visit official tool", href: heroPrimaryHref },
-            { label: safeLocale === "tr" ? "Karşılaştırmaları aç" : "Compare alternatives", href: comparisonHref, variant: "secondary" },
-            { label: safeLocale === "tr" ? "Alternatifleri aç" : "Explore alternatives", href: alternativesHref, variant: "ghost" }
-          ]}
+          buttons={blogCtaButtons}
         />
         <SectionJumpNav items={sectionNavItems} />
 
@@ -309,7 +376,7 @@ export default async function BlogDetailPage({
               href={comparisonHref}
               className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_72px_-22px_rgba(56,189,248,0.68)]"
             >
-              {copy.comparisonCtaLabel}
+                  {primaryTool && relatedTools[1] ? `${primaryTool.name} vs ${relatedTools[1].name} kar\u015f\u0131la\u015ft\u0131r` : copy.comparisonCtaLabel}
             </a>
           </div>
         </section>
@@ -334,17 +401,14 @@ export default async function BlogDetailPage({
         ) : null}
 
         <ArticleCtaBlock
-          eyebrow={safeLocale === "tr" ? "Son CTA" : "Final CTA"}
-          title={safeLocale === "tr" ? "Doğru aracı seçmeye hazırsanız şimdi devam edin" : "Ready to choose the right tool?"}
+          eyebrow={safeLocale === "tr" ? "Ara CTA" : "Mid CTA"}
+          title={safeLocale === "tr" ? "Bu içerikte geçen aracı şimdi deneyin" : "Try the tool mentioned in this guide"}
           description={
             safeLocale === "tr"
-              ? "Blog içeriğini okuduktan sonra en doğru sonraki adım, aracı açıp detay sayfasında artılarını, eksilerini ve fiyat bilgisini görmek olacaktır."
-              : "After reading the guide, the best next step is opening the tool page to review pricing, strengths, and alternatives before clicking out."
+              ? "Makalede geçen aracı detay sayfasında inceleyip fiyat, kullanım alanı ve alternatiflerini birkaç saniyede görebilirsiniz."
+              : "Open the related tool page to review pricing, best-fit use cases, and alternatives in seconds."
           }
-          primaryLabel={copy.heroPrimaryCta}
-          primaryHref={heroPrimaryHref}
-          secondaryLabel={copy.backToBlog}
-          secondaryHref={`/${safeLocale}/blog`}
+          buttons={blogCtaButtons}
         />
       </div>
     </>
