@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import clsx from "clsx";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -81,7 +81,7 @@ export function ComparisonInsightPanel({ locale, slides, tools, neutralHref, cla
   return (
     <div
       className={clsx(
-        "rounded-[28px] border border-slate-700/60 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-4 shadow-[0_18px_60px_-36px_rgba(34,211,238,0.16)] md:rounded-[32px] md:p-6",
+        "rounded-[28px] border border-violet-400/14 bg-[linear-gradient(180deg,rgba(9,13,23,0.92),rgba(10,16,30,0.96))] p-4 shadow-[0_18px_60px_-36px_rgba(124,58,237,0.18),0_14px_42px_-32px_rgba(244,114,182,0.12)] md:rounded-[32px] md:p-6",
         className
       )}
       onMouseEnter={() => setIsPaused(true)}
@@ -90,7 +90,7 @@ export function ComparisonInsightPanel({ locale, slides, tools, neutralHref, cla
       onBlurCapture={() => setIsPaused(false)}
     >
       <div
-        className="relative overflow-hidden rounded-[22px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(12,18,32,0.94),rgba(15,23,42,0.98))] p-3.5 sm:rounded-[24px] sm:p-5"
+        className="relative overflow-hidden rounded-[22px] border border-violet-400/14 bg-[linear-gradient(135deg,rgba(10,16,30,0.96),rgba(15,23,42,0.98))] p-3.5 sm:rounded-[24px] sm:p-5"
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
         onPointerCancel={() => {
@@ -103,7 +103,7 @@ export function ComparisonInsightPanel({ locale, slides, tools, neutralHref, cla
         }}
       >
         <div className="flex items-center justify-between gap-3">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-200">
             {locale === "tr" ? "Karar özeti" : "Decision summary"}
           </p>
           <p className="text-[11px] font-medium text-slate-500">
@@ -119,10 +119,10 @@ export function ComparisonInsightPanel({ locale, slides, tools, neutralHref, cla
             >
               {safeSlides.map((slide) => (
                 <article key={slide.title} className="w-full shrink-0">
-                  <div className="flex min-h-[154px] flex-col rounded-[20px] border border-slate-700/60 bg-slate-950/60 p-3.5 sm:min-h-[188px] sm:rounded-[22px] sm:p-5">
+                  <div className="flex min-h-[154px] flex-col rounded-[20px] border border-violet-400/14 bg-slate-950/55 p-3.5 sm:min-h-[188px] sm:rounded-[22px] sm:p-5">
                     <div className="flex flex-wrap gap-2">
                       {slide.badges.map((badge) => (
-                        <Badge key={badge} variant="ghost" className="border-slate-700/60 bg-white/[0.06] text-slate-200">
+                        <Badge key={badge} variant="ghost" className="border-violet-400/14 bg-slate-950/55 text-slate-200">
                           {badge}
                         </Badge>
                       ))}
@@ -143,7 +143,7 @@ export function ComparisonInsightPanel({ locale, slides, tools, neutralHref, cla
               type="button"
               onClick={() => goTo(activeIndex - 1)}
               aria-label={locale === "tr" ? "Önceki karar özeti" : "Previous insight"}
-              className="inline-flex min-h-11 w-11 items-center justify-center rounded-full border border-slate-700/60 bg-slate-950/60 text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/[0.08] hover:text-cyan-200"
+              className="inline-flex min-h-11 w-11 items-center justify-center rounded-full border border-violet-400/14 bg-slate-950/55 text-slate-200 transition hover:border-fuchsia-400/24 hover:bg-fuchsia-400/[0.08] hover:text-fuchsia-100"
             >
               <span aria-hidden="true">‹</span>
             </button>
@@ -151,7 +151,7 @@ export function ComparisonInsightPanel({ locale, slides, tools, neutralHref, cla
               type="button"
               onClick={() => goTo(activeIndex + 1)}
               aria-label={locale === "tr" ? "Sonraki karar özeti" : "Next insight"}
-              className="inline-flex min-h-10 w-10 items-center justify-center rounded-full border border-slate-700/60 bg-slate-950/60 text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/[0.08] hover:text-cyan-200"
+              className="inline-flex min-h-10 w-10 items-center justify-center rounded-full border border-violet-400/14 bg-slate-950/55 text-slate-200 transition hover:border-fuchsia-400/24 hover:bg-fuchsia-400/[0.08] hover:text-fuchsia-100"
             >
               <span aria-hidden="true">›</span>
             </button>
@@ -166,7 +166,7 @@ export function ComparisonInsightPanel({ locale, slides, tools, neutralHref, cla
                 onClick={() => goTo(index)}
                 className={clsx(
                   "h-2.5 rounded-full transition-all duration-200",
-                  index === activeIndex ? "w-8 bg-cyan-300" : "w-2.5 bg-white/20 hover:bg-white/35"
+                  index === activeIndex ? "w-8 bg-fuchsia-300" : "w-2.5 bg-white/18 hover:bg-white/35"
                 )}
               />
             ))}

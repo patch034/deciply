@@ -91,7 +91,7 @@ function FilterChip({ label, active, onClick }: { label: string; active: boolean
         "min-h-[44px] rounded-full border px-4 py-2 text-sm font-semibold transition duration-200",
         active
           ? "border-cyan-400/40 bg-cyan-400/12 text-cyan-200 shadow-[0_14px_34px_-22px_rgba(34,211,238,0.5)]"
-          : "border-white/10 bg-white/[0.04] text-slate-300 hover:border-cyan-400/20 hover:text-cyan-200"
+          : "border-violet-400/14 bg-slate-950/50 text-slate-300 hover:border-fuchsia-400/20 hover:text-fuchsia-100"
       ].join(" ")}
     >
       {label}
@@ -424,7 +424,7 @@ export function ToolsExplorer({
 
   return (
     <>
-      <section className="rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.94),rgba(15,23,42,0.92))] p-4 shadow-card sm:p-6 md:p-8 lg:sticky lg:top-6 lg:z-20">
+      <section className="rounded-[30px] border border-violet-400/14 bg-[linear-gradient(180deg,rgba(17,24,39,0.94),rgba(15,23,42,0.92))] p-4 shadow-card sm:p-6 md:p-8 lg:sticky lg:top-6 lg:z-20">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-8">
           <div className="space-y-5">
             <div>
@@ -436,14 +436,14 @@ export function ToolsExplorer({
               <label className="block text-sm font-semibold text-slate-200" htmlFor="tool-search">
                 {copy.searchLabel}
               </label>
-              <div className="mt-3 rounded-[22px] border border-white/10 bg-white/[0.04] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+              <div className="mt-3 rounded-[22px] border border-violet-400/14 bg-slate-950/50 p-2 shadow-[inset_0_1px_0_rgba(167,139,250,0.06)]">
                 <input
                   id="tool-search"
                   type="search"
                   value={query}
                   onChange={(event) => setFilters({ query: event.target.value, page: 1 })}
                   placeholder={copy.searchPlaceholder}
-                  className="h-12 w-full rounded-[18px] border border-transparent bg-transparent px-4 text-sm text-slate-100 outline-none placeholder:text-slate-500 focus:border-cyan-400/30 focus:bg-white/[0.03]"
+                  className="h-12 w-full rounded-[18px] border border-transparent bg-transparent px-4 text-sm text-slate-100 outline-none placeholder:text-slate-500 focus:border-cyan-400/30 focus:bg-slate-950/40"
                 />
               </div>
               <p className="mt-3 text-xs leading-6 text-slate-400">{copy.searchHelp}</p>
@@ -461,8 +461,8 @@ export function ToolsExplorer({
             </div>
           </div>
 
-          <div className="rounded-[26px] border border-white/10 bg-white/[0.03] p-4 sm:p-5">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
+          <div className="rounded-[26px] border border-violet-400/14 bg-slate-950/40 p-4 sm:p-5">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-violet-400/14 pb-4">
               <p className="text-sm font-semibold text-slate-100">
                 {sortedTools.length > 0 ? `${startIndex}–${endIndex} / ${sortedTools.length} ${copy.resultsSummaryLabel}` : `0 ${copy.resultsLabel}`}
               </p>
@@ -473,7 +473,7 @@ export function ToolsExplorer({
                     setMobileFiltersOpen(false);
                     setFilters({ query: "", toolCategory: "all", pricing: "all", useCase: "all", sort: "popular", page: 1 });
                   }}
-                  className="inline-flex min-h-[40px] items-center rounded-full border border-white/10 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-400/30 hover:text-cyan-200"
+                  className="inline-flex min-h-[40px] items-center rounded-full border border-violet-400/14 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-fuchsia-400/24 hover:text-fuchsia-100"
                 >
                   {copy.resetFiltersLabel}
                 </button>
@@ -487,7 +487,7 @@ export function ToolsExplorer({
                   <select
                     value={activeSort}
                     onChange={(event) => setFilters({ sort: event.target.value as ToolsSortOption, page: 1 })}
-                    className="dark-select min-h-[40px] rounded-full border border-white/10 px-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400/30"
+                    className="dark-select min-h-[40px] rounded-full border border-violet-400/14 px-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400/30"
                   >
                     {sortOptions.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -532,7 +532,7 @@ export function ToolsExplorer({
         </div>
 
         <div className="mt-4 md:hidden">
-          <div className="sticky top-3 z-20 rounded-[22px] border border-white/10 bg-[rgba(10,15,24,0.92)] p-4 shadow-card backdrop-blur">
+          <div className="sticky top-3 z-20 rounded-[22px] border border-violet-400/14 bg-[rgba(10,15,24,0.92)] p-4 shadow-card backdrop-blur">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">{copy.quickIntentLabel}</p>
@@ -542,7 +542,7 @@ export function ToolsExplorer({
                 <select
                   value={activeSort}
                   onChange={(event) => setFilters({ sort: event.target.value as ToolsSortOption, page: 1 })}
-                  className="dark-select min-h-[40px] rounded-full border border-white/10 px-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400/30"
+                  className="dark-select min-h-[40px] rounded-full border border-violet-400/14 px-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400/30"
                 >
                   {sortOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -568,7 +568,7 @@ export function ToolsExplorer({
 
           <div
             className={[
-              "mt-3 overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.03] p-4 transition-all duration-200",
+              "mt-3 overflow-hidden rounded-[22px] border border-violet-400/14 bg-slate-950/40 p-4 transition-all duration-200",
               mobileFiltersOpen ? "max-h-[1200px] opacity-100" : "max-h-0 border-transparent p-0 opacity-0"
             ].join(" ")}
           >
@@ -643,12 +643,12 @@ export function ToolsExplorer({
                     href={buildPageHref(currentPage - 1)}
                     scroll={false}
                     onClick={() => setPage(currentPage - 1)}
-                    className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/12 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
+                    className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-violet-400/16 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-fuchsia-400/24 hover:bg-fuchsia-400/10 hover:text-fuchsia-100"
                   >
                     {`${copy.previousPage} ←`}
                   </Link>
                 ) : (
-                  <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/8 bg-white/[0.03] px-4 text-sm font-medium text-slate-500/70">
+                  <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-violet-400/10 bg-slate-950/40 px-4 text-sm font-medium text-slate-500/70">
                     {`${copy.previousPage} ←`}
                   </span>
                 )}
@@ -671,7 +671,7 @@ export function ToolsExplorer({
                         href={buildPageHref(pageNumber)}
                         scroll={false}
                         onClick={() => setPage(pageNumber)}
-                        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-white/12 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
+                        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-violet-400/16 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-fuchsia-400/24 hover:bg-fuchsia-400/10 hover:text-fuchsia-100"
                       >
                         {pageNumber}
                       </Link>
@@ -684,12 +684,12 @@ export function ToolsExplorer({
                     href={buildPageHref(currentPage + 1)}
                     scroll={false}
                     onClick={() => setPage(currentPage + 1)}
-                    className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/12 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
+                    className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-violet-400/16 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-fuchsia-400/24 hover:bg-fuchsia-400/10 hover:text-fuchsia-100"
                   >
                     {`${copy.nextPage} →`}
                   </Link>
                 ) : (
-                  <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/8 bg-white/[0.03] px-4 text-sm font-medium text-slate-500/70">
+                  <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-violet-400/10 bg-slate-950/40 px-4 text-sm font-medium text-slate-500/70">
                     {`${copy.nextPage} →`}
                   </span>
                 )}
@@ -698,7 +698,7 @@ export function ToolsExplorer({
           </div>
         </>
       ) : (
-        <section className="rounded-[28px] border border-dashed border-white/10 bg-white/[0.03] px-4 py-8 text-center shadow-card sm:px-6 sm:py-10">
+        <section className="rounded-[28px] border border-dashed border-violet-400/14 bg-slate-950/40 px-4 py-8 text-center shadow-card sm:px-6 sm:py-10">
           <h3 className="text-xl font-bold tracking-tight text-slate-100">{copy.emptyTitle}</h3>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-300">{copy.emptyDescription}</p>
           <button
@@ -713,7 +713,7 @@ export function ToolsExplorer({
                 page: 1
               })
             }
-            className="mt-6 inline-flex min-h-[44px] items-center rounded-2xl border border-white/10 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/30 hover:text-cyan-200"
+            className="mt-6 inline-flex min-h-[44px] items-center rounded-2xl border border-violet-400/14 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-fuchsia-400/24 hover:text-fuchsia-100"
           >
             {copy.resetFiltersLabel}
           </button>

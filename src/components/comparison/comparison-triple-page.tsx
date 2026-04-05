@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 
 import { BlogCard } from "@/components/blog/blog-card";
 import { Badge } from "@/components/ui/badge";
@@ -122,7 +122,7 @@ export function ComparisonTriplePage({
           ]}
         />
 
-        <section className="rounded-[36px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(34,211,238,0.2)] lg:px-10 lg:py-12">
+        <section className="rounded-[36px] border border-violet-400/14 bg-[linear-gradient(135deg,rgba(10,16,30,0.94),rgba(13,18,34,0.96),rgba(8,11,20,0.99))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(34,211,238,0.2)] lg:px-10 lg:py-12">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div>
               <Badge variant="ghost" className="border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
@@ -142,7 +142,7 @@ export function ComparisonTriplePage({
               <p className="mt-4 max-w-3xl text-base leading-8 text-slate-400">{dictionary.summary}</p>
             </div>
 
-            <div className="rounded-[32px] border border-slate-700/60 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-card md:p-8">
+            <div className="rounded-[32px] border border-violet-400/14 bg-[linear-gradient(180deg,rgba(10,16,30,0.94),rgba(13,18,34,0.98))] p-6 shadow-[0_18px_60px_-36px_rgba(124,58,237,0.18),0_14px_42px_-32px_rgba(244,114,182,0.12)] md:p-8">
               <div className="flex flex-wrap gap-2">
                 {tools.map((tool) => (
                   <RatingBadge key={tool.slug} rating={tool.rating} className="shrink-0" />
@@ -178,8 +178,8 @@ export function ComparisonTriplePage({
         <InfoSection id="son-karar" title={dictionary.selectionTitle} description={dictionary.selectionDescription}>
           <div className="grid gap-4 md:grid-cols-3">
             {tools.map((tool) => (
-              <div key={tool.slug} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{tool.name}</p>
+              <div key={tool.slug} className="rounded-[24px] border border-violet-400/14 bg-slate-950/55 p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-violet-200">{tool.name}</p>
                 <h2 className="mt-3 text-xl font-semibold text-slate-100">{tool.bestUseCase}</h2>
                 <p className="mt-3 text-sm leading-7 text-slate-300">{tool.whoShouldUseSummary}</p>
                 <div className="mt-5">
@@ -195,15 +195,15 @@ export function ComparisonTriplePage({
         <InfoSection id="fiyat" title={dictionary.pricingTitle} description={dictionary.pricingDescription}>
           <div className="grid gap-4 md:grid-cols-3">
             {tools.map((tool) => (
-              <div key={tool.slug} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{tool.name}</p>
+              <div key={tool.slug} className="rounded-[24px] border border-violet-400/14 bg-slate-950/55 p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-violet-200">{tool.name}</p>
                 <p className="mt-3 text-lg font-semibold text-slate-100">{formatPricing(tool.pricing, locale)}</p>
                 <div className="mt-4 grid gap-3">
-                  <div className="rounded-[20px] border border-slate-700/60 bg-slate-950/40 p-4">
+                  <div className="rounded-[20px] border border-violet-400/14 bg-slate-950/40 p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{locale === "tr" ? "Ücretsiz başlangıç" : "Free start"}</p>
                     <p className="mt-2 text-sm leading-7 text-slate-300">{tool.pricing === "PAID" ? (locale === "tr" ? "Doğrudan ücretli giriş gerektirir." : "Starts as a paid product.") : (locale === "tr" ? "Ücretsiz veya freemium giriş sunar." : "Offers a free or freemium starting point.")}</p>
                   </div>
-                  <div className="rounded-[20px] border border-slate-700/60 bg-slate-950/40 p-4">
+                  <div className="rounded-[20px] border border-violet-400/14 bg-slate-950/40 p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{locale === "tr" ? "Ticari kullanım" : "Commercial fit"}</p>
                     <p className="mt-2 text-sm leading-7 text-slate-300">{tool.moneyUseCases[0]?.description ?? tool.realUseCaseExample.description}</p>
                   </div>
@@ -229,10 +229,10 @@ export function ComparisonTriplePage({
           </div>
         </InfoSection>
 
-        <section id="son-karar" className="scroll-mt-24 rounded-[34px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
+        <section id="son-karar" className="scroll-mt-24 rounded-[34px] border border-violet-400/14 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{dictionary.verdictTitle}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-violet-200">{dictionary.verdictTitle}</p>
               <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{dictionary.verdictTitle}</h2>
               <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{dictionary.verdictDescription}</p>
             </div>
@@ -249,7 +249,7 @@ export function ComparisonTriplePage({
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {tools.map((tool) => (
-              <div key={tool.slug} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5">
+              <div key={tool.slug} className="rounded-[24px] border border-violet-400/14 bg-slate-950/55 p-5">
                 <p className="text-sm font-semibold text-slate-100">{tool.name}</p>
                 <h3 className="mt-3 text-lg font-semibold text-slate-50">{tool.bestUseCase}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-300">{tool.realUseCaseExample.description}</p>
@@ -312,9 +312,9 @@ export function ComparisonTriplePage({
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 transition hover:border-cyan-400/30 hover:bg-white/[0.06]"
+              className="rounded-[24px] border border-violet-400/14 bg-slate-950/55 p-5 transition hover:border-fuchsia-400/24 hover:bg-fuchsia-400/[0.08]"
             >
-              <p className="text-sm font-semibold text-cyan-300">{item.label}</p>
+              <p className="text-sm font-semibold text-violet-200">{item.label}</p>
               <p className="mt-3 text-sm leading-7 text-slate-300">
                 {locale === "tr" ? "Alternatifleri ve kullanım alanlarını ayrı sayfada görün." : "Review alternatives and workflow fit on a dedicated page."}
               </p>
@@ -324,10 +324,10 @@ export function ComparisonTriplePage({
 
         <ComparisonFaq title={locale === "tr" ? "Sık sorulan sorular" : "FAQ"} description={locale === "tr" ? "Bu üç aracı seçmeden önce en sık sorulan karar sorularına kısa cevaplar." : "Short answers to the most common decision questions before you choose one of the tools."} items={faqItems} />
 
-        <section className="rounded-[36px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-5 py-8 text-white shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+        <section className="rounded-[36px] border border-violet-400/14 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-5 py-8 text-white shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300/85">{locale === "tr" ? "Son adım" : "Final step"}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-violet-200/85">{locale === "tr" ? "Son adım" : "Final step"}</p>
               <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">{locale === "tr" ? "Bir aracı aç ve kendi akışında test et" : "Open one tool and test it in your own workflow"}</h2>
               <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{locale === "tr" ? "En doğru sonraki adım, netleştirdiğin aracı açıp gerçek iş akışında denemektir." : "The best next step is to open the tool that fits best and test it in a real workflow."}</p>
             </div>

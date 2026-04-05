@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import type { FormEvent } from "react";
 
@@ -57,14 +57,14 @@ export function NewsletterForm({
             type="email"
             required
             placeholder={placeholder}
-            className="min-h-14 w-full min-w-0 flex-1 rounded-2xl border border-slate-700/60 bg-white/[0.06] px-4 text-base text-slate-50 outline-none transition placeholder:text-slate-400 focus:border-cyan-400/45 focus:bg-white/[0.08]"
+            className="min-h-14 w-full min-w-0 flex-1 rounded-2xl border border-violet-400/14 bg-slate-950/55 px-4 text-base text-slate-50 outline-none transition placeholder:text-slate-300 focus:border-fuchsia-400/30 focus:bg-slate-950/60"
           />
           <PremiumButton type="submit" className="min-h-14 px-6">
             {buttonLabel}
           </PremiumButton>
         </div>
       </form>
-      <p className="mt-4 text-sm leading-6 text-slate-400/84">{disclaimer}</p>
+      <p className="mt-4 text-sm leading-6 text-slate-300/84">{disclaimer}</p>
     </GlassPanel>
   );
 }
