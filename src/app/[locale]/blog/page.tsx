@@ -127,7 +127,7 @@ export default async function BlogPage({
             {currentPage > 1 ? (
               <Link
                 href={buildBlogPageHref(safeLocale, currentPage - 1)}
-                className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-slate-700/60 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
+                className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/18 hover:bg-cyan-400/8 hover:text-cyan-100"
               >
                 {`← ${copy.previousPage}`}
               </Link>
@@ -153,7 +153,7 @@ export default async function BlogPage({
                   <Link
                     key={pageNumber}
                     href={buildBlogPageHref(safeLocale, pageNumber)}
-                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-slate-700/60 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/18 hover:bg-cyan-400/8 hover:text-cyan-100"
                   >
                     {pageNumber}
                   </Link>
@@ -164,7 +164,7 @@ export default async function BlogPage({
             {currentPage < totalPages ? (
               <Link
                 href={buildBlogPageHref(safeLocale, currentPage + 1)}
-                className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-slate-700/60 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
+                className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/18 hover:bg-cyan-400/8 hover:text-cyan-100"
               >
                 {`${copy.nextPage} →`}
               </Link>

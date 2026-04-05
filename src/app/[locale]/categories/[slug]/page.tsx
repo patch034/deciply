@@ -404,7 +404,7 @@ export default async function CategoryDetailPage({
 
       <div className="grid gap-6 lg:grid-cols-2">
         <InfoSection title={content.categoryDetail.relatedTitle} description={content.categoryDetail.relatedDescription}>
-          <div className="rounded-[24px] border border-dashed border-white/15 bg-slate-950/52 p-5 text-sm leading-7 text-slate-300">
+          <div className="rounded-[24px] border border-dashed border-sky-400/10 bg-slate-950/52 p-5 text-sm leading-7 text-slate-300">
             {content.common.placeholderLabel}: rehber içerikler, alternatif yazıları ve kategoriye özel karşılaştırmalar burada listelenecek.
           </div>
         </InfoSection>

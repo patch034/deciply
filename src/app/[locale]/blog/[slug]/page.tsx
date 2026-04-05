@@ -309,7 +309,7 @@ export default async function BlogDetailPage({
                 </a>
                 <a
                   href={comparisonHref}
-                  className="inline-flex items-center justify-center rounded-2xl border border-white/15 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-cyan-400/30 hover:text-cyan-300"
+                  className="inline-flex items-center justify-center rounded-2xl border border-sky-400/10 px-6 py-3.5 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/18 hover:text-cyan-100"
                 >
                   {primaryTool && relatedTools[1] ? `${primaryTool.name} vs ${relatedTools[1].name} kar\u015f\u0131la\u015ft\u0131r` : (primaryTool ? `${primaryTool.name} kar\u015f\u0131la\u015ft\u0131rmalar\u0131` : copy.comparisonCtaLabel)}
                 </a>

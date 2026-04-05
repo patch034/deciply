@@ -166,7 +166,7 @@ export function ComparisonInsightPanel({ locale, slides, tools, neutralHref, cla
                 onClick={() => goTo(index)}
                 className={clsx(
                   "h-2.5 rounded-full transition-all duration-200",
-                  index === activeIndex ? "w-8 bg-fuchsia-300" : "w-2.5 bg-white/18 hover:bg-white/35"
+                  index === activeIndex ? "w-8 bg-cyan-300" : "w-2.5 bg-slate-500/30 hover:bg-cyan-300/40"
                 )}
               />
             ))}

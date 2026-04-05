@@ -562,7 +562,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       />
 
       <section id="genel-bakis" className="scroll-mt-24 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
-        <div className="rounded-[36px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.86),rgba(17,24,39,0.9),rgba(11,15,25,0.96))] p-5 shadow-[0_24px_80px_-40px_rgba(34,211,238,0.18)] sm:p-8 md:p-10">
+        <div className="rounded-[36px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.9),rgba(10,16,30,0.96),rgba(6,10,18,0.99))] p-5 shadow-[0_24px_80px_-40px_rgba(14,165,233,0.14)] sm:p-8 md:p-10">
           <div className="flex flex-wrap items-center gap-3">
             <Badge variant="accent">{pricingValue}</Badge>
             <Badge>{quickCategory}</Badge>
@@ -914,7 +914,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
             </a>
             <Link
               href={`/${safeLocale}/tools`}
-              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl border border-white/15 px-6 py-4 text-sm font-semibold text-white transition hover:border-cyan-400/30 hover:text-cyan-300 sm:w-auto"
+              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl border border-sky-400/10 px-6 py-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/18 hover:text-cyan-100 sm:w-auto"
             >
               {dictionary.secondaryCta}
             </Link>

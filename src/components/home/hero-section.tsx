@@ -59,7 +59,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
         <div className="absolute left-1/2 top-24 h-80 w-80 -translate-x-1/2 rounded-full bg-blue-400/10 blur-3xl" />
       </div>
 
-      <GlassPanel className="relative overflow-hidden rounded-[32px] border-sky-400/12 bg-[linear-gradient(180deg,rgba(6,10,18,0.94),rgba(10,16,30,0.98))] px-4 py-4 shadow-[0_30px_90px_-58px_rgba(14,165,233,0.16)] sm:px-6 sm:py-5">
+      <GlassPanel className="relative overflow-hidden rounded-[32px] border-sky-400/10 bg-[linear-gradient(180deg,rgba(6,10,18,0.96),rgba(10,16,30,0.98))] px-4 py-4 shadow-[0_30px_90px_-58px_rgba(14,165,233,0.14)] sm:px-6 sm:py-5">
         <div className="absolute inset-x-12 top-0 h-36 rounded-full bg-sky-500/12 blur-3xl" />
         <div className="absolute -right-24 top-10 h-56 w-56 rounded-full bg-blue-400/10 blur-3xl" />
         <div className="absolute left-20 bottom-0 h-28 w-28 rounded-full bg-fuchsia-500/10 blur-3xl" />
@@ -98,7 +98,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
             >
-              <PremiumButton href={`/${locale}/tools`} className="w-full text-sm shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_28px_64px_-24px_rgba(108,92,231,0.84),0_38px_108px_-36px_rgba(0,194,255,0.68)] sm:w-auto">
+              <PremiumButton href={`/${locale}/tools`} className="w-full text-sm sm:w-auto">
                 {content.primaryCta}
               </PremiumButton>
               <PremiumButton href={`/${locale}/categories/comparisons`} variant="secondary" className="w-full text-sm opacity-90 sm:w-auto">
@@ -186,7 +186,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
                   </h2>
                 </div>
                 <div className="flex shrink-0 gap-2 opacity-70">
-                  <span className="h-3 w-3 rounded-full bg-white/16" />
+                  <span className="h-3 w-3 rounded-full bg-sky-300/26" />
                   <span className="h-3 w-3 rounded-full bg-cyan-400/80" />
                   <span className="h-3 w-3 rounded-full bg-cyan-400" />
                 </div>

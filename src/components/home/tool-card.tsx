@@ -93,14 +93,14 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
           </div>
 
           {tool.notIdealFor ? (
-            <div className="mt-4 hidden rounded-[20px] border border-slate-700/60 bg-slate-950/52 px-4 py-3 sm:block">
+            <div className="mt-4 hidden rounded-[20px] border border-sky-400/10 bg-slate-950/52 px-4 py-3 sm:block">
               <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{notIdealLabel}</p>
               <p className="mt-2 text-sm leading-6 text-slate-300/88">{tool.notIdealFor}</p>
             </div>
           ) : null}
         </div>
 
-        <div className="mt-4 border-t border-slate-700/60 pt-4 sm:mt-6 sm:pt-6">
+        <div className="mt-4 border-t border-sky-400/10 pt-4 sm:mt-6 sm:pt-6">
           <div className="min-h-[1.5rem] overflow-hidden pb-2">
             <p className="translate-y-2 text-sm font-medium text-cyan-100/92 opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100">
               {tool.benefit}
@@ -116,7 +116,7 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
                 href={tool.affiliateUrl ?? tool.websiteUrl}
                 target="_blank"
                 rel="nofollow sponsored noreferrer"
-                className="inline-flex min-h-[44px] w-full min-w-[152px] items-center justify-center whitespace-nowrap rounded-[10px] bg-[linear-gradient(90deg,#6C5CE7_0%,#4F7CFF_55%,#00C2FF_100%)] px-4 py-2 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_22px_52px_-28px_rgba(108,92,231,0.62),0_30px_82px_-42px_rgba(0,194,255,0.48)] transition duration-150 hover:-translate-y-1 hover:scale-[1.03] hover:brightness-[1.16] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_28px_62px_-28px_rgba(108,92,231,0.74),0_38px_96px_-42px_rgba(0,194,255,0.58)] sm:w-auto"
+                className="inline-flex min-h-[44px] w-full min-w-[152px] items-center justify-center whitespace-nowrap rounded-[10px] bg-[linear-gradient(90deg,#2563EB_0%,#3B82F6_52%,#06B6D4_100%)] px-4 py-2 text-sm font-semibold text-white shadow-[0_22px_52px_-28px_rgba(37,99,235,0.6),0_30px_82px_-42px_rgba(14,165,233,0.42)] transition duration-150 hover:-translate-y-1 hover:scale-[1.03] hover:brightness-[1.08] hover:shadow-[0_28px_62px_-28px_rgba(37,99,235,0.7),0_38px_96px_-42px_rgba(14,165,233,0.52)] sm:w-auto"
               >
                 {tool.ctaLabel ?? tryLabel}
               </a>

@@ -34,7 +34,7 @@ export function ComparisonThreeWayTable({ locale, title, description, columns, r
       </div>
 
       <div className="mt-8 hidden overflow-hidden rounded-[24px] border border-slate-700/60 lg:block">
-        <table className="min-w-full divide-y divide-white/10">
+        <table className="min-w-full divide-y divide-sky-400/10">
           <thead className="bg-slate-950/60">
             <tr>
               <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{columns.label}</th>
@@ -43,7 +43,7 @@ export function ComparisonThreeWayTable({ locale, title, description, columns, r
               <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">{columns.third}</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10">
+          <tbody className="divide-y divide-sky-400/10">
             {rows.map((row) => (
               <tr key={row.label} className="transition duration-300 hover:bg-slate-950/52">
                 <td className="px-6 py-5 text-sm font-semibold text-slate-100">{row.label}</td>

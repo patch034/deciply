@@ -19,7 +19,7 @@ export function Badge({ children, variant = "muted", className }: BadgeProps) {
     <span
       className={clsx(
         "inline-flex items-center justify-center whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-medium leading-none",
-        "max-w-full overflow-hidden truncate shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]",
+        "max-w-full overflow-hidden truncate shadow-[inset_0_1px_0_rgba(56,189,248,0.04)]",
         variants[variant],
         className
       )}

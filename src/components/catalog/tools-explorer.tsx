@@ -436,7 +436,7 @@ export function ToolsExplorer({
               <label className="block text-sm font-semibold text-slate-200" htmlFor="tool-search">
                 {copy.searchLabel}
               </label>
-              <div className="mt-3 rounded-[22px] border border-sky-400/12 bg-slate-950/50 p-2 shadow-[inset_0_1px_0_rgba(14,165,233,0.06)]">
+              <div className="mt-3 rounded-[22px] border border-sky-400/10 bg-slate-950/50 p-2 shadow-[inset_0_1px_0_rgba(14,165,233,0.04)]">
                 <input
                   id="tool-search"
                   type="search"
@@ -643,7 +643,7 @@ export function ToolsExplorer({
                     href={buildPageHref(currentPage - 1)}
                     scroll={false}
                     onClick={() => setPage(currentPage - 1)}
-                    className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-violet-400/16 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-fuchsia-400/24 hover:bg-fuchsia-400/10 hover:text-fuchsia-100"
+                    className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/18 hover:bg-cyan-400/8 hover:text-cyan-100"
                   >
                     {`${copy.previousPage} ←`}
                   </Link>
@@ -661,7 +661,7 @@ export function ToolsExplorer({
                       <span
                         key={pageNumber}
                         aria-current="page"
-                        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-cyan-400/40 bg-cyan-400/12 px-4 text-sm font-semibold text-cyan-200 shadow-[0_10px_30px_-18px_rgba(34,211,238,0.45)]"
+                        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-cyan-400/28 bg-cyan-400/10 px-4 text-sm font-semibold text-cyan-200 shadow-[0_10px_30px_-18px_rgba(34,211,238,0.3)]"
                       >
                         {pageNumber}
                       </span>
@@ -671,7 +671,7 @@ export function ToolsExplorer({
                         href={buildPageHref(pageNumber)}
                         scroll={false}
                         onClick={() => setPage(pageNumber)}
-                        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-violet-400/16 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-fuchsia-400/24 hover:bg-fuchsia-400/10 hover:text-fuchsia-100"
+                        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/18 hover:bg-cyan-400/8 hover:text-cyan-100"
                       >
                         {pageNumber}
                       </Link>
@@ -684,7 +684,7 @@ export function ToolsExplorer({
                     href={buildPageHref(currentPage + 1)}
                     scroll={false}
                     onClick={() => setPage(currentPage + 1)}
-                    className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-violet-400/16 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-fuchsia-400/24 hover:bg-fuchsia-400/10 hover:text-fuchsia-100"
+                    className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/18 hover:bg-cyan-400/8 hover:text-cyan-100"
                   >
                     {`${copy.nextPage} →`}
                   </Link>

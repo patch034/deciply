@@ -20,7 +20,7 @@ function formatRatingValue(rating: number | string) {
 export function RatingBadge({ rating, className = "" }: RatingBadgeProps) {
   return (
     <div
-      className={`inline-flex min-h-[36px] items-center gap-2 rounded-full border border-amber-400/20 bg-[linear-gradient(180deg,rgba(245,158,11,0.14),rgba(245,158,11,0.06))] px-4 py-2 text-sm font-semibold text-amber-100 shadow-[0_0_0_1px_rgba(255,255,255,0.02),0_14px_32px_-22px_rgba(251,191,36,0.28)] ${className}`}
+      className={`inline-flex min-h-[36px] items-center gap-2 rounded-full border border-amber-400/20 bg-[linear-gradient(180deg,rgba(245,158,11,0.14),rgba(245,158,11,0.06))] px-4 py-2 text-sm font-semibold text-amber-100 shadow-[0_0_0_1px_rgba(14,165,233,0.02),0_14px_32px_-22px_rgba(251,191,36,0.22)] ${className}`}
     >
       <svg
         aria-hidden="true"
