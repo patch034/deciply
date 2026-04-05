@@ -4,6 +4,7 @@
 
 :root {
   color-scheme: dark;
+  background-color: #0b0f19;
   --tn-gradient-primary: linear-gradient(90deg, #a855f7 0%, #6366f1 34%, #3b82f6 68%, #22d3ee 100%);
   --tn-surface:
     linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02)),
@@ -16,6 +17,8 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  color-scheme: dark;
+  background-color: #0b0f19;
 }
 
 body {
@@ -23,6 +26,8 @@ body {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
+  color-scheme: dark;
+  accent-color: #22d3ee;
   background:
     radial-gradient(circle at 12% 0%, rgba(124, 58, 237, 0.26), transparent 24%),
     radial-gradient(circle at 86% 8%, rgba(59, 130, 246, 0.2), transparent 28%),
@@ -103,6 +108,39 @@ select.dark-select option:hover {
 
 select.dark-select option:disabled {
   color: #64748b;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+  color-scheme: dark;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+textarea {
+  background-color: rgba(15, 23, 42, 0.58);
+  color: #e5eefc;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus,
+textarea:focus {
+  outline: none;
+  border-color: rgba(34, 211, 238, 0.38);
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.12);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #64748b;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: #e5eefc;
+  box-shadow: 0 0 0 1000px #111827 inset;
+  transition: background-color 9999s ease-out 0s;
 }
 
 a {
