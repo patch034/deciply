@@ -1,4 +1,4 @@
-﻿import clsx from "clsx";
+import clsx from "clsx";
 import Link from "next/link";
 
 type SectionJumpNavItem = {
@@ -19,7 +19,7 @@ export function SectionJumpNav({ items, className }: SectionJumpNavProps) {
   return (
     <nav
       className={clsx(
-        "sticky top-16 z-30 -mx-1 overflow-x-auto rounded-[24px] border border-violet-400/14 bg-[linear-gradient(180deg,rgba(8,14,24,0.96),rgba(3,6,10,0.92))] px-2 py-2 shadow-[0_18px_60px_-32px_rgba(168,85,247,0.18)] backdrop-blur-2xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+        "sticky top-16 z-30 -mx-1 overflow-x-auto rounded-[24px] border border-violet-400/12 bg-slate-950/75 px-2 py-2 shadow-[0_18px_60px_-32px_rgba(34,211,238,0.26)] backdrop-blur-2xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
         className
       )}
       aria-label="Section navigation"
@@ -29,7 +29,7 @@ export function SectionJumpNav({ items, className }: SectionJumpNavProps) {
           <Link
             key={item.href + item.label}
             href={item.href}
-            className="inline-flex min-h-11 items-center rounded-full border border-violet-400/16 bg-slate-950/56 px-3.5 text-[11px] font-semibold text-slate-100 transition hover:border-fuchsia-400/22 hover:bg-fuchsia-400/[0.1] hover:text-fuchsia-100 sm:min-h-10 sm:px-4 sm:text-sm"
+            className="inline-flex min-h-11 items-center rounded-full border border-violet-400/12 bg-white/[0.04] px-3.5 text-[11px] font-semibold text-slate-100 transition hover:border-fuchsia-400/22 hover:bg-fuchsia-400/[0.1] hover:text-fuchsia-100 sm:min-h-10 sm:px-4 sm:text-sm"
           >
             {item.label}
           </Link>
@@ -38,4 +38,3 @@ export function SectionJumpNav({ items, className }: SectionJumpNavProps) {
     </nav>
   );
 }
-

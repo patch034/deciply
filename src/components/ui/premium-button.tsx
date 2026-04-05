@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import clsx from "clsx";
 import { motion } from "framer-motion";
@@ -17,11 +17,11 @@ type PremiumButtonProps = {
 
 const styles = {
   primary:
-    "bg-[linear-gradient(90deg,#8B5CF6_0%,#6366F1_38%,#EC4899_72%,#22D3EE_100%)] text-white shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_24px_56px_-26px_rgba(139,92,246,0.92),0_36px_96px_-38px_rgba(236,72,153,0.64)] hover:brightness-[1.08] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_28px_68px_-26px_rgba(139,92,246,0.96),0_42px_110px_-38px_rgba(34,211,238,0.82)]",
+    "bg-[linear-gradient(90deg,#C084FC_0%,#8B5CF6_38%,#6366F1_68%,#38BDF8_100%)] text-white shadow-[0_0_0_1px_rgba(255,255,255,0.07),0_24px_56px_-24px_rgba(139,92,246,0.88),0_34px_92px_-38px_rgba(59,130,246,0.64)] hover:brightness-[1.1] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_30px_72px_-24px_rgba(139,92,246,0.96),0_42px_116px_-38px_rgba(244,114,182,0.78)]",
   secondary:
-    "border border-violet-400/16 bg-[linear-gradient(180deg,rgba(10,16,30,0.98),rgba(6,9,16,0.98))] text-slate-100 hover:border-fuchsia-400/20 hover:bg-slate-900/78 hover:text-white",
+    "border border-violet-400/14 bg-slate-950/42 text-slate-200 hover:bg-white/[0.04] hover:text-white hover:border-fuchsia-400/20",
   ghost:
-    "border border-fuchsia-400/18 bg-fuchsia-400/10 text-fuchsia-100 hover:border-sky-300/20 hover:bg-fuchsia-400/16"
+    "border border-fuchsia-400/16 bg-fuchsia-400/10 text-fuchsia-100 hover:bg-fuchsia-400/14"
 } as const;
 
 export function PremiumButton({
@@ -66,4 +66,3 @@ export function PremiumButton({
     </motion.button>
   );
 }
-

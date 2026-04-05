@@ -33,11 +33,9 @@ export function HomePage({ locale, content }: HomePageProps) {
   const popularTools = buildPopularTools(locale);
 
   return (
-    <div className="relative overflow-x-clip pb-12 sm:pb-16 lg:pb-20">
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[42rem] bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.28),transparent_30%),radial-gradient(circle_at_84%_10%,rgba(59,130,246,0.18),transparent_24%),radial-gradient(circle_at_55%_16%,rgba(244,114,182,0.12),transparent_20%),linear-gradient(180deg,rgba(2,4,9,0.96),rgba(3,6,13,0.9))]" />
+    <div className="relative overflow-x-clip pb-10 sm:pb-14 lg:pb-16">
       <HeroSection locale={locale} content={content.hero} />
       <HomeBoostSections locale={locale} comparisonCards={comparisonCards} popularTools={popularTools} />
     </div>
   );
 }
-

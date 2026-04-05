@@ -1,4 +1,4 @@
-﻿import clsx from "clsx";
+import clsx from "clsx";
 import type { ReactNode } from "react";
 
 type GlassPanelProps = {
@@ -7,7 +7,5 @@ type GlassPanelProps = {
 };
 
 export function GlassPanel({ children, className }: GlassPanelProps) {
-  return <div className={clsx("premium-surface premium-outline rounded-[24px] backdrop-blur-[22px] shadow-[0_30px_90px_-56px_rgba(2,5,11,0.78),0_0_0_1px_rgba(129,140,248,0.04)]", className)}>{children}</div>;
+  return <div className={clsx("premium-surface premium-outline rounded-2xl border border-violet-400/14 backdrop-blur-2xl shadow-[0_28px_84px_-52px_rgba(124,58,237,0.22),0_18px_60px_-48px_rgba(244,114,182,0.12)]", className)}>{children}</div>;
 }
-
-
