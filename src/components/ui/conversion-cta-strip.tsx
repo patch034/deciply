@@ -20,7 +20,7 @@ export function ConversionCtaStrip({ eyebrow, title, description, buttons, class
   return (
     <section
       className={[
-        "rounded-[30px] border border-white/8 bg-[linear-gradient(135deg,rgba(5,10,18,0.96),rgba(9,14,27,0.98))] px-5 py-7 shadow-[0_24px_70px_-40px_rgba(34,211,238,0.16)] sm:px-6 sm:py-8 lg:px-10 lg:py-12",
+        "rounded-[30px] border border-slate-700/55 bg-[linear-gradient(135deg,rgba(5,10,18,0.96),rgba(9,14,27,0.98))] px-5 py-7 shadow-[0_24px_70px_-40px_rgba(34,211,238,0.16)] sm:px-6 sm:py-8 lg:px-10 lg:py-12",
         className
       ]
         .filter(Boolean)
@@ -43,3 +43,4 @@ export function ConversionCtaStrip({ eyebrow, title, description, buttons, class
     </section>
   );
 }
+

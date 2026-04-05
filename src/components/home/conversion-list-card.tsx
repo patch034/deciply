@@ -43,3 +43,4 @@ export function ConversionListCard({ locale, item }: ConversionListCardProps) {
     </motion.div>
   );
 }
+

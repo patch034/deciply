@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import clsx from "clsx";
 
 type BrandLogoProps = {
@@ -30,4 +30,5 @@ export function BrandLogo({ className, compact = false }: BrandLogoProps) {
     </span>
   );
 }
+
 

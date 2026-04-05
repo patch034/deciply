@@ -26,7 +26,7 @@ export function GuideCard({ locale, item, linkLabel }: GuideCardProps) {
               </div>
               <Badge variant="ghost" className="min-w-[92px] justify-center text-[11px]">{item.tag}</Badge>
             </div>
-            <span className="rounded-full border border-slate-700/60 bg-white/[0.03] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400/90">
+            <span className="rounded-full border border-slate-700/60 bg-slate-950/52 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400/90">
               {item.readTime}
             </span>
           </div>
@@ -45,3 +45,4 @@ export function GuideCard({ locale, item, linkLabel }: GuideCardProps) {
     </motion.div>
   );
 }
+

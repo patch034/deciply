@@ -107,7 +107,7 @@ export default async function DiscoveryPage({
           ]}
         />
 
-        <section className="rounded-[34px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.92),rgba(17,24,39,0.9),rgba(11,15,25,0.96))] px-5 py-8 shadow-[0_28px_90px_-44px_rgba(34,211,238,0.18)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+        <section className="rounded-[34px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.92),rgba(17,24,39,0.9),rgba(11,15,25,0.96))] px-5 py-8 shadow-[0_28px_90px_-44px_rgba(34,211,238,0.18)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
           <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
             <div className="max-w-3xl">
               <Badge variant="ghost" className="border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
@@ -119,21 +119,21 @@ export default async function DiscoveryPage({
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">{page.description}</p>
             </div>
 
-            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-5 sm:p-6">
+            <div className="rounded-[28px] border border-slate-700/60 bg-slate-950/60 p-5 sm:p-6">
               <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                <div className="rounded-[22px] border border-white/10 bg-white/[0.04] p-4">
+                <div className="rounded-[22px] border border-slate-700/60 bg-slate-950/60 p-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                     {safeLocale === 'tr' ? 'Bu sayfada' : 'On this page'}
                   </p>
                   <p className="mt-2 text-sm font-semibold text-slate-100">{selectedTools.length} {safeLocale === 'tr' ? 'araç' : 'tools'}</p>
                 </div>
-                <div className="rounded-[22px] border border-white/10 bg-white/[0.04] p-4">
+                <div className="rounded-[22px] border border-slate-700/60 bg-slate-950/60 p-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                     {safeLocale === 'tr' ? 'Platformda' : 'Across Deciply'}
                   </p>
                   <p className="mt-2 text-sm font-semibold text-slate-100">{toolCount} {safeLocale === 'tr' ? 'incelenen araç' : 'tools reviewed'}</p>
                 </div>
-                <div className="rounded-[22px] border border-white/10 bg-white/[0.04] p-4">
+                <div className="rounded-[22px] border border-slate-700/60 bg-slate-950/60 p-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                     {safeLocale === 'tr' ? 'Yaklaşım' : 'Approach'}
                   </p>
@@ -181,7 +181,7 @@ export default async function DiscoveryPage({
           <SectionShell title={page.audienceTitle}>
             <div className="grid gap-4 md:grid-cols-3">
               {page.audienceBullets.map((item) => (
-                <div key={item} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 text-sm leading-7 text-slate-300 shadow-card">
+                <div key={item} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 text-sm leading-7 text-slate-300 shadow-card">
                   {item}
                 </div>
               ))}
@@ -201,7 +201,7 @@ export default async function DiscoveryPage({
           <SectionShell title={page.useCasesTitle}>
             <div className="grid gap-4 md:grid-cols-3">
               {page.useCases.map((item) => (
-                <div key={item} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 text-sm leading-7 text-slate-300 shadow-card">
+                <div key={item} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 text-sm leading-7 text-slate-300 shadow-card">
                   {item}
                 </div>
               ))}
@@ -209,7 +209,7 @@ export default async function DiscoveryPage({
           </SectionShell>
 
           <SectionShell>
-            <div className="rounded-[30px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-5 py-8 shadow-[0_26px_80px_-44px_rgba(34,211,238,0.22)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+            <div className="rounded-[30px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-5 py-8 shadow-[0_26px_80px_-44px_rgba(34,211,238,0.22)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
               <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
                 <div className="max-w-3xl">
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">

@@ -265,7 +265,7 @@ export default async function BlogDetailPage({
           ]}
         />
 
-        <section id="genel-bakis" className="scroll-mt-24 rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(34,211,238,0.2)] lg:px-10 lg:py-12">
+        <section id="genel-bakis" className="scroll-mt-24 rounded-[36px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(34,211,238,0.2)] lg:px-10 lg:py-12">
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
             <div>
               <Badge variant="ghost" className="border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
@@ -286,15 +286,15 @@ export default async function BlogDetailPage({
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-400">{article.intro}</p>
             </div>
 
-            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
+            <div className="rounded-[28px] border border-slate-700/60 bg-slate-950/60 p-6">
               <div className="grid gap-3 sm:grid-cols-1">
-                <div className="rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-slate-100">
+                <div className="rounded-[22px] border border-slate-700/60 bg-slate-950/60 px-4 py-3 text-sm font-semibold text-slate-100">
                   {safeLocale === "tr" ? "İç link" : "Internal links"}: {relatedTools.length + 1}
                 </div>
-                <div className="rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-slate-100">
+                <div className="rounded-[22px] border border-slate-700/60 bg-slate-950/60 px-4 py-3 text-sm font-semibold text-slate-100">
                   {safeLocale === "tr" ? "Bölüm sayısı" : "Sections"}: {article.sections.length}
                 </div>
-                <div className="rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-slate-100">
+                <div className="rounded-[22px] border border-slate-700/60 bg-slate-950/60 px-4 py-3 text-sm font-semibold text-slate-100">
                   {safeLocale === "tr" ? "Karşılaştırma linki hazır" : "Comparison path ready"}
                 </div>
               </div>
@@ -368,7 +368,7 @@ export default async function BlogDetailPage({
           ))}
         </SectionShell>
 
-        <section className="rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-card md:p-8">
+        <section className="rounded-[30px] border border-slate-700/60 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-card md:p-8">
           <h2 className="text-2xl font-bold tracking-tight text-slate-50">{copy.comparisonBlockTitle}</h2>
           <p className="mt-3 text-base leading-7 text-slate-300">{copy.comparisonBlockDescription}</p>
           <div className="mt-6 flex flex-wrap gap-3">

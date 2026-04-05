@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 import { locales, type Locale } from "@/i18n/config";
 
@@ -21,3 +21,4 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
     </div>
   );
 }
+

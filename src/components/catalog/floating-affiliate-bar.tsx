@@ -1,4 +1,4 @@
-import { Badge } from "@/components/ui/badge";
+﻿import { Badge } from "@/components/ui/badge";
 
 type FloatingAffiliateBarProps = {
   toolName: string;
@@ -62,3 +62,4 @@ export function FloatingAffiliateBar({
     </>
   );
 }
+

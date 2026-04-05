@@ -64,3 +64,4 @@ export function ComparisonCard({ locale, item, linkLabel, featured = false }: Co
     </motion.div>
   );
 }
+

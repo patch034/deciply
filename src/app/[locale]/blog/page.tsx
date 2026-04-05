@@ -127,12 +127,12 @@ export default async function BlogPage({
             {currentPage > 1 ? (
               <Link
                 href={buildBlogPageHref(safeLocale, currentPage - 1)}
-                className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/12 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
+                className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-slate-700/60 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
               >
                 {`← ${copy.previousPage}`}
               </Link>
             ) : (
-              <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/8 bg-white/[0.03] px-4 text-sm font-medium text-slate-500/70">
+              <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-slate-700/55 bg-slate-950/52 px-4 text-sm font-medium text-slate-500/70">
                 {`← ${copy.previousPage}`}
               </span>
             )}
@@ -153,7 +153,7 @@ export default async function BlogPage({
                   <Link
                     key={pageNumber}
                     href={buildBlogPageHref(safeLocale, pageNumber)}
-                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-white/12 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-slate-700/60 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
                   >
                     {pageNumber}
                   </Link>
@@ -164,12 +164,12 @@ export default async function BlogPage({
             {currentPage < totalPages ? (
               <Link
                 href={buildBlogPageHref(safeLocale, currentPage + 1)}
-                className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/12 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
+                className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-slate-700/60 bg-white/5 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/30 hover:bg-cyan-400/10 hover:text-cyan-200"
               >
                 {`${copy.nextPage} →`}
               </Link>
             ) : (
-              <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/8 bg-white/[0.03] px-4 text-sm font-medium text-slate-500/70">
+              <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-slate-700/55 bg-slate-950/52 px-4 text-sm font-medium text-slate-500/70">
                 {`${copy.nextPage} →`}
               </span>
             )}

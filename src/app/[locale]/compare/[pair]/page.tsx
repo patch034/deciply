@@ -434,7 +434,7 @@ export default async function ComparisonPage({
           ]}
         />
 
-        <section className="rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(34,211,238,0.2)] lg:px-10 lg:py-12">
+        <section className="rounded-[36px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(34,211,238,0.2)] lg:px-10 lg:py-12">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div>
               <Badge variant="ghost" className="border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
@@ -500,7 +500,7 @@ export default async function ComparisonPage({
         <InfoSection title={dictionary.bestForTitle} description={dictionary.bestForDescription}>
           <div className="grid gap-4 md:grid-cols-2">
             {[leftTool, rightTool].map((tool) => (
-              <div key={tool.slug} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
+              <div key={tool.slug} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{tool.name}</p>
                 <h2 className="mt-3 text-xl font-semibold text-slate-100">{tool.bestUseCase}</h2>
                 <p className="mt-3 text-sm leading-7 text-slate-300">{tool.whoShouldUseSummary}</p>
@@ -515,11 +515,11 @@ export default async function ComparisonPage({
         </InfoSection>        <InfoSection id="fiyat" title={dictionary.pricingTitle} description={dictionary.pricingDescription}>
           <div className="grid gap-4 md:grid-cols-2">
             {[leftTool, rightTool].map((tool) => (
-              <div key={tool.slug} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
+              <div key={tool.slug} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{tool.name}</p>
                 <p className="mt-3 text-lg font-semibold text-slate-100">{formatPricing(tool.pricing, safeLocale)}</p>
                 <div className="mt-4 grid gap-3">
-                  <div className="rounded-[20px] border border-white/10 bg-slate-950/40 p-4">
+                  <div className="rounded-[20px] border border-slate-700/60 bg-slate-950/40 p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{dictionary.pricingFreeStart}</p>
                     <p className="mt-2 text-sm leading-7 text-slate-300">
                       {tool.pricing === "PAID"
@@ -531,7 +531,7 @@ export default async function ComparisonPage({
                           : "Offers a free or freemium starting point."}
                     </p>
                   </div>
-                  <div className="rounded-[20px] border border-white/10 bg-slate-950/40 p-4">
+                  <div className="rounded-[20px] border border-slate-700/60 bg-slate-950/40 p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{dictionary.pricingCommercial}</p>
                     <p className="mt-2 text-sm leading-7 text-slate-300">{tool.moneyUseCases[0]?.description ?? tool.realUseCaseExample.description}</p>
                   </div>
@@ -565,7 +565,7 @@ export default async function ComparisonPage({
           </div>
         </SectionShell>
 
-        <section className="rounded-[34px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
+        <section className="rounded-[34px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{dictionary.verdictTitle}</p>
@@ -591,12 +591,12 @@ export default async function ComparisonPage({
           </div>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2">
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
+            <div className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5">
               <p className="text-sm font-semibold text-slate-100">{leftTool.name}</p>
               <h3 className="mt-3 text-lg font-semibold text-slate-50">{dictionary.verdictLeftTitle}</h3>
               <p className="mt-3 text-sm leading-7 text-slate-300">{leftTool.realUseCaseExample.description}</p>
             </div>
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
+            <div className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5">
               <p className="text-sm font-semibold text-slate-100">{rightTool.name}</p>
               <h3 className="mt-3 text-lg font-semibold text-slate-50">{dictionary.verdictRightTitle}</h3>
               <p className="mt-3 text-sm leading-7 text-slate-300">{rightTool.realUseCaseExample.description}</p>
@@ -604,7 +604,7 @@ export default async function ComparisonPage({
           </div>
         </section>
 
-        <section className="rounded-[34px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
+        <section className="rounded-[34px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{safeLocale === "tr" ? "Dönüşüm odaklı karar" : "Conversion-ready decision"}</p>
@@ -667,7 +667,7 @@ export default async function ComparisonPage({
               const compareHref = buildComparisonPath(safeLocale, tool.slug, matchedTool.slug);
 
               return (
-                <div key={tool.slug} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
+                <div key={tool.slug} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{tool.name}</p>
                   <h2 className="mt-3 text-xl font-semibold text-slate-100">{matchedTool.name} {safeLocale === "tr" ? "ile karşılaştır" : "comparison"}</h2>
                   <p className="mt-3 text-sm leading-7 text-slate-300">{safeLocale === "tr" ? "İlgili compare sayfasını açarak farklı kullanım ve fiyat sinyallerini yan yana görün." : "Open the related comparison page to review use-case and pricing signals side by side."}</p>
@@ -714,7 +714,7 @@ export default async function ComparisonPage({
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 transition hover:border-cyan-400/30 hover:bg-white/[0.06]"
+                className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 transition hover:border-cyan-400/30 hover:bg-white/[0.06]"
               >
                 <p className="text-sm font-semibold text-cyan-300">{item.label}</p>
                 <p className="mt-3 text-sm leading-7 text-slate-300">

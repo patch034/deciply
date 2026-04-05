@@ -119,3 +119,4 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
     </div>
   );
 }
+

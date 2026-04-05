@@ -90,3 +90,4 @@ export function WhyToolNovaSection({ locale }: WhyToolNovaSectionProps) {
     </SectionShell>
   );
 }
+

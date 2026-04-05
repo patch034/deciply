@@ -93,14 +93,14 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
           </div>
 
           {tool.notIdealFor ? (
-            <div className="mt-4 hidden rounded-[20px] border border-white/10 bg-white/[0.03] px-4 py-3 sm:block">
+            <div className="mt-4 hidden rounded-[20px] border border-slate-700/60 bg-slate-950/52 px-4 py-3 sm:block">
               <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{notIdealLabel}</p>
               <p className="mt-2 text-sm leading-6 text-slate-300/88">{tool.notIdealFor}</p>
             </div>
           ) : null}
         </div>
 
-        <div className="mt-4 border-t border-white/10 pt-4 sm:mt-6 sm:pt-6">
+        <div className="mt-4 border-t border-slate-700/60 pt-4 sm:mt-6 sm:pt-6">
           <div className="min-h-[1.5rem] overflow-hidden pb-2">
             <p className="translate-y-2 text-sm font-medium text-cyan-100/92 opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100">
               {tool.benefit}
@@ -127,4 +127,5 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
     </motion.div>
   );
 }
+
 

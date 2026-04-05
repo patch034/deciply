@@ -39,3 +39,4 @@ export function CategoryCard({ locale, category, linkLabel }: CategoryCardProps)
     </motion.div>
   );
 }
+

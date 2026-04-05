@@ -30,3 +30,4 @@ export function ProsConsCard({ title, items, tone }: ProsConsCardProps) {
     </div>
   );
 }
+

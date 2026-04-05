@@ -65,3 +65,4 @@ export function TopPickSection({ locale, content }: TopPickSectionProps) {
     </motion.section>
   );
 }
+

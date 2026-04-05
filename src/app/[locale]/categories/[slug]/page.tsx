@@ -172,7 +172,7 @@ export default async function CategoryDetailPage({
             ]}
           />
 
-          <section className="rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(34,211,238,0.2)] lg:px-10 lg:py-12">
+          <section className="rounded-[36px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(34,211,238,0.2)] lg:px-10 lg:py-12">
             <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
               <div>
                 <Badge variant="ghost" className="border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
@@ -183,7 +183,7 @@ export default async function CategoryDetailPage({
                 </h1>
                 <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{comparison.summary}</p>
               </div>
-              <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
+              <div className="rounded-[28px] border border-slate-700/60 bg-slate-950/60 p-6">
                 <div className="flex flex-wrap gap-2">
                   <Badge variant="accent">{formatPricing(primaryTool.pricing, safeLocale)}</Badge>
                   <Badge>{primaryTool.name}</Badge>
@@ -208,7 +208,7 @@ export default async function CategoryDetailPage({
             </div>
           </section>
 
-          <section className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-card">
+          <section className="rounded-[28px] border border-slate-700/60 bg-slate-950/60 p-6 shadow-card">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">{safeLocale === "tr" ? "Editör notu" : "Editor note"}</p>
             <p className="mt-4 max-w-3xl text-base leading-8 text-slate-300">{editorNote}</p>
           </section>
@@ -217,7 +217,7 @@ export default async function CategoryDetailPage({
             {comparison.selectionCards.map((item) => (
               <div
                 key={item.title}
-                className="rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-card"
+                className="rounded-[28px] border border-slate-700/60 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-card"
               >
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{item.title}</p>
                 <h2 className="mt-4 text-lg font-semibold text-slate-100">{item.toolLabel}</h2>
@@ -229,7 +229,7 @@ export default async function CategoryDetailPage({
           <InfoSection title={comparison.guidance.title} description={comparison.guidance.description}>
             <div className="grid gap-4 md:grid-cols-3">
               {comparison.guidance.items.map((item) => (
-                <div key={item.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
+                <div key={item.title} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5">
                   <h3 className="text-sm font-semibold text-slate-100 md:text-base">{item.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
                 </div>
@@ -245,7 +245,7 @@ export default async function CategoryDetailPage({
             rows={comparison.table.rows}
           />
 
-          <section className="rounded-[34px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
+          <section className="rounded-[34px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
             <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
               <div className="max-w-3xl">
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
@@ -268,7 +268,7 @@ export default async function CategoryDetailPage({
           <section className="grid gap-6 lg:grid-cols-2">
             <InfoSection title={comparison.finalVerdict.title} description={comparison.finalVerdict.description}>
               <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
+                <div className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5">
                   <p className="text-sm font-semibold text-slate-100">{comparison.finalVerdict.leftTitle}</p>
                   <p className="mt-3 text-sm leading-7 text-slate-300">{comparison.finalVerdict.leftDescription}</p>
                   <div className="mt-5">
@@ -277,7 +277,7 @@ export default async function CategoryDetailPage({
                     </PremiumButton>
                   </div>
                 </div>
-                <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
+                <div className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5">
                   <p className="text-sm font-semibold text-slate-100">{comparison.finalVerdict.rightTitle}</p>
                   <p className="mt-3 text-sm leading-7 text-slate-300">{comparison.finalVerdict.rightDescription}</p>
                   <div className="mt-5">
@@ -404,20 +404,20 @@ export default async function CategoryDetailPage({
 
       <div className="grid gap-6 lg:grid-cols-2">
         <InfoSection title={content.categoryDetail.relatedTitle} description={content.categoryDetail.relatedDescription}>
-          <div className="rounded-[24px] border border-dashed border-white/15 bg-white/[0.03] p-5 text-sm leading-7 text-slate-300">
+          <div className="rounded-[24px] border border-dashed border-white/15 bg-slate-950/52 p-5 text-sm leading-7 text-slate-300">
             {content.common.placeholderLabel}: rehber içerikler, alternatif yazıları ve kategoriye özel karşılaştırmalar burada listelenecek.
           </div>
         </InfoSection>
 
         <InfoSection title={content.categoryDetail.internalLinksTitle} description={content.categoryDetail.internalLinksDescription}>
           <div className="grid gap-3 sm:grid-cols-3">
-            <Link href={`/${safeLocale}/tools`} className="rounded-[22px] border border-white/10 bg-white/[0.04] p-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300">
+            <Link href={`/${safeLocale}/tools`} className="rounded-[22px] border border-slate-700/60 bg-slate-950/60 p-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300">
               {content.categoryDetail.allToolsLink}
             </Link>
-            <Link href={`/${safeLocale}/categories`} className="rounded-[22px] border border-white/10 bg-white/[0.04] p-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300">
+            <Link href={`/${safeLocale}/categories`} className="rounded-[22px] border border-slate-700/60 bg-slate-950/60 p-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300">
               {content.categoryDetail.allCategoriesLink}
             </Link>
-            <Link href={`/${safeLocale}/categories/guides`} className="rounded-[22px] border border-white/10 bg-white/[0.04] p-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300">
+            <Link href={`/${safeLocale}/categories/guides`} className="rounded-[22px] border border-slate-700/60 bg-slate-950/60 p-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300">
               {content.categoryDetail.guidesLink}
             </Link>
           </div>

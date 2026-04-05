@@ -17,11 +17,11 @@ type PremiumButtonProps = {
 
 const styles = {
   primary:
-    "bg-[linear-gradient(90deg,#5B4DE6_0%,#406BFF_58%,#0FB9C4_100%)] text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_24px_56px_-26px_rgba(59,130,246,0.9),0_34px_96px_-38px_rgba(15,185,196,0.62)] hover:brightness-[1.14] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_28px_68px_-26px_rgba(59,130,246,0.94),0_40px_110px_-38px_rgba(15,185,196,0.72)]",
+    "bg-[linear-gradient(90deg,#6D28D9_0%,#4F46E5_52%,#06B6D4_100%)] text-white shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_24px_56px_-26px_rgba(79,70,229,0.92),0_36px_96px_-38px_rgba(6,182,212,0.74)] hover:brightness-[1.12] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_28px_68px_-26px_rgba(79,70,229,0.96),0_42px_110px_-38px_rgba(6,182,212,0.82)]",
   secondary:
-    "border border-white/10 bg-white/[0.03] text-slate-200 hover:border-cyan-400/22 hover:bg-white/[0.05] hover:text-white",
+    "border border-slate-700/70 bg-slate-950/48 text-slate-200 hover:border-cyan-400/22 hover:bg-slate-900/72 hover:text-white",
   ghost:
-    "border border-cyan-400/14 bg-cyan-400/8 text-cyan-100 hover:border-cyan-300/24 hover:bg-cyan-400/12"
+    "border border-cyan-400/16 bg-cyan-400/10 text-cyan-100 hover:border-cyan-300/24 hover:bg-cyan-400/14"
 } as const;
 
 export function PremiumButton({
@@ -66,3 +66,4 @@ export function PremiumButton({
     </motion.button>
   );
 }
+

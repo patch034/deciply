@@ -71,10 +71,10 @@ export function ToolCard({
         </div>
       ) : null}
 
-      <div className="mt-auto flex flex-col gap-2.5 border-t border-white/10 pt-4 sm:pt-6">
+      <div className="mt-auto flex flex-col gap-2.5 border-t border-slate-700/60 pt-4 sm:pt-6">
         <RatingBadge rating={tool.rating} className="w-fit" />
         <div className="grid gap-2 sm:grid-cols-2">
-          <Link href={`/${locale}/tools/${tool.slug}`} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-xl border border-white/12 bg-white/[0.03] px-4 py-2.5 text-sm font-semibold text-slate-200 transition duration-150 hover:bg-white/[0.05] hover:text-white">
+          <Link href={`/${locale}/tools/${tool.slug}`} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-xl border border-slate-700/60 bg-slate-950/52 px-4 py-2.5 text-sm font-semibold text-slate-200 transition duration-150 hover:bg-white/[0.05] hover:text-white">
             {detailLabel}
           </Link>
           {compareHref ? (
@@ -87,5 +87,6 @@ export function ToolCard({
     </GlassPanel>
   );
 }
+
 
 

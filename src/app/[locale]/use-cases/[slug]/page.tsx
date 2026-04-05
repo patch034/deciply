@@ -224,7 +224,7 @@ export default async function UseCasePage({
           ]}
         />
 
-        <section className="rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(34,211,238,0.2)] lg:px-10 lg:py-12">
+        <section className="rounded-[36px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(34,211,238,0.2)] lg:px-10 lg:py-12">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div>
               <Badge variant="ghost" className="border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
@@ -237,7 +237,7 @@ export default async function UseCasePage({
               <p className="mt-4 max-w-3xl text-base leading-8 text-slate-400">{page.description}</p>
             </div>
 
-            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
+            <div className="rounded-[28px] border border-slate-700/60 bg-slate-950/60 p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-300">{dictionary.bestToolsTitle}</p>
               <p className="mt-4 text-base leading-7 text-slate-300">{description}</p>
               <div className="mt-5 flex flex-wrap gap-2">
@@ -279,7 +279,7 @@ export default async function UseCasePage({
         <InfoSection title={page.whyTitle} description={page.whyDescription}>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {selectedTools.slice(0, 6).map((toolItem) => (
-              <div key={toolItem.slug} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-card">
+              <div key={toolItem.slug} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 shadow-card">
                 <p className="text-sm font-semibold text-cyan-300">{toolItem.name}</p>
                 <p className="mt-3 text-sm leading-7 text-slate-300">
                   {buildWhyItFits(safeLocale, toolItem.name, toolItem.bestUseCase, toolItem.whoShouldUseSummary)}
@@ -296,7 +296,7 @@ export default async function UseCasePage({
         <InfoSection title={page.workflowTitle} description={page.workflowDescription}>
           <div className="grid gap-4 md:grid-cols-3">
             {page.workflowSteps.map((stepLabel, index) => (
-              <div key={stepLabel} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 shadow-card">
+              <div key={stepLabel} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 shadow-card">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">0{index + 1}</p>
                 <p className="mt-3 text-base font-semibold text-slate-100">{stepLabel}</p>
                 <p className="mt-3 text-sm leading-7 text-slate-300">{workflowDescriptions[index]}</p>
@@ -312,7 +312,7 @@ export default async function UseCasePage({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 text-sm font-semibold leading-7 text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300"
+                  className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 text-sm font-semibold leading-7 text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300"
                 >
                   {item.label}
                 </Link>
@@ -335,7 +335,7 @@ export default async function UseCasePage({
           </SectionShell>
         ) : null}
 
-        <section className="rounded-[34px] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
+        <section className="rounded-[34px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] lg:px-10 lg:py-12">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{page.eyebrow}</p>

@@ -45,3 +45,4 @@ export function RelatedComparisonCard({ locale, title, description, href, ctaLab
     </article>
   );
 }
+

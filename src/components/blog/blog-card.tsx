@@ -47,3 +47,4 @@ export function BlogCard({ locale, article, ctaLabel }: BlogCardProps) {
     </GlassPanel>
   );
 }
+

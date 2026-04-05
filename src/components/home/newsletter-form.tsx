@@ -57,7 +57,7 @@ export function NewsletterForm({
             type="email"
             required
             placeholder={placeholder}
-            className="min-h-14 w-full min-w-0 flex-1 rounded-2xl border border-white/12 bg-white/[0.06] px-4 text-base text-slate-50 outline-none transition placeholder:text-slate-400 focus:border-cyan-400/45 focus:bg-white/[0.08]"
+            className="min-h-14 w-full min-w-0 flex-1 rounded-2xl border border-slate-700/60 bg-white/[0.06] px-4 text-base text-slate-50 outline-none transition placeholder:text-slate-400 focus:border-cyan-400/45 focus:bg-white/[0.08]"
           />
           <PremiumButton type="submit" className="min-h-14 px-6">
             {buttonLabel}
@@ -68,4 +68,5 @@ export function NewsletterForm({
     </GlassPanel>
   );
 }
+
 

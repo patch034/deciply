@@ -30,7 +30,7 @@ export function SectionHeading({
         .join(" ")}
     >
       <div className={["max-w-3xl min-w-0", align === "center" && "mx-auto"].filter(Boolean).join(" ")}>
-        {eyebrow ? <Badge variant="ghost" className="text-cyan-100">{eyebrow}</Badge> : null}
+        {eyebrow ? <Badge variant="accent" className="shadow-[0_10px_24px_-18px_rgba(34,211,238,0.36)]">{eyebrow}</Badge> : null}
         <h2 className="balance-text mt-4 max-w-3xl text-[1.9rem] font-bold tracking-[-0.04em] text-slate-50 sm:text-[2.15rem] md:text-[2.45rem] md:leading-[1.06]">
           {title}
         </h2>
@@ -42,3 +42,4 @@ export function SectionHeading({
     </div>
   );
 }
+

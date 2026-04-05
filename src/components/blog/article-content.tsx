@@ -188,7 +188,7 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
         <section
           key={section.title}
           id={buildArticleSectionId(section.title)}
-          className="scroll-mt-24 rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-5 shadow-card md:p-8"
+          className="scroll-mt-24 rounded-[28px] border border-slate-700/60 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-5 shadow-card md:p-8"
         >
           <h2 className="text-2xl font-bold tracking-tight text-slate-50 md:text-[2rem]">{section.title}</h2>
 
@@ -205,7 +205,7 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
               {section.bullets.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-3 rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm leading-7 text-slate-200"
+                  className="flex items-start gap-3 rounded-[22px] border border-slate-700/60 bg-slate-950/60 px-4 py-3 text-sm leading-7 text-slate-200"
                 >
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-cyan-300" />
                   <span>{renderLinkedText(item)}</span>
@@ -219,7 +219,7 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
               <h3 className="text-lg font-semibold text-slate-50">{section.comparison.title}</h3>
               <div className="mt-4 grid gap-3 md:grid-cols-3">
                 {section.comparison.items.map((item) => (
-                  <div key={item.label} className="rounded-[20px] border border-white/10 bg-white/[0.04] p-4">
+                  <div key={item.label} className="rounded-[20px] border border-slate-700/60 bg-slate-950/60 p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{item.label}</p>
                     <p className="mt-3 text-sm font-semibold text-slate-100">{renderLinkedText(item.value)}</p>
                   </div>
@@ -231,7 +231,7 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
           {section.subSections?.length ? (
             <div className="mt-6 grid gap-4 lg:grid-cols-2 sm:mt-8 sm:gap-5">
               {section.subSections.map((subSection) => (
-                <div key={subSection.title} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
+                <div key={subSection.title} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5">
                   <h3 className="text-lg font-semibold text-slate-50">{subSection.title}</h3>
                   <div className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
                     {subSection.paragraphs.map((paragraph) => (
@@ -267,3 +267,4 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
     </div>
   );
 }
+

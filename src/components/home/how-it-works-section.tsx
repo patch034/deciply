@@ -86,3 +86,4 @@ export function HowItWorksSection({ locale }: HowItWorksSectionProps) {
     </SectionShell>
   );
 }
+

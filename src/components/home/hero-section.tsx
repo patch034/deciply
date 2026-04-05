@@ -45,24 +45,24 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
 
   return (
     <section className="relative mx-auto w-full max-w-[1200px] px-4 pt-3 sm:px-6 sm:pt-5 lg:pt-7">
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] overflow-hidden">
+      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[38rem] overflow-hidden">
         <motion.div
-          className="absolute left-[2%] top-10 h-72 w-72 rounded-full bg-violet-500/24 blur-3xl"
+          className="absolute left-[2%] top-10 h-80 w-80 rounded-full bg-violet-500/32 blur-3xl"
           animate={{ opacity: [0.42, 0.82, 0.42], scale: [1, 1.08, 1] }}
           transition={{ duration: 9, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute right-[5%] top-0 h-80 w-80 rounded-full bg-sky-500/18 blur-3xl"
+          className="absolute right-[5%] top-0 h-[22rem] w-[22rem] rounded-full bg-sky-500/28 blur-3xl"
           animate={{ opacity: [0.34, 0.72, 0.34], scale: [1, 1.1, 1] }}
           transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
         />
-        <div className="absolute left-1/2 top-24 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl" />
+        <div className="absolute left-1/2 top-24 h-[22rem] w-[22rem] -translate-x-1/2 rounded-full bg-cyan-400/14 blur-3xl" />
       </div>
 
-      <GlassPanel className="relative overflow-hidden rounded-[32px] border-white/8 bg-[linear-gradient(180deg,rgba(7,12,24,0.92),rgba(10,16,30,0.96))] px-4 py-4 shadow-[0_24px_80px_-52px_rgba(34,211,238,0.2)] sm:px-6 sm:py-5">
-        <div className="absolute inset-x-12 top-0 h-36 rounded-full bg-violet-500/12 blur-3xl" />
-        <div className="absolute -right-24 top-10 h-56 w-56 rounded-full bg-cyan-400/12 blur-3xl" />
-        <div className="absolute left-20 bottom-0 h-28 w-28 rounded-full bg-blue-500/10 blur-3xl" />
+      <GlassPanel className="relative overflow-hidden rounded-[34px] border border-slate-700/55 bg-[linear-gradient(180deg,rgba(3,6,12,0.96),rgba(8,14,26,0.98))] px-4 py-4 shadow-[0_30px_94px_-56px_rgba(6,10,18,0.86)] sm:px-6 sm:py-5">
+        <div className="absolute inset-x-12 top-0 h-40 rounded-full bg-violet-500/18 blur-3xl" />
+        <div className="absolute -right-24 top-10 h-60 w-60 rounded-full bg-cyan-400/16 blur-3xl" />
+        <div className="absolute left-20 bottom-0 h-32 w-32 rounded-full bg-blue-500/14 blur-3xl" />
 
         <div className="relative grid gap-7 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-8">
           <div>
@@ -84,7 +84,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             </motion.h1>
 
             <motion.p
-              className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-300/84 sm:mt-5 sm:text-base sm:leading-8 lg:text-[1.04rem]"
+              className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-300/92 sm:mt-5 sm:text-base sm:leading-8 lg:text-[1.04rem]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
@@ -116,7 +116,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="inline-flex min-h-[40px] items-center rounded-full border border-white/10 bg-white/[0.03] px-4 text-sm font-semibold text-slate-200 transition duration-200 hover:border-cyan-400/25 hover:text-cyan-200"
+                  className="inline-flex min-h-[40px] items-center rounded-full border border-slate-700/60 bg-slate-950/52 px-4 text-sm font-semibold text-slate-200 transition duration-200 hover:border-cyan-400/25 hover:text-cyan-200"
                 >
                   {item.label}
                 </Link>
@@ -124,7 +124,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             </motion.div>
 
             <motion.p
-              className="mt-3 text-sm font-medium leading-6 text-cyan-200/88"
+              className="mt-3 text-sm font-medium leading-6 text-cyan-100/92"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.42, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
@@ -226,4 +226,6 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
     </section>
   );
 }
+
+
 

@@ -127,17 +127,17 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools }: Hom
           </div>
         </SectionShell>
 
-        <details className="group ui-card-strong overflow-hidden rounded-[28px] border border-white/10 px-4 py-4 shadow-[0_24px_70px_-44px_rgba(34,211,238,0.22)] sm:px-6 sm:py-5">
+        <details className="group ui-card-strong overflow-hidden rounded-[28px] border border-slate-700/55 px-4 py-4 shadow-[0_24px_70px_-44px_rgba(34,211,238,0.22)] sm:px-6 sm:py-5">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-left">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{copy.showMoreLabel}</p>
               <p className="mt-2 text-base font-semibold text-slate-50">{copy.showMoreAction}</p>
             </div>
-            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-cyan-200 transition duration-200 group-open:rotate-45">
+            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-slate-700/55 bg-slate-950/72 text-cyan-100 transition duration-200 group-open:rotate-45">
               +
             </span>
           </summary>
-          <div className="mt-4 border-t border-white/10 pt-4 sm:mt-5 sm:pt-5">
+          <div className="mt-4 border-t border-slate-700/55 pt-4 sm:mt-5 sm:pt-5">
             <p className="max-w-2xl text-sm leading-7 text-slate-300">{copy.showMoreDescription}</p>
             <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {secondaryGuides.map((item) => (
@@ -150,3 +150,5 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools }: Hom
     </div>
   );
 }
+
+

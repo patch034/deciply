@@ -19,7 +19,7 @@ export function ToolMetaPanel({
   categories
 }: ToolMetaPanelProps) {
   return (
-    <aside className="rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-card">
+    <aside className="rounded-[28px] border border-slate-700/60 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-card">
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{pricingLabel}</p>
@@ -43,6 +43,7 @@ export function ToolMetaPanel({
     </aside>
   );
 }
+
 
 
 
