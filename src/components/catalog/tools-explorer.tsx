@@ -91,7 +91,7 @@ function FilterChip({ label, active, onClick }: { label: string; active: boolean
         "min-h-[44px] rounded-full border px-4 py-2 text-sm font-semibold transition duration-200",
         active
           ? "border-cyan-400/40 bg-cyan-400/12 text-cyan-200 shadow-[0_14px_34px_-22px_rgba(34,211,238,0.5)]"
-          : "border-violet-400/14 bg-slate-950/50 text-slate-300 hover:border-fuchsia-400/20 hover:text-fuchsia-100"
+          : "border-sky-400/12 bg-slate-950/50 text-slate-300 hover:border-cyan-400/20 hover:text-cyan-100"
       ].join(" ")}
     >
       {label}
@@ -436,7 +436,7 @@ export function ToolsExplorer({
               <label className="block text-sm font-semibold text-slate-200" htmlFor="tool-search">
                 {copy.searchLabel}
               </label>
-              <div className="mt-3 rounded-[22px] border border-violet-400/14 bg-slate-950/50 p-2 shadow-[inset_0_1px_0_rgba(167,139,250,0.06)]">
+              <div className="mt-3 rounded-[22px] border border-sky-400/12 bg-slate-950/50 p-2 shadow-[inset_0_1px_0_rgba(14,165,233,0.06)]">
                 <input
                   id="tool-search"
                   type="search"
@@ -648,7 +648,7 @@ export function ToolsExplorer({
                     {`${copy.previousPage} ←`}
                   </Link>
                 ) : (
-                  <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-violet-400/10 bg-slate-950/40 px-4 text-sm font-medium text-slate-500/70">
+                  <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/40 px-4 text-sm font-medium text-slate-500/70">
                     {`${copy.previousPage} ←`}
                   </span>
                 )}
@@ -689,7 +689,7 @@ export function ToolsExplorer({
                     {`${copy.nextPage} →`}
                   </Link>
                 ) : (
-                  <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-violet-400/10 bg-slate-950/40 px-4 text-sm font-medium text-slate-500/70">
+                  <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/40 px-4 text-sm font-medium text-slate-500/70">
                     {`${copy.nextPage} →`}
                   </span>
                 )}
@@ -713,7 +713,7 @@ export function ToolsExplorer({
                 page: 1
               })
             }
-            className="mt-6 inline-flex min-h-[44px] items-center rounded-2xl border border-violet-400/14 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-fuchsia-400/24 hover:text-fuchsia-100"
+            className="mt-6 inline-flex min-h-[44px] items-center rounded-2xl border border-sky-400/12 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/20 hover:text-cyan-100"
           >
             {copy.resetFiltersLabel}
           </button>

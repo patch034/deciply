@@ -112,7 +112,7 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools }: Hom
         </SectionShell>
 
         <SectionShell
-          className="section-tint-rose"
+          className="section-tint-cyan"
           eyebrow={copy.latestGuidesEyebrow}
           title={copy.latestGuidesTitle}
           description={copy.latestGuidesDescription}
@@ -127,17 +127,17 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools }: Hom
           </div>
         </SectionShell>
 
-        <details className="group ui-card-strong overflow-hidden rounded-[28px] border border-violet-400/14 px-4 py-4 shadow-[0_24px_70px_-44px_rgba(124,58,237,0.18),0_18px_56px_-42px_rgba(244,114,182,0.12)] sm:px-6 sm:py-5">
+        <details className="group ui-card-strong overflow-hidden rounded-[28px] border border-sky-400/12 px-4 py-4 shadow-[0_24px_70px_-44px_rgba(14,165,233,0.16)] sm:px-6 sm:py-5">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-left">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-violet-200">{copy.showMoreLabel}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-100">{copy.showMoreLabel}</p>
               <p className="mt-2 text-base font-semibold text-slate-50">{copy.showMoreAction}</p>
             </div>
-            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-violet-400/14 bg-white/[0.045] text-fuchsia-100 transition duration-200 group-open:rotate-45">
+            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-sky-400/12 bg-slate-950/45 text-cyan-100 transition duration-200 group-open:rotate-45">
               +
             </span>
           </summary>
-          <div className="mt-4 border-t border-violet-400/10 pt-4 sm:mt-5 sm:pt-5">
+          <div className="mt-4 border-t border-sky-400/10 pt-4 sm:mt-5 sm:pt-5">
             <p className="max-w-2xl text-sm leading-7 text-slate-300">{copy.showMoreDescription}</p>
             <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {secondaryGuides.map((item) => (

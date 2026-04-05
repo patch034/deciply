@@ -27,10 +27,10 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   ];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-violet-400/14 bg-[linear-gradient(180deg,rgba(9,13,23,0.88),rgba(9,13,23,0.68))] backdrop-blur-2xl">
+    <header className="sticky top-0 z-40 border-b border-sky-400/12 bg-[linear-gradient(180deg,rgba(5,8,15,0.9),rgba(7,12,20,0.72))] backdrop-blur-2xl">
       <div className="mx-auto grid max-w-[1200px] grid-cols-[minmax(0,1fr)_auto] items-center gap-2.5 px-4 py-3 md:grid-cols-[auto_1fr_auto] md:gap-4 md:px-6 md:py-4">
         <Link href={`/${locale}`} className="inline-flex min-h-[44px] min-w-0 items-center">
-          <BrandLogo compact className="drop-shadow-[0_12px_30px_rgba(108,92,231,0.26)]" />
+          <BrandLogo compact className="drop-shadow-[0_12px_30px_rgba(14,165,233,0.22)]" />
         </Link>
         <div className="hidden justify-center md:flex">
           <nav className="ui-nav-shell hidden items-center gap-1 px-2 py-2 md:flex">
@@ -38,7 +38,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
               <Link
                 key={item.href}
                 href={`/${locale}${item.href}`}
-                className="inline-flex min-h-[36px] items-center rounded-full px-4 text-sm font-medium text-slate-200 transition duration-200 hover:bg-violet-400/[0.08] hover:text-white"
+                className="inline-flex min-h-[36px] items-center rounded-full px-4 text-sm font-medium text-slate-200 transition duration-200 hover:bg-sky-400/[0.08] hover:text-white"
               >
                 {item.label}
               </Link>
@@ -50,13 +50,13 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
         </div>
       </div>
 
-      <div className="border-t border-violet-400/12 px-4 py-2 md:hidden">
+      <div className="border-t border-sky-400/10 px-4 py-2 md:hidden">
         <nav className="mx-auto grid max-w-[1200px] grid-cols-3 gap-2">
           {mobileQuickLinks.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="ui-nav-shell inline-flex min-h-[44px] min-w-0 items-center justify-center truncate px-1.5 text-[10px] font-semibold tracking-normal text-slate-200 transition duration-150 hover:border-fuchsia-400/22 hover:text-fuchsia-100"
+              className="ui-nav-shell inline-flex min-h-[44px] min-w-0 items-center justify-center truncate px-1.5 text-[10px] font-semibold tracking-normal text-slate-200 transition duration-150 hover:border-cyan-400/20 hover:text-cyan-100"
             >
               {item.label}
             </Link>

@@ -9,10 +9,10 @@ type BadgeProps = {
 
 export function Badge({ children, variant = "muted", className }: BadgeProps) {
   const variants = {
-    accent: "border border-fuchsia-400/18 bg-fuchsia-400/10 text-fuchsia-100",
-    muted: "border border-violet-400/14 bg-slate-950/68 text-slate-200",
-    dark: "border border-violet-400/16 bg-slate-950/84 text-slate-100",
-    ghost: "border border-cyan-400/18 bg-cyan-400/12 text-cyan-100"
+    accent: "border border-sky-400/16 bg-sky-400/10 text-sky-100",
+    muted: "border border-sky-400/12 bg-slate-950/68 text-slate-200",
+    dark: "border border-sky-400/14 bg-slate-950/84 text-slate-100",
+    ghost: "border border-cyan-400/18 bg-cyan-400/10 text-cyan-100"
   } as const;
 
   return (

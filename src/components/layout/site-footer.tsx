@@ -18,14 +18,14 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
   function renderFooterLink(item: { href: string; label: string }) {
     if (isExternalHref(item.href)) {
       return (
-        <a key={item.href + item.label} href={item.href} className="truncate transition duration-200 hover:text-fuchsia-100">
+        <a key={item.href + item.label} href={item.href} className="truncate transition duration-200 hover:text-cyan-100">
           {item.label}
         </a>
       );
     }
 
     return (
-      <Link key={item.href + item.label} href={`/${locale}${item.href}`} className="truncate transition duration-200 hover:text-fuchsia-100">
+      <Link key={item.href + item.label} href={`/${locale}${item.href}`} className="truncate transition duration-200 hover:text-cyan-100">
         {item.label}
       </Link>
     );
@@ -33,14 +33,14 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
 
   return (
     <footer className="mt-20 px-6 pb-8">
-      <GlassPanel className="mx-auto max-w-[1200px] rounded-2xl border-violet-400/14 bg-[linear-gradient(180deg,rgba(13,18,33,0.9),rgba(8,11,20,0.97))] px-6 py-10 shadow-[0_28px_80px_-44px_rgba(124,58,237,0.2),0_18px_64px_-48px_rgba(244,114,182,0.12)]">
+      <GlassPanel className="mx-auto max-w-[1200px] rounded-2xl border-sky-400/12 bg-[linear-gradient(180deg,rgba(7,12,20,0.92),rgba(5,8,15,0.98))] px-6 py-10 shadow-[0_28px_80px_-44px_rgba(14,165,233,0.14)]">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12">
           <div className="min-w-0 max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-300">{dictionary.footer.badge}</p>
             <div className="mt-4">
               <BrandLogo className="text-3xl" />
             </div>
-            <p className="mt-3 text-sm font-medium text-fuchsia-100/90">
+            <p className="mt-3 text-sm font-medium text-cyan-100/90">
               {locale === "tr" ? "Doğru AI aracını daha hızlı ve güvenle seç." : "Choose the right AI. Faster, smarter, confidently."}
             </p>
             <p className="mt-4 max-w-lg text-sm leading-7 text-slate-300/88 md:text-base md:leading-8">
@@ -67,7 +67,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-violet-400/12 pt-6">
+        <div className="mt-10 border-t border-sky-400/10 pt-6">
           <div className="flex flex-col gap-3 text-sm text-slate-300 md:flex-row md:items-center md:justify-between">
             <p className="max-w-2xl">{dictionary.footer.bottomNote}</p>
             <p className="shrink-0">{dictionary.footer.copyright}</p>
