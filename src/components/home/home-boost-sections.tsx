@@ -89,7 +89,7 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools }: Hom
         </SectionShell>
 
         <SectionShell
-          className="section-tint-violet"
+          className="section-tint-rose"
           eyebrow={copy.popularToolsEyebrow}
           title={copy.popularToolsTitle}
           description={copy.popularToolsDescription}
