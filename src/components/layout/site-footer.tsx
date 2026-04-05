@@ -33,7 +33,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
 
   return (
     <footer className="mt-20 px-6 pb-8">
-      <GlassPanel className="mx-auto max-w-[1200px] rounded-2xl border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.86),rgba(11,15,25,0.96))] px-6 py-10 shadow-[0_28px_80px_-44px_rgba(14,165,233,0.2)]">
+      <GlassPanel className="mx-auto max-w-[1200px] rounded-2xl border-white/8 bg-[linear-gradient(180deg,rgba(5,10,18,0.92),rgba(7,12,22,0.98))] px-6 py-10 shadow-[0_28px_80px_-44px_rgba(6,10,18,0.72)]">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12">
           <div className="min-w-0 max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">{dictionary.footer.badge}</p>
@@ -67,7 +67,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-6">
+        <div className="mt-10 border-t border-white/8 pt-6">
           <div className="flex flex-col gap-3 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
             <p className="max-w-2xl">{dictionary.footer.bottomNote}</p>
             <p className="shrink-0">{dictionary.footer.copyright}</p>

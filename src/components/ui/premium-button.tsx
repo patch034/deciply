@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import clsx from "clsx";
 import { motion } from "framer-motion";
@@ -17,11 +17,11 @@ type PremiumButtonProps = {
 
 const styles = {
   primary:
-    "bg-[linear-gradient(90deg,#6C5CE7_0%,#4F7CFF_55%,#00C2FF_100%)] text-white shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_24px_56px_-24px_rgba(108,92,231,0.86),0_34px_92px_-38px_rgba(0,194,255,0.62)] hover:brightness-[1.2] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_30px_72px_-24px_rgba(108,92,231,0.94),0_42px_116px_-38px_rgba(0,194,255,0.72)]",
+    "bg-[linear-gradient(90deg,#5B4DE6_0%,#406BFF_58%,#0FB9C4_100%)] text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_24px_56px_-26px_rgba(59,130,246,0.9),0_34px_96px_-38px_rgba(15,185,196,0.62)] hover:brightness-[1.14] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_28px_68px_-26px_rgba(59,130,246,0.94),0_40px_110px_-38px_rgba(15,185,196,0.72)]",
   secondary:
-    "border border-white/10 bg-white/[0.025] text-slate-300/82 hover:bg-white/[0.04] hover:text-slate-200 hover:border-white/14",
+    "border border-white/10 bg-white/[0.03] text-slate-200 hover:border-cyan-400/22 hover:bg-white/[0.05] hover:text-white",
   ghost:
-    "border border-cyan-400/14 bg-cyan-400/8 text-cyan-100 hover:bg-cyan-400/12"
+    "border border-cyan-400/14 bg-cyan-400/8 text-cyan-100 hover:border-cyan-300/24 hover:bg-cyan-400/12"
 } as const;
 
 export function PremiumButton({
@@ -34,7 +34,7 @@ export function PremiumButton({
   rel
 }: PremiumButtonProps) {
   const classes = clsx(
-    "inline-flex min-h-[44px] items-center justify-center overflow-hidden rounded-[10px] px-4 py-2 text-sm font-semibold leading-none transition duration-150",
+    "inline-flex min-h-[44px] items-center justify-center overflow-hidden rounded-[12px] px-4 py-2 text-sm font-semibold leading-none transition duration-150",
     variant !== "primary" && "shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]",
     styles[variant],
     className
