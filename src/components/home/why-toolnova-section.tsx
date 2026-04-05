@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 
@@ -90,4 +90,3 @@ export function WhyToolNovaSection({ locale }: WhyToolNovaSectionProps) {
     </SectionShell>
   );
 }
-

@@ -28,7 +28,7 @@ export function CategoryCard({ locale, category, linkLabel }: CategoryCardProps)
           <p className="mt-6 text-xs font-medium uppercase tracking-[0.18em] text-slate-500">{category.eyebrow}</p>
           <h3 className="clamp-2 mt-2 min-h-[2.65rem] text-[1.22rem] font-bold leading-tight tracking-[-0.03em] text-slate-50 sm:mt-3 sm:min-h-[3.15rem] sm:text-[1.42rem]">{category.title}</h3>
           <p className="mobile-clamp-2 mt-3 flex-1 text-[15px] leading-relaxed text-slate-300/84 sm:mt-4 sm:text-base">{category.description}</p>
-          <div className="mt-5 border-t border-white/10 pt-4 sm:mt-7 sm:pt-5">
+          <div className="mt-5 border-t border-slate-700/60 pt-4 sm:mt-7 sm:pt-5">
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-slate-100 transition duration-200 group-hover:text-white">
               {linkLabel}
               <span aria-hidden="true" className="text-cyan-300 transition duration-200 group-hover:translate-x-1">→</span>

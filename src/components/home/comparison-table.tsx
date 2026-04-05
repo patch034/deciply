@@ -30,9 +30,9 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
         <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-slate-300/88 md:text-[1.05rem] md:leading-8">{description}</p>
       </div>
 
-      <div className="mt-10 hidden overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.03] md:block">
-        <table className="min-w-full table-fixed divide-y divide-white/10">
-          <thead className="bg-white/[0.04]">
+      <div className="mt-10 hidden overflow-hidden rounded-[22px] border border-slate-700/60 bg-[linear-gradient(180deg,rgba(8,14,26,0.72),rgba(5,9,17,0.86))] md:block">
+        <table className="min-w-full table-fixed divide-y divide-slate-700/60">
+          <thead className="bg-slate-950/60">
             <tr>
               <th className="w-[24%] px-5 py-4 text-left text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{columns.tool}</th>
               <th className="w-[18%] px-5 py-4 text-left text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{columns.bestFor}</th>
@@ -42,9 +42,9 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
               <th className="w-[12%] px-5 py-4 text-right text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{columns.action}</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10 bg-transparent">
+          <tbody className="divide-y divide-slate-700/60 bg-transparent">
             {tools.map((tool, index) => (
-              <tr key={tool.name} className={`align-top transition duration-200 hover:bg-white/[0.04] ${index === 0 ? "bg-cyan-400/[0.05]" : ""}`}>
+              <tr key={tool.name} className={`align-top transition duration-200 hover:bg-slate-900/30 ${index === 0 ? "bg-cyan-400/[0.04]" : ""}`}>
                 <td className="px-5 py-5">
                   <div className="flex min-w-0 items-center gap-3">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--tn-gradient-primary)] text-xs font-bold uppercase tracking-[0.14em] text-white">
@@ -58,7 +58,7 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
                             <span className="inline-flex items-center rounded-full bg-cyan-400/12 px-2.5 py-1 text-[11px] font-semibold text-cyan-200">
                               {mostPopularLabel}
                             </span>
-                            <span className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-semibold text-slate-100">
+                            <span className="inline-flex items-center rounded-full border border-slate-700/60 bg-slate-950/60 px-2.5 py-1 text-[11px] font-semibold text-slate-100">
                               {editorChoiceLabel}
                             </span>
                           </>
@@ -119,6 +119,3 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
     </div>
   );
 }
-
-
-
