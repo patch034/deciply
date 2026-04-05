@@ -11,9 +11,12 @@ const pngTargets = [
   ['favicon-32x32.png', 32],
   ['favicon-48x48.png', 48],
   ['favicon-64x64.png', 64],
+  ['favicon-96x96.png', 96],
   ['favicon-128x128.png', 128],
   ['apple-touch-icon.png', 180],
+  ['favicon-192x192.png', 192],
   ['favicon-256x256.png', 256],
+  ['favicon-512x512.png', 512],
   ['icon.png', 512],
   ['favicon.png', 512]
 ];
@@ -63,25 +66,46 @@ function buildIco(entries) {
   return Buffer.concat([header, directory, ...directoryEntries.map((entry) => entry.buffer)]);
 }
 
+async function renderIcon(svg, size) {
+  const padding = Math.max(1, Math.round(size * 0.08));
+  const innerSize = Math.max(1, size - padding * 2);
+  const inner = await sharp(svg, { density: 1024 })
+    .resize(innerSize, innerSize, { fit: 'contain', position: 'center' })
+    .png()
+    .toBuffer();
+
+  return sharp({
+    create: {
+      width: size,
+      height: size,
+      channels: 4,
+      background: { r: 0, g: 0, b: 0, alpha: 0 }
+    }
+  })
+    .composite([{ input: inner, left: padding, top: padding }])
+    .png()
+    .toBuffer();
+}
+
 async function main() {
   const svg = fs.readFileSync(sourceSvg);
-  const generated = [];
+  const generated = new Map();
 
   for (const [filename, size] of pngTargets) {
     const outPath = path.join(publicDir, filename);
-    const png = await sharp(svg, { density: 1024 }).resize(size, size, { fit: 'contain' }).png().toBuffer();
+    const png = await renderIcon(svg, size);
     fs.writeFileSync(outPath, png);
-    generated.push([filename, size, png]);
+    generated.set(size, png);
     console.log(`[favicon] wrote ${filename}`);
   }
 
-  const icoSizes = [16, 32, 48, 64, 128, 180, 256];
+  const icoSizes = [16, 32, 48, 64, 96, 128, 180, 192, 256];
   const icoEntries = icoSizes.map((size) => {
-    const match = generated.find((item) => item[1] === size);
-    if (!match) {
+    const buffer = generated.get(size);
+    if (!buffer) {
       throw new Error(`Missing PNG for ${size}`);
     }
-    return toIcoEntry(size, match[2]);
+    return toIcoEntry(size, buffer);
   });
 
   fs.writeFileSync(path.join(publicDir, 'favicon.ico'), buildIco(icoEntries));
