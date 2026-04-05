@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -44,27 +44,27 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
   const quickLinks = getQuickLinks(locale);
 
   return (
-    <section className="relative mx-auto w-full max-w-[1200px] px-4 pt-6 sm:px-6 sm:pt-8 lg:pt-12">
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[44rem] overflow-hidden">
+    <section className="relative mx-auto w-full max-w-[1200px] px-4 pt-3 sm:px-6 sm:pt-5 lg:pt-7">
+      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] overflow-hidden">
         <motion.div
-          className="absolute left-[2%] top-10 h-72 w-72 rounded-full bg-violet-500/30 blur-3xl"
+          className="absolute left-[2%] top-10 h-72 w-72 rounded-full bg-violet-500/24 blur-3xl"
           animate={{ opacity: [0.42, 0.82, 0.42], scale: [1, 1.08, 1] }}
           transition={{ duration: 9, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute right-[5%] top-0 h-80 w-80 rounded-full bg-sky-500/26 blur-3xl"
+          className="absolute right-[5%] top-0 h-80 w-80 rounded-full bg-sky-500/18 blur-3xl"
           animate={{ opacity: [0.34, 0.72, 0.34], scale: [1, 1.1, 1] }}
           transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
         />
-        <div className="absolute left-1/2 top-28 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-400/16 blur-3xl" />
+        <div className="absolute left-1/2 top-24 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl" />
       </div>
 
-      <GlassPanel className="relative rounded-2xl px-4 py-6 sm:px-6 sm:py-8">
-        <div className="absolute inset-x-12 top-0 h-40 rounded-full bg-violet-500/18 blur-3xl" />
-        <div className="absolute -right-24 top-10 h-56 w-56 rounded-full bg-cyan-400/20 blur-3xl" />
-        <div className="absolute left-20 bottom-0 h-28 w-28 rounded-full bg-blue-500/14 blur-3xl" />
+      <GlassPanel className="relative overflow-hidden rounded-[32px] border-white/8 bg-[linear-gradient(180deg,rgba(7,12,24,0.92),rgba(10,16,30,0.96))] px-4 py-4 shadow-[0_24px_80px_-52px_rgba(34,211,238,0.2)] sm:px-6 sm:py-5">
+        <div className="absolute inset-x-12 top-0 h-36 rounded-full bg-violet-500/12 blur-3xl" />
+        <div className="absolute -right-24 top-10 h-56 w-56 rounded-full bg-cyan-400/12 blur-3xl" />
+        <div className="absolute left-20 bottom-0 h-28 w-28 rounded-full bg-blue-500/10 blur-3xl" />
 
-        <div className="relative grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10">
+        <div className="relative grid gap-7 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-8">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -75,7 +75,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             </motion.div>
 
             <motion.h1
-              className="balance-text mt-5 max-w-4xl bg-gradient-to-r from-white via-sky-200 to-cyan-300 bg-clip-text pb-2 text-[28px] font-extrabold leading-[1.18] tracking-[-0.05em] text-transparent sm:mt-6 sm:text-5xl lg:text-[4rem] lg:leading-[1.2]"
+              className="balance-text mt-4 max-w-4xl bg-gradient-to-r from-white via-sky-200 to-cyan-300 bg-clip-text pb-2 text-[28px] font-extrabold leading-[1.14] tracking-[-0.05em] text-transparent sm:mt-6 sm:text-5xl lg:text-[3.9rem] lg:leading-[1.08]"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.58, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
@@ -84,7 +84,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             </motion.h1>
 
             <motion.p
-              className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-300/82 sm:mt-5 sm:text-base sm:leading-8 lg:text-[1.04rem]"
+              className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-300/84 sm:mt-5 sm:text-base sm:leading-8 lg:text-[1.04rem]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
@@ -93,15 +93,12 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             </motion.p>
 
             <motion.div
-              className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center"
+              className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap sm:items-center"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
             >
-              <PremiumButton
-                href={`/${locale}/tools`}
-                className="w-full text-sm shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_28px_64px_-24px_rgba(108,92,231,0.84),0_38px_108px_-36px_rgba(0,194,255,0.68)] sm:w-auto"
-              >
+              <PremiumButton href={`/${locale}/tools`} className="w-full text-sm shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_28px_64px_-24px_rgba(108,92,231,0.84),0_38px_108px_-36px_rgba(0,194,255,0.68)] sm:w-auto">
                 {content.primaryCta}
               </PremiumButton>
               <PremiumButton href={`/${locale}/categories/comparisons`} variant="secondary" className="w-full text-sm opacity-90 sm:w-auto">
@@ -110,7 +107,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             </motion.div>
 
             <motion.div
-              className="mt-4 flex flex-wrap gap-2"
+              className="mt-4 hidden flex-wrap gap-2 sm:flex"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.42, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -143,10 +140,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
                 transition={{ duration: 0.46, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
               >
                 <span>{content.starterHint}</span>
-                <Link
-                  href={`/${locale}${content.starterHintHref}`}
-                  className="inline-flex items-center gap-2 font-semibold text-cyan-200 transition duration-200 hover:text-cyan-100"
-                >
+                <Link href={`/${locale}${content.starterHintHref}`} className="inline-flex items-center gap-2 font-semibold text-cyan-200 transition duration-200 hover:text-cyan-100">
                   <span aria-hidden="true">›</span>
                   <span>{content.starterHintLabel}</span>
                 </Link>
@@ -154,7 +148,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             ) : null}
 
             <motion.div
-              className="mt-7 flex flex-wrap gap-2 sm:mt-8"
+              className="mt-6 flex flex-wrap gap-2 sm:mt-7"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.46, delay: 0.26, ease: [0.22, 1, 0.36, 1] }}
@@ -167,7 +161,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             </motion.div>
 
             <motion.dl
-              className="mt-7 grid gap-3 sm:mt-8 sm:grid-cols-3"
+              className="mt-6 grid gap-3 sm:mt-7 sm:grid-cols-3"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.46, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -183,13 +177,13 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="ui-card-strong rounded-2xl p-4 text-white sm:p-6">
+            <div className="ui-card-strong rounded-[28px] p-3 text-white sm:p-5">
               <div className="flex items-center justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-cyan-200/78">
-                    {content.panelEyebrow}
-                  </p>
-                  <h2 className="balance-text mt-3 text-[1.35rem] font-bold tracking-[-0.03em] text-slate-100 sm:text-2xl">{content.panelTitle}</h2>
+                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-cyan-200/78">{content.panelEyebrow}</p>
+                  <h2 className="balance-text mt-3 text-[1.25rem] font-bold tracking-[-0.03em] text-slate-100 sm:text-2xl">
+                    {content.panelTitle}
+                  </h2>
                 </div>
                 <div className="flex shrink-0 gap-2 opacity-70">
                   <span className="h-3 w-3 rounded-full bg-white/20" />
@@ -200,11 +194,11 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
 
               <p className="mt-4 max-w-md text-sm leading-7 text-slate-300/78">{content.panelDescription}</p>
 
-              <div className="mt-6 space-y-3 sm:mt-7">
+              <div className="mt-5 space-y-3 sm:mt-6">
                 {content.panelItems.map((item, index) => (
                   <motion.div
                     key={item.title}
-                    className="ui-inner-panel min-w-0 rounded-2xl p-4"
+                    className="ui-inner-panel min-w-0 rounded-[20px] p-3 sm:p-4"
                     initial={{ opacity: 0, x: 14 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.42, delay: 0.24 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
@@ -222,7 +216,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
                 ))}
               </div>
 
-              <div className="ui-inner-panel mt-5 rounded-2xl p-4 sm:mt-6">
+              <div className="ui-inner-panel mt-4 rounded-[20px] p-3 sm:mt-5 sm:p-4">
                 <p className="text-sm leading-7 text-slate-300/76">{content.panelFootnote}</p>
               </div>
             </div>
@@ -232,3 +226,4 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
     </section>
   );
 }
+

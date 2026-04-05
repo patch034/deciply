@@ -87,13 +87,13 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
             <p className="mobile-clamp-2 mt-2 text-[15px] leading-relaxed text-slate-300/84">{tool.benefit}</p>
           </div>
 
-          <div className="ui-inner-panel mt-3 min-w-0 p-4 sm:mt-5">
+          <div className="ui-inner-panel mt-3 hidden min-w-0 p-4 sm:mt-5 sm:block">
             <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Deciply notu</p>
             <p className="mobile-clamp-2 mt-2 text-[15px] leading-relaxed text-slate-200/88">{tool.editorNote}</p>
           </div>
 
           {tool.notIdealFor ? (
-            <div className="mt-4 rounded-[20px] border border-white/10 bg-white/[0.03] px-4 py-3">
+            <div className="mt-4 hidden rounded-[20px] border border-white/10 bg-white/[0.03] px-4 py-3 sm:block">
               <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{notIdealLabel}</p>
               <p className="mt-2 text-sm leading-6 text-slate-300/88">{tool.notIdealFor}</p>
             </div>
@@ -127,15 +127,4 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
     </motion.div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
 
