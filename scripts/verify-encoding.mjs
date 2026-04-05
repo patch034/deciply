@@ -1,6 +1,6 @@
 ﻿import fs from "node:fs";
 import path from "node:path";
-import { repairSuspiciousEncoding, walkContentFiles, writeUtf8File, turkishSentinel } from "./encoding-guard.mjs";
+import { repairSuspiciousEncoding, walkContentFiles, writeUtf8File, turkishSentinel, hasTurkishAsciiFallback, hasSuspiciousEncoding } from "./encoding-guard.mjs";
 import { findTurkishEncodingIssues, repairTurkishAsciiFallback } from "./turkish-repair.mjs";
 
 function repairContentText(value) {
@@ -10,6 +10,11 @@ function repairContentText(value) {
 const root = process.cwd();
 const fixMode = process.argv.includes("--fix");
 const files = walkContentFiles(root);
+const blogValidationFiles = new Set([
+  "src/data/blog.ts",
+  "src/data/blog-generated.ts",
+  "src/data/blog-generated-seo.ts"
+]);
 const changedFiles = [];
 const unresolvedIssues = [];
 for (const file of files) {
@@ -21,6 +26,13 @@ for (const file of files) {
 
   if (remainingIssues.length) {
     unresolvedIssues.push({ file: relativeFile, issues: remainingIssues });
+  }
+
+  if (blogValidationFiles.has(relativeFile) && (hasSuspiciousEncoding(original) || hasTurkishAsciiFallback(original))) {
+    unresolvedIssues.push({
+      file: relativeFile,
+      issues: ["blog-specific Turkish encoding fallback detected"]
+    });
   }
 
   if (repaired !== original) {
@@ -60,4 +72,4 @@ if (changedFiles.length) {
 
 if (!changedFiles.length) {
   console.log("[encoding] No suspicious encoding found.");
-}
+}
