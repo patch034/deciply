@@ -29,11 +29,11 @@ function getQuickLinks(locale: Locale) {
       href: buildAlternativesPath(locale, "chatgpt")
     },
     {
-      label: locale === "tr" ? "��renciler i�in ara�lar" : "Tools for students",
+      label: locale === "tr" ? "Öğrenciler için araçlar" : "Tools for students",
       href: buildUseCasePath(locale, "students")
     },
     {
-      label: locale === "tr" ? "Edit�r se�imleri" : "Editor picks",
+      label: locale === "tr" ? "Editör seçimleri" : "Editor picks",
       href: `/${locale}#editor-picks`
     }
   ];
@@ -141,7 +141,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
               >
                 <span>{content.starterHint}</span>
                 <Link href={`/${locale}${content.starterHintHref}`} className="inline-flex items-center gap-2 font-semibold text-cyan-100 transition duration-200 hover:text-cyan-50">
-                  <span aria-hidden="true">�</span>
+                  <span aria-hidden="true">→</span>
                   <span>{content.starterHintLabel}</span>
                 </Link>
               </motion.div>

@@ -83,14 +83,14 @@ export default async function BlogPage({
         title={safeLocale === "tr" ? "Bu hafta öne çıkan rehberler" : "This week's featured guides"}
         description={
           safeLocale === "tr"
-            ? "Edit�r se�imleri, en çok okunanlar ve yeni yayınlanan rehberler tek blokta."
+            ? "Editör seçimleri, en çok okunanlar ve yeni yayınlanan rehberler tek blokta."
             : "Editor picks, most-read articles, and the newest guides in one premium block."
         }
         actions={<PremiumButton href={`/${safeLocale}/blog`}>{copy.backToBlog}</PremiumButton>}
       >
         <div className="grid gap-6 xl:grid-cols-3">
           {([
-            { label: safeLocale === "tr" ? "Edit�r se�imleri" : "Editor's Picks", article: boostSections.editorPicks[0] },
+            { label: safeLocale === "tr" ? "Editör seçimleri" : "Editor's Picks", article: boostSections.editorPicks[0] },
             { label: safeLocale === "tr" ? "Bu hafta en çok okunan" : "Most Read This Week", article: boostSections.mostRead[0] },
             { label: safeLocale === "tr" ? "Bu hafta yeni" : "New This Week", article: boostSections.newThisWeek[0] }
           ] as const).map((block) =>
@@ -166,11 +166,11 @@ export default async function BlogPage({
                 href={buildBlogPageHref(safeLocale, currentPage + 1)}
                 className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/18 hover:bg-cyan-400/8 hover:text-cyan-100"
               >
-                {`${copy.nextPage} �`}
+                {`${copy.nextPage} →`}
               </Link>
             ) : (
               <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-400/70">
-                {`${copy.nextPage} �`}
+                {`${copy.nextPage} →`}
               </span>
             )}
           </nav>
