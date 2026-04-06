@@ -19,6 +19,8 @@ export const FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS = ["chatgpt", "claude", "gemi
 export const FEATURED_TRIPLE_COMPARISON_SLUG = FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.join("-vs-");
 export const SPECIAL_TEAM_COMPARISON_SLUG = "cursor-vs-codeium-for-teams";
 const SPECIAL_TEAM_COMPARISON_PAIR = { leftSlug: "cursor", rightSlug: "codeium" } as const;
+export const SPECIAL_FREELANCER_COMPARISON_SLUG = "chatgpt-vs-jasper-for-freelancers";
+const SPECIAL_FREELANCER_COMPARISON_PAIR = { leftSlug: "chatgpt", rightSlug: "jasper" } as const;
 const MANUAL_COMPARISON_PAIR_TOOL_SLUGS = [
   ["cursor", "replit"],
   ["leonardo-ai", "recraft"],
@@ -60,6 +62,11 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "best-ai-tools-for-content-teams-2026",
     "best-ai-tools-for-agencies-2026",
     "how-ai-tools-are-changing-ecommerce-in-2026"
+  ],
+  "chatgpt-vs-jasper": [
+    "best-ai-tools-to-make-money-online-2026",
+    "best-ai-tools-for-freelancers-and-solo-founders-2026",
+    "best-ai-tools-for-agency-delivery-2026"
   ],
   "claude-vs-gemini": [
     "best-ai-tools-for-students-projects-2026",
@@ -218,6 +225,7 @@ export function areComparableTools(left: ComparableToolLike, right: ComparableTo
 const COMPARE_SLUG_ALIASES: Record<string, string> = {
   "cursor-vs-codeium": SPECIAL_TEAM_COMPARISON_SLUG,
   "codeium-vs-cursor": SPECIAL_TEAM_COMPARISON_SLUG,
+  "chatgpt-vs-jasper": SPECIAL_FREELANCER_COMPARISON_SLUG,
   "adobe-firefly-vs-midjourney": "midjourney-vs-adobe-express",
   "midjourney-vs-adobe-firefly": "midjourney-vs-adobe-express",
   "recraft-vs-midjourney": "midjourney-vs-recraft",
@@ -233,6 +241,10 @@ export function parseComparisonPairSlug(pair: string) {
 
   if (normalizedPair === SPECIAL_TEAM_COMPARISON_SLUG) {
     return SPECIAL_TEAM_COMPARISON_PAIR;
+  }
+
+  if (normalizedPair === SPECIAL_FREELANCER_COMPARISON_SLUG) {
+    return SPECIAL_FREELANCER_COMPARISON_PAIR;
   }
 
   const [leftSlug, rightSlug] = normalizedPair.split("-vs-");
@@ -393,6 +405,10 @@ export function getStaticComparisonPairSlugs() {
     pairs.push(SPECIAL_TEAM_COMPARISON_SLUG);
   }
 
+  if (!pairs.includes(SPECIAL_FREELANCER_COMPARISON_SLUG)) {
+    pairs.push(SPECIAL_FREELANCER_COMPARISON_SLUG);
+  }
+
   for (const slug of getManualComparisonPairSlugs()) {
     if (!pairs.includes(slug)) {
       pairs.push(slug);
@@ -408,6 +424,7 @@ const HIGH_INTENT_COMPARISON_DIRECTORY_SLUGS = [
   'chatgpt-vs-gemini',
   'claude-vs-gemini',
   'chatgpt-vs-perplexity',
+  'chatgpt-vs-jasper',
   'perplexity-vs-gemini',
   'github-copilot-vs-codeium',
   'codeium-vs-cursor',
@@ -536,6 +553,15 @@ export function getComparisonToolsFromPair(locale: Locale, pair: string) {
       rightTool,
       canonicalPairSlug: SPECIAL_TEAM_COMPARISON_SLUG,
       isCanonical: true
+    };
+  }
+
+  if (pair === SPECIAL_FREELANCER_COMPARISON_SLUG || pair === "chatgpt-vs-jasper") {
+    return {
+      leftTool,
+      rightTool,
+      canonicalPairSlug: SPECIAL_FREELANCER_COMPARISON_SLUG,
+      isCanonical: pair === SPECIAL_FREELANCER_COMPARISON_SLUG
     };
   }
 

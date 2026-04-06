@@ -1,4 +1,4 @@
-import { tools } from "@/data/tools";
+﻿import { tools } from "@/data/tools";
 import { useCaseOptions } from "@/data/tool-taxonomy";
 import { buildComparisonPath } from "@/lib/comparisons";
 import { buildAlternativesPath } from "@/lib/intent-pages";
@@ -81,6 +81,7 @@ type ArticleSeed = {
   workflow: Record<Locale, [string, string, string]>;
   caution: Record<Locale, string>;
   nextStep: Record<Locale, string>;
+  extraSections?: Partial<Record<Locale, BlogSection[]>>;
 };
 
 function getTool(locale: Locale, slug: string): ToolSnapshot {
@@ -133,6 +134,7 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
   const alternativeLinks = seed.toolSlugs.slice(0, 2).map((slug) => alternativeLink(locale, slug));
   const useCasePage = seed.useCasePageSlug ? buildUseCaseLink(locale, seed.useCasePageSlug) : null;
   const firstPair = buildFirstPairLabel(locale, seed);
+  const extraSections = seed.extraSections?.[locale] ?? [];
 
   const title = seed.title?.[locale] ?? (locale === "tr"
     ? `${topicLabel} için en iyi AI araçları`
@@ -311,8 +313,480 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
           )
         }
       )
-    ]
+    , ...extraSections]
   };
+}
+
+function buildMoneyMakerExtras(locale: Locale): BlogSection[] {
+  if (locale === "tr") {
+    return [
+      section(
+        "Hangi gelir modeli hangi araçlara daha yakın?",
+        [
+          "Freelance yazı, tasarım, kısa video, ecommerce ve içerik paketleri aynı araçları aynı şekilde kullanmaz. ChatGPT ve Claude ilk taslak, araştırma ve teklif metni tarafında daha rahat başlatma sağlar; Jasper satış tonu ve kampanya dili için daha net hissedebilir; Midjourney ve Canva AI görsel ürünleşme tarafını güçlendirir; CapCut AI ise kısa video teslimlerini hızlandırır.",
+          "Bu yüzden para kazanmaya giden yol, en güçlü aracı bulmaktan çok, en hızlı teslim akışını kurmaktan geçer. Araç seçimi, satılabilir çıktıyı azaltmadan ilk sürümü daha hızlı kuruyorsa doğrudur."
+        ],
+        {
+          comparison: {
+            title: "Para kazanma için hızlı eşleşmeler",
+            items: [
+              { label: "Freelance yazı", value: "ChatGPT / Claude / Jasper" },
+              { label: "Tasarım", value: "Midjourney / Canva AI" },
+              { label: "Kısa video", value: "CapCut AI" },
+              { label: "Satış metni", value: "Copy.ai" }
+            ]
+          },
+          subSections: [
+            sub(
+              "Freelance işlerde hızlı başlangıç",
+              [
+                `Teklif, brief özeti ve ilk teslim taslağı için ${toolLink(locale, "chatgpt")} veya ${toolLink(locale, "claude")} açmak çoğu freelancer için en düşük sürtünmeli başlangıçtır.`,
+                `${toolLink(locale, "jasper")} daha satış odaklı uzun formatlar için kullanışlı olabilir; özellikle yeniden paketlenebilir hizmetler üretirken tonu daha tutarlı tutar.`
+              ],
+              ["Teklif metni", "İlk taslak", "Müşteri brief'i"],
+              "ChatGPT vs Jasper",
+              "/tr/compare/chatgpt-vs-jasper-for-freelancers"
+            ),
+            sub(
+              "Tasarım ve görsel paketleme",
+              [
+                `${toolLink(locale, "midjourney")} yaratıcı yönü, ${toolLink(locale, "canva-ai")} ise hızlı teslim ve düzenli paketleme tarafını güçlendirir.`,
+                "Aynı işi iki araçla birlikte yapmak, tek araçtan mucize beklemekten daha gerçekçi bir para kazanma hattı kurar."
+              ],
+              ["Görsel teklif", "Mini sosyal paket", "Ürün kreatifi"],
+              "Midjourney'yi incele",
+              "/tr/tools/midjourney"
+            ),
+            sub(
+              "Kısa video ve sosyal teslim",
+              [
+                `${toolLink(locale, "capcut-ai")} kısa video kurgusu, altyazı ve hızlı revizyon akışında iyi bir yardımcı olabilir.`,
+                `Bu, özellikle sosyal medya yöneticileri ve creator'lar için daha az zaman harcayarak daha fazla teslim üretme fırsatı yaratır.`
+              ],
+              ["Altyazı", "Hızlı kurgu", "Kısa video"],
+              "CapCut AI'yi aç",
+              "/tr/tools/capcut-ai"
+            )
+          ]
+        }
+      ),
+      section(
+        "İlk 100 dolar için gerçekçi workflow",
+        [
+          "En hızlı ilk gelir çoğu zaman küçük ama net bir hizmet paketinden gelir. Bu paket, örneğin 5 ürün açıklaması, 10 sosyal medya başlığı, 1 teklif metni, 1 mini araştırma özeti ya da 1 kısa video fikri olabilir. Müşteri için satın alınabilir bir çıktı olduğunda AI'nin hızı doğrudan gelir değerine dönüşür.",
+          "Bu akışta ChatGPT ya da Claude ile ilk taslağı çıkarıp, Jasper veya Copy.ai ile daha satış odaklı versiyon üretmek, sonra Midjourney ve Canva AI ile görsel katmanı kurmak iyi çalışır. CapCut AI ise video tarafında paketi tamamlayan son adım olabilir."
+        ],
+        {
+          bullets: ["Tek bir mikro hizmet seç", "İlk taslağı AI ile çıkar", "İnsan düzenlemesiyle markalaştır", "Hızlı teslim için tekrar kullanılabilir şablon kur"],
+          subSections: [
+            sub(
+              "İçerik paketi",
+              [
+                `Blog, landing page ve e-posta taslakları için ${toolLink(locale, "chatgpt")}, ${toolLink(locale, "claude")} ve ${toolLink(locale, "copy-ai")} üçlüsü iyi bir hız kazandırır.`,
+                "Bunu müşteri dili, SEO sinyali ve teslim formatı ile birlikte kullandığında ilk paketini daha rahat satarsın."
+              ],
+              ["Blog taslağı", "Landing page", "E-posta seti"],
+              "İçerik araçlarını aç",
+              "/tr/tools/chatgpt"
+            ),
+            sub(
+              "Görsel ürün paketi",
+              [
+                `${toolLink(locale, "midjourney")} ile yaratıcı görsel üret, ardından ${toolLink(locale, "canva-ai")} ile ölçülere ve marka çizgisine uydur.`,
+                "Bu yaklaşım, bir tasarım fikrini doğrudan teslim edilebilir pakete dönüştürür."
+              ],
+              ["Görsel set", "Sosyal post", "Kapak tasarımı"],
+              "Görsel araçları aç",
+              "/tr/tools/canva-ai"
+            ),
+            sub(
+              "Video paketi",
+              [
+                `${toolLink(locale, "capcut-ai")} kısa video teslimlerinde zaman kazandırır; özellikle başlangıç seviyesi kısa içerik paketlerinde pratik bir ikinci adım olabilir.`,
+                `Teklifin video içeriyorsa, fikirden taslağa geçişin hızlı olması müşteri algısını güçlendirir.`
+              ],
+              ["Kısa video", "Altyazı", "Ritim kontrolü"],
+              "Video araçlarını aç",
+              "/tr/tools/capcut-ai"
+            )
+          ]
+        }
+      ),
+      section(
+        "Karar net değilse hangi sayfalar açılmalı?",
+        [
+          `En hızlı sonraki adım ${compareLink(locale, "chatgpt", "jasper")}, ${compareLink(locale, "chatgpt", "claude")} ve ${toolLink(locale, "canva-ai")} gibi sayfaları birlikte incelemek olabilir.`,
+          `Daha geniş bağlam için ${blogLink(locale, "best-ai-tools-for-freelancers-and-solo-founders-2026")} ve ${blogLink(locale, "best-ai-tools-for-small-businesses-2026")} rehberleri de bu konuya iyi eşlik eder.`
+        ],
+        {
+          subSections: [
+            sub(
+              "Sonraki tıklamalar",
+              [
+                `Freelancer olsan da, solo founder olsan da, ilk açık sayfa çoğu zaman ${blogLink(locale, "best-ai-tools-for-freelancers-and-solo-founders-2026")} olur.`,
+                `Eğer gelir modeli daha küçük ekip odaklıysa ${blogLink(locale, "best-ai-tools-for-small-businesses-2026")} da faydalı olur.`
+              ],
+              ["Freelancer rehberi", "Small business rehberi", "Karşılaştırma sayfası"],
+              "Freelancer rehberine git",
+              "/tr/blog/best-ai-tools-for-freelancers-and-solo-founders-2026"
+            )
+          ]
+        }
+      )
+    ];
+  }
+
+  return [
+    section(
+      "Which income model fits which tool?",
+      [
+        `Freelance writing, design, short-form video, ecommerce, and content packages do not use the same tools in the same way. ${toolLink(locale, "chatgpt")} and ${toolLink(locale, "claude")} are strong for first drafts, research, and proposal copy; ${toolLink(locale, "jasper")} can feel more sales-focused; ${toolLink(locale, "midjourney")} and ${toolLink(locale, "canva-ai")} help package the visual side; ${toolLink(locale, "capcut-ai")} speeds up short video delivery; and ${toolLink(locale, "copy-ai")} helps with concise conversion copy.`,
+        "The goal is not to force one tool into every job. The goal is to shorten the path from idea to a sellable deliverable without losing quality."
+      ],
+      {
+        comparison: {
+          title: "Fast money-match matrix",
+          items: [
+            { label: "Freelance writing", value: "ChatGPT / Claude / Jasper" },
+            { label: "Design", value: "Midjourney / Canva AI" },
+            { label: "Short video", value: "CapCut AI" },
+            { label: "Sales copy", value: "Copy.ai" }
+          ]
+        },
+        subSections: [
+          sub(
+            "Freelancing",
+            [
+              `For proposals, brief summaries, and first delivery drafts, ${toolLink(locale, "chatgpt")} or ${toolLink(locale, "claude")} usually creates the lowest-friction start.`,
+              `${toolLink(locale, "jasper")} is useful when you want a more sales-oriented long-form tone and a cleaner repeatable offer structure.`
+            ],
+            ["Proposal copy", "First draft", "Client brief"],
+            "ChatGPT vs Jasper",
+            "/en/compare/chatgpt-vs-jasper-for-freelancers"
+          ),
+          sub(
+            "Design and visual packaging",
+            [
+              `${toolLink(locale, "midjourney")} strengthens the creative side, while ${toolLink(locale, "canva-ai")} is better when you want a faster delivery layer and a more organized output format.`,
+              "Using two tools together is often more realistic than waiting for one app to solve every visual task."
+            ],
+            ["Visual offer", "Mini social pack", "Product creative"],
+            "Open Midjourney",
+            "/en/tools/midjourney"
+          ),
+          sub(
+            "Short video and social delivery",
+            [
+              `${toolLink(locale, "capcut-ai")} helps with short video edits, captions, and quick revisions.`,
+              "That can be especially useful for creators and social media managers who need to ship more outputs with less time on each item."
+            ],
+            ["Captions", "Quick edits", "Short video"],
+            "Open CapCut AI",
+            "/en/tools/capcut-ai"
+          )
+        ]
+      }
+    ),
+    section(
+      "A realistic first $100 workflow",
+      [
+        "The fastest first income usually comes from a smaller but clearly defined service package. That could be 5 product descriptions, 10 social captions, one proposal, one research summary, or one short video concept. When a deliverable is easy to understand, AI speed turns into actual revenue potential.",
+        `In practice, you can draft with ${toolLink(locale, "chatgpt")} or ${toolLink(locale, "claude")}, refine the sales angle with ${toolLink(locale, "jasper")} or ${toolLink(locale, "copy-ai")}, then package the visual layer with ${toolLink(locale, "midjourney")} and ${toolLink(locale, "canva-ai")}. ${toolLink(locale, "capcut-ai")} can finish the video side of the offer.`
+      ],
+      {
+        bullets: ["Pick one micro-service", "Create the first draft with AI", "Edit for brand voice", "Build reusable templates for faster delivery"],
+        subSections: [
+          sub(
+            "Content package",
+            [
+              `For blog, landing page, and email drafts, ${toolLink(locale, "chatgpt")}, ${toolLink(locale, "claude")}, and ${toolLink(locale, "copy-ai")} form a practical speed stack.`,
+              "That stack works best when you also control the brief, the audience, and the deliverable format."
+            ],
+            ["Blog draft", "Landing page", "Email set"],
+            "Open content tools",
+            "/en/tools/chatgpt"
+          ),
+          sub(
+            "Visual product pack",
+            [
+              `Use ${toolLink(locale, "midjourney")} for creative visuals, then align them with ${toolLink(locale, "canva-ai")} so the result fits your brand and size requirements.`,
+              "That is how a rough visual idea becomes a deliverable you can actually sell."
+            ],
+            ["Visual set", "Social post", "Cover design"],
+            "Open visual tools",
+            "/en/tools/canva-ai"
+          ),
+          sub(
+            "Video pack",
+            [
+              `${toolLink(locale, "capcut-ai")} saves time on short video delivery, especially when you are building beginner-friendly content offers.`,
+              "If your offer includes video, fast concept-to-draft turnaround usually improves client confidence."
+            ],
+            ["Short video", "Captions", "Rhythm check"],
+            "Open video tools",
+            "/en/tools/capcut-ai"
+          )
+        ]
+      }
+    ),
+    section(
+      "If the decision is still open, open these pages next",
+      [
+        `A sensible next click is to review ${compareLink(locale, "chatgpt", "jasper")}, ${compareLink(locale, "chatgpt", "claude")}, and ${toolLink(locale, "canva-ai")} together.`,
+        `For wider context, the guides on ${blogLink(locale, "best-ai-tools-for-freelancers-and-solo-founders-2026")} and ${blogLink(locale, "best-ai-tools-for-small-businesses-2026")} fit this topic well.`
+      ],
+      {
+        subSections: [
+          sub(
+            "Next clicks",
+            [
+              `If you want a more personal income stack, start with ${blogLink(locale, "best-ai-tools-for-freelancers-and-solo-founders-2026")}.`,
+              `If the income path is closer to a small team, ${blogLink(locale, "best-ai-tools-for-small-businesses-2026")} gives a stronger broader view.`
+            ],
+            ["Freelancer guide", "Small business guide", "Comparison page"],
+            "Go to freelancer guide",
+            "/en/blog/best-ai-tools-for-freelancers-and-solo-founders-2026"
+          )
+        ]
+      }
+    )
+  ];
+}
+
+function buildFreelancerExtras(locale: Locale): BlogSection[] {
+  if (locale === "tr") {
+    return [
+      section(
+        "Hangi iş akışı hangi araca daha yakın?",
+        [
+          `Freelancer ve solo founder işleri çoğu zaman yazı, client iletişimi, teklif hazırlama, basit tasarım, araştırma ve otomasyon arasında bölünür. ${toolLink(locale, "chatgpt")}, ${toolLink(locale, "claude")}, ${toolLink(locale, "notion-ai")}, ${toolLink(locale, "canva-ai")}, ${toolLink(locale, "jasper")}, ${toolLink(locale, "grammarly")} ve ${toolLink(locale, "zapier")} bu alanların her birinde farklı bir sürtünmeyi azaltır.`,
+          "En iyi stack, tek bir aracın her şeyi iyi yapması değil; her adımın daha kısa, daha net ve daha güvenilir hale gelmesidir."
+        ],
+        {
+          comparison: {
+            title: "Workflow eşleşmeleri",
+            items: [
+              { label: "Yazı", value: "ChatGPT / Claude / Jasper" },
+              { label: "İletişim", value: "ChatGPT / Grammarly" },
+              { label: "Araştırma", value: "Claude / Notion AI" },
+              { label: "Otomasyon", value: "Zapier" }
+            ]
+          },
+          subSections: [
+            sub(
+              "Yazı ve teslim metni",
+              [
+                `İlk taslak ve ton kontrolü için ${toolLink(locale, "chatgpt")} ve ${toolLink(locale, "claude")} genelde en kolay başlangıçtır.`,
+                `${toolLink(locale, "jasper")} daha satış odaklı içeriklerde, özellikle teklif ve landing page tarafında, daha ürünleşmiş bir his verebilir.`
+              ],
+              ["Blog taslağı", "Teklif metni", "Landing page"],
+              "ChatGPT vs Claude",
+              "/tr/compare/chatgpt-vs-claude"
+            ),
+            sub(
+              "Client communication",
+              [
+                `${toolLink(locale, "grammarly")} kısa yanıtlar, netlik ve dil kontrolü için pratik bir katman oluşturur.`,
+                `Müşteriye giden metinlerde küçük ton iyileştirmeleri bile teslim hissini belirgin şekilde iyileştirebilir.`
+              ],
+              ["Mail taslağı", "Ton kontrolü", "Revizyon azaltma"],
+              "Grammarly'yi incele",
+              "/tr/tools/grammarly"
+            ),
+            sub(
+              "Araştırma ve planlama",
+              [
+                `${toolLink(locale, "notion-ai")} proje notları, fikir toplama ve basit planlama adımlarında düzen sağlar.`,
+                `Bu katman, freelance işin sadece teslim kısmını değil, iş öncesi hazırlık tarafını da hızlandırır.`
+              ],
+              ["Brief", "Notlar", "Planlama"],
+              "Notion AI'yi incele",
+              "/tr/tools/notion-ai"
+            )
+          ]
+        }
+      ),
+      section(
+        "Önerilen stack under $50/month",
+        [
+          "Solo çalışan biri için en iyi paket, bütçeyi şişirmeden birbirini tamamlayan birkaç araçtan oluşur. 2026'da çoğu kullanıcı için bu paket, yazı için ChatGPT veya Claude, kısa düzenleme için Grammarly, görsel için Canva, planlama için Notion AI ve otomasyon için Zapier kombinasyonundan oluşabilir.",
+          "Bu tip bir stack, tek bir premium araca para bağlamadan da profesyonel kaliteye yaklaşmanızı sağlar. İyi sonuç, en pahalı araçtan değil, en düzenli sistemden gelir."
+        ],
+        {
+          bullets: ["Yazı için bir ana asistan seç", "Revizyon için bir dil aracı kullan", "Planlama notlarını tek yerde tut", "Tekrarlayan işleri otomasyona bağla"],
+          subSections: [
+            sub(
+              "Lean stack",
+              [
+                `${toolLink(locale, "chatgpt")}, ${toolLink(locale, "canva-ai")} ve ${toolLink(locale, "grammarly")} gibi araçlar düşük bütçeyle güçlü bir başlangıç sağlar.`,
+                "Bu kurulum, erken aşama freelancer'lar için gereksiz araç kalabalığını azaltır."
+              ],
+              ["Düşük bütçe", "Hızlı başlangıç", "Revizyon desteği"],
+              "ChatGPT'yi aç",
+              "/tr/tools/chatgpt"
+            ),
+            sub(
+              "Quality stack",
+              [
+                `${toolLink(locale, "claude")}, ${toolLink(locale, "notion-ai")} ve ${toolLink(locale, "zapier")} birlikte kullanıldığında daha düzenli bir üretim hattı kurabilir.`,
+                "Bu kombinasyon, teslimat kalitesini ve tekrar edilebilirliği özellikle solo founder tarafında güçlendirir."
+              ],
+              ["İş akışı", "Otomasyon", "Kalite kontrol"],
+              "Zapier'i incele",
+              "/tr/tools/zapier"
+            ),
+            sub(
+              "Görsel destek",
+              [
+                `${toolLink(locale, "canva-ai")} görsel, sunum ve sosyal medya paketlerini kısa sürede toparlamak için iyi bir tamamlayıcıdır.`,
+                `Freelance teklifini görsel olarak daha düzenli göstermek de kapanış oranını etkileyebilir.`
+              ],
+              ["Görsel paket", "Sunum", "Sosyal medya"],
+              "Canva AI'yi aç",
+              "/tr/tools/canva-ai"
+            )
+          ]
+        }
+      ),
+      section(
+        "Karar hala net değilse sonraki adımlar",
+        [
+          `En kısa karşılaştırma hattı için ${compareLink(locale, "chatgpt", "claude")}, ${compareLink(locale, "chatgpt", "jasper")} ve ${toolLink(locale, "notion-ai")} birlikte açılabilir.`,
+          `Bu rehberi ${blogLink(locale, "best-ai-tools-to-make-money-online-2026")} ve ${blogLink(locale, "best-ai-tools-for-small-businesses-2026")} ile birlikte okumak karar kalitesini yükseltir.`
+        ],
+        {
+          subSections: [
+            sub(
+              "Sonraki tıklamalar",
+              [
+                `Daha çok gelir odaklı bir stack istiyorsan ${blogLink(locale, "best-ai-tools-to-make-money-online-2026")} iyi bir tamamlayıcıdır.`,
+                `Daha hafif operasyon ve destek odaklı düşünüyorsan ${blogLink(locale, "best-ai-tools-for-small-businesses-2026")} rehberini de aç.`
+              ],
+              ["Gelir rehberi", "Small business rehberi", "Freelancer stack"],
+              "Gelir rehberine git",
+              "/tr/blog/best-ai-tools-to-make-money-online-2026"
+            )
+          ]
+        }
+      )
+    ];
+  }
+
+  return [
+    section(
+      "Which workflow fits which tool?",
+      [
+        `Freelancer and solo founder work is usually split across writing, client communication, proposals, light design, research, and automation. ${toolLink(locale, "chatgpt")}, ${toolLink(locale, "claude")}, ${toolLink(locale, "notion-ai")}, ${toolLink(locale, "canva-ai")}, ${toolLink(locale, "jasper")}, ${toolLink(locale, "grammarly")}, and ${toolLink(locale, "zapier")} each reduce friction in a different part of that system.`,
+        "The best stack is not the one tool that does everything; it is the stack that shortens each step without making the workflow harder to maintain."
+      ],
+      {
+        comparison: {
+          title: "Workflow matches",
+          items: [
+            { label: "Writing", value: "ChatGPT / Claude / Jasper" },
+            { label: "Communication", value: "ChatGPT / Grammarly" },
+            { label: "Research", value: "Claude / Notion AI" },
+            { label: "Automation", value: "Zapier" }
+          ]
+        },
+        subSections: [
+          sub(
+            "Writing and delivery copy",
+            [
+              `For first drafts and tone control, ${toolLink(locale, "chatgpt")} and ${toolLink(locale, "claude")} are usually the easiest starting point.`,
+              `${toolLink(locale, "jasper")} can feel more productized in sales-heavy copy, especially when you want proposals and landing pages to feel more polished.`
+            ],
+            ["Blog draft", "Proposal copy", "Landing page"],
+            "ChatGPT vs Claude",
+            "/en/compare/chatgpt-vs-claude"
+          ),
+          sub(
+            "Client communication",
+            [
+              `${toolLink(locale, "grammarly")} adds a practical layer for concise replies, clarity, and language checking.`,
+              "A small improvement in message tone can noticeably improve how professional a delivery feels to clients."
+            ],
+            ["Email draft", "Tone control", "Revision reduction"],
+            "Open Grammarly",
+            "/en/tools/grammarly"
+          ),
+          sub(
+            "Research and planning",
+            [
+              `${toolLink(locale, "notion-ai")} keeps project notes, ideation, and simple planning steps organized.`,
+              "That layer speeds up not only the deliverable itself, but also the prep work that happens before it."
+            ],
+            ["Brief", "Notes", "Planning"],
+            "Open Notion AI",
+            "/en/tools/notion-ai"
+          )
+        ]
+      }
+    ),
+    section(
+      "A recommended stack under $50/month",
+      [
+        "For a solo operator, the best package is usually a small set of tools that complement one another rather than a long list of subscriptions. In 2026, a practical setup for many users looks like a writing assistant for drafts, a language tool for editing, a visual tool for packaging, a planning tool for notes, and an automation layer for repetitive tasks.",
+        "That approach gives you a professional-looking stack without overcommitting to a premium app for every step. The real gain comes from repeatability and a cleaner workflow, not from the most expensive subscription."
+      ],
+      {
+        bullets: ["Choose one main writing assistant", "Use one editing layer", "Keep planning notes in one place", "Automate repetitive work where it actually repeats"],
+        subSections: [
+          sub(
+            "Lean stack",
+            [
+              `${toolLink(locale, "chatgpt")}, ${toolLink(locale, "canva-ai")}, and ${toolLink(locale, "grammarly")} create a low-cost but strong baseline.`,
+              "That setup is often enough for early-stage freelancers who need to move quickly without bloating the budget."
+            ],
+            ["Low budget", "Fast start", "Revision support"],
+            "Open ChatGPT",
+            "/en/tools/chatgpt"
+          ),
+          sub(
+            "Quality stack",
+            [
+              `${toolLink(locale, "claude")}, ${toolLink(locale, "notion-ai")}, and ${toolLink(locale, "zapier")} can build a more organized production line.`,
+              "This combination often improves consistency and repeatability, especially when solo founders start handling more client work." 
+            ],
+            ["Workflow", "Automation", "Quality control"],
+            "Open Zapier",
+            "/en/tools/zapier"
+          ),
+          sub(
+            "Visual support",
+            [
+              `${toolLink(locale, "canva-ai")} is a useful companion when you need to package visuals, slides, or social assets quickly.`,
+              "A cleaner visual offer can also make a freelance proposal easier to close."
+            ],
+            ["Visual pack", "Slides", "Social media"],
+            "Open Canva AI",
+            "/en/tools/canva-ai"
+          )
+        ]
+      }
+    ),
+    section(
+      "If the decision is still open, open these pages next",
+      [
+        `A practical next step is to compare ${compareLink(locale, "chatgpt", "claude")}, ${compareLink(locale, "chatgpt", "jasper")}, and ${toolLink(locale, "notion-ai")} side by side.`,
+        `For wider context, the guides on ${blogLink(locale, "best-ai-tools-to-make-money-online-2026")} and ${blogLink(locale, "best-ai-tools-for-small-businesses-2026")} also fit this topic well.`
+      ],
+      {
+        subSections: [
+          sub(
+            "Next clicks",
+            [
+              `If you want a more income-first stack, start with ${blogLink(locale, "best-ai-tools-to-make-money-online-2026")}.`,
+              `If the work is closer to a small team or solo business, ${blogLink(locale, "best-ai-tools-for-small-businesses-2026")} adds a broader view.`
+            ],
+            ["Money guide", "Small business guide", "Comparison page"],
+            "Go to money guide",
+            "/en/blog/best-ai-tools-to-make-money-online-2026"
+          )
+        ]
+      }
+    )
+  ];
 }
 
 function buildArticle(seed: ArticleSeed): BlogEntry {
@@ -654,7 +1128,7 @@ const seeds: ArticleSeed[] = [
       en: "small businesses"
     },
     title: {
-      tr: "2026’da küçük işletmeler için en iyi AI araçları",
+      tr: "2026'da küçük işletmeler için en iyi AI araçları",
       en: "Best AI tools for small businesses in 2026"
     },
     excerpt: {
@@ -666,7 +1140,7 @@ const seeds: ArticleSeed[] = [
       en: "For small businesses, time is usually the biggest constraint. The right AI tool does more than generate text faster; it can simplify support messages, clarify product and service descriptions, reduce repetitive tasks with basic automation, and help the whole team work from the same brief. This guide is built to help smaller teams balance budget, speed, and quality with less guesswork."
     },
     seoTitle: {
-      tr: "2026’da küçük işletmeler için en iyi AI araçları | Deciply",
+      tr: "2026'da küçük işletmeler için en iyi AI araçları | Deciply",
       en: "Best AI tools for small businesses in 2026 | Deciply"
     },
     seoDescription: {
@@ -1230,7 +1704,128 @@ const seeds: ArticleSeed[] = [
       tr: "Karar net değilse ilgili compare sayfalarıyla yazı ve görsel araçlarını yan yana aç.",
       en: "If the decision is still open, use the related comparison pages to review writing and visual tools side by side."
     }
+  },
+  {
+    slug: "best-ai-tools-to-make-money-online-2026",
+    publishDate: "2026-04-07",
+    topic: {
+      tr: "internetten para kazanma",
+      en: "making money online"
+    },
+    title: {
+      tr: "2026'da internetten para kazanmak için en iyi AI araçları",
+      en: "Best AI tools to make money online in 2026"
+    },
+    excerpt: {
+      tr: "Freelancing, içerik, tasarım, ecommerce ve kısa video tarafında gelir üreten pratik AI araç rehberi.",
+      en: "A practical AI guide for generating income through freelancing, content, design, ecommerce, and short video."
+    },
+    intro: {
+      tr: "İnternetten para kazanmak isteyenler için asıl mesele, bir aracı ezberlemek değil, satılabilir bir akış kurmaktır. AI burada ilk taslağı hızlandırır, teklif metnini sadeleştirir, görsel üretimi düzenler ve kısa video ile içerik paketlerini daha hızlı teslim edilebilir hale getirir. Bu rehber, başlangıç seviyesinden gelir odaklı bir sisteme geçmek isteyenler için daha gerçekçi bir yol sunar.",
+      en: "For people who want to make money online, the real challenge is not memorizing one tool; it is building a sellable workflow. AI speeds up the first draft, simplifies proposal copy, organizes visual production, and makes short video and content packages easier to deliver. This guide gives beginners a more realistic path into an income-focused system."
+    },
+    seoTitle: {
+      tr: "2026'da internetten para kazanmak için en iyi AI araçları | Deciply",
+      en: "Best AI tools to make money online in 2026 | Deciply"
+    },
+    seoDescription: {
+      tr: "İnternetten para kazanmak için en iyi AI araçlarını, freelance kullanım yollarını, compare linklerini ve ilk gelir workflow'unu inceleyin.",
+      en: "Review the best AI tools to make money online, including freelance use cases, comparison links, and the first-income workflow."
+    },
+    categorySlug: "guides",
+    useCaseSlug: "freelancers",
+    useCasePageSlug: "freelancers",
+    toolSlugs: ["chatgpt", "claude", "jasper", "midjourney", "canva-ai", "capcut-ai", "copy-ai"],
+    comparePairs: [
+      { leftSlug: "chatgpt", rightSlug: "jasper" },
+      { leftSlug: "chatgpt", rightSlug: "claude" },
+      { leftSlug: "midjourney", rightSlug: "canva-ai" }
+    ],
+    relatedArticleSlugs: ["best-ai-tools-for-freelancers-and-solo-founders-2026", "best-ai-tools-for-small-businesses-2026", "best-ai-tools-for-agency-delivery-2026"],
+    keywords: ["making money online", "freelancing", "content writing", "design", "ecommerce", "video editing"],
+    audience: {
+      tr: "Başlangıç seviyesindeki kullanıcılar, freelancer'lar, yan gelir arayanlar, tek başına çalışan kurucular ve öğrenciler için uygundur.",
+      en: "This fits beginners, freelancers, side hustlers, solo founders, and students who want to build income streams."
+    },
+    workflow: {
+      tr: ["gelir modelini seç", "satılabilir teslim kalemini çıkar", "ilk taslağı ve görseli üret"],
+      en: ["pick an income model", "define a sellable deliverable", "produce the first draft and visual"]
+    },
+    caution: {
+      tr: "AI tek başına gelir üretmez; gelir, satılabilir bir hizmet veya ürün paketine dönüştürülen çıktılardan gelir.",
+      en: "AI does not create income by itself; income comes from turning outputs into sellable services or productized offers."
+    },
+    nextStep: {
+      tr: "En yakın karşılaştırma ChatGPT ile Jasper arasındaysa, önce o sayfayı aç ve ardından freelance rehberini incele.",
+      en: "If the closest comparison is ChatGPT vs Jasper, open that page first and then review the freelancer guide."
+    },
+    extraSections: {
+      tr: buildMoneyMakerExtras("tr"),
+      en: buildMoneyMakerExtras("en")
+    }
+  },
+  {
+    slug: "best-ai-tools-for-freelancers-and-solo-founders-2026",
+    publishDate: "2026-04-07",
+    topic: {
+      tr: "freelancer'lar ve solo kurucular",
+      en: "freelancers and solo founders"
+    },
+    title: {
+      tr: "2026'da freelancer'lar ve solo kurucular için en iyi AI araçları",
+      en: "Best AI tools for freelancers and solo founders (2026)"
+    },
+    excerpt: {
+      tr: "Zaman kazandıran, müşteri iletişimini sadeleştiren ve daha fazla iş teslim etmeyi kolaylaştıran premium AI araç rehberi.",
+      en: "A premium AI guide for saving time, simplifying client communication, and shipping more work as a solo operator."
+    },
+    intro: {
+      tr: "Freelancer ve solo kurucu olmak, aynı anda yazı yazmak, müşteriyle konuşmak, teklif hazırlamak, araştırma yapmak ve küçük otomasyonları yönetmek anlamına gelir. AI'nin gerçek değeri burada daha hızlı yazmak değil; aynı brief üzerinde daha az sürtünmeyle ilerleyebilmektir. Bu rehber, bir yandan kaliteyi korurken bir yandan daha fazla işi tek başına nasıl taşıyabileceğini gösterir.",
+      en: "Being a freelancer or solo founder means writing, communicating with clients, preparing proposals, researching, and managing small automations at the same time. The real value of AI here is not just writing faster; it is moving through the same brief with less friction. This guide shows how to carry more work alone while still keeping quality high."
+    },
+    seoTitle: {
+      tr: "2026'da freelancer'lar ve solo kurucular için en iyi AI araçları | Deciply",
+      en: "Best AI tools for freelancers and solo founders (2026) | Deciply"
+    },
+    seoDescription: {
+      tr: "Freelancer'lar ve solo kurucular için en iyi AI araçlarını, stack örneklerini, compare linklerini ve önerilen bütçe planını inceleyin.",
+      en: "Review the best AI tools for freelancers and solo founders, including stack examples, comparison links, and a recommended budget plan."
+    },
+    categorySlug: "guides",
+    useCaseSlug: "freelancers",
+    useCasePageSlug: "freelancers",
+    toolSlugs: ["chatgpt", "claude", "notion-ai", "canva-ai", "jasper", "grammarly", "zapier"],
+    comparePairs: [
+      { leftSlug: "chatgpt", rightSlug: "claude" },
+      { leftSlug: "chatgpt", rightSlug: "jasper" },
+      { leftSlug: "notion-ai", rightSlug: "chatgpt" }
+    ],
+    relatedArticleSlugs: ["best-ai-tools-to-make-money-online-2026", "best-ai-tools-for-small-businesses-2026", "best-ai-tools-for-agency-delivery-2026"],
+    keywords: ["freelancers", "solo founders", "client communication", "proposals", "research", "automation"],
+    audience: {
+      tr: "Freelancer'lar, ajans ekipleri, danışmanlar, solo girişimciler ve işini tek başına büyütmek isteyen kullanıcılar için uygundur.",
+      en: "This fits freelancers, agencies, consultants, solo entrepreneurs, and anyone trying to grow a business alone."
+    },
+    workflow: {
+      tr: ["briefi ve hedefi netleştir", "taslak ve yanıt akışını kur", "kontrol ve otomasyonu bağla"],
+      en: ["clarify the brief and goal", "set up draft and reply flows", "connect QA and automation"]
+    },
+    caution: {
+      tr: "Stack'in iyi olması, her adımda daha fazla araç kullanmak değil; daha az sürtünmeyle daha güvenilir teslim etmek anlamına gelir.",
+      en: "A good stack is not about using more tools at every step; it is about delivering more reliably with less friction."
+    },
+    nextStep: {
+      tr: "Karar ChatGPT ile Jasper arasında sıkışıyorsa, önce karşılaştırma sayfasını aç ve ardından ilk 50'lik stack'i kur.",
+      en: "If the decision is between ChatGPT and Jasper, open the comparison page first and then build the first $50 stack."
+    },
+    extraSections: {
+      tr: buildFreelancerExtras("tr"),
+      en: buildFreelancerExtras("en")
+    }
   }
+
 ];
 
 export const seoGeneratedBlogArticles: BlogEntry[] = seeds.map(buildArticle);
+
+

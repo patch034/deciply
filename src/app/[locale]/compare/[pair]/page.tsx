@@ -26,6 +26,7 @@ import {
   getComparisonToolsFromPair,
   getStaticComparisonPairSlugs,
   parseComparisonPairSlug,
+  SPECIAL_FREELANCER_COMPARISON_SLUG,
   SPECIAL_TEAM_COMPARISON_SLUG
 } from "@/lib/comparisons";
 import { getLocalizedBlogArticleBySlug } from "@/lib/blog";
@@ -133,6 +134,12 @@ function buildComparisonTitle(locale: Locale, leftTool: LocalizedTool, rightTool
       : `${leftTool.name} vs ${rightTool.name} for teams (2026)`;
   }
 
+  if (pair === SPECIAL_FREELANCER_COMPARISON_SLUG) {
+    return locale === "tr"
+      ? `Freelancerlar için ${leftTool.name} vs ${rightTool.name} karşılaştırması (2026)`
+      : `${leftTool.name} vs ${rightTool.name} for freelancers (2026)`;
+  }
+
   return locale === "tr"
     ? `${leftTool.name} vs ${rightTool.name} karşılaştırması (2026)`
     : `${leftTool.name} vs ${rightTool.name} Comparison (2026)`;
@@ -145,12 +152,24 @@ function buildComparisonDescription(locale: Locale, leftTool: LocalizedTool, rig
       : `Compare ${leftTool.name} and ${rightTool.name} through a team-focused workflow lens, including pricing and practical fit.`;
   }
 
+  if (pair === SPECIAL_FREELANCER_COMPARISON_SLUG) {
+    return locale === "tr"
+      ? `${leftTool.name} ve ${rightTool.name} için freelance iş, teklif, müşteri çalışması ve teslimat akışını birlikte değerlendirin.`
+      : `Compare ${leftTool.name} and ${rightTool.name} for freelance work, proposals, client delivery, and day-to-day monetization.`;
+  }
+
   return locale === "tr"
     ? `${leftTool.name} ve ${rightTool.name} için fiyat, güçlü yönler, sınırlamalar, kullanım senaryoları ve final verdict özetini inceleyin.`
     : `Compare ${leftTool.name} and ${rightTool.name} across pricing, strengths, limitations, best-fit workflows, and final verdict.`;
 }
 
-function buildHeroIntro(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool) {
+function buildHeroIntro(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool, pair?: string) {
+  if (pair === SPECIAL_FREELANCER_COMPARISON_SLUG) {
+    return locale === "tr"
+      ? `${leftTool.name} ve ${rightTool.name} arasındaki farkı freelance iş, teklif yazımı, müşteri teslimi ve gelir odaklı kullanım üzerinden değerlendirin.`
+      : `Evaluate ${leftTool.name} and ${rightTool.name} through freelance work, proposals, client delivery, and income-focused usage.`;
+  }
+
   return locale === "tr"
     ? `${leftTool.name} ve ${rightTool.name} arasındaki farkı iş akışı, fiyat, çıktı kalitesi ve hız üzerinden değerlendirin.`
     : `Evaluate ${leftTool.name} and ${rightTool.name} through workflow fit, pricing, output quality, and speed.`;
@@ -448,7 +467,7 @@ export default async function ComparisonPage({
               <h1 className="mt-6 bg-gradient-to-r from-white via-sky-200 to-cyan-300 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-[3.5rem] lg:leading-[1.03]">
                 {leftTool.name} vs {rightTool.name}
               </h1>
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{buildHeroIntro(safeLocale, leftTool, rightTool)}</p>
+              <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{buildHeroIntro(safeLocale, leftTool, rightTool, pair)}</p>
               <p className="mt-4 max-w-3xl text-base leading-8 text-slate-400">{dictionary.heroSummary}</p>
             </div>
 
