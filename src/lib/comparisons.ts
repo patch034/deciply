@@ -76,6 +76,11 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "best-ai-tools-for-small-businesses-2026",
     "best-ai-tools-for-agency-delivery-2026"
   ],
+  "midjourney-vs-recraft": [
+    "best-ai-tools-for-social-media-managers-2026",
+    "best-ai-tools-for-seo-teams-2026",
+    "best-ai-tools-for-small-business-owners-2026"
+  ],
   "codeium-vs-cursor": [
     "best-ai-tools-for-startups-2026",
     "best-ai-tools-for-agencies-2026",
@@ -412,6 +417,7 @@ const HIGH_INTENT_COMPARISON_DIRECTORY_SLUGS = [
   'cursor-vs-codeium-for-teams',
   'midjourney-vs-leonardo-ai',
   'midjourney-vs-dalle',
+  'midjourney-vs-recraft',
   'dalle-vs-leonardo-ai',
   'leonardo-ai-vs-recraft',
   'recraft-vs-midjourney',
@@ -420,6 +426,7 @@ const HIGH_INTENT_COMPARISON_DIRECTORY_SLUGS = [
   'grammarly-vs-quillbot',
   'grammarly-vs-deepl-write',
   'notion-ai-vs-chatgpt',
+  'jasper-vs-notion-ai',
   'jasper-vs-copy-ai',
   'shopify-magic-vs-copy-ai'
 ] as const;
