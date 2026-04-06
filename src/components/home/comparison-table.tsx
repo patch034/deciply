@@ -30,16 +30,16 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
         <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-slate-300/88 md:text-[1.05rem] md:leading-8">{description}</p>
       </div>
 
-      <div className="mt-10 hidden overflow-hidden rounded-[22px] border border-slate-700/60 bg-[linear-gradient(180deg,rgba(8,14,26,0.72),rgba(5,9,17,0.86))] md:block">
+      <div className="mt-10 hidden overflow-hidden rounded-[22px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(8,14,26,0.72),rgba(5,9,17,0.86))] md:block">
         <table className="min-w-full table-fixed divide-y divide-slate-700/60">
-          <thead className="bg-slate-950/60">
+          <thead className="bg-slate-950/50">
             <tr>
-              <th className="w-[24%] px-5 py-4 text-left text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{columns.tool}</th>
-              <th className="w-[18%] px-5 py-4 text-left text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{columns.bestFor}</th>
-              <th className="w-[14%] px-5 py-4 text-left text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{columns.price}</th>
-              <th className="w-[22%] px-5 py-4 text-left text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{columns.outcome}</th>
-              <th className="w-[10%] px-5 py-4 text-left text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{columns.rating}</th>
-              <th className="w-[12%] px-5 py-4 text-right text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{columns.action}</th>
+              <th className="w-[24%] px-5 py-4 text-left text-[11px] font-medium uppercase tracking-[0.16em] text-slate-400">{columns.tool}</th>
+              <th className="w-[18%] px-5 py-4 text-left text-[11px] font-medium uppercase tracking-[0.16em] text-slate-400">{columns.bestFor}</th>
+              <th className="w-[14%] px-5 py-4 text-left text-[11px] font-medium uppercase tracking-[0.16em] text-slate-400">{columns.price}</th>
+              <th className="w-[22%] px-5 py-4 text-left text-[11px] font-medium uppercase tracking-[0.16em] text-slate-400">{columns.outcome}</th>
+              <th className="w-[10%] px-5 py-4 text-left text-[11px] font-medium uppercase tracking-[0.16em] text-slate-400">{columns.rating}</th>
+              <th className="w-[12%] px-5 py-4 text-right text-[11px] font-medium uppercase tracking-[0.16em] text-slate-400">{columns.action}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-700/60 bg-transparent">
@@ -58,13 +58,13 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
                             <span className="inline-flex items-center rounded-full bg-cyan-400/12 px-2.5 py-1 text-[11px] font-semibold text-cyan-200">
                               {mostPopularLabel}
                             </span>
-                            <span className="inline-flex items-center rounded-full border border-slate-700/60 bg-slate-950/60 px-2.5 py-1 text-[11px] font-semibold text-slate-100">
+                            <span className="inline-flex items-center rounded-full border border-sky-400/10 bg-slate-950/50 px-2.5 py-1 text-[11px] font-semibold text-slate-100">
                               {editorChoiceLabel}
                             </span>
                           </>
                         ) : null}
                       </div>
-                      <p className="mt-1 truncate text-sm text-slate-500">{tool.category}</p>
+                      <p className="mt-1 truncate text-sm text-slate-400">{tool.category}</p>
                     </div>
                   </div>
                 </td>
@@ -99,7 +99,7 @@ export function ComparisonTable({ locale, tools, title, description, eyebrow, co
                     </span>
                   ) : null}
                 </div>
-                <p className="mt-1 truncate text-sm text-slate-500">{tool.category}</p>
+                <p className="mt-1 truncate text-sm text-slate-400">{tool.category}</p>
               </div>
             </div>
             <div className="mt-4 space-y-2.5 text-sm leading-6 text-slate-300">

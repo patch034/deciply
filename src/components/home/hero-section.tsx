@@ -29,11 +29,11 @@ function getQuickLinks(locale: Locale) {
       href: buildAlternativesPath(locale, "chatgpt")
     },
     {
-      label: locale === "tr" ? "Öğrenciler için araçlar" : "Tools for students",
+      label: locale === "tr" ? "��renciler i�in ara�lar" : "Tools for students",
       href: buildUseCasePath(locale, "students")
     },
     {
-      label: locale === "tr" ? "Editör seçimleri" : "Editor picks",
+      label: locale === "tr" ? "Edit�r se�imleri" : "Editor picks",
       href: `/${locale}#editor-picks`
     }
   ];
@@ -62,7 +62,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
       <GlassPanel className="relative overflow-hidden rounded-[32px] border-sky-400/10 bg-[linear-gradient(180deg,rgba(6,10,18,0.96),rgba(10,16,30,0.98))] px-4 py-4 shadow-[0_30px_90px_-58px_rgba(14,165,233,0.14)] sm:px-6 sm:py-5">
         <div className="absolute inset-x-12 top-0 h-36 rounded-full bg-sky-500/12 blur-3xl" />
         <div className="absolute -right-24 top-10 h-56 w-56 rounded-full bg-blue-400/10 blur-3xl" />
-        <div className="absolute left-20 bottom-0 h-28 w-28 rounded-full bg-fuchsia-500/10 blur-3xl" />
+        <div className="absolute left-20 bottom-0 h-28 w-28 rounded-full bg-cyan-500/10 blur-3xl" />
 
         <div className="relative grid gap-7 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-8">
           <div>
@@ -141,7 +141,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
               >
                 <span>{content.starterHint}</span>
                 <Link href={`/${locale}${content.starterHintHref}`} className="inline-flex items-center gap-2 font-semibold text-cyan-100 transition duration-200 hover:text-cyan-50">
-                  <span aria-hidden="true">›</span>
+                  <span aria-hidden="true">�</span>
                   <span>{content.starterHintLabel}</span>
                 </Link>
               </motion.div>

@@ -57,7 +57,7 @@ export function NewsletterForm({
             type="email"
             required
             placeholder={placeholder}
-            className="min-h-14 w-full min-w-0 flex-1 rounded-2xl border border-violet-400/14 bg-slate-950/55 px-4 text-base text-slate-50 outline-none transition placeholder:text-slate-300 focus:border-fuchsia-400/30 focus:bg-slate-950/60"
+            className="min-h-14 w-full min-w-0 flex-1 rounded-2xl border border-sky-400/10 bg-slate-950/50 px-4 text-base text-slate-50 outline-none transition placeholder:text-slate-300 focus:border-cyan-400/18 focus:bg-slate-950/50"
           />
           <PremiumButton type="submit" className="min-h-14 px-6">
             {buttonLabel}

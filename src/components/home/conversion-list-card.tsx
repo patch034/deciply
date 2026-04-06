@@ -30,7 +30,7 @@ export function ConversionListCard({ locale, item }: ConversionListCardProps) {
         </div>
 
         <div className="ui-inner-panel mt-4 min-w-0 p-4">
-          <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Kısa not</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-400">Kısa not</p>
           <p className="mobile-clamp-2 mt-2 text-[15px] leading-relaxed text-slate-200/86">{item.benefit}</p>
         </div>
 

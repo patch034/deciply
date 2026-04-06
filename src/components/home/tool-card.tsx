@@ -14,17 +14,17 @@ function getPricingSignal(pricing: string) {
 
   if (normalized.includes("free") || normalized.includes("ücretsiz")) {
     if (normalized.includes("freemium") || normalized.includes("kısmen")) {
-      return "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.45)]";
+      return "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.36)]";
     }
 
-    return "bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.45)]";
+    return "bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.36)]";
   }
 
   if (normalized.includes("freemium") || normalized.includes("kısmen")) {
-    return "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.45)]";
+    return "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.36)]";
   }
 
-  return "bg-rose-400 shadow-[0_0_10px_rgba(251,113,133,0.42)]";
+  return "bg-rose-400 shadow-[0_0_10px_rgba(251,113,133,0.32)]";
 }
 
 type ToolCardProps = {
@@ -45,7 +45,7 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
       <GlassPanel className="group ui-card ui-card-hover home-card-glow relative flex h-full flex-col justify-between overflow-hidden p-4 sm:p-6">
         <div className="flex min-h-[48px] flex-wrap items-center justify-between gap-3 overflow-hidden sm:min-h-[52px]">
           <div className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[var(--tn-gradient-primary)] text-sm font-bold uppercase tracking-[0.14em] text-white shadow-[0_14px_30px_-16px_rgba(59,130,246,0.42)]">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[var(--tn-gradient-primary)] text-sm font-bold uppercase tracking-[0.14em] text-white shadow-[0_14px_30px_-16px_rgba(37,99,235,0.34)]">
               {tool.icon}
             </div>
             <div className="min-w-0 flex-1">
@@ -82,19 +82,19 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
           </div>
 
           <div className="ui-inner-panel mt-3 min-w-0 p-4 sm:mt-5">
-            <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{bestForLabel}</p>
+            <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-400">{bestForLabel}</p>
             <p className="mt-2 truncate text-base font-semibold text-slate-100">{tool.bestFor}</p>
             <p className="mobile-clamp-2 mt-2 text-[15px] leading-relaxed text-slate-300/84">{tool.benefit}</p>
           </div>
 
           <div className="ui-inner-panel mt-3 hidden min-w-0 p-4 sm:mt-5 sm:block">
-            <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Deciply notu</p>
+            <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-400">Deciply notu</p>
             <p className="mobile-clamp-2 mt-2 text-[15px] leading-relaxed text-slate-200/88">{tool.editorNote}</p>
           </div>
 
           {tool.notIdealFor ? (
-            <div className="mt-4 hidden rounded-[20px] border border-sky-400/10 bg-slate-950/52 px-4 py-3 sm:block">
-              <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{notIdealLabel}</p>
+            <div className="mt-4 hidden rounded-[20px] border border-sky-400/10 bg-slate-950/50 px-4 py-3 sm:block">
+              <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-400">{notIdealLabel}</p>
               <p className="mt-2 text-sm leading-6 text-slate-300/88">{tool.notIdealFor}</p>
             </div>
           ) : null}
@@ -108,7 +108,7 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div className="min-w-0 shrink-0 pb-0.5">
-              <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">{ratingLabel}</p>
+              <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-400">{ratingLabel}</p>
               <RatingBadge rating={tool.rating} className="mt-1 w-fit" />
             </div>
             <div className="min-w-0 sm:ml-4 sm:flex sm:justify-end">

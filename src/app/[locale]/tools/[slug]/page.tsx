@@ -98,7 +98,7 @@ const copy: Record<Locale, DetailCopy> = {
     pricingLabel: "Fiyat",
     categoryLabel: "Kategori",
     heroTrustLine: "Dünya genelinde en çok kullanılan AI araçlarından biri",
-    heroPrimaryCta: "Ücretsiz Başla",
+    heroPrimaryCta: "�cretsiz Başla",
     overviewTitle: "Bu araç nedir?",
     overviewDescription: "Ne yaptığını ve neden önemli olduğunu kısa ve net biçimde görün.",
     useCasesTitle: "Öne çıkan kullanım alanları",
@@ -179,7 +179,7 @@ function getWhoShouldAvoid(locale: Locale, tool: LocalizedTool) {
   const items: string[] = [];
 
   if (tool.pricing === "PAID") {
-    items.push(locale === "tr" ? "Ücretsiz başlamak isteyen kullanıcılar" : "Users who want a free starting point");
+    items.push(locale === "tr" ? "�cretsiz başlamak isteyen kullanıcılar" : "Users who want a free starting point");
   }
 
   if (tool.toolCategorySlugs.includes("image")) {
@@ -602,13 +602,13 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
               href={outboundUrl}
               target="_blank"
               rel="nofollow sponsored noreferrer"
-              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 px-7 py-4 text-base font-semibold text-white shadow-[0_22px_60px_-24px_rgba(34,211,238,0.45)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_70px_-24px_rgba(56,189,248,0.52)] sm:w-auto"
+              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 px-7 py-4 text-base font-semibold text-white shadow-[0_22px_60px_-24px_rgba(34,211,238,0.45)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_70px_-24px_rgba(56,189,248,0.52)] sm:w-auto"
             >
               {dictionary.heroPrimaryCta}
             </a>
             <Link
               href={`/${safeLocale}/tools`}
-              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl border border-slate-700/60 px-6 py-4 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/30 hover:text-cyan-300 sm:w-auto"
+              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl border border-sky-400/10 px-6 py-4 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/18 hover:text-cyan-300 sm:w-auto"
             >
               {dictionary.secondaryCta}
             </Link>
@@ -616,19 +616,19 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </div>
 
         <div className="grid gap-6">
-          <aside className="rounded-[32px] border border-slate-700/60 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-[0_20px_70px_-40px_rgba(34,211,238,0.15)] md:p-8">
+          <aside className="rounded-[32px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-[0_20px_70px_-40px_rgba(34,211,238,0.15)] md:p-8">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{dictionary.quickInfoTitle}</p>
             <div className="mt-6 grid gap-4">
-              <div className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{dictionary.pricingLabel}</p>
+              <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{dictionary.pricingLabel}</p>
                 <p className="mt-2 text-sm font-semibold text-slate-100">{pricingValue}</p>
               </div>
-              <div className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{dictionary.categoryLabel}</p>
+              <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{dictionary.categoryLabel}</p>
                 <p className="mt-2 text-sm font-semibold text-slate-100">{quickCategory}</p>
               </div>
-              <div className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{dictionary.bestForLabel}</p>
+              <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{dictionary.bestForLabel}</p>
                 <p className="mt-2 text-sm font-semibold text-slate-100">{tool.bestUseCase}</p>
               </div>
             </div>
@@ -659,7 +659,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       <InfoSection id="karar-ozeti" title={decisionSummaryTitle} description={decisionSummaryDescription}>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {decisionSummaryCards.map((item) => (
-            <div key={item.title} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
+            <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{item.title}</p>
               <p className="mt-3 text-sm leading-7 text-slate-200">{item.value}</p>
             </div>
@@ -669,11 +669,11 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
 
       <InfoSection id="ozellikler" title={dictionary.overviewTitle} description={dictionary.overviewDescription}>
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-          <div className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-4 text-[15px] leading-7 text-slate-300 sm:p-5 sm:text-base">
+          <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 text-[15px] leading-7 text-slate-300 sm:p-5 sm:text-base">
             <p className="text-base font-semibold text-slate-100">{tool.whatItActuallyDoes}</p>
             <p className="mt-4">{tool.longDescription}</p>
           </div>
-          <div className="rounded-[24px] border border-cyan-400/15 bg-cyan-400/[0.06] p-4 text-sm leading-7 text-slate-300 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.18)] sm:p-5">
+          <div className="rounded-[24px] border border-cyan-400/15 bg-cyan-400/[0.06] p-4 text-sm leading-7 text-slate-300 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.14)] sm:p-5">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{dictionary.bestForLabel}</p>
             <p className="mt-3 text-base font-semibold text-slate-100">{tool.bestUseCase}</p>
             <p className="mt-4 text-sm leading-7 text-slate-300">{tool.whoShouldUseSummary}</p>
@@ -684,7 +684,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       <InfoSection title={dictionary.useCasesTitle} description={dictionary.useCasesDescription}>
         <div className="grid gap-4 md:grid-cols-3">
           {useCaseCards.map((item) => (
-            <div key={item.title} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
+            <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
               <p className="text-base font-semibold text-slate-100">{item.title}</p>
               <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
             </div>
@@ -702,7 +702,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       >
         <div className="grid gap-4 md:grid-cols-3">
           {pricingSummaryCards.map((item) => (
-            <div key={item.title} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
+            <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
               <p className="text-base font-semibold text-slate-100">{item.title}</p>
               <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
             </div>
@@ -712,7 +712,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       <InfoSection id="para-kazanma" title={dictionary.moneyTitle} description={dictionary.moneyDescription}>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {tool.moneyUseCases.map((item) => (
-            <div key={item.title} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
+            <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
               <p className="text-base font-semibold text-slate-100">{item.title}</p>
               <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
             </div>
@@ -729,20 +729,20 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         }
       >
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-          <div className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
+          <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)]">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">
               {safeLocale === "tr" ? "Gerçek senaryo" : "Real scenario"}
             </p>
             <p className="mt-3 text-xl font-semibold tracking-tight text-slate-100">{tool.realUseCaseExample.title}</p>
             <p className="mt-4 text-sm leading-7 text-slate-300">{tool.realUseCaseExample.description}</p>
           </div>
-          <div className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)]">
+          <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)]">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">
               {safeLocale === "tr" ? "Workflow akışı" : "Workflow steps"}
             </p>
             <div className="mt-4 grid gap-4">
               {howToUseSteps.map((step, index) => (
-                <div key={step.title} className="rounded-[20px] border border-slate-700/60 bg-black/10 p-4">
+                <div key={step.title} className="rounded-[20px] border border-sky-400/10 bg-black/10 p-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">0{index + 1}</p>
                   <p className="mt-2 text-base font-semibold text-slate-100">{step.title}</p>
                   <p className="mt-2 text-sm leading-7 text-slate-300">{step.description}</p>
@@ -755,7 +755,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       <InfoSection title={dictionary.howToUseTitle} description={dictionary.howToUseDescription}>
         <div className="grid gap-4 md:grid-cols-3">
           {howToUseSteps.map((step, index) => (
-            <div key={step.title} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
+            <div key={step.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">0{index + 1}</p>
               <p className="mt-3 text-base font-semibold text-slate-100">{step.title}</p>
               <p className="mt-3 text-sm leading-7 text-slate-300">{step.description}</p>
@@ -773,7 +773,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         <InfoSection id="kimler-icin" title={dictionary.whoShouldUseTitle} description={dictionary.whoShouldUseDescription}>
           <div className="grid gap-4 md:grid-cols-2">
             {audienceCards.map((item) => (
-              <div key={item.title} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
+              <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
                 <p className="text-base font-semibold text-slate-100">{item.title}</p>
                 <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
               </div>
@@ -781,7 +781,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
           </div>
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             {tool.whoShouldUse.map((item) => (
-              <div key={item} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
+              <div key={item} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
                 <p className="text-sm font-semibold text-slate-100">{item}</p>
               </div>
             ))}
@@ -791,7 +791,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         <InfoSection title={dictionary.whoShouldAvoidTitle} description={dictionary.whoShouldAvoidDescription}>
           <div className="grid gap-4 md:grid-cols-1">
             {whoShouldAvoid.map((item) => (
-              <div key={item} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-4 shadow-[0_16px_48px_-30px_rgba(34,211,238,0.12)] sm:p-5">
+              <div key={item} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
                 <p className="text-sm font-semibold text-slate-100">{item}</p>
               </div>
             ))}
@@ -827,7 +827,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         <div className="grid gap-4 md:grid-cols-3">
           <Link
             href={alternativesHubHref}
-            className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 text-sm font-semibold leading-7 text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300"
+            className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 text-sm font-semibold leading-7 text-slate-100 transition hover:border-cyan-400/18 hover:text-cyan-300"
           >
             {safeLocale === "tr" ? `${tool.name} alternatifleri` : `${tool.name} alternatives`}
           </Link>
@@ -835,7 +835,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
             <Link
               key={page.slug}
               href={buildUseCasePath(safeLocale, page.slug)}
-              className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 text-sm font-semibold leading-7 text-slate-100 transition hover:border-cyan-400/30 hover:text-cyan-300"
+              className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 text-sm font-semibold leading-7 text-slate-100 transition hover:border-cyan-400/18 hover:text-cyan-300"
             >
               {page.title}
             </Link>
@@ -895,7 +895,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         }
         items={faqItems}
       />
-      <section className="rounded-[36px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-5 py-8 text-white shadow-[0_28px_80px_-42px_rgba(34,211,238,0.22)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+      <section className="rounded-[36px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-5 py-8 text-white shadow-[0_28px_80px_-42px_rgba(14,165,233,0.14)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300/85">{dictionary.finalCtaEyebrow}</p>
@@ -908,7 +908,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
               href={outboundUrl}
               target="_blank"
               rel="nofollow sponsored noreferrer"
-              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 px-7 py-4 text-base font-semibold text-white shadow-[0_22px_60px_-24px_rgba(34,211,238,0.45)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_70px_-24px_rgba(56,189,248,0.52)] sm:w-auto"
+              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 px-7 py-4 text-base font-semibold text-white shadow-[0_22px_60px_-24px_rgba(34,211,238,0.45)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_70px_-24px_rgba(56,189,248,0.52)] sm:w-auto"
             >
               {dictionary.finalPrimaryCta}
             </a>

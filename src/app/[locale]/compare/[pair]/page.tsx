@@ -45,7 +45,7 @@ const copy = {
     bestForTitle: "Hangi araç kimler için daha uygun?",
     bestForDescription: "En iyi kullanım senaryosunu ve kullanıcı profilini hızlıca karşılaştırın.",
     pricingTitle: "Fiyat karşılaştırması",
-    pricingDescription: "Ücretsiz başlama imkanı, fiyat modeli ve ticari kullanım açısından farkları görün.",
+    pricingDescription: "�cretsiz başlama imkanı, fiyat modeli ve ticari kullanım açısından farkları görün.",
     strengthsTitle: "Güçlü yönler",
     strengthsDescription: "Her iki aracın öne çıktığı alanları ayrı ayrı değerlendirin.",
     limitationsTitle: "Sınırlamalar",
@@ -71,7 +71,7 @@ const copy = {
       limitations: "Sınırlamalar",
       realUseCase: "Gerçek kullanım örneği"
     },
-    pricingFreeStart: "Ücretsiz başlangıç",
+    pricingFreeStart: "�cretsiz başlangıç",
     pricingCommercial: "Ticari kullanım açısından",
     verdictLeftTitle: "Ne zaman bu araç daha mantıklı?",
     verdictRightTitle: "Ne zaman diğer araç daha mantıklı?"
@@ -355,7 +355,7 @@ export default async function ComparisonPage({
     },
     {
       eyebrow: safeLocale === "tr" ? "Fiyat sinyali" : "Pricing signal",
-      title: safeLocale === "tr" ? "Ücretsiz başlangıç mı, ücretli derinlik mi?" : "Free start or paid depth?",
+      title: safeLocale === "tr" ? "�cretsiz başlangıç mı, ücretli derinlik mi?" : "Free start or paid depth?",
       description:
         safeLocale === "tr"
           ? `Fiyat tarafında ${leftTool.name} ${formatPricing(leftTool.pricing, safeLocale)} ile, ${rightTool.name} ise ${formatPricing(rightTool.pricing, safeLocale)} ile öne çıkabilir.`
@@ -500,7 +500,7 @@ export default async function ComparisonPage({
         <InfoSection title={dictionary.bestForTitle} description={dictionary.bestForDescription}>
           <div className="grid gap-4 md:grid-cols-2">
             {[leftTool, rightTool].map((tool) => (
-              <div key={tool.slug} className="rounded-[24px] border border-sky-400/10 bg-slate-950/60 p-5 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)]">
+              <div key={tool.slug} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)]">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{tool.name}</p>
                 <h2 className="mt-3 text-xl font-semibold text-slate-100">{tool.bestUseCase}</h2>
                 <p className="mt-3 text-sm leading-7 text-slate-300">{tool.whoShouldUseSummary}</p>
@@ -515,24 +515,24 @@ export default async function ComparisonPage({
         </InfoSection>        <InfoSection id="fiyat" title={dictionary.pricingTitle} description={dictionary.pricingDescription}>
           <div className="grid gap-4 md:grid-cols-2">
             {[leftTool, rightTool].map((tool) => (
-              <div key={tool.slug} className="rounded-[24px] border border-sky-400/10 bg-slate-950/60 p-5 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)]">
+              <div key={tool.slug} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)]">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{tool.name}</p>
                 <p className="mt-3 text-lg font-semibold text-slate-100">{formatPricing(tool.pricing, safeLocale)}</p>
                 <div className="mt-4 grid gap-3">
-                  <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/40 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{dictionary.pricingFreeStart}</p>
+                  <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/45 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{dictionary.pricingFreeStart}</p>
                     <p className="mt-2 text-sm leading-7 text-slate-300">
                       {tool.pricing === "PAID"
                         ? safeLocale === "tr"
                           ? "Doğrudan ücretli giriş gerektirir."
                           : "Starts as a paid product."
                         : safeLocale === "tr"
-                          ? "Ücretsiz veya freemium giriş sunar."
+                          ? "�cretsiz veya freemium giriş sunar."
                           : "Offers a free or freemium starting point."}
                     </p>
                   </div>
-                  <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/40 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{dictionary.pricingCommercial}</p>
+                  <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/45 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{dictionary.pricingCommercial}</p>
                     <p className="mt-2 text-sm leading-7 text-slate-300">{tool.moneyUseCases[0]?.description ?? tool.realUseCaseExample.description}</p>
                   </div>
                 </div>
@@ -591,12 +591,12 @@ export default async function ComparisonPage({
           </div>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2">
-            <div className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5">
+            <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
               <p className="text-sm font-semibold text-slate-100">{leftTool.name}</p>
               <h3 className="mt-3 text-lg font-semibold text-slate-50">{dictionary.verdictLeftTitle}</h3>
               <p className="mt-3 text-sm leading-7 text-slate-300">{leftTool.realUseCaseExample.description}</p>
             </div>
-            <div className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5">
+            <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
               <p className="text-sm font-semibold text-slate-100">{rightTool.name}</p>
               <h3 className="mt-3 text-lg font-semibold text-slate-50">{dictionary.verdictRightTitle}</h3>
               <p className="mt-3 text-sm leading-7 text-slate-300">{rightTool.realUseCaseExample.description}</p>
@@ -667,7 +667,7 @@ export default async function ComparisonPage({
               const compareHref = buildComparisonPath(safeLocale, tool.slug, matchedTool.slug);
 
               return (
-                <div key={tool.slug} className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5">
+                <div key={tool.slug} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{tool.name}</p>
                   <h2 className="mt-3 text-xl font-semibold text-slate-100">{matchedTool.name} {safeLocale === "tr" ? "ile karşılaştır" : "comparison"}</h2>
                   <p className="mt-3 text-sm leading-7 text-slate-300">{safeLocale === "tr" ? "İlgili compare sayfasını açarak farklı kullanım ve fiyat sinyallerini yan yana görün." : "Open the related comparison page to review use-case and pricing signals side by side."}</p>
@@ -714,7 +714,7 @@ export default async function ComparisonPage({
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-5 transition hover:border-cyan-400/30 hover:bg-slate-950/72"
+                className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 transition hover:border-cyan-400/18 hover:bg-slate-950/72"
               >
                 <p className="text-sm font-semibold text-cyan-300">{item.label}</p>
                 <p className="mt-3 text-sm leading-7 text-slate-300">

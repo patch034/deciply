@@ -33,7 +33,7 @@ export function RelatedComparisonCard({ locale, title, description, href, ctaLab
   const normalizedHref = normalizeComparisonHref(locale, href);
 
   return (
-    <article className="flex h-full flex-col rounded-[28px] border border-slate-700/60 bg-[linear-gradient(180deg,rgba(10,16,30,0.96),rgba(6,10,18,0.96))] p-6 shadow-[0_20px_60px_-36px_rgba(6,10,18,0.78)] transition duration-300 hover:-translate-y-1 hover:border-cyan-400/22 hover:shadow-[0_24px_70px_-34px_rgba(34,211,238,0.16)]">
+    <article className="flex h-full flex-col rounded-[28px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(10,16,30,0.96),rgba(6,10,18,0.96))] p-6 shadow-[0_20px_60px_-36px_rgba(14,165,233,0.1)] transition duration-300 hover:-translate-y-1 hover:border-cyan-400/22 hover:shadow-[0_24px_70px_-34px_rgba(34,211,238,0.16)]">
       <Badge variant="ghost" className="w-fit border-cyan-400/16 bg-cyan-400/10 text-cyan-200">
         {highlight}
       </Badge>

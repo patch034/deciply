@@ -31,7 +31,7 @@ export function FloatingAffiliateBar({
             href={websiteUrl}
             target="_blank"
             rel="nofollow sponsored noreferrer"
-            className="mt-5 inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-fuchsia-500 via-blue-500 to-cyan-400 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_72px_-22px_rgba(56,189,248,0.68)]"
+            className="mt-5 inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-fuchsia-500 via-blue-500 to-cyan-400 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_72px_-22px_rgba(14,165,233,0.52)]"
           >
             {ctaLabel}
           </a>

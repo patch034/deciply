@@ -83,14 +83,14 @@ export default async function BlogPage({
         title={safeLocale === "tr" ? "Bu hafta öne çıkan rehberler" : "This week's featured guides"}
         description={
           safeLocale === "tr"
-            ? "Editör seçimleri, en çok okunanlar ve yeni yayınlanan rehberler tek blokta."
+            ? "Edit�r se�imleri, en çok okunanlar ve yeni yayınlanan rehberler tek blokta."
             : "Editor picks, most-read articles, and the newest guides in one premium block."
         }
         actions={<PremiumButton href={`/${safeLocale}/blog`}>{copy.backToBlog}</PremiumButton>}
       >
         <div className="grid gap-6 xl:grid-cols-3">
           {([
-            { label: safeLocale === "tr" ? "Editör seçimleri" : "Editor's Picks", article: boostSections.editorPicks[0] },
+            { label: safeLocale === "tr" ? "Edit�r se�imleri" : "Editor's Picks", article: boostSections.editorPicks[0] },
             { label: safeLocale === "tr" ? "Bu hafta en çok okunan" : "Most Read This Week", article: boostSections.mostRead[0] },
             { label: safeLocale === "tr" ? "Bu hafta yeni" : "New This Week", article: boostSections.newThisWeek[0] }
           ] as const).map((block) =>
@@ -98,7 +98,7 @@ export default async function BlogPage({
               <div key={block.label} className="space-y-4">
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300/90">{block.label}</p>
-                  <span className="text-xs font-medium text-slate-500">{copy.articleLeadLabel}</span>
+                  <span className="text-xs font-medium text-slate-400">{copy.articleLeadLabel}</span>
                 </div>
                 <BlogCard locale={safeLocale} article={block.article} ctaLabel={copy.readMoreLabel} />
               </div>
@@ -132,7 +132,7 @@ export default async function BlogPage({
                 {`← ${copy.previousPage}`}
               </Link>
             ) : (
-              <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-slate-700/55 bg-slate-950/52 px-4 text-sm font-medium text-slate-500/70">
+              <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-400/70">
                 {`← ${copy.previousPage}`}
               </span>
             )}
@@ -145,7 +145,7 @@ export default async function BlogPage({
                   <span
                     key={pageNumber}
                     aria-current="page"
-                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-cyan-400/40 bg-cyan-400/12 px-4 text-sm font-semibold text-cyan-200 shadow-[0_10px_30px_-18px_rgba(34,211,238,0.45)]"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-cyan-400/40 bg-cyan-400/12 px-4 text-sm font-semibold text-cyan-200 shadow-[0_10px_30px_-18px_rgba(14,165,233,0.3)]"
                   >
                     {pageNumber}
                   </span>
@@ -166,11 +166,11 @@ export default async function BlogPage({
                 href={buildBlogPageHref(safeLocale, currentPage + 1)}
                 className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/18 hover:bg-cyan-400/8 hover:text-cyan-100"
               >
-                {`${copy.nextPage} →`}
+                {`${copy.nextPage} �`}
               </Link>
             ) : (
-              <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-slate-700/55 bg-slate-950/52 px-4 text-sm font-medium text-slate-500/70">
-                {`${copy.nextPage} →`}
+              <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-400/70">
+                {`${copy.nextPage} �`}
               </span>
             )}
           </nav>

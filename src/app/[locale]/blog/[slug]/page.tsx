@@ -265,7 +265,7 @@ export default async function BlogDetailPage({
           ]}
         />
 
-        <section id="genel-bakis" className="scroll-mt-24 rounded-[36px] border border-slate-700/60 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(34,211,238,0.2)] lg:px-10 lg:py-12">
+        <section id="genel-bakis" className="scroll-mt-24 rounded-[36px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(14,165,233,0.14)] lg:px-10 lg:py-12">
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
             <div>
               <Badge variant="ghost" className="border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
@@ -286,15 +286,15 @@ export default async function BlogDetailPage({
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-400">{article.intro}</p>
             </div>
 
-            <div className="rounded-[28px] border border-slate-700/60 bg-slate-950/60 p-6">
+            <div className="rounded-[28px] border border-sky-400/10 bg-slate-950/50 p-6">
               <div className="grid gap-3 sm:grid-cols-1">
-                <div className="rounded-[22px] border border-slate-700/60 bg-slate-950/60 px-4 py-3 text-sm font-semibold text-slate-100">
+                <div className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 px-4 py-3 text-sm font-semibold text-slate-100">
                   {safeLocale === "tr" ? "İç link" : "Internal links"}: {relatedTools.length + 1}
                 </div>
-                <div className="rounded-[22px] border border-slate-700/60 bg-slate-950/60 px-4 py-3 text-sm font-semibold text-slate-100">
+                <div className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 px-4 py-3 text-sm font-semibold text-slate-100">
                   {safeLocale === "tr" ? "Bölüm sayısı" : "Sections"}: {article.sections.length}
                 </div>
-                <div className="rounded-[22px] border border-slate-700/60 bg-slate-950/60 px-4 py-3 text-sm font-semibold text-slate-100">
+                <div className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 px-4 py-3 text-sm font-semibold text-slate-100">
                   {safeLocale === "tr" ? "Karşılaştırma linki hazır" : "Comparison path ready"}
                 </div>
               </div>
@@ -303,7 +303,7 @@ export default async function BlogDetailPage({
                   href={heroPrimaryHref}
                   target={heroPrimaryHref.startsWith("http") ? "_blank" : undefined}
                   rel={heroPrimaryHref.startsWith("http") ? "nofollow sponsored noreferrer" : undefined}
-                  className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_72px_-22px_rgba(56,189,248,0.68)]"
+                  className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_72px_-22px_rgba(14,165,233,0.52)]"
                 >
                   {primaryTool ? buildToolLabel(safeLocale, primaryTool.name, "open") : (safeLocale === "tr" ? "Aracı aç" : "Open tool")}
                 </a>
@@ -368,13 +368,13 @@ export default async function BlogDetailPage({
           ))}
         </SectionShell>
 
-        <section className="rounded-[30px] border border-slate-700/60 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-card md:p-8">
+        <section className="rounded-[30px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)] md:p-8">
           <h2 className="text-2xl font-bold tracking-tight text-slate-50">{copy.comparisonBlockTitle}</h2>
           <p className="mt-3 text-base leading-7 text-slate-300">{copy.comparisonBlockDescription}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a
               href={comparisonHref}
-              className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_72px_-22px_rgba(56,189,248,0.68)]"
+              className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_72px_-22px_rgba(14,165,233,0.52)]"
             >
                   {primaryTool && relatedTools[1] ? `${primaryTool.name} vs ${relatedTools[1].name} kar\u015f\u0131la\u015ft\u0131r` : copy.comparisonCtaLabel}
             </a>

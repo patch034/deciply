@@ -40,7 +40,7 @@ export function ComparisonCard({ locale, item, linkLabel, featured = false }: Co
         <GlassPanel className={`home-card-glow flex h-full flex-col justify-between overflow-hidden p-6 ${featured ? "ui-card-strong ui-card-hover" : "ui-card ui-card-hover"}`}>
           <div className="flex min-h-[38px] items-center justify-between gap-3 overflow-hidden sm:min-h-[40px]">
             <div className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--tn-gradient-primary)] text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_12px_28px_-16px_rgba(59,130,246,0.42)]">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--tn-gradient-primary)] text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_12px_28px_-16px_rgba(37,99,235,0.34)]">
                 {item.icon}
               </div>
               <p className="truncate text-sm font-medium text-slate-200">{item.eyebrow}</p>
@@ -56,7 +56,7 @@ export function ComparisonCard({ locale, item, linkLabel, featured = false }: Co
           <div className="mt-5 border-t border-sky-400/10 pt-4 sm:mt-7 sm:pt-5">
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-slate-100 transition duration-200 group-hover:text-white">
               {linkLabel}
-              <span aria-hidden="true" className="text-cyan-300 transition duration-200 group-hover:translate-x-1">→</span>
+              <span aria-hidden="true" className="text-cyan-300 transition duration-200 group-hover:translate-x-1">�</span>
             </span>
           </div>
         </GlassPanel>

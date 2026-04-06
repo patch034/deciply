@@ -424,7 +424,7 @@ export function ToolsExplorer({
 
   return (
     <>
-      <section className="rounded-[30px] border border-violet-400/14 bg-[linear-gradient(180deg,rgba(17,24,39,0.94),rgba(15,23,42,0.92))] p-4 shadow-card sm:p-6 md:p-8 lg:sticky lg:top-6 lg:z-20">
+      <section className="rounded-[30px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.94),rgba(15,23,42,0.92))] p-4 shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)] sm:p-6 md:p-8 lg:sticky lg:top-6 lg:z-20">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-8">
           <div className="space-y-5">
             <div>
@@ -443,7 +443,7 @@ export function ToolsExplorer({
                   value={query}
                   onChange={(event) => setFilters({ query: event.target.value, page: 1 })}
                   placeholder={copy.searchPlaceholder}
-                  className="h-12 w-full rounded-[18px] border border-transparent bg-transparent px-4 text-sm text-slate-100 outline-none placeholder:text-slate-500 focus:border-cyan-400/30 focus:bg-slate-950/40"
+                  className="h-12 w-full rounded-[18px] border border-transparent bg-transparent px-4 text-sm text-slate-100 outline-none placeholder:text-slate-400 focus:border-cyan-400/30 focus:bg-slate-950/45"
                 />
               </div>
               <p className="mt-3 text-xs leading-6 text-slate-400">{copy.searchHelp}</p>
@@ -461,8 +461,8 @@ export function ToolsExplorer({
             </div>
           </div>
 
-          <div className="rounded-[26px] border border-violet-400/14 bg-slate-950/40 p-4 sm:p-5">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-violet-400/14 pb-4">
+          <div className="rounded-[26px] border border-sky-400/10 bg-slate-950/45 p-4 sm:p-5">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-sky-400/10 pb-4">
               <p className="text-sm font-semibold text-slate-100">
                 {sortedTools.length > 0 ? `${startIndex}–${endIndex} / ${sortedTools.length} ${copy.resultsSummaryLabel}` : `0 ${copy.resultsLabel}`}
               </p>
@@ -473,7 +473,7 @@ export function ToolsExplorer({
                     setMobileFiltersOpen(false);
                     setFilters({ query: "", toolCategory: "all", pricing: "all", useCase: "all", sort: "popular", page: 1 });
                   }}
-                  className="inline-flex min-h-[40px] items-center rounded-full border border-violet-400/14 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-fuchsia-400/24 hover:text-fuchsia-100"
+                  className="inline-flex min-h-[40px] items-center rounded-full border border-sky-400/10 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-400/18 hover:text-cyan-100"
                 >
                   {copy.resetFiltersLabel}
                 </button>
@@ -483,11 +483,11 @@ export function ToolsExplorer({
             <div className="mt-5 space-y-5">
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.sortLabel}</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{copy.sortLabel}</p>
                   <select
                     value={activeSort}
                     onChange={(event) => setFilters({ sort: event.target.value as ToolsSortOption, page: 1 })}
-                    className="dark-select min-h-[40px] rounded-full border border-violet-400/14 px-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400/30"
+                    className="dark-select min-h-[40px] rounded-full border border-sky-400/10 px-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400/30"
                   >
                     {sortOptions.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -499,7 +499,7 @@ export function ToolsExplorer({
               </div>
 
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.toolCategoryLabel}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{copy.toolCategoryLabel}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <FilterChip label={copy.allToolCategoriesLabel} active={activeToolCategory === "all"} onClick={() => setFilters({ toolCategory: "all", page: 1 })} />
                   {toolCategoryOptions.map((option) => (
@@ -509,17 +509,17 @@ export function ToolsExplorer({
               </div>
 
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.pricingFilterLabel}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{copy.pricingFilterLabel}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <FilterChip label={copy.allPricingLabel} active={activePricing === "all"} onClick={() => setFilters({ pricing: "all", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "Ücretsiz" : "Free"} active={activePricing === "FREE"} onClick={() => setFilters({ pricing: "FREE", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "Kısmen ücretsiz" : "Freemium"} active={activePricing === "FREEMIUM"} onClick={() => setFilters({ pricing: "FREEMIUM", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "Ücretli" : "Paid"} active={activePricing === "PAID"} onClick={() => setFilters({ pricing: "PAID", page: 1 })} />
+                  <FilterChip label={locale === "tr" ? "�cretsiz" : "Free"} active={activePricing === "FREE"} onClick={() => setFilters({ pricing: "FREE", page: 1 })} />
+                  <FilterChip label={locale === "tr" ? "K�smen �cretsiz" : "Freemium"} active={activePricing === "FREEMIUM"} onClick={() => setFilters({ pricing: "FREEMIUM", page: 1 })} />
+                  <FilterChip label={locale === "tr" ? "�cretli" : "Paid"} active={activePricing === "PAID"} onClick={() => setFilters({ pricing: "PAID", page: 1 })} />
                 </div>
               </div>
 
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.useCaseLabel}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{copy.useCaseLabel}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <FilterChip label={copy.allUseCasesLabel} active={activeUseCase === "all"} onClick={() => setFilters({ useCase: "all", page: 1 })} />
                   {useCaseOptions.map((option) => (
@@ -532,17 +532,17 @@ export function ToolsExplorer({
         </div>
 
         <div className="mt-4 md:hidden">
-          <div className="sticky top-3 z-20 rounded-[22px] border border-violet-400/14 bg-[rgba(10,15,24,0.92)] p-4 shadow-card backdrop-blur">
+          <div className="sticky top-3 z-20 rounded-[22px] border border-sky-400/10 bg-[rgba(6,10,18,0.94)] p-4 shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)] backdrop-blur">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">{copy.quickIntentLabel}</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">{copy.quickIntentLabel}</p>
                 <p className="mt-1 text-sm font-semibold text-slate-100">{sortedTools.length > 0 ? `${sortedTools.length} ${copy.resultsLabel}` : `0 ${copy.resultsLabel}`}</p>
               </div>
               <div className="flex items-center gap-2">
                 <select
                   value={activeSort}
                   onChange={(event) => setFilters({ sort: event.target.value as ToolsSortOption, page: 1 })}
-                  className="dark-select min-h-[40px] rounded-full border border-violet-400/14 px-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400/30"
+                  className="dark-select min-h-[40px] rounded-full border border-sky-400/10 px-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400/30"
                 >
                   {sortOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -568,13 +568,13 @@ export function ToolsExplorer({
 
           <div
             className={[
-              "mt-3 overflow-hidden rounded-[22px] border border-violet-400/14 bg-slate-950/40 p-4 transition-all duration-200",
+              "mt-3 overflow-hidden rounded-[22px] border border-sky-400/10 bg-slate-950/45 p-4 transition-all duration-200",
               mobileFiltersOpen ? "max-h-[1200px] opacity-100" : "max-h-0 border-transparent p-0 opacity-0"
             ].join(" ")}
           >
             <div className="space-y-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.toolCategoryLabel}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{copy.toolCategoryLabel}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <FilterChip label={copy.allToolCategoriesLabel} active={activeToolCategory === "all"} onClick={() => setFilters({ toolCategory: "all", page: 1 })} />
                   {toolCategoryOptions.map((option) => (
@@ -584,17 +584,17 @@ export function ToolsExplorer({
               </div>
 
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.pricingFilterLabel}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{copy.pricingFilterLabel}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <FilterChip label={copy.allPricingLabel} active={activePricing === "all"} onClick={() => setFilters({ pricing: "all", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "Ücretsiz" : "Free"} active={activePricing === "FREE"} onClick={() => setFilters({ pricing: "FREE", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "Kısmen ücretsiz" : "Freemium"} active={activePricing === "FREEMIUM"} onClick={() => setFilters({ pricing: "FREEMIUM", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "Ücretli" : "Paid"} active={activePricing === "PAID"} onClick={() => setFilters({ pricing: "PAID", page: 1 })} />
+                  <FilterChip label={locale === "tr" ? "�cretsiz" : "Free"} active={activePricing === "FREE"} onClick={() => setFilters({ pricing: "FREE", page: 1 })} />
+                  <FilterChip label={locale === "tr" ? "K�smen �cretsiz" : "Freemium"} active={activePricing === "FREEMIUM"} onClick={() => setFilters({ pricing: "FREEMIUM", page: 1 })} />
+                  <FilterChip label={locale === "tr" ? "�cretli" : "Paid"} active={activePricing === "PAID"} onClick={() => setFilters({ pricing: "PAID", page: 1 })} />
                 </div>
               </div>
 
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.useCaseLabel}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{copy.useCaseLabel}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <FilterChip label={copy.allUseCasesLabel} active={activeUseCase === "all"} onClick={() => setFilters({ useCase: "all", page: 1 })} />
                   {useCaseOptions.map((option) => (
@@ -648,7 +648,7 @@ export function ToolsExplorer({
                     {`${copy.previousPage} ←`}
                   </Link>
                 ) : (
-                  <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/40 px-4 text-sm font-medium text-slate-500/70">
+                  <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/45 px-4 text-sm font-medium text-slate-400/70">
                     {`${copy.previousPage} ←`}
                   </span>
                 )}
@@ -686,11 +686,11 @@ export function ToolsExplorer({
                     onClick={() => setPage(currentPage + 1)}
                     className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/18 hover:bg-cyan-400/8 hover:text-cyan-100"
                   >
-                    {`${copy.nextPage} →`}
+                    {`${copy.nextPage} �`}
                   </Link>
                 ) : (
-                  <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/40 px-4 text-sm font-medium text-slate-500/70">
-                    {`${copy.nextPage} →`}
+                  <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/45 px-4 text-sm font-medium text-slate-400/70">
+                    {`${copy.nextPage} �`}
                   </span>
                 )}
               </nav>
@@ -698,7 +698,7 @@ export function ToolsExplorer({
           </div>
         </>
       ) : (
-        <section className="rounded-[28px] border border-dashed border-violet-400/14 bg-slate-950/40 px-4 py-8 text-center shadow-card sm:px-6 sm:py-10">
+        <section className="rounded-[28px] border border-dashed border-sky-400/10 bg-slate-950/45 px-4 py-8 text-center shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)] sm:px-6 sm:py-10">
           <h3 className="text-xl font-bold tracking-tight text-slate-100">{copy.emptyTitle}</h3>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-300">{copy.emptyDescription}</p>
           <button

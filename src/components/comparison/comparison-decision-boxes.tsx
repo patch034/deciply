@@ -134,7 +134,7 @@ export function ComparisonDecisionBoxes({ locale, leftTool, rightTool, alternati
   const helperLabel = locale === "tr" ? "İlgili alternatifleri gör" : "View related alternatives";
 
   return (
-    <section className="rounded-[32px] border border-slate-700/60 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-5 shadow-card md:p-6">
+    <section className="rounded-[32px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-5 shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)] md:p-6">
       <div className="max-w-3xl">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{locale === "tr" ? "Karar kutuları" : "Decision boxes"}</p>
         <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">
@@ -149,7 +149,7 @@ export function ComparisonDecisionBoxes({ locale, leftTool, rightTool, alternati
 
       <div className="mt-6 grid items-stretch gap-4 md:grid-cols-2 xl:grid-cols-5">
         {boxes.map((box) => (
-          <div key={box.title} className="flex h-full flex-col rounded-[24px] border border-slate-700/60 bg-slate-950/60 p-4">
+          <div key={box.title} className="flex h-full flex-col rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4">
             <p className="text-base font-semibold text-slate-50">{box.title}</p>
             <p className="mt-3 flex-1 text-sm leading-7 text-slate-300">{box.description}</p>
             <div className="mt-5 grid gap-2 sm:grid-cols-2">

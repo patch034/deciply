@@ -74,7 +74,7 @@ export function ToolCard({
       <div className="mt-auto flex flex-col gap-2.5 border-t border-sky-400/10 pt-4 sm:pt-6">
         <RatingBadge rating={tool.rating} className="w-fit" />
         <div className="grid gap-2 sm:grid-cols-2">
-          <Link href={`/${locale}/tools/${tool.slug}`} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-xl border border-sky-400/12 bg-slate-950/55 px-4 py-2.5 text-sm font-semibold text-slate-200 transition duration-150 hover:bg-slate-900/80 hover:text-white">
+          <Link href={`/${locale}/tools/${tool.slug}`} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-xl border border-sky-400/12 bg-slate-950/50 px-4 py-2.5 text-sm font-semibold text-slate-200 transition duration-150 hover:bg-slate-900/80 hover:text-white">
             {detailLabel}
           </Link>
           {compareHref ? (
