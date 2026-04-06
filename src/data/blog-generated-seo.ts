@@ -1,4 +1,4 @@
-﻿import { tools } from "@/data/tools";
+import { tools } from "@/data/tools";
 import { useCaseOptions } from "@/data/tool-taxonomy";
 import { buildComparisonPath } from "@/lib/comparisons";
 import { buildAlternativesPath } from "@/lib/intent-pages";
@@ -135,6 +135,7 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
   const useCasePage = seed.useCasePageSlug ? buildUseCaseLink(locale, seed.useCasePageSlug) : null;
   const firstPair = buildFirstPairLabel(locale, seed);
   const extraSections = seed.extraSections?.[locale] ?? [];
+  const editorialSections = buildWorkflowPrimerSections(locale, seed, items, compareLinks, alternativeLinks, useCasePage, firstPair);
 
   const title = seed.title?.[locale] ?? (locale === "tr"
     ? `${topicLabel} için en iyi AI araçları`
@@ -313,8 +314,105 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
           )
         }
       )
-    , ...extraSections]
+    , ...extraSections, ...editorialSections]
   };
+}
+
+function buildWorkflowPrimerSections(
+  locale: Locale,
+  seed: ArticleSeed,
+  items: ToolSnapshot[],
+  compareLinks: string[],
+  alternativeLinks: string[],
+  useCasePage: string | null,
+  firstPair: string | null
+): BlogSection[] {
+  const topicLabel = buildTopicLabel(locale, seed);
+  const topicLower = topicLabel.toLocaleLowerCase(locale === "tr" ? "tr-TR" : "en-US");
+  const firstItem = items[0];
+  const secondItem = items[1] ?? firstItem;
+  const comparePair = seed.comparePairs[0];
+  const compareHref = comparePair ? buildComparisonPath(locale, comparePair.leftSlug, comparePair.rightSlug) : null;
+
+  if (!firstItem) {
+    return [];
+  }
+
+  const comparisonLead = locale === "tr"
+    ? compareHref
+      ? `Karar yakınsa ${compareLinks[0] ?? firstPair ?? topicLabel} ile farkı daralt; ardından alternatif sayfasıyla daha uygun eşleşmeyi kontrol et.`
+      : `Karar yakınsa kısa bir karşılaştırma açıp farkı daralt; ardından alternatif sayfasıyla daha uygun eşleşmeyi kontrol et.`
+    : compareHref
+      ? `If the decision stays close, narrow it with ${compareLinks[0] ?? firstPair ?? topicLabel}; then check the alternatives page for a better fit.`
+      : `If the decision stays close, open a short comparison and narrow it down; then check the alternatives page for a better fit.`;
+
+  const contextLead = locale === "tr"
+    ? `Bu rehberin amacı tek aracı öne çıkarmak değil; ${topicLabel} için hangi aracın hangi aşamada en az sürtünme yarattığını göstermek.`
+    : `The goal of this guide is not to crown one tool, but to show which tool creates the least friction at each step for ${topicLower}.`;
+
+  return [
+    section(
+      locale === "tr" ? "Gerçek çalışma akışı" : "Real workflow",
+      [
+        locale === "tr"
+          ? `${topicLabel} için ilk karar, hangi çıktıyı üreteceğinle başlar. Önce taslak, sonra ton, en son kontrol sırası çoğu senaryoda en güvenli hattı kurar.`
+          : `For ${topicLower}, the first decision is the output you want to produce. Draft first, then tone, then final review usually creates the safest path.`,
+        comparisonLead,
+        contextLead
+      ],
+      {
+        bullets: seed.workflow[locale].map((step, index) => `${index + 1}. ${step}`),
+        subSections: [
+          sub(
+            locale === "tr" ? "İlk taslak" : "First draft",
+            [
+              locale === "tr"
+                ? `${firstItem.name} ile ilk taslağı çıkarın, ardından marka tonu ve yapı için ikinci aracı kullanın.`
+                : `Use ${firstItem.name} for the first draft, then a second tool for tone and structure.`,
+              locale === "tr"
+                ? `${firstItem.name} sayfası, bu aşamada hangi giriş seviyesinin size uygun olduğunu hızlıca görmenizi sağlar.`
+                : `${firstItem.name} gives you a quick sense of which entry point fits this stage best.`
+            ],
+            undefined,
+            locale === "tr" ? "Araç sayfasını aç" : "Open tool page",
+            `/${locale}/tools/${firstItem.slug}`
+          ),
+          sub(
+            locale === "tr" ? "Kısa karşılaştırma" : "Short comparison",
+            [
+              locale === "tr"
+                ? compareHref
+                  ? `Kısa listedeki farkı görmek için ${compareLinks[0] ?? firstPair ?? topicLabel} sayfasını açın.`
+                  : `Kısa listedeki farkı görmek için compare sayfasını açın.`
+                : compareHref
+                  ? `Open ${compareLinks[0] ?? firstPair ?? topicLabel} to see the short-list difference.`
+                  : `Open a comparison page to see the short-list difference.`
+            ],
+            undefined,
+            locale === "tr" ? "Karşılaştırmayı aç" : "Open comparison",
+            compareHref ?? `/${locale}/tools/${secondItem.slug}`
+          ),
+          sub(
+            locale === "tr" ? "Alternatif ve bağlam" : "Alternatives and context",
+            [
+              locale === "tr"
+                ? useCasePage
+                  ? `Bu akışı daha geniş bağlamda görmek için ${useCasePage} sayfasını açın.`
+                  : `Bu akışı daha geniş bağlamda görmek için alternatif sayfasını açın.`
+                : useCasePage
+                  ? `Open ${useCasePage} to see this flow in a broader context.`
+                  : alternativeLinks[0]
+                    ? `Open ${alternativeLinks[0]} to see this flow in a broader context.`
+                    : `Open the alternatives page to see this flow in a broader context.`
+            ],
+            undefined,
+            locale === "tr" ? "Bağlamı aç" : "Open context",
+            useCasePage ?? `/${locale}/tools/${firstItem.slug}`
+          )
+        ]
+      }
+    )
+  ];
 }
 
 function buildMoneyMakerExtras(locale: Locale): BlogSection[] {

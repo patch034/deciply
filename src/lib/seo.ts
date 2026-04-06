@@ -1,4 +1,4 @@
-import type { Locale } from "@/i18n/config";
+﻿import type { Locale } from "@/i18n/config";
 import type { LocalizedBlogArticle } from "@/types/blog";
 import type { LocalizedTool } from "@/types/catalog";
 
@@ -51,34 +51,47 @@ export function stripBrandSuffix(value: string) {
   return cleanTitleTopic(value);
 }
 
-const blogDescriptionTemplates: Record<Locale, ((topic: string) => string)[]> = {
-  en: [
-    (topic) => `This guide explains ${topic} with real examples, use cases, and practical steps.`,
-    (topic) => `Learn ${topic} through real examples, practical workflows, and realistic expectations.`,
-    (topic) => `Explore ${topic} with practical steps, real use cases, and clearer decision points.`,
-    (topic) => `See ${topic} in real scenarios, where it helps, and what to watch for.`
-  ],
-  tr: [
-    (topic) => `Bu rehber, ${topic} ger\u00e7ek \u00f6rnekler, kullan\u0131m senaryolar\u0131 ve uygulanabilir ad\u0131mlarla a\u00e7\u0131klar.`,
-    (topic) => `Bu i\u00e7erik, ${topic} ger\u00e7ek \u00f6rnekler, pratik i\u015f ak\u0131\u015flar\u0131 ve ger\u00e7ek\u00e7i beklentilerle anlat\u0131r.`,
-    (topic) => `Bu rehberde ${topic} uygulanabilir ad\u0131mlar, ger\u00e7ek kullan\u0131m \u00f6rnekleri ve net karar \u00e7er\u00e7eveleriyle ele al\u0131n\u0131r.`,
-    (topic) => `Bu i\u00e7erik, ${topic} ger\u00e7ek senaryolar, dikkat edilmesi gereken noktalar ve somut ad\u0131mlarla g\u00f6sterir.`
-  ]
-};
-
-function slugHash(value: string) {
-  return [...value].reduce((total, char) => total + char.charCodeAt(0), 0);
-}
-
 function buildBlogTopic(locale: Locale, article: LocalizedBlogArticle) {
   const cleanTitle = cleanTitleTopic(article.title);
-  return locale === "tr" ? lowerFirst(cleanTitle) : lowerFirst(cleanTitle);
+  return lowerFirst(cleanTitle);
+}
+
+function buildBlogLeadByKind(locale: Locale, article: LocalizedBlogArticle) {
+  const topic = buildBlogTopic(locale, article);
+  const title = cleanTitleTopic(article.title);
+  const kind = article.contentGraph?.kind ?? "MANUAL";
+
+  if (locale === "tr") {
+    switch (kind) {
+      case "BEST_TOOLS":
+        return `${title} için araç seçimini workflow, fiyat ve kullanım alanına göre daraltan editoryal bir rehber.`;
+      case "TOOL_COMPARISON":
+        return `${title} için fiyat, hız, kalite ve kullanım bağlamını yan yana inceleyen net bir karşılaştırma.`;
+      case "ALTERNATIVES":
+        return `${title} alternatifi arayanlar için, hangi açığın kapatıldığını ve ne zaman geçiş yapılacağını gösteren rehber.`;
+      case "USE_CASE_GUIDE":
+        return `${title} için ilk kurulumdan teslim aşamasına kadar izlenecek pratik workflow rehberi.`;
+      default:
+        return `${title} için gerçek kullanım senaryolarını, karar noktalarını ve bir sonraki adımı özetleyen rehber.`;
+    }
+  }
+
+  switch (kind) {
+    case "BEST_TOOLS":
+      return `This guide narrows ${topic} by workflow, pricing, and fit.`;
+    case "TOOL_COMPARISON":
+      return `This comparison looks at ${topic} through pricing, speed, quality, and use-case fit.`;
+    case "ALTERNATIVES":
+      return `This alternatives guide shows which gap ${topic} fills and when a switch makes sense.`;
+    case "USE_CASE_GUIDE":
+      return `This workflow guide maps ${topic} from setup to delivery.`;
+    default:
+      return `This guide explains ${topic} with real scenarios, decision points, and the next step.`;
+  }
 }
 
 export function buildBlogSeoLead(locale: Locale, article: LocalizedBlogArticle) {
-  const templates = blogDescriptionTemplates[locale];
-  const template = templates[slugHash(article.slug) % templates.length];
-  return template(buildBlogTopic(locale, article));
+  return buildBlogLeadByKind(locale, article);
 }
 
 export function buildBlogIntroParagraph(locale: Locale, article: LocalizedBlogArticle) {
@@ -99,7 +112,7 @@ export function buildBlogIntroParagraph(locale: Locale, article: LocalizedBlogAr
 
 export function buildHomeTitle(locale: Locale) {
   return locale === "tr"
-    ? "Ger\u00e7ek kullan\u0131m alanlar\u0131na g\u00f6re AI ara\u00e7lar\u0131n\u0131 kar\u015f\u0131la\u015ft\u0131r\u0131n"
+    ? "Gerçek kullanım alanlarına göre AI araçlarını karşılaştırın"
     : "Compare AI Tools by Real Use Case";
 }
 
@@ -116,7 +129,7 @@ export function buildBlogPageTitle(article: LocalizedBlogArticle) {
 }
 
 export function buildToolsPageTitle(locale: Locale, currentPage: number) {
-  const base = locale === "tr" ? "AI ara\u00e7lar\u0131 dizini" : "AI Tools Directory";
+  const base = locale === "tr" ? "AI araçları dizini" : "AI Tools Directory";
   return currentPage > 1 ? `${base} - Page ${currentPage}` : base;
 }
 
@@ -128,14 +141,14 @@ export function buildToolPageTitle(locale: Locale, tool: LocalizedTool) {
 
 export function buildHomeMetaDescription(locale: Locale) {
   return locale === "tr"
-    ? "AI ara\u00e7lar\u0131n\u0131 kar\u015f\u0131la\u015ft\u0131r\u0131n, ger\u00e7ek kullan\u0131m senaryolar\u0131n\u0131 ke\u015ffedin ve Deciply ile do\u011fru arac\u0131 daha h\u0131zl\u0131 se\u00e7in."
+    ? "AI araçlarını karşılaştırın, gerçek kullanım senaryolarını keşfedin ve Deciply ile doğru aracı daha hızlı seçin."
     : "Compare AI tools, explore real use cases, and choose the right tool faster with Deciply.";
 }
 
 export function buildToolsIndexMetaDescription(locale: Locale, toolCount: number, currentPage = 1) {
   const base =
     locale === "tr"
-      ? `${toolCount} se\u00e7ilmi\u015f AI arac\u0131n\u0131 kullan\u0131m alan\u0131, fiyat modeli ve g\u00fc\u00e7l\u00fc y\u00f6nlerine g\u00f6re inceleyin. Deciply ile size en uygun arac\u0131 daha h\u0131zl\u0131 bulun.`
+      ? `${toolCount} seçilmiş AI aracını kullanım alanı, fiyat modeli ve güçlü yönlerine göre inceleyin. Deciply ile size en uygun aracı daha hızlı bulun.`
       : `Browse ${toolCount} curated AI tools by use case, pricing, and strengths. Compare options and find the right fit faster with Deciply.`;
 
   if (currentPage <= 1) {
@@ -148,7 +161,7 @@ export function buildToolsIndexMetaDescription(locale: Locale, toolCount: number
 export function buildBlogIndexMetaDescription(locale: Locale, currentPage = 1) {
   const base =
     locale === "tr"
-      ? "Deciply blogunda ger\u00e7ek kullan\u0131m senaryolar\u0131, kar\u015f\u0131la\u015ft\u0131rmalar ve net ara\u00e7 se\u00e7im rehberleri yer al\u0131r."
+      ? "Deciply blogunda gerçek kullanım senaryoları, karşılaştırmalar ve net araç seçim rehberleri yer alır."
       : "Explore Deciply blog guides built around real use cases, honest comparisons, and clearer AI tool decisions.";
 
   if (currentPage <= 1) {

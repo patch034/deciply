@@ -1,4 +1,4 @@
-﻿import { blogArticles } from "@/data/blog";
+import { blogArticles } from "@/data/blog";
 import { getBlogPlaybookSections } from "@/data/blog-playbooks";
 import { useCaseOptions } from "@/data/tool-taxonomy";
 import type { Locale } from "@/i18n/config";
@@ -16,26 +16,26 @@ const rawBlogCopy = {
     breadcrumbsHome: "Ana sayfa",
     blogLabel: "Blog",
     listEyebrow: "SEO içerikleri",
-    listTitle: "Trafik ve dönüşüm odaklı AI rehberleri",
+    listTitle: "Trafik ve karar odaklı AI rehberleri",
     listDescription:
-      "Deciply blog bölümünde öne çıkan AI araçları, karşılaştırmalar, ücretsiz araç listeleri ve para kazandıran kullanım senaryoları yer alır.",
+      "Deciply blog bölümünde gerçek kullanım senaryoları, araç karşılaştırmaları ve net seçim rehberleri yer alır.",
     readMoreLabel: "Devamını oku",
-    heroPrimaryCta: "Bu aracı incele",
-    heroSecondaryCta: "Öne çıkan AI araçlarını gör",
-    comparisonCtaLabel: "Karşılaştırmaya git",
-    relatedToolsTitle: "Bu içerikte geçen araçlar",
+    heroPrimaryCta: "İlgili aracı aç",
+    heroSecondaryCta: "İlgili karşılaştırmaları aç",
+    comparisonCtaLabel: "Karşılaştırmayı aç",
+    relatedToolsTitle: "Bu yazıda geçen araçlar",
     relatedToolsDescription:
-      "Makaledeki önerileri doğrudan araç detay sayfalarında inceleyin ve kullanım alanlarını daha net görün.",
+      "Makaledeki araçları detay sayfalarında inceleyin, kullanım alanlarını ve alternatiflerini daha net görün.",
     relatedArticlesTitle: "Benzer rehberler",
     relatedArticlesDescription:
-      "Aynı konu etrafındaki diğer içeriklere geçerek hem daha fazla fikir toplayabilir hem de doğru aracı daha hızlı seçebilirsiniz.",
-    comparisonBlockTitle: "Karşılaştırma kısayolu",
+      "Aynı konu etrafındaki diğer içeriklere geçerek daha fazla bağlam toplayın ve seçimi netleştirin.",
+    comparisonBlockTitle: "Kararı netleştirmek için kısa karşılaştırma",
     comparisonBlockDescription:
-      "Araçları yan yana görmek istiyorsanız Deciply comparison sayfasına geçin.",
-    articleLeadLabel: "Güncel rehber",
-    toolPageRelatedTitle: "İlgili rehberler",
+      "Araçları yan yana görmek istiyorsanız workflow, fiyat ve kullanım alanına göre kısa bir karşılaştırma açın.",
+    articleLeadLabel: "Editoryal rehber",
+    toolPageRelatedTitle: "Bu araçla ilgili rehberler",
     toolPageRelatedDescription:
-      "Bu araçla ilgili rehber ve SEO odaklı içeriklere geçerek kullanım senaryolarını daha hızlı değerlendirebilirsiniz.",
+      "Bu araçla ilgili rehberlere ve karşılaştırmalara geçerek kullanım senaryolarını daha hızlı değerlendirebilirsiniz.",
     backToBlog: "Tüm yazılara dön",
     previousPage: "Önceki",
     nextPage: "Sonraki",
@@ -45,26 +45,26 @@ const rawBlogCopy = {
     breadcrumbsHome: "Home",
     blogLabel: "Blog",
     listEyebrow: "SEO content",
-    listTitle: "AI guides built for traffic and conversions",
+    listTitle: "AI guides built for traffic and decisions",
     listDescription:
-      "The Deciply blog covers the best AI tools, comparisons, free tool roundups, and monetization-focused use cases.",
+      "The Deciply blog covers real workflows, tool comparisons, and clearer decision guides.",
     readMoreLabel: "Read more",
-    heroPrimaryCta: "Try this tool now",
-    heroSecondaryCta: "View top AI tools",
-    comparisonCtaLabel: "Go to comparison",
-    relatedToolsTitle: "Tools mentioned in this article",
+    heroPrimaryCta: "Open the related tool",
+    heroSecondaryCta: "Open related comparisons",
+    comparisonCtaLabel: "Open comparison",
+    relatedToolsTitle: "Tools mentioned in this guide",
     relatedToolsDescription:
       "Open the related tool pages to review pricing, strengths, and better-fit use cases before you choose.",
     relatedArticlesTitle: "Related guides",
     relatedArticlesDescription:
-      "Keep exploring adjacent topics to collect more ideas and make the final tool choice faster.",
-    comparisonBlockTitle: "Comparison shortcut",
+      "Keep exploring adjacent topics to collect more context and make the final choice faster.",
+    comparisonBlockTitle: "Short comparison to clarify the decision",
     comparisonBlockDescription:
-      "If you want to evaluate tools side by side, jump into the Deciply comparison page.",
-    articleLeadLabel: "Fresh guide",
-    toolPageRelatedTitle: "Related guides",
+      "If you want to compare tools side by side, open a workflow, pricing, and use-case comparison.",
+    articleLeadLabel: "Editorial guide",
+    toolPageRelatedTitle: "Guides related to this tool",
     toolPageRelatedDescription:
-      "Use these related guides to understand where this tool fits best and what to compare next.",
+      "Use these related guides and comparisons to understand where this tool fits best and what to compare next.",
     backToBlog: "Back to all articles",
     previousPage: "Previous",
     nextPage: "Next",
