@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 import { BlogCard } from "@/components/blog/blog-card";
 import { Badge } from "@/components/ui/badge";
@@ -94,7 +94,7 @@ export function ComparisonTriplePage({
     },
     {
       eyebrow: locale === "tr" ? "Fiyat sinyali" : "Pricing signal",
-      title: locale === "tr" ? "�cretsiz başlangıç mı, ücretli derinlik mi?" : "Free start or paid depth?",
+      title: locale === "tr" ? "Ücretsiz başlangıç mı, ücretli derinlik mi?" : "Free start or paid depth?",
       description:
         locale === "tr"
           ? `${firstTool.name}, ${secondTool.name} ve ${thirdTool.name} için fiyat modeli; deneme, freemium ve ücretli plan dengesini gösterir.`
@@ -200,8 +200,8 @@ export function ComparisonTriplePage({
                 <p className="mt-3 text-lg font-semibold text-slate-100">{formatPricing(tool.pricing, locale)}</p>
                 <div className="mt-4 grid gap-3">
                   <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/45 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{locale === "tr" ? "�cretsiz başlangıç" : "Free start"}</p>
-                    <p className="mt-2 text-sm leading-7 text-slate-300">{tool.pricing === "PAID" ? (locale === "tr" ? "Doğrudan ücretli giriş gerektirir." : "Starts as a paid product.") : (locale === "tr" ? "�cretsiz veya freemium giriş sunar." : "Offers a free or freemium starting point.")}</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{locale === "tr" ? "Ücretsiz başlangıç" : "Free start"}</p>
+                    <p className="mt-2 text-sm leading-7 text-slate-300">{tool.pricing === "PAID" ? (locale === "tr" ? "Doğrudan ücretli giriş gerektirir." : "Starts as a paid product.") : (locale === "tr" ? "Ücretsiz veya freemium giriş sunar." : "Offers a free or freemium starting point.")}</p>
                   </div>
                   <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/45 p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{locale === "tr" ? "Ticari kullanım" : "Commercial fit"}</p>
@@ -344,6 +344,10 @@ export function ComparisonTriplePage({
     </>
   );
 }
+
+
+
+
 
 
 

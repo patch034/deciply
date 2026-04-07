@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import clsx from "clsx";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -153,7 +153,7 @@ export function ComparisonInsightPanel({ locale, slides, tools, neutralHref, cla
               aria-label={locale === "tr" ? "Sonraki karar özeti" : "Next insight"}
               className="inline-flex min-h-10 w-10 items-center justify-center rounded-full border border-sky-400/10 bg-slate-950/50 text-slate-200 transition hover:border-cyan-400/18 hover:bg-cyan-400/[0.08] hover:text-cyan-100"
             >
-              <span aria-hidden="true">�</span>
+              <span aria-hidden="true">›</span>
             </button>
           </div>
           <div className="flex items-center gap-2">
@@ -180,5 +180,7 @@ export function ComparisonInsightPanel({ locale, slides, tools, neutralHref, cla
     </div>
   );
 }
+
+
 
 

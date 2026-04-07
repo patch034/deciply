@@ -32,7 +32,7 @@ export function BlogCard({ locale, article, ctaLabel }: BlogCardProps) {
         </h2>
         <p className="mobile-clamp-2 mt-3 text-sm leading-7 text-slate-300/84 sm:mt-4">{article.excerpt}</p>
 
-        <div className="mt-5 flex items-center justify-between gap-3 border-t border-sky-400/10 pt-4 text-sm sm:mt-6 sm:gap-4">
+        <div className="mt-auto flex items-center justify-between gap-3 border-t border-sky-400/10 pt-4 text-sm sm:mt-6 sm:gap-4">
           <span className="truncate text-slate-400">
             {article.relatedToolSlugs.length} {relatedToolsLabel}
           </span>
@@ -47,4 +47,3 @@ export function BlogCard({ locale, article, ctaLabel }: BlogCardProps) {
     </GlassPanel>
   );
 }
-

@@ -46,7 +46,7 @@ const copy = {
     bestForTitle: "Hangi araç kimler için daha uygun?",
     bestForDescription: "En iyi kullanım senaryosunu ve kullanıcı profilini hızlıca karşılaştırın.",
     pricingTitle: "Fiyat karşılaştırması",
-    pricingDescription: "�cretsiz başlama imkanı, fiyat modeli ve ticari kullanım açısından farkları görün.",
+    pricingDescription: "Ücretsiz başlama imkanı, fiyat modeli ve ticari kullanım açısından farkları görün.",
     strengthsTitle: "Güçlü yönler",
     strengthsDescription: "Her iki aracın öne çıktığı alanları ayrı ayrı değerlendirin.",
     limitationsTitle: "Sınırlamalar",
@@ -72,7 +72,7 @@ const copy = {
       limitations: "Sınırlamalar",
       realUseCase: "Gerçek kullanım örneği"
     },
-    pricingFreeStart: "�cretsiz başlangıç",
+    pricingFreeStart: "Ücretsiz başlangıç",
     pricingCommercial: "Ticari kullanım açısından",
     verdictLeftTitle: "Ne zaman bu araç daha mantıklı?",
     verdictRightTitle: "Ne zaman diğer araç daha mantıklı?"
@@ -374,7 +374,7 @@ export default async function ComparisonPage({
     },
     {
       eyebrow: safeLocale === "tr" ? "Fiyat sinyali" : "Pricing signal",
-      title: safeLocale === "tr" ? "�cretsiz başlangıç mı, ücretli derinlik mi?" : "Free start or paid depth?",
+      title: safeLocale === "tr" ? "Ücretsiz başlangıç mı, ücretli derinlik mi?" : "Free start or paid depth?",
       description:
         safeLocale === "tr"
           ? `Fiyat tarafında ${leftTool.name} ${formatPricing(leftTool.pricing, safeLocale)} ile, ${rightTool.name} ise ${formatPricing(rightTool.pricing, safeLocale)} ile öne çıkabilir.`
@@ -546,7 +546,7 @@ export default async function ComparisonPage({
                           ? "Doğrudan ücretli giriş gerektirir."
                           : "Starts as a paid product."
                         : safeLocale === "tr"
-                          ? "�cretsiz veya freemium giriş sunar."
+                          ? "Ücretsiz veya freemium giriş sunar."
                           : "Offers a free or freemium starting point."}
                     </p>
                   </div>
@@ -751,6 +751,8 @@ export default async function ComparisonPage({
     </>
   );
 }
+
+
 
 
 

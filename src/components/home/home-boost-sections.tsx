@@ -1,4 +1,4 @@
-import { BlogCard } from "@/components/blog/blog-card";
+﻿import { BlogCard } from "@/components/blog/blog-card";
 import { ComparisonCard } from "@/components/home/comparison-card";
 import { GuideCard } from "@/components/home/guide-card";
 import { ToolCard } from "@/components/home/tool-card";
@@ -150,3 +150,8 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools }: Hom
     </div>
   );
 }
+
+
+
+
+

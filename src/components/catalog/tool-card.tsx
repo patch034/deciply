@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 import type { LocalizedTool } from "@/types/catalog";
 
@@ -87,6 +87,7 @@ export function ToolCard({
     </GlassPanel>
   );
 }
+
 
 
 

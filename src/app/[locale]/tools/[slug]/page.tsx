@@ -98,7 +98,7 @@ const copy: Record<Locale, DetailCopy> = {
     pricingLabel: "Fiyat",
     categoryLabel: "Kategori",
     heroTrustLine: "Dünya genelinde en çok kullanılan AI araçlarından biri",
-    heroPrimaryCta: "�cretsiz Başla",
+    heroPrimaryCta: "Ücretsiz Başla",
     overviewTitle: "Bu araç nedir?",
     overviewDescription: "Ne yaptığını ve neden önemli olduğunu kısa ve net biçimde görün.",
     useCasesTitle: "Öne çıkan kullanım alanları",
@@ -179,7 +179,7 @@ function getWhoShouldAvoid(locale: Locale, tool: LocalizedTool) {
   const items: string[] = [];
 
   if (tool.pricing === "PAID") {
-    items.push(locale === "tr" ? "�cretsiz başlamak isteyen kullanıcılar" : "Users who want a free starting point");
+    items.push(locale === "tr" ? "Ücretsiz başlamak isteyen kullanıcılar" : "Users who want a free starting point");
   }
 
   if (tool.toolCategorySlugs.includes("image")) {
@@ -925,6 +925,8 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
     </>
   );
 }
+
+
 
 
 

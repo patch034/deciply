@@ -53,10 +53,12 @@ export function ComparisonCard({ locale, item, linkLabel, featured = false }: Co
             <p className="mobile-clamp-2 mt-3 flex-1 text-[15px] leading-relaxed text-slate-300/84 sm:mt-4">{item.description}</p>
           </div>
 
-          <div className="mt-5 border-t border-sky-400/10 pt-4 sm:mt-7 sm:pt-5">
+          <div className="mt-auto border-t border-sky-400/10 pt-4 sm:mt-7 sm:pt-5">
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-slate-100 transition duration-200 group-hover:text-white">
               {linkLabel}
-              <span aria-hidden="true" className="text-cyan-300 transition duration-200 group-hover:translate-x-1">�</span>
+              <span aria-hidden="true" className="text-cyan-300 transition duration-200 group-hover:translate-x-1">
+                →
+              </span>
             </span>
           </div>
         </GlassPanel>

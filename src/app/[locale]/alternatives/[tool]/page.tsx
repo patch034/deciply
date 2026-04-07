@@ -33,7 +33,7 @@ const copy = {
     bestForTitle: "Hangi alternatif hangi iş için daha iyi?",
     bestForDescription: "Araçların en mantıklı olduğu kullanım senaryosunu ve kullanıcı profilini hızlıca karşılaştırın.",
     pricingTitle: "Fiyat karşılaştırması",
-    pricingDescription: "�cretsiz başlama noktası, ticari kullanım ve kısa değer önerisini aynı bölümde görün.",
+    pricingDescription: "ccretsiz başlama noktası, ticari kullanım ve kısa değer önerisini aynı bölümde görün.",
     strengthsTitle: "Güçlü yönler",
     strengthsDescription: "Mevcut araç ile en güçlü alternatif arasında hangi tarafların öne çıktığını görün.",
     weaknessesTitle: "Zayıf yönler",
@@ -397,3 +397,5 @@ export default async function AlternativesPage({
     </>
   );
 }
+
+

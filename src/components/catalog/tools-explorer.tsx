@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -512,9 +512,9 @@ export function ToolsExplorer({
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{copy.pricingFilterLabel}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <FilterChip label={copy.allPricingLabel} active={activePricing === "all"} onClick={() => setFilters({ pricing: "all", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "�cretsiz" : "Free"} active={activePricing === "FREE"} onClick={() => setFilters({ pricing: "FREE", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "K�smen �cretsiz" : "Freemium"} active={activePricing === "FREEMIUM"} onClick={() => setFilters({ pricing: "FREEMIUM", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "�cretli" : "Paid"} active={activePricing === "PAID"} onClick={() => setFilters({ pricing: "PAID", page: 1 })} />
+                  <FilterChip label={locale === "tr" ? "Ücretsiz" : "Free"} active={activePricing === "FREE"} onClick={() => setFilters({ pricing: "FREE", page: 1 })} />
+                  <FilterChip label={locale === "tr" ? "Kısmen ücretsiz" : "Freemium"} active={activePricing === "FREEMIUM"} onClick={() => setFilters({ pricing: "FREEMIUM", page: 1 })} />
+                  <FilterChip label={locale === "tr" ? "Ücretli" : "Paid"} active={activePricing === "PAID"} onClick={() => setFilters({ pricing: "PAID", page: 1 })} />
                 </div>
               </div>
 
@@ -587,9 +587,9 @@ export function ToolsExplorer({
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{copy.pricingFilterLabel}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <FilterChip label={copy.allPricingLabel} active={activePricing === "all"} onClick={() => setFilters({ pricing: "all", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "�cretsiz" : "Free"} active={activePricing === "FREE"} onClick={() => setFilters({ pricing: "FREE", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "K�smen �cretsiz" : "Freemium"} active={activePricing === "FREEMIUM"} onClick={() => setFilters({ pricing: "FREEMIUM", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "�cretli" : "Paid"} active={activePricing === "PAID"} onClick={() => setFilters({ pricing: "PAID", page: 1 })} />
+                  <FilterChip label={locale === "tr" ? "Ücretsiz" : "Free"} active={activePricing === "FREE"} onClick={() => setFilters({ pricing: "FREE", page: 1 })} />
+                  <FilterChip label={locale === "tr" ? "Kısmen ücretsiz" : "Freemium"} active={activePricing === "FREEMIUM"} onClick={() => setFilters({ pricing: "FREEMIUM", page: 1 })} />
+                  <FilterChip label={locale === "tr" ? "Ücretli" : "Paid"} active={activePricing === "PAID"} onClick={() => setFilters({ pricing: "PAID", page: 1 })} />
                 </div>
               </div>
 
@@ -686,11 +686,11 @@ export function ToolsExplorer({
                     onClick={() => setPage(currentPage + 1)}
                     className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/18 hover:bg-cyan-400/8 hover:text-cyan-100"
                   >
-                    {`${copy.nextPage} �`}
+                    {`${copy.nextPage} →`}
                   </Link>
                 ) : (
                   <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/45 px-4 text-sm font-medium text-slate-400/70">
-                    {`${copy.nextPage} �`}
+                    {`${copy.nextPage} →`}
                   </span>
                 )}
               </nav>
@@ -722,3 +722,6 @@ export function ToolsExplorer({
     </>
   );
 }
+
+
+

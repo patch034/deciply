@@ -34,10 +34,12 @@ export function GuideCard({ locale, item, linkLabel }: GuideCardProps) {
           <h3 className="mt-5 text-2xl font-bold tracking-[-0.03em] text-slate-50">{item.title}</h3>
           <p className="mt-3 flex-1 text-sm leading-7 text-slate-300/88">{item.description}</p>
 
-          <div className="mt-6 border-t border-sky-400/10 pt-5">
+          <div className="mt-auto border-t border-sky-400/10 pt-5">
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-slate-100 transition duration-300 group-hover:text-cyan-300">
               {linkLabel}
-              <span aria-hidden="true" className="text-cyan-300 transition duration-300 group-hover:translate-x-1">�</span>
+              <span aria-hidden="true" className="text-cyan-300 transition duration-300 group-hover:translate-x-1">
+                →
+              </span>
             </span>
           </div>
         </GlassPanel>
