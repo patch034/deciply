@@ -139,7 +139,7 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
       buttons.push(button);
     };
 
-    toolLinks.forEach((tool, index) => {
+    toolLinks.forEach((tool) => {
       if (buttons.length >= 3) {
         return;
       }
@@ -148,7 +148,7 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
         addButton({
           label: locale === "tr" ? `${tool.name}’yi incele` : `Open ${tool.name}`,
           href: tool.href,
-          variant: index === 0 ? "primary" : index === 1 ? "secondary" : "ghost"
+          variant: "primary"
         });
       }
     });
@@ -169,16 +169,16 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
       addButton({
         label: relatedArticle.label,
         href: relatedArticle.href,
-        variant: buttons.length ? "ghost" : "primary"
+        variant: "ghost"
       });
     }
 
     if (!buttons.length && supportingLinks?.tools?.length) {
-      supportingLinks.tools.slice(0, 3).forEach((item, index) => {
+      supportingLinks.tools.slice(0, 3).forEach((item) => {
         addButton({
           label: item.label,
           href: item.href,
-          variant: index === 0 ? "primary" : "ghost"
+          variant: "primary"
         });
       });
     }
@@ -389,6 +389,7 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
     </div>
   );
 }
+
 
 
 

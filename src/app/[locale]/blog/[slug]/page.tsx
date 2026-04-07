@@ -58,7 +58,7 @@ function buildBlogCtaButtons(
     buttons.push({
       label: buildToolLabel(locale, tool.name, "open"),
       href: `/${locale}/tools/${tool.slug}`,
-      variant: index === 0 ? "primary" : index === 1 ? "secondary" : "ghost"
+      variant: "primary"
     });
   });
 
@@ -392,6 +392,7 @@ export default async function BlogDetailPage({
     </>
   );
 }
+
 
 
 
