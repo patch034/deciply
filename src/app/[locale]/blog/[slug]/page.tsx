@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { ArticleContent, buildArticleSectionId } from "@/components/blog/article-content";
@@ -25,7 +26,7 @@ import {
   getCategoryNamesMap,
   getCatalogContent,
   getLocalizedToolBySlug,
-  getToolOutboundUrl
+
 } from "@/lib/catalog";
 import { buildBlogMetaDescription, buildBlogPageTitle } from "@/lib/seo";
 
@@ -37,7 +38,7 @@ type BlogCtaButton = {
 
 function buildToolLabel(locale: Locale, toolName: string, action: "open" | "review") {
   if (locale === "tr") {
-    return action === "open" ? `${toolName}\u2019yi a\u00e7` : `${toolName}\u2019yi incele`;
+    return action === "open" ? `${toolName}’yi aç` : `${toolName}’yi incele`;
   }
 
   return action === "open" ? `Open ${toolName}` : `Review ${toolName}`;
@@ -48,37 +49,34 @@ function buildBlogCtaButtons(
   relatedTools: NonNullable<ReturnType<typeof getLocalizedToolBySlug>>[],
   comparisonHref: string,
   alternativesHref: string,
-  comparisonFallbackLabel: string,
   toolPageHref: string
 ): BlogCtaButton[] {
   const buttons: BlogCtaButton[] = [];
-  const primaryTool = relatedTools[0];
-  const secondaryTool = relatedTools[1];
+  const uniqueTools = relatedTools.slice(0, 3);
 
-  if (primaryTool) {
+  uniqueTools.forEach((tool, index) => {
     buttons.push({
-      label: buildToolLabel(locale, primaryTool.name, "open"),
-      href: `/${locale}/tools/${primaryTool.slug}`
+      label: buildToolLabel(locale, tool.name, "open"),
+      href: `/${locale}/tools/${tool.slug}`,
+      variant: index === 0 ? "primary" : index === 1 ? "secondary" : "ghost"
     });
-  }
+  });
 
-  if (secondaryTool) {
+  if (uniqueTools.length >= 2 && comparisonHref) {
     buttons.push({
-      label: buildToolLabel(locale, secondaryTool.name, "open"),
-      href: `/${locale}/tools/${secondaryTool.slug}`,
+      label:
+        locale === "tr"
+          ? `${uniqueTools[0].name} vs ${uniqueTools[1].name} karşılaştır`
+          : `Compare ${uniqueTools[0].name} vs ${uniqueTools[1].name}`,
+      href: comparisonHref,
       variant: "secondary"
     });
   }
 
-  if (comparisonHref) {
+  if (alternativesHref && buttons.length < 5) {
     buttons.push({
-      label:
-        primaryTool && secondaryTool
-          ? locale === "tr"
-            ? `${primaryTool.name} vs ${secondaryTool.name} karşılaştır`
-            : `Compare ${primaryTool.name} vs ${secondaryTool.name}`
-          : comparisonFallbackLabel,
-      href: comparisonHref,
+      label: locale === "tr" ? "Alternatifleri incele" : "Open alternatives",
+      href: alternativesHref,
       variant: "ghost"
     });
   }
@@ -86,22 +84,33 @@ function buildBlogCtaButtons(
   if (!buttons.length) {
     buttons.push({
       label: locale === "tr" ? "Araçları aç" : "Open tools",
-      href: toolPageHref
+      href: toolPageHref,
+      variant: "primary"
     });
   }
 
-  if (buttons.length < 3 && alternativesHref) {
-    buttons.push({
-      label: locale === "tr" ? "Alternatifleri aç" : "Open alternatives",
-      href: alternativesHref,
-      variant: "ghost"
-    });
-  }
-
-  return buttons.slice(0, 3);
+  return buttons.slice(0, 5);
 }
 
-export function generateStaticParams() {
+function getBlogButtonClass(variant?: BlogCtaButton["variant"]) {
+  if (variant === "primary") {
+    return "inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_72px_-22px_rgba(14,165,233,0.52)]";
+  }
+
+  if (variant === "secondary") {
+    return "inline-flex items-center justify-center rounded-2xl border border-sky-400/10 bg-slate-950/50 px-6 py-3.5 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/18 hover:text-cyan-100";
+  }
+
+  return "inline-flex items-center justify-center rounded-2xl border border-sky-400/10 bg-slate-950/40 px-6 py-3.5 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/18 hover:text-cyan-100";
+}
+
+function renderBlogActionButton(button: BlogCtaButton) {
+  return (
+    <Link key={`${button.href}-${button.label}`} href={button.href} className={getBlogButtonClass(button.variant)}>
+      {button.label}
+    </Link>
+  );
+}export function generateStaticParams() {
   return locales.flatMap((locale) =>
     blogArticles.map((article) => ({
       locale,
@@ -176,8 +185,6 @@ export default async function BlogDetailPage({
     .filter((tool) => tool !== null);
   const primaryTool = relatedTools[0];
   const relatedArticles = getRelatedArticles(safeLocale, article.slug, 3);
-  const heroPrimaryHref = primaryTool ? getToolOutboundUrl(primaryTool) : `/${safeLocale}/tools`;
-  const leadSections = article.sections.slice(0, 2);
   const tailSections = article.sections.slice(2);
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/blog/${article.slug}`);
   const inlineSupportingLinks = getBlogSupportingLinks(safeLocale, article.slug, 2, 2);
@@ -196,7 +203,7 @@ export default async function BlogDetailPage({
       href: `#${buildArticleSectionId(section.title)}`
     }))
   ];
-  const blogCtaButtons = buildBlogCtaButtons(safeLocale, relatedTools, comparisonHref, alternativesHref, copy.comparisonCtaLabel, `/${safeLocale}/tools`);
+  const blogCtaButtons = buildBlogCtaButtons(safeLocale, relatedTools, comparisonHref, alternativesHref, `/${safeLocale}/tools`);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -297,20 +304,7 @@ export default async function BlogDetailPage({
                 </div>
               </div>
               <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href={heroPrimaryHref}
-                  target={heroPrimaryHref.startsWith("http") ? "_blank" : undefined}
-                  rel={heroPrimaryHref.startsWith("http") ? "nofollow sponsored noreferrer" : undefined}
-                  className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_72px_-22px_rgba(14,165,233,0.52)]"
-                >
-                  {primaryTool ? buildToolLabel(safeLocale, primaryTool.name, "open") : (safeLocale === "tr" ? "Aracı aç" : "Open tool")}
-                </a>
-                <a
-                  href={comparisonHref}
-                  className="inline-flex items-center justify-center rounded-2xl border border-sky-400/10 px-6 py-3.5 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/18 hover:text-cyan-100"
-                >
-                  {primaryTool && relatedTools[1] ? `${primaryTool.name} vs ${relatedTools[1].name} kar\u015f\u0131la\u015ft\u0131r` : (primaryTool ? `${primaryTool.name} kar\u015f\u0131la\u015ft\u0131rmalar\u0131` : copy.comparisonCtaLabel)}
-                </a>
+                {blogCtaButtons.map(renderBlogActionButton)}
               </div>
             </div>
           </div>
@@ -321,7 +315,7 @@ export default async function BlogDetailPage({
 
         <SectionJumpNav items={sectionNavItems} />
 
-        {tailSections.length ? <ArticleContent locale={safeLocale} sections={tailSections} /> : null}
+        {tailSections.length ? <ArticleContent locale={safeLocale} sections={tailSections} supportingLinks={inlineSupportingLinks} /> : null}
 
         <SectionShell
           eyebrow={copy.relatedToolsTitle}
@@ -352,12 +346,7 @@ export default async function BlogDetailPage({
           <h2 className="text-2xl font-bold tracking-tight text-slate-50">{copy.comparisonBlockTitle}</h2>
           <p className="mt-3 text-base leading-7 text-slate-300">{copy.comparisonBlockDescription}</p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href={comparisonHref}
-              className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_72px_-22px_rgba(14,165,233,0.52)]"
-            >
-                  {primaryTool && relatedTools[1] ? `${primaryTool.name} vs ${relatedTools[1].name} kar\u015f\u0131la\u015ft\u0131r` : copy.comparisonCtaLabel}
-            </a>
+            {blogCtaButtons.map(renderBlogActionButton)}
           </div>
         </section>
 
@@ -403,6 +392,15 @@ export default async function BlogDetailPage({
     </>
   );
 }
+
+
+
+
+
+
+
+
+
 
 
 

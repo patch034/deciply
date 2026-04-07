@@ -23,6 +23,12 @@ type InlineLinkItem = {
   href: string;
 };
 
+type ArticleActionButton = {
+  label: string;
+  href: string;
+  variant?: "primary" | "secondary" | "ghost";
+};
+
 type ArticleContentProps = {
   locale: Locale;
   sections: BlogSection[];
@@ -116,6 +122,117 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
         </Link>
       </span>
     ));
+  }
+
+  function collectContextualButtons(textBlocks: string[]): ArticleActionButton[] {
+    const localeValue = locale === "tr" ? "tr-TR" : "en-US";
+    const joinedText = textBlocks.join(" \n ").toLocaleLowerCase(localeValue);
+    const buttons: ArticleActionButton[] = [];
+    const seenHrefs = new Set<string>();
+
+    const addButton = (button: ArticleActionButton) => {
+      if (!button.href || seenHrefs.has(button.href)) {
+        return;
+      }
+
+      seenHrefs.add(button.href);
+      buttons.push(button);
+    };
+
+    toolLinks.forEach((tool, index) => {
+      if (buttons.length >= 3) {
+        return;
+      }
+
+      if (joinedText.includes(tool.name.toLocaleLowerCase(localeValue))) {
+        addButton({
+          label: locale === "tr" ? `${tool.name}’yi incele` : `Open ${tool.name}`,
+          href: tool.href,
+          variant: index === 0 ? "primary" : index === 1 ? "secondary" : "ghost"
+        });
+      }
+    });
+
+    if (buttons.length >= 2 && supportingLinks?.comparePages?.length) {
+      const compareLink = supportingLinks.comparePages[0];
+      if (compareLink) {
+        addButton({
+          label: compareLink.label,
+          href: compareLink.href,
+          variant: "secondary"
+        });
+      }
+    }
+
+    if (supportingLinks?.articles?.length) {
+      const relatedArticle = supportingLinks.articles[0];
+      addButton({
+        label: relatedArticle.label,
+        href: relatedArticle.href,
+        variant: buttons.length ? "ghost" : "primary"
+      });
+    }
+
+    if (!buttons.length && supportingLinks?.tools?.length) {
+      supportingLinks.tools.slice(0, 3).forEach((item, index) => {
+        addButton({
+          label: item.label,
+          href: item.href,
+          variant: index === 0 ? "primary" : "ghost"
+        });
+      });
+    }
+
+    if (!buttons.length && supportingLinks?.alternativePages?.length) {
+      const alternative = supportingLinks.alternativePages[0];
+      if (alternative) {
+        addButton({
+          label: alternative.label,
+          href: alternative.href,
+          variant: "ghost"
+        });
+      }
+    }
+
+    if (!buttons.length && supportingLinks?.useCasePages?.length) {
+      const useCase = supportingLinks.useCasePages[0];
+      if (useCase) {
+        addButton({
+          label: useCase.label,
+          href: useCase.href,
+          variant: "ghost"
+        });
+      }
+    }
+
+    return buttons.slice(0, 5);
+  }
+
+  function renderButtonRow(buttons: ArticleActionButton[]) {
+    if (!buttons.length) {
+      return null;
+    }
+
+    return (
+      <div className="mt-5 flex flex-wrap gap-2.5">
+        {buttons.map((button) => (
+          <Link
+            key={`${button.href}-${button.label}`}
+            href={button.href}
+            className={[
+              "inline-flex min-h-[44px] items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold transition duration-300",
+              button.variant === "primary"
+                ? "bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] hover:-translate-y-0.5 hover:scale-[1.02]"
+                : button.variant === "secondary"
+                  ? "border border-sky-400/14 bg-slate-950/50 text-slate-100 hover:border-cyan-400/18 hover:text-cyan-100"
+                  : "border border-sky-400/10 bg-slate-950/40 text-slate-200 hover:border-cyan-400/18 hover:text-cyan-100"
+            ].join(" ")}
+          >
+            {button.label}
+          </Link>
+        ))}
+      </div>
+    );
   }
 
   function renderSupportingLinks() {
@@ -228,6 +345,14 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
             </div>
           ) : null}
 
+          {renderButtonRow(
+            collectContextualButtons([
+              ...section.paragraphs,
+              ...(section.bullets ?? []),
+              ...(section.comparison?.items.map((item) => `${item.label}: ${item.value}`) ?? [])
+            ])
+          )}
+
           {section.subSections?.length ? (
             <div className="mt-6 grid gap-4 lg:grid-cols-2 sm:mt-8 sm:gap-5">
               {section.subSections.map((subSection) => (
@@ -248,16 +373,13 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
                       ))}
                     </ul>
                   ) : null}
-                  {subSection.ctaLabel && subSection.ctaHref ? (
-                    <div className="mt-5">
-                      <Link
-                        href={subSection.ctaHref}
-                        className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 px-4 py-2.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_72px_-22px_rgba(14,165,233,0.52)]"
-                      >
-                        {subSection.ctaLabel}
-                      </Link>
-                    </div>
-                  ) : null}
+                  {renderButtonRow(
+                    collectContextualButtons([
+                      ...subSection.paragraphs,
+                      ...(subSection.bullets ?? []),
+                      ...(subSection.ctaLabel && subSection.ctaHref ? [`[${subSection.ctaLabel}](${subSection.ctaHref})`] : [])
+                    ])
+                  )}
                 </div>
               ))}
             </div>
@@ -267,4 +389,6 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
     </div>
   );
 }
+
+
 
