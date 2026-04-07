@@ -40,7 +40,7 @@ const dictionaries = {
           ]
         },
         {
-          title: "Niyet sayfaları",
+          title: "Popüler rehberler",
           links: [
             { label: "ChatGPT alternatifleri", href: "/alternatives/chatgpt" },
             { label: "Öğrenciler için AI araçları", href: "/use-cases/students" },
@@ -101,7 +101,7 @@ const dictionaries = {
           ]
         },
         {
-          title: "Intent pages",
+          title: "Popular guides",
           links: [
             { label: "ChatGPT alternatives", href: "/alternatives/chatgpt" },
             { label: "Best AI tools for students", href: "/use-cases/students" },
@@ -110,7 +110,7 @@ const dictionaries = {
           ]
         },
         {
-          title: "Trust",
+          title: "Trust / Corporate",
           links: [
             { label: "Blog", href: "/blog" },
             { label: "Affiliate disclosure", href: "/affiliate-disclosure" },
@@ -144,3 +144,5 @@ export type Dictionary = (typeof dictionaries)[Locale];
 export function getDictionary(locale: Locale) {
   return dictionaries[locale];
 }
+
+
