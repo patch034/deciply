@@ -21,6 +21,8 @@ export const SPECIAL_TEAM_COMPARISON_SLUG = "cursor-vs-codeium-for-teams";
 const SPECIAL_TEAM_COMPARISON_PAIR = { leftSlug: "cursor", rightSlug: "codeium" } as const;
 export const SPECIAL_FREELANCER_COMPARISON_SLUG = "chatgpt-vs-jasper-for-freelancers";
 const SPECIAL_FREELANCER_COMPARISON_PAIR = { leftSlug: "chatgpt", rightSlug: "jasper" } as const;
+export const SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_SLUG = "copy-ai-vs-chatgpt-for-product-descriptions";
+const SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_PAIR = { leftSlug: "copy-ai", rightSlug: "chatgpt" } as const;
 
 export function buildAutoComparisonPath(locale: Locale, leftSlug: string, rightSlug: string) {
   return `/${locale}/compare-auto/${leftSlug}-vs-${rightSlug}`;
@@ -82,6 +84,12 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "best-ai-tools-for-freelancers-and-solo-founders-2026",
     "best-ai-tools-for-agency-delivery-2026"
   ],
+  "copy-ai-vs-chatgpt-for-product-descriptions": [
+    "how-to-write-product-descriptions-with-ai-that-sell-2026",
+    "best-ai-tools-for-shopify-stores-that-increase-conversions-2026",
+    "best-ai-tools-for-shopify-stores-2026"
+  ],
+
   "claude-vs-gemini": [
     "best-ai-tools-for-students-projects-2026",
     "best-ai-tools-for-resume-linkedin-2026",
@@ -240,6 +248,7 @@ const COMPARE_SLUG_ALIASES: Record<string, string> = {
   "cursor-vs-codeium": SPECIAL_TEAM_COMPARISON_SLUG,
   "codeium-vs-cursor": SPECIAL_TEAM_COMPARISON_SLUG,
   "chatgpt-vs-jasper": SPECIAL_FREELANCER_COMPARISON_SLUG,
+  "copy-ai-vs-chatgpt": SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_SLUG,
   "adobe-firefly-vs-midjourney": "midjourney-vs-adobe-express",
   "midjourney-vs-adobe-firefly": "midjourney-vs-adobe-express",
   "recraft-vs-midjourney": "midjourney-vs-recraft",
@@ -279,6 +288,13 @@ export function parseComparisonSlugs(path: string) {
 export function buildComparisonPairSlug(leftSlug: string, rightSlug: string) {
   if ((leftSlug === "cursor" && rightSlug === "codeium") || (leftSlug === "codeium" && rightSlug === "cursor")) {
     return SPECIAL_TEAM_COMPARISON_SLUG;
+  }
+
+  if (
+    (leftSlug === "copy-ai" && rightSlug === "chatgpt") ||
+    (leftSlug === "chatgpt" && rightSlug === "copy-ai")
+  ) {
+    return SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_SLUG;
   }
 
   const leftTool = tools.find((tool) => tool.slug === leftSlug);
@@ -423,6 +439,11 @@ export function getStaticComparisonPairSlugs() {
     pairs.push(SPECIAL_FREELANCER_COMPARISON_SLUG);
   }
 
+  if (!pairs.includes(SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_SLUG)) {
+    pairs.push(SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_SLUG);
+  }
+
+
   for (const slug of getManualComparisonPairSlugs()) {
     if (!pairs.includes(slug)) {
       pairs.push(slug);
@@ -459,6 +480,7 @@ const HIGH_INTENT_COMPARISON_DIRECTORY_SLUGS = [
   'notion-ai-vs-chatgpt',
   'jasper-vs-notion-ai',
   'jasper-vs-copy-ai',
+  'copy-ai-vs-chatgpt-for-product-descriptions',
   'shopify-magic-vs-copy-ai'
 ] as const;
 
@@ -576,6 +598,15 @@ export function getComparisonToolsFromPair(locale: Locale, pair: string) {
       rightTool,
       canonicalPairSlug: SPECIAL_FREELANCER_COMPARISON_SLUG,
       isCanonical: pair === SPECIAL_FREELANCER_COMPARISON_SLUG
+    };
+  }
+
+  if (pair === SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_SLUG || pair === "copy-ai-vs-chatgpt") {
+    return {
+      leftTool,
+      rightTool,
+      canonicalPairSlug: SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_SLUG,
+      isCanonical: pair === SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_SLUG
     };
   }
 

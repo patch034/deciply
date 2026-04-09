@@ -909,6 +909,404 @@ function buildArticle(seed: ArticleSeed): BlogEntry {
   };
 }
 
+function buildShopifyConversionExtras(locale: Locale): BlogSection[] {
+  if (locale === "tr") {
+    return [
+      section(
+        "Ürün sayfası dönüşümü nasıl güçlenir?",
+        [
+          `Shopify Magic, ${toolLink(locale, "copy-ai")} ve ${toolLink(locale, "jasper")} birlikte kullanıldığında ürün sayfası metni daha net ve daha satış odaklı hale gelebilir.`,
+          `${toolLink(locale, "chatgpt")} hızlı taslak ve fikir varyasyonu için iyi bir başlangıç sunarken, ${toolLink(locale, "canva-ai")} görsel mesajı destekler.`
+        ],
+        {
+          comparison: {
+            title: "Dönüşüm için hızlı eşleşmeler",
+            items: [
+              { label: "Ürün sayfası", value: "Shopify Magic / Copy.ai" },
+              { label: "Satış tonu", value: "Jasper / ChatGPT" },
+              { label: "Görsel destek", value: "Canva AI" },
+              { label: "Alternatif kopya", value: "Copy.ai / Jasper" }
+            ]
+          },
+          subSections: [
+            sub(
+              "Ürün sayfası kopyası",
+              [
+                `İlk turda ${toolLink(locale, "shopify-magic")} ile mağaza içi taslağı açıp, ardından ${toolLink(locale, "copy-ai")} ile daha satış odaklı bir versiyon üretmek pratik bir başlangıç sağlar.`,
+                `${toolLink(locale, "jasper")} uzun landing page bölümlerinde tonu daha tutarlı tutabilir.`
+              ],
+              ["Başlık", "Fayda", "Açıklama"]
+            ),
+            sub(
+              "Abandoned cart ve upsell akışı",
+              [
+                `Sepet terk eden kullanıcıya giden metinlerde ${toolLink(locale, "copy-ai")} ve ${toolLink(locale, "chatgpt")} hızlı varyasyon üretmek için uygundur.`,
+                `Upsell bloğunda hedef, doğru ek ürünü doğru anda gösterecek kısa ve net bir teklif oluşturmaktır.`
+              ],
+              ["Sepet terk", "Upsell", "Mikro teklif"]
+            )
+          ]
+        }
+      ),
+      section(
+        "İlk 30 günlük Shopify sprinti",
+        [
+          `İlk 30 günde amaç kusursuz mağaza değil, ölçülebilir bir dönüşüm hattı kurmaktır.`,
+          `${toolLink(locale, "shopify-magic")}, ${toolLink(locale, "copy-ai")}, ${toolLink(locale, "jasper")} ve ${toolLink(locale, "canva-ai")} bu sırayı daha hızlı kurmanıza yardım edebilir.`
+        ],
+        {
+          bullets: [
+            "Ürün faydasını tek cümlede kur",
+            "İkna edici detayları kısa bloklara ayır",
+            "Görsel ve metni aynı mesajda birleştir",
+            "Sepet terk akışı için kısa varyasyonlar üret"
+          ],
+          subSections: [
+            sub(
+              "Email akışı",
+              [
+                `${toolLink(locale, "chatgpt")} ve ${toolLink(locale, "jasper")} konu satırı, gövde metni ve kısa varyasyonlar için iyi bir ikili olabilir.`,
+                `Bu yaklaşım, ürün lansmanı ve terk edilen sepet takibinde aynı mesajı farklı uzunluklarda test etmeyi kolaylaştırır.`
+              ],
+              ["Konu satırı", "Terk edilen sepet", "Kısa varyasyon"]
+            ),
+            sub(
+              "Ad copy ve kreatif",
+              [
+                `${toolLink(locale, "jasper")} kısa teklif dili üretirken, ${toolLink(locale, "canva-ai")} görsel mesajı destekleyen kreatifleri hızlıca hazırlar.`,
+                `Ad metni ve görsel aynı satın alma vaadini taşıyorsa, tıklama sonrası sürtünme azalır.`
+              ],
+              ["Ad metni", "Kreatif", "Mesaj uyumu"]
+            )
+          ]
+        }
+      )
+    ];
+  }
+
+  return [
+    section(
+      "How conversion starts on the product page",
+      [
+        `Shopify Magic, ${toolLink(locale, "copy-ai")}, and ${toolLink(locale, "jasper")} can turn a product page into a clearer, more sales-focused page when they are used in the right order.`,
+        `${toolLink(locale, "chatgpt")} helps with quick ideation, while ${toolLink(locale, "canva-ai")} supports the visual message.`
+      ],
+      {
+        comparison: {
+          title: "Fast conversion matches",
+          items: [
+            { label: "Product page", value: "Shopify Magic / Copy.ai" },
+            { label: "Sales tone", value: "Jasper / ChatGPT" },
+            { label: "Visual support", value: "Canva AI" },
+            { label: "Alternative copy", value: "Copy.ai / Jasper" }
+          ]
+        },
+        subSections: [
+          sub(
+            "Product page copy",
+            [
+              `Start with ${toolLink(locale, "shopify-magic")} for store-native drafting, then use ${toolLink(locale, "copy-ai")} to create a more sales-led version.`,
+              `${toolLink(locale, "jasper")} can help keep the longer landing-page structure consistent.`
+            ],
+            ["Headline", "Benefit line", "Description"]
+          ),
+          sub(
+            "Cart recovery and upsells",
+            [
+              `${toolLink(locale, "copy-ai")} and ${toolLink(locale, "chatgpt")} are practical for short abandoned-cart variations and upsell lines.`,
+              `The goal is a short, convincing offer that keeps the buyer moving.`
+            ],
+            ["Cart recovery", "Upsell line", "Micro offer"]
+          )
+        ]
+      }
+    ),
+    section(
+      "The first 30-day Shopify sprint",
+      [
+        `The first 30 days should build a measurable conversion line, not a perfect store.`,
+        `In practice, that means Shopify Magic for the store-native starting point, Copy.ai for sharper sales tone, and Jasper for longer-form tests.`
+      ],
+      {
+        bullets: [
+          "Write the benefit in one sentence",
+          "Split proof into short blocks",
+          "Align visual and copy messages",
+          "Create short variations for cart recovery"
+        ],
+        subSections: [
+          sub(
+            "Starter set",
+            [
+              `Use ${toolLink(locale, "shopify-magic")} for the store copy base, ${toolLink(locale, "copy-ai")} for the sales language, and ${toolLink(locale, "canva-ai")} for the visual pack.`,
+              `That gives you a conversion test without leaning on a single tool for every step.`
+            ],
+            ["Store copy", "Sales tone", "Visual pack"]
+          ),
+          sub(
+            "Test set",
+            [
+              `${toolLink(locale, "chatgpt")} and ${toolLink(locale, "jasper")} can help you test two headline versions, two benefit lines, and two CTA tones.`,
+              `The key signal is not which copy is longer; it is which copy moves more shoppers forward.`
+            ],
+            ["Headline test", "CTA test", "Variation test"]
+          )
+        ]
+      }
+    )
+  ];
+}
+
+function buildProductDescriptionExtras(locale: Locale): BlogSection[] {
+  if (locale === "tr") {
+    return [
+      section(
+        "Satış getiren ürün açıklaması ne ister?",
+        [
+          `Ürün açıklaması yazarken ${toolLink(locale, "copy-ai")}, ${toolLink(locale, "chatgpt")} ve ${toolLink(locale, "jasper")} farklı aşamalarda işe yarar.`,
+          `İlk adım ürünün ne olduğunu değil, kimin hangi sorununu çözdüğünü netleştirmektir. Sonra fayda, duygu, SEO ve CTA sırası kurulur.`
+        ],
+        {
+          comparison: {
+            title: "Açıklama yazımında hızlı görev paylaşımı",
+            items: [
+              { label: "Ürün araştırması", value: "ChatGPT / Jasper" },
+              { label: "Fayda odaklı taslak", value: "Copy.ai / ChatGPT" },
+              { label: "SEO düzeni", value: "Jasper / Copy.ai" },
+              { label: "Son kontrol", value: "ChatGPT" }
+            ]
+          },
+          subSections: [
+            sub(
+              "Ürün araştırması",
+              [
+                `İyi ürün açıklaması kısa bir araştırma ile başlar. ${toolLink(locale, "chatgpt")} ve ${toolLink(locale, "jasper")} ürün özelliklerini, hedef kitleyi ve öne çıkan farkları hızlıca toparlamak için iyi bir başlangıç sağlar.`,
+                `Araştırma kısmı net değilse açıklama da genelde genel ve zayıf kalır.`
+              ],
+              ["Özellikler", "Hedef kitle", "Farklar"]
+            ),
+            sub(
+              "Fayda-first taslak",
+              [
+                `${toolLink(locale, "copy-ai")} kısa, satış odaklı ve okunması kolay ilk taslak için güçlüdür.`,
+                `${toolLink(locale, "chatgpt")} ile aynı ürün için ikinci bir versiyon üretip daha fazla duygu veya daha fazla netlik test edebilirsin.`
+              ],
+              ["Fayda", "Duygu", "İlk taslak"]
+            ),
+            sub(
+              "SEO-friendly açıklama",
+              [
+                `${toolLink(locale, "jasper")} ürün başlığı, alt başlık ve açıklama ritmini daha uzun bir yapı içinde düzenlemeye yardımcı olur.`,
+                `Burada amaç anahtar kelimeyi yığmak değil, arayan kişinin aradığı faydayı doğal bir dille anlatmaktır.`
+              ],
+              ["Başlık", "Alt başlık", "SEO akışı"]
+            )
+          ]
+        }
+      ),
+      section(
+        "İyi ve kötü örnekler",
+        [
+          "Kötü örnekler genelde sadece özellik sıralar: malzeme, boyut, paket içeriği. İyi örnekler ise o özelliklerin müşteriye ne kazandırdığını açıklar.",
+          `${toolLink(locale, "copy-ai")}, ${toolLink(locale, "chatgpt")} ve ${toolLink(locale, "jasper")} ile üretilen taslakları önce kötü bir örnekle, sonra daha net bir fayda cümlesiyle kıyaslamak en doğru öğrenme yoludur.`
+        ],
+        {
+          subSections: [
+            sub(
+              "Kötü örnek",
+              [
+                "Bu ürün yüksek kaliteli malzemeden yapılmıştır ve farklı renk seçenekleriyle gelir.",
+                "Bu cümle ürünün ne kazandırdığını söylemez; sadece özelliği tekrar eder."
+              ],
+              ["Özellik", "Genel ifade", "Düşük ikna"]
+            ),
+            sub(
+              "İyi örnek",
+              [
+                "Bu ürün, dağınık çalışma masalarını tek bakışta toparlayan sade bir düzen hissi verir.",
+                "Burada özellik değil, kullanıcıya hissettirdiği sonuç anlatılır."
+              ],
+              ["Fayda", "Sonuç", "Netlik"]
+            ),
+            sub(
+              "Prompt şablonu",
+              [
+                `${toolLink(locale, "chatgpt")} ile önce ürünün hedef kitlesini ve 3 ana faydayı çıkar, sonra ${toolLink(locale, "copy-ai")} ile kısa satış versiyonu üret, en son ${toolLink(locale, "jasper")} ile SEO uyumlu uzun versiyonu düzenle.`,
+                "Bu akış tek bir çıktı yerine kontrollü bir yazım süreci kurar."
+              ],
+              ["Hedef kitle", "Fayda", "SEO versiyonu"]
+            )
+          ]
+        }
+      ),
+      section(
+        "İlk 20 dakikalık workflow",
+        [
+          `İlk 20 dakikada amaç mükemmel metin değil, doğru yapı kurmaktır. ${toolLink(locale, "copy-ai")} ile hızlı taslak, ${toolLink(locale, "chatgpt")} ile ton kontrolü, ${toolLink(locale, "jasper")} ile uzun form düzenleme iyi bir başlangıç sırası oluşturur.`,
+          `Bu sıra aynı ürünü farklı satış tonlarında test etmene ve hangi versiyonun daha doğal hissettirdiğini görmene yardım eder.`
+        ],
+        {
+          bullets: [
+            "Ürün araştırmasını tek cümleye indir",
+            "3 ana faydayı sırala",
+            "Kısa açıklama ve uzun açıklama üret",
+            "CTA satırını ve SEO başlığını ayrı test et"
+          ],
+          subSections: [
+            sub(
+              "Kısa açıklama",
+              [
+                `${toolLink(locale, "copy-ai")} ile kısa ve direkt bir versiyon oluştur; ürünün ana faydasını tek nefeste anlat.`,
+                `Kısa açıklama ürün sayfasında ilk sürtünmeyi azaltır.`
+              ],
+              ["Kısa", "Direkt", "Net"]
+            ),
+            sub(
+              "Ton kontrolü",
+              [
+                `${toolLink(locale, "chatgpt")} ile daha samimi ya da daha premium tonlar test edilebilir.`,
+                `Aynı ürün için iki ton üretmek, hangi dilin hedef kitleye daha yakın hissettirdiğini anlamayı kolaylaştırır.`
+              ],
+              ["Ton", "Varyasyon", "Hedef kitle"]
+            ),
+            sub(
+              "Uzun form",
+              [
+                `${toolLink(locale, "jasper")} ile açıklamayı başlık, fayda, proof ve CTA düzenine sokmak daha kolaydır.`,
+                `Bu katman özellikle landing page veya kategori sayfası için ürün anlatımını güçlendirir.`
+              ],
+              ["Başlık", "Proof", "CTA"]
+            )
+          ]
+        }
+      )
+    ];
+  }
+
+  return [
+    section(
+      "What does a selling product description need?",
+      [
+        `When you write product descriptions, ${toolLink(locale, "copy-ai")}, ${toolLink(locale, "chatgpt")}, and ${toolLink(locale, "jasper")} help at different stages of the workflow.`,
+        `The first step is not describing the item itself, but clarifying which customer problem it solves. After that, the flow should move through benefits, emotion, SEO, and CTA order.`
+      ],
+      {
+        comparison: {
+          title: "Quick task split for description writing",
+          items: [
+            { label: "Product research", value: "ChatGPT / Jasper" },
+            { label: "Benefit-first draft", value: "Copy.ai / ChatGPT" },
+            { label: "SEO structure", value: "Jasper / Copy.ai" },
+            { label: "Final review", value: "ChatGPT" }
+          ]
+        },
+        subSections: [
+          sub(
+            "Product research",
+            [
+              `A strong product description starts with a short research pass. ${toolLink(locale, "chatgpt")} and ${toolLink(locale, "jasper")} are useful for pulling together the main features, audience, and differences quickly.`,
+              `If the research stage is vague, the description usually becomes generic and weak too.`
+            ],
+            ["Features", "Audience", "Differences"]
+          ),
+          sub(
+            "Benefit-first draft",
+            [
+              `${toolLink(locale, "copy-ai")} is strong for a short, sales-led first draft that is easy to read.`,
+              `${toolLink(locale, "chatgpt")} can be used for a second version of the same product if you want to test more emotion or more clarity.`
+            ],
+            ["Benefit", "Emotion", "First draft"]
+          ),
+          sub(
+            "SEO-friendly structure",
+            [
+              `${toolLink(locale, "jasper")} helps organize product titles, subheads, and description rhythm inside a longer structure.`,
+              `The goal is not to stuff keywords; it is to explain the value in the language the shopper is already using.`
+            ],
+            ["Title", "Subhead", "SEO flow"]
+          )
+        ]
+      }
+    ),
+    section(
+      "Good and bad examples",
+      [
+        "Bad examples usually list only features: materials, size, package contents. Good examples explain what those features actually do for the customer.",
+        `${toolLink(locale, "copy-ai")}, ${toolLink(locale, "chatgpt")}, and ${toolLink(locale, "jasper")} work well when you compare a weak example first and then rewrite it into a benefit-led version.`
+      ],
+      {
+        subSections: [
+          sub(
+            "Bad example",
+            [
+              "This product is made with high-quality materials and comes in multiple color options.",
+              "That sentence repeats a feature, but it does not tell the shopper what they gain."
+            ],
+            ["Feature", "Generic line", "Low persuasion"]
+          ),
+          sub(
+            "Good example",
+            [
+              "This product makes a cluttered desk feel organized at a glance, so the space looks calmer and easier to use.",
+              "Here the copy explains the result, not just the property."
+            ],
+            ["Benefit", "Outcome", "Clarity"]
+          ),
+          sub(
+            "Prompt template",
+            [
+              `Use ${toolLink(locale, "chatgpt")} to extract the audience and the top 3 benefits, then ${toolLink(locale, "copy-ai")} for a short sales version, and finish with ${toolLink(locale, "jasper")} for the SEO-friendly long version.`,
+              "That flow creates a controlled writing process instead of a single generic draft."
+            ],
+            ["Audience", "Benefit", "SEO version"]
+          )
+        ]
+      }
+    ),
+    section(
+      "The first 20 minutes of the workflow",
+      [
+        `In the first 20 minutes, the goal is structure, not perfection. ${toolLink(locale, "copy-ai")} can create a fast draft, ${toolLink(locale, "chatgpt")} can check tone, and ${toolLink(locale, "jasper")} can help reshape the long-form structure.`,
+        `That sequence lets you test the same product in different tones and see which version feels most natural.`
+      ],
+      {
+        bullets: [
+          "Reduce the product to one clear sentence",
+          "List the 3 main benefits",
+          "Generate short and long versions",
+          "Test CTA lines and SEO title separately"
+        ],
+        subSections: [
+          sub(
+            "Short version",
+            [
+              `${toolLink(locale, "copy-ai")} works well for a short and direct version that gets to the main benefit quickly.`,
+              `A short description reduces friction on the product page.`
+            ],
+            ["Short", "Direct", "Clear"]
+          ),
+          sub(
+            "Tone check",
+            [
+              `${toolLink(locale, "chatgpt")} is helpful when you want to test a friendlier or more premium tone.`,
+              `Producing two tones for the same product makes it easier to see which language better fits the audience.`
+            ],
+            ["Tone", "Variation", "Audience"]
+          ),
+          sub(
+            "Long form",
+            [
+              `${toolLink(locale, "jasper")} makes it easier to organize the description into title, benefit, proof, and CTA order.`,
+              `That layer is especially useful when the product copy needs to support a landing page or category page as well.`
+            ],
+            ["Title", "Proof", "CTA"]
+          )
+        ]
+      }
+    )
+  ];
+}
+
 const seeds: ArticleSeed[] = [
   {
     slug: "best-ai-tools-for-shopify-product-descriptions-2026",
@@ -1387,7 +1785,7 @@ const seeds: ArticleSeed[] = [
       en: "Best AI tools for student projects in 2026 | Deciply"
     },
     seoDescription: {
-      tr: "öğrenci projeleri için en iyi AI araçlarını, compare linklerini, gerçek workflow ?rneklerini ve pratik kullanım senaryolarını inceleyin.",
+      tr: "öğrenci projeleri için en iyi AI araçlarını, compare linklerini, gerçek workflow örneklerini ve pratik kullanım senaryolarını inceleyin.",
       en: "Review the best AI tools for student projects, plus compare links, real workflow examples, and practical use cases."
     },
     categorySlug: "guides",
@@ -1920,10 +2318,125 @@ const seeds: ArticleSeed[] = [
       tr: buildFreelancerExtras("tr"),
       en: buildFreelancerExtras("en")
     }
+  },
+  {
+    slug: "best-ai-tools-for-shopify-stores-that-increase-conversions-2026",
+    publishDate: "2026-04-09",
+    topic: {
+      tr: "Shopify mağazaları ve dönüşüm artırma",
+      en: "Shopify stores and conversion growth"
+    },
+    title: {
+      tr: "2026'da dönüşümü artıran en iyi Shopify araçları",
+      en: "Best AI tools for Shopify stores that increase conversions (2026)"
+    },
+    excerpt: {
+      tr: "Shopify mağazalarında ürün sayfası, email, upsell ve reklam akışlarını güçlendirmek isteyen mağaza sahipleri için pratik bir rehber.",
+      en: "A practical guide for Shopify store owners who want stronger product pages, email flows, upsells, and ad copy."
+    },
+    intro: {
+      tr: "Shopify mağazalarında dönüşüm artışı, daha fazla araç kullanmaktan değil, doğru aşamada doğru aracı kullanmaktan gelir. Ürün sayfası kopyası, kampanya metni, görsel destek ve sepet terk akışı aynı anda iyileştiğinde dönüşüm tarafında daha net sonuçlar görürsünüz. Bu rehber, Copy.ai, Jasper, Shopify Magic, ChatGPT ve Canva AI gibi araçları gerçek mağaza iş akışlarına bağlar.",
+      en: "On Shopify, conversion growth does not come from using more tools; it comes from using the right tool at the right stage. When product copy, campaign language, visual support, and cart recovery all improve together, the store usually gets a clearer result. This guide connects Copy.ai, Jasper, Shopify Magic, ChatGPT, and Canva AI to real store workflows."
+    },
+    seoTitle: {
+      tr: "2026'da dönüşümü artıran en iyi Shopify araçları | Deciply",
+      en: "Best AI tools for Shopify stores that increase conversions (2026) | Deciply"
+    },
+    seoDescription: {
+      tr: "Shopify mağazaları için dönüşüm artıran en iyi AI araçlarını, product page akışlarını, compare linklerini ve gerçek workflow örneklerini inceleyin.",
+      en: "Review the best AI tools for Shopify conversion workflows, product-page structure, compare links, and practical examples."
+    },
+    categorySlug: "guides",
+    useCaseSlug: "business",
+    useCasePageSlug: "business",
+    toolSlugs: ["shopify-magic", "copy-ai", "jasper", "chatgpt", "canva-ai"],
+    comparePairs: [
+      { leftSlug: "shopify-magic", rightSlug: "copy-ai" },
+      { leftSlug: "copy-ai", rightSlug: "chatgpt" },
+      { leftSlug: "jasper", rightSlug: "copy-ai" }
+    ],
+    relatedArticleSlugs: ["how-to-write-product-descriptions-with-ai-that-sell-2026", "best-ai-tools-for-shopify-stores-2026", "best-ai-tools-for-shopify-product-descriptions-2026"],
+    keywords: ["shopify", "conversion", "product pages", "upsell", "abandoned cart"],
+    audience: {
+      tr: "Shopify mağaza sahipleri, küçük e-ticaret markaları, dropshipper'lar ve tek başına çalışan kurucular için uygundur.",
+      en: "This fits Shopify store owners, small ecommerce brands, dropshippers, and solo founders."
+    },
+    workflow: {
+      tr: ["ürün sayfasını netleştir", "email ve upsell akışını kur", "görsel ve reklam katmanını test et"],
+      en: ["clarify the product page", "set up email and upsell flow", "test the visual and ad layer"]
+    },
+    caution: {
+      tr: "Dönüşüm artışı için en büyük hata, her şeyi tek araca yüklemektir; ürün sayfası, reklam ve email akışını ayrı ayrı kontrol etmek gerekir.",
+      en: "The biggest mistake is asking one tool to do everything; product pages, ads, and email flows should be checked separately."
+    },
+    nextStep: {
+      tr: "Ürün açıklaması rehberine ve ürün kopyası karşılaştırmasına geçerek yazım katmanını tamamla.",
+      en: "Open the product-description guide and the copy comparison next to complete the writing layer."
+    },
+    extraSections: {
+      tr: buildShopifyConversionExtras("tr"),
+      en: buildShopifyConversionExtras("en")
+    }
+  },
+  {
+    slug: "how-to-write-product-descriptions-with-ai-that-sell-2026",
+    publishDate: "2026-04-09",
+    topic: {
+      tr: "ürün açıklaması yazımı",
+      en: "product description writing"
+    },
+    title: {
+      tr: "2026'da satış getiren ürün açıklaması nasıl yazılır?",
+      en: "How to write product descriptions with AI that sell (2026)"
+    },
+    excerpt: {
+      tr: "Satış getiren ürün açıklaması yazmak isteyenler için araştırma, fayda-first taslak, SEO düzeni ve prompt workflow rehberi.",
+      en: "A workflow guide for writing product descriptions that sell, including research, benefit-first drafts, SEO structure, and prompt flow."
+    },
+    intro: {
+      tr: "İyi ürün açıklaması, ürünün ne olduğunu tekrar etmekten çok, müşterinin neden alması gerektiğini netleştirir. Copy.ai, ChatGPT ve Jasper bu süreci farklı açılardan hızlandırır: biri kısa satış taslağına, biri esnek revizyona, biri uzun form yapılandırmaya daha uygun olabilir. Bu rehber, iyi ve kötü örnekler üzerinden gerçek bir yazım sistemi kurar.",
+      en: "A good product description does more than repeat what the product is; it explains why the customer should buy it. Copy.ai, ChatGPT, and Jasper speed up different parts of the process: one is better for short sales drafts, one for flexible rewriting, and one for longer structure. This guide builds a real writing system through good and bad examples."
+    },
+    seoTitle: {
+      tr: "2026'da satış getiren ürün açıklaması nasıl yazılır? | Deciply",
+      en: "How to write product descriptions with AI that sell (2026) | Deciply"
+    },
+    seoDescription: {
+      tr: "Satış getiren ürün açıklamaları için AI destekli araştırma, taslak, SEO ve prompt workflow adımlarını inceleyin.",
+      en: "Review AI-assisted research, drafting, SEO, and prompt workflow steps for product descriptions that sell."
+    },
+    categorySlug: "guides",
+    useCaseSlug: "business",
+    useCasePageSlug: "business",
+    toolSlugs: ["copy-ai", "chatgpt", "jasper"],
+    comparePairs: [
+      { leftSlug: "copy-ai", rightSlug: "chatgpt" },
+      { leftSlug: "jasper", rightSlug: "copy-ai" },
+      { leftSlug: "chatgpt", rightSlug: "jasper" }
+    ],
+    relatedArticleSlugs: ["best-ai-tools-for-shopify-stores-that-increase-conversions-2026", "best-ai-tools-for-shopify-stores-2026", "best-ai-tools-for-shopify-product-descriptions-2026"],
+    keywords: ["product descriptions", "seo copy", "shopify", "sales copy", "prompt workflow"],
+    audience: {
+      tr: "Shopify mağaza sahipleri, ürün metni yazan ekipler, freelancer'lar ve e-ticaret odaklı içerik üreticileri için uygundur.",
+      en: "This fits Shopify store owners, product copy teams, freelancers, and ecommerce content creators."
+    },
+    workflow: {
+      tr: ["ürünü ve müşteri sorununu netleştir", "fayda-first taslağı çıkar", "SEO ve CTA satırını son kez düzenle"],
+      en: ["clarify the product and pain point", "draft benefit-first copy", "polish SEO and CTA lines"]
+    },
+    caution: {
+      tr: "Ürün açıklaması sadece özellik listesinden oluşursa satış dili zayıflar; fayda, duygu ve net CTA birlikte çalışmalıdır.",
+      en: "If the description turns into a feature list only, the sales language gets weaker; benefits, emotion, and CTA need to work together."
+    },
+    nextStep: {
+      tr: "Ürün açıklaması karşılaştırmasına geç ve ardından Shopify dönüşüm rehberini aç.",
+      en: "Open the comparison page next, then review the Shopify conversion guide."
+    },
+    extraSections: {
+      tr: buildProductDescriptionExtras("tr"),
+      en: buildProductDescriptionExtras("en")
+    }
   }
-
 ];
 
 export const seoGeneratedBlogArticles: BlogEntry[] = seeds.map(buildArticle);
-
-
