@@ -12,7 +12,7 @@ import { SectionJumpNav } from "@/components/ui/section-jump-nav";
 import { SectionShell } from "@/components/ui/section-shell";
 import { blogArticles } from "@/data/blog";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
-import { buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
+import { buildAutoComparisonPath, buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
 import {
   formatBlogDate,
   getBlogCopy,
@@ -54,7 +54,7 @@ function buildBlogCtaButtons(
   const buttons: BlogCtaButton[] = [];
   const uniqueTools = relatedTools.slice(0, 3);
 
-  uniqueTools.forEach((tool, index) => {
+  uniqueTools.forEach((tool) => {
     buttons.push({
       label: buildToolLabel(locale, tool.name, "open"),
       href: `/${locale}/tools/${tool.slug}`,
@@ -62,14 +62,24 @@ function buildBlogCtaButtons(
     });
   });
 
+  if (uniqueTools.length >= 2) {
+    const autoComparisonHref = buildAutoComparisonPath(locale, uniqueTools[0].slug, uniqueTools[1].slug);
+
+    buttons.push({
+      label: locale === "tr" ? uniqueTools[0].name + " vs " + uniqueTools[1].name + " hızlı karşılaştır" : "Auto compare " + uniqueTools[0].name + " vs " + uniqueTools[1].name,
+      href: autoComparisonHref,
+      variant: "secondary"
+    });
+  }
+
   if (uniqueTools.length >= 2 && comparisonHref) {
     buttons.push({
       label:
         locale === "tr"
-          ? `${uniqueTools[0].name} vs ${uniqueTools[1].name} karşılaştır`
-          : `Compare ${uniqueTools[0].name} vs ${uniqueTools[1].name}`,
+          ? uniqueTools[0].name + " vs " + uniqueTools[1].name + " editoryal karşılaştır"
+          : "Editorial compare: " + uniqueTools[0].name + " vs " + uniqueTools[1].name,
       href: comparisonHref,
-      variant: "secondary"
+      variant: "ghost"
     });
   }
 
@@ -91,7 +101,6 @@ function buildBlogCtaButtons(
 
   return buttons.slice(0, 5);
 }
-
 function getBlogButtonClass(variant?: BlogCtaButton["variant"]) {
   if (variant === "primary") {
     return "inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_72px_-22px_rgba(14,165,233,0.52)]";

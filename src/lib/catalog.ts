@@ -5,7 +5,7 @@ import type { Locale } from "@/i18n/config";
 import { assertEncodingHealth, normalizeLocalizedContent } from "@/lib/encoding";
 import { enrichToolCopy } from "@/lib/tool-content";
 import type { LocalizedCategory, LocalizedTool, PricingTier } from "@/types/catalog";
-type BaseLocalizedTool = Omit<LocalizedTool, "whatItActuallyDoes" | "whoShouldUseSummary" | "realUseCaseExample">;
+type BaseLocalizedTool = Omit<LocalizedTool, "whatItActuallyDoes" | "whoShouldUseSummary" | "realUseCaseExample" | "compareProfile">;
 
 export const TOOLS_PAGE_SIZE = 20;
 

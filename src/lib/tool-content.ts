@@ -1,7 +1,8 @@
 import type { Locale } from "@/i18n/config";
+import { buildToolCompareProfile } from "@/lib/tool-compare";
 import type { LocalizedTool, MoneyUseCase, RealUseCaseExample } from "@/types/catalog";
 
-type ToolCopySource = Omit<LocalizedTool, "whatItActuallyDoes" | "whoShouldUseSummary" | "realUseCaseExample">;
+type ToolCopySource = Omit<LocalizedTool, "whatItActuallyDoes" | "whoShouldUseSummary" | "realUseCaseExample" | "compareProfile">;
 
 type WorkflowKind =
   | "writing"
@@ -575,6 +576,7 @@ export function enrichToolCopy(locale: Locale, tool: ToolCopySource): LocalizedT
       description: ensureSentence(item.description)
     })),
     seoTitle,
-    seoDescription
+    seoDescription,
+    compareProfile: buildToolCompareProfile(locale, tool)
   };
 }

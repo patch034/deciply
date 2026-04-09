@@ -1,4 +1,4 @@
-import type { Locale } from "@/i18n/config";
+﻿import type { Locale } from "@/i18n/config";
 
 export type LocalizedText = Record<Locale, string>;
 export type LocalizedStringList = Record<Locale, string[]>;
@@ -29,6 +29,24 @@ export type CategoryEntry = {
   >;
 };
 
+export type ToolCompareProfile = {
+  slug: string;
+  name: string;
+  category: string;
+  pricingModel: string;
+  freeTier: boolean;
+  bestFor: string[];
+  strengths: string[];
+  weaknesses: string[];
+  speedScore: number;
+  easeOfUseScore: number;
+  outputQualityScore: number;
+  studentScore: number;
+  businessScore: number;
+  creatorScore: number;
+  valueScore: number;
+};
+
 export type ToolEntry = {
   slug: string;
   pricing: PricingTier;
@@ -40,6 +58,7 @@ export type ToolEntry = {
   useCaseSlugs: string[];
   rating: number;
   featured: boolean;
+  compareProfile?: ToolCompareProfile;
   locales: Record<
     Locale,
     {
@@ -87,6 +106,7 @@ export type LocalizedTool = {
   useCaseSlugs: string[];
   rating: number;
   featured: boolean;
+  compareProfile: ToolCompareProfile;
   features: string[];
   pros: string[];
   cons: string[];

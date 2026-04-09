@@ -34,6 +34,7 @@ const dictionaries = {
           title: "Karşılaştır",
           links: [
             { label: "Tüm karşılaştırmalar", href: "/categories/comparisons" },
+            { label: "Canlı karşılaştırma", href: "/compare-auto" },
             { label: "ChatGPT vs Claude", href: "/compare/chatgpt-vs-claude" },
             { label: "ChatGPT vs Gemini", href: "/compare/chatgpt-vs-gemini" },
             { label: "Midjourney vs Adobe Express", href: "/compare/midjourney-vs-adobe-express" }
@@ -95,6 +96,7 @@ const dictionaries = {
           title: "Compare",
           links: [
             { label: "All comparisons", href: "/categories/comparisons" },
+            { label: "Live compare", href: "/compare-auto" },
             { label: "ChatGPT vs Claude", href: "/compare/chatgpt-vs-claude" },
             { label: "ChatGPT vs Gemini", href: "/compare/chatgpt-vs-gemini" },
             { label: "Midjourney vs Adobe Express", href: "/compare/midjourney-vs-adobe-express" }
@@ -144,5 +146,3 @@ export type Dictionary = (typeof dictionaries)[Locale];
 export function getDictionary(locale: Locale) {
   return dictionaries[locale];
 }
-
-

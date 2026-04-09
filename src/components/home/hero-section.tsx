@@ -29,6 +29,10 @@ function getQuickLinks(locale: Locale) {
       href: buildAlternativesPath(locale, "chatgpt")
     },
     {
+      label: locale === "tr" ? "Canlı karşılaştırma" : "Live compare",
+      href: `/${locale}/compare-auto`
+    },
+    {
       label: locale === "tr" ? "Öğrenciler için araçlar" : "Tools for students",
       href: buildUseCasePath(locale, "students")
     },
@@ -226,5 +230,3 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
     </section>
   );
 }
-
-

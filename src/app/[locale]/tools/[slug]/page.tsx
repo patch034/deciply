@@ -20,7 +20,7 @@ import { tools } from "@/data/tools";
 import { toolCategoryOptions } from "@/data/tool-taxonomy";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
 import { getBlogCopy, getRelatedArticlesByTool } from "@/lib/blog";
-import { FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS, buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
+import { FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS, buildAutoComparisonPath, buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
 import { buildAlternativesPath, buildUseCasePath, getSafeComparisonPath, getUseCasePagesForTool } from "@/lib/intent-pages";
 import { buildToolMetaDescription, buildToolPageTitle } from "@/lib/seo";
 import { getToolTrustIndicators, getToolUseCaseTags } from "@/lib/tool-ui";
@@ -441,10 +441,12 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   const pricingSummaryCards = getPricingSummaryCards(safeLocale, tool, pricingValue);
   const audienceCards = getAudienceCards(safeLocale, tool, dictionary);
   const comparisonTargets = getComparisonTargetTools(safeLocale, tool.slug, 6);
-    const featuredTripleComparisonHref = FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.includes(tool.slug as (typeof FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS)[number])
-      ? buildComparisonPath(safeLocale, FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[0], FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[1], FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[2])
-      : null;
-    const useCasePages = getUseCasePagesForTool(safeLocale, tool.useCaseSlugs, 2);
+  const autoComparisonTarget = comparisonTargets[0] ?? null;
+  const autoComparisonHref = autoComparisonTarget ? buildAutoComparisonPath(safeLocale, tool.slug, autoComparisonTarget.slug) : null;
+  const featuredTripleComparisonHref = FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS.includes(tool.slug as (typeof FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS)[number])
+    ? buildComparisonPath(safeLocale, FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[0], FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[1], FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[2])
+    : null;
+  const useCasePages = getUseCasePagesForTool(safeLocale, tool.useCaseSlugs, 2);
   const faqItems = buildToolFaq(safeLocale, tool, pricingValue);
   const comparisonCards = comparisonTargets.map((item) => ({
     icon: "VS",
@@ -870,11 +872,19 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
             : "Open the official tool, review nearby alternatives, and read the related review if you need more context."
         }
         buttons={[
-          { label: safeLocale === "tr" ? "Resmî aracı aç" : "Visit official tool", href: outboundUrl },
+          { label: safeLocale === "tr" ? "Resm? aracı a?" : "Visit official tool", href: outboundUrl },
+          ...(autoComparisonHref && autoComparisonTarget
+            ? [
+                {
+                  label: safeLocale === "tr" ? `${tool.name} ile ${autoComparisonTarget.name} karşılaştır` : `Compare ${tool.name} vs ${autoComparisonTarget.name}`,
+                  href: autoComparisonHref,
+                  variant: "secondary" as const
+                }
+              ]
+            : []),
           { label: safeLocale === "tr" ? "Alternatifleri karşılaştır" : "Compare alternatives", href: alternativesHubHref, variant: "secondary" },
           { label: safeLocale === "tr" ? "Tam incelemeyi oku" : "Read full review", href: featuredBlogHref, variant: "ghost" }
-        ]}
-      />
+        ]}      />
 
       {relatedArticles.length ? (
         <InfoSection title={blogCopy.toolPageRelatedTitle} description={blogCopy.toolPageRelatedDescription}>
@@ -912,6 +922,14 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
             >
               {dictionary.finalPrimaryCta}
             </a>
+            {autoComparisonHref && autoComparisonTarget ? (
+              <Link
+                href={autoComparisonHref}
+                className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl border border-sky-400/10 px-6 py-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/18 hover:text-cyan-100 sm:w-auto"
+              >
+                {safeLocale === "tr" ? `${tool.name} ile ${autoComparisonTarget.name} karşılaştır` : `Compare ${tool.name} vs ${autoComparisonTarget.name}`}
+              </Link>
+            ) : null}
             <Link
               href={`/${safeLocale}/tools`}
               className="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl border border-sky-400/10 px-6 py-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/18 hover:text-cyan-100 sm:w-auto"

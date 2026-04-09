@@ -21,6 +21,20 @@ export const SPECIAL_TEAM_COMPARISON_SLUG = "cursor-vs-codeium-for-teams";
 const SPECIAL_TEAM_COMPARISON_PAIR = { leftSlug: "cursor", rightSlug: "codeium" } as const;
 export const SPECIAL_FREELANCER_COMPARISON_SLUG = "chatgpt-vs-jasper-for-freelancers";
 const SPECIAL_FREELANCER_COMPARISON_PAIR = { leftSlug: "chatgpt", rightSlug: "jasper" } as const;
+
+export function buildAutoComparisonPath(locale: Locale, leftSlug: string, rightSlug: string) {
+  return `/${locale}/compare-auto/${leftSlug}-vs-${rightSlug}`;
+}
+
+export function parseAutoComparisonPairSlug(pair: string) {
+  const [leftSlug, rightSlug] = pair.split("-vs-");
+
+  if (!leftSlug || !rightSlug) {
+    return null;
+  }
+
+  return { leftSlug, rightSlug };
+}
 const MANUAL_COMPARISON_PAIR_TOOL_SLUGS = [
   ["cursor", "replit"],
   ["leonardo-ai", "recraft"],
