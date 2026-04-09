@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
 import { GlassPanel } from "@/components/ui/glass-panel";
@@ -18,7 +18,7 @@ export function BlogCard({ locale, article, ctaLabel }: BlogCardProps) {
   const publishDate = publishSource ? formatBlogDate(locale, publishSource) : null;
 
   return (
-    <GlassPanel className="group flex h-full min-h-[350px] flex-col overflow-hidden border-sky-400/10 bg-[linear-gradient(180deg,rgba(10,16,30,0.96),rgba(5,9,17,0.99))] p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/20 hover:shadow-[0_28px_88px_-44px_rgba(14,165,233,0.14)] sm:p-7">
+    <GlassPanel className="group flex h-full min-h-[300px] flex-col overflow-hidden border-sky-400/10 bg-[linear-gradient(180deg,rgba(10,16,30,0.96),rgba(5,9,17,0.99))] p-5 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/20 hover:shadow-[0_28px_88px_-44px_rgba(14,165,233,0.14)] sm:min-h-[320px] sm:p-6">
       <div className="flex flex-wrap items-center gap-3">
         <Badge variant="ghost" className="max-w-full justify-start text-cyan-200">
           {article.categoryLabel}
@@ -26,19 +26,19 @@ export function BlogCard({ locale, article, ctaLabel }: BlogCardProps) {
         {publishDate ? <span className="text-xs font-medium text-slate-400/90">{publishDate}</span> : null}
       </div>
 
-      <div className="mt-5 flex flex-1 flex-col sm:mt-6">
-        <h2 className="text-[1.18rem] font-bold tracking-[-0.03em] text-slate-50 transition group-hover:text-cyan-200 sm:text-[1.42rem]">
+      <div className="mt-4 flex flex-1 flex-col sm:mt-5">
+        <h2 className="text-[1.08rem] font-bold tracking-[-0.03em] text-slate-50 transition group-hover:text-cyan-200 sm:text-[1.28rem] md:text-[1.38rem]">
           <Link href={`/${locale}/blog/${article.slug}`}>{article.title}</Link>
         </h2>
-        <p className="mobile-clamp-2 mt-4 text-sm leading-7 text-slate-300/84 sm:mt-5 sm:text-[15px] sm:leading-8">{article.excerpt}</p>
+        <p className="mobile-clamp-2 mt-3 text-[14px] leading-6 text-slate-300/84 sm:mt-4 sm:text-sm sm:leading-7 md:text-[15px] md:leading-8">{article.excerpt}</p>
 
-        <div className="mt-auto flex items-center justify-between gap-3 border-t border-sky-400/10 pt-5 text-sm sm:mt-7 sm:gap-4 sm:pt-6">
+        <div className="mt-auto flex items-center justify-between gap-3 border-t border-sky-400/10 pt-4 text-sm sm:mt-6 sm:gap-4 sm:pt-5">
           <span className="truncate text-slate-400">
             {article.relatedToolSlugs.length} {relatedToolsLabel}
           </span>
           <Link
             href={`/${locale}/blog/${article.slug}`}
-            className="inline-flex min-h-[42px] items-center rounded-full border border-cyan-400/16 bg-cyan-400/10 px-3.5 py-2 font-semibold text-cyan-100 transition hover:border-cyan-300/24 hover:bg-cyan-400/14 sm:px-4"
+            className="inline-flex min-h-[40px] items-center rounded-full border border-cyan-400/16 bg-cyan-400/10 px-3.5 py-2 font-semibold text-cyan-100 transition hover:border-cyan-300/24 hover:bg-cyan-400/14 sm:min-h-[42px] sm:px-4"
           >
             {ctaLabel}
           </Link>

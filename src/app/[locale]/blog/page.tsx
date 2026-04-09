@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -88,14 +88,14 @@ export default async function BlogPage({
         }
         actions={<PremiumButton href={`/${safeLocale}/blog`}>{copy.backToBlog}</PremiumButton>}
       >
-        <div className="grid gap-6 xl:grid-cols-3">
+        <div className="grid gap-4 xl:grid-cols-3">
           {([
             { label: safeLocale === "tr" ? "Editör seçimleri" : "Editor's Picks", article: boostSections.editorPicks[0] },
             { label: safeLocale === "tr" ? "Bu hafta en çok okunan" : "Most Read This Week", article: boostSections.mostRead[0] },
             { label: safeLocale === "tr" ? "Bu hafta yeni" : "New This Week", article: boostSections.newThisWeek[0] }
           ] as const).map((block) =>
             block.article ? (
-              <div key={block.label} className="space-y-4">
+              <div key={block.label} className="space-y-3">
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300/90">{block.label}</p>
                   <span className="text-xs font-medium text-slate-400">{copy.articleLeadLabel}</span>
@@ -113,7 +113,7 @@ export default async function BlogPage({
         description={copy.listDescription}
         actions={<PremiumButton href={`/${safeLocale}/tools?page=1`}>{safeLocale === "tr" ? "Araçlara git" : "Browse tools"}</PremiumButton>}
       >
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {articles.map((article) => (
             <BlogCard key={article.slug} locale={safeLocale} article={article} ctaLabel={copy.readMoreLabel} />
           ))}
@@ -122,7 +122,7 @@ export default async function BlogPage({
         {totalPages > 1 ? (
           <nav
             aria-label={`${copy.blogLabel} pagination`}
-            className="mt-8 flex w-full max-w-full flex-wrap items-center justify-center gap-2 overflow-x-hidden sm:gap-3"
+            className="mt-6 flex w-full max-w-full flex-wrap items-center justify-center gap-2 overflow-x-hidden sm:mt-8 sm:gap-3"
           >
             {currentPage > 1 ? (
               <Link

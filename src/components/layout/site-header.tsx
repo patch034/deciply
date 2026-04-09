@@ -28,8 +28,8 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
 
   return (
     <header className="sticky top-0 z-40 border-b border-sky-400/12 bg-[linear-gradient(180deg,rgba(5,8,15,0.9),rgba(7,12,20,0.72))] backdrop-blur-2xl">
-      <div className="mx-auto grid max-w-[1200px] grid-cols-[minmax(0,1fr)_auto] items-center gap-2.5 px-4 py-3 md:grid-cols-[auto_1fr_auto] md:gap-4 md:px-6 md:py-4">
-        <Link href={`/${locale}`} className="inline-flex min-h-[44px] min-w-0 items-center">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-[minmax(0,1fr)_auto] items-center gap-2 px-4 py-2.5 md:grid-cols-[auto_1fr_auto] md:gap-4 md:px-6 md:py-4">
+        <Link href={`/${locale}`} className="inline-flex min-h-[40px] min-w-0 items-center">
           <BrandLogo compact className="drop-shadow-[0_12px_30px_rgba(14,165,233,0.22)]" />
         </Link>
         <div className="hidden justify-center md:flex">
@@ -51,12 +51,12 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
       </div>
 
       <div className="border-t border-sky-400/10 px-4 py-2 md:hidden">
-        <nav className="mx-auto grid max-w-[1200px] grid-cols-3 gap-2">
+        <nav className="mx-auto flex max-w-[1200px] items-center gap-2 overflow-x-auto pb-0.5">
           {mobileQuickLinks.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="ui-nav-shell inline-flex min-h-[44px] min-w-0 items-center justify-center truncate px-1.5 text-[10px] font-semibold tracking-normal text-slate-200 transition duration-150 hover:border-cyan-400/20 hover:text-cyan-100"
+              className="ui-nav-shell inline-flex min-h-[36px] shrink-0 min-w-0 items-center justify-center truncate rounded-full px-3 text-[10px] font-semibold tracking-normal text-slate-200 transition duration-150 hover:border-cyan-400/20 hover:text-cyan-100"
             >
               {item.label}
             </Link>

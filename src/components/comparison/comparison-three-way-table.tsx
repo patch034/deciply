@@ -1,4 +1,4 @@
-﻿type ComparisonThreeWayRow = {
+type ComparisonThreeWayRow = {
   label: string;
   first: string;
   second: string;
@@ -24,7 +24,7 @@ function getTextStyle() {
 
 export function ComparisonThreeWayTable({ locale, title, description, columns, rows }: ComparisonThreeWayTableProps) {
   return (
-    <section className="rounded-[32px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)] md:p-8">
+    <section className="rounded-[32px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-4 shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)] sm:p-6 md:p-8">
       <div className="max-w-3xl">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
           {locale === "tr" ? "Karşılaştırma tablosu" : "Comparison table"}
@@ -33,48 +33,58 @@ export function ComparisonThreeWayTable({ locale, title, description, columns, r
         <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{description}</p>
       </div>
 
-      <div className="mt-8 hidden overflow-hidden rounded-[24px] border border-sky-400/10 lg:block">
+      <div className="mt-6 hidden overflow-hidden rounded-[24px] border border-sky-400/10 lg:block">
         <table className="min-w-full divide-y divide-sky-400/10">
           <thead className="bg-slate-950/50">
             <tr>
-              <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{columns.label}</th>
-              <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">{columns.first}</th>
-              <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">{columns.second}</th>
-              <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">{columns.third}</th>
+              <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 sm:px-6">{columns.label}</th>
+              <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300 sm:px-6">{columns.first}</th>
+              <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300 sm:px-6">{columns.second}</th>
+              <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300 sm:px-6">{columns.third}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-sky-400/10">
             {rows.map((row) => (
               <tr key={row.label} className="transition duration-300 hover:bg-slate-950/50">
-                <td className="px-6 py-5 text-sm font-semibold text-slate-100">{row.label}</td>
-                <td className={`px-6 py-5 text-sm leading-7 ${getTextStyle()}`}>{row.first}</td>
-                <td className={`px-6 py-5 text-sm leading-7 ${getTextStyle()}`}>{row.second}</td>
-                <td className={`px-6 py-5 text-sm leading-7 ${getTextStyle()}`}>{row.third}</td>
+                <td className="px-4 py-4 text-sm font-semibold text-slate-100 sm:px-6 sm:py-5">{row.label}</td>
+                <td className={`px-4 py-4 text-sm leading-7 sm:px-6 sm:py-5 ${getTextStyle()}`}>{row.first}</td>
+                <td className={`px-4 py-4 text-sm leading-7 sm:px-6 sm:py-5 ${getTextStyle()}`}>{row.second}</td>
+                <td className={`px-4 py-4 text-sm leading-7 sm:px-6 sm:py-5 ${getTextStyle()}`}>{row.third}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      <div className="mt-8 grid gap-4 lg:hidden">
+      <div className="mt-6 grid gap-3 lg:hidden">
         {rows.map((row) => (
-          <div key={row.label} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
-            <p className="text-sm font-semibold text-slate-100">{row.label}</p>
-            <div className="mt-4 grid gap-3">
-              <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/45 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">{columns.first}</p>
-                <p className={`mt-2 text-sm leading-7 ${getTextStyle()}`}>{row.first}</p>
+          <details key={row.label} className="group overflow-hidden rounded-[22px] border border-sky-400/10 bg-slate-950/50">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-4">
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-slate-100">{row.label}</p>
+                <p className="mt-1 text-xs text-slate-400">{columns.first} / {columns.second} / {columns.third}</p>
               </div>
-              <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/45 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">{columns.second}</p>
-                <p className={`mt-2 text-sm leading-7 ${getTextStyle()}`}>{row.second}</p>
-              </div>
-              <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/45 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">{columns.third}</p>
-                <p className={`mt-2 text-sm leading-7 ${getTextStyle()}`}>{row.third}</p>
+              <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-sky-400/10 bg-slate-950/45 text-cyan-100 transition group-open:rotate-45">
+                +
+              </span>
+            </summary>
+            <div className="border-t border-sky-400/10 p-4">
+              <div className="grid gap-2.5">
+                <div className="rounded-[18px] border border-sky-400/10 bg-slate-950/42 p-3">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{columns.first}</p>
+                  <p className={`mt-1.5 text-[13px] leading-6 ${getTextStyle()}`}>{row.first}</p>
+                </div>
+                <div className="rounded-[18px] border border-sky-400/10 bg-slate-950/42 p-3">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{columns.second}</p>
+                  <p className={`mt-1.5 text-[13px] leading-6 ${getTextStyle()}`}>{row.second}</p>
+                </div>
+                <div className="rounded-[18px] border border-sky-400/10 bg-slate-950/42 p-3">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{columns.third}</p>
+                  <p className={`mt-1.5 text-[13px] leading-6 ${getTextStyle()}`}>{row.third}</p>
+                </div>
               </div>
             </div>
-          </div>
+          </details>
         ))}
       </div>
     </section>

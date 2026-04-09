@@ -1,4 +1,4 @@
-﻿import clsx from "clsx";
+import clsx from "clsx";
 
 import { PremiumButton } from "@/components/ui/premium-button";
 import type { Locale } from "@/i18n/config";
@@ -38,8 +38,8 @@ export function ComparisonActionGrid({ locale, tools, neutralHref, neutralLabel,
   const finalColumnsClass = tools.length >= 3 ? "sm:grid-cols-3" : "sm:grid-cols-2";
 
   return (
-    <div className={clsx("grid gap-3", className)}>
-      <div className={clsx("grid gap-2.5", columnsClass)}>
+    <div className={clsx("grid gap-2.5", className)}>
+      <div className={clsx("grid gap-2 sm:gap-2.5", columnsClass)}>
         {tools.map((tool) => (
           <PremiumButton
             key={`open-${tool.name}-${tool.openHref}`}
@@ -53,7 +53,7 @@ export function ComparisonActionGrid({ locale, tools, neutralHref, neutralLabel,
           </PremiumButton>
         ))}
       </div>
-      <div className={clsx("grid gap-2.5", finalColumnsClass)}>
+      <div className={clsx("grid gap-2 sm:gap-2.5", finalColumnsClass)}>
         {tools.map((tool) => (
           <PremiumButton key={`review-${tool.name}-${tool.reviewHref}`} href={tool.reviewHref} className="w-full" variant="secondary">
             {getReviewLabel(locale, tool.name)}

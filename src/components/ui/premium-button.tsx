@@ -34,7 +34,7 @@ export function PremiumButton({
   rel
 }: PremiumButtonProps) {
   const classes = clsx(
-    "inline-flex min-h-[44px] items-center justify-center overflow-hidden rounded-[13px] px-4 py-2 text-sm font-semibold leading-none transition duration-150",
+    "inline-flex min-h-[42px] items-center justify-center overflow-hidden rounded-[13px] px-3.5 py-2 text-[13px] font-semibold leading-none transition duration-150 sm:min-h-[44px] sm:px-4 sm:text-sm",
     variant !== "primary" && "shadow-[inset_0_1px_0_rgba(56,189,248,0.05)]",
     styles[variant],
     className
