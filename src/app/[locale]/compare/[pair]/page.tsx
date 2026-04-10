@@ -4,19 +4,11 @@ import { notFound, redirect } from "next/navigation";
 
 import { BlogCard } from "@/components/blog/blog-card";
 import { Breadcrumb } from "@/components/catalog/breadcrumb";
-import { InfoSection } from "@/components/catalog/info-section";
-import { ProsConsCard } from "@/components/catalog/pros-cons-card";
 import { ToolCard } from "@/components/catalog/tool-card";
-import { ComparisonBreakdownTable } from "@/components/comparison/comparison-breakdown-table";
-import { ComparisonDecisionBoxes } from "@/components/comparison/comparison-decision-boxes";
+import { ComparisonDetailTabs } from "@/components/comparison/comparison-detail-tabs";
 import { ComparisonFaq } from "@/components/comparison/comparison-faq";
-import { ComparisonActionGrid } from "@/components/comparison/comparison-action-grid";
 import { ComparisonInsightPanel } from "@/components/comparison/comparison-insight-panel";
-import { Badge } from "@/components/ui/badge";
-import { RatingBadge } from "@/components/ui/rating-badge";
-import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
-import { SectionJumpNav } from "@/components/ui/section-jump-nav";
 import type { ComparisonFaqItem, ComparisonRow } from "@/data/comparisons";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
 import {
@@ -266,6 +258,39 @@ function getBetterMatchedPairTool(alternative: LocalizedTool, leftTool: Localize
   return leftScore >= rightScore ? leftTool : rightTool;
 }
 
+function buildQuickWins(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool) {
+  const pickByMetric = (leftValue: number, rightValue: number, leftLabel: string, rightLabel: string) => ({
+    label: locale === "tr" ? leftLabel : rightLabel,
+    winner: leftValue >= rightValue ? leftTool.name : rightTool.name,
+    note:
+      leftValue >= rightValue
+        ? `${leftTool.name} ${locale === "tr" ? "bu alanda daha güçlü hissedebilir." : "can feel stronger in this area."}`
+        : `${rightTool.name} ${locale === "tr" ? "bu alanda daha güçlü hissedebilir." : "can feel stronger in this area."}`
+  });
+
+  return [
+    {
+      label: locale === "tr" ? "En iyi fiyat" : "Best pricing",
+      winner:
+        leftTool.compareProfile.freeTier && !rightTool.compareProfile.freeTier
+          ? leftTool.name
+          : rightTool.compareProfile.freeTier && !leftTool.compareProfile.freeTier
+            ? rightTool.name
+            : leftTool.compareProfile.valueScore >= rightTool.compareProfile.valueScore
+              ? leftTool.name
+              : rightTool.name,
+      note:
+        locale === "tr"
+          ? "Ücretsiz başlangıç ve değer sinyali bu kararı hızlılaştırır."
+          : "Free start and value signal usually decide this quickly."
+    },
+    pickByMetric(leftTool.compareProfile.speedScore, rightTool.compareProfile.speedScore, "En hızlı akış", "Fastest workflow"),
+    pickByMetric(leftTool.compareProfile.creatorScore, rightTool.compareProfile.creatorScore, "Creator için en iyi", "Best for creators"),
+    pickByMetric(leftTool.compareProfile.easeOfUseScore, rightTool.compareProfile.easeOfUseScore, "Başlangıç için en iyi", "Best for beginners"),
+    pickByMetric(leftTool.compareProfile.valueScore, rightTool.compareProfile.valueScore, "En iyi değer", "Best value")
+  ];
+}
+
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
     getStaticComparisonPairSlugs().map((pair) => ({
@@ -444,7 +469,7 @@ export default async function ComparisonPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <Breadcrumb
           items={[
             { label: dictionary.breadcrumbsHome, href: `/${safeLocale}` },
@@ -453,225 +478,39 @@ export default async function ComparisonPage({
           ]}
         />
 
-        <section className="rounded-[36px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.9),rgba(10,16,30,0.96),rgba(6,10,18,0.99))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(14,165,233,0.14)] lg:px-10 lg:py-12">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <div>
-              <Badge variant="ghost" className="border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
-                {dictionary.eyebrow}
-              </Badge>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <Badge variant="accent">{formatPricing(leftTool.pricing, safeLocale)}</Badge>
-                <Badge>{leftTool.name}</Badge>
-                <Badge>{rightTool.name}</Badge>
-              </div>
-              <h1 className="mt-6 bg-gradient-to-r from-white via-sky-200 to-cyan-300 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-[3.5rem] lg:leading-[1.03]">
-                {leftTool.name} vs {rightTool.name}
-              </h1>
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{buildHeroIntro(safeLocale, leftTool, rightTool, pair)}</p>
-              <p className="mt-4 max-w-3xl text-base leading-8 text-slate-400">{dictionary.heroSummary}</p>
-            </div>
+        <ComparisonInsightPanel
+          locale={safeLocale}
+          tools={[
+            {
+              name: leftTool.name,
+              openHref: leftOfficialHref,
+              reviewHref: `/${safeLocale}/tools/${leftTool.slug}`,
+              scoreLabel: `${leftTool.rating.toFixed(1)}/5`,
+              categoryLabel: leftTool.compareProfile.category
+            },
+            {
+              name: rightTool.name,
+              openHref: rightOfficialHref,
+              reviewHref: `/${safeLocale}/tools/${rightTool.slug}`,
+              scoreLabel: `${rightTool.rating.toFixed(1)}/5`,
+              categoryLabel: rightTool.compareProfile.category
+            }
+          ]}
+          summary={buildComparisonDescription(safeLocale, leftTool, rightTool, pair)}
+          highlights={buildQuickWins(safeLocale, leftTool, rightTool)}
+        />
 
-            <ComparisonInsightPanel
-              locale={safeLocale}
-              slides={insightSlides}
-              tools={[
-                {
-                  name: leftTool.name,
-                  openHref: leftOfficialHref,
-                  reviewHref: `/${safeLocale}/tools/${leftTool.slug}`
-                },
-                {
-                  name: rightTool.name,
-                  openHref: rightOfficialHref,
-                  reviewHref: `/${safeLocale}/tools/${rightTool.slug}`
-                }
-              ]}
-              neutralHref={`/${safeLocale}/categories/comparisons`}
-            />
-          </div>
-        </section>
-
-        <SectionJumpNav items={sectionNavItems} />
-
-        <div id="ozellikler" className="scroll-mt-24">
-          <ComparisonBreakdownTable
-            locale={safeLocale}
-            title={dictionary.tableTitle}
-            description={dictionary.tableDescription}
-            columns={{
-              label: dictionary.tableLabels.criteria,
-              left: leftTool.name,
-              right: rightTool.name
-            }}
-            rows={comparisonRows}
-          />
-        </div>
-
-        <div id="son-karar" className="scroll-mt-24">
-          <ComparisonDecisionBoxes
-            locale={safeLocale}
-            leftTool={leftTool}
-            rightTool={rightTool}
-            alternativesHref={compareAlternativesHref}
-          />
-        </div>
-
-        <InfoSection title={dictionary.bestForTitle} description={dictionary.bestForDescription}>
-          <div className="grid gap-4 md:grid-cols-2">
-            {[leftTool, rightTool].map((tool) => (
-              <div key={tool.slug} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{tool.name}</p>
-                <h2 className="mt-3 text-xl font-semibold text-slate-100">{tool.bestUseCase}</h2>
-                <p className="mt-3 text-sm leading-7 text-slate-300">{tool.whoShouldUseSummary}</p>
-                <div className="mt-5">
-                  <PremiumButton href={`/${safeLocale}/tools/${tool.slug}`} variant="secondary" className="w-full">
-                    {safeLocale === "tr" ? tool.name + " incele" : "Review " + tool.name}
-                  </PremiumButton>
-                </div>
-              </div>
-            ))}
-          </div>
-        </InfoSection>        <InfoSection id="fiyat" title={dictionary.pricingTitle} description={dictionary.pricingDescription}>
-          <div className="grid gap-4 md:grid-cols-2">
-            {[leftTool, rightTool].map((tool) => (
-              <div key={tool.slug} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{tool.name}</p>
-                <p className="mt-3 text-lg font-semibold text-slate-100">{formatPricing(tool.pricing, safeLocale)}</p>
-                <div className="mt-4 grid gap-3">
-                  <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/45 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{dictionary.pricingFreeStart}</p>
-                    <p className="mt-2 text-sm leading-7 text-slate-300">
-                      {tool.pricing === "PAID"
-                        ? safeLocale === "tr"
-                          ? "Doğrudan ücretli giriş gerektirir."
-                          : "Starts as a paid product."
-                        : safeLocale === "tr"
-                          ? "Ücretsiz veya freemium giriş sunar."
-                          : "Offers a free or freemium starting point."}
-                    </p>
-                  </div>
-                  <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/45 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{dictionary.pricingCommercial}</p>
-                    <p className="mt-2 text-sm leading-7 text-slate-300">{tool.moneyUseCases[0]?.description ?? tool.realUseCaseExample.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </InfoSection>
-
-        <SectionShell
-          eyebrow={dictionary.strengthsTitle}
-          title={dictionary.strengthsTitle}
-          description={dictionary.strengthsDescription}
-          className="px-0 sm:px-0 lg:px-0"
-        >
-          <div className="grid gap-6 lg:grid-cols-2">
-            <ProsConsCard title={`${leftTool.name} ${dictionary.strengthsTitle.toLowerCase()}`} items={leftTool.pros} tone="positive" />
-            <ProsConsCard title={`${rightTool.name} ${dictionary.strengthsTitle.toLowerCase()}`} items={rightTool.pros} tone="positive" />
-          </div>
-        </SectionShell>
-
-        <SectionShell
-          eyebrow={dictionary.limitationsTitle}
-          title={dictionary.limitationsTitle}
-          description={dictionary.limitationsDescription}
-          className="px-0 sm:px-0 lg:px-0"
-        >
-          <div className="grid gap-6 lg:grid-cols-2">
-            <ProsConsCard title={`${leftTool.name} ${dictionary.limitationsTitle.toLowerCase()}`} items={leftTool.cons} tone="negative" />
-            <ProsConsCard title={`${rightTool.name} ${dictionary.limitationsTitle.toLowerCase()}`} items={rightTool.cons} tone="negative" />
-          </div>
-        </SectionShell>
-
-        <section className="rounded-[34px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(10,16,30,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(14,165,233,0.14)] lg:px-10 lg:py-12">
-          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{dictionary.verdictTitle}</p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{dictionary.verdictTitle}</h2>
-              <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{dictionary.verdictDescription}</p>
-            </div>
-            <ComparisonActionGrid
-              locale={safeLocale}
-              tools={[
-                {
-                  name: leftTool.name,
-                  openHref: leftOfficialHref,
-                  reviewHref: `/${safeLocale}/tools/${leftTool.slug}`
-                },
-                {
-                  name: rightTool.name,
-                  openHref: rightOfficialHref,
-                  reviewHref: `/${safeLocale}/tools/${rightTool.slug}`
-                }
-              ]}
-              neutralHref={`/${safeLocale}/categories/comparisons`}
-            />
-          </div>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
-              <p className="text-sm font-semibold text-slate-100">{leftTool.name}</p>
-              <h3 className="mt-3 text-lg font-semibold text-slate-50">{dictionary.verdictLeftTitle}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-300">{leftTool.realUseCaseExample.description}</p>
-            </div>
-            <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
-              <p className="text-sm font-semibold text-slate-100">{rightTool.name}</p>
-              <h3 className="mt-3 text-lg font-semibold text-slate-50">{dictionary.verdictRightTitle}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-300">{rightTool.realUseCaseExample.description}</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="rounded-[34px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(10,16,30,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(14,165,233,0.14)] lg:px-10 lg:py-12">
-          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{safeLocale === "tr" ? "Dönüşüm odaklı karar" : "Conversion-ready decision"}</p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{safeLocale === "tr" ? "Bir sonraki adımı şimdi seçin" : "Choose the next step now"}</h2>
-              <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{safeLocale === "tr" ? "Üstteki sırayı koruyun: önce aç, sonra incele, en son alternatifleri karşılaştır." : "Keep the order clear: open first, review second, compare alternatives last."}</p>
-            </div>
-            <ComparisonActionGrid
-              locale={safeLocale}
-              tools={[
-                {
-                  name: leftTool.name,
-                  openHref: leftOfficialHref,
-                  reviewHref: `/${safeLocale}/tools/${leftTool.slug}`
-                },
-                {
-                  name: rightTool.name,
-                  openHref: rightOfficialHref,
-                  reviewHref: `/${safeLocale}/tools/${rightTool.slug}`
-                }
-              ]}
-              neutralHref={`/${safeLocale}/categories/comparisons`}
-            />
-          </div>
-        </section>
-
-        {alternatives.length ? (
-          <InfoSection id="alternatifler" title={dictionary.relatedAlternativesTitle} description={dictionary.relatedAlternativesDescription}>
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-              {alternatives.map((tool) => {
-                const matchedTool = getBetterMatchedPairTool(tool, leftTool, rightTool);
-
-                return (
-                  <ToolCard
-                    key={tool.slug}
-                    locale={safeLocale}
-                    tool={tool}
-                    categoryNames={tool.categorySlugs.map((item) => categoryNamesMap.get(item) ?? item)}
-                    pricingLabel={formatPricing(tool.pricing, safeLocale)}
-                    detailLabel={content.common.viewDetailsLabel}
-                    bestForLabel={safeLocale === "tr" ? "En uygun" : "Best fit"}
-                    useCaseLabel={tool.bestUseCase}
-                    compareHref={buildComparisonPath(safeLocale, tool.slug, matchedTool.slug)}
-                  />
-                );
-              })}
-            </div>
-          </InfoSection>
-        ) : null}
+        <ComparisonDetailTabs
+          locale={safeLocale}
+          leftTool={leftTool}
+          rightTool={rightTool}
+          leftOpenHref={leftOfficialHref}
+          rightOpenHref={rightOfficialHref}
+          leftReviewHref={`/${safeLocale}/tools/${leftTool.slug}`}
+          rightReviewHref={`/${safeLocale}/tools/${rightTool.slug}`}
+          editorialHref={relatedBlogHref}
+          winnerCards={buildQuickWins(safeLocale, leftTool, rightTool)}
+        />
 
         {alternatives.length ? (
           <SectionShell
@@ -686,16 +525,24 @@ export default async function ComparisonPage({
               const compareHref = buildComparisonPath(safeLocale, tool.slug, matchedTool.slug);
 
               return (
-                <div key={tool.slug} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{tool.name}</p>
-                  <h2 className="mt-3 text-xl font-semibold text-slate-100">{matchedTool.name} {safeLocale === "tr" ? "ile karşılaştır" : "comparison"}</h2>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">{safeLocale === "tr" ? "İlgili compare sayfasını açarak farklı kullanım ve fiyat sinyallerini yan yana görün." : "Open the related comparison page to review use-case and pricing signals side by side."}</p>
-                  <div className="mt-5">
-                    <PremiumButton href={compareHref} className="w-full" variant="secondary">
-                      {dictionary.compareLabel}
-                    </PremiumButton>
+                <Link
+                  key={tool.slug}
+                  href={compareHref}
+                  className="group rounded-[26px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(8,12,22,0.95),rgba(10,16,30,0.9))] p-5 shadow-[0_18px_54px_-34px_rgba(14,165,233,0.14)] transition hover:border-cyan-400/18 hover:bg-[linear-gradient(180deg,rgba(10,16,30,0.98),rgba(15,23,42,0.96))]"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">{tool.name}</p>
+                  <h2 className="mt-3 text-xl font-semibold text-slate-50">
+                    {matchedTool.name} {safeLocale === "tr" ? "ile karşılaştır" : "comparison"}
+                  </h2>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">
+                    {safeLocale === "tr"
+                      ? "İlgili compare sayfasını açarak farklı kullanım ve fiyat sinyallerini yan yana görün."
+                      : "Open the related comparison page to review use-case and pricing signals side by side."}
+                  </p>
+                  <div className="mt-5 inline-flex items-center text-sm font-semibold text-cyan-200 transition group-hover:text-cyan-100">
+                    {dictionary.compareLabel}
                   </div>
-                </div>
+                </Link>
               );
             })}
           </SectionShell>
@@ -710,39 +557,10 @@ export default async function ComparisonPage({
             contentClassName="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
           >
             {relatedBlogArticles.map((article) => (
-              <BlogCard
-                key={article.slug}
-                locale={safeLocale}
-                article={article}
-                ctaLabel={dictionary.relatedBlogCtaLabel}
-              />
+              <BlogCard key={article.slug} locale={safeLocale} article={article} ctaLabel={dictionary.relatedBlogCtaLabel} />
             ))}
           </SectionShell>
         ) : null}
-
-        <InfoSection
-          title={safeLocale === "tr" ? "İlgili alternatifler" : "Related alternatives"}
-          description={
-            safeLocale === "tr"
-              ? "Bu karşılaştırmayı açtıktan sonra ilgili alternatif sayfalarını da inceleyin."
-              : "Review the related alternatives pages after this comparison."
-          }
-        >
-          <div className="grid gap-4 md:grid-cols-2">
-            {relatedAlternativePages.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 transition hover:border-cyan-400/18 hover:bg-slate-950/72"
-              >
-                <p className="text-sm font-semibold text-cyan-300">{item.label}</p>
-                <p className="mt-3 text-sm leading-7 text-slate-300">
-                  {safeLocale === "tr" ? "Alternatifleri, fiyat farkını ve kullanım alanını ayrı sayfada görün." : "Review alternatives, pricing differences, and workflow fit on a dedicated page."}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </InfoSection>
 
         <div id="faq" className="scroll-mt-24">
           <ComparisonFaq title={dictionary.faqTitle} description={dictionary.faqDescription} items={comparisonFaq} />
