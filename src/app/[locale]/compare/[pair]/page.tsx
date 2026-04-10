@@ -509,7 +509,6 @@ export default async function ComparisonPage({
           leftReviewHref={`/${safeLocale}/tools/${leftTool.slug}`}
           rightReviewHref={`/${safeLocale}/tools/${rightTool.slug}`}
           editorialHref={relatedBlogHref}
-          winnerCards={buildQuickWins(safeLocale, leftTool, rightTool)}
         />
 
         {alternatives.length ? (
