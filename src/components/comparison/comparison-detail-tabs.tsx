@@ -1,17 +1,12 @@
 ﻿"use client";
 
 import clsx from "clsx";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { PremiumButton } from "@/components/ui/premium-button";
 import type { Locale } from "@/i18n/config";
 import type { LocalizedTool } from "@/types/catalog";
-
-type ComparisonWinnerCard = {
-  label: string;
-  winner: string;
-  note: string;
-};
 
 type ComparisonDetailTabsProps = {
   locale: Locale;
@@ -71,25 +66,48 @@ function getTabLabel(locale: Locale, tab: TabKey) {
 }
 
 function buildRows(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool) {
-  const pricingModelLabel = locale === "tr" ? "Fiyat modeli" : "Pricing model";
-  const freeTierLabel = locale === "tr" ? "Ücretsiz başlangıç" : "Free tier";
-  const useCaseLabel = locale === "tr" ? "En uygun kullanım" : "Best use case";
-  const audienceLabel = locale === "tr" ? "Kimler için" : "Who should use it";
-  const realUseLabel = locale === "tr" ? "Gerçek kullanım" : "Real use case";
-  const strengthsLabel = locale === "tr" ? "Öne çıkanlar" : "Strong points";
-  const weaknessesLabel = locale === "tr" ? "Dikkat edilmesi gerekenler" : "Watch outs";
   const leftName = leftTool.name;
   const rightName = rightTool.name;
 
   return {
     overview: [
-      { label: useCaseLabel, leftTitle: leftName, rightTitle: rightName, left: leftTool.bestUseCase, right: rightTool.bestUseCase },
-      { label: audienceLabel, leftTitle: leftName, rightTitle: rightName, left: leftTool.whoShouldUseSummary, right: rightTool.whoShouldUseSummary },
-      { label: realUseLabel, leftTitle: leftName, rightTitle: rightName, left: leftTool.realUseCaseExample.title, right: rightTool.realUseCaseExample.title }
+      {
+        label: locale === "tr" ? "En uygun kullanım" : "Best use case",
+        leftTitle: leftName,
+        rightTitle: rightName,
+        left: leftTool.bestUseCase,
+        right: rightTool.bestUseCase
+      },
+      {
+        label: locale === "tr" ? "Kimler için" : "Who should use it",
+        leftTitle: leftName,
+        rightTitle: rightName,
+        left: leftTool.whoShouldUseSummary,
+        right: rightTool.whoShouldUseSummary
+      },
+      {
+        label: locale === "tr" ? "Gerçek kullanım" : "Real use case",
+        leftTitle: leftName,
+        rightTitle: rightName,
+        left: leftTool.realUseCaseExample.title,
+        right: rightTool.realUseCaseExample.title
+      }
     ] satisfies RowItem[],
     pricing: [
-      { label: pricingModelLabel, leftTitle: leftName, rightTitle: rightName, left: leftTool.compareProfile.pricingModel, right: rightTool.compareProfile.pricingModel },
-      { label: freeTierLabel, leftTitle: leftName, rightTitle: rightName, left: formatTier(locale, leftTool.compareProfile.freeTier), right: formatTier(locale, rightTool.compareProfile.freeTier) },
+      {
+        label: locale === "tr" ? "Fiyat modeli" : "Pricing model",
+        leftTitle: leftName,
+        rightTitle: rightName,
+        left: leftTool.compareProfile.pricingModel,
+        right: rightTool.compareProfile.pricingModel
+      },
+      {
+        label: locale === "tr" ? "Ücretsiz başlangıç" : "Free tier",
+        leftTitle: leftName,
+        rightTitle: rightName,
+        left: formatTier(locale, leftTool.compareProfile.freeTier),
+        right: formatTier(locale, rightTool.compareProfile.freeTier)
+      },
       {
         label: locale === "tr" ? "Ticari uyum" : "Business fit",
         leftTitle: leftName,
@@ -99,24 +117,96 @@ function buildRows(locale: Locale, leftTool: LocalizedTool, rightTool: Localized
       }
     ] satisfies RowItem[],
     useCases: [
-      { label: realUseLabel, leftTitle: leftName, rightTitle: rightName, left: leftTool.realUseCaseExample.description, right: rightTool.realUseCaseExample.description },
-      { label: locale === "tr" ? "Nerede iyi çalışır?" : "Where it works best", leftTitle: leftName, rightTitle: rightName, left: leftTool.bestUseCase, right: rightTool.bestUseCase },
-      { label: locale === "tr" ? "İlk adım" : "First step", leftTitle: leftName, rightTitle: rightName, left: leftTool.whoShouldUse[0] ?? leftTool.bestUseCase, right: rightTool.whoShouldUse[0] ?? rightTool.bestUseCase }
+      {
+        label: locale === "tr" ? "Günlük akış" : "Daily workflow",
+        leftTitle: leftName,
+        rightTitle: rightName,
+        left: leftTool.realUseCaseExample.description,
+        right: rightTool.realUseCaseExample.description
+      },
+      {
+        label: locale === "tr" ? "Nerede iyi çalışır?" : "Where it works best",
+        leftTitle: leftName,
+        rightTitle: rightName,
+        left: leftTool.bestUseCase,
+        right: rightTool.bestUseCase
+      },
+      {
+        label: locale === "tr" ? "İlk adım" : "First step",
+        leftTitle: leftName,
+        rightTitle: rightName,
+        left: leftTool.whoShouldUse[0] ?? leftTool.bestUseCase,
+        right: rightTool.whoShouldUse[0] ?? rightTool.bestUseCase
+      }
     ] satisfies RowItem[],
     strengths: [
-      { label: strengthsLabel, leftTitle: `${leftName} strengths`, rightTitle: `${rightName} strengths`, left: leftTool.compareProfile.strengths.slice(0, 3).join(" · "), right: rightTool.compareProfile.strengths.slice(0, 3).join(" · ") },
-      { label: locale === "tr" ? "Artılar" : "Pros", leftTitle: `${leftName} strengths`, rightTitle: `${rightName} strengths`, left: leftTool.pros.slice(0, 3).join(" · "), right: rightTool.pros.slice(0, 3).join(" · ") },
-      { label: locale === "tr" ? "Hız sinyali" : "Speed signal", leftTitle: `${leftName} strengths`, rightTitle: `${rightName} strengths`, left: `${leftTool.compareProfile.speedScore.toFixed(1)}/10`, right: `${rightTool.compareProfile.speedScore.toFixed(1)}/10` }
+      {
+        label: locale === "tr" ? "Öne çıkanlar" : "Strong points",
+        leftTitle: `${leftName} strengths`,
+        rightTitle: `${rightName} strengths`,
+        left: leftTool.compareProfile.strengths.slice(0, 3).join(" · "),
+        right: rightTool.compareProfile.strengths.slice(0, 3).join(" · ")
+      },
+      {
+        label: locale === "tr" ? "Artılar" : "Pros",
+        leftTitle: `${leftName} strengths`,
+        rightTitle: `${rightName} strengths`,
+        left: leftTool.pros.slice(0, 3).join(" · "),
+        right: rightTool.pros.slice(0, 3).join(" · ")
+      },
+      {
+        label: locale === "tr" ? "Hız sinyali" : "Speed signal",
+        leftTitle: `${leftName} strengths`,
+        rightTitle: `${rightName} strengths`,
+        left: `${leftTool.compareProfile.speedScore.toFixed(1)}/10`,
+        right: `${rightTool.compareProfile.speedScore.toFixed(1)}/10`
+      }
     ] satisfies RowItem[],
     weaknesses: [
-      { label: weaknessesLabel, leftTitle: `${leftName} weaknesses`, rightTitle: `${rightName} weaknesses`, left: leftTool.compareProfile.weaknesses.slice(0, 3).join(" · "), right: rightTool.compareProfile.weaknesses.slice(0, 3).join(" · ") },
-      { label: locale === "tr" ? "Eksiler" : "Cons", leftTitle: `${leftName} weaknesses`, rightTitle: `${rightName} weaknesses`, left: leftTool.cons.slice(0, 3).join(" · "), right: rightTool.cons.slice(0, 3).join(" · ") },
-      { label: locale === "tr" ? "Kolay kullanım" : "Ease signal", leftTitle: `${leftName} weaknesses`, rightTitle: `${rightName} weaknesses`, left: `${leftTool.compareProfile.easeOfUseScore.toFixed(1)}/10`, right: `${rightTool.compareProfile.easeOfUseScore.toFixed(1)}/10` }
+      {
+        label: locale === "tr" ? "Dikkat edilmesi gerekenler" : "Watch outs",
+        leftTitle: `${leftName} weaknesses`,
+        rightTitle: `${rightName} weaknesses`,
+        left: leftTool.compareProfile.weaknesses.slice(0, 3).join(" · "),
+        right: rightTool.compareProfile.weaknesses.slice(0, 3).join(" · ")
+      },
+      {
+        label: locale === "tr" ? "Eksiler" : "Cons",
+        leftTitle: `${leftName} weaknesses`,
+        rightTitle: `${rightName} weaknesses`,
+        left: leftTool.cons.slice(0, 3).join(" · "),
+        right: rightTool.cons.slice(0, 3).join(" · ")
+      },
+      {
+        label: locale === "tr" ? "Kolay kullanım" : "Ease signal",
+        leftTitle: `${leftName} weaknesses`,
+        rightTitle: `${rightName} weaknesses`,
+        left: `${leftTool.compareProfile.easeOfUseScore.toFixed(1)}/10`,
+        right: `${rightTool.compareProfile.easeOfUseScore.toFixed(1)}/10`
+      }
     ] satisfies RowItem[],
     verdict: [
-      { label: locale === "tr" ? "Hangi akış için" : "Which workflow", leftTitle: leftName, rightTitle: rightName, left: leftTool.bestUseCase, right: rightTool.bestUseCase },
-      { label: locale === "tr" ? "Değer sinyali" : "Value signal", leftTitle: leftName, rightTitle: rightName, left: `${leftTool.compareProfile.valueScore.toFixed(1)}/10`, right: `${rightTool.compareProfile.valueScore.toFixed(1)}/10` },
-      { label: locale === "tr" ? "Son karar" : "Final call", leftTitle: leftName, rightTitle: rightName, left: leftTool.whoShouldUseSummary, right: rightTool.whoShouldUseSummary }
+      {
+        label: locale === "tr" ? "Hangi akış için" : "Which workflow",
+        leftTitle: leftName,
+        rightTitle: rightName,
+        left: leftTool.bestUseCase,
+        right: rightTool.bestUseCase
+      },
+      {
+        label: locale === "tr" ? "Değer sinyali" : "Value signal",
+        leftTitle: leftName,
+        rightTitle: rightName,
+        left: `${leftTool.compareProfile.valueScore.toFixed(1)}/10`,
+        right: `${rightTool.compareProfile.valueScore.toFixed(1)}/10`
+      },
+      {
+        label: locale === "tr" ? "Son karar" : "Final call",
+        leftTitle: leftName,
+        rightTitle: rightName,
+        left: leftTool.whoShouldUseSummary,
+        right: rightTool.whoShouldUseSummary
+      }
     ] satisfies RowItem[]
   };
 }
@@ -126,9 +216,7 @@ function renderAvatar(name: string, tone: "left" | "right") {
     <span
       className={clsx(
         "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-[10px] font-bold uppercase tracking-[0.16em]",
-        tone === "left"
-          ? "border-cyan-400/18 bg-cyan-400/10 text-cyan-100"
-          : "border-sky-400/18 bg-sky-400/10 text-sky-100"
+        tone === "left" ? "border-cyan-400/18 bg-cyan-400/10 text-cyan-100" : "border-sky-400/18 bg-sky-400/10 text-sky-100"
       )}
     >
       {name.slice(0, 2).toUpperCase()}
@@ -139,7 +227,7 @@ function renderAvatar(name: string, tone: "left" | "right") {
 function renderRow(locale: Locale, row: RowItem, leftTool: LocalizedTool, rightTool: LocalizedTool) {
   return (
     <article className="border-t border-sky-400/10 px-4 py-4 first:border-t-0 sm:px-5 sm:py-5">
-      <div className="mb-4 flex items-center justify-between gap-3 md:hidden">
+      <div className="mb-3 flex items-center justify-between gap-3 md:hidden">
         <div className="min-w-0">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-300">{row.label}</p>
           <p className="mt-1 text-xs leading-5 text-slate-400">
@@ -151,21 +239,27 @@ function renderRow(locale: Locale, row: RowItem, leftTool: LocalizedTool, rightT
         </span>
       </div>
 
-      <div className="grid gap-3 md:hidden">
-        <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/55 p-3.5">
-          <div className="flex items-center gap-2.5">
-            {renderAvatar(leftTool.name, "left")}
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{row.leftTitle}</p>
+      <div className="grid gap-2 md:hidden">
+        <div className="flex items-start justify-between gap-3 rounded-[18px] border border-sky-400/10 bg-slate-950/45 px-3 py-3">
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2.5">
+              {renderAvatar(leftTool.name, "left")}
+              <p className="truncate text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{leftTool.name}</p>
+            </div>
+            <p className="mt-2 text-sm leading-6 text-slate-100">{row.left}</p>
           </div>
-          <p className="mt-2 text-sm leading-6 text-slate-100">{row.left}</p>
+          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">→</span>
         </div>
 
-        <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/55 p-3.5">
-          <div className="flex items-center gap-2.5">
-            {renderAvatar(rightTool.name, "right")}
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{row.rightTitle}</p>
+        <div className="flex items-start justify-between gap-3 rounded-[18px] border border-sky-400/10 bg-slate-950/45 px-3 py-3">
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2.5">
+              {renderAvatar(rightTool.name, "right")}
+              <p className="truncate text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{rightTool.name}</p>
+            </div>
+            <p className="mt-2 text-sm leading-6 text-slate-100">{row.right}</p>
           </div>
-          <p className="mt-2 text-sm leading-6 text-slate-100">{row.right}</p>
+          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">→</span>
         </div>
       </div>
 
@@ -225,9 +319,7 @@ export function ComparisonDetailTabs({
       <div className="sticky top-3 z-30 mb-4 rounded-[22px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(8,12,22,0.96),rgba(10,16,30,0.98))] px-4 py-3 shadow-[0_18px_56px_-34px_rgba(14,165,233,0.18)] md:hidden">
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-300">
-              {locale === "tr" ? "Sabit karşılaştırma barı" : "Sticky compare bar"}
-            </p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-300">{locale === "tr" ? "Sabit karşılaştırma barı" : "Sticky compare bar"}</p>
             <p className="truncate text-sm font-semibold text-slate-50">
               {leftTool.name} VS {rightTool.name}
             </p>
@@ -269,15 +361,9 @@ export function ComparisonDetailTabs({
             </div>
           </div>
           <div className="flex flex-wrap gap-2">
-            <span className="inline-flex items-center rounded-full border border-cyan-400/18 bg-cyan-400/10 px-3 py-1.5 text-sm font-semibold text-cyan-100">
-              {overallLeft}/10
-            </span>
-            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-100">
-              {leftTool.rating.toFixed(1)}/5
-            </span>
-            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-300">
-              {leftTool.compareProfile.category}
-            </span>
+            <span className="inline-flex items-center rounded-full border border-cyan-400/18 bg-cyan-400/10 px-3 py-1.5 text-sm font-semibold text-cyan-100">{overallLeft}/10</span>
+            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-100">{leftTool.rating.toFixed(1)}/5</span>
+            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-300">{leftTool.compareProfile.category}</span>
           </div>
         </div>
 
@@ -298,15 +384,9 @@ export function ComparisonDetailTabs({
             </span>
           </div>
           <div className="flex flex-wrap gap-2 lg:justify-end">
-            <span className="inline-flex items-center rounded-full border border-cyan-400/18 bg-cyan-400/10 px-3 py-1.5 text-sm font-semibold text-cyan-100">
-              {overallRight}/10
-            </span>
-            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-100">
-              {rightTool.rating.toFixed(1)}/5
-            </span>
-            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-300">
-              {rightTool.compareProfile.category}
-            </span>
+            <span className="inline-flex items-center rounded-full border border-cyan-400/18 bg-cyan-400/10 px-3 py-1.5 text-sm font-semibold text-cyan-100">{overallRight}/10</span>
+            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-100">{rightTool.rating.toFixed(1)}/5</span>
+            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-300">{rightTool.compareProfile.category}</span>
           </div>
         </div>
       </div>
@@ -333,9 +413,7 @@ export function ComparisonDetailTabs({
       </div>
 
       <div className="mt-5 rounded-[30px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(8,12,22,0.88),rgba(10,16,30,0.92))] shadow-[0_20px_64px_-40px_rgba(14,165,233,0.14)]">
-        <div className="divide-y divide-sky-400/10">
-          {activeRows.map((row) => renderRow(locale, row, leftTool, rightTool))}
-        </div>
+        <div className="divide-y divide-sky-400/10">{activeRows.map((row) => renderRow(locale, row, leftTool, rightTool))}</div>
       </div>
 
       <div className="mt-6 sticky bottom-3 z-20 rounded-[28px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(10,16,30,0.98),rgba(15,23,42,0.96))] p-3 shadow-[0_18px_60px_-34px_rgba(14,165,233,0.18)] sm:p-4">
@@ -356,12 +434,12 @@ export function ComparisonDetailTabs({
             {leftTool.name} vs {rightTool.name}
           </span>
         </div>
-          <div className="mt-2 flex justify-end">
-            <a href="#compare-tabs" className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400 transition hover:text-cyan-200">
-              {locale === "tr" ? "Karşılaştırma paneline dön" : "Back to compare panel"}
-            </a>
-          </div>
+        <div className="mt-2 flex justify-end">
+          <a href="#compare-tabs" className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400 transition hover:text-cyan-200">
+            {locale === "tr" ? "Karşılaştırma paneline dön" : "Back to compare panel"}
+          </a>
         </div>
+      </div>
     </section>
   );
 }
