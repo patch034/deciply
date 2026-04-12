@@ -43,9 +43,14 @@ export function getToolLogoUrl(websiteUrl: string) {
   }
 
   try {
-    const origin = new URL(websiteUrl).origin;
-    return `${origin}/favicon.ico`;
+    const hostname = new URL(websiteUrl).hostname.replace(/^www\./i, "");
+    return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(hostname)}&sz=128`;
   } catch {
-    return "";
+    try {
+      const origin = new URL(websiteUrl).origin;
+      return `${origin}/favicon.ico`;
+    } catch {
+      return "";
+    }
   }
 }
