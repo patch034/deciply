@@ -45,6 +45,8 @@ const feedSources: FeedSource[] = [
   { source: "NVIDIA", feedUrl: "https://www.nvidia.com/en-us/ai-data-science/blog/feed/", categoryLabel: "Research" }
 ];
 
+const AI_NEWS_FETCH_TIMEOUT_MS = 1200;
+
 function stripHtml(value: string) {
   return value
     .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
@@ -330,12 +332,19 @@ async function collectAiNewsItems(locale: Locale): Promise<AiNewsItem[]> {
 
   const parsedFeeds = await Promise.all(
     feedSources.map(async (source) => {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), AI_NEWS_FETCH_TIMEOUT_MS);
+
       try {
         const response = await fetch(source.feedUrl, {
-          cache: "no-store",
+          cache: "force-cache",
+          next: {
+            revalidate: 60 * 30
+          },
           headers: {
             accept: "application/rss+xml,application/xml,text/xml"
-          }
+          },
+          signal: controller.signal
         });
 
         if (!response.ok) {
@@ -346,6 +355,8 @@ async function collectAiNewsItems(locale: Locale): Promise<AiNewsItem[]> {
         return parseRssFeed(locale, source, xml);
       } catch {
         return [];
+      } finally {
+        clearTimeout(timeout);
       }
     })
   );
@@ -367,7 +378,12 @@ async function collectAiNewsItems(locale: Locale): Promise<AiNewsItem[]> {
     return fallbackNews(locale);
   }
 
-  return feedItems;
+  return [...feedItems].sort((left, right) => {
+    const leftTime = left.publishedAt ? new Date(left.publishedAt).getTime() : 0;
+    const rightTime = right.publishedAt ? new Date(right.publishedAt).getTime() : 0;
+
+    return rightTime - leftTime;
+  });
 }
 
 const getCachedAiNewsItems = unstable_cache(
