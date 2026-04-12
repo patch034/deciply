@@ -229,21 +229,18 @@ function renderRow(locale: Locale, row: RowItem, leftTool: LocalizedTool, rightT
     <article className="border-t border-sky-400/10 px-4 py-4 first:border-t-0 sm:px-5 sm:py-5">
       <div className="mb-3 flex items-center justify-between gap-3 md:hidden">
         <div className="min-w-0">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-300">{row.label}</p>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-300">{row.label}</p>
           <p className="mt-1 text-xs leading-5 text-slate-400">
             {leftTool.name} {locale === "tr" ? "ve" : "vs"} {rightTool.name}
           </p>
         </div>
-        <span className="inline-flex rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-          {locale === "tr" ? "Mobil" : "Mobile"}
-        </span>
       </div>
 
       <div className="md:hidden">
         <div className="space-y-2.5">
           <div className="flex items-start justify-between gap-4 border-t border-sky-400/10 pt-3 first:border-t-0 first:pt-0">
             <div className="min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{leftTool.name}</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">{leftTool.name}</p>
               <p className="mt-1 text-sm leading-6 text-slate-100">{row.left}</p>
             </div>
             <span className="shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">→</span>
@@ -251,7 +248,7 @@ function renderRow(locale: Locale, row: RowItem, leftTool: LocalizedTool, rightT
 
           <div className="flex items-start justify-between gap-4 border-t border-sky-400/10 pt-3">
             <div className="min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{rightTool.name}</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200">{rightTool.name}</p>
               <p className="mt-1 text-sm leading-6 text-slate-100">{row.right}</p>
             </div>
             <span className="shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">→</span>
@@ -312,35 +309,35 @@ export function ComparisonDetailTabs({
         className
       )}
     >
-      <div className="sticky top-3 z-30 mb-4 rounded-[22px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(8,12,22,0.96),rgba(10,16,30,0.98))] px-4 py-3 shadow-[0_18px_56px_-34px_rgba(14,165,233,0.18)] md:hidden">
+      <div className="sticky top-3 z-30 mb-4 rounded-[20px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(8,12,22,0.96),rgba(10,16,30,0.98))] px-3 py-2.5 shadow-[0_16px_48px_-34px_rgba(14,165,233,0.16)] md:hidden">
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-300">{locale === "tr" ? "Sabit karşılaştırma barı" : "Sticky compare bar"}</p>
-            <p className="truncate text-sm font-semibold text-slate-50">
+            <p className="text-[9px] font-semibold uppercase tracking-[0.22em] text-cyan-300">{locale === "tr" ? "Sabit karşılaştırma barı" : "Sticky compare bar"}</p>
+            <p className="truncate text-[13px] font-semibold text-slate-50">
               {leftTool.name} VS {rightTool.name}
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-cyan-400/18 bg-cyan-400/10 text-[10px] font-bold text-cyan-100">
+            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-cyan-400/18 bg-cyan-400/10 text-[9px] font-bold text-cyan-100">
               {leftTool.name.slice(0, 2).toUpperCase()}
             </span>
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-sky-400/18 bg-sky-400/10 text-[10px] font-bold text-sky-100">
+            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-sky-400/18 bg-sky-400/10 text-[9px] font-bold text-sky-100">
               {rightTool.name.slice(0, 2).toUpperCase()}
             </span>
           </div>
         </div>
       </div>
 
-      <div className="md:hidden rounded-[22px] border border-sky-400/10 bg-slate-950/35 px-4 py-4 shadow-[0_18px_56px_-36px_rgba(14,165,233,0.16)]">
+      <div className="md:hidden rounded-[22px] border border-sky-400/10 bg-slate-950/35 px-3 py-3 shadow-[0_16px_44px_-36px_rgba(14,165,233,0.14)]">
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0 flex-1">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-300">{leftTool.name}</p>
-            <p className="mt-1 truncate text-sm font-semibold text-slate-50">{leftTool.bestUseCase}</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-200">{leftTool.name}</p>
+            <p className="mt-1 truncate text-[13px] font-semibold text-slate-50">{leftTool.bestUseCase}</p>
           </div>
           <span className="inline-flex h-9 shrink-0 items-center rounded-full border border-cyan-400/16 bg-cyan-400/10 px-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-100">VS</span>
           <div className="min-w-0 flex-1 text-right">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-300">{rightTool.name}</p>
-            <p className="mt-1 truncate text-sm font-semibold text-slate-50">{rightTool.bestUseCase}</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-sky-200">{rightTool.name}</p>
+            <p className="mt-1 truncate text-[13px] font-semibold text-slate-50">{rightTool.bestUseCase}</p>
           </div>
         </div>
         <div className="mt-3 flex flex-wrap gap-2">
@@ -350,7 +347,7 @@ export function ComparisonDetailTabs({
           <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-[11px] font-semibold text-slate-100">
             {leftTool.name} {leftTool.rating.toFixed(1)}/5
           </span>
-          <span className="inline-flex items-center rounded-full border border-cyan-400/18 bg-cyan-400/10 px-3 py-1.5 text-[11px] font-semibold text-cyan-100">
+          <span className="inline-flex items-center rounded-full border border-sky-400/18 bg-sky-400/10 px-3 py-1.5 text-[11px] font-semibold text-sky-100">
             {rightTool.name} {overallRight}/10
           </span>
           <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-[11px] font-semibold text-slate-100">

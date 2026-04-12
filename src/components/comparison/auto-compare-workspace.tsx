@@ -107,10 +107,39 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
 
   if (typeof value === "boolean") {
     return (
-      <Badge variant={value ? "ghost" : "muted"} className="max-w-full justify-center text-[11px]">
-        {value ? labels.yes : labels.no}
-      </Badge>
+      <span
+        role="img"
+        aria-label={value ? labels.yes : labels.no}
+        className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100"
+      >
+        {value ? "✓" : "✕"}
+      </span>
     );
+  }
+
+  if (typeof value === "string") {
+    const normalized = value.trim().toLowerCase();
+    if (normalized === labels.yes.toLowerCase()) {
+      return (
+        <span role="img" aria-label={labels.yes} className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100">
+          ✓
+        </span>
+      );
+    }
+    if (normalized === labels.no.toLowerCase()) {
+      return (
+        <span role="img" aria-label={labels.no} className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100">
+          ✕
+        </span>
+      );
+    }
+    if (normalized === "-" || normalized === "—" || normalized === "n/a" || normalized === "na") {
+      return (
+        <span role="img" aria-label={locale === "tr" ? "Uygun değil" : "Not available"} className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100">
+          —
+        </span>
+      );
+    }
   }
 
   return <p className="text-sm leading-6 text-slate-200">{value}</p>;
@@ -258,8 +287,8 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
                 <p className="mt-3 text-sm leading-6 text-slate-300/84">{tool.bestUseCase}</p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {tool.compareProfile.bestFor.slice(0, 3).map((item) => (
-                    <Badge key={item} variant="muted" className="text-[11px]">
+                  {tool.compareProfile.bestFor.slice(0, 2).map((item) => (
+                    <Badge key={item} variant="muted" className="px-2 py-0.5 text-[10px]">
                       {item}
                     </Badge>
                   ))}
@@ -270,19 +299,27 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
 
           <div className="grid gap-3">
             {visibleRows.map((row) => (
-              <div key={row.label} className="rounded-[24px] border border-sky-400/10 bg-slate-950/36 p-4 sm:p-5">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{row.label}</p>
-                  <Badge variant="ghost" className="text-[11px] uppercase tracking-[0.14em] text-cyan-100">
-                    {compact ? labels.compactTitle : labels.fullTitle}
-                  </Badge>
-                </div>
-                <div className="mt-4 grid gap-3 lg:grid-cols-2">
-                  <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/55 p-4 text-sm leading-7 text-slate-200">
-                    {renderValue(row.left, locale)}
+              <div
+                key={row.label}
+                className="rounded-[20px] border border-sky-400/10 bg-slate-950/36 px-4 py-3 sm:rounded-[22px] sm:px-5 sm:py-4 lg:grid lg:grid-cols-[180px_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-4"
+              >
+                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 lg:pt-1">{row.label}</div>
+                <div className="mt-3 space-y-3 lg:mt-0">
+                  <div className="compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-3 lg:border-t-0 lg:pt-0">
+                    <div className="min-w-0">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">{leftTool?.name ?? labels.leftLabel}</p>
+                      {renderValue(row.left, locale)}
+                    </div>
+                    <span className="shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">→</span>
                   </div>
-                  <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/55 p-4 text-sm leading-7 text-slate-200">
-                    {renderValue(row.right, locale)}
+                </div>
+                <div className="mt-3 space-y-3 lg:mt-0">
+                  <div className="compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-3 lg:border-t-0 lg:pt-0">
+                    <div className="min-w-0">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200">{rightTool?.name ?? labels.rightLabel}</p>
+                      {renderValue(row.right, locale)}
+                    </div>
+                    <span className="shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">→</span>
                   </div>
                 </div>
               </div>

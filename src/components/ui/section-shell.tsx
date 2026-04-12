@@ -33,7 +33,7 @@ export function SectionShell({
           description={description}
           actions={actions}
           align={align}
-          className="mb-6 sm:mb-8"
+          className="mb-5 sm:mb-7"
         />
       ) : null}
       <div className={contentClassName}>{children}</div>

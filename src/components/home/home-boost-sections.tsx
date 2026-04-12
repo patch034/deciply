@@ -1,4 +1,4 @@
-import { BlogCard } from "@/components/blog/blog-card";
+﻿import { BlogCard } from "@/components/blog/blog-card";
 import { ComparisonCard } from "@/components/home/comparison-card";
 import { GuideCard } from "@/components/home/guide-card";
 import { ToolCard } from "@/components/home/tool-card";
@@ -70,8 +70,8 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools }: Hom
   const secondaryGuides = getHomepageDiscoveryGuides(locale).slice(0, 4);
 
   return (
-    <div className="mx-auto mt-8 w-full max-w-[1240px] px-4 pb-8 sm:px-6 sm:pb-12 lg:mt-12 lg:pb-16">
-      <div className="space-y-6 sm:space-y-8">
+    <div className="mx-auto mt-7 w-full max-w-[1240px] px-4 pb-8 sm:px-6 sm:pb-12 lg:mt-10 lg:pb-14">
+      <div className="space-y-5 sm:space-y-7">
         <SectionShell
           className="section-tint-cyan"
           eyebrow={copy.latestComparisonsEyebrow}
@@ -127,7 +127,7 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools }: Hom
           </div>
         </SectionShell>
 
-        <details className="group ui-card-strong overflow-hidden rounded-[34px] border border-sky-400/14 px-4 py-4 shadow-[0_28px_84px_-48px_rgba(14,165,233,0.18)] sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+        <details className="group ui-card-strong overflow-hidden rounded-[34px] border border-sky-400/10 px-4 py-4 shadow-[0_24px_72px_-46px_rgba(14,165,233,0.16)] sm:px-6 sm:py-6 lg:px-8 lg:py-7">
           <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left sm:items-end">
             <div className="max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-100">{copy.showMoreLabel}</p>
@@ -140,7 +140,7 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools }: Hom
           </summary>
           <div className="mt-4 border-t border-sky-400/10 pt-4 sm:mt-6 sm:pt-6">
             <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-              <div className="rounded-[28px] border border-sky-400/10 bg-slate-950/38 p-4 shadow-[0_20px_64px_-40px_rgba(14,165,233,0.12)] sm:p-5 lg:sticky lg:top-24">
+              <div className="rounded-[24px] bg-slate-950/30 p-4 shadow-[0_18px_52px_-40px_rgba(14,165,233,0.1)] sm:p-5 lg:sticky lg:top-24">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{copy.showMoreTitle}</p>
                 <p className="mt-2.5 text-[13px] leading-6 text-slate-300 sm:mt-3 sm:text-[15px] sm:leading-7">{copy.showMoreDescription}</p>
                 <p className="mt-4 text-sm font-semibold text-cyan-100">{copy.showMoreAction}</p>
@@ -157,3 +157,4 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools }: Hom
     </div>
   );
 }
+

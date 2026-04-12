@@ -1,4 +1,4 @@
-import { blogArticles } from "@/data/blog";
+﻿import { blogArticles } from "@/data/blog";
 import { discoveryPages, getHomepageDiscoveryGuides } from "@/data/discovery-pages";
 import type { Locale } from "@/i18n/config";
 import { getToolCount } from "@/lib/catalog";
@@ -920,3 +920,4 @@ export function getHomeContent(locale: Locale) {
     guides: getHomepageDiscoveryGuides(locale)
   };
 }
+

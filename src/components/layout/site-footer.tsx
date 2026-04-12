@@ -34,7 +34,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
   const [toolsGroup, compareGroup, guidesGroup, trustGroup] = dictionary.footer.groups;
 
   return (
-    <footer className="mt-20 border-t border-slate-700/60 bg-[linear-gradient(180deg,rgba(3,7,13,0.96),rgba(2,5,10,1))] px-4 pb-8 pt-10 sm:px-6 sm:pb-10 sm:pt-12">
+    <footer className="mt-16 border-t border-slate-700/45 bg-[linear-gradient(180deg,rgba(3,7,13,0.96),rgba(2,5,10,1))] px-4 pb-8 pt-10 sm:px-6 sm:pb-10 sm:pt-12">
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-10 lg:grid-cols-[1.15fr_repeat(4,minmax(0,1fr))] lg:items-center lg:gap-8">
           <div className="min-w-0 self-start lg:self-center">
@@ -91,7 +91,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-slate-700/60 pt-5">
+        <div className="mt-10 border-t border-slate-700/45 pt-5">
           <div className="flex flex-col gap-3 text-sm text-slate-300 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <p className="max-w-2xl">{dictionary.footer.bottomNote}</p>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:shrink-0">

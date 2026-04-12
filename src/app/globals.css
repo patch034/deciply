@@ -304,6 +304,26 @@ svg {
   background: radial-gradient(circle at top center, rgba(59, 130, 246, 0.1), transparent 56%);
 }
 
+.compare-col-left,
+.compare-col-right {
+  background-color: rgba(15, 23, 42, 0.38);
+}
+
+.compare-col-right {
+  background-color: rgba(15, 23, 42, 0.28);
+}
+
+.compare-slot-left,
+.compare-slot-right {
+  border-radius: 14px;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(8, 12, 22, 0.28);
+}
+
+.compare-slot-right {
+  background-color: rgba(8, 12, 22, 0.2);
+}
+
 .balance-text {
   text-wrap: balance;
 }

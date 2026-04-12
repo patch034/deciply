@@ -48,11 +48,11 @@ export function ComparisonBreakdownTable({
         <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{description}</p>
       </div>
 
-      <div className="sticky top-3 z-20 mt-6 rounded-[22px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(10,16,30,0.97),rgba(15,23,42,0.96))] p-3 shadow-[0_18px_50px_-34px_rgba(14,165,233,0.16)] [@media(min-width:769px)]:hidden">
+      <div className="sticky top-3 z-20 mt-5 rounded-[20px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(10,16,30,0.97),rgba(15,23,42,0.96))] px-3 py-2.5 shadow-[0_16px_44px_-34px_rgba(14,165,233,0.14)] [@media(min-width:769px)]:hidden">
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-300">{locale === "tr" ? "Mobil karşılaştırma" : "Mobile compare"}</p>
-            <p className="mt-1 truncate text-sm font-semibold text-slate-50">{columns.label}</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-300">{locale === "tr" ? "Mobil karşılaştırma" : "Mobile compare"}</p>
+            <p className="mt-1 truncate text-[13px] font-semibold text-slate-50">{columns.label}</p>
           </div>
           <div className="flex min-w-0 items-center gap-2">
             <Badge variant="ghost" className={`shrink-0 ${getChipTone(0)} px-2.5 py-1 text-[11px]`}>
@@ -72,30 +72,30 @@ export function ComparisonBreakdownTable({
         </div>
       </div>
 
-      <div className="mt-6 hidden overflow-hidden rounded-[24px] border border-sky-400/10 [@media(min-width:769px)]:block">
+      <div className="mt-5 hidden overflow-hidden rounded-[22px] border border-sky-400/10 [@media(min-width:769px)]:block">
         <table className="min-w-full divide-y divide-sky-400/10">
           <thead className="bg-slate-950/50">
             <tr>
-              <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 sm:px-6">{columns.label}</th>
-              <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300 sm:px-6">{columns.left}</th>
-              <th className="px-4 py-4 text-left text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300 sm:px-6">{columns.right}</th>
+              <th className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400 sm:px-6">{columns.label}</th>
+              <th className="compare-col-left px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200 sm:px-6">{columns.left}</th>
+              <th className="compare-col-right px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200 sm:px-6">{columns.right}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-sky-400/10">
             {rows.map((row) => (
               <tr key={row.label} className="transition duration-300 hover:bg-slate-950/50">
-                <td className="px-4 py-4 text-sm font-semibold text-slate-100 sm:px-6 sm:py-5">{row.label}</td>
-                <td className={`px-4 py-4 text-sm leading-7 sm:px-6 sm:py-5 ${getComparisonCellStyle()}`}>{row.left}</td>
-                <td className={`px-4 py-4 text-sm leading-7 sm:px-6 sm:py-5 ${getComparisonCellStyle()}`}>{row.right}</td>
+                <td className="px-4 py-3 text-sm font-semibold text-slate-100 sm:px-6 sm:py-4">{row.label}</td>
+                <td className={`compare-col-left px-4 py-3 text-sm leading-6 sm:px-6 sm:py-4 ${getComparisonCellStyle()}`}>{row.left}</td>
+                <td className={`compare-col-right px-4 py-3 text-sm leading-6 sm:px-6 sm:py-4 ${getComparisonCellStyle()}`}>{row.right}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      <div className="mt-6 grid gap-3 [@media(min-width:769px)]:hidden">
+      <div className="mt-5 grid gap-3 [@media(min-width:769px)]:hidden">
         {rows.map((row) => (
-          <article key={row.label} className="overflow-hidden rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-34px_rgba(14,165,233,0.12)]">
+          <article key={row.label} className="overflow-hidden rounded-[22px] border border-sky-400/10 bg-slate-950/46 p-4 shadow-[0_16px_44px_-34px_rgba(14,165,233,0.12)]">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-300">{locale === "tr" ? "Özellik" : "Feature"}</p>
@@ -106,28 +106,20 @@ export function ComparisonBreakdownTable({
               </Badge>
             </div>
 
-            <div className="mt-4 grid gap-2">
-              <div className="rounded-[18px] border border-sky-400/10 bg-slate-950/42 p-3">
-                <div className="flex items-start gap-2.5">
-                  <span className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border ${getChipTone(0)}`}>
-                    {getInitials(columns.left)}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{columns.left}</p>
-                    <p className={`mt-1.5 text-[13px] leading-6 ${getComparisonCellStyle()}`}>{row.left}</p>
-                  </div>
+            <div className="mt-4 space-y-3">
+              <div className="compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-3">
+                <div className="min-w-0">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">{columns.left}</p>
+                  <p className={`mt-1 text-[13px] leading-6 ${getComparisonCellStyle()}`}>{row.left}</p>
                 </div>
+                <span className="shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">→</span>
               </div>
-              <div className="rounded-[18px] border border-sky-400/10 bg-slate-950/42 p-3">
-                <div className="flex items-start gap-2.5">
-                  <span className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border ${getChipTone(1)}`}>
-                    {getInitials(columns.right)}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{columns.right}</p>
-                    <p className={`mt-1.5 text-[13px] leading-6 ${getComparisonCellStyle()}`}>{row.right}</p>
-                  </div>
+              <div className="compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-3">
+                <div className="min-w-0">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200">{columns.right}</p>
+                  <p className={`mt-1 text-[13px] leading-6 ${getComparisonCellStyle()}`}>{row.right}</p>
                 </div>
+                <span className="shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">→</span>
               </div>
             </div>
           </article>
