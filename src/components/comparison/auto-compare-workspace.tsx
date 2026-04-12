@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { GlassPanel } from "@/components/ui/glass-panel";
@@ -101,6 +101,8 @@ function normalizeCompareText(input: string) {
     .replace(/\u00e2\u0080\u009c|\u00e2\u0080\u009d/g, "\"")
     .replace(/\u00e2\u0080\u0093/g, "–")
     .replace(/\u00e2\u0080\u0094/g, "—")
+    .replace(/\uFFFD/g, "")
+    .replace(/([A-Za-zÇĞİÖŞÜçğıöşü])\?([A-Za-zÇĞİÖŞÜçğıöşü])/g, "$1$2")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -108,6 +110,205 @@ function normalizeCompareText(input: string) {
 function isShortTag(value: string) {
   const cleaned = value.trim();
   return cleaned.length > 0 && cleaned.length <= 16 && !cleaned.includes(".");
+}
+
+function buildCompareSearchText(tool: CompareToolOption, locale: Locale) {
+  return normalizeCompareText(
+    [
+      tool.name,
+      tool.slug,
+      tool.bestUseCase,
+      tool.compareProfile.category,
+      tool.compareProfile.pricingModel,
+      ...tool.compareProfile.bestFor,
+      ...tool.compareProfile.strengths,
+      ...tool.compareProfile.weaknesses
+    ].join(" ")
+  ).toLocaleLowerCase(locale === "tr" ? "tr-TR" : "en-US");
+}
+
+type SearchableToolSelectProps = {
+  locale: Locale;
+  label: string;
+  value: string;
+  onChange: (slug: string) => void;
+  options: CompareToolOption[];
+};
+
+function SearchableToolSelect({ locale, label, value, onChange, options }: SearchableToolSelectProps) {
+  const listboxId = useId();
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [query, setQuery] = useState("");
+  const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const selectedTool = useMemo(() => options.find((tool) => tool.slug === value) ?? null, [options, value]);
+
+  useEffect(() => {
+    setQuery(selectedTool ? selectedTool.name : "");
+    setActiveIndex(0);
+  }, [selectedTool]);
+
+  useEffect(() => {
+    function handlePointerDown(event: MouseEvent) {
+      if (!wrapperRef.current) {
+        return;
+      }
+
+      if (!wrapperRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handlePointerDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+    };
+  }, []);
+
+  const filteredOptions = useMemo(() => {
+    const normalizedQuery = normalizeCompareText(query).toLocaleLowerCase(locale === "tr" ? "tr-TR" : "en-US");
+
+    if (!normalizedQuery) {
+      return options;
+    }
+
+    return options.filter((tool) => buildCompareSearchText(tool, locale).includes(normalizedQuery));
+  }, [locale, options, query]);
+
+  useEffect(() => {
+    if (filteredOptions.length === 0) {
+      setActiveIndex(-1);
+      return;
+    }
+
+    if (activeIndex >= filteredOptions.length) {
+      setActiveIndex(0);
+    }
+  }, [activeIndex, filteredOptions.length]);
+
+  function selectTool(tool: CompareToolOption) {
+    onChange(tool.slug);
+    setQuery(tool.name);
+    setOpen(false);
+    setActiveIndex(0);
+    inputRef.current?.blur();
+  }
+
+  function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setOpen(true);
+      setActiveIndex((current) => Math.min(current + 1, Math.max(filteredOptions.length - 1, 0)));
+      return;
+    }
+
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setOpen(true);
+      setActiveIndex((current) => Math.max(current - 1, 0));
+      return;
+    }
+
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const candidate = filteredOptions[activeIndex] ?? filteredOptions[0];
+      if (candidate) {
+        selectTool(candidate);
+      }
+      return;
+    }
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setOpen(false);
+      setQuery(selectedTool?.name ?? "");
+      setActiveIndex(0);
+    }
+  }
+
+  return (
+    <div ref={wrapperRef} className="relative min-w-0">
+      <label className="space-y-2">
+        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{label}</span>
+        <div className="relative">
+          <input
+            ref={inputRef}
+            type="text"
+            role="combobox"
+            aria-expanded={open}
+            aria-controls={listboxId}
+            aria-autocomplete="list"
+            autoComplete="off"
+            spellCheck={false}
+            value={query}
+            placeholder={locale === "tr" ? "Araç ara..." : "Compare tool..."}
+            onFocus={() => setOpen(true)}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              setOpen(true);
+              setActiveIndex(0);
+            }}
+            onBlur={() => {
+              window.setTimeout(() => {
+                setOpen(false);
+                setQuery(selectedTool?.name ?? "");
+              }, 120);
+            }}
+            onKeyDown={handleKeyDown}
+            className="min-h-[48px] w-full rounded-2xl border border-sky-400/12 bg-slate-950/72 px-4 pr-11 text-sm font-medium text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-cyan-400/30 focus:ring-1 focus:ring-cyan-400/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
+          />
+          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+            ⌕
+          </span>
+        </div>
+        {selectedTool ? <p className="text-[11px] leading-5 text-slate-400">{selectedTool.name} · {selectedTool.compareProfile.pricingModel}</p> : null}
+      </label>
+
+      {open ? (
+        <div
+          id={listboxId}
+          role="listbox"
+          className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-40 max-h-72 overflow-y-auto rounded-[20px] border border-sky-400/14 bg-[linear-gradient(180deg,rgba(8,12,22,0.98),rgba(10,16,30,0.98))] p-2 shadow-[0_24px_80px_-40px_rgba(14,165,233,0.4)]"
+        >
+          {filteredOptions.length ? (
+            filteredOptions.map((tool, index) => {
+              const isActive = index === activeIndex;
+
+              return (
+                <button
+                  key={tool.slug}
+                  type="button"
+                  role="option"
+                  aria-selected={tool.slug === value}
+                  className={[
+                    "flex w-full items-start justify-between gap-3 rounded-[16px] px-3 py-3 text-left transition",
+                    isActive
+                      ? "bg-cyan-400/12 text-slate-50 ring-1 ring-cyan-400/20"
+                      : "text-slate-200 hover:bg-slate-900/70"
+                  ].join(" ")}
+                  onMouseEnter={() => setActiveIndex(index)}
+                  onMouseDown={(event) => event.preventDefault()}
+                  onClick={() => selectTool(tool)}
+                >
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-semibold text-slate-50">{tool.name}</p>
+                    <p className="mt-1 clamp-2 text-xs leading-5 text-slate-400">{normalizeCompareText(tool.bestUseCase)}</p>
+                  </div>
+                  <span className="shrink-0 rounded-full border border-sky-400/12 bg-slate-950/55 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-cyan-200">
+                    {normalizeCompareText(tool.compareProfile.pricingModel)}
+                  </span>
+                </button>
+              );
+            })
+          ) : (
+            <p className="px-3 py-4 text-sm text-slate-400">{locale === "tr" ? "Eşleşme bulunamadı." : "No tools found."}</p>
+          )}
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 function renderValue(value: string | string[] | number | boolean, locale: Locale, compact = false) {
@@ -300,27 +501,19 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
       </div>
 
       <div className="mt-6 grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto] lg:items-end">
-        <label className="space-y-2">
-          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{labels.leftLabel}</span>
-          <select
-            className="dark-select min-h-[48px] w-full rounded-2xl border border-sky-400/12 bg-slate-950/72 px-4 text-sm font-medium text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
-            value={safeLeftSlug}
-            onChange={(event) => {
-              const nextSlug = event.target.value;
-              setLeftSlug(nextSlug);
-              if (nextSlug === rightSlug) {
-                const fallback = orderedTools.find((tool) => tool.slug !== nextSlug)?.slug ?? nextSlug;
-                setRightSlug(fallback);
-              }
-            }}
-          >
-            {orderedTools.map((tool) => (
-              <option key={tool.slug} value={tool.slug}>
-                {tool.name} · {tool.compareProfile.pricingModel}
-              </option>
-            ))}
-          </select>
-        </label>
+        <SearchableToolSelect
+          locale={locale}
+          label={labels.leftLabel}
+          value={safeLeftSlug}
+          options={orderedTools}
+          onChange={(nextSlug) => {
+            setLeftSlug(nextSlug);
+            if (nextSlug === rightSlug) {
+              const fallback = orderedTools.find((tool) => tool.slug !== nextSlug)?.slug ?? nextSlug;
+              setRightSlug(fallback);
+            }
+          }}
+        />
 
         <div className="hidden lg:flex lg:h-[48px] lg:items-center lg:justify-center">
           <Badge variant="dark" className="px-3 py-1.5 text-[11px] tracking-[0.18em] text-cyan-100">
@@ -328,27 +521,19 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
           </Badge>
         </div>
 
-        <label className="space-y-2">
-          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{labels.rightLabel}</span>
-          <select
-            className="dark-select min-h-[48px] w-full rounded-2xl border border-sky-400/12 bg-slate-950/72 px-4 text-sm font-medium text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
-            value={safeRightSlug}
-            onChange={(event) => {
-              const nextSlug = event.target.value;
-              setRightSlug(nextSlug);
-              if (nextSlug === leftSlug) {
-                const fallback = orderedTools.find((tool) => tool.slug !== nextSlug)?.slug ?? nextSlug;
-                setLeftSlug(fallback);
-              }
-            }}
-          >
-            {orderedTools.map((tool) => (
-              <option key={tool.slug} value={tool.slug}>
-                {tool.name} · {tool.compareProfile.pricingModel}
-              </option>
-            ))}
-          </select>
-        </label>
+        <SearchableToolSelect
+          locale={locale}
+          label={labels.rightLabel}
+          value={safeRightSlug}
+          options={orderedTools}
+          onChange={(nextSlug) => {
+            setRightSlug(nextSlug);
+            if (nextSlug === leftSlug) {
+              const fallback = orderedTools.find((tool) => tool.slug !== nextSlug)?.slug ?? nextSlug;
+              setLeftSlug(fallback);
+            }
+          }}
+        />
 
         <div className="flex lg:justify-end">
           <PremiumButton href={comparisonHref ?? undefined} className="w-full lg:w-auto">

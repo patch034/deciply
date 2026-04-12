@@ -46,6 +46,18 @@ const MANUAL_COMPARISON_PAIR_TOOL_SLUGS = [
   ["grammarly", "quillbot"]
 ] as const;
 
+const FORCED_COMPARISON_ROUTE_SLUGS = [
+  "jasper-vs-writesonic",
+  "writesonic-vs-copy-ai",
+  "copy-ai-vs-writesonic",
+  "claude-vs-perplexity",
+  "midjourney-vs-adobe-firefly",
+  "adobe-firefly-vs-midjourney",
+  "zapier-vs-make"
+] as const;
+
+const FORCED_COMPARISON_ROUTE_SLUG_SET = new Set<string>(FORCED_COMPARISON_ROUTE_SLUGS);
+
 const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     [FEATURED_TRIPLE_COMPARISON_SLUG]: [
     "best-ai-tools-for-small-businesses-2026",
@@ -302,8 +314,6 @@ const COMPARE_SLUG_ALIASES: Record<string, string> = {
   "codeium-vs-cursor": SPECIAL_TEAM_COMPARISON_SLUG,
   "chatgpt-vs-jasper": SPECIAL_FREELANCER_COMPARISON_SLUG,
   "copy-ai-vs-chatgpt": SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_SLUG,
-  "adobe-firefly-vs-midjourney": "midjourney-vs-adobe-express",
-  "midjourney-vs-adobe-firefly": "midjourney-vs-adobe-express",
   "recraft-vs-midjourney": "midjourney-vs-recraft",
   "notion-ai-vs-chatgpt": "chatgpt-vs-notion-ai"
 };
@@ -503,6 +513,12 @@ export function getStaticComparisonPairSlugs() {
     }
   }
 
+  for (const slug of FORCED_COMPARISON_ROUTE_SLUGS) {
+    if (!pairs.includes(slug)) {
+      pairs.push(slug);
+    }
+  }
+
   return pairs;
 }
 
@@ -650,9 +666,19 @@ export function getComparisonToolsFromPair(locale: Locale, pair: string) {
 
   const canonicalPairSlug = buildComparisonPairSlug(leftTool.slug, rightTool.slug);
   const staticPairSlugs = getStaticComparisonPairSlugs();
+  const isForcedRoute = FORCED_COMPARISON_ROUTE_SLUG_SET.has(pair) || FORCED_COMPARISON_ROUTE_SLUG_SET.has(canonicalPairSlug);
 
-  if (!areComparableTools(leftTool, rightTool) && !staticPairSlugs.includes(pair) && !staticPairSlugs.includes(canonicalPairSlug)) {
+  if (!areComparableTools(leftTool, rightTool) && !staticPairSlugs.includes(pair) && !staticPairSlugs.includes(canonicalPairSlug) && !isForcedRoute) {
     return null;
+  }
+
+  if (isForcedRoute) {
+    return {
+      leftTool,
+      rightTool,
+      canonicalPairSlug,
+      isCanonical: true
+    };
   }
 
   if (pair === SPECIAL_TEAM_COMPARISON_SLUG) {
