@@ -42,15 +42,21 @@ function getHeroStats(locale: Locale): HeroStat[] {
 function renderHeroTitle(locale: Locale) {
   if (locale === "tr") {
     return (
-      <span className="hero-headline-flow">
-        En iyi AI araçlarını, sitelerini ve karşılaştırmaları keşfet
+      <span className="hero-headline-stack">
+        <span className="hero-headline-base">En iyi AI araçlarını, sitelerini ve karşılaştırmaları keşfet</span>
+        <span aria-hidden="true" className="hero-headline-overlay">
+          En iyi AI araçlarını, sitelerini ve karşılaştırmaları keşfet
+        </span>
       </span>
     );
   }
 
   return (
-    <span className="hero-headline-flow">
-      Discover the best AI tools, websites, and comparisons explore
+    <span className="hero-headline-stack">
+      <span className="hero-headline-base">Discover the best AI tools, websites, and comparisons explore</span>
+      <span aria-hidden="true" className="hero-headline-overlay">
+        Discover the best AI tools, websites, and comparisons explore
+      </span>
     </span>
   );
 }
