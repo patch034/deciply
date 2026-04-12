@@ -52,27 +52,175 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "how-to-write-product-descriptions-with-ai-2026",
     "best-ai-tools-for-marketing-teams-2026"
   ],
+  "chatgpt-vs-perplexity": [
+    "best-ai-tools-for-seo-teams-2026",
+    "best-ai-tools-for-small-businesses-2026",
+    "best-ai-tools-for-students-projects-2026"
+  ],
   "chatgpt-vs-gemini": [
     "best-ai-tools-for-marketing-teams-2026",
+    "best-ai-tools-for-social-media-managers-2026",
+    "best-ai-tools-for-content-teams-2026"
+  ],
+  "claude-vs-gemini": [
+    "best-ai-tools-for-students-projects-2026",
+    "best-ai-tools-for-resume-linkedin-2026",
+    "best-ai-tools-for-agency-delivery-2026"
+  ],
+  "claude-vs-perplexity": [
+    "best-ai-tools-for-seo-teams-2026",
     "best-ai-tools-for-content-teams-2026",
-    "best-ai-tools-for-startups-2026",
-    "how-ai-tools-are-changing-ecommerce-in-2026",
-    "best-ai-tools-for-agencies-2026"
+    "best-ai-tools-for-students-projects-2026"
+  ],
+  "perplexity-vs-gemini": [
+    "best-ai-tools-for-seo-teams-2026",
+    "best-ai-tools-for-students-projects-2026",
+    "best-ai-tools-for-small-businesses-2026"
+  ],
+  "jasper-vs-copy-ai": [
+    "best-ai-tools-for-freelancers-and-solo-founders-2026",
+    "best-ai-tools-for-agency-delivery-2026",
+    "best-ai-tools-to-make-money-online-2026"
+  ],
+  "jasper-vs-writesonic": [
+    "best-ai-tools-for-marketing-teams-2026",
+    "best-ai-tools-for-agency-delivery-2026",
+    "best-ai-tools-for-social-media-managers-2026"
+  ],
+  "copy-ai-vs-writesonic": [
+    "best-ai-tools-to-make-money-online-2026",
+    "how-to-write-product-descriptions-with-ai-that-sell-2026",
+    "best-ai-tools-for-small-businesses-2026"
+  ],
+  "rytr-vs-copy-ai": [
+    "best-ai-tools-for-freelancers-and-solo-founders-2026",
+    "best-ai-tools-to-make-money-online-2026",
+    "best-ai-tools-for-agency-delivery-2026"
+  ],
+  "writer-vs-jasper": [
+    "best-ai-tools-for-marketing-teams-2026",
+    "best-ai-tools-for-agency-delivery-2026",
+    "best-ai-tools-for-content-teams-2026"
   ],
   "midjourney-vs-leonardo-ai": [
-    "best-ai-tools-for-marketing-teams-2026",
+    "best-ai-tools-for-social-media-managers-2026",
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-small-businesses-2026"
+  ],
+  "midjourney-vs-adobe-firefly": [
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-social-media-managers-2026",
+    "best-ai-tools-for-agency-delivery-2026"
+  ],
+  "leonardo-ai-vs-recraft": [
+    "best-ai-tools-for-social-media-managers-2026",
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agency-delivery-2026"
+  ],
+  "recraft-vs-adobe-firefly": [
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-social-media-managers-2026",
+    "best-ai-tools-for-agency-delivery-2026"
+  ],
+  "canva-ai-vs-midjourney": [
+    "best-ai-tools-for-social-media-managers-2026",
     "best-ai-tools-for-small-businesses-2026",
-    "how-to-write-product-descriptions-with-ai-2026"
+    "best-ai-tools-for-content-teams-2026"
+  ],
+  "notion-ai-vs-zapier": [
+    "best-ai-tools-for-agency-delivery-2026",
+    "best-ai-tools-for-freelancers-and-solo-founders-2026",
+    "best-ai-tools-for-startups-2026"
+  ],
+  "notion-ai-vs-bardeen": [
+    "best-ai-tools-for-agency-delivery-2026",
+    "best-ai-tools-for-startups-2026",
+    "best-ai-tools-for-freelancers-and-solo-founders-2026"
+  ],
+  "zapier-vs-make": [
+    "best-ai-tools-for-agency-delivery-2026",
+    "best-ai-tools-for-small-businesses-2026",
+    "best-ai-tools-for-freelancers-and-solo-founders-2026"
+  ],
+  "shopify-magic-vs-copy-ai": [
+    "best-ai-tools-for-shopify-stores-that-increase-conversions-2026",
+    "how-to-write-product-descriptions-with-ai-that-sell-2026",
+    "best-ai-tools-for-small-businesses-2026"
+  ],
+  "shopify-magic-vs-jasper": [
+    "best-ai-tools-for-shopify-stores-that-increase-conversions-2026",
+    "best-ai-tools-for-small-businesses-2026",
+    "best-ai-tools-to-make-money-online-2026"
+  ],
+  "klaviyo-ai-vs-copy-ai": [
+    "best-ai-tools-for-shopify-stores-that-increase-conversions-2026",
+    "how-to-write-product-descriptions-with-ai-that-sell-2026",
+    "how-ai-tools-are-changing-ecommerce-in-2026"
+  ],
+  "otter-ai-vs-fireflies-ai": [
+    "best-ai-tools-for-agency-delivery-2026",
+    "best-ai-tools-for-freelancers-and-solo-founders-2026",
+    "best-ai-tools-for-students-projects-2026"
+  ],
+  "otter-ai-vs-notta": [
+    "best-ai-tools-for-students-projects-2026",
+    "best-ai-tools-for-agency-delivery-2026",
+    "best-ai-tools-for-freelancers-and-solo-founders-2026"
+  ],
+  "runway-vs-pika": [
+    "best-ai-tools-for-youtube-shorts-2026",
+    "best-ai-tools-for-social-media-managers-2026",
+    "best-ai-tools-for-content-teams-2026"
+  ],
+  "pika-vs-capcut-ai": [
+    "best-ai-tools-for-youtube-shorts-2026",
+    "best-ai-tools-for-social-media-managers-2026",
+    "best-ai-tools-for-content-teams-2026"
+  ],
+  "codeium-vs-cursor": [
+    "best-ai-tools-for-startups-2026",
+    "best-ai-tools-for-agency-delivery-2026",
+    "best-ai-tools-for-freelancers-and-solo-founders-2026"
+  ],
+  "cursor-vs-replit": [
+    "best-ai-tools-for-startups-2026",
+    "best-ai-tools-for-agency-delivery-2026",
+    "best-ai-tools-for-freelancers-and-solo-founders-2026"
+  ],
+  "sourcegraph-cody-vs-codeium": [
+    "best-ai-tools-for-startups-2026",
+    "best-ai-tools-for-agency-delivery-2026",
+    "best-ai-tools-for-freelancers-and-solo-founders-2026"
+  ],
+  "phind-vs-perplexity": [
+    "best-ai-tools-for-seo-teams-2026",
+    "best-ai-tools-for-students-projects-2026",
+    "best-ai-tools-for-agency-delivery-2026"
+  ],
+  "grammarly-vs-deepl-write": [
+    "best-ai-tools-for-resume-linkedin-2026",
+    "best-ai-tools-for-freelancers-and-solo-founders-2026",
+    "best-ai-tools-for-agency-delivery-2026"
+  ],
+  "remove-bg-vs-pixelcut": [
+    "best-ai-tools-for-shopify-stores-that-increase-conversions-2026",
+    "how-ai-tools-are-changing-ecommerce-in-2026",
+    "best-ai-tools-for-small-businesses-2026"
+  ],
+  "vectorizer-ai-vs-recraft": [
+    "best-ai-tools-for-content-teams-2026",
+    "best-ai-tools-for-agency-delivery-2026",
+    "best-ai-tools-for-social-media-managers-2026"
+  ],
+  "loom-ai-vs-fireflies-ai": [
+    "best-ai-tools-for-agency-delivery-2026",
+    "best-ai-tools-for-freelancers-and-solo-founders-2026",
+    "best-ai-tools-for-startups-2026"
   ],
   "github-copilot-vs-codeium": [
     "best-ai-tools-for-startups-2026",
     "best-ai-tools-for-content-teams-2026",
     "best-ai-tools-for-agencies-2026"
-  ],
-  "shopify-magic-vs-copy-ai": [
-    "how-ai-tools-are-changing-ecommerce-in-2026",
-    "best-ai-tools-for-shopify-stores-2026",
-    "best-ai-tools-for-shopify-product-descriptions-2026"
   ],
   "chatgpt-vs-claude": [
     "best-ai-tools-for-content-teams-2026",
@@ -90,101 +238,6 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "best-ai-tools-for-shopify-stores-2026"
   ],
 
-  "claude-vs-gemini": [
-    "best-ai-tools-for-students-projects-2026",
-    "best-ai-tools-for-resume-linkedin-2026",
-    "best-ai-tools-for-agency-delivery-2026"
-  ],
-  "chatgpt-vs-perplexity": [
-    "best-ai-tools-for-small-businesses-2026",
-    "how-to-write-product-descriptions-with-ai-2026",
-    "best-ai-tools-for-marketing-teams-2026"
-  ],
-  "perplexity-vs-gemini": [
-    "best-ai-tools-for-students-projects-2026",
-    "best-ai-tools-for-small-businesses-2026",
-    "best-ai-tools-for-agency-delivery-2026"
-  ],
-  "midjourney-vs-recraft": [
-    "best-ai-tools-for-social-media-managers-2026",
-    "best-ai-tools-for-seo-teams-2026",
-    "best-ai-tools-for-small-business-owners-2026"
-  ],
-  "codeium-vs-cursor": [
-    "best-ai-tools-for-startups-2026",
-    "best-ai-tools-for-agencies-2026",
-    "best-ai-tools-for-content-teams-2026"
-  ],
-  "cursor-vs-codeium": [
-    "best-ai-tools-for-startups-2026",
-    "best-ai-tools-for-agencies-2026",
-    "best-ai-tools-for-content-teams-2026"
-  ],
-  "cursor-vs-codeium-for-teams": [
-    "best-ai-tools-for-students-projects-2026",
-    "best-ai-tools-for-agency-delivery-2026",
-    "best-ai-tools-for-startups-2026"
-  ],
-  "cursor-vs-replit": [
-    "best-ai-tools-for-small-businesses-2026",
-    "best-ai-tools-for-marketing-teams-2026",
-    "how-ai-tools-are-changing-ecommerce-in-2026"
-  ],
-  "replit-vs-copilot": [
-    "best-ai-tools-for-startups-2026",
-    "best-ai-tools-for-agencies-2026",
-    "best-ai-tools-for-content-teams-2026"
-  ],
-  "midjourney-vs-dalle": [
-    "best-ai-tools-for-content-teams-2026",
-    "best-ai-tools-for-agencies-2026",
-    "best-ai-tools-for-marketing-teams-2026"
-  ],
-  "dalle-vs-leonardo-ai": [
-    "best-ai-tools-for-content-teams-2026",
-    "best-ai-tools-for-agencies-2026",
-    "best-ai-tools-for-marketing-teams-2026"
-  ],
-  "leonardo-ai-vs-recraft": [
-    "best-ai-tools-for-content-teams-2026",
-    "best-ai-tools-for-agencies-2026",
-    "best-ai-tools-for-marketing-teams-2026"
-  ],
-  "recraft-vs-midjourney": [
-    "best-ai-tools-for-content-teams-2026",
-    "best-ai-tools-for-agencies-2026",
-    "best-ai-tools-for-marketing-teams-2026"
-  ],
-  "runway-vs-pika": [
-    "best-ai-tools-for-content-teams-2026",
-    "best-ai-tools-for-agencies-2026",
-    "best-ai-tools-for-marketing-teams-2026"
-  ],
-  "pika-vs-capcut-ai": [
-    "best-ai-tools-for-content-teams-2026",
-    "best-ai-tools-for-agencies-2026",
-    "best-ai-tools-for-marketing-teams-2026"
-  ],
-  "grammarly-vs-quillbot": [
-    "best-ai-tools-for-students-projects-2026",
-    "best-ai-tools-for-agency-delivery-2026",
-    "best-ai-tools-for-startups-2026"
-  ],
-  "notion-ai-vs-chatgpt": [
-    "best-ai-tools-for-startups-2026",
-    "best-ai-tools-for-content-teams-2026",
-    "how-ai-tools-are-changing-ecommerce-in-2026"
-  ],
-  "jasper-vs-copy-ai": [
-    "best-ai-tools-for-agency-delivery-2026",
-    "best-ai-tools-for-marketing-teams-2026",
-    "best-ai-tools-for-small-businesses-2026"
-  ],
-  "grammarly-vs-deepl-write": [
-    "best-ai-tools-for-resume-linkedin-2026",
-    "best-ai-tools-for-students-projects-2026",
-    "best-ai-tools-for-agency-delivery-2026"
-  ],
   default: [
     "how-ai-tools-are-changing-ecommerce-in-2026",
     "best-ai-tools-for-content-teams-2026",
@@ -459,8 +512,14 @@ const HIGH_INTENT_COMPARISON_DIRECTORY_SLUGS = [
   'chatgpt-vs-gemini',
   'claude-vs-gemini',
   'chatgpt-vs-perplexity',
+  'claude-vs-perplexity',
   'chatgpt-vs-jasper',
   'perplexity-vs-gemini',
+  'jasper-vs-copy-ai',
+  'jasper-vs-writesonic',
+  'copy-ai-vs-writesonic',
+  'rytr-vs-copy-ai',
+  'writer-vs-jasper',
   'github-copilot-vs-codeium',
   'codeium-vs-cursor',
   'microsoft-copilot-vs-github-copilot',
@@ -468,20 +527,33 @@ const HIGH_INTENT_COMPARISON_DIRECTORY_SLUGS = [
   'replit-vs-copilot',
   'cursor-vs-codeium-for-teams',
   'midjourney-vs-leonardo-ai',
-  'midjourney-vs-dalle',
+  'midjourney-vs-adobe-firefly',
   'midjourney-vs-recraft',
-  'dalle-vs-leonardo-ai',
   'leonardo-ai-vs-recraft',
+  'dalle-vs-leonardo-ai',
+  'recraft-vs-adobe-firefly',
   'recraft-vs-midjourney',
+  'canva-ai-vs-midjourney',
+  'midjourney-vs-dalle',
   'runway-vs-pika',
   'pika-vs-capcut-ai',
+  'notion-ai-vs-zapier',
+  'notion-ai-vs-bardeen',
+  'zapier-vs-make',
+  'shopify-magic-vs-copy-ai',
+  'shopify-magic-vs-jasper',
+  'klaviyo-ai-vs-copy-ai',
+  'otter-ai-vs-fireflies-ai',
+  'otter-ai-vs-notta',
+  'sourcegraph-cody-vs-codeium',
+  'phind-vs-perplexity',
+  'remove-bg-vs-pixelcut',
+  'vectorizer-ai-vs-recraft',
+  'loom-ai-vs-fireflies-ai',
   'grammarly-vs-quillbot',
   'grammarly-vs-deepl-write',
   'notion-ai-vs-chatgpt',
-  'jasper-vs-notion-ai',
-  'jasper-vs-copy-ai',
   'copy-ai-vs-chatgpt-for-product-descriptions',
-  'shopify-magic-vs-copy-ai'
 ] as const;
 
 export function getStaticComparisonSlugs() {
