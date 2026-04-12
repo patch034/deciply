@@ -144,25 +144,25 @@ const homeContent: Record<Locale, HomeContent> = {
   tr: {
     hero: {
       badge: "AI araç dizini",
-      title: "En iyi AI araçlarını ve karşılaştırmaları tek yerden keşfet",
+      title: "En iyi AI web sitelerini ve araçlarını tek ekrandan keşfet",
       description:
-        "Araçları kategorilere, kullanım senaryolarına ve karşılaştırmalara göre tarayarak hızlıca doğru başlangıç noktasına ulaş.",
+        "Kategoriler, araç akışı, karşılaştırmalar ve rehberler tek bir keşif deneyiminde birleşiyor; doğru başlangıç noktasına daha hızlı ulaşıyorsun.",
       primaryCta: "Araçları keşfet",
       secondaryCta: "Karşılaştırmaları aç",
       starterHint: "",
       starterHintLabel: "",
       starterHintHref: "",
       trustLine: "Kategoriler, araçlar, karşılaştırmalar ve rehberler tek yerde.",
-      panelEyebrow: "Hızlı keşif",
+      panelEyebrow: "Canlı dizin",
       trustBadges: ["Kürasyonlu", "Kullanım odaklı", "Düzenli güncellenir"],
       stats: [
         { value: String(getToolCount()), label: "küratörlü araç" },
         { value: String(blogArticles.length), label: "yayındaki rehber" },
         { value: String(discoveryPages.length), label: "keşif sayfası" }
       ],
-      panelTitle: "Aradığın aracı ve alternatifleri daha hızlı bul",
+      panelTitle: "Aradığın aracı, alternatifi ve karar yolunu tek akışta gör",
       panelDescription:
-        "Kısa özetler, senaryo etiketleri ve karşılaştırma bağlantıları ile keşif sürecini hızlandır.",
+        "Logo sinyalleri, kısa açıklamalar, fiyat ipuçları ve yan yana karşılaştırmalar kullanıcıyı daha hızlı doğru sayfaya taşır.",
       panelItems: [
         { title: "Kategori keşfi", meta: "yazı, görsel, video ve iş akışlarını ayrı ayrı tarayın", value: "Hızlı" },
         { title: "Araç tarama", meta: "logo, kısa açıklama ve fiyat modeli ile hızlıca filtrele", value: "Net" },
@@ -495,25 +495,25 @@ const homeContent: Record<Locale, HomeContent> = {
   en: {
     hero: {
       badge: "AI tool directory",
-      title: "Discover the best AI tools and comparisons in one place",
+      title: "Discover the best AI websites and tools in one place",
       description:
-        "Browse tools by category, use case, and comparison to reach the best starting point faster.",
+        "Categories, a live tool feed, comparisons, and guides come together in one discovery-first experience.",
       primaryCta: "Explore tools",
       secondaryCta: "Open comparisons",
       starterHint: "",
       starterHintLabel: "",
       starterHintHref: "",
       trustLine: "Categories, tools, comparisons, and guides in one place.",
-      panelEyebrow: "Fast discovery",
+      panelEyebrow: "Live directory",
       trustBadges: ["Curated", "Use-case driven", "Updated regularly"],
       stats: [
         { value: String(getToolCount()), label: "curated tools" },
         { value: String(blogArticles.length), label: "guides published" },
         { value: String(discoveryPages.length), label: "discovery pages" }
       ],
-      panelTitle: "Find the right tool and best alternative faster",
+      panelTitle: "See the right tool, best alternative, and compare path together",
       panelDescription:
-        "Short summaries, scenario tags, and comparison links make exploration easier in seconds.",
+        "Logo signals, short summaries, pricing hints, and side-by-side comparisons help users reach the right page faster.",
       panelItems: [
         { title: "Category browsing", meta: "scan writing, image, video, and business workflows separately", value: "Quick" },
         { title: "Tool scan", meta: "use logos, short descriptions, and pricing signals to filter faster", value: "Clear" },

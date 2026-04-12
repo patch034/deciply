@@ -24,6 +24,14 @@ const SPECIAL_FREELANCER_COMPARISON_PAIR = { leftSlug: "chatgpt", rightSlug: "ja
 export const SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_SLUG = "copy-ai-vs-chatgpt-for-product-descriptions";
 const SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_PAIR = { leftSlug: "copy-ai", rightSlug: "chatgpt" } as const;
 
+function getToolLogoUrl(websiteUrl: string) {
+  try {
+    return `${new URL(websiteUrl).origin}/favicon.ico`;
+  } catch {
+    return undefined;
+  }
+}
+
 export function buildAutoComparisonPath(locale: Locale, leftSlug: string, rightSlug: string) {
   return `/${locale}/compare-auto/${leftSlug}-vs-${rightSlug}`;
 }
@@ -593,7 +601,11 @@ function buildComparisonDirectoryPairCard(locale: Locale, leftSlug: string, righ
         ? 'Fiyat, güçlü yönler, kullanım senaryoları ve alternatifleri tek sayfada görün.'
         : 'Review pricing, strengths, workflow fit, and alternatives on one page.',
     href: '/compare/' + buildComparisonPairSlug(leftTool.slug, rightTool.slug),
-    highlight: categoryNamesMap.get(leftTool.primaryCategorySlug) ?? (locale === 'tr' ? 'Karşılaştırma' : 'Comparison')
+    highlight: categoryNamesMap.get(leftTool.primaryCategorySlug) ?? (locale === 'tr' ? 'Karşılaştırma' : 'Comparison'),
+    logos: [
+      { name: leftTool.name, logoUrl: getToolLogoUrl(leftTool.websiteUrl) },
+      { name: rightTool.name, logoUrl: getToolLogoUrl(rightTool.websiteUrl) }
+    ]
   };
 }
 
@@ -615,7 +627,12 @@ function buildComparisonDirectoryTripleCard(locale: Locale): HomeComparisonCard 
         ? 'Hız, uzun form yazı ve ekosistem farklarını tek sayfada karşılaştırın.'
         : 'Compare speed, long-form writing, and ecosystem fit in one page.',
     href: '/compare/' + FEATURED_TRIPLE_COMPARISON_SLUG,
-    highlight: locale === 'tr' ? 'Üçlü' : 'Three-way'
+    highlight: locale === 'tr' ? 'Üçlü' : 'Three-way',
+    logos: [
+      { name: firstTool.name, logoUrl: getToolLogoUrl(firstTool.websiteUrl) },
+      { name: secondTool.name, logoUrl: getToolLogoUrl(secondTool.websiteUrl) },
+      { name: thirdTool.name, logoUrl: getToolLogoUrl(thirdTool.websiteUrl) }
+    ]
   };
 }
 

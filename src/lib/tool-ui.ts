@@ -21,6 +21,15 @@ const iconMap: Record<string, string> = {
   pictory: "PT"
 };
 
+function getToolLogoUrl(websiteUrl: string) {
+  try {
+    const origin = new URL(websiteUrl).origin;
+    return `${origin}/favicon.ico`;
+  } catch {
+    return "";
+  }
+}
+
 const trustIndicators: Record<Locale, string[]> = {
   tr: ["Tarafsız değerlendirme", "Düzenli güncellenir", "Affiliate bağlantılar içerebilir"],
   en: ["Neutral evaluation", "Updated regularly", "May include affiliate links"]
@@ -134,6 +143,7 @@ export function toHomeToolCard(locale: Locale, tool: LocalizedTool): HomeToolCar
 
   return {
     icon: iconMap[tool.slug] ?? tool.name.replace(/[^A-Za-z0-9]/g, "").slice(0, 2).toUpperCase(),
+    logoUrl: getToolLogoUrl(tool.websiteUrl),
     name: tool.name,
     description: tool.shortDescription,
     category: categoryLabel,

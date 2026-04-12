@@ -10,6 +10,7 @@
 
 export type ToolCard = {
   icon: string;
+  logoUrl?: string;
   name: string;
   description: string;
   category: string;
@@ -38,6 +39,10 @@ export type ComparisonCard = {
   href: string;
   eyebrow: string;
   highlight?: string;
+  logos?: {
+    name: string;
+    logoUrl?: string;
+  }[];
 };
 
 export type ConversionListItem = {

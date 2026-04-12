@@ -31,12 +31,32 @@ function normalizeComparisonHref(locale: string, href: string) {
   return `/${locale}/${href}`;
 }
 
+function ComparisonLogo({ name, logoUrl }: { name: string; logoUrl?: string }) {
+  return (
+    <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[10px] font-bold uppercase tracking-[0.14em] text-slate-700 shadow-[0_14px_32px_-22px_rgba(15,23,42,0.28)]">
+      {logoUrl ? (
+        <img
+          src={logoUrl}
+          alt={name}
+          className="h-full w-full object-cover p-1.5"
+          loading="lazy"
+          decoding="async"
+          referrerPolicy="no-referrer"
+        />
+      ) : (
+        <span>{name.slice(0, 2).toUpperCase()}</span>
+      )}
+    </span>
+  );
+}
+
 export function ComparisonCard({ locale, item, linkLabel, featured = false, tone = "light" }: ComparisonCardProps) {
   const href = normalizeComparisonHref(locale, item.href);
   const light = tone === "light";
+  const logos = item.logos?.length ? item.logos : [{ name: item.icon }];
 
   return (
-    <motion.div whileHover={{ y: -4, scale: 1.012 }} transition={{ duration: 0.22 }} className="h-full">
+    <motion.div whileHover={{ y: -4, scale: 1.01 }} transition={{ duration: 0.22 }} className="h-full">
       <Link href={href} className="group block h-full">
         <div
           className={[
@@ -50,8 +70,12 @@ export function ComparisonCard({ locale, item, linkLabel, featured = false, tone
         >
           <div className="flex min-h-[34px] items-center justify-between gap-3 overflow-hidden sm:min-h-[40px]">
             <div className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-[var(--tn-gradient-primary)] text-[10px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_12px_28px_-16px_rgba(37,99,235,0.34)]">
-                {item.icon}
+              <div className="flex shrink-0 items-center">
+                {logos.slice(0, 3).map((logo, index) => (
+                  <div key={`${logo.name}-${index}`} className={index > 0 ? "-ml-2" : ""}>
+                    <ComparisonLogo name={logo.name} logoUrl={logo.logoUrl} />
+                  </div>
+                ))}
               </div>
               <p className={["truncate text-sm font-medium", light ? "text-slate-700" : "text-slate-200"].join(" ")}>
                 {item.eyebrow}

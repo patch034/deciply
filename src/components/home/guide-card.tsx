@@ -18,7 +18,7 @@ export function GuideCard({ locale, item, linkLabel, tone = "light" }: GuideCard
   const light = tone === "light";
 
   return (
-    <motion.div whileHover={{ y: -8, scale: 1.012 }} transition={{ duration: 0.22 }} className="h-full">
+    <motion.div whileHover={{ y: -6, scale: 1.01 }} transition={{ duration: 0.22 }} className="h-full">
       <Link href={`/${locale}${item.href}`} className="group block h-full">
         <div
           className={[

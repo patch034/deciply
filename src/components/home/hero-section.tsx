@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+import type { ComparisonCard as HomeComparisonCard, ToolCard as HomeToolCard } from "@/types/home";
 import type { HomeContent } from "@/data/home";
 import type { Locale } from "@/i18n/config";
 import { buildAlternativesPath, buildUseCasePath } from "@/lib/intent-pages";
@@ -15,63 +16,97 @@ import { StatBadge } from "@/components/ui/stat-badge";
 type HeroSectionProps = {
   locale: Locale;
   content: HomeContent["hero"];
+  spotlightTools: HomeToolCard[];
+  spotlightComparisons: HomeComparisonCard[];
 };
 
 function getQuickLinks(locale: Locale) {
   return [
-    {
-      label: locale === "tr" ? "Kategoriler" : "Categories",
-      href: `/${locale}/categories`
-    },
-    {
-      label: locale === "tr" ? "Araçlar" : "Tools",
-      href: `/${locale}/tools`
-    },
-    {
-      label: locale === "tr" ? "Karşılaştırmalar" : "Comparisons",
-      href: `/${locale}/categories/comparisons`
-    },
-    {
-      label: locale === "tr" ? "Blog" : "Blog",
-      href: `/${locale}/blog`
-    },
-    {
-      label: locale === "tr" ? "Canlı karşılaştırma" : "Live compare",
-      href: `/${locale}/compare-auto`
-    },
-    {
-      label: locale === "tr" ? "Öğrenciler" : "Students",
-      href: buildUseCasePath(locale, "students")
-    },
-    {
-      label: locale === "tr" ? "Freelancer'lar" : "Freelancers",
-      href: buildUseCasePath(locale, "freelancers")
-    }
+    { label: locale === "tr" ? "Kategoriler" : "Categories", href: `/${locale}/categories` },
+    { label: locale === "tr" ? "Araçlar" : "Tools", href: `/${locale}/tools` },
+    { label: locale === "tr" ? "Karşılaştırmalar" : "Comparisons", href: `/${locale}/categories/comparisons` },
+    { label: locale === "tr" ? "Blog" : "Blog", href: `/${locale}/blog` },
+    { label: locale === "tr" ? "Canlı karşılaştırma" : "Live compare", href: `/${locale}/compare-auto` },
+    { label: locale === "tr" ? "Öğrenciler" : "Students", href: buildUseCasePath(locale, "students") },
+    { label: locale === "tr" ? "Freelancer'lar" : "Freelancers", href: buildUseCasePath(locale, "freelancers") }
   ];
 }
 
 function getPopularShortcuts(locale: Locale) {
   return [
-    {
-      label: "ChatGPT vs Claude",
-      href: buildComparisonPath(locale, "chatgpt", "claude")
-    },
-    {
-      label: "Claude vs Gemini",
-      href: buildComparisonPath(locale, "claude", "gemini")
-    },
-    {
-      label: "Perplexity vs ChatGPT",
-      href: buildComparisonPath(locale, "perplexity", "chatgpt")
-    },
-    {
-      label: locale === "tr" ? "ChatGPT alternatifleri" : "ChatGPT alternatives",
-      href: buildAlternativesPath(locale, "chatgpt")
-    }
+    { label: "ChatGPT vs Claude", href: buildComparisonPath(locale, "chatgpt", "claude") },
+    { label: "Claude vs Gemini", href: buildComparisonPath(locale, "claude", "gemini") },
+    { label: "Perplexity vs ChatGPT", href: buildComparisonPath(locale, "perplexity", "chatgpt") },
+    { label: locale === "tr" ? "ChatGPT alternatifleri" : "ChatGPT alternatives", href: buildAlternativesPath(locale, "chatgpt") }
   ];
 }
 
-export function HeroSection({ locale, content }: HeroSectionProps) {
+function ToolSignalRow({ tool }: { tool: HomeToolCard }) {
+  return (
+    <div className="flex items-center gap-3 rounded-[20px] border border-slate-200 bg-white px-3 py-3 shadow-[0_14px_32px_-26px_rgba(15,23,42,0.16)]">
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[10px] font-bold uppercase tracking-[0.14em] text-slate-700 shadow-[0_12px_28px_-24px_rgba(15,23,42,0.28)]">
+        {tool.logoUrl ? (
+          <img
+            src={tool.logoUrl}
+            alt={tool.name}
+            className="h-full w-full object-cover p-1.5"
+            loading="lazy"
+            decoding="async"
+            referrerPolicy="no-referrer"
+          />
+        ) : (
+          tool.icon
+        )}
+      </span>
+      <div className="min-w-0 flex-1">
+        <div className="flex items-center justify-between gap-2">
+          <p className="truncate text-sm font-semibold text-slate-950">{tool.name}</p>
+          <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-semibold text-slate-500">
+            {tool.pricing}
+          </span>
+        </div>
+        <p className="mt-1 truncate text-[12px] leading-5 text-slate-600">{tool.category}</p>
+      </div>
+    </div>
+  );
+}
+
+function ComparisonSignalRow({ locale, item }: { locale: Locale; item: HomeComparisonCard }) {
+  return (
+    <Link href={`/${locale}${item.href}`} className="group flex items-center gap-3 rounded-[20px] border border-slate-200 bg-white px-3 py-3 shadow-[0_14px_32px_-26px_rgba(15,23,42,0.16)] transition hover:border-sky-200 hover:bg-slate-50">
+      <span className="flex shrink-0 items-center gap-1.5">
+        {(item.logos ?? []).slice(0, 2).map((logo, index) => (
+          <span
+            key={`${logo.name}-${index}`}
+            className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white shadow-[0_12px_24px_-20px_rgba(15,23,42,0.24)]"
+          >
+            {logo.logoUrl ? (
+              <img
+                src={logo.logoUrl}
+                alt={logo.name}
+                className="h-full w-full object-cover p-1.5"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <span className="text-[10px] font-bold text-slate-700">{logo.name.slice(0, 2).toUpperCase()}</span>
+            )}
+          </span>
+        ))}
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-sm font-semibold text-slate-950 transition group-hover:text-sky-700">{item.title}</p>
+        <p className="mt-1 truncate text-[12px] leading-5 text-slate-600">{item.description}</p>
+      </div>
+      <span className="text-xs font-semibold text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-sky-600" aria-hidden="true">
+        →
+      </span>
+    </Link>
+  );
+}
+
+export function HeroSection({ locale, content, spotlightTools, spotlightComparisons }: HeroSectionProps) {
   const quickLinks = getQuickLinks(locale);
   const shortcuts = getPopularShortcuts(locale);
 
@@ -84,7 +119,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
       </div>
 
       <div className="rounded-[40px] border border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(246,249,253,0.98))] shadow-[0_32px_104px_-56px_rgba(15,23,42,0.2)]">
-        <div className="grid gap-8 px-5 py-6 sm:px-6 sm:py-7 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 lg:px-8 lg:py-8">
+        <div className="grid gap-6 px-5 py-6 sm:px-6 sm:py-7 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:px-8 lg:py-8">
           <div className="flex min-w-0 flex-col justify-center">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -209,7 +244,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.42, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
-              {content.starterHint || content.panelFootnote}
+              {content.panelFootnote}
             </motion.p>
           </div>
 
@@ -218,7 +253,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.58, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="flex h-full min-h-[540px] flex-col rounded-[34px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,250,253,0.98))] p-5 shadow-[0_30px_90px_-44px_rgba(15,23,42,0.18)] sm:p-6">
+            <div className="flex h-full min-h-[540px] flex-col rounded-[34px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(247,250,253,0.98))] p-5 shadow-[0_30px_90px_-44px_rgba(15,23,42,0.18)] sm:p-6">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">{content.panelEyebrow}</p>
@@ -235,41 +270,53 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
 
               <p className="mt-4 max-w-md text-sm leading-7 text-slate-600">{content.panelDescription}</p>
 
-              <div className="mt-5 flex flex-wrap gap-2">
-                {content.trustBadges.map((badge) => (
-                  <span
-                    key={badge}
-                    className="inline-flex min-h-[32px] items-center rounded-full border border-slate-200 bg-slate-50 px-3 text-xs font-semibold text-slate-600"
-                  >
-                    {badge}
-                  </span>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                {spotlightTools.slice(0, 4).map((tool) => (
+                  <ToolSignalRow key={tool.href} tool={tool} />
                 ))}
               </div>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {content.panelItems.map((item, index) => (
-                  <motion.div
-                    key={item.title}
-                    className="rounded-[24px] border border-slate-200/90 bg-white p-4 shadow-[0_18px_46px_-34px_rgba(15,23,42,0.12)]"
-                    initial={{ opacity: 0, x: 14 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.42, delay: 0.22 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-semibold text-slate-950">{item.title}</p>
-                        <p className="mt-1 text-sm leading-6 text-slate-500">{item.meta}</p>
-                      </div>
-                      <Badge variant="ghost" className="shrink-0 text-[11px] text-sky-700">
-                        {item.value}
-                      </Badge>
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="mt-5 rounded-[28px] border border-slate-200 bg-white p-4 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)]">
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">
+                      {locale === "tr" ? "Popüler karşılaştırmalar" : "Popular comparisons"}
+                    </p>
+                    <p className="mt-1 text-sm text-slate-600">
+                      {locale === "tr" ? "Toolify-benzeri karar akışı" : "Toolify-style decision flow"}
+                    </p>
+                  </div>
+                  <Badge variant="ghost" className="text-[11px]">
+                    VS
+                  </Badge>
+                </div>
+
+                <div className="mt-4 space-y-2.5">
+                  {spotlightComparisons.slice(0, 3).map((item) => (
+                    <ComparisonSignalRow key={item.href} locale={locale} item={item} />
+                  ))}
+                </div>
               </div>
 
-              <div className="mt-5 rounded-[24px] border border-sky-100 bg-gradient-to-r from-sky-50 via-white to-cyan-50 p-4">
-                <p className="text-sm leading-7 text-slate-700">{content.panelFootnote}</p>
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                <div className="rounded-[22px] border border-slate-200 bg-slate-50 p-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                    {locale === "tr" ? "Araçlar" : "Tools"}
+                  </p>
+                  <p className="mt-2 text-[1.35rem] font-bold tracking-[-0.04em] text-slate-950">{content.stats[0]?.value}</p>
+                </div>
+                <div className="rounded-[22px] border border-slate-200 bg-slate-50 p-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                    {locale === "tr" ? "Rehberler" : "Guides"}
+                  </p>
+                  <p className="mt-2 text-[1.35rem] font-bold tracking-[-0.04em] text-slate-950">{content.stats[1]?.value}</p>
+                </div>
+                <div className="rounded-[22px] border border-slate-200 bg-slate-50 p-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                    {locale === "tr" ? "Keşif" : "Discovery"}
+                  </p>
+                  <p className="mt-2 text-[1.35rem] font-bold tracking-[-0.04em] text-slate-950">{content.stats[2]?.value}</p>
+                </div>
               </div>
             </div>
           </motion.div>

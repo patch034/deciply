@@ -37,7 +37,7 @@ const dictionaries = {
             { label: "Canlı karşılaştırma", href: "/compare-auto" },
             { label: "ChatGPT vs Claude", href: "/compare/chatgpt-vs-claude" },
             { label: "ChatGPT vs Gemini", href: "/compare/chatgpt-vs-gemini" },
-            { label: "Midjourney vs Adobe Express", href: "/compare/midjourney-vs-adobe-express" }
+            { label: "Midjourney vs Adobe Firefly", href: "/compare/midjourney-vs-adobe-firefly" }
           ]
         },
         {
@@ -99,7 +99,7 @@ const dictionaries = {
             { label: "Live compare", href: "/compare-auto" },
             { label: "ChatGPT vs Claude", href: "/compare/chatgpt-vs-claude" },
             { label: "ChatGPT vs Gemini", href: "/compare/chatgpt-vs-gemini" },
-            { label: "Midjourney vs Adobe Express", href: "/compare/midjourney-vs-adobe-express" }
+            { label: "Midjourney vs Adobe Firefly", href: "/compare/midjourney-vs-adobe-firefly" }
           ]
         },
         {

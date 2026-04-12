@@ -276,13 +276,15 @@ svg {
 }
 
 .section-tint-violet,
-.section-tint-cyan {
+.section-tint-cyan,
+.section-tint-slate {
   position: relative;
   isolation: isolate;
 }
 
 .section-tint-violet::before,
-.section-tint-cyan::before {
+.section-tint-cyan::before,
+.section-tint-slate::before {
   content: "";
   position: absolute;
   inset: -0.75rem -0.25rem;
@@ -297,6 +299,10 @@ svg {
 
 .section-tint-cyan::before {
   background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.12), transparent 58%);
+}
+
+.section-tint-slate::before {
+  background: radial-gradient(circle at top center, rgba(15, 23, 42, 0.06), transparent 56%);
 }
 
 .section-tint-rose::before {

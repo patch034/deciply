@@ -19,7 +19,7 @@ function buildPopularTools(locale: Locale) {
 
       return left.slug.localeCompare(right.slug);
     })
-    .slice(0, 20)
+    .slice(0, 24)
     .map((tool) => toHomeToolCard(locale, tool));
 }
 
@@ -29,12 +29,17 @@ type HomePageProps = {
 };
 
 export function HomePage({ locale, content }: HomePageProps) {
-  const comparisonCards = getComparisonDirectoryCards(locale).slice(0, 6);
-  const popularTools = buildPopularTools(locale);
+  const comparisonCards = getComparisonDirectoryCards(locale).slice(0, 8);
+  const popularTools = buildPopularTools(locale).slice(0, 24);
 
   return (
     <div className="relative min-h-screen overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] pb-12 text-slate-900 sm:pb-16 lg:pb-20">
-      <HeroSection locale={locale} content={content.hero} />
+      <HeroSection
+        locale={locale}
+        content={content.hero}
+        spotlightTools={popularTools.slice(0, 6)}
+        spotlightComparisons={comparisonCards.slice(0, 4)}
+      />
       <HomeBoostSections locale={locale} comparisonCards={comparisonCards} popularTools={popularTools} categories={content.categories} />
     </div>
   );
