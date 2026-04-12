@@ -28,7 +28,7 @@ type HomePageProps = {
   content: HomeContent;
 };
 
-export function HomePage({ locale, content }: HomePageProps) {
+export async function HomePage({ locale, content }: HomePageProps) {
   const comparisonCards = getComparisonDirectoryCards(locale).slice(0, 8);
   const allTools = getLocalizedTools(locale).map((tool) => toHomeToolCard(locale, tool));
   const popularTools = buildPopularTools(locale).slice(0, 24);

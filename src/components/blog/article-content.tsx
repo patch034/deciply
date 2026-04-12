@@ -226,8 +226,12 @@ export function ArticleContent({ locale, sections, supportingLinks, tone = "ligh
               button.variant === "primary"
                 ? "bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] hover:-translate-y-0.5 hover:scale-[1.02]"
                 : button.variant === "secondary"
-                  ? "border border-sky-400/14 bg-slate-950/50 text-slate-100 hover:border-cyan-400/18 hover:text-cyan-100"
-                  : "border border-sky-400/10 bg-slate-950/40 text-slate-200 hover:border-cyan-400/18 hover:text-cyan-100"
+                  ? isLight
+                    ? "border border-slate-200 bg-white text-slate-700 hover:border-sky-200 hover:text-slate-950"
+                    : "border border-sky-400/14 bg-slate-950/50 text-slate-100 hover:border-cyan-400/18 hover:text-cyan-100"
+                  : isLight
+                    ? "border border-slate-200 bg-slate-50 text-slate-600 hover:border-sky-200 hover:text-slate-950"
+                    : "border border-sky-400/10 bg-slate-950/40 text-slate-200 hover:border-cyan-400/18 hover:text-cyan-100"
             ].join(" ")}
           >
             {button.label}
@@ -384,7 +388,7 @@ export function ArticleContent({ locale, sections, supportingLinks, tone = "ligh
                     ))}
                   </div>
                   {subSection.bullets?.length ? (
-                    <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-200">
+                    <ul className={["mt-4 space-y-2 text-sm leading-7", isLight ? "text-slate-700" : "text-slate-200"].join(" ")}>
                       {subSection.bullets.map((item) => (
                         <li key={item} className="flex items-start gap-3">
                           <span className="mt-2 h-2 w-2 rounded-full bg-cyan-300" />

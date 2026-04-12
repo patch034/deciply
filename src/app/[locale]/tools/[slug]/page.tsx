@@ -637,20 +637,20 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </div>
 
         <div className="grid gap-6">
-          <aside className="rounded-[32px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-[0_20px_70px_-40px_rgba(34,211,238,0.15)] md:p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{dictionary.quickInfoTitle}</p>
+          <aside className="rounded-[32px] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(247,250,253,0.99))] p-6 shadow-[0_20px_70px_-40px_rgba(15,23,42,0.12)] md:p-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">{dictionary.quickInfoTitle}</p>
             <div className="mt-6 grid gap-4">
-              <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{dictionary.pricingLabel}</p>
-                <p className="mt-2 text-sm font-semibold text-slate-100">{pricingValue}</p>
+              <div className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{dictionary.pricingLabel}</p>
+                <p className="mt-2 text-sm font-semibold text-slate-950">{pricingValue}</p>
               </div>
-              <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{dictionary.categoryLabel}</p>
-                <p className="mt-2 text-sm font-semibold text-slate-100">{quickCategory}</p>
+              <div className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{dictionary.categoryLabel}</p>
+                <p className="mt-2 text-sm font-semibold text-slate-950">{quickCategory}</p>
               </div>
-              <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{dictionary.bestForLabel}</p>
-                <p className="mt-2 text-sm font-semibold text-slate-100">{tool.bestUseCase}</p>
+              <div className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{dictionary.bestForLabel}</p>
+                <p className="mt-2 text-sm font-semibold text-slate-950">{tool.bestUseCase}</p>
               </div>
             </div>
           </aside>
@@ -680,9 +680,9 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       <InfoSection id="karar-ozeti" title={decisionSummaryTitle} description={decisionSummaryDescription} tone="light">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {decisionSummaryCards.map((item) => (
-            <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{item.title}</p>
-              <p className="mt-3 text-sm leading-7 text-slate-200">{item.value}</p>
+            <div key={item.title} className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)] sm:p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-600">{item.title}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{item.value}</p>
             </div>
           ))}
         </div>
@@ -690,14 +690,14 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
 
       <InfoSection id="ozellikler" title={dictionary.overviewTitle} description={dictionary.overviewDescription} tone="light">
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-          <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 text-[15px] leading-7 text-slate-300 sm:p-5 sm:text-base">
-            <p className="text-base font-semibold text-slate-100">{tool.whatItActuallyDoes}</p>
+          <div className="rounded-[24px] border border-slate-200 bg-white p-4 text-[15px] leading-7 text-slate-600 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)] sm:p-5 sm:text-base">
+            <p className="text-base font-semibold text-slate-950">{tool.whatItActuallyDoes}</p>
             <p className="mt-4">{tool.longDescription}</p>
           </div>
-          <div className="rounded-[24px] border border-cyan-400/15 bg-cyan-400/[0.06] p-4 text-sm leading-7 text-slate-300 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.14)] sm:p-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">{dictionary.bestForLabel}</p>
-            <p className="mt-3 text-base font-semibold text-slate-100">{tool.bestUseCase}</p>
-            <p className="mt-4 text-sm leading-7 text-slate-300">{tool.whoShouldUseSummary}</p>
+          <div className="rounded-[24px] border border-cyan-200 bg-cyan-50/80 p-4 text-sm leading-7 text-slate-600 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.14)] sm:p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-700">{dictionary.bestForLabel}</p>
+            <p className="mt-3 text-base font-semibold text-slate-950">{tool.bestUseCase}</p>
+            <p className="mt-4 text-sm leading-7 text-slate-600">{tool.whoShouldUseSummary}</p>
           </div>
         </div>
       </InfoSection>
@@ -705,9 +705,9 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       <InfoSection title={dictionary.useCasesTitle} description={dictionary.useCasesDescription} tone="light">
         <div className="grid gap-4 md:grid-cols-3">
           {useCaseCards.map((item) => (
-            <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
-              <p className="text-base font-semibold text-slate-100">{item.title}</p>
-              <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
+            <div key={item.title} className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)] sm:p-5">
+              <p className="text-base font-semibold text-slate-950">{item.title}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
             </div>
           ))}
         </div>
@@ -724,9 +724,9 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       >
         <div className="grid gap-4 md:grid-cols-3">
           {pricingSummaryCards.map((item) => (
-            <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
-              <p className="text-base font-semibold text-slate-100">{item.title}</p>
-              <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
+            <div key={item.title} className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)] sm:p-5">
+              <p className="text-base font-semibold text-slate-950">{item.title}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
             </div>
           ))}
         </div>
@@ -734,9 +734,9 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       <InfoSection id="para-kazanma" title={dictionary.moneyTitle} description={dictionary.moneyDescription} tone="light">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {tool.moneyUseCases.map((item) => (
-            <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
-              <p className="text-base font-semibold text-slate-100">{item.title}</p>
-              <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
+            <div key={item.title} className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)] sm:p-5">
+              <p className="text-base font-semibold text-slate-950">{item.title}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
             </div>
           ))}
         </div>
@@ -752,23 +752,23 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         tone="light"
       >
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-          <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)]">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">
+          <div className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-600">
               {safeLocale === "tr" ? "Gerçek senaryo" : "Real scenario"}
             </p>
-            <p className="mt-3 text-xl font-semibold tracking-tight text-slate-100">{tool.realUseCaseExample.title}</p>
-            <p className="mt-4 text-sm leading-7 text-slate-300">{tool.realUseCaseExample.description}</p>
+            <p className="mt-3 text-xl font-semibold tracking-tight text-slate-950">{tool.realUseCaseExample.title}</p>
+            <p className="mt-4 text-sm leading-7 text-slate-600">{tool.realUseCaseExample.description}</p>
           </div>
-          <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)]">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">
+          <div className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-600">
               {safeLocale === "tr" ? "Workflow akışı" : "Workflow steps"}
             </p>
             <div className="mt-4 grid gap-4">
               {howToUseSteps.map((step, index) => (
-                <div key={step.title} className="rounded-[20px] border border-sky-400/10 bg-black/10 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">0{index + 1}</p>
-                  <p className="mt-2 text-base font-semibold text-slate-100">{step.title}</p>
-                  <p className="mt-2 text-sm leading-7 text-slate-300">{step.description}</p>
+                <div key={step.title} className="rounded-[20px] border border-slate-200 bg-slate-50 p-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-700">0{index + 1}</p>
+                  <p className="mt-2 text-base font-semibold text-slate-950">{step.title}</p>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -778,10 +778,10 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       <InfoSection title={dictionary.howToUseTitle} description={dictionary.howToUseDescription} tone="light">
         <div className="grid gap-4 md:grid-cols-3">
           {howToUseSteps.map((step, index) => (
-            <div key={step.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">0{index + 1}</p>
-              <p className="mt-3 text-base font-semibold text-slate-100">{step.title}</p>
-              <p className="mt-3 text-sm leading-7 text-slate-300">{step.description}</p>
+            <div key={step.title} className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)] sm:p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-600">0{index + 1}</p>
+              <p className="mt-3 text-base font-semibold text-slate-950">{step.title}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{step.description}</p>
             </div>
           ))}
         </div>
@@ -796,16 +796,16 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         <InfoSection id="kimler-icin" title={dictionary.whoShouldUseTitle} description={dictionary.whoShouldUseDescription} tone="light">
           <div className="grid gap-4 md:grid-cols-2">
             {audienceCards.map((item) => (
-              <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
-                <p className="text-base font-semibold text-slate-100">{item.title}</p>
-                <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
+              <div key={item.title} className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)] sm:p-5">
+                <p className="text-base font-semibold text-slate-950">{item.title}</p>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
               </div>
             ))}
           </div>
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             {tool.whoShouldUse.map((item) => (
-              <div key={item} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
-                <p className="text-sm font-semibold text-slate-100">{item}</p>
+              <div key={item} className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)] sm:p-5">
+                <p className="text-sm font-semibold text-slate-950">{item}</p>
               </div>
             ))}
           </div>
@@ -814,8 +814,8 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         <InfoSection title={dictionary.whoShouldAvoidTitle} description={dictionary.whoShouldAvoidDescription} tone="light">
           <div className="grid gap-4 md:grid-cols-1">
             {whoShouldAvoid.map((item) => (
-              <div key={item} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
-                <p className="text-sm font-semibold text-slate-100">{item}</p>
+              <div key={item} className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_16px_48px_-30px_rgba(15,23,42,0.12)] sm:p-5">
+                <p className="text-sm font-semibold text-slate-950">{item}</p>
               </div>
             ))}
           </div>
@@ -850,7 +850,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         <div className="grid gap-4 md:grid-cols-3">
           <Link
             href={alternativesHubHref}
-            className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 text-sm font-semibold leading-7 text-slate-100 transition hover:border-cyan-400/18 hover:text-cyan-300"
+            className="rounded-[24px] border border-slate-200 bg-white p-5 text-sm font-semibold leading-7 text-slate-700 transition hover:border-sky-200 hover:text-slate-950"
           >
             {safeLocale === "tr" ? `${tool.name} alternatifleri` : `${tool.name} alternatives`}
           </Link>
@@ -858,7 +858,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
             <Link
               key={page.slug}
               href={buildUseCasePath(safeLocale, page.slug)}
-              className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 text-sm font-semibold leading-7 text-slate-100 transition hover:border-cyan-400/18 hover:text-cyan-300"
+              className="rounded-[24px] border border-slate-200 bg-white p-5 text-sm font-semibold leading-7 text-slate-700 transition hover:border-sky-200 hover:text-slate-950"
             >
               {page.title}
             </Link>
@@ -885,6 +885,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       </InfoSection>
 
       <ConversionCtaStrip
+        tone="light"
         eyebrow={safeLocale === "tr" ? "Dönüşüm odaklı sonraki adım" : "Conversion-ready next step"}
         title={safeLocale === "tr" ? "İlgili aracı açın, alternatifleri karşılaştırın" : "Open the tool, compare the alternatives"}
         description={
@@ -893,7 +894,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
             : "Open the official tool, review nearby alternatives, and read the related review if you need more context."
         }
         buttons={[
-          { label: safeLocale === "tr" ? "Resm? aracı a?" : "Visit official tool", href: outboundUrl },
+          { label: safeLocale === "tr" ? "Resmî aracı aç" : "Visit official tool", href: outboundUrl },
           ...(autoComparisonHref && autoComparisonTarget
             ? [
                 {
@@ -905,7 +906,8 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
             : []),
           { label: safeLocale === "tr" ? "Alternatifleri karşılaştır" : "Compare alternatives", href: alternativesHubHref, variant: "secondary" },
           { label: safeLocale === "tr" ? "Tam incelemeyi oku" : "Read full review", href: featuredBlogHref, variant: "ghost" }
-        ]}      />
+        ]}
+      />
 
       {relatedArticles.length ? (
         <InfoSection title={blogCopy.toolPageRelatedTitle} description={blogCopy.toolPageRelatedDescription}>

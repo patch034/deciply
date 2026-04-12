@@ -4,10 +4,12 @@ import { CategoryCard } from "@/components/home/category-card";
 import { ComparisonCard } from "@/components/home/comparison-card";
 import { DiscoveryToolCard } from "@/components/home/discovery-tool-card";
 import { LiveToolFeed } from "@/components/home/live-tool-feed";
+import { AiNewsList } from "@/components/news/ai-news-list";
 import { Badge } from "@/components/ui/badge";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
-import { formatBlogDate, getBlogTrendingArticles, getLocalizedBlogArticles, resolveBlogPublishDate } from "@/lib/blog";
+import { formatBlogDate, getLocalizedBlogArticles, resolveBlogPublishDate } from "@/lib/blog";
+import { getAiNewsItems } from "@/lib/news";
 import type { ComparisonCard as HomeComparisonCard, ToolCard as HomeToolCard } from "@/types/home";
 import type { Locale } from "@/i18n/config";
 
@@ -48,36 +50,9 @@ function AlphaLetterGrid({ locale }: { locale: Locale }) {
   );
 }
 
-function NewsRow({ locale, article }: { locale: Locale; article: ReturnType<typeof getLocalizedBlogArticles>[number] }) {
-  const publishDate = resolveBlogPublishDate(article);
-  const formattedDate = publishDate ? formatBlogDate(locale, publishDate) : null;
-
-  return (
-    <Link
-      href={`/${locale}/blog/${article.slug}`}
-      className="group flex items-start gap-3 rounded-[20px] border border-slate-200 bg-white p-3.5 transition hover:border-sky-200 hover:bg-slate-50"
-    >
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--tn-gradient-primary)] text-[10px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_14px_30px_-22px_rgba(37,99,235,0.38)]">
-        AI
-      </span>
-      <div className="min-w-0 flex-1">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500">
-            {article.categoryLabel}
-          </span>
-          {formattedDate ? <span className="text-[11px] font-medium text-slate-500">{formattedDate}</span> : null}
-        </div>
-        <p className="mt-1.5 clamp-2 text-sm font-semibold leading-5 text-slate-950 transition group-hover:text-sky-700">
-          {article.title}
-        </p>
-      </div>
-    </Link>
-  );
-}
-
-export function HomeBoostSections({ locale, comparisonCards, popularTools, allTools, categories }: HomeBoostSectionsProps) {
+export async function HomeBoostSections({ locale, comparisonCards, popularTools, allTools, categories }: HomeBoostSectionsProps) {
   const blogArticles = getLocalizedBlogArticles(locale);
-  const newsItems = getBlogTrendingArticles(locale, 8);
+  const newsItems = await getAiNewsItems(locale, 8);
   const guideItems = blogArticles.filter((article) => !newsItems.some((news) => news.slug === article.slug)).slice(0, 4);
   const moreTools = popularTools.slice(12, 24);
 
@@ -125,17 +100,15 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools, allTo
               </div>
               <p className="mt-3 text-sm leading-6 text-slate-600">
                 {locale === "tr"
-                  ? "Blog ve rehber akışından kısa başlıklar al; sayfayı yaşayan bir keşif alanı gibi hissettir."
-                  : "Pull in short headlines from the blog and guide feed so the homepage feels active."}
+                  ? "Kısa AI haberleri ve ürün sinyalleri göstererek sayfayı yaşayan bir keşif alanı gibi hissettir."
+                  : "Show short AI headlines and product signals so the homepage feels active."}
               </p>
               <div className="mt-4 space-y-2.5">
-                {newsItems.map((article) => (
-                  <NewsRow key={article.slug} locale={locale} article={article} />
-                ))}
+                <AiNewsList locale={locale} items={newsItems} variant="sidebar" />
               </div>
               <div className="mt-4">
-                <PremiumButton href={`/${locale}/blog`} variant="secondary" className="w-full">
-                  {locale === "tr" ? "Bloga git" : "Go to blog"}
+                <PremiumButton href={`/${locale}/news`} variant="secondary" className="w-full">
+                  {locale === "tr" ? "AI haberlerine git" : "Go to AI news"}
                 </PremiumButton>
               </div>
             </div>

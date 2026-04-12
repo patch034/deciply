@@ -82,9 +82,6 @@ export default async function CategoriesPage({
               ))}
             </div>
             <div className="mt-4 flex flex-col gap-2">
-              <PremiumButton href={`/${safeLocale}/categories/mega`} variant="secondary" className="w-full">
-                {safeLocale === "tr" ? "Mega dizin" : "Mega directory"}
-              </PremiumButton>
               <PremiumButton href={`/${safeLocale}/tools`} className="w-full">
                 {content.common.allToolsLabel}
               </PremiumButton>

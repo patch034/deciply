@@ -351,9 +351,9 @@ export default async function BlogDetailPage({
           ))}
         </SectionShell>
 
-        <section className="rounded-[30px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)] md:p-8">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-50">{copy.comparisonBlockTitle}</h2>
-          <p className="mt-3 text-base leading-7 text-slate-300">{copy.comparisonBlockDescription}</p>
+        <section className="rounded-[30px] border border-slate-200 bg-white p-6 shadow-[0_24px_80px_-44px_rgba(15,23,42,0.12)] md:p-8">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-950">{copy.comparisonBlockTitle}</h2>
+          <p className="mt-3 text-base leading-7 text-slate-600">{copy.comparisonBlockDescription}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             {blogCtaButtons.map(renderBlogActionButton)}
           </div>
