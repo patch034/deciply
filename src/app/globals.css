@@ -324,6 +324,35 @@ svg {
   background-color: rgba(8, 12, 22, 0.2);
 }
 
+.compare-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: rgba(226, 232, 240, 0.92);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.compare-list li {
+  position: relative;
+  padding-left: 0.75rem;
+}
+
+.compare-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: rgba(148, 163, 184, 0.7);
+}
+
+.compare-chip {
+  max-width: 100%;
+  white-space: nowrap;
+}
+
 .balance-text {
   text-wrap: balance;
 }

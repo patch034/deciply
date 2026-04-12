@@ -82,14 +82,30 @@ function compareLocaleSort(locale: Locale, left: CompareToolOption, right: Compa
   return left.name.localeCompare(right.name, locale === "tr" ? "tr-TR" : "en-US");
 }
 
+function isShortTag(value: string) {
+  const cleaned = value.trim();
+  return cleaned.length > 0 && cleaned.length <= 16 && !cleaned.includes(".");
+}
+
 function renderValue(value: string | string[] | number | boolean, locale: Locale) {
   const labels = copy[locale];
 
   if (Array.isArray(value)) {
+    const shortItems = value.filter((item) => isShortTag(item));
+    const longItems = value.filter((item) => !isShortTag(item));
+    if (longItems.length > 0) {
+      return (
+        <ul className="compare-list">
+          {longItems.slice(0, 3).map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      );
+    }
     return (
       <div className="flex flex-wrap gap-2">
-        {value.slice(0, 4).map((item) => (
-          <Badge key={item} variant="muted" className="max-w-full justify-center text-[11px]">
+        {shortItems.slice(0, 2).map((item) => (
+          <Badge key={item} variant="muted" className="compare-chip px-2 py-0.5 text-[10px]">
             {item}
           </Badge>
         ))}
@@ -206,9 +222,10 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
             {compact ? labels.compactDescription : labels.fullDescription}
           </p>
         </div>
-        <Badge variant="accent" className="w-fit text-[11px] uppercase tracking-[0.14em]">
+        <Badge variant="accent" className="hidden w-fit text-[11px] uppercase tracking-[0.14em] sm:inline-flex">
           {labels.selectorHint}
         </Badge>
+        <p className="text-xs text-slate-400 sm:hidden">{labels.selectorHint}</p>
       </div>
 
       <div className="mt-6 grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto] lg:items-end">
@@ -284,7 +301,7 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
                   </Badge>
                 </div>
 
-                <p className="mt-3 text-sm leading-6 text-slate-300/84">{tool.bestUseCase}</p>
+                <p className="mt-3 text-sm leading-6 text-slate-300/84 mobile-clamp-2">{tool.bestUseCase}</p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
                   {tool.compareProfile.bestFor.slice(0, 2).map((item) => (
@@ -310,7 +327,7 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
                       <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">{leftTool?.name ?? labels.leftLabel}</p>
                       {renderValue(row.left, locale)}
                     </div>
-                    <span className="shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">→</span>
+                    <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
                   </div>
                 </div>
                 <div className="mt-3 space-y-3 lg:mt-0">
@@ -319,7 +336,7 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
                       <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200">{rightTool?.name ?? labels.rightLabel}</p>
                       {renderValue(row.right, locale)}
                     </div>
-                    <span className="shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">→</span>
+                    <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
                   </div>
                 </div>
               </div>

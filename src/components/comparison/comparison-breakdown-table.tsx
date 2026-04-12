@@ -33,6 +33,21 @@ function getChipTone(index: number) {
     : "border-sky-400/16 bg-sky-400/12 text-sky-100";
 }
 
+function renderMobileValue(value: string) {
+  const parts = value.split(" · ").map((item) => item.trim()).filter(Boolean);
+  if (parts.length > 1) {
+    return (
+      <ul className="compare-list">
+        {parts.slice(0, 3).map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  return <p className="text-[13px] leading-6 text-slate-200">{value}</p>;
+}
+
 export function ComparisonBreakdownTable({
   locale,
   title,
@@ -110,16 +125,16 @@ export function ComparisonBreakdownTable({
               <div className="compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-3">
                 <div className="min-w-0">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">{columns.left}</p>
-                  <p className={`mt-1 text-[13px] leading-6 ${getComparisonCellStyle()}`}>{row.left}</p>
+                  {renderMobileValue(row.left)}
                 </div>
-                <span className="shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">→</span>
+                <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
               </div>
               <div className="compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-3">
                 <div className="min-w-0">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200">{columns.right}</p>
-                  <p className={`mt-1 text-[13px] leading-6 ${getComparisonCellStyle()}`}>{row.right}</p>
+                  {renderMobileValue(row.right)}
                 </div>
-                <span className="shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">→</span>
+                <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
               </div>
             </div>
           </article>
