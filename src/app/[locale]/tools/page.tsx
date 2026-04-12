@@ -1,7 +1,8 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
+import Link from "next/link";
 
-import { CategoryHero } from "@/components/catalog/category-hero";
 import { ToolsExplorer } from "@/components/catalog/tools-explorer";
+import { Badge } from "@/components/ui/badge";
 import { toolCategoryOptions, useCaseOptions } from "@/data/tool-taxonomy";
 import {
   formatPricing,
@@ -24,6 +25,7 @@ export async function generateMetadata({
   searchParams: Promise<{
     page?: string | string[];
     q?: string | string[];
+    browse?: string | string[];
     category?: string | string[];
     pricing?: string | string[];
     useCase?: string | string[];
@@ -59,6 +61,7 @@ export default async function ToolsPage({
   searchParams: Promise<{
     page?: string | string[];
     q?: string | string[];
+    browse?: string | string[];
     category?: string | string[];
     pricing?: string | string[];
     useCase?: string | string[];
@@ -82,12 +85,11 @@ export default async function ToolsPage({
   const useCaseLabelMap = new Map<string, string>(
     useCaseOptions[safeLocale].map((item): [string, string] => [item.slug, item.label])
   );
+  const categoryCount = categoryNames.size;
 
   const explorerTools = toolItems.map((tool, index) => {
     const siteCategoryNames = tool.categorySlugs.map((item) => categoryNames.get(item) ?? item);
-    const toolCategoryLabels = tool.toolCategorySlugs.map(
-      (item) => toolCategoryLabelMap.get(item) ?? item
-    );
+    const toolCategoryLabels = tool.toolCategorySlugs.map((item) => toolCategoryLabelMap.get(item) ?? item);
     const useCaseLabels = tool.useCaseSlugs.map((item) => useCaseLabelMap.get(item) ?? item);
     const primaryComparisonTarget = getComparisonTargetSlugs(tool.slug, 1)[0];
 
@@ -117,22 +119,70 @@ export default async function ToolsPage({
   });
 
   return (
-    <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-12 overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-      <CategoryHero
-        eyebrow={content.toolsIndex.eyebrow}
-        title={content.toolsIndex.title}
-        description={content.toolsIndex.description}
-        supportText={content.toolsIndex.filterDescription}
-        ctaLabel={content.common.categoriesLabel}
-        ctaHref={`/${safeLocale}/categories`}
-      />
+    <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <section className="rounded-[32px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(244,248,253,0.98))] p-6 shadow-[0_24px_80px_-44px_rgba(37,99,235,0.14)] sm:p-8">
+        <Badge variant="accent">{content.toolsIndex.eyebrow}</Badge>
+
+        <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-end">
+          <div>
+            <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">
+              {content.toolsIndex.title}
+            </h1>
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{content.toolsIndex.description}</p>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+            <div className="rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                {locale === "tr" ? "Araçlar" : "Tools"}
+              </p>
+              <p className="mt-2 text-2xl font-bold tracking-tight text-slate-950">{getToolCount()}</p>
+            </div>
+            <div className="rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                {content.common.categoriesLabel}
+              </p>
+              <p className="mt-2 text-2xl font-bold tracking-tight text-slate-950">{categoryCount}</p>
+            </div>
+            <div className="rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                {locale === "tr" ? "Keşif" : "Discovery"}
+              </p>
+              <p className="mt-2 text-sm font-medium leading-6 text-slate-600">
+                {locale === "tr"
+                  ? "Arama, kategori ve sıralama ile hızlı tarama."
+                  : "Search, categories, and sorting for fast browsing."}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          <Link
+            href={`/${safeLocale}/categories`}
+            className="inline-flex min-h-[40px] items-center rounded-full border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 transition hover:border-sky-200 hover:text-slate-950"
+          >
+            {content.common.categoriesLabel}
+          </Link>
+          <Link
+            href={`/${safeLocale}/compare-auto`}
+            className="inline-flex min-h-[40px] items-center rounded-full border border-cyan-200 bg-cyan-50 px-4 text-sm font-semibold text-cyan-700 transition hover:border-cyan-300 hover:bg-cyan-100"
+          >
+            {locale === "tr" ? "Karşılaştırmalar" : "Comparisons"}
+          </Link>
+          <Link
+            href={`/${safeLocale}/blog`}
+            className="inline-flex min-h-[40px] items-center rounded-full border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 transition hover:border-sky-200 hover:text-slate-950"
+          >
+            {locale === "tr" ? "Rehberler" : "Guides"}
+          </Link>
+        </div>
+      </section>
 
       <ToolsExplorer
         locale={safeLocale}
         tools={explorerTools}
         initialFilters={parseToolsQueryFilters(resolvedSearchParams)}
-        toolCategoryOptions={[...toolCategoryOptions[safeLocale]]}
-        useCaseOptions={[...useCaseOptions[safeLocale]]}
         detailLabel={content.common.viewDetailsLabel}
         copy={{
           filterTitle: content.toolsIndex.filterTitle,
@@ -170,5 +220,3 @@ export default async function ToolsPage({
     </div>
   );
 }
-
-

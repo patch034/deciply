@@ -9,11 +9,12 @@ type BaseLocalizedTool = Omit<LocalizedTool, "whatItActuallyDoes" | "whoShouldUs
 
 export const TOOLS_PAGE_SIZE = 20;
 
-export type ToolsSortOption = "popular" | "highest-rated" | "newest" | "free-first" | "paid-first";
+export type ToolsSortOption = "popular" | "highest-rated" | "newest" | "alphabetical" | "free-first" | "freemium-first" | "paid-first";
 
 export type ToolsQueryFilters = {
   page: number;
   query: string;
+  browse: string;
   toolCategory: string;
   pricing: PricingTier | "all";
   useCase: string;
@@ -127,6 +128,7 @@ export function parseToolsPage(value: string | string[] | undefined) {
 export function parseToolsQueryFilters(searchParams: {
   page?: string | string[];
   q?: string | string[];
+  browse?: string | string[];
   category?: string | string[];
   pricing?: string | string[];
   useCase?: string | string[];
@@ -139,7 +141,9 @@ export function parseToolsQueryFilters(searchParams: {
   const sort =
     sortValue === "highest-rated" ||
     sortValue === "newest" ||
+    sortValue === "alphabetical" ||
     sortValue === "free-first" ||
+    sortValue === "freemium-first" ||
     sortValue === "paid-first"
       ? sortValue
       : "popular";
@@ -147,6 +151,7 @@ export function parseToolsQueryFilters(searchParams: {
   return {
     page: parseToolsPage(searchParams.page),
     query: readValue(searchParams.q).trim(),
+    browse: readValue(searchParams.browse).trim() || "all",
     toolCategory: readValue(searchParams.category).trim() || "all",
     pricing: pricingValue === "FREE" || pricingValue === "FREEMIUM" || pricingValue === "PAID" ? pricingValue : "all",
     useCase: readValue(searchParams.useCase).trim() || "all",

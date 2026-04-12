@@ -34,7 +34,7 @@ type ToolCardProps = {
   useCaseLabel?: string;
   compareHref?: string;
   logoUrl?: string;
-  variant?: "card" | "row";
+  variant?: "card" | "row" | "compact";
 };
 
 export function ToolCard({
@@ -125,6 +125,82 @@ export function ToolCard({
               </Link>
             ) : null}
           </div>
+        </div>
+      </GlassPanel>
+    );
+  }
+
+  if (variant === "compact") {
+    return (
+      <GlassPanel className="ui-card ui-card-hover flex h-full flex-col overflow-hidden p-4">
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex min-w-0 flex-1 items-start gap-3">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_14px_32px_-22px_rgba(15,23,42,0.18)]">
+              {logoUrl ? (
+                <img
+                  src={logoUrl}
+                  alt={tool.name}
+                  className="h-full w-full object-contain p-2"
+                  loading="lazy"
+                  decoding="async"
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-700">
+                  {tool.name.slice(0, 2).toUpperCase()}
+                </span>
+              )}
+            </span>
+
+            <div className="min-w-0 flex-1">
+              <div className="flex flex-wrap items-center gap-2">
+                {categoryNames.slice(0, 1).map((category) => (
+                  <Badge key={category} variant="ghost" className="max-w-[120px] justify-center">
+                    {category}
+                  </Badge>
+                ))}
+                <Badge variant="muted" className="max-w-[110px] justify-center gap-2">
+                  <span className={`h-2 w-2 shrink-0 rounded-full ${pricingSignal}`} />
+                  <span className="truncate">{pricingLabel}</span>
+                </Badge>
+              </div>
+
+              <h2 className="clamp-2 mt-2 text-[1rem] font-bold leading-tight tracking-[-0.03em] text-slate-950">
+                {tool.name}
+              </h2>
+            </div>
+          </div>
+
+          <RatingBadge rating={tool.rating} className="shrink-0" />
+        </div>
+
+        <p className="clamp-2 mt-3 text-[13px] leading-6 text-slate-600">{tool.shortDescription}</p>
+
+        {bestForLabel && useCaseLabel ? (
+          <div className="mt-3 rounded-[16px] border border-slate-200 bg-slate-50/90 px-3 py-2 text-[12px] leading-5 text-slate-600">
+            <span className="font-semibold text-slate-900">{bestForLabel}:</span> {useCaseLabel}
+          </div>
+        ) : null}
+
+        <div className="mt-auto grid grid-cols-2 gap-2 pt-4">
+          <Link
+            href={`/${locale}/tools/${tool.slug}`}
+            className="inline-flex min-h-[40px] items-center justify-center rounded-xl border border-slate-200 bg-white px-3 text-sm font-semibold text-slate-700 transition duration-150 hover:border-sky-200 hover:bg-slate-50 hover:text-slate-950"
+          >
+            {detailLabel}
+          </Link>
+          {compareHref ? (
+            <Link
+              href={compareHref}
+              className="inline-flex min-h-[40px] items-center justify-center rounded-xl border border-cyan-200 bg-cyan-50 px-3 text-sm font-semibold text-cyan-700 transition duration-150 hover:border-cyan-300 hover:bg-cyan-100 hover:text-cyan-800"
+            >
+              {compareLabel}
+            </Link>
+          ) : (
+            <span className="inline-flex min-h-[40px] items-center justify-center rounded-xl border border-slate-200 bg-slate-50 px-3 text-sm font-semibold text-slate-400">
+              {compareLabel}
+            </span>
+          )}
         </div>
       </GlassPanel>
     );
