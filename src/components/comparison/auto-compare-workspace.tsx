@@ -87,7 +87,7 @@ function isShortTag(value: string) {
   return cleaned.length > 0 && cleaned.length <= 16 && !cleaned.includes(".");
 }
 
-function renderValue(value: string | string[] | number | boolean, locale: Locale) {
+function renderValue(value: string | string[] | number | boolean, locale: Locale, compact = false) {
   const labels = copy[locale];
 
   if (Array.isArray(value)) {
@@ -115,7 +115,13 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
 
   if (typeof value === "number") {
     return (
-      <span className="inline-flex items-center rounded-full border border-sky-400/14 bg-slate-950/65 px-3 py-1 text-xs font-semibold text-slate-100">
+      <span
+        className={
+          compact
+            ? "inline-flex items-center rounded-full border border-sky-400/14 bg-slate-950/65 px-2.5 py-0.5 text-[11px] font-semibold text-slate-100"
+            : "inline-flex items-center rounded-full border border-sky-400/14 bg-slate-950/65 px-3 py-1 text-xs font-semibold text-slate-100"
+        }
+      >
         {value.toFixed(0)}/10
       </span>
     );
@@ -126,7 +132,11 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
       <span
         role="img"
         aria-label={value ? labels.yes : labels.no}
-        className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100"
+        className={
+          compact
+            ? "inline-flex h-5 w-5 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-[11px] font-bold text-slate-100"
+            : "inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100"
+        }
       >
         {value ? "✓" : "✕"}
       </span>
@@ -137,21 +147,45 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
     const normalized = value.trim().toLowerCase();
     if (normalized === labels.yes.toLowerCase()) {
       return (
-        <span role="img" aria-label={labels.yes} className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100">
+        <span
+          role="img"
+          aria-label={labels.yes}
+          className={
+            compact
+              ? "inline-flex h-5 w-5 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-[11px] font-bold text-slate-100"
+              : "inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100"
+          }
+        >
           ✓
         </span>
       );
     }
     if (normalized === labels.no.toLowerCase()) {
       return (
-        <span role="img" aria-label={labels.no} className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100">
+        <span
+          role="img"
+          aria-label={labels.no}
+          className={
+            compact
+              ? "inline-flex h-5 w-5 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-[11px] font-bold text-slate-100"
+              : "inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100"
+          }
+        >
           ✕
         </span>
       );
     }
     if (normalized === "-" || normalized === "—" || normalized === "n/a" || normalized === "na") {
       return (
-        <span role="img" aria-label={locale === "tr" ? "Uygun değil" : "Not available"} className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100">
+        <span
+          role="img"
+          aria-label={locale === "tr" ? "Uygun değil" : "Not available"}
+          className={
+            compact
+              ? "inline-flex h-5 w-5 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-[11px] font-bold text-slate-100"
+              : "inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100"
+          }
+        >
           —
         </span>
       );
@@ -205,6 +239,15 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
         : [],
     [labels, leftTool, rightTool]
   );
+  const compactRowLabels = new Set<string>([
+    labels.speed,
+    labels.ease,
+    labels.quality,
+    labels.students,
+    labels.creators,
+    labels.business,
+    labels.value
+  ]);
 
   const visibleRows = compact ? rows.slice(0, 4) : rows;
   const safeLeftSlug = leftTool?.slug ?? leftSlug;
@@ -318,23 +361,39 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
             {visibleRows.map((row) => (
               <div
                 key={row.label}
-                className="rounded-[20px] border border-sky-400/10 bg-slate-950/36 px-4 py-3 sm:rounded-[22px] sm:px-5 sm:py-4 lg:grid lg:grid-cols-[180px_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-4"
+                className={
+                  compactRowLabels.has(row.label)
+                    ? "rounded-[18px] border border-sky-400/10 bg-slate-950/32 px-3 py-2.5 sm:rounded-[20px] sm:px-4 sm:py-3 lg:grid lg:grid-cols-[180px_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-4"
+                    : "rounded-[20px] border border-sky-400/10 bg-slate-950/36 px-4 py-3 sm:rounded-[22px] sm:px-5 sm:py-4 lg:grid lg:grid-cols-[180px_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-4"
+                }
               >
-                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 lg:pt-1">{row.label}</div>
-                <div className="mt-3 space-y-3 lg:mt-0">
-                  <div className="compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-3 lg:border-t-0 lg:pt-0">
+                <div
+                  className={
+                    compactRowLabels.has(row.label)
+                      ? "text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400 lg:pt-0.5"
+                      : "text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 lg:pt-1"
+                  }
+                >
+                  {row.label}
+                </div>
+                <div className={compactRowLabels.has(row.label) ? "mt-2 space-y-2 lg:mt-0" : "mt-3 space-y-3 lg:mt-0"}>
+                  <div className="compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2 lg:border-t-0 lg:pt-0">
                     <div className="min-w-0">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">{leftTool?.name ?? labels.leftLabel}</p>
-                      {renderValue(row.left, locale)}
+                      <p className={compactRowLabels.has(row.label) ? "text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-200" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200"}>
+                        {leftTool?.name ?? labels.leftLabel}
+                      </p>
+                      {renderValue(row.left, locale, compactRowLabels.has(row.label))}
                     </div>
                     <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
                   </div>
                 </div>
-                <div className="mt-3 space-y-3 lg:mt-0">
-                  <div className="compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-3 lg:border-t-0 lg:pt-0">
+                <div className={compactRowLabels.has(row.label) ? "mt-2 space-y-2 lg:mt-0" : "mt-3 space-y-3 lg:mt-0"}>
+                  <div className="compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2 lg:border-t-0 lg:pt-0">
                     <div className="min-w-0">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200">{rightTool?.name ?? labels.rightLabel}</p>
-                      {renderValue(row.right, locale)}
+                      <p className={compactRowLabels.has(row.label) ? "text-[10px] font-semibold uppercase tracking-[0.16em] text-sky-200" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200"}>
+                        {rightTool?.name ?? labels.rightLabel}
+                      </p>
+                      {renderValue(row.right, locale, compactRowLabels.has(row.label))}
                     </div>
                     <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
                   </div>

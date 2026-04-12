@@ -33,7 +33,7 @@ function getChipTone(index: number) {
     : "border-sky-400/16 bg-sky-400/12 text-sky-100";
 }
 
-function renderMobileValue(value: string) {
+function renderMobileValue(value: string, compact: boolean) {
   const parts = value.split(" · ").map((item) => item.trim()).filter(Boolean);
   if (parts.length > 1) {
     return (
@@ -45,7 +45,7 @@ function renderMobileValue(value: string) {
     );
   }
 
-  return <p className="text-[13px] leading-6 text-slate-200">{value}</p>;
+  return <p className={compact ? "text-[12px] leading-5 text-slate-200" : "text-[13px] leading-6 text-slate-200"}>{value}</p>;
 }
 
 export function ComparisonBreakdownTable({
@@ -109,7 +109,9 @@ export function ComparisonBreakdownTable({
       </div>
 
       <div className="mt-5 grid gap-3 [@media(min-width:769px)]:hidden">
-        {rows.map((row) => (
+        {rows.map((row) => {
+          const isCompact = ["Hız", "Kullanım kolaylığı", "Çıktı kalitesi", "Öğrenci", "Creator", "İş", "Değer", "Speed", "Ease of use", "Output quality", "Students", "Creators", "Business", "Value"].includes(row.label);
+          return (
           <article key={row.label} className="overflow-hidden rounded-[22px] border border-sky-400/10 bg-slate-950/46 p-4 shadow-[0_16px_44px_-34px_rgba(14,165,233,0.12)]">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
@@ -122,23 +124,23 @@ export function ComparisonBreakdownTable({
             </div>
 
             <div className="mt-4 space-y-3">
-              <div className="compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-3">
+              <div className={isCompact ? "compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2" : "compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-3"}>
                 <div className="min-w-0">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">{columns.left}</p>
-                  {renderMobileValue(row.left)}
+                  {renderMobileValue(row.left, isCompact)}
                 </div>
                 <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
               </div>
-              <div className="compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-3">
+              <div className={isCompact ? "compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2" : "compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-3"}>
                 <div className="min-w-0">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200">{columns.right}</p>
-                  {renderMobileValue(row.right)}
+                  {renderMobileValue(row.right, isCompact)}
                 </div>
                 <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
               </div>
             </div>
           </article>
-        ))}
+        )})}
       </div>
     </section>
   );
