@@ -86,6 +86,30 @@ export function getLocalizedTools(locale: Locale): LocalizedTool[] {
     .filter((tool): tool is LocalizedTool => tool !== null);
 }
 
+const categoryAliasMap: Record<string, string[]> = {
+  "writing-editing": ["writing"],
+  "image-generation-editing": ["image"],
+  "image-analysis": ["image"],
+  "music-audio": ["video"],
+  "audio-generation-conversion": ["video"],
+  "art-creative-design": ["image"],
+  "social-media": ["writing", "image", "video", "productivity"],
+  "ai-detection-and-undetection": ["writing", "productivity"],
+  "coding-development": ["productivity"],
+  "video-animation": ["video"],
+  "daily-life": ["productivity"],
+  "law-finance": ["productivity"],
+  "business-management": ["productivity"],
+  "marketing-advertising": ["writing", "image", "video", "productivity"],
+  "health-wellness": ["productivity"],
+  "business-research": ["productivity"],
+  "education-translation": ["writing", "productivity"],
+  "chatbots-virtual-companions": ["writing"],
+  "interior-architecture-design": ["image"],
+  "office-productivity": ["productivity"],
+  "research-data-analysis": ["productivity"]
+};
+
 export function getToolCount() {
   return tools.length;
 }
@@ -95,7 +119,31 @@ export function getLocalizedToolBySlug(locale: Locale, slug: string) {
 }
 
 export function getToolsByCategory(locale: Locale, categorySlug: string) {
-  return getLocalizedTools(locale).filter((tool) => tool.categorySlugs.includes(categorySlug));
+  const aliases = categoryAliasMap[categorySlug];
+
+  return getLocalizedTools(locale).filter((tool) => {
+    if (tool.categorySlugs.includes(categorySlug)) {
+      return true;
+    }
+
+    if (tool.toolCategorySlugs.includes(categorySlug)) {
+      return true;
+    }
+
+    if (tool.primaryCategorySlug === categorySlug) {
+      return true;
+    }
+
+    if (categorySlug === "other") {
+      return true;
+    }
+
+    if (!aliases) {
+      return false;
+    }
+
+    return tool.toolCategorySlugs.some((slug) => aliases.includes(slug));
+  });
 }
 
 export function getCategoryNamesMap(locale: Locale) {
