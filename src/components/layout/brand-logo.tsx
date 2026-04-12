@@ -24,7 +24,7 @@ export function BrandLogo({ className, compact = false }: BrandLogoProps) {
         sizes={compact ? "(max-width: 640px) 128px, 168px" : "(min-width: 640px) 232px, 188px"}
         className={clsx(
           "h-auto max-w-none object-contain",
-          compact ? "w-[118px] sm:w-[162px]" : "w-[188px] sm:w-[224px]"
+          compact ? "w-[104px] sm:w-[144px]" : "w-[188px] sm:w-[224px]"
         )}
       />
     </span>

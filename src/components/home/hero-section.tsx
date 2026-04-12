@@ -105,7 +105,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             <motion.form
               action={`/${locale}/tools`}
               method="get"
-              className="mt-6 flex w-full max-w-2xl flex-col gap-3 sm:mt-7 sm:flex-row"
+              className="mt-6 flex w-full max-w-[44rem] flex-col gap-3 sm:mt-7 sm:flex-row"
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
@@ -113,7 +113,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
               <label className="sr-only" htmlFor="homepage-search">
                 {locale === "tr" ? "Araç ara" : "Search tools"}
               </label>
-              <div className="flex flex-1 items-center gap-3 rounded-[18px] border border-slate-200 bg-white px-4 py-3 shadow-[0_18px_44px_-30px_rgba(15,23,42,0.18)]">
+              <div className="flex flex-1 items-center gap-3 rounded-[22px] border border-slate-200/90 bg-white px-4 py-3.5 shadow-[0_22px_52px_-32px_rgba(15,23,42,0.18)]">
                 <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 shrink-0 text-slate-400">
                   <path d="M10.5 4.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z" fill="none" stroke="currentColor" strokeWidth="1.7" />
                   <path d="m15 15 4.5 4.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
@@ -128,7 +128,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
               </div>
               <button
                 type="submit"
-                className="inline-flex min-h-[44px] items-center justify-center rounded-[14px] bg-[linear-gradient(90deg,#2563EB_0%,#3B82F6_52%,#06B6D4_100%)] px-4 text-sm font-semibold text-white shadow-[0_22px_52px_-28px_rgba(37,99,235,0.5)] transition hover:-translate-y-0.5 hover:brightness-[1.03] sm:w-auto"
+                className="inline-flex min-h-[46px] items-center justify-center rounded-[16px] bg-[linear-gradient(90deg,#2563EB_0%,#3B82F6_52%,#06B6D4_100%)] px-4 text-sm font-semibold text-white shadow-[0_24px_58px_-28px_rgba(37,99,235,0.5)] transition hover:-translate-y-0.5 hover:brightness-[1.03] sm:w-auto"
               >
                 {content.primaryCta}
               </button>
@@ -157,7 +157,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.46, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
             >
-              <PremiumButton href={`/${locale}/categories/comparisons`} variant="secondary" className="w-full sm:w-auto">
+              <PremiumButton href={`/${locale}/categories/comparisons`} variant="ghost" className="w-full sm:w-auto">
                 {content.secondaryCta}
               </PremiumButton>
               <span className="text-sm font-medium leading-6 text-slate-500">{content.trustLine}</span>
@@ -173,7 +173,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="inline-flex min-h-[38px] items-center rounded-full border border-slate-200 bg-slate-50 px-3.5 text-[13px] font-semibold text-slate-600 transition hover:border-sky-200 hover:text-slate-950"
+                  className="inline-flex min-h-[38px] items-center rounded-full border border-slate-200/90 bg-slate-50 px-3.5 text-[13px] font-semibold text-slate-600 transition hover:border-sky-200 hover:bg-white hover:text-slate-950"
                 >
                   {item.label}
                 </Link>
@@ -201,16 +201,16 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             </motion.p>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.58, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="flex h-full flex-col rounded-[32px] border border-slate-200 bg-white p-4 shadow-[0_26px_80px_-44px_rgba(15,23,42,0.16)] sm:p-5">
+            <motion.div
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.58, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="flex h-full min-h-[540px] flex-col rounded-[34px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,250,253,0.98))] p-5 shadow-[0_30px_90px_-44px_rgba(15,23,42,0.18)] sm:p-6">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">{content.panelEyebrow}</p>
-                  <h2 className="balance-text mt-3 text-[1.25rem] font-bold tracking-[-0.04em] text-slate-950 sm:text-[1.65rem]">
+                  <h2 className="balance-text mt-3 text-[1.3rem] font-bold tracking-[-0.04em] text-slate-950 sm:text-[1.7rem]">
                     {content.panelTitle}
                   </h2>
                 </div>
@@ -223,11 +223,11 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
 
               <p className="mt-4 max-w-md text-sm leading-7 text-slate-600">{content.panelDescription}</p>
 
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {content.panelItems.map((item, index) => (
                   <motion.div
                     key={item.title}
-                    className="rounded-[22px] border border-slate-200 bg-slate-50/90 p-4"
+                    className="rounded-[24px] border border-slate-200/90 bg-white p-4 shadow-[0_18px_46px_-34px_rgba(15,23,42,0.12)]"
                     initial={{ opacity: 0, x: 14 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.42, delay: 0.22 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
@@ -245,8 +245,8 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
                 ))}
               </div>
 
-              <div className="mt-4 rounded-[22px] border border-slate-200 bg-gradient-to-r from-sky-50 via-white to-cyan-50 p-4">
-                <p className="text-sm leading-7 text-slate-600">{content.panelFootnote}</p>
+              <div className="mt-5 rounded-[24px] border border-sky-100 bg-gradient-to-r from-sky-50 via-white to-cyan-50 p-4">
+                <p className="text-sm leading-7 text-slate-700">{content.panelFootnote}</p>
               </div>
             </div>
           </motion.div>

@@ -25,15 +25,15 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   const featuredCtaLabel = locale === "tr" ? "Karşılaştır" : "Compare";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-[rgba(255,255,255,0.82)] text-slate-900 backdrop-blur-2xl">
-      <div className="mx-auto max-w-[1440px] px-4 py-3 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-3">
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-[rgba(255,255,255,0.88)] text-slate-900 backdrop-blur-2xl">
+      <div className="mx-auto max-w-[1440px] px-4 py-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center gap-4">
             <Link href={`/${locale}`} className="inline-flex min-h-[44px] shrink-0 items-center">
-              <BrandLogo compact />
+              <BrandLogo compact className="h-7 sm:h-8" />
             </Link>
 
-            <nav className="hidden flex-1 items-center justify-center gap-1 xl:flex">
+            <nav className="hidden flex-1 items-center justify-center gap-1.5 xl:flex">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -45,11 +45,11 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
               ))}
             </nav>
 
-            <form action={`/${locale}/tools`} method="get" className="hidden min-w-[280px] max-w-[360px] flex-1 items-center gap-2 lg:flex">
+            <form action={`/${locale}/tools`} method="get" className="hidden min-w-[320px] max-w-[420px] flex-1 items-center gap-2 lg:flex">
               <label className="sr-only" htmlFor="site-search">
                 {searchButtonLabel}
               </label>
-              <div className="flex w-full items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.2)]">
+              <div className="flex w-full items-center gap-3 rounded-[18px] border border-slate-200/90 bg-white px-4 py-3 shadow-[0_20px_48px_-30px_rgba(15,23,42,0.22)]">
                 <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 text-slate-400">
                   <path d="M10.5 4.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z" fill="none" stroke="currentColor" strokeWidth="1.7" />
                   <path d="m15 15 4.5 4.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
@@ -63,14 +63,14 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
                 />
                 <button
                   type="submit"
-                  className="inline-flex min-h-[34px] shrink-0 items-center rounded-full bg-slate-900 px-3.5 text-xs font-semibold text-white transition hover:bg-slate-800"
+                  className="inline-flex min-h-[36px] shrink-0 items-center rounded-full bg-slate-900 px-4 text-xs font-semibold text-white transition hover:bg-slate-800"
                 >
                   {searchButtonLabel}
                 </button>
               </div>
             </form>
 
-            <div className="flex shrink-0 items-center gap-2">
+            <div className="flex shrink-0 items-center gap-3">
               <div className="hidden md:block">
                 <LocaleSwitcher locale={locale} />
               </div>
@@ -81,7 +81,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
           </div>
 
           <div className="grid gap-3 xl:hidden">
-            <form action={`/${locale}/tools`} method="get" className="flex w-full items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.2)]">
+            <form action={`/${locale}/tools`} method="get" className="flex w-full items-center gap-3 rounded-[18px] border border-slate-200/90 bg-white px-4 py-3 shadow-[0_20px_48px_-30px_rgba(15,23,42,0.22)]">
               <label className="sr-only" htmlFor="site-search-mobile">
                 {searchButtonLabel}
               </label>
@@ -98,7 +98,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
               />
               <button
                 type="submit"
-                className="inline-flex min-h-[34px] shrink-0 items-center rounded-full bg-slate-900 px-3.5 text-xs font-semibold text-white transition hover:bg-slate-800"
+                className="inline-flex min-h-[36px] shrink-0 items-center rounded-full bg-slate-900 px-4 text-xs font-semibold text-white transition hover:bg-slate-800"
               >
                 {searchButtonLabel}
               </button>
@@ -109,7 +109,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="inline-flex min-h-[36px] shrink-0 items-center rounded-full border border-slate-200 bg-white px-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-700 transition hover:border-sky-200 hover:text-slate-950"
+                  className="inline-flex min-h-[36px] shrink-0 items-center rounded-full border border-slate-200/90 bg-slate-50 px-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-700 transition hover:border-sky-200 hover:bg-white hover:text-slate-950"
                 >
                   {item.label}
                 </Link>

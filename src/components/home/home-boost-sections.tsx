@@ -78,11 +78,11 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools, categ
       <div className="space-y-6 sm:space-y-8">
         <SectionShell
           tone="light"
+          className="section-tint-violet px-0 sm:px-0"
           eyebrow={copy.featuredToolsEyebrow}
           title={copy.featuredToolsTitle}
           description={copy.featuredToolsDescription}
           actions={<PremiumButton href={`/${locale}/tools`}>{copy.featuredToolsAction}</PremiumButton>}
-          className="px-0 sm:px-0"
           contentClassName="grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
         >
           {toolCards.map((tool) => (
@@ -101,11 +101,11 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools, categ
 
         <SectionShell
           tone="light"
+          className="section-tint-cyan px-0 sm:px-0"
           eyebrow={copy.categoriesEyebrow}
           title={copy.categoriesTitle}
           description={copy.categoriesDescription}
           actions={<PremiumButton href={`/${locale}/categories`}>{copy.categoriesAction}</PremiumButton>}
-          className="px-0 sm:px-0"
           contentClassName="grid gap-4 sm:grid-cols-2 xl:grid-cols-4"
         >
           {categoryCards.map((category) => (
@@ -129,11 +129,11 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools, categ
 
         <SectionShell
           tone="light"
+          className="section-tint-rose px-0 sm:px-0"
           eyebrow={copy.guidesEyebrow}
           title={copy.guidesTitle}
           description={copy.guidesDescription}
           actions={<PremiumButton href={`/${locale}/blog`}>{copy.guidesAction}</PremiumButton>}
-          className="px-0 sm:px-0"
           contentClassName="grid gap-4 sm:grid-cols-2 xl:grid-cols-4"
         >
           {latestBlogArticles.map((article) => (

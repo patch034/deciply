@@ -23,7 +23,7 @@ export function SectionHeading({
   tone = "dark"
 }: SectionHeadingProps) {
   const textClass = tone === "light" ? "text-slate-950" : "text-slate-50";
-  const descriptionClass = tone === "light" ? "text-slate-600" : "text-slate-300/82";
+  const descriptionClass = tone === "light" ? "text-slate-700" : "text-slate-300/82";
 
   return (
     <div
@@ -35,7 +35,7 @@ export function SectionHeading({
     >
       <div className={clsx("max-w-3xl min-w-0", align === "center" && "mx-auto")}>
         {eyebrow ? (
-          <Badge variant={tone === "light" ? "muted" : "ghost"} className={tone === "light" ? "border-slate-200 bg-slate-50 text-slate-600" : "text-cyan-200"}>
+          <Badge variant={tone === "light" ? "muted" : "ghost"} className={tone === "light" ? "border-slate-200 bg-slate-50 text-slate-700" : "text-cyan-200"}>
             {eyebrow}
           </Badge>
         ) : null}
