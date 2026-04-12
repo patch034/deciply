@@ -115,7 +115,7 @@ export default async function ToolsPage({
   });
 
   return (
-    <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-12 overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
       <CategoryHero
         eyebrow={content.toolsIndex.eyebrow}
         title={content.toolsIndex.title}

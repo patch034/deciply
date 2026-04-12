@@ -11,17 +11,17 @@ function getPricingSignal(pricing: string) {
 
   if (normalized.includes("free") || normalized.includes("ücretsiz")) {
     if (normalized.includes("freemium") || normalized.includes("kısmen")) {
-      return "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.45)]";
+      return "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.36)]";
     }
 
-    return "bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.45)]";
+    return "bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.36)]";
   }
 
   if (normalized.includes("freemium") || normalized.includes("kısmen")) {
-    return "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.45)]";
+    return "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.36)]";
   }
 
-  return "bg-rose-400 shadow-[0_0_10px_rgba(251,113,133,0.42)]";
+  return "bg-rose-400 shadow-[0_0_10px_rgba(251,113,133,0.34)]";
 }
 
 type ToolCardProps = {
@@ -62,23 +62,23 @@ export function ToolCard({
         </Badge>
       </div>
 
-      <h2 className="clamp-2 mt-4 min-h-[2.65rem] text-[1.2rem] font-bold leading-tight tracking-[-0.03em] text-slate-100 sm:mt-5 sm:min-h-[3.15rem] sm:text-[1.45rem]">{tool.name}</h2>
-      <p className="mobile-clamp-2 mt-3 text-[15px] leading-relaxed text-slate-300/88">{tool.shortDescription}</p>
+      <h2 className="clamp-2 mt-4 min-h-[2.65rem] text-[1.2rem] font-bold leading-tight tracking-[-0.03em] text-slate-950 sm:mt-5 sm:min-h-[3.15rem] sm:text-[1.45rem]">{tool.name}</h2>
+      <p className="mobile-clamp-2 mt-3 text-[15px] leading-relaxed text-slate-600">{tool.shortDescription}</p>
 
       {bestForLabel && useCaseLabel ? (
-        <div className="ui-inner-panel mt-3 min-w-0 px-4 py-3 text-[15px] leading-relaxed text-slate-300/88">
-          <span className="font-semibold text-slate-100">{bestForLabel}:</span> {useCaseLabel}
+        <div className="ui-inner-panel mt-3 min-w-0 px-4 py-3 text-[15px] leading-relaxed text-slate-600">
+          <span className="font-semibold text-slate-900">{bestForLabel}:</span> {useCaseLabel}
         </div>
       ) : null}
 
-      <div className="mt-auto flex flex-col gap-2.5 border-t border-sky-400/10 pt-4 sm:pt-6">
+      <div className="mt-auto flex flex-col gap-2.5 border-t border-slate-200/90 pt-4 sm:pt-6">
         <RatingBadge rating={tool.rating} className="w-fit" />
         <div className="grid gap-2 sm:grid-cols-2">
-          <Link href={`/${locale}/tools/${tool.slug}`} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-xl border border-sky-400/12 bg-slate-950/50 px-4 py-2.5 text-sm font-semibold text-slate-200 transition duration-150 hover:bg-slate-900/80 hover:text-white">
+          <Link href={`/${locale}/tools/${tool.slug}`} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition duration-150 hover:border-sky-200 hover:bg-slate-50 hover:text-slate-950">
             {detailLabel}
           </Link>
           {compareHref ? (
-            <Link href={compareHref} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-xl border border-cyan-400/18 bg-cyan-400/[0.08] px-4 py-2.5 text-sm font-semibold text-cyan-100 transition duration-150 hover:border-cyan-400/26 hover:bg-cyan-400/[0.12] hover:text-cyan-50">
+            <Link href={compareHref} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-xl border border-cyan-200 bg-cyan-50 px-4 py-2.5 text-sm font-semibold text-cyan-700 transition duration-150 hover:border-cyan-300 hover:bg-cyan-100 hover:text-cyan-800">
               {compareLabel}
             </Link>
           ) : null}

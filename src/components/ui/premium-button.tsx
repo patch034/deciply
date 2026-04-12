@@ -19,9 +19,9 @@ const styles = {
   primary:
     "bg-[linear-gradient(90deg,#60A5FA_0%,#3B82F6_40%,#2563EB_72%,#06B6D4_100%)] text-white shadow-[0_24px_56px_-24px_rgba(59,130,246,0.74),0_34px_92px_-38px_rgba(14,165,233,0.48)] hover:brightness-[1.06] hover:shadow-[0_30px_72px_-24px_rgba(59,130,246,0.82),0_42px_116px_-38px_rgba(14,165,233,0.62)]",
   secondary:
-    "border border-sky-400/12 bg-slate-950/42 text-slate-200 hover:bg-slate-950/58 hover:text-white hover:border-cyan-400/18",
+    "border border-slate-200 bg-white/92 text-slate-700 hover:border-sky-200 hover:bg-white hover:text-slate-950",
   ghost:
-    "border border-cyan-400/16 bg-cyan-400/8 text-cyan-100 hover:bg-cyan-400/12"
+    "border border-cyan-200 bg-cyan-50 text-cyan-700 hover:border-cyan-300 hover:bg-cyan-100 hover:text-cyan-800"
 } as const;
 
 export function PremiumButton({

@@ -3,22 +3,22 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
-  background-color: #0b0f19;
+  color-scheme: light;
+  background-color: #f4f7fb;
   --tn-gradient-primary: linear-gradient(90deg, #60a5fa 0%, #3b82f6 34%, #2563eb 64%, #06b6d4 100%);
   --tn-surface:
-    linear-gradient(180deg, rgba(56, 189, 248, 0.03), rgba(37, 99, 235, 0.015)),
-    linear-gradient(145deg, rgba(9, 14, 26, 0.98), rgba(5, 8, 15, 0.995));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(247, 250, 253, 0.98)),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(243, 247, 252, 0.99));
   --tn-surface-strong:
-    linear-gradient(180deg, rgba(37, 99, 235, 0.04), rgba(14, 165, 233, 0.02)),
-    linear-gradient(145deg, rgba(10, 17, 33, 0.98), rgba(8, 12, 23, 0.995));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 248, 253, 0.99)),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(239, 244, 250, 0.99));
 }
 
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  color-scheme: dark;
-  background-color: #0b0f19;
+  color-scheme: light;
+  background-color: #f4f7fb;
 }
 
 body {
@@ -26,15 +26,15 @@ body {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
-  color-scheme: dark;
+  color-scheme: light;
   accent-color: #22d3ee;
   background:
-    radial-gradient(circle at 12% 0%, rgba(37, 99, 235, 0.16), transparent 24%),
-    radial-gradient(circle at 86% 8%, rgba(14, 165, 233, 0.14), transparent 28%),
-    radial-gradient(circle at 55% 18%, rgba(37, 99, 235, 0.08), transparent 18%),
-    radial-gradient(circle at 50% 100%, rgba(14, 165, 233, 0.08), transparent 22%),
-    linear-gradient(180deg, #050814 0%, #09111f 44%, #04070d 100%);
-  color: #e5eefc;
+    radial-gradient(circle at 12% 0%, rgba(37, 99, 235, 0.08), transparent 24%),
+    radial-gradient(circle at 86% 8%, rgba(14, 165, 233, 0.07), transparent 28%),
+    radial-gradient(circle at 55% 18%, rgba(59, 130, 246, 0.05), transparent 18%),
+    radial-gradient(circle at 50% 100%, rgba(14, 165, 233, 0.05), transparent 22%),
+    linear-gradient(180deg, #f9fbfe 0%, #f4f7fb 44%, #eef3f8 100%);
+  color: #0f172a;
   font-feature-settings: "ss01" 1, "cv11" 1;
 }
 
@@ -53,7 +53,7 @@ body::before {
   left: -5rem;
   height: 20rem;
   width: 20rem;
-  background: rgba(37, 99, 235, 0.12);
+  background: rgba(59, 130, 246, 0.12);
 }
 
 body::after {
@@ -65,16 +65,15 @@ body::after {
 }
 
 select.dark-select {
-  color-scheme: dark;
+  color-scheme: light;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   background:
-    linear-gradient(180deg, rgba(14, 165, 233, 0.03), rgba(37, 99, 235, 0.012)),
-    rgba(6, 10, 18, 0.84);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 249, 253, 0.98));
   background-image:
-    linear-gradient(45deg, transparent 50%, rgba(148, 163, 184, 0.9) 50%),
-    linear-gradient(135deg, rgba(148, 163, 184, 0.9) 50%, transparent 50%),
+    linear-gradient(45deg, transparent 50%, rgba(71, 85, 105, 0.9) 50%),
+    linear-gradient(135deg, rgba(71, 85, 105, 0.9) 50%, transparent 50%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
   background-position:
     calc(100% - 18px) 50%,
@@ -85,62 +84,62 @@ select.dark-select {
     6px 6px,
     100% 100%;
   background-repeat: no-repeat;
-  color: #e5eefc;
+  color: #0f172a;
   padding-right: 2.5rem;
 }
 
 select.dark-select:focus,
 select.dark-select:focus-visible {
   outline: none;
-  border-color: rgba(14, 165, 233, 0.34);
-  box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.12);
+  border-color: rgba(37, 99, 235, 0.26);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.1);
 }
 
 select.dark-select option {
-  background-color: #111827;
-  color: #e5eefc;
+  background-color: #ffffff;
+  color: #0f172a;
 }
 
 select.dark-select option:checked,
 select.dark-select option:hover {
-  background-color: #0f766e;
-  color: #f8fafc;
+  background-color: #eff6ff;
+  color: #0f172a;
 }
 
 select.dark-select option:disabled {
-  color: #64748b;
+  color: #94a3b8;
 }
 
 input:not([type="checkbox"]):not([type="radio"]),
 textarea,
 select {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 input:not([type="checkbox"]):not([type="radio"]),
 textarea {
-  background-color: rgba(8, 14, 24, 0.62);
-  color: #e5eefc;
-  border-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.94);
+  color: #0f172a;
+  border-color: rgba(148, 163, 184, 0.24);
 }
 
 input:not([type="checkbox"]):not([type="radio"]):focus,
 textarea:focus {
   outline: none;
-  border-color: rgba(14, 165, 233, 0.34);
-  box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.12);
+  border-color: rgba(37, 99, 235, 0.24);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.1);
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #64748b;
+  color: #94a3b8;
 }
 
 input:-webkit-autofill,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
-  -webkit-text-fill-color: #e5eefc;
-  box-shadow: 0 0 0 1000px #111827 inset;
+  -webkit-text-fill-color: #0f172a;
+  box-shadow: 0 0 0 1000px #ffffff inset;
   transition: background-color 9999s ease-out 0s;
 }
 
@@ -164,7 +163,7 @@ svg {
 }
 
 ::selection {
-  background: rgba(37, 99, 235, 0.24);
+  background: rgba(37, 99, 235, 0.18);
 }
 
 .home-card-glow {
@@ -188,9 +187,9 @@ svg {
 .premium-surface {
   background: var(--tn-surface);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.035),
-    0 30px 86px -42px rgba(14, 165, 233, 0.16),
-    0 18px 64px -44px rgba(37, 99, 235, 0.08);
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 30px 86px -42px rgba(37, 99, 235, 0.18),
+    0 18px 64px -44px rgba(15, 23, 42, 0.08);
 }
 
 .premium-outline {
@@ -203,7 +202,7 @@ svg {
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.14), rgba(14, 165, 233, 0.12), rgba(56, 189, 248, 0.09));
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(14, 165, 233, 0.1), rgba(56, 189, 248, 0.08));
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
@@ -214,24 +213,24 @@ svg {
 }
 
 .ui-card {
-  border: 1px solid rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(148, 163, 184, 0.22);
   background: var(--tn-surface);
   border-radius: 28px;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.035),
-    0 32px 84px -46px rgba(14, 165, 233, 0.18),
-    0 18px 48px -42px rgba(37, 99, 235, 0.08);
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 32px 84px -46px rgba(37, 99, 235, 0.18),
+    0 18px 48px -42px rgba(15, 23, 42, 0.08);
   backdrop-filter: blur(20px);
 }
 
 .ui-card-strong {
-  border: 1px solid rgba(14, 165, 233, 0.14);
+  border: 1px solid rgba(37, 99, 235, 0.12);
   background: var(--tn-surface-strong);
   border-radius: 28px;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 38px 104px -46px rgba(37, 99, 235, 0.22),
-    0 18px 56px -40px rgba(14, 165, 233, 0.08);
+    inset 0 1px 0 rgba(255, 255, 255, 0.84),
+    0 38px 104px -46px rgba(37, 99, 235, 0.2),
+    0 18px 56px -40px rgba(15, 23, 42, 0.08);
   backdrop-filter: blur(22px);
 }
 
@@ -240,22 +239,22 @@ svg {
 }
 
 .ui-card-hover:hover {
-  border-color: rgba(14, 165, 233, 0.22);
+  border-color: rgba(37, 99, 235, 0.22);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.035),
-    0 38px 102px -42px rgba(14, 165, 233, 0.14),
-    0 0 0 1px rgba(37, 99, 235, 0.06);
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 38px 102px -42px rgba(37, 99, 235, 0.12),
+    0 0 0 1px rgba(37, 99, 235, 0.05);
 }
 
 .ui-inner-panel {
-  border: 1px solid rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(148, 163, 184, 0.2);
   background:
-    linear-gradient(180deg, rgba(14, 165, 233, 0.03), rgba(37, 99, 235, 0.012)),
-    rgba(8, 13, 25, 0.7);
+    linear-gradient(180deg, rgba(59, 130, 246, 0.04), rgba(37, 99, 235, 0.015)),
+    rgba(255, 255, 255, 0.86);
   border-radius: 22px;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.03),
-    0 12px 34px -26px rgba(37, 99, 235, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    0 12px 34px -26px rgba(37, 99, 235, 0.16);
 }
 
 .ui-gradient-text {

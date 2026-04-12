@@ -15,7 +15,8 @@ function isExternalHref(href: string) {
 
 export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
   function renderFooterLink(item: { href: string; label: string }) {
-    const sharedClassName = "inline-flex min-h-[34px] items-center text-sm text-slate-600 transition hover:text-slate-950";
+    const sharedClassName =
+      "inline-flex min-h-[34px] items-center text-sm text-slate-600 transition hover:text-slate-950";
 
     if (isExternalHref(item.href)) {
       return (
@@ -35,7 +36,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
   const [toolsGroup, compareGroup, guidesGroup, trustGroup] = dictionary.footer.groups;
 
   return (
-    <footer className="mt-16 border-t border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.97),rgba(244,247,251,0.99))] px-4 pb-8 pt-10 text-slate-900 sm:px-6 sm:pb-10 sm:pt-12">
+    <footer className="mt-16 border-t border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(244,247,251,0.99))] px-4 pb-8 pt-10 text-slate-900 sm:px-6 sm:pb-10 sm:pt-12">
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-8 lg:grid-cols-[1.2fr_repeat(4,minmax(0,1fr))] lg:items-start lg:gap-8">
           <div className="min-w-0">
@@ -43,9 +44,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
               <BrandLogo compact className="h-7 sm:h-8" />
             </div>
 
-            <p className="mt-4 max-w-[360px] text-sm leading-6 text-slate-600">
-              {dictionary.footer.description}
-            </p>
+            <p className="mt-4 max-w-[360px] text-sm leading-6 text-slate-600">{dictionary.footer.description}</p>
             <p className="mt-3 max-w-[360px] text-sm font-medium leading-6 text-slate-900">
               {locale === "tr" ? "Doğru AI aracını daha hızlı ve güvenle seç." : "Choose the right AI faster and with confidence."}
             </p>

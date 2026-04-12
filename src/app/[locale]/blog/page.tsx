@@ -77,7 +77,7 @@ export default async function BlogPage({
   const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <div className="w-full max-w-full overflow-x-hidden pb-10 pt-10 lg:pt-14">
+    <div className="w-full max-w-full overflow-x-hidden bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] pb-10 pt-10 lg:pt-14">
       <SectionShell
         eyebrow={safeLocale === "tr" ? "Öne çıkan blog blokları" : "Featured blog blocks"}
         title={safeLocale === "tr" ? "Bu hafta öne çıkan rehberler" : "This week's featured guides"}
@@ -87,6 +87,7 @@ export default async function BlogPage({
             : "Editor picks, most-read articles, and the newest guides in one premium block."
         }
         actions={<PremiumButton href={`/${safeLocale}/blog`}>{copy.backToBlog}</PremiumButton>}
+        tone="light"
       >
         <div className="grid gap-4 xl:grid-cols-3">
           {([
@@ -97,10 +98,10 @@ export default async function BlogPage({
             block.article ? (
               <div key={block.label} className="space-y-3">
                 <div className="flex items-center justify-between gap-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300/90">{block.label}</p>
-                  <span className="text-xs font-medium text-slate-400">{copy.articleLeadLabel}</span>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">{block.label}</p>
+                  <span className="text-xs font-medium text-slate-500">{copy.articleLeadLabel}</span>
                 </div>
-                <BlogCard locale={safeLocale} article={block.article} ctaLabel={copy.readMoreLabel} />
+                <BlogCard locale={safeLocale} article={block.article} ctaLabel={copy.readMoreLabel} tone="light" />
               </div>
             ) : null
           )}
@@ -112,10 +113,11 @@ export default async function BlogPage({
         title={copy.listTitle}
         description={copy.listDescription}
         actions={<PremiumButton href={`/${safeLocale}/tools?page=1`}>{safeLocale === "tr" ? "Araçlara git" : "Browse tools"}</PremiumButton>}
+        tone="light"
       >
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {articles.map((article) => (
-            <BlogCard key={article.slug} locale={safeLocale} article={article} ctaLabel={copy.readMoreLabel} />
+            <BlogCard key={article.slug} locale={safeLocale} article={article} ctaLabel={copy.readMoreLabel} tone="light" />
           ))}
         </div>
 
@@ -127,12 +129,12 @@ export default async function BlogPage({
             {currentPage > 1 ? (
               <Link
                 href={buildBlogPageHref(safeLocale, currentPage - 1)}
-                className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/18 hover:bg-cyan-400/8 hover:text-cyan-100"
+                className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-slate-200 bg-white px-4 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-slate-50 hover:text-slate-950"
               >
                 {`← ${copy.previousPage}`}
               </Link>
             ) : (
-              <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-400/70">
+              <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-slate-200 bg-white px-4 text-sm font-medium text-slate-400/70">
                 {`← ${copy.previousPage}`}
               </span>
             )}
@@ -145,7 +147,7 @@ export default async function BlogPage({
                   <span
                     key={pageNumber}
                     aria-current="page"
-                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-cyan-400/40 bg-cyan-400/12 px-4 text-sm font-semibold text-cyan-200 shadow-[0_10px_30px_-18px_rgba(14,165,233,0.3)]"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-cyan-200 bg-cyan-50 px-4 text-sm font-semibold text-cyan-700 shadow-[0_10px_30px_-18px_rgba(37,99,235,0.16)]"
                   >
                     {pageNumber}
                   </span>
@@ -153,7 +155,7 @@ export default async function BlogPage({
                   <Link
                     key={pageNumber}
                     href={buildBlogPageHref(safeLocale, pageNumber)}
-                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/18 hover:bg-cyan-400/8 hover:text-cyan-100"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-slate-200 bg-white px-4 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-slate-50 hover:text-slate-950"
                   >
                     {pageNumber}
                   </Link>
@@ -164,12 +166,12 @@ export default async function BlogPage({
             {currentPage < totalPages ? (
               <Link
                 href={buildBlogPageHref(safeLocale, currentPage + 1)}
-                className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-200 transition hover:border-cyan-400/18 hover:bg-cyan-400/8 hover:text-cyan-100"
+                className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-slate-200 bg-white px-4 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-slate-50 hover:text-slate-950"
               >
                 {`${copy.nextPage} →`}
               </Link>
             ) : (
-              <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-sky-400/10 bg-slate-950/50 px-4 text-sm font-medium text-slate-400/70">
+              <span className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-slate-200 bg-white px-4 text-sm font-medium text-slate-400/70">
                 {`${copy.nextPage} →`}
               </span>
             )}
@@ -179,4 +181,3 @@ export default async function BlogPage({
     </div>
   );
 }
-
