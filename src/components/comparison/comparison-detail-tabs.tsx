@@ -1,7 +1,6 @@
-﻿"use client";
+"use client";
 
 import clsx from "clsx";
-import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { PremiumButton } from "@/components/ui/premium-button";
@@ -215,7 +214,7 @@ function renderAvatar(name: string, tone: "left" | "right") {
   return (
     <span
       className={clsx(
-        "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-[10px] font-bold uppercase tracking-[0.16em]",
+        "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border text-[10px] font-bold uppercase tracking-[0.18em]",
         tone === "left" ? "border-cyan-400/18 bg-cyan-400/10 text-cyan-100" : "border-sky-400/18 bg-sky-400/10 text-sky-100"
       )}
     >
@@ -237,46 +236,54 @@ function renderRow(locale: Locale, row: RowItem, leftTool: LocalizedTool, rightT
       </div>
 
       <div className="md:hidden">
-        <div className="space-y-2.5">
-          <div className="flex items-start justify-between gap-4 border-t border-sky-400/10 pt-3 first:border-t-0 first:pt-0">
-            <div className="min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">{leftTool.name}</p>
-              <p className="mt-1 text-sm leading-6 text-slate-100">{row.left}</p>
+        <div className="space-y-2">
+          <div className="compare-slot-left rounded-[16px] border border-sky-400/10 p-3">
+            <div className="flex items-start gap-3">
+              {renderAvatar(leftTool.name, "left")}
+              <div className="min-w-0">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">{leftTool.name}</p>
+                <p className="mt-1 text-[13px] leading-6 text-slate-100">{row.left}</p>
+              </div>
             </div>
-            <span className="shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">→</span>
           </div>
 
-          <div className="flex items-start justify-between gap-4 border-t border-sky-400/10 pt-3">
-            <div className="min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200">{rightTool.name}</p>
-              <p className="mt-1 text-sm leading-6 text-slate-100">{row.right}</p>
+          <div className="compare-slot-right rounded-[16px] border border-sky-400/10 p-3">
+            <div className="flex items-start gap-3">
+              {renderAvatar(rightTool.name, "right")}
+              <div className="min-w-0">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200">{rightTool.name}</p>
+                <p className="mt-1 text-[13px] leading-6 text-slate-100">{row.right}</p>
+              </div>
             </div>
-            <span className="shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">→</span>
           </div>
         </div>
       </div>
 
-      <div className="hidden md:grid md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-start md:gap-4">
-        <div className="min-w-0 rounded-[22px] border border-sky-400/10 bg-slate-950/40 p-4">
-          <div className="flex items-center gap-2.5">
-            {renderAvatar(leftTool.name, "left")}
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{row.leftTitle}</p>
-          </div>
-          <p className="mt-2 text-sm leading-6 text-slate-100">{row.left}</p>
-        </div>
-
-        <div className="flex items-center justify-center md:pt-2">
-          <span className="inline-flex h-8 items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">
+      <div className="hidden md:grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,1fr)] md:items-start md:gap-4">
+        <div className="min-w-0">
+          <span className="inline-flex rounded-full border border-sky-400/10 bg-slate-950/50 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
             {row.label}
           </span>
         </div>
 
-        <div className="min-w-0 rounded-[22px] border border-sky-400/10 bg-slate-950/40 p-4 text-left md:text-right">
-          <div className="flex items-center gap-2.5 md:justify-end">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{row.rightTitle}</p>
-            {renderAvatar(rightTool.name, "right")}
+        <div className="compare-slot-left rounded-[18px] border border-sky-400/10 bg-slate-950/34 p-4">
+          <div className="flex items-start gap-3">
+            {renderAvatar(leftTool.name, "left")}
+            <div className="min-w-0">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">{row.leftTitle}</p>
+              <p className="mt-1 text-sm leading-6 text-slate-100">{row.left}</p>
+            </div>
           </div>
-          <p className="mt-2 text-sm leading-6 text-slate-100">{row.right}</p>
+        </div>
+
+        <div className="compare-slot-right rounded-[18px] border border-sky-400/10 bg-slate-950/34 p-4">
+          <div className="flex items-start gap-3">
+            {renderAvatar(rightTool.name, "right")}
+            <div className="min-w-0">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200">{row.rightTitle}</p>
+              <p className="mt-1 text-sm leading-6 text-slate-100">{row.right}</p>
+            </div>
+          </div>
         </div>
       </div>
     </article>
@@ -329,37 +336,41 @@ export function ComparisonDetailTabs({
       </div>
 
       <div className="md:hidden rounded-[22px] border border-sky-400/10 bg-slate-950/35 px-3 py-3 shadow-[0_16px_44px_-36px_rgba(14,165,233,0.14)]">
-        <div className="flex items-center justify-between gap-3">
-          <div className="min-w-0 flex-1">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-200">{leftTool.name}</p>
-            <p className="mt-1 truncate text-[13px] font-semibold text-slate-50">{leftTool.bestUseCase}</p>
+        <div className="grid gap-3">
+          <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3">
+            <div className="min-w-0 text-left">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-200">{leftTool.name}</p>
+              <p className="mt-1 truncate text-[12px] font-semibold text-slate-50">{leftTool.bestUseCase}</p>
+            </div>
+            <span className="inline-flex h-9 shrink-0 items-center rounded-full border border-cyan-400/16 bg-cyan-400/10 px-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-100">
+              VS
+            </span>
+            <div className="min-w-0 text-right">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-sky-200">{rightTool.name}</p>
+              <p className="mt-1 truncate text-[12px] font-semibold text-slate-50">{rightTool.bestUseCase}</p>
+            </div>
           </div>
-          <span className="inline-flex h-9 shrink-0 items-center rounded-full border border-cyan-400/16 bg-cyan-400/10 px-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-100">VS</span>
-          <div className="min-w-0 flex-1 text-right">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-sky-200">{rightTool.name}</p>
-            <p className="mt-1 truncate text-[13px] font-semibold text-slate-50">{rightTool.bestUseCase}</p>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <span className="inline-flex items-center justify-center rounded-full border border-cyan-400/16 bg-cyan-400/10 px-3 py-1.5 text-[11px] font-semibold text-cyan-100">
+              {leftTool.name} {overallLeft}/10
+            </span>
+            <span className="inline-flex items-center justify-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-[11px] font-semibold text-slate-100">
+              {leftTool.rating.toFixed(1)}/5
+            </span>
+            <span className="inline-flex items-center justify-center rounded-full border border-sky-400/16 bg-sky-400/10 px-3 py-1.5 text-[11px] font-semibold text-sky-100">
+              {rightTool.name} {overallRight}/10
+            </span>
+            <span className="inline-flex items-center justify-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-[11px] font-semibold text-slate-100">
+              {rightTool.rating.toFixed(1)}/5
+            </span>
           </div>
-        </div>
-        <div className="mt-3 flex flex-wrap gap-2">
-          <span className="inline-flex items-center rounded-full border border-cyan-400/18 bg-cyan-400/10 px-3 py-1.5 text-[11px] font-semibold text-cyan-100">
-            {leftTool.name} {overallLeft}/10
-          </span>
-          <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-[11px] font-semibold text-slate-100">
-            {leftTool.name} {leftTool.rating.toFixed(1)}/5
-          </span>
-          <span className="inline-flex items-center rounded-full border border-sky-400/18 bg-sky-400/10 px-3 py-1.5 text-[11px] font-semibold text-sky-100">
-            {rightTool.name} {overallRight}/10
-          </span>
-          <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-[11px] font-semibold text-slate-100">
-            {rightTool.name} {rightTool.rating.toFixed(1)}/5
-          </span>
         </div>
       </div>
 
       <div className="hidden md:flex items-start justify-between gap-4 border-b border-sky-400/10 pb-4">
-        <div className="min-w-0">
+        <div className="max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">{locale === "tr" ? "Karar paneli" : "Decision panel"}</p>
-          <h2 className="mt-2 text-[1.4rem] font-semibold tracking-tight text-slate-50 sm:text-[1.7rem] md:text-[2rem]">
+          <h2 className="mt-2 text-[1.35rem] font-semibold tracking-tight text-slate-50 sm:text-[1.7rem] md:text-[2rem]">
             {locale === "tr" ? "Kısa karar ver, detayları sekmelerle aç" : "Make a quick call, then inspect details in tabs"}
           </h2>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300 sm:text-base sm:leading-7">
@@ -370,44 +381,56 @@ export function ComparisonDetailTabs({
         </div>
       </div>
 
-      <div className="hidden md:grid mt-5 gap-4 lg:grid-cols-[1.05fr_auto_1.05fr] lg:items-center">
-        <div className="flex flex-col gap-3 rounded-[28px] border border-sky-400/10 bg-slate-950/55 p-4">
+      <div className="mt-5 grid gap-3 lg:grid-cols-[1.05fr_auto_1.05fr] lg:items-stretch">
+        <div className="rounded-[28px] border border-sky-400/10 bg-slate-950/48 p-4 shadow-[0_18px_60px_-38px_rgba(14,165,233,0.16)]">
           <div className="flex items-center gap-3">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-cyan-400/18 bg-cyan-400/10 text-sm font-bold text-cyan-100">
+            <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-cyan-400/16 bg-cyan-400/10 text-sm font-bold text-cyan-100">
               {leftTool.name.slice(0, 2).toUpperCase()}
             </span>
             <div className="min-w-0">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">{leftTool.name}</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{leftTool.name}</p>
               <p className="mt-1 text-sm text-slate-400">{leftTool.bestUseCase}</p>
             </div>
           </div>
-          <div className="flex flex-wrap gap-2">
-            <span className="inline-flex items-center rounded-full border border-cyan-400/18 bg-cyan-400/10 px-3 py-1.5 text-sm font-semibold text-cyan-100">{overallLeft}/10</span>
-            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-100">{leftTool.rating.toFixed(1)}/5</span>
-            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-300">{leftTool.compareProfile.category}</span>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <span className="inline-flex items-center rounded-full border border-cyan-400/16 bg-cyan-400/10 px-3 py-1.5 text-sm font-semibold text-cyan-100">
+              {overallLeft}/10
+            </span>
+            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-100">
+              {leftTool.rating.toFixed(1)}/5
+            </span>
+            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-300">
+              {leftTool.compareProfile.category}
+            </span>
           </div>
         </div>
 
         <div className="flex items-center justify-center">
-          <div className="relative inline-flex min-h-[76px] min-w-[76px] items-center justify-center rounded-full border border-cyan-400/16 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.3),rgba(59,130,246,0.12),rgba(15,23,42,0.1))] px-5 shadow-[0_0_0_1px_rgba(34,211,238,0.08),0_0_48px_rgba(14,165,233,0.18)]">
+          <div className="relative inline-flex min-h-[78px] min-w-[78px] items-center justify-center rounded-full border border-cyan-400/16 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.3),rgba(59,130,246,0.12),rgba(15,23,42,0.1))] px-5 shadow-[0_0_0_1px_rgba(34,211,238,0.08),0_0_48px_rgba(14,165,233,0.18)]">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-100">VS</span>
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 rounded-[28px] border border-sky-400/10 bg-slate-950/55 p-4 text-left lg:text-right">
+        <div className="rounded-[28px] border border-sky-400/10 bg-slate-950/48 p-4 shadow-[0_18px_60px_-38px_rgba(14,165,233,0.16)] text-left lg:text-right">
           <div className="flex items-center gap-3 lg:justify-end">
             <div className="min-w-0 lg:order-2">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">{rightTool.name}</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{rightTool.name}</p>
               <p className="mt-1 text-sm text-slate-400">{rightTool.bestUseCase}</p>
             </div>
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-sky-400/18 bg-sky-400/10 text-sm font-bold text-sky-100 lg:order-1">
+            <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-sky-400/18 bg-sky-400/10 text-sm font-bold text-sky-100 lg:order-1">
               {rightTool.name.slice(0, 2).toUpperCase()}
             </span>
           </div>
-          <div className="flex flex-wrap gap-2 lg:justify-end">
-            <span className="inline-flex items-center rounded-full border border-cyan-400/18 bg-cyan-400/10 px-3 py-1.5 text-sm font-semibold text-cyan-100">{overallRight}/10</span>
-            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-100">{rightTool.rating.toFixed(1)}/5</span>
-            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-300">{rightTool.compareProfile.category}</span>
+          <div className="mt-4 flex flex-wrap gap-2 lg:justify-end">
+            <span className="inline-flex items-center rounded-full border border-cyan-400/16 bg-cyan-400/10 px-3 py-1.5 text-sm font-semibold text-cyan-100">
+              {overallRight}/10
+            </span>
+            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-100">
+              {rightTool.rating.toFixed(1)}/5
+            </span>
+            <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-3 py-1.5 text-sm font-semibold text-slate-300">
+              {rightTool.compareProfile.category}
+            </span>
           </div>
         </div>
       </div>
@@ -421,7 +444,7 @@ export function ComparisonDetailTabs({
               type="button"
               onClick={() => setActiveTab(tab)}
               className={clsx(
-                "inline-flex min-h-[42px] items-center rounded-full border px-4 text-sm font-semibold transition",
+                "inline-flex min-h-[40px] items-center rounded-full border px-4 text-sm font-semibold transition",
                 active
                   ? "border-cyan-400/25 bg-cyan-400/12 text-cyan-100 shadow-[0_14px_34px_-18px_rgba(34,211,238,0.35)]"
                   : "border-sky-400/10 bg-slate-950/45 text-slate-300 hover:border-cyan-400/18 hover:text-slate-100"
@@ -440,10 +463,10 @@ export function ComparisonDetailTabs({
       <div className="mt-6 sticky bottom-3 z-20 rounded-[28px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(10,16,30,0.98),rgba(15,23,42,0.96))] p-3 shadow-[0_18px_60px_-34px_rgba(14,165,233,0.18)] sm:p-4">
         <div className="grid gap-2 sm:grid-cols-3">
           <PremiumButton href={leftReviewHref} className="w-full" variant="primary">
-            {locale === "tr" ? `${leftTool.name} incele` : `Review ${leftTool.name}`}
+            {locale === "tr" ? `${leftTool.name}'i incele` : `Review ${leftTool.name}`}
           </PremiumButton>
           <PremiumButton href={rightReviewHref} className="w-full" variant="primary">
-            {locale === "tr" ? `${rightTool.name} incele` : `Review ${rightTool.name}`}
+            {locale === "tr" ? `${rightTool.name}'i incele` : `Review ${rightTool.name}`}
           </PremiumButton>
           <PremiumButton href={editorialHref} className="w-full" variant="secondary">
             {locale === "tr" ? "Editoryal inceleme" : "Read editorial review"}

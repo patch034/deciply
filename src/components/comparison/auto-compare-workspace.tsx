@@ -483,7 +483,7 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
   const safeRightSlug = rightTool?.slug ?? rightSlug;
 
   return (
-    <GlassPanel className="overflow-hidden rounded-[32px] border-sky-400/12 bg-[linear-gradient(180deg,rgba(6,10,18,0.96),rgba(8,12,22,0.98))] p-4 shadow-[0_30px_100px_-58px_rgba(14,165,233,0.24)] sm:p-6 lg:p-8">
+    <GlassPanel className="overflow-visible rounded-[32px] border-sky-400/12 bg-[linear-gradient(180deg,rgba(6,10,18,0.96),rgba(8,12,22,0.98))] p-4 shadow-[0_30px_100px_-58px_rgba(14,165,233,0.24)] sm:p-6 lg:p-8">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-3xl">
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan-300">{compact ? labels.compactTitle : labels.fullTitle}</p>

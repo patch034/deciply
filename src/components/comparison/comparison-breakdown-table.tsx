@@ -1,4 +1,4 @@
-﻿import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/badge";
 import type { ComparisonRow } from "@/data/comparisons";
 
 type ComparisonBreakdownTableProps = {
@@ -12,10 +12,6 @@ type ComparisonBreakdownTableProps = {
   };
   rows: ComparisonRow[];
 };
-
-function getComparisonCellStyle() {
-  return "text-slate-200";
-}
 
 function normalizeCompareText(input: string) {
   return input
@@ -36,12 +32,14 @@ function normalizeCompareText(input: string) {
     .replace(/\u00e2\u0080\u009c|\u00e2\u0080\u009d/g, "\"")
     .replace(/\u00e2\u0080\u0093/g, "–")
     .replace(/\u00e2\u0080\u0094/g, "—")
+    .replace(/\uFFFD/g, "")
+    .replace(/([A-Za-zÇĞİÖŞÜçğıöşü])\?([A-Za-zÇĞİÖŞÜçğıöşü])/g, "$1$2")
     .replace(/\s+/g, " ")
     .trim();
 }
 
 function getInitials(name: string) {
-  return name
+  return normalizeCompareText(name)
     .split(/\s+/)
     .filter(Boolean)
     .map((part) => part[0])
@@ -50,121 +48,209 @@ function getInitials(name: string) {
     .toUpperCase();
 }
 
-function getChipTone(index: number) {
-  return index === 0
-    ? "border-cyan-400/16 bg-cyan-400/12 text-cyan-100"
-    : "border-sky-400/16 bg-sky-400/12 text-sky-100";
+function isPricingLabel(value: string) {
+  const normalized = normalizeCompareText(value).toLowerCase();
+  return ["free", "freemium", "paid", "ücretsiz", "kısmen ücretsiz", "ücretli", "free tier", "pricing model"].some((item) =>
+    normalized.includes(item)
+  );
 }
 
-function renderMobileValue(value: string, compact: boolean) {
+function renderValue(value: string, locale: "tr" | "en", compact = false) {
   const normalized = normalizeCompareText(value);
-  const parts = normalized.split(" · ").map((item) => item.trim()).filter(Boolean);
-  if (parts.length > 1) {
+  const lowered = normalized.toLowerCase();
+
+  if (lowered === "yes" || lowered === "evet") {
     return (
-      <ul className="compare-list">
-        {parts.slice(0, 3).map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
+      <span
+        aria-label={locale === "tr" ? "Evet" : "Yes"}
+        className={compact ? "inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-400/12 text-[11px] font-bold text-emerald-200" : "inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400/12 text-xs font-bold text-emerald-200"}
+      >
+        ✓
+      </span>
     );
   }
 
-  return <p className={compact ? "text-[12px] leading-5 text-slate-200" : "text-[13px] leading-6 text-slate-200"}>{normalized}</p>;
+  if (lowered === "no" || lowered === "hayır" || lowered === "hayir") {
+    return (
+      <span
+        aria-label={locale === "tr" ? "Hayır" : "No"}
+        className={compact ? "inline-flex h-5 w-5 items-center justify-center rounded-full bg-rose-400/12 text-[11px] font-bold text-rose-200" : "inline-flex h-6 w-6 items-center justify-center rounded-full bg-rose-400/12 text-xs font-bold text-rose-200"}
+      >
+        ✕
+      </span>
+    );
+  }
+
+  if (normalized === "-" || normalized === "—" || lowered === "n/a" || lowered === "na") {
+    return (
+      <span
+        aria-label={locale === "tr" ? "Uygun değil" : "Not available"}
+        className={compact ? "inline-flex h-5 w-5 items-center justify-center rounded-full bg-slate-400/12 text-[11px] font-bold text-slate-300" : "inline-flex h-6 w-6 items-center justify-center rounded-full bg-slate-400/12 text-xs font-bold text-slate-300"}
+      >
+        —
+      </span>
+    );
+  }
+
+  if (isPricingLabel(normalized)) {
+    const tone =
+      lowered.includes("free") || lowered.includes("ücretsiz")
+        ? "border-emerald-400/16 bg-emerald-400/12 text-emerald-100"
+        : lowered.includes("freemium") || lowered.includes("kısmen") || lowered.includes("kismen")
+          ? "border-amber-400/16 bg-amber-400/12 text-amber-100"
+          : "border-sky-400/16 bg-sky-400/12 text-sky-100";
+
+    return (
+      <Badge variant="ghost" className={`max-w-full shrink-0 px-2.5 py-0.5 text-[10px] font-semibold ${tone}`}>
+        {normalized}
+      </Badge>
+    );
+  }
+
+  return (
+    <p className={compact ? "mobile-clamp-2 text-[12px] leading-5 text-slate-200/92" : "text-sm leading-6 text-slate-200/92"}>
+      {normalized}
+    </p>
+  );
 }
 
-export function ComparisonBreakdownTable({
-  locale,
-  title,
-  description,
-  columns,
-  rows
-}: ComparisonBreakdownTableProps) {
+function renderToolBadge(name: string, tone: "left" | "right") {
   return (
-    <section className="rounded-[32px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-4 shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)] sm:p-6 md:p-8">
+    <span
+      className={[
+        "inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em]",
+        tone === "left"
+          ? "border-cyan-400/16 bg-cyan-400/10 text-cyan-100"
+          : "border-sky-400/16 bg-sky-400/10 text-sky-100"
+      ].join(" ")}
+    >
+      <span className={tone === "left" ? "text-cyan-100" : "text-sky-100"}>{getInitials(name)}</span>
+      <span className="max-w-[8rem] truncate normal-case tracking-normal">{normalizeCompareText(name)}</span>
+    </span>
+  );
+}
+
+export function ComparisonBreakdownTable({ locale, title, description, columns, rows }: ComparisonBreakdownTableProps) {
+  return (
+    <section className="rounded-[34px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(8,12,22,0.98),rgba(10,16,30,0.95))] p-4 shadow-[0_28px_88px_-44px_rgba(14,165,233,0.18)] sm:p-6 md:p-8">
       <div className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{locale === "tr" ? "Karşılaştırma tablosu" : "Comparison table"}</p>
-        <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{normalizeCompareText(title)}</h2>
-        <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{normalizeCompareText(description)}</p>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan-300">
+          {locale === "tr" ? "Karşılaştırma tablosu" : "Comparison table"}
+        </p>
+        <h2 className="mt-3 text-[1.75rem] font-bold tracking-[-0.03em] text-slate-50 sm:text-[2.1rem] md:text-[2.6rem]">
+          {normalizeCompareText(title)}
+        </h2>
+        <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-300/88 sm:text-[15px] md:text-base md:leading-7">
+          {normalizeCompareText(description)}
+        </p>
       </div>
 
-      <div className="sticky top-3 z-20 mt-5 rounded-[20px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(10,16,30,0.97),rgba(15,23,42,0.96))] px-3 py-2.5 shadow-[0_16px_44px_-34px_rgba(14,165,233,0.14)] [@media(min-width:769px)]:hidden">
-        <div className="flex items-center justify-between gap-3">
+      <div className="mt-6 grid gap-3 rounded-[28px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(9,13,23,0.95),rgba(10,16,30,0.98))] p-4 shadow-[0_18px_54px_-36px_rgba(14,165,233,0.18)] sm:gap-4 sm:p-5">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="min-w-0">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-300">{locale === "tr" ? "Mobil karşılaştırma" : "Mobile compare"}</p>
-        <p className="mt-1 truncate text-[13px] font-semibold text-slate-50">{normalizeCompareText(columns.label)}</p>
-      </div>
-      <div className="flex min-w-0 items-center gap-2">
-        <Badge variant="ghost" className={`shrink-0 ${getChipTone(0)} px-2.5 py-1 text-[11px]`}>
-          <span className="mr-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-slate-950/55 text-[10px] font-bold text-cyan-100">
-            {getInitials(normalizeCompareText(columns.left))}
-          </span>
-          <span className="max-w-[7rem] truncate">{normalizeCompareText(columns.left)}</span>
-        </Badge>
-        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">VS</span>
-        <Badge variant="ghost" className={`shrink-0 ${getChipTone(1)} px-2.5 py-1 text-[11px]`}>
-          <span className="mr-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-slate-950/55 text-[10px] font-bold text-sky-100">
-            {getInitials(normalizeCompareText(columns.right))}
-          </span>
-          <span className="max-w-[7rem] truncate">{normalizeCompareText(columns.right)}</span>
-        </Badge>
-      </div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-300">
+              {locale === "tr" ? "Sabit karşılaştırma barı" : "Sticky compare bar"}
+            </p>
+            <div className="mt-3 flex flex-wrap items-center gap-2 sm:gap-3">
+              {renderToolBadge(columns.left, "left")}
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-cyan-400/16 bg-cyan-400/10 text-[11px] font-bold tracking-[0.24em] text-cyan-100">
+                VS
+              </span>
+              {renderToolBadge(columns.right, "right")}
+            </div>
+          </div>
+
+          <div className="grid gap-2 sm:grid-cols-3">
+            <span className="inline-flex min-h-[36px] items-center justify-center rounded-full border border-sky-400/12 bg-slate-950/50 px-3 text-[11px] font-semibold text-slate-300">
+              {normalizeCompareText(columns.label)}
+            </span>
+            <span className="inline-flex min-h-[36px] items-center justify-center rounded-full border border-cyan-400/12 bg-cyan-400/10 px-3 text-[11px] font-semibold text-cyan-100">
+              {normalizeCompareText(columns.left)}
+            </span>
+            <span className="inline-flex min-h-[36px] items-center justify-center rounded-full border border-sky-400/12 bg-sky-400/10 px-3 text-[11px] font-semibold text-sky-100">
+              {normalizeCompareText(columns.right)}
+            </span>
+          </div>
         </div>
       </div>
 
-      <div className="mt-5 hidden overflow-hidden rounded-[22px] border border-sky-400/10 [@media(min-width:769px)]:block">
-        <table className="min-w-full divide-y divide-sky-400/10">
-          <thead className="bg-slate-950/50">
-            <tr>
-              <th className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400 sm:px-6">{normalizeCompareText(columns.label)}</th>
-              <th className="compare-col-left px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200 sm:px-6">{normalizeCompareText(columns.left)}</th>
-              <th className="compare-col-right px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200 sm:px-6">{normalizeCompareText(columns.right)}</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-sky-400/10">
-            {rows.map((row) => (
-              <tr key={row.label} className="transition duration-300 hover:bg-slate-950/50">
-                <td className="px-4 py-3 text-sm font-semibold text-slate-100 sm:px-6 sm:py-4">{normalizeCompareText(row.label)}</td>
-                <td className={`compare-col-left px-4 py-3 text-sm leading-6 sm:px-6 sm:py-4 ${getComparisonCellStyle()}`}>{normalizeCompareText(row.left)}</td>
-                <td className={`compare-col-right px-4 py-3 text-sm leading-6 sm:px-6 sm:py-4 ${getComparisonCellStyle()}`}>{normalizeCompareText(row.right)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <div className="mt-6 overflow-hidden rounded-[26px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(6,10,18,0.92),rgba(10,16,30,0.94))]">
+        <div className="hidden md:grid md:grid-cols-[minmax(200px,0.8fr)_minmax(0,1fr)_minmax(0,1fr)] md:gap-px md:bg-sky-400/10">
+          <div className="bg-slate-950/52 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+            {normalizeCompareText(columns.label)}
+          </div>
+          <div className="bg-slate-950/52 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">
+            {normalizeCompareText(columns.left)}
+          </div>
+          <div className="bg-slate-950/52 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200">
+            {normalizeCompareText(columns.right)}
+          </div>
+        </div>
 
-      <div className="mt-5 grid gap-2 sm:gap-3 [@media(min-width:769px)]:hidden">
-        {rows.map((row) => {
-          const isCompact = ["Hız", "Kullanım kolaylığı", "Çıktı kalitesi", "Öğrenci", "Creator", "İş", "Değer", "Speed", "Ease of use", "Output quality", "Students", "Creators", "Business", "Value"].includes(row.label);
-          return (
-          <article key={row.label} className="overflow-hidden rounded-[18px] border border-sky-400/10 bg-slate-950/46 p-3 shadow-[0_16px_44px_-34px_rgba(14,165,233,0.12)] sm:rounded-[22px] sm:p-4">
-            <div className="flex items-start justify-between gap-3">
-              <div className="min-w-0">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-300">{locale === "tr" ? "Özellik" : "Feature"}</p>
-                <h3 className="mt-1 text-sm font-semibold text-slate-50">{normalizeCompareText(row.label)}</h3>
+        <div className="hidden md:block">
+          {rows.map((row) => (
+            <div key={row.label} className="grid grid-cols-[minmax(200px,0.8fr)_minmax(0,1fr)_minmax(0,1fr)] gap-px border-t border-sky-400/10 first:border-t-0">
+              <div className="bg-slate-950/34 px-5 py-4 text-sm font-semibold text-slate-100">
+                {normalizeCompareText(row.label)}
               </div>
-              <Badge variant="ghost" className="shrink-0 border-sky-400/10 bg-slate-950/50 px-2 py-0.5 text-[10px] text-slate-300">
-                {normalizeCompareText(columns.left)} · {normalizeCompareText(columns.right)}
-              </Badge>
-            </div>
-
-            <div className={isCompact ? "mt-3 space-y-2" : "mt-3 space-y-2.5"}>
-              <div className={isCompact ? "compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2" : "compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2.5"}>
-                <div className="min-w-0">
-                  <p className={isCompact ? "text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-200" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200"}>{normalizeCompareText(columns.left)}</p>
-                  {renderMobileValue(row.left, isCompact)}
-                </div>
-                <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
+              <div className="compare-col-left bg-slate-950/34 px-5 py-4">
+                {renderValue(row.left, locale)}
               </div>
-              <div className={isCompact ? "compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2" : "compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2.5"}>
-                <div className="min-w-0">
-                  <p className={isCompact ? "text-[10px] font-semibold uppercase tracking-[0.16em] text-sky-200" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200"}>{normalizeCompareText(columns.right)}</p>
-                  {renderMobileValue(row.right, isCompact)}
-                </div>
-                <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
+              <div className="compare-col-right bg-slate-950/34 px-5 py-4">
+                {renderValue(row.right, locale)}
               </div>
             </div>
-          </article>
-        )})}
+          ))}
+        </div>
+
+        <div className="grid gap-px md:hidden">
+          {rows.map((row) => {
+            const compact = ["Hız", "Kullanım kolaylığı", "Çıktı kalitesi", "Öğrenci", "Creator", "İş", "Değer", "Speed", "Ease of use", "Output quality", "Students", "Creators", "Business", "Value"].includes(
+              row.label
+            );
+
+            return (
+              <article key={row.label} className="border-t border-sky-400/10 bg-slate-950/30 px-4 py-4 first:border-t-0">
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">{normalizeCompareText(row.label)}</h3>
+                  <span className="inline-flex items-center rounded-full border border-sky-400/12 bg-slate-950/55 px-2.5 py-1 text-[10px] font-semibold text-slate-300">
+                    {normalizeCompareText(columns.left)} · {normalizeCompareText(columns.right)}
+                  </span>
+                </div>
+
+                <div className="mt-3 grid gap-2.5">
+                  <div className="compare-slot-left rounded-[16px] border border-sky-400/10">
+                    <div className="flex items-start justify-between gap-3 p-3">
+                      <div className="min-w-0">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-200">
+                          {normalizeCompareText(columns.left)}
+                        </p>
+                        <div className={compact ? "mt-1" : "mt-1.5"}>
+                          {renderValue(row.left, locale, compact)}
+                        </div>
+                      </div>
+                      <span className="hidden shrink-0 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
+                    </div>
+                  </div>
+
+                  <div className="compare-slot-right rounded-[16px] border border-sky-400/10">
+                    <div className="flex items-start justify-between gap-3 p-3">
+                      <div className="min-w-0">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-sky-200">
+                          {normalizeCompareText(columns.right)}
+                        </p>
+                        <div className={compact ? "mt-1" : "mt-1.5"}>
+                          {renderValue(row.right, locale, compact)}
+                        </div>
+                      </div>
+                      <span className="hidden shrink-0 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

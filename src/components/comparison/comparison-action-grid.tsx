@@ -18,11 +18,11 @@ type ComparisonActionGridProps = {
 };
 
 function getOpenLabel(locale: Locale, toolName: string) {
-  return locale === "tr" ? `${toolName} a\u00e7` : `Open ${toolName}`;
+  return locale === "tr" ? `${toolName}'i incele` : `Review ${toolName}`;
 }
 
 function getReviewLabel(locale: Locale, toolName: string) {
-  return locale === "tr" ? `${toolName} incele` : `Review ${toolName}`;
+  return locale === "tr" ? `${toolName} detay` : `${toolName} details`;
 }
 
 function getNeutralLabel(locale: Locale, neutralLabel?: string) {
