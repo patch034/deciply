@@ -46,6 +46,31 @@ export default async function CategoriesPage({
   const safeLocale = locale as Locale;
   const content = getCatalogContent(safeLocale);
   const categoryItems = getLocalizedCategories(safeLocale);
+  const sidebarIcons: Record<string, string> = {
+    "ai-tools": "AI",
+    "writing-editing": "W",
+    "image-generation-editing": "G",
+    "image-analysis": "A",
+    "music-audio": "M",
+    "audio-generation-conversion": "S",
+    "art-creative-design": "T",
+    "social-media": "SM",
+    "ai-detection-and-undetection": "D",
+    "coding-development": "K",
+    "video-animation": "V",
+    "daily-life": "G",
+    "law-finance": "H",
+    "business-management": "İ",
+    "marketing-advertising": "P",
+    "health-wellness": "S",
+    "business-research": "R",
+    "education-translation": "E",
+    "chatbots-virtual-companions": "C",
+    "interior-architecture-design": "I",
+    "office-productivity": "O",
+    "research-data-analysis": "V",
+    other: "#"
+  };
 
   return (
     <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
@@ -69,11 +94,29 @@ export default async function CategoriesPage({
                 <Link
                   key={category.slug}
                   href={`/${safeLocale}/categories/${category.slug}`}
-                  className="flex items-start justify-between gap-3 rounded-[18px] border border-slate-200 bg-slate-50 px-3 py-3 transition hover:border-sky-200 hover:bg-white"
+                  aria-current={category.slug === "ai-tools" ? "page" : undefined}
+                  className={[
+                    "flex items-start justify-between gap-3 rounded-[18px] border px-3 py-3 transition",
+                    category.slug === "ai-tools"
+                      ? "border-sky-200 bg-sky-50/80 shadow-[0_12px_36px_-26px_rgba(37,99,235,0.22)]"
+                      : "border-slate-200 bg-slate-50 hover:border-sky-200 hover:bg-white"
+                  ].join(" ")}
                 >
-                  <span className="min-w-0">
-                    <span className="block text-sm font-semibold text-slate-950">{category.locales[safeLocale].name}</span>
-                    <span className="block truncate text-[11px] text-slate-500">{category.locales[safeLocale].description}</span>
+                  <span className="flex min-w-0 items-start gap-3">
+                    <span
+                      className={[
+                        "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-[10px] font-bold uppercase tracking-[0.14em]",
+                        category.slug === "ai-tools"
+                          ? "border-sky-200 bg-white text-sky-700"
+                          : "border-slate-200 bg-white text-slate-500"
+                      ].join(" ")}
+                    >
+                      {sidebarIcons[category.slug] ?? category.locales[safeLocale].name.slice(0, 2).toUpperCase()}
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block text-sm font-semibold text-slate-950">{category.locales[safeLocale].name}</span>
+                      <span className="block truncate text-[11px] text-slate-500">{category.locales[safeLocale].description}</span>
+                    </span>
                   </span>
                   <Badge variant="muted" className="shrink-0">
                     {getToolsByCategory(safeLocale, category.slug).length}

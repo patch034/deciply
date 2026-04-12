@@ -483,21 +483,21 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
   const safeRightSlug = rightTool?.slug ?? rightSlug;
 
   return (
-    <GlassPanel className="overflow-visible rounded-[32px] border-sky-400/12 bg-[linear-gradient(180deg,rgba(6,10,18,0.96),rgba(8,12,22,0.98))] p-4 shadow-[0_30px_100px_-58px_rgba(14,165,233,0.24)] sm:p-6 lg:p-8">
+    <GlassPanel className="overflow-visible rounded-[32px] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(247,250,253,0.98))] p-4 shadow-[0_30px_100px_-58px_rgba(15,23,42,0.14)] sm:p-6 lg:p-8">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-3xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan-300">{compact ? labels.compactTitle : labels.fullTitle}</p>
-          <h2 className="mt-3 text-[1.5rem] font-bold tracking-[-0.035em] text-slate-50 sm:text-[1.9rem]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-sky-600">{compact ? labels.compactTitle : labels.fullTitle}</p>
+          <h2 className="mt-3 text-[1.5rem] font-bold tracking-[-0.035em] text-slate-950 sm:text-[1.9rem]">
             {compact ? labels.compactTitle : labels.fullTitle}
           </h2>
-          <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-300/84 sm:text-[15px] sm:leading-7">
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600 sm:text-[15px] sm:leading-7">
             {compact ? labels.compactDescription : labels.fullDescription}
           </p>
         </div>
         <Badge variant="accent" className="hidden w-fit text-[11px] uppercase tracking-[0.14em] sm:inline-flex">
           {labels.selectorHint}
         </Badge>
-        <p className="text-xs text-slate-400 sm:hidden">{labels.selectorHint}</p>
+        <p className="text-xs text-slate-500 sm:hidden">{labels.selectorHint}</p>
       </div>
 
       <div className="mt-6 grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto] lg:items-end">

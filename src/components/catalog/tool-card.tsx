@@ -54,9 +54,9 @@ export function ToolCard({
 
   if (variant === "row") {
     return (
-      <GlassPanel className="ui-card ui-card-hover flex h-full flex-col gap-4 overflow-hidden p-4 sm:flex-row sm:items-start sm:p-5">
+      <GlassPanel className="ui-card ui-card-hover flex h-full flex-col gap-4 overflow-hidden border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,250,253,0.98))] p-4 shadow-[0_24px_64px_-40px_rgba(15,23,42,0.14)] sm:flex-row sm:items-start sm:p-5">
         <div className="flex min-w-0 flex-1 items-start gap-4">
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_14px_32px_-22px_rgba(15,23,42,0.18)]">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-[18px] border border-slate-200 bg-white shadow-[0_14px_32px_-22px_rgba(15,23,42,0.18)]">
             {logoUrl ? (
               <img
                 src={logoUrl}
@@ -93,7 +93,7 @@ export function ToolCard({
             <p className="mt-2 text-[14px] leading-6 text-slate-600 sm:text-[15px]">{tool.shortDescription}</p>
 
             {bestForLabel && useCaseLabel ? (
-              <div className="mt-3 rounded-[18px] border border-slate-200 bg-slate-50/90 px-3 py-2.5 text-[13px] leading-6 text-slate-600">
+              <div className="mt-3 rounded-[18px] border border-slate-200 bg-white/95 px-3 py-2.5 text-[13px] leading-6 text-slate-600 shadow-[0_14px_36px_-30px_rgba(15,23,42,0.14)]">
                 <span className="font-semibold text-slate-900">{bestForLabel}:</span> {useCaseLabel}
               </div>
             ) : null}
@@ -111,7 +111,7 @@ export function ToolCard({
         <div className="flex shrink-0 flex-col gap-3 sm:w-[180px] sm:items-end">
           <div className="flex items-center gap-2 sm:flex-col sm:items-end sm:gap-2">
             <RatingBadge rating={tool.rating} className="w-fit" />
-            <span className="inline-flex min-h-[28px] items-center rounded-full border border-slate-200 bg-white px-3 text-[11px] font-semibold text-slate-500">
+            <span className="inline-flex min-h-[28px] items-center rounded-full border border-slate-200 bg-white px-3 text-[11px] font-semibold text-slate-500 shadow-[0_12px_28px_-22px_rgba(15,23,42,0.18)]">
               {locale === "tr" ? "Ayrıntı" : "Detail"}
             </span>
           </div>

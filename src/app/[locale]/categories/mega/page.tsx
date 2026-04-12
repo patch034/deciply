@@ -38,7 +38,7 @@ export async function generateMetadata({
 type ArchiveGroup = {
   title: string;
   intro: string;
-  items: { label: string; href: string }[];
+  items: { label: string; href: string; count: number }[];
 };
 
 function countUseCaseMatches(locale: Locale, slug: string) {
@@ -52,7 +52,7 @@ function countToolCategoryMatches(locale: Locale, slug: string) {
 }
 
 function buildArchiveGroups(locale: Locale): ArchiveGroup[] {
-  const parent = (href: string, label: string) => ({ href, label });
+  const parent = (href: string, label: string, count: number) => ({ href, label, count });
   const writing = `/${locale}/tools?browse=writing`;
   const image = `/${locale}/tools?browse=image`;
   const video = `/${locale}/tools?browse=video`;
@@ -75,12 +75,12 @@ function buildArchiveGroups(locale: Locale): ArchiveGroup[] {
           ? "Blog yazımı, kopya yazımı, e-posta, özetleme ve dilbilgisi iş akışlarını tek grupta tara."
           : "Scan blog writing, copywriting, email, summarization, and grammar workflows together.",
       items: [
-        parent(writing, locale === "tr" ? "Blog Writing" : "Blog Writing"),
-        parent(writing, locale === "tr" ? "Copywriting" : "Copywriting"),
-        parent(writing, locale === "tr" ? "Essay Writing" : "Essay Writing"),
-        parent(writing, locale === "tr" ? "Grammar" : "Grammar"),
-        parent(writing, locale === "tr" ? "Email Writing" : "Email Writing"),
-        parent(writing, locale === "tr" ? "SEO Writing" : "SEO Writing")
+        parent(writing, locale === "tr" ? "Blog Writing" : "Blog Writing", getToolsByCategory(locale, "writing-editing").length),
+        parent(writing, locale === "tr" ? "Copywriting" : "Copywriting", getToolsByCategory(locale, "writing-editing").length),
+        parent(writing, locale === "tr" ? "Essay Writing" : "Essay Writing", getToolsByCategory(locale, "writing-editing").length),
+        parent(writing, locale === "tr" ? "Grammar" : "Grammar", getToolsByCategory(locale, "writing-editing").length),
+        parent(writing, locale === "tr" ? "Email Writing" : "Email Writing", getToolsByCategory(locale, "writing-editing").length),
+        parent(writing, locale === "tr" ? "SEO Writing" : "SEO Writing", getToolsByCategory(locale, "writing-editing").length)
       ]
     },
     {
@@ -90,12 +90,12 @@ function buildArchiveGroups(locale: Locale): ArchiveGroup[] {
           ? "Görsel üretim, arka plan kaldırma, iyileştirme ve yaratıcı düzenlemeleri bir arada aç."
           : "Open generation, background removal, enhancement, and visual editing together.",
       items: [
-        parent(image, locale === "tr" ? "Image Generation" : "Image Generation"),
-        parent(image, locale === "tr" ? "Background Removal" : "Background Removal"),
-        parent(image, locale === "tr" ? "Upscaling" : "Upscaling"),
-        parent(image, locale === "tr" ? "Product Photos" : "Product Photos"),
-        parent(image, locale === "tr" ? "Profile Pictures" : "Profile Pictures"),
-        parent(image, locale === "tr" ? "Text to Image" : "Text to Image")
+        parent(image, locale === "tr" ? "Image Generation" : "Image Generation", getToolsByCategory(locale, "image-generation-editing").length),
+        parent(image, locale === "tr" ? "Background Removal" : "Background Removal", getToolsByCategory(locale, "image-generation-editing").length),
+        parent(image, locale === "tr" ? "Upscaling" : "Upscaling", getToolsByCategory(locale, "image-generation-editing").length),
+        parent(image, locale === "tr" ? "Product Photos" : "Product Photos", getToolsByCategory(locale, "image-generation-editing").length),
+        parent(image, locale === "tr" ? "Profile Pictures" : "Profile Pictures", getToolsByCategory(locale, "image-generation-editing").length),
+        parent(image, locale === "tr" ? "Text to Image" : "Text to Image", getToolsByCategory(locale, "image-generation-editing").length)
       ]
     },
     {
@@ -105,12 +105,12 @@ function buildArchiveGroups(locale: Locale): ArchiveGroup[] {
           ? "OCR, yüz tanıma, nesne algılama ve görsel açıklama yollarını bir arada göster."
           : "Group OCR, face recognition, object detection, and visual explanation paths.",
       items: [
-        parent(image, "OCR"),
-        parent(image, locale === "tr" ? "Image Explain" : "Image Explain"),
-        parent(image, locale === "tr" ? "Face Recognition" : "Face Recognition"),
-        parent(image, locale === "tr" ? "Object Detection" : "Object Detection"),
-        parent(image, locale === "tr" ? "Image Segmentation" : "Image Segmentation"),
-        parent(image, locale === "tr" ? "Prompt to Image" : "Prompt to Image")
+        parent(image, "OCR", getToolsByCategory(locale, "image-analysis").length),
+        parent(image, locale === "tr" ? "Image Explain" : "Image Explain", getToolsByCategory(locale, "image-analysis").length),
+        parent(image, locale === "tr" ? "Face Recognition" : "Face Recognition", getToolsByCategory(locale, "image-analysis").length),
+        parent(image, locale === "tr" ? "Object Detection" : "Object Detection", getToolsByCategory(locale, "image-analysis").length),
+        parent(image, locale === "tr" ? "Image Segmentation" : "Image Segmentation", getToolsByCategory(locale, "image-analysis").length),
+        parent(image, locale === "tr" ? "Prompt to Image" : "Prompt to Image", getToolsByCategory(locale, "image-analysis").length)
       ]
     },
     {
@@ -120,12 +120,12 @@ function buildArchiveGroups(locale: Locale): ArchiveGroup[] {
           ? "Müzik üretimi, beat, söz yazımı ve ses dönüştürme yüzeylerini tek arşivde tut."
           : "Keep music generation, beats, lyrics, and audio transformation in one archive.",
       items: [
-        parent(voice, locale === "tr" ? "Music Generator" : "Music Generator"),
-        parent(voice, locale === "tr" ? "Beat Generator" : "Beat Generator"),
-        parent(voice, locale === "tr" ? "Lyrics" : "Lyrics"),
-        parent(voice, locale === "tr" ? "Mastering" : "Mastering"),
-        parent(voice, locale === "tr" ? "Vocal Remover" : "Vocal Remover"),
-        parent(voice, locale === "tr" ? "Song Generator" : "Song Generator")
+        parent(voice, locale === "tr" ? "Music Generator" : "Music Generator", getToolsByCategory(locale, "music-audio").length),
+        parent(voice, locale === "tr" ? "Beat Generator" : "Beat Generator", getToolsByCategory(locale, "music-audio").length),
+        parent(voice, locale === "tr" ? "Lyrics" : "Lyrics", getToolsByCategory(locale, "music-audio").length),
+        parent(voice, locale === "tr" ? "Mastering" : "Mastering", getToolsByCategory(locale, "music-audio").length),
+        parent(voice, locale === "tr" ? "Vocal Remover" : "Vocal Remover", getToolsByCategory(locale, "music-audio").length),
+        parent(voice, locale === "tr" ? "Song Generator" : "Song Generator", getToolsByCategory(locale, "music-audio").length)
       ]
     },
     {
@@ -135,12 +135,12 @@ function buildArchiveGroups(locale: Locale): ArchiveGroup[] {
           ? "Metinden sese, ses klonlama, dublaj ve transkripsiyon akışlarını toparla."
           : "Organize text-to-speech, voice cloning, dubbing, and transcription flows.",
       items: [
-        parent(voice, locale === "tr" ? "Text to Speech" : "Text to Speech"),
-        parent(voice, locale === "tr" ? "Voice Cloning" : "Voice Cloning"),
-        parent(voice, locale === "tr" ? "Dubbing" : "Dubbing"),
-        parent(voice, locale === "tr" ? "Transcription" : "Transcription"),
-        parent(voice, locale === "tr" ? "Speech to Text" : "Speech to Text"),
-        parent(voice, locale === "tr" ? "Voice Assistants" : "Voice Assistants")
+        parent(voice, locale === "tr" ? "Text to Speech" : "Text to Speech", getToolsByCategory(locale, "audio-generation-conversion").length),
+        parent(voice, locale === "tr" ? "Voice Cloning" : "Voice Cloning", getToolsByCategory(locale, "audio-generation-conversion").length),
+        parent(voice, locale === "tr" ? "Dubbing" : "Dubbing", getToolsByCategory(locale, "audio-generation-conversion").length),
+        parent(voice, locale === "tr" ? "Transcription" : "Transcription", getToolsByCategory(locale, "audio-generation-conversion").length),
+        parent(voice, locale === "tr" ? "Speech to Text" : "Speech to Text", getToolsByCategory(locale, "audio-generation-conversion").length),
+        parent(voice, locale === "tr" ? "Voice Assistants" : "Voice Assistants", getToolsByCategory(locale, "audio-generation-conversion").length)
       ]
     },
     {
@@ -150,12 +150,12 @@ function buildArchiveGroups(locale: Locale): ArchiveGroup[] {
           ? "Kısa video, animasyon, yüz takası ve metinden videoya yollarını tara."
           : "Scan short video, animation, face swap, and text-to-video paths.",
       items: [
-        parent(video, locale === "tr" ? "Video Generator" : "Video Generator"),
-        parent(video, locale === "tr" ? "Video Editor" : "Video Editor"),
-        parent(video, locale === "tr" ? "Animation" : "Animation"),
-        parent(video, locale === "tr" ? "Short Video" : "Short Video"),
-        parent(video, locale === "tr" ? "Image to Video" : "Image to Video"),
-        parent(video, locale === "tr" ? "Script to Video" : "Script to Video")
+        parent(video, locale === "tr" ? "Video Generator" : "Video Generator", getToolsByCategory(locale, "video-animation").length),
+        parent(video, locale === "tr" ? "Video Editor" : "Video Editor", getToolsByCategory(locale, "video-animation").length),
+        parent(video, locale === "tr" ? "Animation" : "Animation", getToolsByCategory(locale, "video-animation").length),
+        parent(video, locale === "tr" ? "Short Video" : "Short Video", getToolsByCategory(locale, "video-animation").length),
+        parent(video, locale === "tr" ? "Image to Video" : "Image to Video", getToolsByCategory(locale, "video-animation").length),
+        parent(video, locale === "tr" ? "Script to Video" : "Script to Video", getToolsByCategory(locale, "video-animation").length)
       ]
     },
     {
@@ -165,12 +165,12 @@ function buildArchiveGroups(locale: Locale): ArchiveGroup[] {
           ? "CRM, reklam, e-posta, satış ve operasyon odaklı arşiv yollarını tek yerde grupla."
           : "Group CRM, ads, email, sales, and operations paths in one place.",
       items: [
-        parent(business, locale === "tr" ? "CRM" : "CRM"),
-        parent(marketing, locale === "tr" ? "Ad Copy" : "Ad Copy"),
-        parent(marketing, locale === "tr" ? "Email Marketing" : "Email Marketing"),
-        parent(business, locale === "tr" ? "Project Management" : "Project Management"),
-        parent(business, locale === "tr" ? "Hiring" : "Hiring"),
-        parent(marketing, locale === "tr" ? "Lead Generation" : "Lead Generation")
+        parent(business, locale === "tr" ? "CRM" : "CRM", getToolsByCategory(locale, "business-management").length),
+        parent(marketing, locale === "tr" ? "Ad Copy" : "Ad Copy", getToolsByCategory(locale, "marketing-advertising").length),
+        parent(marketing, locale === "tr" ? "Email Marketing" : "Email Marketing", getToolsByCategory(locale, "marketing-advertising").length),
+        parent(business, locale === "tr" ? "Project Management" : "Project Management", getToolsByCategory(locale, "business-management").length),
+        parent(business, locale === "tr" ? "Hiring" : "Hiring", getToolsByCategory(locale, "business-management").length),
+        parent(marketing, locale === "tr" ? "Lead Generation" : "Lead Generation", getToolsByCategory(locale, "marketing-advertising").length)
       ]
     },
     {
@@ -180,12 +180,12 @@ function buildArchiveGroups(locale: Locale): ArchiveGroup[] {
           ? "Öğrenci, araştırma, çeviri ve veri analizi için kaynak yollarını toparla."
           : "Collect source paths for students, research, translation, and data analysis.",
       items: [
-        parent(research, locale === "tr" ? "Research" : "Research"),
-        parent(education, locale === "tr" ? "Students" : "Students"),
-        parent(education, locale === "tr" ? "Translation" : "Translation"),
-        parent(education, locale === "tr" ? "Study" : "Study"),
-        parent(research, locale === "tr" ? "Summarization" : "Summarization"),
-        parent(research, locale === "tr" ? "Decision Support" : "Decision Support")
+        parent(research, locale === "tr" ? "Research" : "Research", getToolsByCategory(locale, "research-data-analysis").length),
+        parent(education, locale === "tr" ? "Students" : "Students", getToolsByCategory(locale, "education-translation").length),
+        parent(education, locale === "tr" ? "Translation" : "Translation", getToolsByCategory(locale, "education-translation").length),
+        parent(education, locale === "tr" ? "Study" : "Study", getToolsByCategory(locale, "education-translation").length),
+        parent(research, locale === "tr" ? "Summarization" : "Summarization", getToolsByCategory(locale, "research-data-analysis").length),
+        parent(research, locale === "tr" ? "Decision Support" : "Decision Support", getToolsByCategory(locale, "research-data-analysis").length)
       ]
     }
   ];
@@ -292,6 +292,7 @@ export default async function MegaCategoryDirectoryPage({
                   className="inline-flex min-h-[34px] items-center rounded-full border border-slate-200 bg-slate-50 px-3 text-xs font-semibold text-slate-600 transition hover:border-sky-200 hover:bg-white hover:text-slate-950"
                 >
                   {item.label}
+                  <span className="ml-2 text-[10px] text-slate-400">{item.count}</span>
                 </Link>
               ))}
             </div>
