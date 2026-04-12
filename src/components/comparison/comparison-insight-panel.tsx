@@ -9,6 +9,7 @@ export type ComparisonBattleTool = {
   reviewHref: string;
   scoreLabel: string;
   categoryLabel: string;
+  logoUrl?: string;
 };
 
 type ComparisonWinnerCard = {
@@ -46,6 +47,25 @@ function getInitials(name: string) {
     .join("")
     .slice(0, 2)
     .toUpperCase();
+}
+
+function renderLogo(name: string, logoUrl?: string) {
+  return (
+    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-cyan-400/16 bg-slate-950/50 text-[10px] font-bold uppercase tracking-[0.18em] text-cyan-100">
+      {logoUrl ? (
+        <img
+          src={logoUrl}
+          alt={name}
+          className="h-full w-full object-contain p-1.5"
+          loading="lazy"
+          decoding="async"
+          referrerPolicy="no-referrer"
+        />
+      ) : (
+        <span>{getInitials(name)}</span>
+      )}
+    </span>
+  );
 }
 
 export function ComparisonInsightPanel({
@@ -86,9 +106,7 @@ export function ComparisonInsightPanel({
                 variant="ghost"
                 className="flex min-h-[46px] w-full items-center justify-start gap-3 border-cyan-400/16 bg-slate-950/52 px-3.5 py-2 text-left text-slate-50"
               >
-                <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-cyan-400/16 bg-cyan-400/12 text-[10px] font-bold text-cyan-100">
-                  {getInitials(tool.name)}
-                </span>
+                {renderLogo(tool.name, tool.logoUrl)}
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-sm font-semibold text-slate-50">{tool.name}</span>
                   <span className="block truncate text-[11px] font-normal uppercase tracking-[0.14em] text-cyan-200/90">
@@ -112,9 +130,7 @@ export function ComparisonInsightPanel({
               )}
             >
               <div className="flex items-center gap-3">
-                <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-cyan-400/16 bg-cyan-400/10 text-sm font-bold text-cyan-100">
-                  {getInitials(tool.name)}
-                </span>
+                {renderLogo(tool.name, tool.logoUrl)}
                 <div className="min-w-0">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{locale === "tr" ? "Araç" : "Tool"}</p>
                   <h3 className="mt-1 truncate text-lg font-semibold text-slate-50">{tool.name}</h3>

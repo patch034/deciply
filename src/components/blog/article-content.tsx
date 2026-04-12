@@ -32,6 +32,7 @@ type ArticleActionButton = {
 type ArticleContentProps = {
   locale: Locale;
   sections: BlogSection[];
+  tone?: "light" | "dark";
   supportingLinks?: {
     tools?: InlineLinkItem[];
     articles?: InlineLinkItem[];
@@ -41,7 +42,8 @@ type ArticleContentProps = {
   };
 };
 
-export function ArticleContent({ locale, sections, supportingLinks }: ArticleContentProps) {
+export function ArticleContent({ locale, sections, supportingLinks, tone = "light" }: ArticleContentProps) {
+  const isLight = tone === "light";
   const toolLinks = getLocalizedTools(locale)
     .map((tool) => ({ slug: tool.slug, name: tool.name, href: `/${locale}/tools/${tool.slug}` }))
     .sort((a, b) => b.name.length - a.name.length);
@@ -251,7 +253,12 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
     }
 
     return (
-      <div className="mt-4 rounded-[18px] border border-cyan-400/14 bg-cyan-400/[0.04] px-4 py-3 text-sm leading-7 text-slate-300 sm:mt-5 sm:rounded-[20px]">
+      <div
+        className={[
+          "mt-4 rounded-[18px] px-4 py-3 text-sm leading-7 sm:mt-5 sm:rounded-[20px]",
+          isLight ? "border border-slate-200 bg-white/92 text-slate-600" : "border border-cyan-400/14 bg-cyan-400/[0.04] text-slate-300"
+        ].join(" ")}
+      >
         {locale === "tr" ? (
           <>
             {(toolItems.length || articleItems.length) ? (
@@ -305,11 +312,16 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
         <section
           key={section.title}
           id={buildArticleSectionId(section.title)}
-          className="scroll-mt-24 rounded-[28px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-5 shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)] md:p-8"
+          className={[
+            "scroll-mt-24 rounded-[28px] border p-5 shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)] md:p-8",
+            isLight
+              ? "border-slate-200/85 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,250,253,0.99))]"
+              : "border-sky-400/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))]"
+          ].join(" ")}
         >
-          <h2 className="text-2xl font-bold tracking-tight text-slate-50 md:text-[2rem]">{section.title}</h2>
+          <h2 className={["text-2xl font-bold tracking-tight md:text-[2rem]", isLight ? "text-slate-950" : "text-slate-50"].join(" ")}>{section.title}</h2>
 
-          <div className="mt-4 space-y-3 text-[15px] leading-7 text-slate-300 sm:mt-5 sm:space-y-4 sm:text-base sm:leading-8">
+          <div className={["mt-4 space-y-3 text-[15px] leading-7 sm:mt-5 sm:space-y-4 sm:text-base sm:leading-8", isLight ? "text-slate-600" : "text-slate-300"].join(" ")}>
             {section.paragraphs.map((paragraph) => (
               <p key={paragraph}>{renderLinkedText(paragraph)}</p>
             ))}
@@ -322,8 +334,11 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
               {section.bullets.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-3 rounded-[22px] border border-sky-400/10 bg-slate-950/50 px-4 py-3 text-sm leading-7 text-slate-200"
-                >
+                className={[
+                  "flex items-start gap-3 rounded-[22px] px-4 py-3 text-sm leading-7",
+                  isLight ? "border border-slate-200 bg-white/92 text-slate-700" : "border border-sky-400/10 bg-slate-950/50 text-slate-200"
+                ].join(" ")}
+              >
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-cyan-300" />
                   <span>{renderLinkedText(item)}</span>
                 </li>
@@ -332,13 +347,18 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
           ) : null}
 
           {section.comparison ? (
-            <div className="mt-5 rounded-[24px] border border-cyan-400/16 bg-cyan-400/[0.05] p-4 sm:mt-6 sm:p-5">
-              <h3 className="text-lg font-semibold text-slate-50">{section.comparison.title}</h3>
+            <div
+              className={[
+                "mt-5 rounded-[24px] p-4 sm:mt-6 sm:p-5",
+                isLight ? "border border-cyan-200 bg-cyan-50/70" : "border border-cyan-400/16 bg-cyan-400/[0.05]"
+              ].join(" ")}
+            >
+              <h3 className={["text-lg font-semibold", isLight ? "text-slate-950" : "text-slate-50"].join(" ")}>{section.comparison.title}</h3>
               <div className="mt-4 grid gap-3 md:grid-cols-3">
                 {section.comparison.items.map((item) => (
-                  <div key={item.label} className="rounded-[20px] border border-sky-400/10 bg-slate-950/50 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{item.label}</p>
-                    <p className="mt-3 text-sm font-semibold text-slate-100">{renderLinkedText(item.value)}</p>
+                  <div key={item.label} className={["rounded-[20px] p-4", isLight ? "border border-slate-200 bg-white/92" : "border border-sky-400/10 bg-slate-950/50"].join(" ")}>
+                    <p className={["text-xs font-semibold uppercase tracking-[0.16em]", isLight ? "text-slate-500" : "text-slate-400"].join(" ")}>{item.label}</p>
+                    <p className={["mt-3 text-sm font-semibold", isLight ? "text-slate-950" : "text-slate-100"].join(" ")}>{renderLinkedText(item.value)}</p>
                   </div>
                 ))}
               </div>
@@ -356,9 +376,9 @@ export function ArticleContent({ locale, sections, supportingLinks }: ArticleCon
           {section.subSections?.length ? (
             <div className="mt-6 grid gap-4 lg:grid-cols-2 sm:mt-8 sm:gap-5">
               {section.subSections.map((subSection) => (
-                <div key={subSection.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
-                  <h3 className="text-lg font-semibold text-slate-50">{subSection.title}</h3>
-                  <div className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
+                <div key={subSection.title} className={["rounded-[24px] p-5", isLight ? "border border-slate-200 bg-white/92" : "border border-sky-400/10 bg-slate-950/50"].join(" ")}>
+                  <h3 className={["text-lg font-semibold", isLight ? "text-slate-950" : "text-slate-50"].join(" ")}>{subSection.title}</h3>
+                  <div className={["mt-4 space-y-3 text-sm leading-7", isLight ? "text-slate-600" : "text-slate-300"].join(" ")}>
                     {subSection.paragraphs.map((paragraph) => (
                       <p key={paragraph}>{renderLinkedText(paragraph)}</p>
                     ))}

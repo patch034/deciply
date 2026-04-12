@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 
 import { PremiumButton } from "@/components/ui/premium-button";
 import type { Locale } from "@/i18n/config";
+import { getToolLogoUrl } from "@/lib/logo";
 import type { LocalizedTool } from "@/types/catalog";
 
 type ComparisonDetailTabsProps = {
@@ -210,15 +211,26 @@ function buildRows(locale: Locale, leftTool: LocalizedTool, rightTool: Localized
   };
 }
 
-function renderAvatar(name: string, tone: "left" | "right") {
+function renderAvatar(name: string, tone: "left" | "right", logoUrl?: string) {
   return (
     <span
       className={clsx(
-        "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border text-[10px] font-bold uppercase tracking-[0.18em]",
+        "inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border text-[10px] font-bold uppercase tracking-[0.18em]",
         tone === "left" ? "border-cyan-400/18 bg-cyan-400/10 text-cyan-100" : "border-sky-400/18 bg-sky-400/10 text-sky-100"
       )}
     >
-      {name.slice(0, 2).toUpperCase()}
+      {logoUrl ? (
+        <img
+          src={logoUrl}
+          alt={name}
+          className="h-full w-full object-contain p-1.5"
+          loading="lazy"
+          decoding="async"
+          referrerPolicy="no-referrer"
+        />
+      ) : (
+        name.slice(0, 2).toUpperCase()
+      )}
     </span>
   );
 }
@@ -239,7 +251,7 @@ function renderRow(locale: Locale, row: RowItem, leftTool: LocalizedTool, rightT
         <div className="space-y-2">
           <div className="compare-slot-left rounded-[16px] border border-sky-400/10 p-3">
             <div className="flex items-start gap-3">
-              {renderAvatar(leftTool.name, "left")}
+              {renderAvatar(leftTool.name, "left", getToolLogoUrl(leftTool.websiteUrl))}
               <div className="min-w-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">{leftTool.name}</p>
                 <p className="mt-1 text-[13px] leading-6 text-slate-100">{row.left}</p>
@@ -249,7 +261,7 @@ function renderRow(locale: Locale, row: RowItem, leftTool: LocalizedTool, rightT
 
           <div className="compare-slot-right rounded-[16px] border border-sky-400/10 p-3">
             <div className="flex items-start gap-3">
-              {renderAvatar(rightTool.name, "right")}
+              {renderAvatar(rightTool.name, "right", getToolLogoUrl(rightTool.websiteUrl))}
               <div className="min-w-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200">{rightTool.name}</p>
                 <p className="mt-1 text-[13px] leading-6 text-slate-100">{row.right}</p>
@@ -325,11 +337,25 @@ export function ComparisonDetailTabs({
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-cyan-400/18 bg-cyan-400/10 text-[9px] font-bold text-cyan-100">
-              {leftTool.name.slice(0, 2).toUpperCase()}
+            <span className="inline-flex h-7 w-7 items-center justify-center overflow-hidden rounded-full border border-cyan-400/18 bg-cyan-400/10 text-[9px] font-bold text-cyan-100">
+              <img
+                src={getToolLogoUrl(leftTool.websiteUrl)}
+                alt={leftTool.name}
+                className="h-full w-full object-contain p-1"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+              />
             </span>
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-sky-400/18 bg-sky-400/10 text-[9px] font-bold text-sky-100">
-              {rightTool.name.slice(0, 2).toUpperCase()}
+            <span className="inline-flex h-7 w-7 items-center justify-center overflow-hidden rounded-full border border-sky-400/18 bg-sky-400/10 text-[9px] font-bold text-sky-100">
+              <img
+                src={getToolLogoUrl(rightTool.websiteUrl)}
+                alt={rightTool.name}
+                className="h-full w-full object-contain p-1"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+              />
             </span>
           </div>
         </div>
@@ -384,8 +410,15 @@ export function ComparisonDetailTabs({
       <div className="mt-5 grid gap-3 lg:grid-cols-[1.05fr_auto_1.05fr] lg:items-stretch">
         <div className="rounded-[28px] border border-sky-400/10 bg-slate-950/48 p-4 shadow-[0_18px_60px_-38px_rgba(14,165,233,0.16)]">
           <div className="flex items-center gap-3">
-            <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-cyan-400/16 bg-cyan-400/10 text-sm font-bold text-cyan-100">
-              {leftTool.name.slice(0, 2).toUpperCase()}
+            <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-cyan-400/16 bg-cyan-400/10 text-sm font-bold text-cyan-100">
+              <img
+                src={getToolLogoUrl(leftTool.websiteUrl)}
+                alt={leftTool.name}
+                className="h-full w-full object-contain p-1.5"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+              />
             </span>
             <div className="min-w-0">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{leftTool.name}</p>
@@ -417,8 +450,15 @@ export function ComparisonDetailTabs({
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{rightTool.name}</p>
               <p className="mt-1 text-sm text-slate-400">{rightTool.bestUseCase}</p>
             </div>
-            <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-sky-400/18 bg-sky-400/10 text-sm font-bold text-sky-100 lg:order-1">
-              {rightTool.name.slice(0, 2).toUpperCase()}
+            <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-sky-400/18 bg-sky-400/10 text-sm font-bold text-sky-100 lg:order-1">
+              <img
+                src={getToolLogoUrl(rightTool.websiteUrl)}
+                alt={rightTool.name}
+                className="h-full w-full object-contain p-1.5"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+              />
             </span>
           </div>
           <div className="mt-4 flex flex-wrap gap-2 lg:justify-end">

@@ -23,6 +23,7 @@ import {
 } from "@/lib/comparisons";
 import { getLocalizedBlogArticleBySlug } from "@/lib/blog";
 import { formatPricing, getCatalogContent, getCategoryNamesMap, getToolOutboundUrl } from "@/lib/catalog";
+import { getToolLogoUrl } from "@/lib/logo";
 import type { LocalizedTool } from "@/types/catalog";
 const copy = {
   tr: {
@@ -486,14 +487,16 @@ export default async function ComparisonPage({
               openHref: leftOfficialHref,
               reviewHref: `/${safeLocale}/tools/${leftTool.slug}`,
               scoreLabel: `${leftTool.rating.toFixed(1)}/5`,
-              categoryLabel: leftTool.compareProfile.category
+              categoryLabel: leftTool.compareProfile.category,
+              logoUrl: getToolLogoUrl(leftTool.websiteUrl)
             },
             {
               name: rightTool.name,
               openHref: rightOfficialHref,
               reviewHref: `/${safeLocale}/tools/${rightTool.slug}`,
               scoreLabel: `${rightTool.rating.toFixed(1)}/5`,
-              categoryLabel: rightTool.compareProfile.category
+              categoryLabel: rightTool.compareProfile.category,
+              logoUrl: getToolLogoUrl(rightTool.websiteUrl)
             }
           ]}
           summary={buildComparisonDescription(safeLocale, leftTool, rightTool, pair)}
@@ -511,14 +514,14 @@ export default async function ComparisonPage({
           editorialHref={relatedBlogHref}
         />
 
-        {alternatives.length ? (
-          <SectionShell
-            eyebrow={dictionary.relatedComparisonsTitle}
-            title={dictionary.relatedComparisonsTitle}
-            description={dictionary.relatedComparisonsDescription}
-            className="px-0 sm:px-0 lg:px-0"
-            contentClassName="grid gap-4 md:grid-cols-2 xl:grid-cols-3"
-          >
+          {alternatives.length ? (
+            <SectionShell
+              eyebrow={dictionary.relatedComparisonsTitle}
+              title={dictionary.relatedComparisonsTitle}
+              description={dictionary.relatedComparisonsDescription}
+              className="px-0 sm:px-0 lg:px-0"
+              contentClassName="grid gap-4 md:grid-cols-2 xl:grid-cols-3"
+            >
             {alternatives.slice(0, 6).map((tool) => {
               const matchedTool = getBetterMatchedPairTool(tool, leftTool, rightTool);
               const compareHref = buildComparisonPath(safeLocale, tool.slug, matchedTool.slug);
@@ -547,14 +550,14 @@ export default async function ComparisonPage({
           </SectionShell>
         ) : null}
 
-        {relatedBlogArticles.length ? (
-          <SectionShell
-            eyebrow={dictionary.relatedBlogsTitle}
-            title={dictionary.relatedBlogsTitle}
-            description={dictionary.relatedBlogsDescription}
-            className="px-0 sm:px-0 lg:px-0"
-            contentClassName="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
-          >
+          {relatedBlogArticles.length ? (
+            <SectionShell
+              eyebrow={dictionary.relatedBlogsTitle}
+              title={dictionary.relatedBlogsTitle}
+              description={dictionary.relatedBlogsDescription}
+              className="px-0 sm:px-0 lg:px-0"
+              contentClassName="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+            >
             {relatedBlogArticles.map((article) => (
               <BlogCard key={article.slug} locale={safeLocale} article={article} ctaLabel={dictionary.relatedBlogCtaLabel} />
             ))}
@@ -562,7 +565,7 @@ export default async function ComparisonPage({
         ) : null}
 
         <div id="faq" className="scroll-mt-24">
-          <ComparisonFaq title={dictionary.faqTitle} description={dictionary.faqDescription} items={comparisonFaq} />
+          <ComparisonFaq tone="light" title={dictionary.faqTitle} description={dictionary.faqDescription} items={comparisonFaq} />
         </div>
       </div>
     </>

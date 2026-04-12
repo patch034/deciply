@@ -32,6 +32,7 @@ import {
   getRelatedTools,
   getToolOutboundUrl
 } from "@/lib/catalog";
+import { getToolLogoUrl } from "@/lib/logo";
 import type { LocalizedTool } from "@/types/catalog";
 
 type DetailCopy = {
@@ -430,6 +431,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   const featuredBlogHref = relatedArticles[0] ? `/${safeLocale}/blog/${relatedArticles[0].slug}` : `/${safeLocale}/blog`;
   const blogCopy = getBlogCopy(safeLocale);
   const pricingValue = formatPricing(tool.pricing, safeLocale);
+  const logoUrl = getToolLogoUrl(tool.websiteUrl);
   const supportText = safeLocale === "tr" ? "Hızlı başlangıç | Net fiyat bilgisi" : "Fast start | Clear pricing signal";
   const quickCategory = getToolCategoryLabel(safeLocale, tool);
   const whoShouldAvoid = getWhoShouldAvoid(safeLocale, tool);
@@ -565,6 +567,23 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
 
       <section id="genel-bakis" className="scroll-mt-24 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
         <div className="rounded-[36px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.9),rgba(10,16,30,0.96),rgba(6,10,18,0.99))] p-5 shadow-[0_24px_80px_-40px_rgba(14,165,233,0.14)] sm:p-8 md:p-10">
+          <div className="flex items-center gap-4">
+            <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-[20px] border border-cyan-400/16 bg-slate-950/55 shadow-[0_16px_40px_-28px_rgba(34,211,238,0.32)]">
+              <img
+                src={logoUrl}
+                alt={tool.name}
+                className="h-full w-full object-contain p-2"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+              />
+            </span>
+            <div className="min-w-0">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">{dictionary.categoryLabel}</p>
+              <p className="mt-1 text-sm font-medium text-slate-300">{quickCategory}</p>
+            </div>
+          </div>
+
           <div className="flex flex-wrap items-center gap-3">
             <Badge variant="accent">{pricingValue}</Badge>
             <Badge>{quickCategory}</Badge>
@@ -658,7 +677,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         ]}
       />
 
-      <InfoSection id="karar-ozeti" title={decisionSummaryTitle} description={decisionSummaryDescription}>
+      <InfoSection id="karar-ozeti" title={decisionSummaryTitle} description={decisionSummaryDescription} tone="light">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {decisionSummaryCards.map((item) => (
             <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
@@ -669,7 +688,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </div>
       </InfoSection>
 
-      <InfoSection id="ozellikler" title={dictionary.overviewTitle} description={dictionary.overviewDescription}>
+      <InfoSection id="ozellikler" title={dictionary.overviewTitle} description={dictionary.overviewDescription} tone="light">
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
           <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 text-[15px] leading-7 text-slate-300 sm:p-5 sm:text-base">
             <p className="text-base font-semibold text-slate-100">{tool.whatItActuallyDoes}</p>
@@ -683,7 +702,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </div>
       </InfoSection>
 
-      <InfoSection title={dictionary.useCasesTitle} description={dictionary.useCasesDescription}>
+      <InfoSection title={dictionary.useCasesTitle} description={dictionary.useCasesDescription} tone="light">
         <div className="grid gap-4 md:grid-cols-3">
           {useCaseCards.map((item) => (
             <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
@@ -701,6 +720,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
             ? "Fiyat modelini, kimler için mantıklı olduğunu ve ticari kullanım açısından nasıl düşünülmesi gerektiğini hızlıca değerlendirin."
             : "Review the pricing model, who it makes sense for, and how to think about it from a commercial workflow angle."
         }
+        tone="light"
       >
         <div className="grid gap-4 md:grid-cols-3">
           {pricingSummaryCards.map((item) => (
@@ -711,7 +731,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
           ))}
         </div>
       </InfoSection>
-      <InfoSection id="para-kazanma" title={dictionary.moneyTitle} description={dictionary.moneyDescription}>
+      <InfoSection id="para-kazanma" title={dictionary.moneyTitle} description={dictionary.moneyDescription} tone="light">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {tool.moneyUseCases.map((item) => (
             <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
@@ -729,6 +749,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
             ? "Aracın gerçek bir iş akışında nasıl kullanılabileceğini ve ilk sonuca daha hızlı nasıl gidilebileceğini görün."
             : "See how this tool can fit into a real process and help you reach the first useful output faster."
         }
+        tone="light"
       >
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)]">
@@ -754,7 +775,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
           </div>
         </div>
       </InfoSection>
-      <InfoSection title={dictionary.howToUseTitle} description={dictionary.howToUseDescription}>
+      <InfoSection title={dictionary.howToUseTitle} description={dictionary.howToUseDescription} tone="light">
         <div className="grid gap-4 md:grid-cols-3">
           {howToUseSteps.map((step, index) => (
             <div key={step.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
@@ -767,12 +788,12 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       </InfoSection>
 
       <section className="grid gap-6 lg:grid-cols-2">
-        <ProsConsCard title={dictionary.prosTitle} items={tool.pros} tone="positive" />
-        <ProsConsCard title={dictionary.consTitle} items={tool.cons} tone="negative" />
+        <ProsConsCard title={dictionary.prosTitle} items={tool.pros} tone="positive" surfaceTone="light" />
+        <ProsConsCard title={dictionary.consTitle} items={tool.cons} tone="negative" surfaceTone="light" />
       </section>
 
       <section className="grid gap-6 lg:grid-cols-2">
-        <InfoSection id="kimler-icin" title={dictionary.whoShouldUseTitle} description={dictionary.whoShouldUseDescription}>
+        <InfoSection id="kimler-icin" title={dictionary.whoShouldUseTitle} description={dictionary.whoShouldUseDescription} tone="light">
           <div className="grid gap-4 md:grid-cols-2">
             {audienceCards.map((item) => (
               <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
@@ -790,7 +811,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
           </div>
         </InfoSection>
 
-        <InfoSection title={dictionary.whoShouldAvoidTitle} description={dictionary.whoShouldAvoidDescription}>
+        <InfoSection title={dictionary.whoShouldAvoidTitle} description={dictionary.whoShouldAvoidDescription} tone="light">
           <div className="grid gap-4 md:grid-cols-1">
             {whoShouldAvoid.map((item) => (
               <div key={item} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-4 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)] sm:p-5">
@@ -845,7 +866,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
         </div>
       </InfoSection>
 
-      <InfoSection title={alternativesTitle} description={dictionary.alternativesDescription}>
+          <InfoSection title={alternativesTitle} description={dictionary.alternativesDescription} tone="light">
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {relatedTools.map((item) => (
             <ToolCard
@@ -897,6 +918,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
       ) : null}
 
       <ComparisonFaq
+        tone="light"
         title={safeLocale === "tr" ? "Sık sorulan sorular" : "FAQ"}
         description={
           safeLocale === "tr"

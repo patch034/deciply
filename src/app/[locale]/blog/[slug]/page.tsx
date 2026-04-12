@@ -279,36 +279,36 @@ export default async function BlogDetailPage({
           ]}
         />
 
-        <section id="genel-bakis" className="scroll-mt-24 rounded-[36px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(14,165,233,0.14)] lg:px-10 lg:py-12">
+        <section id="genel-bakis" className="scroll-mt-24 rounded-[36px] border border-slate-200/85 bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(247,250,253,0.99),rgba(235,243,251,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(14,165,233,0.14)] lg:px-10 lg:py-12">
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
             <div>
-              <Badge variant="ghost" className="border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
+              <Badge variant="ghost" className="border-cyan-200 bg-cyan-50 text-cyan-700">
                 {copy.articleLeadLabel}
               </Badge>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Badge variant="accent">{article.categoryLabel}</Badge>
-                <Badge>{safeLocale === "tr" ? "SEO odaklı içerik" : "SEO-focused article"}</Badge>
+                <Badge variant="muted">{safeLocale === "tr" ? "SEO odaklı içerik" : "SEO-focused article"}</Badge>
               </div>
-              <h1 className="mt-6 bg-gradient-to-r from-white via-sky-200 to-cyan-300 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-[3.5rem] lg:leading-[1.03]">
+              <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.03]">
                 {article.title}
               </h1>
-              <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-400">
+              <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-500">
                 <span>{publishedLabel}: {publishedDate}</span>
                 {updatedDate ? <span>{updatedLabel}: {updatedDate}</span> : null}
               </div>
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{article.excerpt}</p>
-              <p className="mt-5 max-w-3xl text-base leading-8 text-slate-400">{article.intro}</p>
+              <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{article.excerpt}</p>
+              <p className="mt-5 max-w-3xl text-base leading-8 text-slate-500">{article.intro}</p>
             </div>
 
-            <div className="rounded-[28px] border border-sky-400/10 bg-slate-950/50 p-6">
+            <div className="rounded-[28px] border border-slate-200 bg-white/92 p-6 shadow-[0_20px_60px_-36px_rgba(15,23,42,0.14)]">
               <div className="grid gap-3 sm:grid-cols-1">
-                <div className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 px-4 py-3 text-sm font-semibold text-slate-100">
+                <div className="rounded-[22px] border border-slate-200 bg-slate-50/90 px-4 py-3 text-sm font-semibold text-slate-900">
                   {safeLocale === "tr" ? "İç link" : "Internal links"}: {relatedTools.length + 1}
                 </div>
-                <div className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 px-4 py-3 text-sm font-semibold text-slate-100">
+                <div className="rounded-[22px] border border-slate-200 bg-slate-50/90 px-4 py-3 text-sm font-semibold text-slate-900">
                   {safeLocale === "tr" ? "Bölüm sayısı" : "Sections"}: {article.sections.length}
                 </div>
-                <div className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 px-4 py-3 text-sm font-semibold text-slate-100">
+                <div className="rounded-[22px] border border-slate-200 bg-slate-50/90 px-4 py-3 text-sm font-semibold text-slate-900">
                   {safeLocale === "tr" ? "Karşılaştırma linki hazır" : "Comparison path ready"}
                 </div>
               </div>
@@ -324,7 +324,7 @@ export default async function BlogDetailPage({
 
         <SectionJumpNav items={sectionNavItems} />
 
-        {tailSections.length ? <ArticleContent locale={safeLocale} sections={tailSections} supportingLinks={inlineSupportingLinks} /> : null}
+        {tailSections.length ? <ArticleContent locale={safeLocale} sections={tailSections} supportingLinks={inlineSupportingLinks} tone="light" /> : null}
 
         <SectionShell
           eyebrow={copy.relatedToolsTitle}
@@ -395,6 +395,7 @@ export default async function BlogDetailPage({
                 : "Open the related tool to review pricing, use cases, and alternatives.")
           }
           buttons={blogCtaButtons}
+          tone="light"
         />
 
       </div>
