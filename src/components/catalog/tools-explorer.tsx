@@ -557,7 +557,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
 
       {sortedTools.length > 0 ? (
         <>
-          <section className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4">
+          <section className="grid grid-cols-1 gap-3">
             {visibleTools.map((tool) => (
               <ToolCard
                 key={tool.slug}
@@ -570,7 +570,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
                 useCaseLabel={tool.useCaseLabels[0]}
                 compareHref={tool.compareHref}
                 logoUrl={tool.logoUrl}
-                variant="compact"
+                variant="row"
               />
             ))}
           </section>

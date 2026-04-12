@@ -122,6 +122,20 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
               </Link>
             ))}
           </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Link
+              href={`/${locale}/categories/mega`}
+              className="inline-flex min-h-[34px] items-center rounded-full border border-cyan-200 bg-cyan-50 px-3 text-xs font-semibold text-cyan-700 transition hover:border-cyan-300 hover:bg-cyan-100"
+            >
+              {locale === "tr" ? "Mega dizin" : "Mega directory"}
+            </Link>
+            <Link
+              href={`/${locale}/news`}
+              className="inline-flex min-h-[34px] items-center rounded-full border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-600 transition hover:border-sky-200 hover:text-slate-950"
+            >
+              {locale === "tr" ? "AI Haberleri" : "AI News"}
+            </Link>
+          </div>
         </div>
 
         <div className="border-t border-slate-200 pt-5">

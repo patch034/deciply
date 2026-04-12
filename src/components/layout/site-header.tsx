@@ -25,10 +25,9 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   const browseItems = [
     { href: `/${locale}/categories`, label: locale === "tr" ? "Kategoriler" : "Categories" },
     { href: `/${locale}/tools`, label: locale === "tr" ? "Araçlar" : "Tools" },
-    { href: `/${locale}/categories/comparisons`, label: locale === "tr" ? "Karşılaştırmalar" : "Comparisons" },
-    { href: `/${locale}/blog`, label: locale === "tr" ? "Blog" : "Blog" },
-    { href: `/${locale}/compare-auto`, label: locale === "tr" ? "Canlı karşılaştırma" : "Live compare" },
-    { href: `/${locale}/use-cases/students`, label: locale === "tr" ? "Öğrenciler" : "Students" }
+    { href: `/${locale}/compare`, label: locale === "tr" ? "Karşılaştırmalar" : "Comparisons" },
+    { href: `/${locale}/news`, label: locale === "tr" ? "AI Haberleri" : "AI News" },
+    { href: `/${locale}/blog`, label: locale === "tr" ? "Blog" : "Blog" }
   ];
   const searchPlaceholder =
     locale === "tr" ? "Araç, kategori veya karşılaştırma ara..." : "Search tools, categories, or comparisons...";

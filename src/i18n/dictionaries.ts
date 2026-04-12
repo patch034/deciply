@@ -9,7 +9,8 @@ const dictionaries = {
     navigation: [
       { label: "Kategoriler", href: "/categories" },
       { label: "Araçlar", href: "/tools" },
-      { label: "Karşılaştırmalar", href: "/categories/comparisons" },
+      { label: "Karşılaştırmalar", href: "/compare" },
+      { label: "AI Haberleri", href: "/news" },
       { label: "Blog", href: "/blog" }
     ],
     footer: {
@@ -33,8 +34,9 @@ const dictionaries = {
         {
           title: "Karşılaştır",
           links: [
-            { label: "Tüm karşılaştırmalar", href: "/categories/comparisons" },
+            { label: "Tüm karşılaştırmalar", href: "/compare" },
             { label: "Canlı karşılaştırma", href: "/compare-auto" },
+            { label: "AI Haberleri", href: "/news" },
             { label: "ChatGPT vs Claude", href: "/compare/chatgpt-vs-claude" },
             { label: "ChatGPT vs Gemini", href: "/compare/chatgpt-vs-gemini" },
             { label: "Midjourney vs Adobe Firefly", href: "/compare/midjourney-vs-adobe-firefly" }
@@ -53,6 +55,7 @@ const dictionaries = {
           title: "Güven / Kurumsal",
           links: [
             { label: "Blog", href: "/blog" },
+            { label: "AI Haberleri", href: "/news" },
             { label: "Affiliate açıklaması", href: "/affiliate-disclosure" },
             { label: "Gizlilik politikası", href: "/privacy-policy" },
             { label: "Kullanım şartları", href: "/terms" }
@@ -71,7 +74,8 @@ const dictionaries = {
     navigation: [
       { label: "Categories", href: "/categories" },
       { label: "Tools", href: "/tools" },
-      { label: "Comparisons", href: "/categories/comparisons" },
+      { label: "Comparisons", href: "/compare" },
+      { label: "AI News", href: "/news" },
       { label: "Blog", href: "/blog" }
     ],
     footer: {
@@ -95,8 +99,9 @@ const dictionaries = {
         {
           title: "Compare",
           links: [
-            { label: "All comparisons", href: "/categories/comparisons" },
+            { label: "All comparisons", href: "/compare" },
             { label: "Live compare", href: "/compare-auto" },
+            { label: "AI News", href: "/news" },
             { label: "ChatGPT vs Claude", href: "/compare/chatgpt-vs-claude" },
             { label: "ChatGPT vs Gemini", href: "/compare/chatgpt-vs-gemini" },
             { label: "Midjourney vs Adobe Firefly", href: "/compare/midjourney-vs-adobe-firefly" }
@@ -115,6 +120,7 @@ const dictionaries = {
           title: "Trust / Corporate",
           links: [
             { label: "Blog", href: "/blog" },
+            { label: "AI News", href: "/news" },
             { label: "Affiliate disclosure", href: "/affiliate-disclosure" },
             { label: "Privacy policy", href: "/privacy-policy" },
             { label: "Terms", href: "/terms" }
