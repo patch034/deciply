@@ -40,7 +40,7 @@ function toneClasses(tone: "dark" | "light") {
   return tone === "light"
     ? {
         shell:
-          "border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,250,252,0.98))] shadow-[0_24px_70px_-40px_rgba(15,23,42,0.18)]",
+          "border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,250,253,0.99))] shadow-[0_24px_72px_-40px_rgba(15,23,42,0.16)]",
         inner: "border-slate-200 bg-slate-50/80",
         text: "text-slate-900",
         subText: "text-slate-600",
@@ -63,7 +63,7 @@ function toneClasses(tone: "dark" | "light") {
       };
 }
 
-export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ratingLabel, tone = "dark" }: ToolCardProps) {
+export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ratingLabel, tone = "light" }: ToolCardProps) {
   const pricingSignal = getPricingSignal(tool.pricing);
   const notIdealLabel = locale === "tr" ? "Çok uygun olmayabilir" : "May be less ideal for";
   const styles = toneClasses(tone);
@@ -116,7 +116,7 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
           </div>
 
           <div className={`mt-3 hidden min-w-0 rounded-[24px] border p-4 sm:mt-5 sm:block ${styles.inner}`}>
-            <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-400">Deciply notu</p>
+            <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-400">Deciply note</p>
             <p className={`mobile-clamp-2 mt-2 text-[15px] leading-relaxed ${tone === "light" ? "text-slate-700" : "text-slate-200/88"}`}>
               {tool.editorNote}
             </p>

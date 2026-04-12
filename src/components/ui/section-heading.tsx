@@ -35,15 +35,15 @@ export function SectionHeading({
     >
       <div className={clsx("max-w-3xl min-w-0", align === "center" && "mx-auto")}>
         {eyebrow ? (
-          <Badge variant={tone === "light" ? "muted" : "ghost"} className={tone === "light" ? "border-slate-200 bg-slate-50 text-slate-700" : "text-cyan-200"}>
-            {eyebrow}
-          </Badge>
+        <Badge variant={tone === "light" ? "muted" : "ghost"} className={tone === "light" ? "border-slate-200 bg-slate-50 text-slate-700" : "text-cyan-200"}>
+          {eyebrow}
+        </Badge>
         ) : null}
-        <h2 className={clsx("balance-text mt-3 max-w-3xl text-[1.72rem] font-bold tracking-[-0.035em] sm:mt-4 sm:text-[2.05rem] md:text-[2.35rem] md:leading-[1.08]", textClass)}>
+        <h2 className={clsx("balance-text mt-3 max-w-3xl text-[1.85rem] font-bold tracking-[-0.04em] sm:mt-4 sm:text-[2.22rem] md:text-[2.55rem] md:leading-[1.06]", textClass)}>
           {title}
         </h2>
         {description ? (
-          <p className={clsx("mt-2 max-w-2xl text-[13px] leading-6 sm:mt-3 sm:text-[14px] sm:leading-7 md:text-base md:leading-8", descriptionClass)}>
+          <p className={clsx("mt-2 max-w-2xl text-[13px] leading-6 sm:mt-3 sm:text-[14px] sm:leading-7 md:text-[1.02rem] md:leading-8", descriptionClass)}>
             {description}
           </p>
         ) : null}

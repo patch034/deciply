@@ -58,10 +58,7 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
     };
   }, []);
 
-  const activeLanguage = useMemo(
-    () => languageEntries.find((entry) => entry.code === locale) ?? languageEntries[0],
-    [locale]
-  );
+  const activeLanguage = useMemo(() => languageEntries.find((entry) => entry.code === locale) ?? languageEntries[0], [locale]);
 
   return (
     <div ref={wrapperRef} className="relative">
@@ -70,7 +67,7 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((current) => !current)}
-        className="inline-flex min-h-[42px] items-center gap-2 rounded-full border border-slate-200/90 bg-white/90 px-3.5 text-sm font-semibold text-slate-900 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.22)] transition hover:border-sky-200 hover:bg-white sm:min-h-[44px]"
+        className="inline-flex min-h-[42px] items-center gap-2 rounded-full border border-slate-200/90 bg-white/95 px-3.5 text-sm font-semibold text-slate-900 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.22)] transition hover:border-sky-200 hover:bg-white sm:min-h-[44px]"
       >
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-700">
           <GlobeIcon />

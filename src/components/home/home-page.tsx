@@ -19,7 +19,7 @@ function buildPopularTools(locale: Locale) {
 
       return left.slug.localeCompare(right.slug);
     })
-    .slice(0, 6)
+    .slice(0, 20)
     .map((tool) => toHomeToolCard(locale, tool));
 }
 
@@ -29,7 +29,7 @@ type HomePageProps = {
 };
 
 export function HomePage({ locale, content }: HomePageProps) {
-  const comparisonCards = getComparisonDirectoryCards(locale).slice(0, 3);
+  const comparisonCards = getComparisonDirectoryCards(locale).slice(0, 6);
   const popularTools = buildPopularTools(locale);
 
   return (

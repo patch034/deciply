@@ -144,7 +144,7 @@ const homeContent: Record<Locale, HomeContent> = {
   tr: {
     hero: {
       badge: "AI araç dizini",
-      title: "İhtiyacına en uygun AI araçlarını tek ekrandan keşfet",
+      title: "En iyi AI araçlarını ve karşılaştırmaları tek yerden keşfet",
       description:
         "Araçları kategorilere, kullanım senaryolarına ve karşılaştırmalara göre tarayarak hızlıca doğru başlangıç noktasına ulaş.",
       primaryCta: "Araçları keşfet",
@@ -160,7 +160,7 @@ const homeContent: Record<Locale, HomeContent> = {
         { value: String(blogArticles.length), label: "yayındaki rehber" },
         { value: String(discoveryPages.length), label: "keşif sayfası" }
       ],
-      panelTitle: "Aradığın aracı daha hızlı bul",
+      panelTitle: "Aradığın aracı ve alternatifleri daha hızlı bul",
       panelDescription:
         "Kısa özetler, senaryo etiketleri ve karşılaştırma bağlantıları ile keşif sürecini hızlandır.",
       panelItems: [
@@ -495,7 +495,7 @@ const homeContent: Record<Locale, HomeContent> = {
   en: {
     hero: {
       badge: "AI tool directory",
-      title: "Discover the right AI tools for your exact workflow",
+      title: "Discover the best AI tools and comparisons in one place",
       description:
         "Browse tools by category, use case, and comparison to reach the best starting point faster.",
       primaryCta: "Explore tools",
@@ -511,7 +511,7 @@ const homeContent: Record<Locale, HomeContent> = {
         { value: String(blogArticles.length), label: "guides published" },
         { value: String(discoveryPages.length), label: "discovery pages" }
       ],
-      panelTitle: "Find the right tool faster",
+      panelTitle: "Find the right tool and best alternative faster",
       panelDescription:
         "Short summaries, scenario tags, and comparison links make exploration easier in seconds.",
       panelItems: [

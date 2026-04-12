@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 
 import type { HomeContent } from "@/data/home";
 import type { Locale } from "@/i18n/config";
-import { buildComparisonPath } from "@/lib/comparisons";
 import { buildAlternativesPath, buildUseCasePath } from "@/lib/intent-pages";
+import { buildComparisonPath } from "@/lib/comparisons";
 
 import { Badge } from "@/components/ui/badge";
 import { PremiumButton } from "@/components/ui/premium-button";
@@ -20,12 +20,16 @@ type HeroSectionProps = {
 function getQuickLinks(locale: Locale) {
   return [
     {
-      label: locale === "tr" ? "Karşılaştırmalar" : "Comparisons",
-      href: `/${locale}/categories/comparisons`
+      label: locale === "tr" ? "Kategoriler" : "Categories",
+      href: `/${locale}/categories`
     },
     {
       label: locale === "tr" ? "Araçlar" : "Tools",
       href: `/${locale}/tools`
+    },
+    {
+      label: locale === "tr" ? "Karşılaştırmalar" : "Comparisons",
+      href: `/${locale}/categories/comparisons`
     },
     {
       label: locale === "tr" ? "Blog" : "Blog",
@@ -36,7 +40,11 @@ function getQuickLinks(locale: Locale) {
       href: `/${locale}/compare-auto`
     },
     {
-      label: locale === "tr" ? "Para kazanma" : "Make money",
+      label: locale === "tr" ? "Öğrenciler" : "Students",
+      href: buildUseCasePath(locale, "students")
+    },
+    {
+      label: locale === "tr" ? "Freelancer'lar" : "Freelancers",
       href: buildUseCasePath(locale, "freelancers")
     }
   ];
@@ -49,12 +57,16 @@ function getPopularShortcuts(locale: Locale) {
       href: buildComparisonPath(locale, "chatgpt", "claude")
     },
     {
-      label: "ChatGPT alternatives",
-      href: buildAlternativesPath(locale, "chatgpt")
+      label: "Claude vs Gemini",
+      href: buildComparisonPath(locale, "claude", "gemini")
     },
     {
-      label: locale === "tr" ? "Öğrenciler" : "Students",
-      href: buildUseCasePath(locale, "students")
+      label: "Perplexity vs ChatGPT",
+      href: buildComparisonPath(locale, "perplexity", "chatgpt")
+    },
+    {
+      label: locale === "tr" ? "ChatGPT alternatifleri" : "ChatGPT alternatives",
+      href: buildAlternativesPath(locale, "chatgpt")
     }
   ];
 }
@@ -65,14 +77,14 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
 
   return (
     <section className="relative mx-auto w-full max-w-[1440px] px-4 pt-4 sm:px-6 sm:pt-6 lg:px-8 lg:pt-8">
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[30rem] overflow-hidden">
-        <div className="absolute left-[8%] top-10 h-56 w-56 rounded-full bg-sky-200/55 blur-3xl" />
-        <div className="absolute right-[6%] top-4 h-72 w-72 rounded-full bg-cyan-200/55 blur-3xl" />
-        <div className="absolute left-1/2 top-28 h-80 w-80 -translate-x-1/2 rounded-full bg-blue-100/80 blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] overflow-hidden">
+        <div className="absolute left-[8%] top-8 h-64 w-64 rounded-full bg-sky-200/55 blur-3xl" />
+        <div className="absolute right-[6%] top-6 h-80 w-80 rounded-full bg-cyan-200/55 blur-3xl" />
+        <div className="absolute left-1/2 top-24 h-[24rem] w-[24rem] -translate-x-1/2 rounded-full bg-blue-100/82 blur-3xl" />
       </div>
 
-      <div className="rounded-[38px] border border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,250,252,0.98))] shadow-[0_28px_90px_-52px_rgba(15,23,42,0.18)]">
-        <div className="grid gap-8 px-4 py-5 sm:px-6 sm:py-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:px-8 lg:py-8">
+      <div className="rounded-[40px] border border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(246,249,253,0.98))] shadow-[0_32px_104px_-56px_rgba(15,23,42,0.2)]">
+        <div className="grid gap-8 px-5 py-6 sm:px-6 sm:py-7 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 lg:px-8 lg:py-8">
           <div className="flex min-w-0 flex-col justify-center">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -85,7 +97,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             </motion.div>
 
             <motion.h1
-              className="balance-text mt-4 max-w-4xl text-[clamp(2.4rem,5vw,4.9rem)] font-black leading-[0.98] tracking-[-0.07em] text-slate-950 sm:mt-6"
+              className="balance-text mt-4 max-w-4xl text-[clamp(2.55rem,5vw,5rem)] font-black leading-[0.96] tracking-[-0.075em] text-slate-950 sm:mt-6"
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.56, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
@@ -94,7 +106,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             </motion.h1>
 
             <motion.p
-              className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-600 sm:mt-5 sm:text-base sm:leading-8 lg:text-[1.03rem]"
+              className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-600 sm:mt-5 sm:text-base sm:leading-8 lg:text-[1.04rem]"
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -105,7 +117,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             <motion.form
               action={`/${locale}/tools`}
               method="get"
-              className="mt-6 flex w-full max-w-[44rem] flex-col gap-3 sm:mt-7 sm:flex-row"
+              className="mt-6 flex w-full max-w-[46rem] flex-col gap-3 sm:mt-7 sm:flex-row"
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
@@ -113,7 +125,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
               <label className="sr-only" htmlFor="homepage-search">
                 {locale === "tr" ? "Araç ara" : "Search tools"}
               </label>
-              <div className="flex flex-1 items-center gap-3 rounded-[22px] border border-slate-200/90 bg-white px-4 py-3.5 shadow-[0_22px_52px_-32px_rgba(15,23,42,0.18)]">
+              <div className="flex flex-1 items-center gap-3 rounded-[24px] border border-slate-200/90 bg-white px-4 py-3.5 shadow-[0_24px_56px_-32px_rgba(15,23,42,0.16)]">
                 <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 shrink-0 text-slate-400">
                   <path d="M10.5 4.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z" fill="none" stroke="currentColor" strokeWidth="1.7" />
                   <path d="m15 15 4.5 4.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
@@ -128,7 +140,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
               </div>
               <button
                 type="submit"
-                className="inline-flex min-h-[46px] items-center justify-center rounded-[16px] bg-[linear-gradient(90deg,#2563EB_0%,#3B82F6_52%,#06B6D4_100%)] px-4 text-sm font-semibold text-white shadow-[0_24px_58px_-28px_rgba(37,99,235,0.5)] transition hover:-translate-y-0.5 hover:brightness-[1.03] sm:w-auto"
+                className="inline-flex min-h-[48px] items-center justify-center rounded-[18px] bg-[linear-gradient(90deg,#2563EB_0%,#3B82F6_52%,#06B6D4_100%)] px-5 text-sm font-semibold text-white shadow-[0_24px_58px_-28px_rgba(37,99,235,0.46)] transition hover:-translate-y-0.5 hover:brightness-[1.03] sm:w-auto"
               >
                 {content.primaryCta}
               </button>
@@ -160,7 +172,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
               <PremiumButton href={`/${locale}/categories/comparisons`} variant="ghost" className="w-full sm:w-auto">
                 {content.secondaryCta}
               </PremiumButton>
-              <span className="text-sm font-medium leading-6 text-slate-500">{content.trustLine}</span>
+              <span className="text-sm font-medium leading-6 text-slate-600">{content.trustLine}</span>
             </motion.div>
 
             <motion.div
@@ -192,7 +204,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             </motion.dl>
 
             <motion.p
-              className="mt-4 text-sm font-medium leading-6 text-slate-500"
+              className="mt-4 text-sm font-medium leading-6 text-slate-600"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.42, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -201,12 +213,12 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             </motion.p>
           </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.58, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="flex h-full min-h-[540px] flex-col rounded-[34px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,250,253,0.98))] p-5 shadow-[0_30px_90px_-44px_rgba(15,23,42,0.18)] sm:p-6">
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.58, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="flex h-full min-h-[540px] flex-col rounded-[34px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,250,253,0.98))] p-5 shadow-[0_30px_90px_-44px_rgba(15,23,42,0.18)] sm:p-6">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">{content.panelEyebrow}</p>
@@ -222,6 +234,17 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
               </div>
 
               <p className="mt-4 max-w-md text-sm leading-7 text-slate-600">{content.panelDescription}</p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {content.trustBadges.map((badge) => (
+                  <span
+                    key={badge}
+                    className="inline-flex min-h-[32px] items-center rounded-full border border-slate-200 bg-slate-50 px-3 text-xs font-semibold text-slate-600"
+                  >
+                    {badge}
+                  </span>
+                ))}
+              </div>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {content.panelItems.map((item, index) => (

@@ -14,7 +14,7 @@ type CategoryCardProps = {
   tone?: "dark" | "light";
 };
 
-export function CategoryCard({ locale, category, linkLabel, tone = "dark" }: CategoryCardProps) {
+export function CategoryCard({ locale, category, linkLabel, tone = "light" }: CategoryCardProps) {
   const light = tone === "light";
 
   return (
@@ -24,7 +24,7 @@ export function CategoryCard({ locale, category, linkLabel, tone = "dark" }: Cat
           className={[
             "flex h-full flex-col overflow-hidden rounded-[28px] border p-5 transition duration-300 hover:-translate-y-1 sm:p-6 md:p-7",
             light
-              ? "border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,250,252,0.98))] shadow-[0_24px_70px_-40px_rgba(15,23,42,0.18)] hover:border-sky-200"
+              ? "border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,250,253,0.99))] shadow-[0_24px_70px_-40px_rgba(15,23,42,0.16)] hover:border-sky-200"
               : "ui-card ui-card-hover home-card-glow border-sky-400/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.88))]"
           ].join(" ")}
         >
@@ -36,8 +36,15 @@ export function CategoryCard({ locale, category, linkLabel, tone = "dark" }: Cat
               {category.metric}
             </Badge>
           </div>
-          <p className={["mt-6 text-xs font-medium uppercase tracking-[0.18em]", light ? "text-slate-500" : "text-slate-400"].join(" ")}>{category.eyebrow}</p>
-          <h3 className={["clamp-2 mt-2 min-h-[2.65rem] text-[1.22rem] font-bold leading-tight tracking-[-0.03em] sm:mt-3 sm:min-h-[3.15rem] sm:text-[1.42rem]", light ? "text-slate-900" : "text-slate-50"].join(" ")}>
+          <p className={["mt-6 text-xs font-medium uppercase tracking-[0.18em]", light ? "text-slate-500" : "text-slate-400"].join(" ")}>
+            {category.eyebrow}
+          </p>
+          <h3
+            className={[
+              "clamp-2 mt-2 min-h-[2.65rem] text-[1.22rem] font-bold leading-tight tracking-[-0.03em] sm:mt-3 sm:min-h-[3.15rem] sm:text-[1.42rem]",
+              light ? "text-slate-900" : "text-slate-50"
+            ].join(" ")}
+          >
             {category.title}
           </h3>
           <p className={["mobile-clamp-2 mt-3 flex-1 text-[15px] leading-relaxed sm:mt-4 sm:text-base", light ? "text-slate-600" : "text-slate-300/84"].join(" ")}>

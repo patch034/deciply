@@ -27,7 +27,7 @@ export function SectionShell({
   tone = "light"
 }: SectionShellProps) {
   return (
-    <section className={clsx("mx-auto w-full max-w-[1200px] px-4 sm:px-6", className)}>
+    <section className={clsx("mx-auto w-full max-w-[1320px] px-4 sm:px-6", className)}>
       {title ? (
         <SectionHeading
           eyebrow={eyebrow}

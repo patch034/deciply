@@ -14,7 +14,7 @@ type GuideCardProps = {
   tone?: "dark" | "light";
 };
 
-export function GuideCard({ locale, item, linkLabel, tone = "dark" }: GuideCardProps) {
+export function GuideCard({ locale, item, linkLabel, tone = "light" }: GuideCardProps) {
   const light = tone === "light";
 
   return (
@@ -24,7 +24,7 @@ export function GuideCard({ locale, item, linkLabel, tone = "dark" }: GuideCardP
           className={[
             "flex h-full min-h-[260px] flex-col overflow-hidden rounded-[28px] border p-5 transition duration-300 hover:border-cyan-400/22 hover:shadow-[0_34px_98px_-40px_rgba(14,165,233,0.14)] sm:min-h-[280px] sm:p-6 md:p-7",
             light
-              ? "border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,250,252,0.98))] shadow-[0_24px_72px_-42px_rgba(15,23,42,0.16)]"
+              ? "border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,250,253,0.99))] shadow-[0_24px_72px_-42px_rgba(15,23,42,0.16)]"
               : "home-card-glow border-sky-400/10 bg-[linear-gradient(160deg,rgba(9,14,27,0.96),rgba(5,9,17,0.99))] shadow-[0_28px_90px_-42px_rgba(6,10,18,0.72)]"
           ].join(" ")}
         >
@@ -33,11 +33,16 @@ export function GuideCard({ locale, item, linkLabel, tone = "dark" }: GuideCardP
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 via-blue-500 to-cyan-400 text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_16px_36px_-18px_rgba(37,99,235,0.3)]">
                 {item.icon}
               </div>
-              <Badge variant={light ? "ghost" : "ghost"} className="min-w-[96px] justify-center text-[11px]">
+              <Badge variant="ghost" className="min-w-[96px] justify-center text-[11px]">
                 {item.tag}
               </Badge>
             </div>
-            <span className={["rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]", light ? "border-slate-200 bg-slate-50 text-slate-500" : "border-sky-400/10 bg-slate-950/50 text-slate-400/90"].join(" ")}>
+            <span
+              className={[
+                "rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]",
+                light ? "border-slate-200 bg-slate-50 text-slate-500" : "border-sky-400/10 bg-slate-950/50 text-slate-400/90"
+              ].join(" ")}
+            >
               {item.readTime}
             </span>
           </div>
