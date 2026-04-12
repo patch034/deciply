@@ -72,7 +72,7 @@ export default async function NewsPage({
   const featuredItems = items.slice(0, 3);
   const latestItems = items.slice(3);
   const featuredTools = getLocalizedTools(safeLocale).filter((tool) => tool.featured).slice(0, 4);
-  const toolCategoryLabelMap = new Map(toolCategoryOptions[safeLocale].map((item) => [item.slug, item.label]));
+  const toolCategoryLabelMap = new Map<string, string>(toolCategoryOptions[safeLocale].map((item) => [item.slug, item.label]));
   const uniqueSources = Array.from(new Set(items.map((item) => item.source))).slice(0, 6);
   const topicLabels = Array.from(new Set(items.map((item) => item.categoryLabel))).slice(0, 8);
 
@@ -157,6 +157,8 @@ export default async function NewsPage({
           >
             {featuredItems.map((item) => {
               const publishedAt = formatDate(safeLocale, item.publishedAt);
+              const title = item.displayTitle ?? item.title;
+              const summary = item.displaySummary ?? item.summary;
               return (
                 <article
                   key={item.slug}
@@ -169,9 +171,9 @@ export default async function NewsPage({
                     {publishedAt ? <span className="text-[11px] text-slate-400">{publishedAt}</span> : null}
                   </div>
                   <h2 className="mt-3 text-lg font-bold tracking-[-0.03em] text-slate-950 transition group-hover:text-sky-700">
-                    <Link href={`/${safeLocale}/news/${item.slug}`}>{item.title}</Link>
+                    <Link href={`/${safeLocale}/news/${item.slug}`}>{title}</Link>
                   </h2>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{item.summary}</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{summary}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     <Link
                       href={`/${safeLocale}/news/${item.slug}`}
@@ -241,7 +243,7 @@ export default async function NewsPage({
                     <span className="block text-[11px] text-slate-500">{tool.bestUseCase}</span>
                   </span>
                   <span className="text-xs font-semibold text-slate-500">
-                    {toolCategoryLabelMap.get((tool.toolCategorySlugs[0] ?? "writing") as never) ?? tool.bestUseCase}
+                    {toolCategoryLabelMap.get(tool.toolCategorySlugs[0] ?? "writing") ?? tool.bestUseCase}
                   </span>
                 </Link>
               ))}

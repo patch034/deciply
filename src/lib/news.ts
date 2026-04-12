@@ -1,3 +1,5 @@
+import { unstable_cache } from "next/cache";
+
 import type { Locale } from "@/i18n/config";
 
 export type AiNewsLink = {
@@ -14,6 +16,10 @@ export type AiNewsItem = {
   publishedAt?: string;
   categoryLabel: string;
   relatedLinks: AiNewsLink[];
+  displayTitle?: string;
+  displaySummary?: string;
+  dek?: string;
+  whyItMatters?: string;
 };
 
 type FeedSource = {
@@ -47,6 +53,14 @@ function stripHtml(value: string) {
     .trim();
 }
 
+function cleanText(value: string) {
+  return stripHtml(value)
+    .replace(/\bhttps?:\/\/\S+/gi, " ")
+    .replace(/\bwww\.\S+/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function slugify(value: string) {
   return value
     .toLowerCase()
@@ -58,7 +72,7 @@ function slugify(value: string) {
 
 function extractTag(block: string, tag: string) {
   const match = block.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`, "i"));
-  return match ? stripHtml(match[1] ?? "") : "";
+  return match ? cleanText(match[1] ?? "") : "";
 }
 
 function extractSourceMeta(block: string) {
@@ -69,9 +83,108 @@ function extractSourceMeta(block: string) {
   }
 
   return {
-    name: stripHtml(match[2] ?? ""),
+    name: cleanText(match[2] ?? ""),
     url: (match[1] ?? "").trim()
   };
+}
+
+function isTurkish(locale: Locale) {
+  return locale === "tr";
+}
+
+function inferTopic(title: string, source: string, categoryLabel: string) {
+  const lower = `${title} ${source} ${categoryLabel}`.toLowerCase();
+
+  if (lower.includes("openai") || lower.includes("chatgpt")) return "OpenAI / ChatGPT";
+  if (lower.includes("anthropic") || lower.includes("claude")) return "Claude / Anthropic";
+  if (lower.includes("gemini") || lower.includes("google")) return "Google Gemini";
+  if (lower.includes("copilot") || lower.includes("microsoft")) return "Microsoft Copilot";
+  if (lower.includes("perplexity")) return "Perplexity";
+  if (lower.includes("midjourney")) return "Midjourney";
+  if (lower.includes("firefly") || lower.includes("image")) return "görsel üretim";
+  if (lower.includes("video") || lower.includes("runway") || lower.includes("capcut")) return "video üretimi";
+  if (lower.includes("regulation") || lower.includes("safety") || lower.includes("policy")) return "regülasyon ve güvenlik";
+  if (lower.includes("code") || lower.includes("developer") || lower.includes("cursor")) return "kodlama araçları";
+
+  return categoryLabel;
+}
+
+function detectAction(title: string) {
+  const lower = title.toLowerCase();
+
+  if (/(launch|launches|rolls out|releases|introduces|introduce|unveils|announces|announced|ships|ships out)/i.test(lower)) {
+    return "yeni bir duyuru yaptı";
+  }
+
+  if (/(adds|added|expands|expand|updates|updated|upgrade|upgrades|improves|improved)/i.test(lower)) {
+    return "ürün güncellemesi yayımladı";
+  }
+
+  if (/(partners|partnering|partnership|acquires|acquired|buy|buys)/i.test(lower)) {
+    return "iş birliği ya da satın alma gündemiyle öne çıktı";
+  }
+
+  if (/(regulation|regulatory|policy|safety|law|lawsuit)/i.test(lower)) {
+    return "regülasyon ve güvenlik tarafında gündeme geldi";
+  }
+
+  return "önemli bir gelişme paylaştı";
+}
+
+function buildTurkishDisplayTitle(title: string, source: string, categoryLabel: string) {
+  const topic = inferTopic(title, source, categoryLabel);
+  const action = detectAction(title);
+  return `${topic} cephesinde ${action}`;
+}
+
+function buildTurkishDisplaySummary(title: string, summary: string, source: string, categoryLabel: string) {
+  const topic = inferTopic(title, source, categoryLabel);
+  const cleanSummary = cleanText(summary).replace(/[“”"]/g, "");
+  const sentence = cleanSummary.length > 120 ? `${cleanSummary.slice(0, 117).trim()}...` : cleanSummary;
+
+  if (sentence) {
+    return `Deciply, ${topic} ile ilgili bu güncellemeyi karar odaklı şekilde özetliyor: ${sentence}`;
+  }
+
+  return `Deciply, ${topic} ile ilgili bu gelişmeyi araç, karşılaştırma ve kategori yollarına bağlanan kısa bir editorial özet olarak sunuyor.`;
+}
+
+function buildWhyItMatters(locale: Locale, title: string, summary: string) {
+  const lower = `${title} ${summary}`.toLowerCase();
+
+  if (lower.includes("openai") || lower.includes("chatgpt")) {
+    return locale === "tr"
+      ? "OpenAI gelişmeleri, chatbot ve karar destek akışlarında en fazla trafik üreten konulardan biri olmaya devam ediyor."
+      : "OpenAI headlines usually matter because they affect chatbot workflows, model choices, and high-intent comparison traffic.";
+  }
+
+  if (lower.includes("claude")) {
+    return locale === "tr"
+      ? "Claude güncellemeleri yazma, araştırma ve uzun metin kararlarında doğrudan kıyas akışı üretir."
+      : "Claude updates often influence writing, research, and long-form workflow comparisons.";
+  }
+
+  if (lower.includes("gemini") || lower.includes("google")) {
+    return locale === "tr"
+      ? "Google AI gündemi arama, üretkenlik ve model karşılaştırmalarında güçlü kullanıcı niyeti oluşturur."
+      : "Google AI stories often shape search, productivity, and model-comparison intent.";
+  }
+
+  if (lower.includes("copilot") || lower.includes("microsoft")) {
+    return locale === "tr"
+      ? "Copilot gelişmeleri ofis, kodlama ve iş akışları için doğrudan araç değerlendirmesine bağlanır."
+      : "Microsoft Copilot news often connects directly to office, coding, and workflow tool decisions.";
+  }
+
+  if (lower.includes("midjourney") || lower.includes("firefly") || lower.includes("image")) {
+    return locale === "tr"
+      ? "Görsel üretim haberleri, yaratıcı araç seçimi ve karşılaştırma sayfaları için net iç link fırsatı yaratır."
+      : "Image-generation stories usually create strong links into creative tools and comparison pages.";
+  }
+
+  return locale === "tr"
+    ? "Bu haber, AI araç seçimi ve karar sayfaları için yeni bir sinyal katmanı oluşturuyor."
+    : "This headline adds another useful signal layer for tool selection and comparison pages.";
 }
 
 function buildRelatedLinks(title: string, locale: Locale): AiNewsLink[] {
@@ -131,7 +244,7 @@ function buildRelatedLinks(title: string, locale: Locale): AiNewsLink[] {
 }
 
 function buildFeedItem(locale: Locale, source: FeedSource, title: string, summary: string, publishedAt?: string, sourceUrl = "", sourceName?: string): AiNewsItem {
-  return {
+  const item: AiNewsItem = {
     slug: slugify(`${source.source}-${title}`),
     title,
     summary,
@@ -141,6 +254,20 @@ function buildFeedItem(locale: Locale, source: FeedSource, title: string, summar
     categoryLabel: source.categoryLabel,
     relatedLinks: buildRelatedLinks(title, locale)
   };
+
+  if (isTurkish(locale)) {
+    item.displayTitle = buildTurkishDisplayTitle(title, item.source, source.categoryLabel);
+    item.displaySummary = buildTurkishDisplaySummary(title, summary, item.source, source.categoryLabel);
+    item.dek = item.displaySummary;
+    item.whyItMatters = buildWhyItMatters(locale, title, summary);
+  } else {
+    item.displayTitle = title;
+    item.displaySummary = summary;
+    item.dek = summary;
+    item.whyItMatters = buildWhyItMatters(locale, title, summary);
+  }
+
+  return item;
 }
 
 function parseRssFeed(locale: Locale, source: FeedSource, xml: string): AiNewsItem[] {
@@ -201,35 +328,38 @@ async function collectAiNewsItems(locale: Locale): Promise<AiNewsItem[]> {
   const feedItems: AiNewsItem[] = [];
   const seenTitles = new Set<string>();
 
-  for (const source of feedSources) {
-    try {
-      const response = await fetch(source.feedUrl, {
-        cache: "no-store",
-        headers: {
-          accept: "application/rss+xml,application/xml,text/xml"
-        }
-      });
+  const parsedFeeds = await Promise.all(
+    feedSources.map(async (source) => {
+      try {
+        const response = await fetch(source.feedUrl, {
+          cache: "no-store",
+          headers: {
+            accept: "application/rss+xml,application/xml,text/xml"
+          }
+        });
 
-      if (!response.ok) {
+        if (!response.ok) {
+          return [];
+        }
+
+        const xml = await response.text();
+        return parseRssFeed(locale, source, xml);
+      } catch {
+        return [];
+      }
+    })
+  );
+
+  for (const parsed of parsedFeeds) {
+    for (const item of parsed) {
+      const signature = item.title.toLowerCase();
+
+      if (seenTitles.has(signature)) {
         continue;
       }
 
-      const xml = await response.text();
-      const parsed = parseRssFeed(locale, source, xml);
-
-      for (const item of parsed) {
-        const signature = item.title.toLowerCase();
-
-        if (seenTitles.has(signature)) {
-          continue;
-        }
-
-        seenTitles.add(signature);
-        feedItems.push(item);
-
-      }
-    } catch {
-      continue;
+      seenTitles.add(signature);
+      feedItems.push(item);
     }
   }
 
@@ -240,12 +370,18 @@ async function collectAiNewsItems(locale: Locale): Promise<AiNewsItem[]> {
   return feedItems;
 }
 
+const getCachedAiNewsItems = unstable_cache(
+  async (locale: Locale) => collectAiNewsItems(locale),
+  ["deciply-ai-news"],
+  { revalidate: 60 * 60 }
+);
+
 export async function getAiNewsItems(locale: Locale, limit = 8): Promise<AiNewsItem[]> {
-  const items = await collectAiNewsItems(locale);
+  const items = await getCachedAiNewsItems(locale);
   return items.slice(0, limit);
 }
 
 export async function getAiNewsItemBySlug(locale: Locale, slug: string): Promise<AiNewsItem | null> {
-  const items = await collectAiNewsItems(locale);
+  const items = await getCachedAiNewsItems(locale);
   return items.find((item) => item.slug === slug) ?? null;
 }

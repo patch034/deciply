@@ -122,6 +122,9 @@ export default async function AiNewsDetailPage({
   }
 
   const publishedAt = formatDate(safeLocale, item.publishedAt);
+  const title = item.displayTitle ?? item.title;
+  const summary = item.displaySummary ?? item.summary;
+  const dek = item.dek ?? summary;
   const relatedTools = getLocalizedTools(safeLocale).filter((tool) =>
     item.relatedLinks.some((link) => link.href === `/${safeLocale}/tools/${tool.slug}`)
   );
@@ -132,9 +135,9 @@ export default async function AiNewsDetailPage({
   const relatedCategories = getLocalizedCategories(safeLocale).filter((category) =>
     item.relatedLinks.some((link) => link.href === `/${safeLocale}/categories/${category.slug}`)
   );
-  const whyItMatters = buildWhyItMatters(safeLocale, item.title, item.summary);
-  const digestParts = item.summary.split(".").map((part) => part.trim()).filter(Boolean);
-  const digest = digestParts.length > 1 ? digestParts.slice(0, 2) : [item.summary];
+  const whyItMatters = item.whyItMatters ?? buildWhyItMatters(safeLocale, item.title, item.summary);
+  const digestParts = dek.split(".").map((part) => part.trim()).filter(Boolean);
+  const digest = digestParts.length > 1 ? digestParts.slice(0, 2) : [summary];
 
   return (
     <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
@@ -143,9 +146,9 @@ export default async function AiNewsDetailPage({
         <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
           <div>
             <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">
-              {item.title}
+              {title}
             </h1>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{item.summary}</p>
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{summary}</p>
           </div>
 
           <div className="rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
@@ -317,7 +320,7 @@ export default async function AiNewsDetailPage({
                   {publishedAt ? <span className="block text-xs text-slate-500">{publishedAt}</span> : null}
                 </span>
               </div>
-              <p className="mt-3 text-sm leading-7 text-slate-600">{item.summary}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{summary}</p>
             </div>
           </div>
 

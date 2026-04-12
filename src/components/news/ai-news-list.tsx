@@ -47,6 +47,8 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
         const publishedAt = formatDate(locale, item.publishedAt);
         const detailHref = `/${locale}/news/${item.slug}`;
         const sourceMark = buildSourceMark(item.source);
+        const title = item.displayTitle ?? item.title;
+        const summary = item.displaySummary ?? item.summary;
 
         return (
           <article
@@ -83,11 +85,11 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
                   href={detailHref}
                   className="mt-1.5 block text-sm font-semibold leading-6 text-slate-950 transition group-hover:text-sky-700"
                 >
-                  {item.title}
+                  {title}
                 </Link>
 
                 <p className={["mt-1 text-[13px] leading-6 text-slate-600", sidebar ? "clamp-2" : "mobile-clamp-2"].join(" ")}>
-                  {item.summary}
+                  {summary}
                 </p>
 
                 {!sidebar ? (
