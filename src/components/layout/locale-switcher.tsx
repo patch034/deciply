@@ -115,7 +115,7 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
                 <div
                   key={entry.code}
                   aria-disabled="true"
-                  className="flex cursor-not-allowed items-center justify-between rounded-[18px] px-3 py-3 text-left text-slate-400 opacity-70"
+                  className="pointer-events-none flex cursor-not-allowed items-center justify-between rounded-[18px] px-3 py-3 text-left text-slate-400 opacity-70"
                 >
                   <span className="min-w-0">
                     <span className="block text-sm font-semibold">{entry.nativeLabel}</span>
