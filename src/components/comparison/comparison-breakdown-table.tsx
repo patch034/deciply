@@ -108,32 +108,32 @@ export function ComparisonBreakdownTable({
         </table>
       </div>
 
-      <div className="mt-5 grid gap-3 [@media(min-width:769px)]:hidden">
+      <div className="mt-5 grid gap-2 sm:gap-3 [@media(min-width:769px)]:hidden">
         {rows.map((row) => {
           const isCompact = ["Hız", "Kullanım kolaylığı", "Çıktı kalitesi", "Öğrenci", "Creator", "İş", "Değer", "Speed", "Ease of use", "Output quality", "Students", "Creators", "Business", "Value"].includes(row.label);
           return (
-          <article key={row.label} className="overflow-hidden rounded-[22px] border border-sky-400/10 bg-slate-950/46 p-4 shadow-[0_16px_44px_-34px_rgba(14,165,233,0.12)]">
+          <article key={row.label} className="overflow-hidden rounded-[18px] border border-sky-400/10 bg-slate-950/46 p-3 shadow-[0_16px_44px_-34px_rgba(14,165,233,0.12)] sm:rounded-[22px] sm:p-4">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-300">{locale === "tr" ? "Özellik" : "Feature"}</p>
                 <h3 className="mt-1 text-sm font-semibold text-slate-50">{row.label}</h3>
               </div>
-              <Badge variant="ghost" className="shrink-0 border-sky-400/10 bg-slate-950/50 px-2.5 py-1 text-[11px] text-slate-300">
+              <Badge variant="ghost" className="shrink-0 border-sky-400/10 bg-slate-950/50 px-2 py-0.5 text-[10px] text-slate-300">
                 {columns.left} · {columns.right}
               </Badge>
             </div>
 
-            <div className="mt-4 space-y-3">
-              <div className={isCompact ? "compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2" : "compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-3"}>
+            <div className={isCompact ? "mt-3 space-y-2" : "mt-3 space-y-2.5"}>
+              <div className={isCompact ? "compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2" : "compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2.5"}>
                 <div className="min-w-0">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">{columns.left}</p>
+                  <p className={isCompact ? "text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-200" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200"}>{columns.left}</p>
                   {renderMobileValue(row.left, isCompact)}
                 </div>
                 <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
               </div>
-              <div className={isCompact ? "compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2" : "compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-3"}>
+              <div className={isCompact ? "compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2" : "compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2.5"}>
                 <div className="min-w-0">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200">{columns.right}</p>
+                  <p className={isCompact ? "text-[10px] font-semibold uppercase tracking-[0.16em] text-sky-200" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200"}>{columns.right}</p>
                   {renderMobileValue(row.right, isCompact)}
                 </div>
                 <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>

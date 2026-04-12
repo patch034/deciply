@@ -192,7 +192,9 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
     }
   }
 
-  return <p className="text-sm leading-6 text-slate-200">{value}</p>;
+  return (
+    <p className={compact ? "text-[12px] leading-5 text-slate-200" : "text-sm leading-6 text-slate-200"}>{value}</p>
+  );
 }
 
 export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRightSlug, compact = false }: AutoCompareWorkspaceProps) {
@@ -331,22 +333,22 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
 
       {leftTool && rightTool ? (
         <div className="mt-6 space-y-4">
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-3 md:grid-cols-2">
             {([leftTool, rightTool] as CompareToolOption[]).map((tool) => (
-              <article key={tool.slug} className="rounded-[26px] border border-sky-400/10 bg-slate-950/45 p-4 shadow-[0_18px_54px_-36px_rgba(14,165,233,0.2)] sm:p-5">
+              <article key={tool.slug} className="rounded-[24px] border border-sky-400/10 bg-slate-950/45 p-3 shadow-[0_18px_54px_-36px_rgba(14,165,233,0.2)] sm:rounded-[26px] sm:p-5">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{tool.compareProfile.category}</p>
-                    <h3 className="mt-2 text-xl font-bold tracking-[-0.03em] text-slate-50">{tool.name}</h3>
+                    <h3 className="mt-2 text-lg font-bold tracking-[-0.03em] text-slate-50 sm:text-xl">{tool.name}</h3>
                   </div>
                   <Badge variant="accent" className="shrink-0 text-[11px]">
                     {tool.compareProfile.pricingModel}
                   </Badge>
                 </div>
 
-                <p className="mt-3 text-sm leading-6 text-slate-300/84 mobile-clamp-2">{tool.bestUseCase}</p>
+                <p className="mt-2 text-sm leading-5 text-slate-300/84 mobile-clamp-2 sm:mt-3 sm:leading-6">{tool.bestUseCase}</p>
 
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-3 flex flex-wrap gap-1.5 sm:mt-4 sm:gap-2">
                   {tool.compareProfile.bestFor.slice(0, 2).map((item) => (
                     <Badge key={item} variant="muted" className="px-2 py-0.5 text-[10px]">
                       {item}
@@ -357,29 +359,29 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
             ))}
           </div>
 
-          <div className="grid gap-3">
+          <div className="grid gap-2 sm:gap-3">
             {visibleRows.map((row) => (
               <div
                 key={row.label}
                 className={
                   compactRowLabels.has(row.label)
-                    ? "rounded-[18px] border border-sky-400/10 bg-slate-950/32 px-3 py-2.5 sm:rounded-[20px] sm:px-4 sm:py-3 lg:grid lg:grid-cols-[180px_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-4"
-                    : "rounded-[20px] border border-sky-400/10 bg-slate-950/36 px-4 py-3 sm:rounded-[22px] sm:px-5 sm:py-4 lg:grid lg:grid-cols-[180px_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-4"
+                    ? "rounded-[16px] border border-sky-400/10 bg-slate-950/32 px-3 py-2 sm:rounded-[20px] sm:px-4 sm:py-3 lg:grid lg:grid-cols-[180px_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-4"
+                    : "rounded-[18px] border border-sky-400/10 bg-slate-950/36 px-3 py-2.5 sm:rounded-[22px] sm:px-5 sm:py-4 lg:grid lg:grid-cols-[180px_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-4"
                 }
               >
                 <div
                   className={
                     compactRowLabels.has(row.label)
-                      ? "text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400 lg:pt-0.5"
+                      ? "text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400 lg:pt-0.5"
                       : "text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 lg:pt-1"
                   }
                 >
                   {row.label}
                 </div>
-                <div className={compactRowLabels.has(row.label) ? "mt-2 space-y-2 lg:mt-0" : "mt-3 space-y-3 lg:mt-0"}>
+                <div className={compactRowLabels.has(row.label) ? "mt-2 space-y-1.5 lg:mt-0" : "mt-2.5 space-y-2.5 lg:mt-0"}>
                   <div className="compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2 lg:border-t-0 lg:pt-0">
                     <div className="min-w-0">
-                      <p className={compactRowLabels.has(row.label) ? "text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-200" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200"}>
+                      <p className={compactRowLabels.has(row.label) ? "text-[9.5px] font-semibold uppercase tracking-[0.14em] text-cyan-200" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200"}>
                         {leftTool?.name ?? labels.leftLabel}
                       </p>
                       {renderValue(row.left, locale, compactRowLabels.has(row.label))}
@@ -387,10 +389,10 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
                     <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
                   </div>
                 </div>
-                <div className={compactRowLabels.has(row.label) ? "mt-2 space-y-2 lg:mt-0" : "mt-3 space-y-3 lg:mt-0"}>
+                <div className={compactRowLabels.has(row.label) ? "mt-2 space-y-1.5 lg:mt-0" : "mt-2.5 space-y-2.5 lg:mt-0"}>
                   <div className="compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2 lg:border-t-0 lg:pt-0">
                     <div className="min-w-0">
-                      <p className={compactRowLabels.has(row.label) ? "text-[10px] font-semibold uppercase tracking-[0.16em] text-sky-200" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200"}>
+                      <p className={compactRowLabels.has(row.label) ? "text-[9.5px] font-semibold uppercase tracking-[0.14em] text-sky-200" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200"}>
                         {rightTool?.name ?? labels.rightLabel}
                       </p>
                       {renderValue(row.right, locale, compactRowLabels.has(row.label))}

@@ -342,7 +342,7 @@ svg {
 }
 
 .compare-list li::before {
-  content: "•";
+  content: "\2022";
   position: absolute;
   left: 0;
   color: rgba(148, 163, 184, 0.7);
@@ -389,5 +389,21 @@ svg {
   .ui-card,
   .ui-card-strong {
     border-radius: 24px;
+  }
+
+  .compare-slot-left,
+  .compare-slot-right {
+    border-radius: 12px;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .compare-list {
+    gap: 0.2rem;
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
+
+  .compare-list li {
+    padding-left: 0.55rem;
   }
 }
