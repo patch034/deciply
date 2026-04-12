@@ -1824,6 +1824,450 @@ const premiumSeeds: ToolSeed[] = [  {
       }
     }
   },
+  {
+    name: "Writer",
+    slug: "writer",
+    pricing: "PAID",
+    websiteUrl: "https://writer.com",
+    affiliateUrl: "https://writer.com",
+    primaryCategorySlug: "writing",
+    categorySlugs: ["ai-tools", "comparisons", "guides"],
+    toolCategorySlugs: ["writing", "productivity"],
+    useCaseSlugs: ["business", "content"],
+    rating: 4.6,
+    featured: false,
+    locales: {
+      tr: {
+        shortDescription: "Kurumsal ekipler için marka tonu ve stil uyumlu içerik üretimini hızlandıran yazı platformu.",
+        bestUseCase: "Marka tonu uyumlu içerik üretimi",
+        whoShouldUse: ["Pazarlama ekipleri", "Kurumsal içerik ekipleri", "Ajanslar"],
+        workflowExampleTitle: "Marka uyumlu metin akışı kurun",
+        workflowExampleDescription: "Bir ekip, kampanya ve web metinlerinde aynı tonu korumak için Writer'ı kullanabilir.",
+        strengths: ["Marka tonu kontrolü", "Ekip iş akışına uygun", "Kurumsal metin üretimi"],
+        limitations: ["Kurumsal kullanım odaklıdır", "Küçük ekipler için maliyetli olabilir"],
+        seoTitle: "Writer incelemesi",
+        seoDescription: "Writer'ın marka tonu, kurumsal içerik ve ekip iş akışlarındaki değerini inceleyin."
+      },
+      en: {
+        shortDescription: "A writing platform that helps teams keep brand tone and style consistent across content.",
+        bestUseCase: "Brand-aligned content production",
+        whoShouldUse: ["Marketing teams", "Enterprise content teams", "Agencies"],
+        workflowExampleTitle: "Lock in brand voice",
+        workflowExampleDescription: "A team can keep campaign and web copy aligned to the same tone with Writer.",
+        strengths: ["Brand voice control", "Team workflow fit", "Enterprise-ready output"],
+        limitations: ["Enterprise-focused", "Can be costly for small teams"],
+        seoTitle: "Writer review",
+        seoDescription: "Review Writer for brand voice control, enterprise content, and team workflows."
+      }
+    }
+  },
+  {
+    name: "Copysmith",
+    slug: "copysmith",
+    pricing: "PAID",
+    websiteUrl: "https://copysmith.ai",
+    affiliateUrl: "https://copysmith.ai",
+    primaryCategorySlug: "writing",
+    categorySlugs: ["ai-tools", "comparisons", "guides", "make-money-with-ai"],
+    toolCategorySlugs: ["writing"],
+    useCaseSlugs: ["business", "content", "freelancers"],
+    rating: 4.4,
+    featured: false,
+    locales: {
+      tr: {
+        shortDescription: "Ürün açıklaması, katalog metni ve e-ticaret kopyası için odaklı bir yazı aracı.",
+        bestUseCase: "E-ticaret ürün açıklaması",
+        whoShouldUse: ["E-ticaret ekipleri", "Küçük markalar", "Ajanslar"],
+        workflowExampleTitle: "SKU açıklamalarını hızlandırın",
+        workflowExampleDescription: "Bir ekip Copysmith ile ürün açıklamalarını toplu şekilde daha hızlı hazırlayabilir.",
+        strengths: ["E-ticaret odaklı", "Ürün açıklaması hızı", "Katalog için uygun"],
+        limitations: ["Genel amaçlı yazı aracı değildir", "Derin marka stratejisi gerektirir"],
+        seoTitle: "Copysmith incelemesi",
+        seoDescription: "Copysmith'in e-ticaret ürün açıklaması ve katalog kopyası işlerinde nasıl çalıştığını inceleyin."
+      },
+      en: {
+        shortDescription: "A focused writing tool for product descriptions, catalogs, and ecommerce copy.",
+        bestUseCase: "Ecommerce product descriptions",
+        whoShouldUse: ["Ecommerce teams", "Small brands", "Agencies"],
+        workflowExampleTitle: "Speed up SKU descriptions",
+        workflowExampleDescription: "A team can prepare product descriptions in bulk with Copysmith.",
+        strengths: ["Ecommerce focus", "Fast product copy", "Catalog-friendly"],
+        limitations: ["Not a general-purpose writer", "Still needs brand strategy review"],
+        seoTitle: "Copysmith review",
+        seoDescription: "Review Copysmith for ecommerce product descriptions and catalog copy workflows."
+      }
+    }
+  },
+  {
+    name: "Shopify Magic",
+    slug: "shopify-magic",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://www.shopify.com/magic",
+    affiliateUrl: "https://www.shopify.com/magic",
+    primaryCategorySlug: "writing",
+    categorySlugs: ["ai-tools", "comparisons", "guides", "make-money-with-ai"],
+    toolCategorySlugs: ["writing", "productivity"],
+    useCaseSlugs: ["business", "content"],
+    rating: 4.3,
+    featured: false,
+    locales: {
+      tr: {
+        shortDescription: "Shopify mağazaları için ürün açıklaması ve mağaza metni üretimini hızlandıran yerleşik AI.",
+        bestUseCase: "Shopify ürün açıklaması ve mağaza metni",
+        whoShouldUse: ["Shopify mağaza sahipleri", "E-ticaret ekipleri", "Küçük işletmeler"],
+        workflowExampleTitle: "Ürün sayfasını hızla tamamlayın",
+        workflowExampleDescription: "Bir mağaza, ürün açıklamalarını ve temel metinleri Shopify içinde daha hızlı tamamlayabilir.",
+        strengths: ["Shopify içine entegre", "Hızlı ürün metni", "Mağaza odaklı akış"],
+        limitations: ["Sadece Shopify ekosistemi", "Gelişmiş strateji için ek araç gerekebilir"],
+        seoTitle: "Shopify Magic incelemesi",
+        seoDescription: "Shopify Magic'in ürün açıklaması ve mağaza metni üretimindeki değerini inceleyin."
+      },
+      en: {
+        shortDescription: "Built-in AI for Shopify that speeds up product descriptions and store copy.",
+        bestUseCase: "Shopify product descriptions and store copy",
+        whoShouldUse: ["Shopify store owners", "Ecommerce teams", "Small businesses"],
+        workflowExampleTitle: "Finish the product page faster",
+        workflowExampleDescription: "A store can complete product descriptions and basic copy directly inside Shopify.",
+        strengths: ["Native to Shopify", "Fast product copy", "Store-first workflow"],
+        limitations: ["Shopify-only", "Needs extra tooling for deeper strategy"],
+        seoTitle: "Shopify Magic review",
+        seoDescription: "Review Shopify Magic for product descriptions and store copy workflows."
+      }
+    }
+  },
+  {
+    name: "Klaviyo AI",
+    slug: "klaviyo-ai",
+    pricing: "PAID",
+    websiteUrl: "https://www.klaviyo.com/",
+    affiliateUrl: "https://www.klaviyo.com/",
+    primaryCategorySlug: "writing",
+    categorySlugs: ["ai-tools", "comparisons", "guides", "make-money-with-ai"],
+    toolCategorySlugs: ["writing", "productivity"],
+    useCaseSlugs: ["business", "content"],
+    rating: 4.4,
+    featured: false,
+    locales: {
+      tr: {
+        shortDescription: "E-posta kampanyası, segment ve otomasyon metinleri için e-ticaret odaklı AI desteği.",
+        bestUseCase: "E-posta kampanyası ve otomasyon metni",
+        whoShouldUse: ["E-ticaret ekipleri", "Büyüme ekipleri", "Ajanslar"],
+        workflowExampleTitle: "Otomasyon akışını kurgulayın",
+        workflowExampleDescription: "Bir ekip, kampanya ve segment metinlerini daha hızlı hazırlayıp test edebilir.",
+        strengths: ["E-ticaret odaklı", "Kampanya kurgusu", "Segment desteği"],
+        limitations: ["Klaviyo altyapısında en güçlüdür", "Küçük ekipler için ağır olabilir"],
+        seoTitle: "Klaviyo AI incelemesi",
+        seoDescription: "Klaviyo AI'nin e-posta kampanyası ve otomasyon metinlerindeki değerini inceleyin."
+      },
+      en: {
+        shortDescription: "Ecommerce-focused AI support for email campaigns, segmentation, and automation copy.",
+        bestUseCase: "Email campaigns and automation copy",
+        whoShouldUse: ["Ecommerce teams", "Growth teams", "Agencies"],
+        workflowExampleTitle: "Plan the automation flow",
+        workflowExampleDescription: "A team can prepare campaign and segment copy faster and iterate on tests.",
+        strengths: ["Ecommerce focus", "Campaign structure", "Segmentation fit"],
+        limitations: ["Strongest inside Klaviyo", "Can be heavy for small teams"],
+        seoTitle: "Klaviyo AI review",
+        seoDescription: "Review Klaviyo AI for email campaign and automation copy workflows."
+      }
+    }
+  },
+  {
+    name: "Otter.ai",
+    slug: "otter-ai",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://otter.ai",
+    affiliateUrl: "https://otter.ai",
+    primaryCategorySlug: "productivity",
+    categorySlugs: ["ai-tools", "comparisons", "guides"],
+    toolCategorySlugs: ["productivity", "writing"],
+    useCaseSlugs: ["business", "research", "freelancers"],
+    rating: 4.5,
+    featured: false,
+    locales: {
+      tr: {
+        shortDescription: "Toplantı transkripti, özet ve not çıkarma için pratik bir toplantı yardımcısı.",
+        bestUseCase: "Toplantı transkripti ve özet",
+        whoShouldUse: ["Satış ekipleri", "Kurucular", "Danışmanlar"],
+        workflowExampleTitle: "Toplantıyı özetleyin",
+        workflowExampleDescription: "Bir ekip Otter.ai ile toplantı notlarını ve aksiyonları daha hızlı çıkarabilir.",
+        strengths: ["Canlı transkript", "Özet ve not çıkarma", "Toplantı odaklı hız"],
+        limitations: ["Dil doğruluğu değişebilir", "Toplantı dışı işlerde sınırlı kalır"],
+        seoTitle: "Otter.ai incelemesi",
+        seoDescription: "Otter.ai'nin toplantı transkripti, özet ve not işlerinde nasıl çalıştığını inceleyin."
+      },
+      en: {
+        shortDescription: "A meeting helper for transcripts, summaries, and fast note-taking.",
+        bestUseCase: "Meeting transcripts and summaries",
+        whoShouldUse: ["Sales teams", "Founders", "Consultants"],
+        workflowExampleTitle: "Summarize the meeting",
+        workflowExampleDescription: "A team can extract notes and action items faster with Otter.ai.",
+        strengths: ["Live transcripts", "Summaries and notes", "Meeting-first speed"],
+        limitations: ["Accuracy varies by language", "Less useful outside meetings"],
+        seoTitle: "Otter.ai review",
+        seoDescription: "Review Otter.ai for meeting transcripts, summaries, and notes."
+      }
+    }
+  },
+  {
+    name: "Fireflies.ai",
+    slug: "fireflies-ai",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://fireflies.ai",
+    affiliateUrl: "https://fireflies.ai",
+    primaryCategorySlug: "productivity",
+    categorySlugs: ["ai-tools", "comparisons", "guides"],
+    toolCategorySlugs: ["productivity", "writing"],
+    useCaseSlugs: ["business", "freelancers", "research"],
+    rating: 4.5,
+    featured: false,
+    locales: {
+      tr: {
+        shortDescription: "Toplantı kaydı, özet ve aksiyon maddelerini otomatik çıkarmak için kullanılan bir yardımcı.",
+        bestUseCase: "Toplantı kaydı ve aksiyon takibi",
+        whoShouldUse: ["Satış ekipleri", "Müşteri başarısı ekipleri", "Ajanslar"],
+        workflowExampleTitle: "Aksiyonları otomatik yakalayın",
+        workflowExampleDescription: "Bir ekip Fireflies.ai ile görüşme sonrası aksiyonları daha hızlı takip edebilir.",
+        strengths: ["Toplantı kaydı", "Aksiyon çıkarma", "Takip kolaylığı"],
+        limitations: ["Doğru kurulum ister", "Gizlilik politikaları dikkat gerektirir"],
+        seoTitle: "Fireflies.ai incelemesi",
+        seoDescription: "Fireflies.ai'nin toplantı kaydı ve aksiyon takibi işlerinde nasıl çalıştığını inceleyin."
+      },
+      en: {
+        shortDescription: "A helper for meeting recording, summaries, and automatic action items.",
+        bestUseCase: "Meeting recording and action tracking",
+        whoShouldUse: ["Sales teams", "Customer success teams", "Agencies"],
+        workflowExampleTitle: "Capture actions automatically",
+        workflowExampleDescription: "A team can track post-meeting action items faster with Fireflies.ai.",
+        strengths: ["Meeting recording", "Action extraction", "Follow-up clarity"],
+        limitations: ["Needs correct setup", "Privacy considerations apply"],
+        seoTitle: "Fireflies.ai review",
+        seoDescription: "Review Fireflies.ai for meeting recording, summaries, and action tracking."
+      }
+    }
+  },
+  {
+    name: "Notta",
+    slug: "notta",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://www.notta.ai",
+    affiliateUrl: "https://www.notta.ai",
+    primaryCategorySlug: "productivity",
+    categorySlugs: ["ai-tools", "comparisons", "guides"],
+    toolCategorySlugs: ["productivity", "writing"],
+    useCaseSlugs: ["research", "students", "business"],
+    rating: 4.4,
+    featured: false,
+    locales: {
+      tr: {
+        shortDescription: "Toplantı, röportaj ve ders kayıtlarını hızlı transkripte çeviren bir araç.",
+        bestUseCase: "Hızlı transkript ve not çıkarma",
+        whoShouldUse: ["Araştırmacılar", "Öğrenciler", "Ekipler"],
+        workflowExampleTitle: "Ses kaydını metne dökün",
+        workflowExampleDescription: "Bir ekip Notta ile görüşme notlarını kısa sürede metne çevirebilir.",
+        strengths: ["Hızlı transkript", "Ders ve görüşme odaklı", "Not çıkarma kolaylığı"],
+        limitations: ["Uzun kayıtlar maliyetli olabilir", "Dil doğruluğu değişken olabilir"],
+        seoTitle: "Notta incelemesi",
+        seoDescription: "Notta'nın transkript, not çıkarma ve ders kayıtlarındaki değerini inceleyin."
+      },
+      en: {
+        shortDescription: "A tool that turns meetings, interviews, and lectures into fast transcripts.",
+        bestUseCase: "Fast transcripts and note-taking",
+        whoShouldUse: ["Researchers", "Students", "Teams"],
+        workflowExampleTitle: "Turn audio into text",
+        workflowExampleDescription: "A team can convert interview notes into text quickly with Notta.",
+        strengths: ["Fast transcription", "Lecture and interview fit", "Easy note extraction"],
+        limitations: ["Long recordings can be costly", "Accuracy varies by language"],
+        seoTitle: "Notta review",
+        seoDescription: "Review Notta for transcription, notes, and lecture workflows."
+      }
+    }
+  },
+  {
+    name: "Loom AI",
+    slug: "loom-ai",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://www.loom.com",
+    affiliateUrl: "https://www.loom.com",
+    primaryCategorySlug: "video",
+    categorySlugs: ["ai-tools", "comparisons", "guides"],
+    toolCategorySlugs: ["video", "productivity"],
+    useCaseSlugs: ["business", "content", "freelancers"],
+    rating: 4.5,
+    featured: false,
+    locales: {
+      tr: {
+        shortDescription: "Hızlı ekran kaydı, ekip içi anlatım ve otomatik özet için kullanılan video aracı.",
+        bestUseCase: "Ekran kaydı ve hızlı anlatım",
+        whoShouldUse: ["Ürün ekipleri", "Destek ekipleri", "Uzaktan ekipler"],
+        workflowExampleTitle: "Hızlı anlatım videosu hazırlayın",
+        workflowExampleDescription: "Bir ekip Loom ile ürün anlatımını ve güncellemeleri daha hızlı paylaşabilir.",
+        strengths: ["Hızlı kayıt", "Otomatik özet", "Ekip iletişimi"],
+        limitations: ["Uzun prodüksiyon işleri için sınırlı", "Gelişmiş kurgu aracı değildir"],
+        seoTitle: "Loom AI incelemesi",
+        seoDescription: "Loom AI'nin ekran kaydı, anlatım ve özet işlerinde nasıl çalıştığını inceleyin."
+      },
+      en: {
+        shortDescription: "A video tool for fast screen recordings, team explanations, and auto summaries.",
+        bestUseCase: "Screen recording and quick explainers",
+        whoShouldUse: ["Product teams", "Support teams", "Remote teams"],
+        workflowExampleTitle: "Create a quick explainer",
+        workflowExampleDescription: "A team can share product updates faster with Loom recordings.",
+        strengths: ["Fast recording", "Auto summaries", "Team communication"],
+        limitations: ["Limited for long productions", "Not a full editing suite"],
+        seoTitle: "Loom AI review",
+        seoDescription: "Review Loom AI for screen recordings, explainers, and team updates."
+      }
+    }
+  },
+  {
+    name: "Pixelcut",
+    slug: "pixelcut",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://www.pixelcut.ai",
+    affiliateUrl: "https://www.pixelcut.ai",
+    primaryCategorySlug: "image",
+    categorySlugs: ["ai-tools", "comparisons", "guides", "make-money-with-ai"],
+    toolCategorySlugs: ["image", "productivity"],
+    useCaseSlugs: ["business", "content", "freelancers"],
+    rating: 4.5,
+    featured: false,
+    locales: {
+      tr: {
+        shortDescription: "Ürün görselleri, arka plan temizleme ve hızlı sosyal görsel üretimi için pratik bir araç.",
+        bestUseCase: "Ürün görseli ve arka plan düzenleme",
+        whoShouldUse: ["E-ticaret ekipleri", "Sosyal medya ekipleri", "Freelancer'lar"],
+        workflowExampleTitle: "Ürün görselini satışa hazırla",
+        workflowExampleDescription: "Bir ekip Pixelcut ile arka planı temizleyip hızlı katalog görseli üretebilir.",
+        strengths: ["Arka plan temizleme", "E-ticaret uyumu", "Hızlı teslim"],
+        limitations: ["Konsept üretiminden çok düzenleme odaklıdır", "Gelişmiş tasarım gerektiren işlerde sınırlı"],
+        seoTitle: "Pixelcut incelemesi",
+        seoDescription: "Pixelcut'un ürün görseli, arka plan temizleme ve hızlı teslim işlerinde nasıl çalıştığını inceleyin."
+      },
+      en: {
+        shortDescription: "A practical tool for product visuals, background cleanup, and fast social assets.",
+        bestUseCase: "Product visuals and background editing",
+        whoShouldUse: ["Ecommerce teams", "Social media teams", "Freelancers"],
+        workflowExampleTitle: "Prepare the product image",
+        workflowExampleDescription: "A team can remove backgrounds and create catalog visuals quickly with Pixelcut.",
+        strengths: ["Background cleanup", "Ecommerce fit", "Fast delivery"],
+        limitations: ["More editing than concept generation", "Limited for advanced design work"],
+        seoTitle: "Pixelcut review",
+        seoDescription: "Review Pixelcut for product visuals, background cleanup, and fast delivery."
+      }
+    }
+  },
+  {
+    name: "Remove.bg",
+    slug: "remove-bg",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://www.remove.bg",
+    affiliateUrl: "https://www.remove.bg",
+    primaryCategorySlug: "image",
+    categorySlugs: ["ai-tools", "comparisons", "guides", "make-money-with-ai"],
+    toolCategorySlugs: ["image", "productivity"],
+    useCaseSlugs: ["business", "content", "freelancers"],
+    rating: 4.4,
+    featured: false,
+    locales: {
+      tr: {
+        shortDescription: "Arka plan temizleme ve hızlı ürün görseli hazırlama için sade bir araç.",
+        bestUseCase: "Arka plan temizleme ve hızlı görsel hazırlama",
+        whoShouldUse: ["E-ticaret ekipleri", "Tasarımcılar", "Ajanslar"],
+        workflowExampleTitle: "Görseli şeffaflaştırın",
+        workflowExampleDescription: "Bir ekip Remove.bg ile ürün görsellerini hızlıca temizleyip katalog haline getirebilir.",
+        strengths: ["Hızlı arka plan kaldırma", "Basit kullanım", "E-ticaret için pratik"],
+        limitations: ["İleri düzenleme için ek araç gerekir", "Toplu kullanımda ücret artabilir"],
+        seoTitle: "Remove.bg incelemesi",
+        seoDescription: "Remove.bg'nin arka plan temizleme ve hızlı görsel hazırlamadaki değerini inceleyin."
+      },
+      en: {
+        shortDescription: "A simple tool for background removal and fast product image prep.",
+        bestUseCase: "Background removal and quick image prep",
+        whoShouldUse: ["Ecommerce teams", "Designers", "Agencies"],
+        workflowExampleTitle: "Make the image transparent",
+        workflowExampleDescription: "A team can clean product visuals quickly and prepare a catalog.",
+        strengths: ["Fast background removal", "Simple workflow", "Ecommerce-friendly"],
+        limitations: ["Needs other tools for advanced editing", "Costs rise for bulk use"],
+        seoTitle: "Remove.bg review",
+        seoDescription: "Review Remove.bg for background removal and quick image prep."
+      }
+    }
+  },
+  {
+    name: "Vectorizer.ai",
+    slug: "vectorizer-ai",
+    pricing: "PAID",
+    websiteUrl: "https://vectorizer.ai",
+    affiliateUrl: "https://vectorizer.ai",
+    primaryCategorySlug: "image",
+    categorySlugs: ["ai-tools", "comparisons", "guides"],
+    toolCategorySlugs: ["image", "productivity"],
+    useCaseSlugs: ["business", "content", "freelancers"],
+    rating: 4.4,
+    featured: false,
+    locales: {
+      tr: {
+        shortDescription: "Raster görselleri vektöre çevirerek logo ve baskı işleri için hazırlayan araç.",
+        bestUseCase: "Rasterdan vektöre dönüşüm",
+        whoShouldUse: ["Tasarımcılar", "Marka ekipleri", "Freelancer'lar"],
+        workflowExampleTitle: "Logoyu vektöre çevirin",
+        workflowExampleDescription: "Bir ekip düşük çözünürlüklü logoyu hızlıca vektör formatına dönüştürebilir.",
+        strengths: ["Hızlı vektör dönüşümü", "Baskı dostu çıktı", "Tasarımcılar için pratik"],
+        limitations: ["Yaratıcı tasarım üretmez", "Kompleks düzenleme için ek yazılım gerekir"],
+        seoTitle: "Vectorizer.ai incelemesi",
+        seoDescription: "Vectorizer.ai'nin vektör dönüşüm ve baskı hazırlık işlerinde nasıl çalıştığını inceleyin."
+      },
+      en: {
+        shortDescription: "A tool that converts raster images to vectors for logo and print work.",
+        bestUseCase: "Raster-to-vector conversion",
+        whoShouldUse: ["Designers", "Brand teams", "Freelancers"],
+        workflowExampleTitle: "Convert the logo to vector",
+        workflowExampleDescription: "A team can turn a low-res logo into a vector file quickly.",
+        strengths: ["Fast vector conversion", "Print-ready output", "Designer-friendly"],
+        limitations: ["Does not create new designs", "Needs other tools for complex edits"],
+        seoTitle: "Vectorizer.ai review",
+        seoDescription: "Review Vectorizer.ai for vector conversion and print prep workflows."
+      }
+    }
+  },
+  {
+    name: "Sourcegraph Cody",
+    slug: "sourcegraph-cody",
+    pricing: "FREEMIUM",
+    websiteUrl: "https://sourcegraph.com/cody",
+    affiliateUrl: "https://sourcegraph.com/cody",
+    primaryCategorySlug: "productivity",
+    categorySlugs: ["ai-tools", "comparisons", "guides"],
+    toolCategorySlugs: ["productivity", "writing"],
+    useCaseSlugs: ["business", "freelancers", "research"],
+    rating: 4.6,
+    featured: false,
+    locales: {
+      tr: {
+        shortDescription: "Kod tabanı içinde arama, açıklama ve hızlı geliştirme desteği sunan geliştirici aracı.",
+        bestUseCase: "Kod tabanı arama ve geliştirici üretkenliği",
+        whoShouldUse: ["Geliştiriciler", "Teknik ekipler", "Kurucu ekipler"],
+        workflowExampleTitle: "Repo içinde hızlı yanıt alın",
+        workflowExampleDescription: "Bir ekip Cody ile kod tabanında arama, açıklama ve özetleri daha hızlı çıkarabilir.",
+        strengths: ["Kod bağlamı", "Geliştirici odaklı", "Hızlı arama"],
+        limitations: ["Kurulum ve erişim gerektirir", "En iyi değer teknik ekiplerde"],
+        seoTitle: "Sourcegraph Cody incelemesi",
+        seoDescription: "Cody'nin kod tabanı arama, açıklama ve geliştirici üretkenliğindeki rolünü inceleyin."
+      },
+      en: {
+        shortDescription: "A developer tool for codebase search, explanations, and faster coding help.",
+        bestUseCase: "Codebase search and developer productivity",
+        whoShouldUse: ["Developers", "Technical teams", "Founding teams"],
+        workflowExampleTitle: "Get fast repo answers",
+        workflowExampleDescription: "A team can use Cody to search and summarize codebase context faster.",
+        strengths: ["Codebase context", "Developer-first", "Fast search"],
+        limitations: ["Requires setup and access", "Best value in technical teams"],
+        seoTitle: "Sourcegraph Cody review",
+        seoDescription: "Review Cody for codebase search, explanations, and developer productivity."
+      }
+    }
+  }
 ];
 
 export const premiumTools: ToolEntry[] = premiumSeeds.map(buildTool);
