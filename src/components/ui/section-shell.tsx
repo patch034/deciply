@@ -24,7 +24,7 @@ export function SectionShell({
   className,
   contentClassName,
   align = "left",
-  tone = "dark"
+  tone = "light"
 }: SectionShellProps) {
   return (
     <section className={clsx("mx-auto w-full max-w-[1200px] px-4 sm:px-6", className)}>

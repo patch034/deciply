@@ -42,6 +42,12 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
           <div className="min-w-0">
             <div className="flex items-center gap-3">
               <BrandLogo compact className="h-7 sm:h-8" />
+              <div className="min-w-0">
+                <p className="text-[15px] font-semibold tracking-[-0.03em] text-slate-950 sm:text-base">Deciply</p>
+                <p className="text-[10px] font-medium text-slate-500 sm:text-[11px]">
+                  {locale === "tr" ? "AI araç dizini" : "AI tools directory"}
+                </p>
+              </div>
             </div>
 
             <p className="mt-4 max-w-[360px] text-sm leading-6 text-slate-600">{dictionary.footer.description}</p>

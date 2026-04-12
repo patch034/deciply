@@ -20,7 +20,7 @@ export function SectionHeading({
   actions,
   align = "left",
   className,
-  tone = "dark"
+  tone = "light"
 }: SectionHeadingProps) {
   const textClass = tone === "light" ? "text-slate-950" : "text-slate-50";
   const descriptionClass = tone === "light" ? "text-slate-700" : "text-slate-300/82";

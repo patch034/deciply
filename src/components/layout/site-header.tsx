@@ -29,8 +29,12 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
       <div className="mx-auto max-w-[1440px] px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-4">
-            <Link href={`/${locale}`} className="inline-flex min-h-[44px] shrink-0 items-center">
+            <Link href={`/${locale}`} className="inline-flex min-h-[44px] shrink-0 items-center gap-3">
               <BrandLogo compact className="h-7 sm:h-8" />
+              <span className="min-w-0 flex-col leading-tight">
+                <span className="block text-[15px] font-semibold tracking-[-0.03em] text-slate-950 sm:text-[16px]">Deciply</span>
+                <span className="block text-[10px] font-medium text-slate-500 sm:text-[11px]">{locale === "tr" ? "AI araç dizini" : "AI tools directory"}</span>
+              </span>
             </Link>
 
             <nav className="hidden flex-1 items-center justify-center gap-1.5 xl:flex">
