@@ -264,6 +264,27 @@ svg {
   color: transparent;
 }
 
+.hero-headline-accent {
+  background-image: linear-gradient(90deg, #1d4ed8 0%, #0ea5e9 42%, #0f766e 100%);
+  background-size: 180% 100%;
+  background-position: 0% 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.12);
+  animation: heroHeadlineFlow 18s ease-in-out infinite alternate;
+}
+
+@keyframes heroHeadlineFlow {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 100% 50%;
+  }
+}
+
 .ui-nav-shell {
   border: 1px solid rgba(56, 189, 248, 0.1);
   background:

@@ -44,14 +44,14 @@ function renderHeroTitle(locale: Locale) {
     return (
       <>
         En iyi{" "}
-        <span className="bg-[linear-gradient(90deg,#2563eb_0%,#0ea5e9_50%,#14b8a6_100%)] bg-clip-text text-transparent">
+        <span className="hero-headline-accent">
           AI araçlarını
         </span>
         , sitelerini ve{" "}
-        <span className="bg-[linear-gradient(90deg,#2563eb_0%,#0ea5e9_50%,#14b8a6_100%)] bg-clip-text text-transparent">
+        <span className="hero-headline-accent">
           karşılaştırmaları
         </span>{" "}
-        <span className="bg-[linear-gradient(90deg,#1d4ed8_0%,#06b6d4_55%,#10b981_100%)] bg-clip-text text-transparent">
+        <span className="hero-headline-accent">
           keşfet
         </span>
       </>
@@ -61,14 +61,14 @@ function renderHeroTitle(locale: Locale) {
   return (
     <>
       Discover the best{" "}
-      <span className="bg-[linear-gradient(90deg,#2563eb_0%,#0ea5e9_50%,#14b8a6_100%)] bg-clip-text text-transparent">
+      <span className="hero-headline-accent">
         AI tools
       </span>
       , websites, and{" "}
-      <span className="bg-[linear-gradient(90deg,#2563eb_0%,#0ea5e9_50%,#14b8a6_100%)] bg-clip-text text-transparent">
+      <span className="hero-headline-accent">
         comparisons
       </span>{" "}
-      <span className="bg-[linear-gradient(90deg,#1d4ed8_0%,#06b6d4_55%,#10b981_100%)] bg-clip-text text-transparent">
+      <span className="hero-headline-accent">
         explore
       </span>
     </>
@@ -100,7 +100,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
           </motion.div>
 
           <motion.h1
-            className="balance-text mt-4 max-w-5xl text-[clamp(2.55rem,5vw,5rem)] font-black leading-[0.95] tracking-[-0.08em] text-slate-950 sm:mt-6"
+            className="balance-text mt-4 max-w-5xl text-[clamp(2.55rem,5vw,5rem)] font-black leading-[0.98] tracking-[-0.075em] text-slate-950 sm:mt-6"
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.54, delay: 0.04, ease: [0.22, 1, 0.36, 1] }}
