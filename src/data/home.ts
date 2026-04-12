@@ -144,9 +144,9 @@ const homeContent: Record<Locale, HomeContent> = {
   tr: {
     hero: {
       badge: "AI araç dizini",
-      title: "En iyi AI web sitelerini ve araçlarını tek ekrandan keşfet",
+      title: "En iyi AI araçlarını, sitelerini ve karşılaştırmaları keşfet",
       description:
-        "Kategoriler, araç akışı, karşılaştırmalar ve rehberler tek bir keşif deneyiminde birleşiyor; doğru başlangıç noktasına daha hızlı ulaşıyorsun.",
+        "Kategoriler, canlı araç akışı, karşılaştırmalar ve rehberler tek bir keşif deneyiminde birleşiyor; doğru başlangıç noktasına daha hızlı ulaşıyorsun.",
       primaryCta: "Araçları keşfet",
       secondaryCta: "Karşılaştırmaları aç",
       starterHint: "",

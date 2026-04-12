@@ -59,7 +59,7 @@ function ToolLogo({
         <img
           src={tool.logoUrl}
           alt={tool.name}
-          className="h-full w-full object-cover p-2"
+          className="h-full w-full object-contain p-2"
           loading="lazy"
           decoding="async"
           referrerPolicy="no-referrer"

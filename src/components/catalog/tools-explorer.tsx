@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -27,6 +27,8 @@ type ExplorerTool = {
   useCaseLabels: string[];
   compareHref?: string;
   searchKeywords: string[];
+  logoUrl?: string;
+  websiteUrl: string;
 };
 
 type ToolsExplorerCopy = {
@@ -88,9 +90,9 @@ function FilterChip({ label, active, onClick }: { label: string; active: boolean
       aria-pressed={active}
       onClick={onClick}
       className={[
-        "min-h-[44px] rounded-full border px-4 py-2 text-sm font-semibold transition duration-200",
+        "inline-flex min-h-[38px] items-center rounded-full border px-4 text-sm font-semibold transition duration-200",
         active
-          ? "border-cyan-300 bg-cyan-50 text-cyan-700 shadow-[0_14px_34px_-22px_rgba(37,99,235,0.22)]"
+          ? "border-sky-200 bg-sky-50 text-sky-700 shadow-[0_14px_34px_-22px_rgba(37,99,235,0.18)]"
           : "border-slate-200 bg-white text-slate-600 hover:border-sky-200 hover:text-slate-950"
       ].join(" ")}
     >
@@ -101,7 +103,7 @@ function FilterChip({ label, active, onClick }: { label: string; active: boolean
 
 function sortTools(tools: ExplorerTool[], sort: ToolsSortOption, locale: Locale) {
   const collator = new Intl.Collator(locale === "tr" ? "tr-TR" : "en-US", { sensitivity: "base", numeric: true });
-  const pricingRank = (pricing: PricingTier) => (pricing === "FREE" ? 0 : pricing === "FREEMIUM" ? 1 : pricing === "PAID" ? 2 : 3);
+  const pricingRank = (pricing: PricingTier) => (pricing === "FREE" ? 0 : pricing === "FREEMIUM" ? 1 : 2);
 
   return [...tools].sort((a, b) => {
     switch (sort) {
@@ -217,8 +219,7 @@ export function ToolsExplorer({
   );
 
   const sortedTools = useMemo(() => sortTools(filteredTools, activeSort, locale), [activeSort, filteredTools, locale]);
-  const hasActiveFilters =
-    query.length > 0 || activeToolCategory !== "all" || activePricing !== "all" || activeUseCase !== "all";
+  const hasActiveFilters = query.length > 0 || activeToolCategory !== "all" || activePricing !== "all" || activeUseCase !== "all";
   const totalPages = Math.max(1, Math.ceil(sortedTools.length / TOOLS_PAGE_SIZE));
   const currentPage = Math.min(Math.max(1, page), totalPages);
   const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
@@ -370,28 +371,27 @@ export function ToolsExplorer({
   }
 
   function applyQuickIntent(intent: QuickIntent) {
-    const isActive = quickIntentMatchesTool(
-      {
-        slug: intent.slug,
-        name: "",
-        shortDescription: "",
-        pricing: activePricing === "all" ? "FREE" : activePricing,
-        pricingLabel: "",
-        rating: 0,
-        featured: false,
-        sourceIndex: 0,
-        categorySlugs: [],
-        toolCategorySlugs: activeToolCategory === "all" ? [] : [activeToolCategory],
-        toolCategoryLabels: [],
-        useCaseSlugs: activeUseCase === "all" ? [] : [activeUseCase],
-        useCaseLabels: [],
-        compareHref: undefined,
-        searchKeywords: [query, activeToolCategory, activeUseCase]
-      },
-      intent
-    );
+    const activeTool = {
+      slug: intent.slug,
+      name: "",
+      shortDescription: "",
+      pricing: activePricing === "all" ? "FREE" : activePricing,
+      pricingLabel: "",
+      rating: 0,
+      featured: false,
+      sourceIndex: 0,
+      categorySlugs: [],
+      toolCategorySlugs: activeToolCategory === "all" ? [] : [activeToolCategory],
+      toolCategoryLabels: [],
+      useCaseSlugs: activeUseCase === "all" ? [] : [activeUseCase],
+      useCaseLabels: [],
+      compareHref: undefined,
+      searchKeywords: [query, activeToolCategory, activeUseCase],
+      logoUrl: "",
+      websiteUrl: ""
+    };
 
-    if (isActive) {
+    if (quickIntentMatchesTool(activeTool as ExplorerTool, intent)) {
       setFilters({ query: "", toolCategory: "all", pricing: "all", useCase: "all", sort: "popular", page: 1 });
       setMobileFiltersOpen(false);
       return;
@@ -418,13 +418,12 @@ export function ToolsExplorer({
     const categoryMatch = intent.toolCategory ? activeToolCategory === intent.toolCategory : true;
     const pricingMatch = intent.pricing ? activePricing === intent.pricing : true;
     const useCaseMatch = intent.useCase ? activeUseCase === intent.useCase : true;
-
     return queryMatch && categoryMatch && pricingMatch && useCaseMatch;
   });
 
   return (
     <>
-      <section className="rounded-[30px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(244,248,253,0.98))] p-4 shadow-[0_24px_80px_-44px_rgba(37,99,235,0.14)] sm:p-6 md:p-8 lg:sticky lg:top-6 lg:z-20">
+      <section className="rounded-[32px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(244,248,253,0.99))] p-4 shadow-[0_24px_80px_-44px_rgba(37,99,235,0.14)] sm:p-6 md:p-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-8">
           <div className="space-y-5">
             <div>
@@ -449,20 +448,23 @@ export function ToolsExplorer({
               <p className="mt-3 text-xs leading-6 text-slate-500">{copy.searchHelp}</p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              {quickIntents.map((intent) => (
-                <FilterChip
-                  key={intent.slug}
-                  label={intent.label}
-                  active={activeQuickIntent?.slug === intent.slug}
-                  onClick={() => applyQuickIntent(intent)}
-                />
-              ))}
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.quickIntentLabel}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {quickIntents.map((intent) => (
+                  <FilterChip
+                    key={intent.slug}
+                    label={intent.label}
+                    active={activeQuickIntent?.slug === intent.slug}
+                    onClick={() => applyQuickIntent(intent)}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="rounded-[26px] border border-slate-200/90 bg-white/96 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.12)] sm:p-5">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
+          <div className="space-y-5 rounded-[26px] border border-slate-200/90 bg-white/96 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.12)] sm:p-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="text-sm font-semibold text-slate-900">
                 {sortedTools.length > 0 ? `${startIndex}–${endIndex} / ${sortedTools.length} ${copy.resultsSummaryLabel}` : `0 ${copy.resultsLabel}`}
               </p>
@@ -480,65 +482,9 @@ export function ToolsExplorer({
               ) : null}
             </div>
 
-            <div className="mt-5 space-y-5">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between gap-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.sortLabel}</p>
-                  <select
-                    value={activeSort}
-                    onChange={(event) => setFilters({ sort: event.target.value as ToolsSortOption, page: 1 })}
-                    className="dark-select min-h-[40px] rounded-full border border-slate-200 px-3 text-sm text-slate-800 outline-none transition focus:border-sky-200"
-                  >
-                    {sortOptions.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.toolCategoryLabel}</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <FilterChip label={copy.allToolCategoriesLabel} active={activeToolCategory === "all"} onClick={() => setFilters({ toolCategory: "all", page: 1 })} />
-                  {toolCategoryOptions.map((option) => (
-                    <FilterChip key={option.slug} label={option.label} active={activeToolCategory === option.slug} onClick={() => setFilters({ toolCategory: option.slug, page: 1 })} />
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.pricingFilterLabel}</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <FilterChip label={copy.allPricingLabel} active={activePricing === "all"} onClick={() => setFilters({ pricing: "all", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "Ücretsiz" : "Free"} active={activePricing === "FREE"} onClick={() => setFilters({ pricing: "FREE", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "Kısmen ücretsiz" : "Freemium"} active={activePricing === "FREEMIUM"} onClick={() => setFilters({ pricing: "FREEMIUM", page: 1 })} />
-                  <FilterChip label={locale === "tr" ? "Ücretli" : "Paid"} active={activePricing === "PAID"} onClick={() => setFilters({ pricing: "PAID", page: 1 })} />
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.useCaseLabel}</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <FilterChip label={copy.allUseCasesLabel} active={activeUseCase === "all"} onClick={() => setFilters({ useCase: "all", page: 1 })} />
-                  {useCaseOptions.map((option) => (
-                    <FilterChip key={option.slug} label={option.label} active={activeUseCase === option.slug} onClick={() => setFilters({ useCase: option.slug, page: 1 })} />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-4 md:hidden">
-          <div className="sticky top-3 z-20 rounded-[22px] border border-slate-200/90 bg-[rgba(255,255,255,0.96)] p-4 shadow-[0_24px_80px_-44px_rgba(37,99,235,0.14)] backdrop-blur">
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">{copy.quickIntentLabel}</p>
-                <p className="mt-1 text-sm font-semibold text-slate-900">{sortedTools.length > 0 ? `${sortedTools.length} ${copy.resultsLabel}` : `0 ${copy.resultsLabel}`}</p>
-              </div>
-              <div className="flex items-center gap-2">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.sortLabel}</p>
                 <select
                   value={activeSort}
                   onChange={(event) => setFilters({ sort: event.target.value as ToolsSortOption, page: 1 })}
@@ -550,66 +496,84 @@ export function ToolsExplorer({
                     </option>
                   ))}
                 </select>
+              </div>
+
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.mobileFiltersLabel}</p>
                 <button
                   type="button"
                   onClick={() => setMobileFiltersOpen((value) => !value)}
-                  className="inline-flex min-h-[40px] items-center rounded-full border border-cyan-200 bg-cyan-50 px-3 text-xs font-semibold text-cyan-700"
+                  className="inline-flex min-h-[38px] items-center rounded-full border border-cyan-200 bg-cyan-50 px-3 text-xs font-semibold text-cyan-700 lg:hidden"
                 >
                   {mobileFiltersOpen ? copy.mobileFiltersCloseLabel : copy.mobileFiltersLabel}
                 </button>
               </div>
-            </div>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {quickIntents.map((intent) => (
-                <FilterChip key={`mobile-${intent.slug}`} label={intent.label} active={activeQuickIntent?.slug === intent.slug} onClick={() => applyQuickIntent(intent)} />
-              ))}
-            </div>
-          </div>
 
-          <div
-            className={[
-              "mt-3 overflow-hidden rounded-[22px] border border-slate-200 bg-white/96 p-4 transition-all duration-200",
-              mobileFiltersOpen ? "max-h-[1200px] opacity-100" : "max-h-0 border-transparent p-0 opacity-0"
-            ].join(" ")}
-          >
-            <div className="space-y-4">
-              <div>
+              <div className="hidden lg:block">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.toolCategoryLabel}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <FilterChip label={copy.allToolCategoriesLabel} active={activeToolCategory === "all"} onClick={() => setFilters({ toolCategory: "all", page: 1 })} />
-                  {toolCategoryOptions.map((option) => (
-                    <FilterChip key={`mobile-tool-${option.slug}`} label={option.label} active={activeToolCategory === option.slug} onClick={() => setFilters({ toolCategory: option.slug, page: 1 })} />
+                  {toolCategoryOptions.slice(0, 10).map((option) => (
+                    <FilterChip key={option.slug} label={option.label} active={activeToolCategory === option.slug} onClick={() => setFilters({ toolCategory: option.slug, page: 1 })} />
                   ))}
                 </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.pricingFilterLabel}</p>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.pricingFilterLabel}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <FilterChip label={copy.allPricingLabel} active={activePricing === "all"} onClick={() => setFilters({ pricing: "all", page: 1 })} />
                   <FilterChip label={locale === "tr" ? "Ücretsiz" : "Free"} active={activePricing === "FREE"} onClick={() => setFilters({ pricing: "FREE", page: 1 })} />
                   <FilterChip label={locale === "tr" ? "Kısmen ücretsiz" : "Freemium"} active={activePricing === "FREEMIUM"} onClick={() => setFilters({ pricing: "FREEMIUM", page: 1 })} />
                   <FilterChip label={locale === "tr" ? "Ücretli" : "Paid"} active={activePricing === "PAID"} onClick={() => setFilters({ pricing: "PAID", page: 1 })} />
                 </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.useCaseLabel}</p>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.useCaseLabel}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <FilterChip label={copy.allUseCasesLabel} active={activeUseCase === "all"} onClick={() => setFilters({ useCase: "all", page: 1 })} />
-                  {useCaseOptions.map((option) => (
-                    <FilterChip key={`mobile-use-${option.slug}`} label={option.label} active={activeUseCase === option.slug} onClick={() => setFilters({ useCase: option.slug, page: 1 })} />
+                  {useCaseOptions.slice(0, 10).map((option) => (
+                    <FilterChip key={option.slug} label={option.label} active={activeUseCase === option.slug} onClick={() => setFilters({ useCase: option.slug, page: 1 })} />
                   ))}
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        {mobileFiltersOpen ? (
+          <div className="mt-4 space-y-4 rounded-[22px] border border-slate-200 bg-white p-4 lg:hidden">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.toolCategoryLabel}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <FilterChip label={copy.allToolCategoriesLabel} active={activeToolCategory === "all"} onClick={() => setFilters({ toolCategory: "all", page: 1 })} />
+                {toolCategoryOptions.slice(0, 10).map((option) => (
+                  <FilterChip key={`mobile-tool-${option.slug}`} label={option.label} active={activeToolCategory === option.slug} onClick={() => setFilters({ toolCategory: option.slug, page: 1 })} />
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.pricingFilterLabel}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <FilterChip label={copy.allPricingLabel} active={activePricing === "all"} onClick={() => setFilters({ pricing: "all", page: 1 })} />
+                <FilterChip label={locale === "tr" ? "Ücretsiz" : "Free"} active={activePricing === "FREE"} onClick={() => setFilters({ pricing: "FREE", page: 1 })} />
+                <FilterChip label={locale === "tr" ? "Kısmen ücretsiz" : "Freemium"} active={activePricing === "FREEMIUM"} onClick={() => setFilters({ pricing: "FREEMIUM", page: 1 })} />
+                <FilterChip label={locale === "tr" ? "Ücretli" : "Paid"} active={activePricing === "PAID"} onClick={() => setFilters({ pricing: "PAID", page: 1 })} />
+              </div>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.useCaseLabel}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <FilterChip label={copy.allUseCasesLabel} active={activeUseCase === "all"} onClick={() => setFilters({ useCase: "all", page: 1 })} />
+                {useCaseOptions.slice(0, 10).map((option) => (
+                  <FilterChip key={`mobile-use-${option.slug}`} label={option.label} active={activeUseCase === option.slug} onClick={() => setFilters({ useCase: option.slug, page: 1 })} />
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : null}
       </section>
 
       {sortedTools.length > 0 ? (
         <>
-          <section className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <section className="grid grid-cols-1 gap-3 sm:gap-4">
             {visibleTools.map((tool) => (
               <ToolCard
                 key={tool.slug}
@@ -621,6 +585,8 @@ export function ToolsExplorer({
                 bestForLabel={copy.bestForLabel}
                 useCaseLabel={tool.useCaseLabels[0]}
                 compareHref={tool.compareHref}
+                logoUrl={tool.logoUrl}
+                variant="row"
               />
             ))}
           </section>
@@ -722,6 +688,3 @@ export function ToolsExplorer({
     </>
   );
 }
-
-
-

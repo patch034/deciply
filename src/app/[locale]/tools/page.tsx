@@ -12,6 +12,7 @@ import {
   parseToolsQueryFilters
 } from "@/lib/catalog";
 import { buildComparisonPath, getComparisonTargetSlugs } from "@/lib/comparisons";
+import { getToolLogoUrl } from "@/lib/logo";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
 import { buildToolsIndexMetaDescription, buildToolsPageTitle } from "@/lib/seo";
 
@@ -93,6 +94,7 @@ export default async function ToolsPage({
     return {
       ...tool,
       sourceIndex: index,
+      logoUrl: getToolLogoUrl(tool.websiteUrl),
       pricingLabel: formatPricing(tool.pricing, safeLocale),
       toolCategoryLabels,
       useCaseLabels,

@@ -38,7 +38,7 @@ function ComparisonLogo({ name, logoUrl }: { name: string; logoUrl?: string }) {
         <img
           src={logoUrl}
           alt={name}
-          className="h-full w-full object-cover p-1.5"
+          className="h-full w-full object-contain p-1.5"
           loading="lazy"
           decoding="async"
           referrerPolicy="no-referrer"

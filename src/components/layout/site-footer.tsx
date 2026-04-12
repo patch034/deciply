@@ -46,13 +46,13 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
   return (
     <footer className="mt-16 border-t border-slate-200 bg-[linear-gradient(180deg,rgba(250,252,255,0.98),rgba(241,245,249,0.99))] px-4 pb-10 pt-10 text-slate-900 sm:px-6 sm:pb-12 sm:pt-12">
       <div className="mx-auto max-w-[1440px] space-y-8">
-        <div className="grid gap-8 lg:grid-cols-[1.05fr_repeat(4,minmax(0,1fr))] lg:items-start lg:gap-8">
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_repeat(4,minmax(0,1fr))] lg:items-start lg:gap-8">
           <div className="min-w-0">
             <div className="flex items-center gap-3">
               <BrandLogo compact className="h-8" />
               <div className="min-w-0">
                 <p className="text-[15px] font-semibold tracking-[-0.03em] text-slate-950 sm:text-base">Deciply</p>
-                <p className="text-[11px] font-medium text-slate-500 sm:text-[12px]">
+                <p className="text-[11px] font-medium text-slate-600 sm:text-[12px]">
                   {locale === "tr" ? "AI araç dizini" : "AI tools directory"}
                 </p>
               </div>
@@ -92,7 +92,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
         </div>
 
         <div className="rounded-[28px] border border-slate-200 bg-white/90 p-5 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.16)] sm:p-6">
-          <div className="flex items-center justify-between gap-3">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">
                 {locale === "tr" ? "Harf sırasına göre keşfet" : "Browse alphabetically"}
@@ -105,7 +105,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
             </div>
             <Link
               href={`/${locale}/tools`}
-              className="hidden rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-sky-200 hover:text-slate-950 sm:inline-flex"
+              className="inline-flex rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-sky-200 hover:text-slate-950"
             >
               {locale === "tr" ? "Tüm araçlar" : "All tools"}
             </Link>
@@ -121,23 +121,6 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
                 {item.label}
               </Link>
             ))}
-          </div>
-        </div>
-
-        <div className="grid gap-6 lg:grid-cols-3">
-          <div className="rounded-[28px] border border-slate-200 bg-white/90 p-5 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.16)]">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{locale === "tr" ? "Araçlar" : "Tools"}</h3>
-            <div className="mt-4 flex flex-col gap-2">{toolsGroup.links.map((item) => renderFooterLink(item))}</div>
-          </div>
-
-          <div className="rounded-[28px] border border-slate-200 bg-white/90 p-5 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.16)]">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{locale === "tr" ? "Karşılaştırmalar" : "Comparisons"}</h3>
-            <div className="mt-4 flex flex-col gap-2">{compareGroup.links.map((item) => renderFooterLink(item))}</div>
-          </div>
-
-          <div className="rounded-[28px] border border-slate-200 bg-white/90 p-5 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.16)]">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{locale === "tr" ? "Popüler rehberler" : "Popular guides"}</h3>
-            <div className="mt-4 flex flex-col gap-2">{guidesGroup.links.map((item) => renderFooterLink(item))}</div>
           </div>
         </div>
 

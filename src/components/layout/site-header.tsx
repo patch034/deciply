@@ -22,17 +22,13 @@ function HeaderSearchIcon() {
 
 export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   const navItems = dictionary.navigation;
-  const extraNavItems = [
+  const browseItems = [
+    { href: `/${locale}/categories`, label: locale === "tr" ? "Kategoriler" : "Categories" },
+    { href: `/${locale}/tools`, label: locale === "tr" ? "Araçlar" : "Tools" },
+    { href: `/${locale}/categories/comparisons`, label: locale === "tr" ? "Karşılaştırmalar" : "Comparisons" },
+    { href: `/${locale}/blog`, label: locale === "tr" ? "Blog" : "Blog" },
     { href: `/${locale}/compare-auto`, label: locale === "tr" ? "Canlı karşılaştırma" : "Live compare" },
-    { href: `/${locale}/alternatives/chatgpt`, label: locale === "tr" ? "Alternatifler" : "Alternatives" },
-    { href: `/${locale}/use-cases/students`, label: locale === "tr" ? "Öğrenciler" : "Students" },
-    { href: `/${locale}/use-cases/freelancers`, label: locale === "tr" ? "Freelancer'lar" : "Freelancers" }
-  ];
-  const quickBrowseItems = [
-    { href: `/${locale}/categories/comparisons`, label: locale === "tr" ? "Karşılaştırma merkezi" : "Compare hub" },
-    { href: `/${locale}/categories`, label: locale === "tr" ? "Tüm kategoriler" : "All categories" },
-    { href: `/${locale}/tools`, label: locale === "tr" ? "Tüm araçlar" : "All tools" },
-    { href: `/${locale}/blog`, label: locale === "tr" ? "En yeni rehberler" : "Latest guides" }
+    { href: `/${locale}/use-cases/students`, label: locale === "tr" ? "Öğrenciler" : "Students" }
   ];
   const searchPlaceholder =
     locale === "tr" ? "Araç, kategori veya karşılaştırma ara..." : "Search tools, categories, or comparisons...";
@@ -44,20 +40,20 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
       <div className="mx-auto max-w-[1440px] px-3 py-3 sm:px-4 sm:py-4 lg:px-6">
         <div className="rounded-[30px] border border-slate-200/85 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(247,250,253,0.96))] px-4 py-4 shadow-[0_24px_76px_-44px_rgba(15,23,42,0.18)] sm:px-5 lg:px-6">
           <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-3 sm:gap-4">
+            <div className="grid items-center gap-4 lg:grid-cols-[auto_minmax(0,1fr)_minmax(320px,0.92fr)_auto]">
               <Link href={`/${locale}`} className="inline-flex min-h-[44px] shrink-0 items-center gap-3">
-                <BrandLogo compact className="h-8" />
+                <BrandLogo compact className="h-9" />
                 <span className="min-w-0 leading-tight">
-                  <span className="block text-[15px] font-semibold tracking-[-0.03em] text-slate-950 sm:text-[16px]">
+                  <span className="block text-[16px] font-semibold tracking-[-0.03em] text-slate-950 sm:text-[17px]">
                     Deciply
                   </span>
-                  <span className="block text-[11px] font-medium text-slate-500 sm:text-[12px]">
+                  <span className="block text-[11px] font-medium text-slate-600 sm:text-[12px]">
                     {locale === "tr" ? "AI araç dizini" : "AI tools directory"}
                   </span>
                 </span>
               </Link>
 
-              <nav className="hidden flex-1 items-center justify-center gap-1 xl:flex">
+              <nav className="hidden items-center justify-center gap-1 xl:flex">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
@@ -67,18 +63,9 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
                     {item.label}
                   </Link>
                 ))}
-                {extraNavItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="inline-flex min-h-[40px] items-center rounded-full px-4 text-sm font-semibold text-slate-600 transition duration-200 hover:bg-sky-50 hover:text-slate-950"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
               </nav>
 
-              <div className="hidden min-w-[340px] flex-1 items-center lg:flex">
+              <div className="hidden lg:flex">
                 <form action={`/${locale}/tools`} method="get" className="flex w-full items-center gap-3 rounded-[22px] border border-slate-200/90 bg-white px-4 py-3 shadow-[0_20px_48px_-30px_rgba(15,23,42,0.2)]">
                   <label className="sr-only" htmlFor="site-search">
                     {searchButtonLabel}
@@ -132,10 +119,10 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
               </form>
 
               <nav className="flex items-center gap-2 overflow-x-auto pb-0.5 xl:hidden">
-                {[...navItems, ...extraNavItems].map((item) => (
+                {navItems.map((item) => (
                   <Link
                     key={item.href}
-                    href={item.href.startsWith(`/${locale}`) ? item.href : `/${locale}${item.href}`}
+                    href={`/${locale}${item.href}`}
                     className="inline-flex min-h-[36px] shrink-0 items-center rounded-full border border-slate-200/90 bg-slate-50 px-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-700 transition hover:border-sky-200 hover:bg-white hover:text-slate-950"
                   >
                     {item.label}
@@ -151,7 +138,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                {quickBrowseItems.map((item) => (
+                {browseItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
