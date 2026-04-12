@@ -1,6 +1,7 @@
 ﻿import { toolCategoryOptions } from "@/data/tool-taxonomy";
 import type { Locale } from "@/i18n/config";
 import { formatPricing, getToolOutboundUrl } from "@/lib/catalog";
+import { getToolLogoUrl } from "@/lib/logo";
 import type { LocalizedTool, PricingTier } from "@/types/catalog";
 import type { ToolCard as HomeToolCard } from "@/types/home";
 
@@ -20,15 +21,6 @@ const iconMap: Record<string, string> = {
   writesonic: "WS",
   pictory: "PT"
 };
-
-function getToolLogoUrl(websiteUrl: string) {
-  try {
-    const origin = new URL(websiteUrl).origin;
-    return `${origin}/favicon.ico`;
-  } catch {
-    return "";
-  }
-}
 
 const trustIndicators: Record<Locale, string[]> = {
   tr: ["Tarafsız değerlendirme", "Düzenli güncellenir", "Affiliate bağlantılar içerebilir"],

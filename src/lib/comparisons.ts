@@ -1,6 +1,7 @@
 import { tools } from "@/data/tools";
 import type { Locale } from "@/i18n/config";
 import { getCategoryNamesMap, getLocalizedToolBySlug } from "@/lib/catalog";
+import { getToolLogoUrl } from "@/lib/logo";
 import type { LocalizedTool, ToolEntry } from "@/types/catalog";
 import type { ComparisonCard as HomeComparisonCard } from "@/types/home";
 
@@ -23,14 +24,6 @@ export const SPECIAL_FREELANCER_COMPARISON_SLUG = "chatgpt-vs-jasper-for-freelan
 const SPECIAL_FREELANCER_COMPARISON_PAIR = { leftSlug: "chatgpt", rightSlug: "jasper" } as const;
 export const SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_SLUG = "copy-ai-vs-chatgpt-for-product-descriptions";
 const SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_PAIR = { leftSlug: "copy-ai", rightSlug: "chatgpt" } as const;
-
-function getToolLogoUrl(websiteUrl: string) {
-  try {
-    return `${new URL(websiteUrl).origin}/favicon.ico`;
-  } catch {
-    return undefined;
-  }
-}
 
 export function buildAutoComparisonPath(locale: Locale, leftSlug: string, rightSlug: string) {
   return `/${locale}/compare-auto/${leftSlug}-vs-${rightSlug}`;
