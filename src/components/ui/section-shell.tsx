@@ -12,6 +12,7 @@ type SectionShellProps = {
   className?: string;
   contentClassName?: string;
   align?: "left" | "center";
+  tone?: "dark" | "light";
 };
 
 export function SectionShell({
@@ -22,7 +23,8 @@ export function SectionShell({
   children,
   className,
   contentClassName,
-  align = "left"
+  align = "left",
+  tone = "dark"
 }: SectionShellProps) {
   return (
     <section className={clsx("mx-auto w-full max-w-[1200px] px-4 sm:px-6", className)}>
@@ -33,6 +35,7 @@ export function SectionShell({
           description={description}
           actions={actions}
           align={align}
+          tone={tone}
           className="mb-5 sm:mb-7"
         />
       ) : null}

@@ -1,4 +1,5 @@
-﻿import { BlogCard } from "@/components/blog/blog-card";
+import { BlogCard } from "@/components/blog/blog-card";
+import { CategoryCard } from "@/components/home/category-card";
 import { ComparisonCard } from "@/components/home/comparison-card";
 import { GuideCard } from "@/components/home/guide-card";
 import { ToolCard } from "@/components/home/tool-card";
@@ -13,142 +14,157 @@ type HomeBoostSectionsProps = {
   locale: Locale;
   comparisonCards: HomeComparisonCard[];
   popularTools: HomeToolCard[];
+  categories: { icon: string; title: string; description: string; href: string; eyebrow: string; metric: string; bestFor: string }[];
 };
 
 const sectionCopy = {
   tr: {
-    latestComparisonsEyebrow: "Güncel karşılaştırmalar",
-    latestComparisonsTitle: "En yeni compare sayfaları",
-    latestComparisonsDescription: "Karar niyeti yüksek karşılaştırmaları hızlıca açın.",
-    latestComparisonsAction: "Tüm karşılaştırmalar",
-    latestGuidesEyebrow: "Yeni yazılar",
-    latestGuidesTitle: "En yeni blog yazıları",
-    latestGuidesDescription: "Yeni yayınlanan rehberleri kısa ve net biçimde görün.",
-    latestGuidesAction: "Blog sayfası",
-    popularToolsEyebrow: "Popüler araçlar",
-    popularToolsTitle: "En çok incelenen AI araçları",
-    popularToolsDescription: "Karar aşamasında en sık açılan araçları doğrudan detay sayfalarıyla görün.",
-    popularToolsAction: "Tüm araçlar",
-    comparisonLinkLabel: "Karşılaştırmayı aç",
-    toolDetailLabel: "Detaylar",
-    toolTryLabel: "Dene",
-    toolBestForLabel: "Uygun kullanım",
-    toolRatingLabel: "Puan",
+    featuredToolsEyebrow: "Keşif akışı",
+    featuredToolsTitle: "İnsanların en çok baktığı AI araçları",
+    featuredToolsDescription: "Daha fazla araç keşfetmek isteyen kullanıcılar için en görünür başlangıç noktası.",
+    featuredToolsAction: "Tüm araçlar",
+    categoriesEyebrow: "Kategoriler",
+    categoriesTitle: "Kategoriye göre keşfet",
+    categoriesDescription: "Hangi problem için hangi araç grubuna bakmanız gerektiğini hızlıca görün.",
+    categoriesAction: "Tüm kategoriler",
+    comparisonsEyebrow: "Karşılaştırma",
+    comparisonsTitle: "Karar vermeden önce karşılaştır",
+    comparisonsDescription: "Karar yüzeyleri ikinci adımda burada görünür şekilde sunulur.",
+    comparisonsAction: "Tüm karşılaştırmalar",
+    guidesEyebrow: "Rehberler",
+    guidesTitle: "Güncel rehberler ve kullanım yolları",
+    guidesDescription: "Daha derin okumak isteyen kullanıcılar için kısa, güncel ve yönlendirici içerikler.",
+    guidesAction: "Blog sayfası",
+    guideLinkLabel: "Rehberi aç",
     showMoreLabel: "Daha fazla keşfet",
-    showMoreTitle: "İkincil keşif yollarını aç",
-    showMoreDescription: "Kategoriler, rehberler ve daha geniş keşif yolları burada kapalı tutulur.",
+    showMoreTitle: "İkincil yolları aç",
+    showMoreDescription: "Alternatifler, use-case sayfaları ve daha geniş içerik kümeleri burada yer alır.",
     showMoreAction: "Daha fazla yolu göster"
   },
   en: {
-    latestComparisonsEyebrow: "Recent comparisons",
-    latestComparisonsTitle: "Newest comparison pages",
-    latestComparisonsDescription: "Open high-intent comparisons directly.",
-    latestComparisonsAction: "All comparisons",
-    latestGuidesEyebrow: "New posts",
-    latestGuidesTitle: "Latest blog posts",
-    latestGuidesDescription: "Review the newest guides in a tighter view.",
-    latestGuidesAction: "Blog page",
-    popularToolsEyebrow: "Popular tools",
-    popularToolsTitle: "Most explored AI tools",
-    popularToolsDescription: "Review the tools users open most often with direct access to the detail pages.",
-    popularToolsAction: "All tools",
-    comparisonLinkLabel: "Open comparison",
-    toolDetailLabel: "Details",
-    toolTryLabel: "Try",
-    toolBestForLabel: "Best for",
-    toolRatingLabel: "Rating",
-    showMoreLabel: "More paths",
-    showMoreTitle: "Open secondary discovery paths",
-    showMoreDescription: "Categories, guides, and broader discovery routes stay collapsed here.",
+    featuredToolsEyebrow: "Discovery flow",
+    featuredToolsTitle: "The AI tools people check most often",
+    featuredToolsDescription: "A clear starting point for users who want to explore more tools quickly.",
+    featuredToolsAction: "All tools",
+    categoriesEyebrow: "Categories",
+    categoriesTitle: "Browse by category",
+    categoriesDescription: "See which tool groups fit each problem area faster.",
+    categoriesAction: "All categories",
+    comparisonsEyebrow: "Comparisons",
+    comparisonsTitle: "Compare before you decide",
+    comparisonsDescription: "Comparison surfaces stay visible here as the next step after discovery.",
+    comparisonsAction: "All comparisons",
+    guidesEyebrow: "Guides",
+    guidesTitle: "Current guides and practical paths",
+    guidesDescription: "Short, current, and useful content for visitors who want a deeper read.",
+    guidesAction: "Blog page",
+    guideLinkLabel: "Open guide",
+    showMoreLabel: "More to explore",
+    showMoreTitle: "Open secondary paths",
+    showMoreDescription: "Alternatives, use-case pages, and broader content clusters live here.",
     showMoreAction: "Show more paths"
   }
 } as const;
 
-export function HomeBoostSections({ locale, comparisonCards, popularTools }: HomeBoostSectionsProps) {
+export function HomeBoostSections({ locale, comparisonCards, popularTools, categories }: HomeBoostSectionsProps) {
   const copy = sectionCopy[locale];
-  const latestGuides = getLocalizedBlogArticles(locale).slice(0, 3);
-  const secondaryGuides = getHomepageDiscoveryGuides(locale).slice(0, 4);
+  const latestBlogArticles = getLocalizedBlogArticles(locale).slice(0, 4);
+  const compareCards = comparisonCards.slice(0, 3);
+  const toolCards = popularTools.slice(0, 6);
+  const categoryCards = categories.slice(0, 4);
 
   return (
-    <div className="mx-auto mt-7 w-full max-w-[1240px] px-4 pb-8 sm:px-6 sm:pb-12 lg:mt-10 lg:pb-14">
-      <div className="space-y-5 sm:space-y-7">
+    <div className="mx-auto mt-8 w-full max-w-[1440px] px-4 pb-10 sm:px-6 sm:pb-14 lg:mt-10 lg:px-8 lg:pb-16">
+      <div className="space-y-6 sm:space-y-8">
         <SectionShell
-          className="section-tint-cyan"
-          eyebrow={copy.latestComparisonsEyebrow}
-          title={copy.latestComparisonsTitle}
-          description={copy.latestComparisonsDescription}
-          actions={<PremiumButton href={`/${locale}/categories/comparisons`}>{copy.latestComparisonsAction}</PremiumButton>}
+          tone="light"
+          eyebrow={copy.featuredToolsEyebrow}
+          title={copy.featuredToolsTitle}
+          description={copy.featuredToolsDescription}
+          actions={<PremiumButton href={`/${locale}/tools`}>{copy.featuredToolsAction}</PremiumButton>}
+          className="px-0 sm:px-0"
+          contentClassName="grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
         >
-          <div className="grid grid-flow-col auto-cols-[88%] gap-4 overflow-x-auto pb-2 snap-x snap-mandatory sm:auto-cols-[58%] md:grid-flow-row md:grid-cols-2 xl:grid-cols-3 md:overflow-visible md:pb-0">
-            {comparisonCards.map((item) => (
-              <div key={item.href} className="snap-start h-full">
-                <ComparisonCard locale={locale} item={item} linkLabel={copy.comparisonLinkLabel} featured />
-              </div>
-            ))}
-          </div>
+          {toolCards.map((tool) => (
+            <ToolCard
+              key={tool.href}
+              locale={locale}
+              tool={tool}
+              detailLabel={locale === "tr" ? "Detayları gör" : "View details"}
+              tryLabel={locale === "tr" ? "Dene" : "Try"}
+              bestForLabel={locale === "tr" ? "Uygun kullanım" : "Best for"}
+              ratingLabel={locale === "tr" ? "Puan" : "Rating"}
+              tone="light"
+            />
+          ))}
         </SectionShell>
 
         <SectionShell
-          className="section-tint-violet"
-          eyebrow={copy.popularToolsEyebrow}
-          title={copy.popularToolsTitle}
-          description={copy.popularToolsDescription}
-          actions={<PremiumButton href={`/${locale}/tools`}>{copy.popularToolsAction}</PremiumButton>}
+          tone="light"
+          eyebrow={copy.categoriesEyebrow}
+          title={copy.categoriesTitle}
+          description={copy.categoriesDescription}
+          actions={<PremiumButton href={`/${locale}/categories`}>{copy.categoriesAction}</PremiumButton>}
+          className="px-0 sm:px-0"
+          contentClassName="grid gap-4 sm:grid-cols-2 xl:grid-cols-4"
         >
-          <div className="grid grid-flow-col auto-cols-[88%] gap-4 overflow-x-auto pb-2 snap-x snap-mandatory sm:auto-cols-[58%] md:grid-flow-row md:grid-cols-2 xl:grid-cols-3 md:overflow-visible md:pb-0">
-            {popularTools.map((tool) => (
-              <div key={tool.href} className="snap-start h-full">
-                <ToolCard
-                  locale={locale}
-                  tool={tool}
-                  detailLabel={copy.toolDetailLabel}
-                  tryLabel={copy.toolTryLabel}
-                  bestForLabel={copy.toolBestForLabel}
-                  ratingLabel={copy.toolRatingLabel}
-                />
-              </div>
-            ))}
-          </div>
+          {categoryCards.map((category) => (
+            <CategoryCard key={category.href} locale={locale} category={category} linkLabel={locale === "tr" ? "Kategoriyi aç" : "Open category"} tone="light" />
+          ))}
         </SectionShell>
 
         <SectionShell
-          className="section-tint-cyan"
-          eyebrow={copy.latestGuidesEyebrow}
-          title={copy.latestGuidesTitle}
-          description={copy.latestGuidesDescription}
-          actions={<PremiumButton href={`/${locale}/blog`}>{copy.latestGuidesAction}</PremiumButton>}
+          tone="light"
+          className="section-tint-cyan px-0 sm:px-0"
+          eyebrow={copy.comparisonsEyebrow}
+          title={copy.comparisonsTitle}
+          description={copy.comparisonsDescription}
+          actions={<PremiumButton href={`/${locale}/categories/comparisons`}>{copy.comparisonsAction}</PremiumButton>}
+          contentClassName="grid gap-4 md:grid-cols-2 xl:grid-cols-3"
         >
-          <div className="grid grid-flow-col auto-cols-[88%] gap-4 overflow-x-auto pb-2 snap-x snap-mandatory sm:auto-cols-[58%] md:grid-flow-row md:grid-cols-2 xl:grid-cols-3 md:overflow-visible md:pb-0">
-            {latestGuides.map((article) => (
-              <div key={article.slug} className="snap-start h-full">
-                <BlogCard locale={locale} article={article} ctaLabel={locale === "tr" ? "Devamını oku" : "Read more"} />
-              </div>
-            ))}
-          </div>
+          {compareCards.map((item) => (
+            <ComparisonCard key={item.href} locale={locale} item={item} linkLabel={locale === "tr" ? "Karşılaştırmayı aç" : "Open comparison"} featured tone="light" />
+          ))}
         </SectionShell>
 
-        <details className="group ui-card-strong overflow-hidden rounded-[34px] border border-sky-400/10 px-4 py-4 shadow-[0_24px_72px_-46px_rgba(14,165,233,0.16)] sm:px-6 sm:py-6 lg:px-8 lg:py-7">
+        <SectionShell
+          tone="light"
+          eyebrow={copy.guidesEyebrow}
+          title={copy.guidesTitle}
+          description={copy.guidesDescription}
+          actions={<PremiumButton href={`/${locale}/blog`}>{copy.guidesAction}</PremiumButton>}
+          className="px-0 sm:px-0"
+          contentClassName="grid gap-4 sm:grid-cols-2 xl:grid-cols-4"
+        >
+          {latestBlogArticles.map((article) => (
+            <BlogCard key={article.slug} locale={locale} article={article} ctaLabel={locale === "tr" ? "Devamını oku" : "Read more"} tone="light" />
+          ))}
+        </SectionShell>
+
+        <details className="group overflow-hidden rounded-[32px] border border-slate-200 bg-white/90 px-4 py-4 shadow-[0_24px_72px_-46px_rgba(15,23,42,0.14)] sm:px-6 sm:py-6 lg:px-8 lg:py-7">
           <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left sm:items-end">
             <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-100">{copy.showMoreLabel}</p>
-              <p className="mt-2 text-[1.05rem] font-semibold tracking-[-0.02em] text-slate-50 sm:text-[1.35rem]">{copy.showMoreAction}</p>
-              <p className="mt-2.5 max-w-2xl text-[13px] leading-6 text-slate-300 sm:mt-3 sm:text-sm sm:leading-7">{copy.showMoreDescription}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">{copy.showMoreLabel}</p>
+              <p className="mt-2 text-[1.05rem] font-semibold tracking-[-0.02em] text-slate-950 sm:text-[1.35rem]">{copy.showMoreAction}</p>
+              <p className="mt-2.5 max-w-2xl text-[13px] leading-6 text-slate-600 sm:mt-3 sm:text-sm sm:leading-7">{copy.showMoreDescription}</p>
             </div>
-            <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-sky-400/12 bg-slate-950/45 text-[1.35rem] leading-none text-cyan-100 transition duration-200 group-open:rotate-45 sm:h-14 sm:w-14">
+            <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-[1.35rem] leading-none text-slate-700 transition duration-200 group-open:rotate-45 sm:h-14 sm:w-14">
               +
             </span>
           </summary>
-          <div className="mt-4 border-t border-sky-400/10 pt-4 sm:mt-6 sm:pt-6">
+          <div className="mt-4 border-t border-slate-200 pt-4 sm:mt-6 sm:pt-6">
             <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-              <div className="rounded-[24px] bg-slate-950/30 p-4 shadow-[0_18px_52px_-40px_rgba(14,165,233,0.1)] sm:p-5 lg:sticky lg:top-24">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{copy.showMoreTitle}</p>
-                <p className="mt-2.5 text-[13px] leading-6 text-slate-300 sm:mt-3 sm:text-[15px] sm:leading-7">{copy.showMoreDescription}</p>
-                <p className="mt-4 text-sm font-semibold text-cyan-100">{copy.showMoreAction}</p>
+              <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4 shadow-[0_18px_52px_-40px_rgba(15,23,42,0.1)] sm:p-5 lg:sticky lg:top-24">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.showMoreTitle}</p>
+                <p className="mt-2.5 text-[13px] leading-6 text-slate-600 sm:mt-3 sm:text-[15px] sm:leading-7">{copy.showMoreDescription}</p>
+                <p className="mt-4 text-sm font-semibold text-sky-700">{copy.showMoreAction}</p>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {secondaryGuides.map((item) => (
-                  <GuideCard key={item.href} locale={locale} item={item} linkLabel={locale === "tr" ? "Rehberi aç" : "Open guide"} />
-                ))}
+              <div className="grid gap-4 sm:grid-cols-2">
+                {getHomepageDiscoveryGuides(locale)
+                  .slice(0, 4)
+                  .map((item) => (
+                    <GuideCard key={item.href} locale={locale} item={item} linkLabel={copy.guideLinkLabel} tone="light" />
+                  ))}
               </div>
             </div>
           </div>
@@ -157,4 +173,3 @@ export function HomeBoostSections({ locale, comparisonCards, popularTools }: Hom
     </div>
   );
 }
-

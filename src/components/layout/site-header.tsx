@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { LocaleSwitcher } from "@/components/layout/locale-switcher";
+import { PremiumButton } from "@/components/ui/premium-button";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 
@@ -11,59 +12,119 @@ type SiteHeaderProps = {
 };
 
 export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
-  const mobileQuickLinks = [
-    {
-      href: `/${locale}/tools`,
-      label: locale === "tr" ? "Tools" : "Tools"
-    },
-    {
-      href: `/${locale}/blog`,
-      label: locale === "tr" ? "Blog" : "Blog"
-    },
-    {
-      href: `/${locale}/categories/comparisons`,
-      label: locale === "tr" ? "Compare" : "Compare"
-    }
+  const navItems = dictionary.navigation;
+  const quickLinks = [
+    { href: `/${locale}/categories`, label: locale === "tr" ? "Kategoriler" : "Categories" },
+    { href: `/${locale}/tools`, label: locale === "tr" ? "Araçlar" : "Tools" },
+    { href: `/${locale}/categories/comparisons`, label: locale === "tr" ? "Karşılaştırmalar" : "Comparisons" },
+    { href: `/${locale}/blog`, label: locale === "tr" ? "Blog" : "Blog" },
+    { href: `/${locale}/compare-auto`, label: locale === "tr" ? "Canlı karşılaştırma" : "Live compare" }
   ];
+  const searchPlaceholder = locale === "tr" ? "Araç, kategori veya karşılaştırma ara..." : "Search tools, categories, or comparisons...";
+  const searchButtonLabel = locale === "tr" ? "Ara" : "Search";
+  const featuredCtaLabel = locale === "tr" ? "Karşılaştır" : "Compare";
 
   return (
-    <header className="sticky top-0 z-40 border-b border-sky-400/12 bg-[linear-gradient(180deg,rgba(5,8,15,0.9),rgba(7,12,20,0.72))] backdrop-blur-2xl">
-      <div className="mx-auto grid max-w-[1200px] grid-cols-[minmax(0,1fr)_auto] items-center gap-2 px-4 py-2.5 md:grid-cols-[auto_1fr_auto] md:gap-4 md:px-6 md:py-4">
-        <Link href={`/${locale}`} className="inline-flex min-h-[40px] min-w-0 items-center">
-          <BrandLogo compact className="drop-shadow-[0_12px_30px_rgba(14,165,233,0.22)]" />
-        </Link>
-        <div className="hidden justify-center md:flex">
-          <nav className="ui-nav-shell hidden items-center gap-1 px-2 py-2 md:flex">
-            {dictionary.navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={`/${locale}${item.href}`}
-                className="inline-flex min-h-[36px] items-center rounded-full px-4 text-sm font-medium text-slate-200 transition duration-200 hover:bg-sky-400/[0.08] hover:text-white"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-        <div className="flex justify-end">
-          <LocaleSwitcher locale={locale} />
-        </div>
-      </div>
-
-      <div className="border-t border-sky-400/10 px-4 py-2 md:hidden">
-        <nav className="mx-auto flex max-w-[1200px] items-center gap-2 overflow-x-auto pb-0.5">
-          {mobileQuickLinks.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="ui-nav-shell inline-flex min-h-[36px] shrink-0 min-w-0 items-center justify-center truncate rounded-full px-3 text-[10px] font-semibold tracking-normal text-slate-200 transition duration-150 hover:border-cyan-400/20 hover:text-cyan-100"
-            >
-              {item.label}
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-[rgba(255,255,255,0.82)] text-slate-900 backdrop-blur-2xl">
+      <div className="mx-auto max-w-[1440px] px-4 py-3 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-3">
+            <Link href={`/${locale}`} className="inline-flex min-h-[44px] shrink-0 items-center">
+              <BrandLogo compact />
             </Link>
-          ))}
-        </nav>
+
+            <nav className="hidden flex-1 items-center justify-center gap-1 xl:flex">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={`/${locale}${item.href}`}
+                  className="inline-flex min-h-[40px] items-center rounded-full px-4 text-sm font-semibold text-slate-700 transition duration-200 hover:bg-slate-100 hover:text-slate-950"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            <form action={`/${locale}/tools`} method="get" className="hidden min-w-[280px] max-w-[360px] flex-1 items-center gap-2 lg:flex">
+              <label className="sr-only" htmlFor="site-search">
+                {searchButtonLabel}
+              </label>
+              <div className="flex w-full items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.2)]">
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 text-slate-400">
+                  <path d="M10.5 4.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z" fill="none" stroke="currentColor" strokeWidth="1.7" />
+                  <path d="m15 15 4.5 4.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
+                </svg>
+                <input
+                  id="site-search"
+                  name="q"
+                  type="search"
+                  placeholder={searchPlaceholder}
+                  className="h-6 w-full border-0 bg-transparent text-sm text-slate-800 outline-none placeholder:text-slate-400"
+                />
+                <button
+                  type="submit"
+                  className="inline-flex min-h-[34px] shrink-0 items-center rounded-full bg-slate-900 px-3.5 text-xs font-semibold text-white transition hover:bg-slate-800"
+                >
+                  {searchButtonLabel}
+                </button>
+              </div>
+            </form>
+
+            <div className="flex shrink-0 items-center gap-2">
+              <div className="hidden md:block">
+                <LocaleSwitcher locale={locale} />
+              </div>
+              <PremiumButton href={`/${locale}/compare-auto`} className="hidden md:inline-flex" variant="ghost">
+                {featuredCtaLabel}
+              </PremiumButton>
+            </div>
+          </div>
+
+          <div className="grid gap-3 xl:hidden">
+            <form action={`/${locale}/tools`} method="get" className="flex w-full items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.2)]">
+              <label className="sr-only" htmlFor="site-search-mobile">
+                {searchButtonLabel}
+              </label>
+              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 text-slate-400">
+                <path d="M10.5 4.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z" fill="none" stroke="currentColor" strokeWidth="1.7" />
+                <path d="m15 15 4.5 4.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
+              </svg>
+              <input
+                id="site-search-mobile"
+                name="q"
+                type="search"
+                placeholder={searchPlaceholder}
+                className="h-8 w-full border-0 bg-transparent text-sm text-slate-800 outline-none placeholder:text-slate-400"
+              />
+              <button
+                type="submit"
+                className="inline-flex min-h-[34px] shrink-0 items-center rounded-full bg-slate-900 px-3.5 text-xs font-semibold text-white transition hover:bg-slate-800"
+              >
+                {searchButtonLabel}
+              </button>
+            </form>
+
+            <nav className="flex items-center gap-2 overflow-x-auto pb-0.5 xl:hidden">
+              {quickLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="inline-flex min-h-[36px] shrink-0 items-center rounded-full border border-slate-200 bg-white px-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-700 transition hover:border-sky-200 hover:text-slate-950"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="flex items-center gap-3 md:hidden">
+              <LocaleSwitcher locale={locale} />
+              <PremiumButton href={`/${locale}/compare-auto`} className="flex-1" variant="ghost">
+                {featuredCtaLabel}
+              </PremiumButton>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   );
 }
-

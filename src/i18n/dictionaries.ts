@@ -50,7 +50,7 @@ const dictionaries = {
           ]
         },
         {
-          title: "Güven",
+          title: "Güven / Kurumsal",
           links: [
             { label: "Blog", href: "/blog" },
             { label: "Affiliate açıklaması", href: "/affiliate-disclosure" },

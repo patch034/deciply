@@ -1,4 +1,3 @@
-﻿import { AutoCompareWorkspace } from "@/components/comparison/auto-compare-workspace";
 import { HomeBoostSections } from "@/components/home/home-boost-sections";
 import { HeroSection } from "@/components/home/hero-section";
 import { getComparisonDirectoryCards } from "@/lib/comparisons";
@@ -20,7 +19,7 @@ function buildPopularTools(locale: Locale) {
 
       return left.slug.localeCompare(right.slug);
     })
-    .slice(0, 3)
+    .slice(0, 6)
     .map((tool) => toHomeToolCard(locale, tool));
 }
 
@@ -32,15 +31,11 @@ type HomePageProps = {
 export function HomePage({ locale, content }: HomePageProps) {
   const comparisonCards = getComparisonDirectoryCards(locale).slice(0, 3);
   const popularTools = buildPopularTools(locale);
-  const compareTools = getLocalizedTools(locale);
 
   return (
-    <div className="relative overflow-x-clip pb-10 sm:pb-14 lg:pb-16">
+    <div className="relative min-h-screen overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] pb-12 text-slate-900 sm:pb-16 lg:pb-20">
       <HeroSection locale={locale} content={content.hero} />
-      <div className="mx-auto mt-8 w-full max-w-[1240px] px-4 sm:px-6 lg:mt-10">
-        <AutoCompareWorkspace locale={locale} tools={compareTools} initialLeftSlug="chatgpt" initialRightSlug="claude" compact />
-      </div>
-      <HomeBoostSections locale={locale} comparisonCards={comparisonCards} popularTools={popularTools} />
+      <HomeBoostSections locale={locale} comparisonCards={comparisonCards} popularTools={popularTools} categories={content.categories} />
     </div>
   );
 }

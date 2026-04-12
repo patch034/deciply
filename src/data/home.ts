@@ -143,32 +143,32 @@ export type HomeContent = {
 const homeContent: Record<Locale, HomeContent> = {
   tr: {
     hero: {
-      badge: "AI araç rehberi",
-      title: "Kullanım senaryonuza tam uyan AI aracını bulun",
+      badge: "AI araç dizini",
+      title: "İhtiyacına en uygun AI araçlarını tek ekrandan keşfet",
       description:
-        "Yazı, araştırma, tasarım ve gelir odaklı gerçek senaryolara göre AI araçlarını karşılaştırın.",
-      primaryCta: "Ücretsiz Başla",
-      secondaryCta: "Karşılaştırmaları incele",
+        "Araçları kategorilere, kullanım senaryolarına ve karşılaştırmalara göre tarayarak hızlıca doğru başlangıç noktasına ulaş.",
+      primaryCta: "Araçları keşfet",
+      secondaryCta: "Karşılaştırmaları aç",
       starterHint: "",
       starterHintLabel: "",
       starterHintHref: "",
-      trustLine: "Doğru AI aracını daha hızlı ve güvenle seç.",
-      panelEyebrow: "Karar paneli",
-      trustBadges: ["Tarafsız", "Gerçek kullanım", "Düzenli güncellenir"],
+      trustLine: "Kategoriler, araçlar, karşılaştırmalar ve rehberler tek yerde.",
+      panelEyebrow: "Hızlı keşif",
+      trustBadges: ["Kürasyonlu", "Kullanım odaklı", "Düzenli güncellenir"],
       stats: [
-        { value: String(getToolCount()), label: "küratörlü AI araç" },
+        { value: String(getToolCount()), label: "küratörlü araç" },
         { value: String(blogArticles.length), label: "yayındaki rehber" },
-        { value: String(discoveryPages.length), label: "karar sayfası" }
+        { value: String(discoveryPages.length), label: "keşif sayfası" }
       ],
-      panelTitle: "Daha hızlı, daha net karar verin",
+      panelTitle: "Aradığın aracı daha hızlı bul",
       panelDescription:
-        "Araçları fiyat, kullanım alanı ve sonuç gücüne göre karşılaştırın; size uygun seçeneğe birkaç saniyede gidin.",
+        "Kısa özetler, senaryo etiketleri ve karşılaştırma bağlantıları ile keşif sürecini hızlandır.",
       panelItems: [
-        { title: "Fiyat sinyali", meta: "ücretsiz, kısmen ücretsiz ve ücretli seçenekleri ayırın", value: "Net" },
-        { title: "Kullanım alanı", meta: "hangi iş için daha uygun olduğunu tek bakışta görün", value: "Senaryo" },
-        { title: "Karşılaştırma hızı", meta: "araç detaylarına ve karşılaştırmalara tek tıkla ulaşın", value: "Hız" }
+        { title: "Kategori keşfi", meta: "yazı, görsel, video ve iş akışlarını ayrı ayrı tarayın", value: "Hızlı" },
+        { title: "Araç tarama", meta: "logo, kısa açıklama ve fiyat modeli ile hızlıca filtrele", value: "Net" },
+        { title: "Karşılaştırma yolu", meta: "iyi eşleşen araçları tek tıkla yan yana aç", value: "Kolay" }
       ],
-      panelFootnote: "Deciply, doğru AI aracını daha hızlı, daha akıllı ve daha güvenli seçmeniz için tasarlanmış modern bir karar platformudur."
+      panelFootnote: "Deciply, AI araçlarını keşfetmek, karşılaştırmak ve karar vermek için tasarlanmış açık bir dizindir."
     },
     topPick: {
       badge: "Kullanım senaryosu",
@@ -188,27 +188,27 @@ const homeContent: Record<Locale, HomeContent> = {
     sections: {
       highIntent: {
         eyebrow: "En çok açılan sayfalar",
-        title: "Karar aşamasındaki kullanıcıların ilk baktığı sayfalar",
-        description: "Karşılaştırma ve liste sayfalarıyla kullanıcıyı daha az sürtünmeyle doğru araca yönlendirin.",
+        title: "Karar öncesi en çok ziyaret edilen yüzeyler",
+        description: "Kullanıcıyı doğru araç grubuna hızlıca yönlendiren sayfaları öne çıkar.",
         linkLabel: "Detayları gör"
       },
       socialProof: {
         eyebrow: "Güven sinyali",
-        title: "Binlerce kullanıcı doğru AI aracını Deciply ile buluyor",
+        title: "Binlerce kullanıcı Deciply ile doğru AI aracına daha hızlı ulaşıyor",
         description:
-          "Gerçek kullanım senaryolarına göre sıralanan araçlar, haftalık güncellemeler ve net kategori yapısı ile kullanıcıyı daha hızlı doğru seçime götürür."
+          "Gerçek kullanım senaryolarına göre sıralanan araçlar, haftalık güncellemeler ve net kategori yapısı keşif sürecini sadeleştirir."
       },
       categories: {
         eyebrow: "Kategoriler",
-        title: "AI kategorilerine tek ekrandan girin",
-        description: "Yazı, görsel, video ve gelir odaklı kullanım alanlarında uygun başlangıç noktasını bulun.",
+        title: "AI kategorilerine açık ve hızlı erişin",
+        description: "Yazı, görsel, video ve iş odaklı kullanım alanları için doğru başlangıç noktasını seçin.",
         linkLabel: "Detayları gör"
       },
       tools: {
         eyebrow: "Öne çıkan araçlar",
-        title: "Araçları karşılaştır, güçlü yönlerini gör ve senaryona uygun seç",
+        title: "Araç kartlarıyla hızlı keşif yap",
         description:
-          "Kartlar; fiyat modeli, kullanım alanı ve sonuç potansiyeli ile hangi aracın hangi iş için daha uygun olduğunu hızlıca gösterir.",
+          "Kartlar; logo, kısa özet, fiyat modeli ve uygun kullanım ile hangi aracın ne için iyi olduğunu açıkça gösterir.",
         detailLabel: "Detayları gör",
         tryLabel: "Ücretsiz Başla",
         bestForLabel: "Uygun kullanım",
@@ -217,7 +217,7 @@ const homeContent: Record<Locale, HomeContent> = {
       hotTools: {
         eyebrow: "2026",
         title: "2026'da sık incelenen AI araçları",
-        description: "Farklı kullanım senaryolarında sık açılan araçlara hızlıca bakın."
+        description: "Farklı kullanım senaryolarında sık açılan araçları hızlıca keşfedin."
       },
       makeMoney: {
         eyebrow: "Gelir odaklı seçimler",
@@ -227,7 +227,7 @@ const homeContent: Record<Locale, HomeContent> = {
       comparisons: {
         eyebrow: "Karşılaştırma tablosu",
         title: "Kararı hızlandıran kısa tablo",
-        description: "Araçların hangi kullanım sonucuna daha uygun olduğunu tek bakışta görün ve daha bilinçli seçim yapın.",
+        description: "Araçların hangi kullanım sonucuna daha uygun olduğunu tek bakışta görün.",
         linkLabel: "Karşılaştırmayı aç",
         actionLabel: "Detayları gör",
         columns: {
@@ -242,7 +242,7 @@ const homeContent: Record<Locale, HomeContent> = {
       guides: {
         eyebrow: "Rehberler",
         title: "Rehberler",
-        description: "İleride yayınlanacak rehber içerikler için ayrılan alan.",
+        description: "Karar vermeden önce okunabilecek kısa ve pratik rehberler.",
         linkLabel: "Aç"
       },
       newsletter: {
@@ -256,8 +256,8 @@ const homeContent: Record<Locale, HomeContent> = {
       },
       finalCta: {
         eyebrow: "Hemen başla",
-        title: "AI araçlarını şimdi keşfet ve kullanım senaryona uygun olana ilerle",
-        description: "Kategori sayfalarından ilerleyin ya da tüm araç dizinine geçip uygun seçeneği daha hızlı bulun.",
+        title: "AI araçlarını şimdi keşfet ve doğru başlangıç noktasına ilerle",
+        description: "Kategori sayfalarından başlayın ya da tüm araç dizininde hızlıca tarama yapın.",
         urgencyNote: "Şu anda sık incelenen araçlar",
         primaryCta: "Kategorileri keşfet",
         secondaryCta: "Araçları incele"
@@ -495,31 +495,31 @@ const homeContent: Record<Locale, HomeContent> = {
   en: {
     hero: {
       badge: "AI tool directory",
-      title: "Find the right AI tool for your exact use case",
+      title: "Discover the right AI tools for your exact workflow",
       description:
-        "Compare AI tools based on real scenarios like writing, research, design, and monetization.",
-      primaryCta: "Start Free",
-      secondaryCta: "Review comparisons",
+        "Browse tools by category, use case, and comparison to reach the best starting point faster.",
+      primaryCta: "Explore tools",
+      secondaryCta: "Open comparisons",
       starterHint: "",
       starterHintLabel: "",
       starterHintHref: "",
-      trustLine: "Choose the right AI. Faster, smarter, confidently.",
-      panelEyebrow: "Decision panel",
-      trustBadges: ["Scenario-based", "Transparent", "Updated regularly"],
+      trustLine: "Categories, tools, comparisons, and guides in one place.",
+      panelEyebrow: "Fast discovery",
+      trustBadges: ["Curated", "Use-case driven", "Updated regularly"],
       stats: [
-        { value: String(getToolCount()), label: "curated AI tools" },
+        { value: String(getToolCount()), label: "curated tools" },
         { value: String(blogArticles.length), label: "guides published" },
-        { value: String(discoveryPages.length), label: "decision pages" }
+        { value: String(discoveryPages.length), label: "discovery pages" }
       ],
-      panelTitle: "Decide faster",
+      panelTitle: "Find the right tool faster",
       panelDescription:
-        "Compare tools by pricing, use case, and output strength so users can reach the better fit in seconds.",
+        "Short summaries, scenario tags, and comparison links make exploration easier in seconds.",
       panelItems: [
-        { title: "Pricing signal", meta: "separate free, freemium, and paid options instantly", value: "Clear" },
-        { title: "Use case", meta: "see what each tool is better suited for", value: "Scenario" },
-        { title: "Comparison speed", meta: "jump into tool detail and comparison pages faster", value: "Fast" }
+        { title: "Category browsing", meta: "scan writing, image, video, and business workflows separately", value: "Quick" },
+        { title: "Tool scan", meta: "use logos, short descriptions, and pricing signals to filter faster", value: "Clear" },
+        { title: "Compare path", meta: "open well-matched tools side by side in one click", value: "Easy" }
       ],
-      panelFootnote: "Deciply is built to make AI tool decisions faster through scenario-based discovery."
+      panelFootnote: "Deciply is built as a clean directory for discovery, comparison, and decision support."
     },
     topPick: {
       badge: "Use case",
