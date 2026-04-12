@@ -28,13 +28,25 @@ function formatDate(locale: Locale, value?: string) {
   }).format(date);
 }
 
+function buildSourceMark(source: string) {
+  const letters = source
+    .split(/\s+/)
+    .map((part) => part[0])
+    .filter(Boolean)
+    .join("");
+
+  return (letters.slice(0, 2) || "AI").toUpperCase();
+}
+
 export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps) {
   const sidebar = variant === "sidebar";
 
   return (
-    <div className={sidebar ? "space-y-2" : "space-y-3"}>
-      {items.map((item, index) => {
+    <div className={sidebar ? "space-y-2.5" : "space-y-3"}>
+      {items.map((item) => {
         const publishedAt = formatDate(locale, item.publishedAt);
+        const detailHref = `/${locale}/news/${item.slug}`;
+        const sourceMark = buildSourceMark(item.source);
 
         return (
           <article
@@ -55,8 +67,9 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
                     : "h-8 w-8 border-cyan-200 bg-cyan-50 text-cyan-700"
                 ].join(" ")}
               >
-                {sidebar ? index + 1 : item.source.slice(0, 2)}
+                {sourceMark}
               </span>
+
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge variant="muted" className="text-[10px]">
@@ -66,14 +79,12 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
                   {publishedAt ? <span className="text-[11px] text-slate-400">{publishedAt}</span> : null}
                 </div>
 
-                <a
-                  href={item.sourceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href={detailHref}
                   className="mt-1.5 block text-sm font-semibold leading-6 text-slate-950 transition group-hover:text-sky-700"
                 >
                   {item.title}
-                </a>
+                </Link>
 
                 <p className={["mt-1 text-[13px] leading-6 text-slate-600", sidebar ? "clamp-2" : "mobile-clamp-2"].join(" ")}>
                   {item.summary}
@@ -81,6 +92,12 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
 
                 {!sidebar ? (
                   <div className="mt-2 flex flex-wrap gap-2">
+                    <Link
+                      href={detailHref}
+                      className="inline-flex min-h-[28px] items-center rounded-full border border-sky-200 bg-sky-50 px-3 text-[11px] font-semibold text-sky-700 transition hover:border-sky-300 hover:bg-sky-100"
+                    >
+                      {locale === "tr" ? "Haberi oku" : "Read story"}
+                    </Link>
                     {item.relatedLinks.slice(0, 2).map((link) => (
                       <Link
                         key={`${item.slug}-${link.href}`}
@@ -95,7 +112,7 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
               </div>
             </div>
 
-            {item.relatedLinks.length ? (
+            {!sidebar && item.relatedLinks.length ? (
               <div className="mt-3 flex flex-wrap gap-2">
                 {item.relatedLinks.map((link) => (
                   <Link
@@ -108,6 +125,26 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
                 ))}
               </div>
             ) : null}
+
+            <div className="mt-3 flex items-center justify-between gap-3 border-t border-slate-200 pt-3">
+              <Link
+                href={detailHref}
+                className="text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-700 transition hover:text-sky-800"
+              >
+                {locale === "tr" ? "Detayı gör" : "View details"}
+              </Link>
+
+              {!sidebar ? (
+                <a
+                  href={item.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 transition hover:text-slate-700"
+                >
+                  {locale === "tr" ? "Kaynağa git" : "Original source"}
+                </a>
+              ) : null}
+            </div>
           </article>
         );
       })}

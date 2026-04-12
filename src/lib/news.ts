@@ -23,6 +23,14 @@ type FeedSource = {
 };
 
 const feedSources: FeedSource[] = [
+  { source: "OpenAI News", feedUrl: "https://news.google.com/rss/search?q=OpenAI+AI+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Models" },
+  { source: "Anthropic News", feedUrl: "https://news.google.com/rss/search?q=Anthropic+AI+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Writing" },
+  { source: "Gemini News", feedUrl: "https://news.google.com/rss/search?q=Google+Gemini+AI+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Search" },
+  { source: "Copilot News", feedUrl: "https://news.google.com/rss/search?q=Microsoft+Copilot+AI+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Productivity" },
+  { source: "Perplexity News", feedUrl: "https://news.google.com/rss/search?q=Perplexity+AI+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Research" },
+  { source: "Midjourney News", feedUrl: "https://news.google.com/rss/search?q=Midjourney+AI+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Image" },
+  { source: "AI Regulation", feedUrl: "https://news.google.com/rss/search?q=AI+regulation+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Policy" },
+  { source: "AI Tools", feedUrl: "https://news.google.com/rss/search?q=AI+tools+product+launch+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Tools" },
   { source: "OpenAI", feedUrl: "https://openai.com/news/rss.xml", categoryLabel: "Models" },
   { source: "Anthropic", feedUrl: "https://www.anthropic.com/news/rss.xml", categoryLabel: "Writing" },
   { source: "Google AI", feedUrl: "https://blog.google/technology/ai/rss/", categoryLabel: "Search" },
@@ -51,6 +59,19 @@ function slugify(value: string) {
 function extractTag(block: string, tag: string) {
   const match = block.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`, "i"));
   return match ? stripHtml(match[1] ?? "") : "";
+}
+
+function extractSourceMeta(block: string) {
+  const match = block.match(/<source(?:\s+url="([^"]+)")?>([\s\S]*?)<\/source>/i);
+
+  if (!match) {
+    return null;
+  }
+
+  return {
+    name: stripHtml(match[2] ?? ""),
+    url: (match[1] ?? "").trim()
+  };
 }
 
 function buildRelatedLinks(title: string, locale: Locale): AiNewsLink[] {
@@ -109,12 +130,12 @@ function buildRelatedLinks(title: string, locale: Locale): AiNewsLink[] {
   return links.slice(0, 3);
 }
 
-function buildFeedItem(locale: Locale, source: FeedSource, title: string, summary: string, publishedAt?: string, sourceUrl = ""): AiNewsItem {
+function buildFeedItem(locale: Locale, source: FeedSource, title: string, summary: string, publishedAt?: string, sourceUrl = "", sourceName?: string): AiNewsItem {
   return {
     slug: slugify(`${source.source}-${title}`),
     title,
     summary,
-    source: source.source,
+    source: sourceName || source.source,
     sourceUrl,
     publishedAt,
     categoryLabel: source.categoryLabel,
@@ -131,6 +152,7 @@ function parseRssFeed(locale: Locale, source: FeedSource, xml: string): AiNewsIt
       const link = extractTag(block, "link");
       const description = extractTag(block, "description");
       const pubDate = extractTag(block, "pubDate");
+      const sourceMeta = extractSourceMeta(block);
 
       if (!title) {
         return null;
@@ -138,8 +160,10 @@ function parseRssFeed(locale: Locale, source: FeedSource, xml: string): AiNewsIt
 
       const summary = description || (locale === "tr" ? "Yeni AI gelişmelerini ve ürün sinyallerini takip et." : "Track the latest AI product and research signals.");
       const formattedDate = pubDate ? new Date(pubDate).toISOString() : undefined;
+      const sourceUrl = sourceMeta?.url || link || source.feedUrl;
+      const sourceName = sourceMeta?.name || source.source;
 
-      return buildFeedItem(locale, source, title, summary.slice(0, 220), formattedDate, link || source.feedUrl);
+      return buildFeedItem(locale, source, title, summary.slice(0, 220), formattedDate, sourceUrl, sourceName);
     })
     .filter((item): item is AiNewsItem => Boolean(item));
 }
@@ -173,7 +197,7 @@ function fallbackNews(locale: Locale): AiNewsItem[] {
   );
 }
 
-export async function getAiNewsItems(locale: Locale, limit = 8): Promise<AiNewsItem[]> {
+async function collectAiNewsItems(locale: Locale): Promise<AiNewsItem[]> {
   const feedItems: AiNewsItem[] = [];
   const seenTitles = new Set<string>();
 
@@ -203,9 +227,6 @@ export async function getAiNewsItems(locale: Locale, limit = 8): Promise<AiNewsI
         seenTitles.add(signature);
         feedItems.push(item);
 
-        if (feedItems.length >= limit) {
-          return feedItems.slice(0, limit);
-        }
       }
     } catch {
       continue;
@@ -213,8 +234,18 @@ export async function getAiNewsItems(locale: Locale, limit = 8): Promise<AiNewsI
   }
 
   if (!feedItems.length) {
-    return fallbackNews(locale).slice(0, limit);
+    return fallbackNews(locale);
   }
 
-  return feedItems.slice(0, limit);
+  return feedItems;
+}
+
+export async function getAiNewsItems(locale: Locale, limit = 8): Promise<AiNewsItem[]> {
+  const items = await collectAiNewsItems(locale);
+  return items.slice(0, limit);
+}
+
+export async function getAiNewsItemBySlug(locale: Locale, slug: string): Promise<AiNewsItem | null> {
+  const items = await collectAiNewsItems(locale);
+  return items.find((item) => item.slug === slug) ?? null;
 }
