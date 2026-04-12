@@ -82,6 +82,29 @@ function compareLocaleSort(locale: Locale, left: CompareToolOption, right: Compa
   return left.name.localeCompare(right.name, locale === "tr" ? "tr-TR" : "en-US");
 }
 
+function normalizeCompareText(input: string) {
+  return input
+    .replace(/\u00c2/g, "")
+    .replace(/\u00c3\u00bc/g, "ü")
+    .replace(/\u00c3\u009c/g, "Ü")
+    .replace(/\u00c3\u00b6/g, "ö")
+    .replace(/\u00c3\u0096/g, "Ö")
+    .replace(/\u00c3\u00a7/g, "ç")
+    .replace(/\u00c3\u0087/g, "Ç")
+    .replace(/\u00c4\u00b1/g, "ı")
+    .replace(/\u00c4\u00b0/g, "İ")
+    .replace(/\u00c4\u009f/g, "ğ")
+    .replace(/\u00c4\u009e/g, "Ğ")
+    .replace(/\u00c5\u009f/g, "ş")
+    .replace(/\u00c5\u009e/g, "Ş")
+    .replace(/\u00e2\u0080\u0099/g, "’")
+    .replace(/\u00e2\u0080\u009c|\u00e2\u0080\u009d/g, "\"")
+    .replace(/\u00e2\u0080\u0093/g, "–")
+    .replace(/\u00e2\u0080\u0094/g, "—")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function isShortTag(value: string) {
   const cleaned = value.trim();
   return cleaned.length > 0 && cleaned.length <= 16 && !cleaned.includes(".");
@@ -91,8 +114,9 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
   const labels = copy[locale];
 
   if (Array.isArray(value)) {
-    const shortItems = value.filter((item) => isShortTag(item));
-    const longItems = value.filter((item) => !isShortTag(item));
+    const normalizedItems = value.map((item) => normalizeCompareText(item));
+    const shortItems = normalizedItems.filter((item) => isShortTag(item));
+    const longItems = normalizedItems.filter((item) => !isShortTag(item));
     if (longItems.length > 0) {
       return (
         <ul className="compare-list">
@@ -144,6 +168,10 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
   }
 
   if (typeof value === "string") {
+    const cleaned = normalizeCompareText(value);
+    if (cleaned !== value) {
+      return <p className={compact ? "text-[12px] leading-5 text-slate-200" : "text-sm leading-6 text-slate-200"}>{cleaned}</p>;
+    }
     const normalized = value.trim().toLowerCase();
     if (normalized === labels.yes.toLowerCase()) {
       return (
@@ -192,9 +220,7 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
     }
   }
 
-  return (
-    <p className={compact ? "text-[12px] leading-5 text-slate-200" : "text-sm leading-6 text-slate-200"}>{value}</p>
-  );
+  return <p className={compact ? "text-[12px] leading-5 text-slate-200" : "text-sm leading-6 text-slate-200"}>{value}</p>;
 }
 
 export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRightSlug, compact = false }: AutoCompareWorkspaceProps) {
@@ -334,11 +360,15 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
       {leftTool && rightTool ? (
         <div className="mt-6 space-y-4">
           <div className="grid gap-3 md:grid-cols-2">
-            {([leftTool, rightTool] as CompareToolOption[]).map((tool) => (
+            {([leftTool, rightTool] as CompareToolOption[]).map((tool) => {
+              const bestForTags = tool.compareProfile.bestFor
+                .map((item) => normalizeCompareText(item))
+                .filter((item) => isShortTag(item));
+              return (
               <article key={tool.slug} className="rounded-[24px] border border-sky-400/10 bg-slate-950/45 p-3 shadow-[0_18px_54px_-36px_rgba(14,165,233,0.2)] sm:rounded-[26px] sm:p-5">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{tool.compareProfile.category}</p>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{normalizeCompareText(tool.compareProfile.category)}</p>
                     <h3 className="mt-2 text-lg font-bold tracking-[-0.03em] text-slate-50 sm:text-xl">{tool.name}</h3>
                   </div>
                   <Badge variant="accent" className="shrink-0 text-[11px]">
@@ -346,17 +376,23 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
                   </Badge>
                 </div>
 
-                <p className="mt-2 text-sm leading-5 text-slate-300/84 mobile-clamp-2 sm:mt-3 sm:leading-6">{tool.bestUseCase}</p>
+                <p className="mt-2 text-sm leading-5 text-slate-300/84 mobile-clamp-2 sm:mt-3 sm:leading-6">
+                  {normalizeCompareText(tool.bestUseCase)}
+                </p>
 
                 <div className="mt-3 flex flex-wrap gap-1.5 sm:mt-4 sm:gap-2">
-                  {tool.compareProfile.bestFor.slice(0, 2).map((item) => (
-                    <Badge key={item} variant="muted" className="px-2 py-0.5 text-[10px]">
+                  {bestForTags.slice(0, 2).map((item, index) => (
+                    <Badge
+                      key={item}
+                      variant="muted"
+                      className={`px-2 py-0.5 text-[10px] ${index === 1 ? "hidden sm:inline-flex" : ""}`}
+                    >
                       {item}
                     </Badge>
                   ))}
                 </div>
               </article>
-            ))}
+            )})}
           </div>
 
           <div className="grid gap-2 sm:gap-3">

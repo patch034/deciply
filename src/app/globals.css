@@ -353,6 +353,14 @@ svg {
   white-space: nowrap;
 }
 
+@media (max-width: 767px) {
+  .compare-chip {
+    max-width: 10rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
 .balance-text {
   text-wrap: balance;
 }
