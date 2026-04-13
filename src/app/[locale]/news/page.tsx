@@ -77,7 +77,7 @@ export default async function NewsPage({
   const topicLabels = Array.from(new Set(items.map((item) => item.categoryLabel))).slice(0, 8);
 
   return (
-    <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip bg-transparent px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div className="ui-page-shell relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip bg-transparent px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
       <section className="ui-card ui-card-hover rounded-[32px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(244,248,253,0.98))] p-6 shadow-[0_24px_80px_-44px_rgba(37,99,235,0.14)] sm:p-8">
         <div className="flex flex-wrap items-center gap-2">
           <Badge variant="accent">{safeLocale === "tr" ? "AI Haberleri" : "AI News"}</Badge>

@@ -40,11 +40,11 @@ export function SectionHeading({
             {eyebrow}
           </Badge>
         ) : null}
-        <h2 className={clsx("balance-text mt-3 max-w-3xl text-[1.72rem] font-bold tracking-[-0.04em] sm:mt-4 sm:text-[2.05rem] md:text-[2.35rem] md:leading-[1.06]", textClass)}>
+        <h2 className={clsx("balance-text mt-3 max-w-3xl text-[1.58rem] font-bold tracking-[-0.045em] sm:mt-4 sm:text-[1.92rem] md:text-[2.18rem] md:leading-[1.06]", textClass)}>
           {title}
         </h2>
         {description ? (
-          <p className={clsx("mt-2 max-w-2xl text-[13px] leading-6 sm:mt-3 sm:text-[14px] sm:leading-7 md:text-[0.98rem] md:leading-7", descriptionClass)}>
+          <p className={clsx("mt-2 max-w-2xl text-[12.5px] leading-6 sm:mt-3 sm:text-[13.5px] sm:leading-7 md:text-[0.95rem] md:leading-7", descriptionClass)}>
             {description}
           </p>
         ) : null}

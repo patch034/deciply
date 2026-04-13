@@ -53,16 +53,16 @@ export function ComparisonCard({ locale, item, linkLabel, featured = false, tone
       <Link href={href} className="group block h-full">
         <article
           className={[
-            "ui-card ui-card-hover flex h-full flex-col justify-between overflow-hidden rounded-[24px] border p-4 transition duration-300 hover:-translate-y-1 sm:p-5",
+            "ui-card ui-card-hover flex h-full flex-col justify-between overflow-hidden rounded-[24px] border p-4 transition duration-300 hover:-translate-y-1 sm:p-[18px]",
             light
-              ? "border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.995),rgba(247,250,253,0.98))] shadow-[0_16px_42px_-20px_rgba(15,23,42,0.16)] hover:border-sky-200 hover:shadow-[0_24px_50px_-22px_rgba(37,99,235,0.18)]"
+              ? "border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.995),rgba(247,250,253,0.98))] shadow-[0_18px_46px_-22px_rgba(15,23,42,0.16)] hover:border-sky-200 hover:shadow-[0_26px_54px_-24px_rgba(37,99,235,0.18)]"
               : featured
                 ? "ui-card-strong border-sky-400/10 bg-[linear-gradient(180deg,rgba(8,12,22,0.95),rgba(10,16,30,0.9))]"
                 : "ui-card border-sky-400/10 bg-[linear-gradient(180deg,rgba(10,16,30,0.96),rgba(5,9,17,0.99))]"
           ].join(" ")}
         >
-          <div className="h-1.5 rounded-full bg-[linear-gradient(90deg,#071226_0%,#0E2450_16%,#007FFF_54%,#0055FF_80%,#3B82F6_100%)]" />
-          <div className="flex min-h-[34px] items-center justify-between gap-3 overflow-hidden sm:min-h-[40px]">
+          <div className="h-[5px] rounded-full bg-[linear-gradient(90deg,#071226_0%,#0E2450_16%,#007FFF_54%,#0055FF_80%,#3B82F6_100%)]" />
+          <div className="flex min-h-[32px] items-center justify-between gap-3 overflow-hidden sm:min-h-[36px]">
             <div className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
               <div className="flex shrink-0 items-center">
                 {logos.slice(0, 3).map((logo, index) => (
@@ -85,18 +85,18 @@ export function ComparisonCard({ locale, item, linkLabel, featured = false, tone
           <div className="flex flex-1 flex-col">
             <h3
               className={[
-                "clamp-2 mt-3 min-h-[2.4rem] text-[1.04rem] font-bold leading-tight tracking-[-0.03em] sm:mt-4 sm:min-h-[2.9rem] sm:text-[1.22rem]",
+                "clamp-2 mt-2.5 min-h-[2.2rem] text-[1rem] font-bold leading-tight tracking-[-0.03em] sm:mt-3.5 sm:min-h-[2.55rem] sm:text-[1.12rem]",
                 light ? "text-slate-900" : "text-slate-50"
               ].join(" ")}
             >
               {item.title}
             </h3>
-            <p className={["mobile-clamp-2 mt-2.5 flex-1 text-[14px] leading-relaxed sm:mt-3 sm:text-[15px]", light ? "text-slate-600" : "text-slate-300/84"].join(" ")}>
+            <p className={["mobile-clamp-2 mt-2 flex-1 text-[13px] leading-relaxed sm:mt-2.5 sm:text-[14px]", light ? "text-slate-600" : "text-slate-300/84"].join(" ")}>
               {item.description}
             </p>
           </div>
 
-          <div className={["mt-auto border-t pt-3.5 sm:mt-5 sm:pt-4", light ? "border-slate-200" : "border-sky-400/10"].join(" ")}>
+          <div className={["mt-auto border-t pt-3 sm:mt-[18px] sm:pt-3.5", light ? "border-slate-200" : "border-sky-400/10"].join(" ")}>
             <span className={["inline-flex items-center gap-2 text-sm font-semibold transition duration-200 group-hover:translate-x-0.5", light ? "text-slate-700 group-hover:text-[#0E2450]" : "text-slate-100 group-hover:text-[#BFD2F6]"].join(" ")}>
               {linkLabel}
               <span aria-hidden="true" className="text-[#0055FF] transition duration-200 group-hover:translate-x-1">

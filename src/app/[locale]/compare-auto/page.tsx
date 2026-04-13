@@ -49,7 +49,7 @@ export default async function CompareAutoPage({ params }: { params: Promise<{ lo
   const comparisonCards = getComparisonDirectoryCards(safeLocale).slice(0, 6);
 
   return (
-    <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-10 overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div className="ui-page-shell relative mx-auto flex w-full max-w-7xl flex-col gap-10 overflow-x-clip bg-transparent px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
       <Breadcrumb
         items={[
           { label: content.common.breadcrumbsHome, href: `/${safeLocale}` },
@@ -58,15 +58,15 @@ export default async function CompareAutoPage({ params }: { params: Promise<{ lo
         ]}
       />
 
-      <section className="rounded-[36px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.94),rgba(11,15,25,0.98))] px-6 py-8 shadow-[0_28px_84px_-48px_rgba(14,165,233,0.14)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+      <section className="ui-card ui-card-hover rounded-[36px] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.995),rgba(247,250,253,0.988))] px-6 py-8 shadow-[0_24px_72px_-44px_rgba(15,23,42,0.16)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
         <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300/88">
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#0055FF]">
             {safeLocale === "tr" ? "Anında karar paneli" : "Instant decision panel"}
           </p>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-5xl lg:text-[3.7rem] lg:leading-[1.04]">
+          <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 md:text-5xl lg:text-[3.7rem] lg:leading-[1.04]">
             {safeLocale === "tr" ? "İki aracı anında karşılaştırın" : "Compare any two tools instantly"}
           </h1>
-          <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
+          <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600 md:text-lg">
             {safeLocale === "tr"
               ? "Aynı katalog verisini kullanarak fiyat, hız, kullanım kolaylığı ve kullanım alanı farklarını tek panelde görün."
               : "Use the same catalog data to review pricing, speed, ease of use, and workflow fit in one premium panel."}

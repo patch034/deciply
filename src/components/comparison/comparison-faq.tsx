@@ -7,7 +7,7 @@ type ComparisonFaqProps = {
   tone?: "light" | "dark";
 };
 
-export function ComparisonFaq({ title, description, items, tone = "dark" }: ComparisonFaqProps) {
+export function ComparisonFaq({ title, description, items, tone = "light" }: ComparisonFaqProps) {
   const isLight = tone === "light";
 
   return (

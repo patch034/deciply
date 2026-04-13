@@ -9,8 +9,8 @@
   --tn-surface: #ffffff;
   --tn-surface-strong: #ffffff;
   --tn-card-border: rgba(226, 232, 240, 1);
-  --tn-card-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
-  --tn-card-shadow-hover: 0 18px 42px rgba(15, 23, 42, 0.12);
+  --tn-card-shadow: 0 14px 36px rgba(15, 23, 42, 0.09);
+  --tn-card-shadow-hover: 0 22px 48px rgba(15, 23, 42, 0.13);
 }
 
 html {
@@ -28,10 +28,10 @@ body {
   color-scheme: light;
   accent-color: #0055ff;
   background:
-    radial-gradient(circle at 12% 0%, rgba(14, 36, 80, 0.035), transparent 26%),
-    radial-gradient(circle at 86% 8%, rgba(0, 85, 255, 0.035), transparent 30%),
-    radial-gradient(circle at 50% 100%, rgba(37, 99, 235, 0.03), transparent 22%),
-    linear-gradient(180deg, #f9fafb 0%, #f8fafc 48%, #eef2f7 100%);
+    radial-gradient(circle at 10% 0%, rgba(14, 36, 80, 0.05), transparent 24%),
+    radial-gradient(circle at 88% 6%, rgba(0, 85, 255, 0.045), transparent 26%),
+    radial-gradient(circle at 50% 100%, rgba(37, 99, 235, 0.04), transparent 22%),
+    linear-gradient(180deg, #f8fafc 0%, #f9fafb 48%, #eef2f7 100%);
   color: #0f172a;
   font-feature-settings: "ss01" 1, "cv11" 1;
 }
@@ -51,7 +51,7 @@ body::before {
   left: -5rem;
   height: 20rem;
   width: 20rem;
-  background: rgba(14, 36, 80, 0.045);
+  background: rgba(14, 36, 80, 0.05);
 }
 
 body::after {
@@ -59,7 +59,7 @@ body::after {
   right: -4rem;
   height: 22rem;
   width: 22rem;
-  background: rgba(0, 85, 255, 0.04);
+  background: rgba(0, 85, 255, 0.045);
 }
 
 select.dark-select {
@@ -174,10 +174,10 @@ svg {
   inset: 1px;
   border-radius: inherit;
   background:
-    linear-gradient(180deg, rgba(37, 99, 235, 0.045), rgba(0, 127, 255, 0)),
-    radial-gradient(circle at top, rgba(0, 127, 255, 0.05), transparent 52%),
-    radial-gradient(circle at left top, rgba(14, 36, 80, 0.045), transparent 36%),
-    radial-gradient(circle at right top, rgba(59, 130, 246, 0.035), transparent 28%);
+    linear-gradient(180deg, rgba(37, 99, 235, 0.05), rgba(0, 127, 255, 0)),
+    radial-gradient(circle at top, rgba(0, 127, 255, 0.055), transparent 52%),
+    radial-gradient(circle at left top, rgba(14, 36, 80, 0.05), transparent 36%),
+    radial-gradient(circle at right top, rgba(59, 130, 246, 0.04), transparent 28%);
   pointer-events: none;
   opacity: 1;
 }
@@ -211,7 +211,7 @@ svg {
 
 .ui-card {
   border: 1px solid var(--tn-card-border);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.995), rgba(249, 251, 255, 0.985));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.999), rgba(248, 250, 255, 0.992));
   border-radius: 22px;
   box-shadow: var(--tn-card-shadow);
   backdrop-filter: blur(20px);
@@ -219,10 +219,10 @@ svg {
 }
 
 .ui-card-strong {
-  border: 1px solid rgba(216, 226, 238, 1);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.998), rgba(246, 249, 253, 0.994));
+  border: 1px solid rgba(214, 224, 236, 1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.999), rgba(247, 250, 255, 0.996));
   border-radius: 22px;
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.12);
   backdrop-filter: blur(22px);
   overflow: hidden;
 }
@@ -239,9 +239,29 @@ svg {
 
 .ui-inner-panel {
   border: 1px solid rgba(226, 232, 240, 1);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.995), rgba(247, 250, 255, 0.99));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.999), rgba(247, 250, 255, 0.994));
   border-radius: 20px;
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.09);
+}
+
+.ui-page-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.ui-page-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(14, 36, 80, 0.04), transparent 22%),
+    radial-gradient(circle at 86% 0%, rgba(0, 85, 255, 0.035), transparent 22%),
+    linear-gradient(180deg, rgba(248, 250, 252, 0.86), rgba(249, 250, 251, 0.98));
+}
+
+.ui-section-divider {
+  border-top: 1px solid rgba(226, 232, 240, 0.9);
 }
 
 .ui-gradient-text {

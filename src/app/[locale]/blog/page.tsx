@@ -77,7 +77,7 @@ export default async function BlogPage({
   const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <div className="w-full max-w-full overflow-x-hidden bg-transparent pb-10 pt-10 lg:pt-14">
+    <div className="ui-page-shell w-full max-w-full overflow-x-hidden bg-transparent pb-10 pt-10 lg:pt-14">
       <SectionShell
         eyebrow={safeLocale === "tr" ? "Öne çıkan blog blokları" : "Featured blog blocks"}
         title={safeLocale === "tr" ? "Bu hafta öne çıkan rehberler" : "This week's featured guides"}

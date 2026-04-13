@@ -56,8 +56,8 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
             className={[
               "ui-card ui-card-hover group flex h-full min-h-0 flex-col overflow-hidden rounded-[22px] border transition duration-300 hover:-translate-y-1",
               sidebar
-                ? "border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.995),rgba(247,250,253,0.98))] p-3.5 shadow-[0_12px_34px_-20px_rgba(15,23,42,0.12)] hover:border-sky-200 hover:shadow-[0_18px_42px_-24px_rgba(37,99,235,0.14)]"
-                : "border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.995),rgba(247,250,253,0.98))] p-4 shadow-[0_14px_36px_-22px_rgba(15,23,42,0.12)] hover:border-sky-200 hover:shadow-[0_18px_42px_-22px_rgba(37,99,235,0.15)]"
+                ? "border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.996),rgba(247,250,253,0.985))] p-3.5 shadow-[0_14px_38px_-24px_rgba(15,23,42,0.14)] hover:border-sky-200 hover:shadow-[0_20px_46px_-24px_rgba(37,99,235,0.16)]"
+                : "border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.996),rgba(247,250,253,0.985))] p-4 shadow-[0_16px_40px_-24px_rgba(15,23,42,0.14)] hover:border-sky-200 hover:shadow-[0_22px_48px_-24px_rgba(37,99,235,0.16)]"
             ].join(" ")}
           >
             <div className="flex items-start gap-3">
@@ -112,7 +112,7 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
               </div>
             ) : null}
 
-            <div className="mt-auto flex min-h-[58px] items-end justify-between gap-3 border-t border-slate-200 pt-3.5">
+            <div className="mt-auto flex min-h-[54px] items-end justify-between gap-3 border-t border-slate-200 pt-3">
               <Link href={detailHref} className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0055FF] transition hover:border-sky-200 hover:bg-slate-50 hover:text-[#0E2450]">
                 {locale === "tr" ? "Detayı gör" : "View details"}
               </Link>
@@ -134,4 +134,3 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
     </div>
   );
 }
-

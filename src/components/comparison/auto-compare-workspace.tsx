@@ -257,20 +257,20 @@ function SearchableToolSelect({ locale, label, value, onChange, options }: Searc
               }, 120);
             }}
             onKeyDown={handleKeyDown}
-            className="min-h-[48px] w-full rounded-2xl border border-sky-400/12 bg-slate-950/72 px-4 pr-11 text-sm font-medium text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-cyan-400/30 focus:ring-1 focus:ring-cyan-400/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
+            className="min-h-[48px] w-full rounded-2xl border border-slate-200 bg-white px-4 pr-11 text-sm font-medium text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-sky-200 focus:ring-1 focus:ring-sky-100 shadow-[0_14px_32px_-24px_rgba(15,23,42,0.14)]"
           />
-          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
             ⌕
           </span>
         </div>
-        {selectedTool ? <p className="text-[11px] leading-5 text-slate-400">{selectedTool.name} · {selectedTool.compareProfile.pricingModel}</p> : null}
+        {selectedTool ? <p className="text-[11px] leading-5 text-slate-500">{selectedTool.name} · {selectedTool.compareProfile.pricingModel}</p> : null}
       </label>
 
       {open ? (
         <div
           id={listboxId}
           role="listbox"
-          className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-40 max-h-72 overflow-y-auto rounded-[20px] border border-sky-400/14 bg-[linear-gradient(180deg,rgba(8,12,22,0.98),rgba(10,16,30,0.98))] p-2 shadow-[0_24px_80px_-40px_rgba(14,165,233,0.4)]"
+          className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-40 max-h-72 overflow-y-auto rounded-[20px] border border-slate-200 bg-white p-2 shadow-[0_24px_80px_-40px_rgba(15,23,42,0.18)]"
         >
           {filteredOptions.length ? (
             filteredOptions.map((tool, index) => {
@@ -285,25 +285,25 @@ function SearchableToolSelect({ locale, label, value, onChange, options }: Searc
                   className={[
                     "flex w-full items-start justify-between gap-3 rounded-[16px] px-3 py-3 text-left transition",
                     isActive
-                      ? "bg-cyan-400/12 text-slate-50 ring-1 ring-cyan-400/20"
-                      : "text-slate-200 hover:bg-slate-900/70"
+                    ? "bg-sky-50 text-slate-950 ring-1 ring-sky-100"
+                      : "text-slate-700 hover:bg-slate-50"
                   ].join(" ")}
                   onMouseEnter={() => setActiveIndex(index)}
                   onMouseDown={(event) => event.preventDefault()}
                   onClick={() => selectTool(tool)}
                 >
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold text-slate-50">{tool.name}</p>
-                    <p className="mt-1 clamp-2 text-xs leading-5 text-slate-400">{normalizeCompareText(tool.bestUseCase)}</p>
+                    <p className="truncate text-sm font-semibold text-slate-950">{tool.name}</p>
+                    <p className="mt-1 clamp-2 text-xs leading-5 text-slate-500">{normalizeCompareText(tool.bestUseCase)}</p>
                   </div>
-                  <span className="shrink-0 rounded-full border border-sky-400/12 bg-slate-950/55 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-cyan-200">
+                  <span className="shrink-0 rounded-full border border-slate-200 bg-slate-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#0055FF]">
                     {normalizeCompareText(tool.compareProfile.pricingModel)}
                   </span>
                 </button>
               );
             })
           ) : (
-            <p className="px-3 py-4 text-sm text-slate-400">{locale === "tr" ? "Eşleşme bulunamadı." : "No tools found."}</p>
+            <p className="px-3 py-4 text-sm text-slate-500">{locale === "tr" ? "Eşleşme bulunamadı." : "No tools found."}</p>
           )}
         </div>
       ) : null}
@@ -343,8 +343,8 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
       <span
         className={
           compact
-            ? "inline-flex items-center rounded-full border border-sky-400/14 bg-slate-950/65 px-2.5 py-0.5 text-[11px] font-semibold text-slate-100"
-            : "inline-flex items-center rounded-full border border-sky-400/14 bg-slate-950/65 px-3 py-1 text-xs font-semibold text-slate-100"
+            ? "inline-flex items-center rounded-full border border-slate-200 bg-white px-2.5 py-0.5 text-[11px] font-semibold text-[#0055FF]"
+            : "inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-[#0055FF]"
         }
       >
         {value.toFixed(0)}/10
@@ -359,8 +359,8 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
         aria-label={value ? labels.yes : labels.no}
         className={
           compact
-            ? "inline-flex h-5 w-5 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-[11px] font-bold text-slate-100"
-            : "inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100"
+            ? "inline-flex h-5 w-5 items-center justify-center rounded-full border border-slate-200 bg-white text-[11px] font-bold text-[#0055FF]"
+            : "inline-flex h-6 w-6 items-center justify-center rounded-full border border-slate-200 bg-white text-xs font-bold text-[#0055FF]"
         }
       >
         {value ? "✓" : "✕"}
@@ -371,7 +371,7 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
   if (typeof value === "string") {
     const cleaned = normalizeCompareText(value);
     if (cleaned !== value) {
-      return <p className={compact ? "text-[12px] leading-5 text-slate-200" : "text-sm leading-6 text-slate-200"}>{cleaned}</p>;
+      return <p className={compact ? "text-[12px] leading-5 text-slate-700" : "text-sm leading-6 text-slate-700"}>{cleaned}</p>;
     }
     const normalized = value.trim().toLowerCase();
     if (normalized === labels.yes.toLowerCase()) {
@@ -381,8 +381,8 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
           aria-label={labels.yes}
           className={
             compact
-              ? "inline-flex h-5 w-5 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-[11px] font-bold text-slate-100"
-              : "inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100"
+              ? "inline-flex h-5 w-5 items-center justify-center rounded-full border border-slate-200 bg-white text-[11px] font-bold text-[#0055FF]"
+              : "inline-flex h-6 w-6 items-center justify-center rounded-full border border-slate-200 bg-white text-xs font-bold text-[#0055FF]"
           }
         >
           ✓
@@ -396,8 +396,8 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
           aria-label={labels.no}
           className={
             compact
-              ? "inline-flex h-5 w-5 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-[11px] font-bold text-slate-100"
-              : "inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100"
+              ? "inline-flex h-5 w-5 items-center justify-center rounded-full border border-slate-200 bg-white text-[11px] font-bold text-[#0055FF]"
+              : "inline-flex h-6 w-6 items-center justify-center rounded-full border border-slate-200 bg-white text-xs font-bold text-[#0055FF]"
           }
         >
           ✕
@@ -411,8 +411,8 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
           aria-label={locale === "tr" ? "Uygun değil" : "Not available"}
           className={
             compact
-              ? "inline-flex h-5 w-5 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-[11px] font-bold text-slate-100"
-              : "inline-flex h-6 w-6 items-center justify-center rounded-full border border-sky-400/14 bg-slate-950/55 text-xs font-bold text-slate-100"
+              ? "inline-flex h-5 w-5 items-center justify-center rounded-full border border-slate-200 bg-white text-[11px] font-bold text-[#0055FF]"
+              : "inline-flex h-6 w-6 items-center justify-center rounded-full border border-slate-200 bg-white text-xs font-bold text-[#0055FF]"
           }
         >
           —
@@ -421,7 +421,7 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
     }
   }
 
-  return <p className={compact ? "text-[12px] leading-5 text-slate-200" : "text-sm leading-6 text-slate-200"}>{value}</p>;
+  return <p className={compact ? "text-[12px] leading-5 text-slate-700" : "text-sm leading-6 text-slate-700"}>{value}</p>;
 }
 
 export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRightSlug, compact = false }: AutoCompareWorkspaceProps) {
@@ -550,18 +550,18 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
                 .map((item) => normalizeCompareText(item))
                 .filter((item) => isShortTag(item));
               return (
-              <article key={tool.slug} className="rounded-[24px] border border-sky-400/10 bg-slate-950/45 p-3 shadow-[0_18px_54px_-36px_rgba(14,165,233,0.2)] sm:rounded-[26px] sm:p-5">
+              <article key={tool.slug} className="rounded-[24px] border border-slate-200 bg-white p-3 shadow-[0_18px_54px_-36px_rgba(15,23,42,0.14)] sm:rounded-[26px] sm:p-5">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-300">{normalizeCompareText(tool.compareProfile.category)}</p>
-                    <h3 className="mt-2 text-lg font-bold tracking-[-0.03em] text-slate-50 sm:text-xl">{tool.name}</h3>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0055FF]">{normalizeCompareText(tool.compareProfile.category)}</p>
+                    <h3 className="mt-2 text-lg font-bold tracking-[-0.03em] text-slate-950 sm:text-xl">{tool.name}</h3>
                   </div>
                   <Badge variant="accent" className="shrink-0 text-[11px]">
                     {tool.compareProfile.pricingModel}
                   </Badge>
                 </div>
 
-                <p className="mt-2 text-sm leading-5 text-slate-300/84 mobile-clamp-2 sm:mt-3 sm:leading-6">
+                <p className="mt-2 text-sm leading-5 text-slate-600 mobile-clamp-2 sm:mt-3 sm:leading-6">
                   {normalizeCompareText(tool.bestUseCase)}
                 </p>
 
@@ -586,39 +586,39 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
                 key={row.label}
                 className={
                   compactRowLabels.has(row.label)
-                    ? "rounded-[16px] border border-sky-400/10 bg-slate-950/32 px-3 py-2 sm:rounded-[20px] sm:px-4 sm:py-3 lg:grid lg:grid-cols-[180px_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-4"
-                    : "rounded-[18px] border border-sky-400/10 bg-slate-950/36 px-3 py-2.5 sm:rounded-[22px] sm:px-5 sm:py-4 lg:grid lg:grid-cols-[180px_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-4"
+                    ? "rounded-[16px] border border-slate-200 bg-white px-3 py-2 sm:rounded-[20px] sm:px-4 sm:py-3 lg:grid lg:grid-cols-[180px_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-4"
+                    : "rounded-[18px] border border-slate-200 bg-white px-3 py-2.5 sm:rounded-[22px] sm:px-5 sm:py-4 lg:grid lg:grid-cols-[180px_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-4"
                 }
               >
                 <div
                   className={
                     compactRowLabels.has(row.label)
-                      ? "text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400 lg:pt-0.5"
-                      : "text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 lg:pt-1"
+                      ? "text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500 lg:pt-0.5"
+                      : "text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 lg:pt-1"
                   }
                 >
                   {row.label}
                 </div>
                 <div className={compactRowLabels.has(row.label) ? "mt-2 space-y-1.5 lg:mt-0" : "mt-2.5 space-y-2.5 lg:mt-0"}>
-                  <div className="compare-slot-left flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2 lg:border-t-0 lg:pt-0">
+                  <div className="compare-slot-left flex items-start justify-between gap-3 border-t border-slate-200 pt-2 lg:border-t-0 lg:pt-0">
                     <div className="min-w-0">
-                      <p className={compactRowLabels.has(row.label) ? "text-[9.5px] font-semibold uppercase tracking-[0.14em] text-cyan-200" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200"}>
+                      <p className={compactRowLabels.has(row.label) ? "text-[9.5px] font-semibold uppercase tracking-[0.14em] text-[#0055FF]" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0055FF]"}>
                         {leftTool?.name ?? labels.leftLabel}
                       </p>
                       {renderValue(row.left, locale, compactRowLabels.has(row.label))}
                     </div>
-                    <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
+                    <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400 sm:inline-flex">→</span>
                   </div>
                 </div>
                 <div className={compactRowLabels.has(row.label) ? "mt-2 space-y-1.5 lg:mt-0" : "mt-2.5 space-y-2.5 lg:mt-0"}>
-                  <div className="compare-slot-right flex items-start justify-between gap-3 border-t border-sky-400/10 pt-2 lg:border-t-0 lg:pt-0">
+                  <div className="compare-slot-right flex items-start justify-between gap-3 border-t border-slate-200 pt-2 lg:border-t-0 lg:pt-0">
                     <div className="min-w-0">
-                      <p className={compactRowLabels.has(row.label) ? "text-[9.5px] font-semibold uppercase tracking-[0.14em] text-sky-200" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-200"}>
+                      <p className={compactRowLabels.has(row.label) ? "text-[9.5px] font-semibold uppercase tracking-[0.14em] text-[#0E2450]" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0E2450]"}>
                         {rightTool?.name ?? labels.rightLabel}
                       </p>
                       {renderValue(row.right, locale, compactRowLabels.has(row.label))}
                     </div>
-                    <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:inline-flex">→</span>
+                    <span className="hidden shrink-0 pt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400 sm:inline-flex">→</span>
                   </div>
                 </div>
               </div>
@@ -626,8 +626,8 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
           </div>
 
           {!compact ? (
-            <div className="flex flex-col gap-3 rounded-[24px] border border-sky-400/10 bg-cyan-400/[0.05] p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
-              <p className="text-sm leading-7 text-slate-200/88">{labels.selectorHint}</p>
+            <div className="flex flex-col gap-3 rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_18px_54px_-36px_rgba(15,23,42,0.14)] sm:flex-row sm:items-center sm:justify-between sm:p-5">
+              <p className="text-sm leading-7 text-slate-600">{labels.selectorHint}</p>
               <PremiumButton href={comparisonHref ?? undefined} className="w-full sm:w-auto">
                 {labels.openLabel}
               </PremiumButton>
@@ -635,9 +635,9 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
           ) : null}
         </div>
       ) : (
-        <div className="mt-6 rounded-[24px] border border-sky-400/10 bg-slate-950/42 p-5 text-sm leading-7 text-slate-300 sm:p-6">
-          <p className="text-base font-semibold text-slate-50">{labels.emptyTitle}</p>
-          <p className="mt-2 text-slate-300/84">{labels.emptyDescription}</p>
+        <div className="mt-6 rounded-[24px] border border-slate-200 bg-white p-5 text-sm leading-7 text-slate-600 shadow-[0_18px_54px_-36px_rgba(15,23,42,0.14)] sm:p-6">
+          <p className="text-base font-semibold text-slate-950">{labels.emptyTitle}</p>
+          <p className="mt-2 text-slate-600">{labels.emptyDescription}</p>
         </div>
       )}
     </GlassPanel>

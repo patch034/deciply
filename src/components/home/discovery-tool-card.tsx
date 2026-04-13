@@ -83,7 +83,7 @@ export function DiscoveryToolCard({ locale, tool, ctaLabel, compact = false, var
         <Link
           href={detailHref}
           aria-label={`${ctaLabel}: ${tool.name}`}
-          className="group flex h-full items-stretch gap-3 rounded-[22px] border border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,250,252,0.99))] p-3 shadow-[0_20px_54px_-34px_rgba(15,23,42,0.14)] transition duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-[0_28px_72px_-38px_rgba(37,99,235,0.14)]"
+          className="group flex h-full items-stretch gap-3 rounded-[22px] border border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,250,252,0.99))] p-2.5 shadow-[0_20px_54px_-34px_rgba(15,23,42,0.14)] transition duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-[0_28px_72px_-38px_rgba(37,99,235,0.14)]"
         >
           <ToolLogo tool={tool} size="sm" />
 
@@ -127,7 +127,7 @@ export function DiscoveryToolCard({ locale, tool, ctaLabel, compact = false, var
 
   return (
     <motion.div whileHover={{ y: -4, scale: 1.01 }} transition={{ duration: 0.22 }} className="h-full">
-      <div className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,250,252,0.98))] p-4 shadow-[0_24px_72px_-42px_rgba(15,23,42,0.16)] transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_34px_88px_-44px_rgba(37,99,235,0.16)] sm:p-5">
+      <div className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,250,252,0.98))] p-3.5 shadow-[0_24px_72px_-42px_rgba(15,23,42,0.16)] transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_34px_88px_-44px_rgba(37,99,235,0.16)] sm:p-[18px]">
         <div className="flex items-start justify-between gap-3">
           <div className="flex min-w-0 items-center gap-3">
             <ToolLogo tool={tool} />
@@ -144,12 +144,12 @@ export function DiscoveryToolCard({ locale, tool, ctaLabel, compact = false, var
         </div>
 
         <Link href={detailHref} aria-label={`${ctaLabel}: ${tool.name}`} className="mt-4 block min-w-0">
-          <h3 className="clamp-2 text-[1.08rem] font-bold tracking-[-0.03em] text-slate-950 transition duration-200 group-hover:text-[#0E2450] sm:text-[1.28rem]">
+          <h3 className="clamp-2 text-[1rem] font-bold tracking-[-0.03em] text-slate-950 transition duration-200 group-hover:text-[#0E2450] sm:text-[1.18rem]">
             {tool.name}
           </h3>
         </Link>
 
-        <p className={["mt-2 text-[14px] leading-6 text-slate-600", compact ? "mobile-clamp-2 sm:text-sm" : "mobile-clamp-2 sm:text-[15px]"].join(" ")}>
+        <p className={["mt-2 text-[13px] leading-6 text-slate-600", compact ? "mobile-clamp-2 sm:text-sm" : "mobile-clamp-2 sm:text-[14px]"].join(" ")}>
           {tool.description}
         </p>
 
@@ -163,13 +163,13 @@ export function DiscoveryToolCard({ locale, tool, ctaLabel, compact = false, var
           </div>
         ) : null}
 
-        <div className="mt-4 rounded-[22px] border border-slate-200 bg-slate-50/90 p-4">
+        <div className="mt-3.5 rounded-[22px] border border-slate-200 bg-slate-50/90 p-3.5">
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Best fit</p>
           <p className="mt-2 text-sm font-semibold tracking-[-0.02em] text-slate-900">{tool.bestFor}</p>
           {!compact ? <p className="mt-2 text-sm leading-6 text-slate-600">{tool.benefit}</p> : null}
         </div>
 
-        <div className="mt-4 flex items-center justify-between gap-3 border-t border-slate-200 pt-4">
+        <div className="mt-4 flex items-center justify-between gap-3 border-t border-slate-200 pt-3.5">
           <RatingBadge rating={tool.rating} className="w-fit" />
           <a
             href={tool.affiliateUrl ?? tool.websiteUrl}
