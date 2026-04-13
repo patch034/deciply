@@ -70,6 +70,11 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "best-ai-tools-for-small-businesses-2026",
     "best-ai-tools-for-students-projects-2026"
   ],
+  "chatgpt-vs-grok": [
+    "chatgpt-vs-claude-vs-gemini",
+    "best-ai-tools-for-beginners-2026",
+    "ai-tools-to-make-money-2026"
+  ],
   "chatgpt-vs-gemini": [
     "best-ai-tools-for-marketing-teams-2026",
     "best-ai-tools-for-social-media-managers-2026",
@@ -85,10 +90,20 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "best-ai-tools-for-content-teams-2026",
     "best-ai-tools-for-students-projects-2026"
   ],
+  "claude-vs-grok": [
+    "chatgpt-vs-claude-vs-gemini",
+    "ai-tools-for-freelancers",
+    "best-free-ai-tools-2026"
+  ],
   "perplexity-vs-gemini": [
     "best-ai-tools-for-seo-teams-2026",
     "best-ai-tools-for-students-projects-2026",
     "best-ai-tools-for-small-businesses-2026"
+  ],
+  "perplexity-vs-grok": [
+    "best-free-ai-tools-2026",
+    "ai-tools-to-make-money-2026",
+    "how-ai-tools-are-changing-ecommerce-in-2026"
   ],
   "jasper-vs-copy-ai": [
     "best-ai-tools-for-freelancers-and-solo-founders-2026",
@@ -234,6 +249,11 @@ const COMPARISON_BLOG_CLUSTERS: Record<string, string[]> = {
     "best-ai-tools-for-startups-2026",
     "best-ai-tools-for-content-teams-2026",
     "best-ai-tools-for-agencies-2026"
+  ],
+  "github-copilot-vs-cursor": [
+    "best-ai-tools-for-beginners-2026",
+    "ai-tools-for-freelancers",
+    "how-ai-tools-are-changing-ecommerce-in-2026"
   ],
   "chatgpt-vs-claude": [
     "best-ai-tools-for-content-teams-2026",
@@ -530,6 +550,9 @@ const HIGH_INTENT_COMPARISON_DIRECTORY_SLUGS = [
   'claude-vs-gemini',
   'chatgpt-vs-perplexity',
   'claude-vs-perplexity',
+  'chatgpt-vs-grok',
+  'claude-vs-grok',
+  'perplexity-vs-grok',
   'chatgpt-vs-jasper',
   'perplexity-vs-gemini',
   'jasper-vs-copy-ai',
@@ -538,6 +561,7 @@ const HIGH_INTENT_COMPARISON_DIRECTORY_SLUGS = [
   'rytr-vs-copy-ai',
   'writer-vs-jasper',
   'github-copilot-vs-codeium',
+  'github-copilot-vs-cursor',
   'codeium-vs-cursor',
   'microsoft-copilot-vs-github-copilot',
   'cursor-vs-replit',

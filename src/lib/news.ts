@@ -1,5 +1,3 @@
-import { unstable_cache } from "next/cache";
-
 import type { Locale } from "@/i18n/config";
 
 export type AiNewsLink = {
@@ -22,133 +20,25 @@ export type AiNewsItem = {
   whyItMatters?: string;
 };
 
-type FeedSource = {
-  source: string;
-  feedUrl: string;
-  categoryLabel: string;
+type LocaleContent = {
+  title: string;
+  summary: string;
+  dek: string;
+  whyItMatters: string;
 };
 
-const feedSources: FeedSource[] = [
-  { source: "OpenAI News", feedUrl: "https://news.google.com/rss/search?q=OpenAI+AI+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Models" },
-  { source: "Anthropic News", feedUrl: "https://news.google.com/rss/search?q=Anthropic+AI+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Writing" },
-  { source: "Gemini News", feedUrl: "https://news.google.com/rss/search?q=Google+Gemini+AI+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Search" },
-  { source: "Copilot News", feedUrl: "https://news.google.com/rss/search?q=Microsoft+Copilot+AI+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Productivity" },
-  { source: "Perplexity News", feedUrl: "https://news.google.com/rss/search?q=Perplexity+AI+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Research" },
-  { source: "Midjourney News", feedUrl: "https://news.google.com/rss/search?q=Midjourney+AI+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Image" },
-  { source: "AI Regulation", feedUrl: "https://news.google.com/rss/search?q=AI+regulation+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Policy" },
-  { source: "AI Tools", feedUrl: "https://news.google.com/rss/search?q=AI+tools+product+launch+when:7d&hl=en-US&gl=US&ceid=US:en", categoryLabel: "Tools" },
-  { source: "OpenAI", feedUrl: "https://openai.com/news/rss.xml", categoryLabel: "Models" },
-  { source: "Anthropic", feedUrl: "https://www.anthropic.com/news/rss.xml", categoryLabel: "Writing" },
-  { source: "Google AI", feedUrl: "https://blog.google/technology/ai/rss/", categoryLabel: "Search" },
-  { source: "Microsoft", feedUrl: "https://blogs.microsoft.com/blog/category/artificial-intelligence/feed/", categoryLabel: "Productivity" },
-  { source: "Hugging Face", feedUrl: "https://huggingface.co/blog/feed.xml", categoryLabel: "Open source" },
-  { source: "NVIDIA", feedUrl: "https://www.nvidia.com/en-us/ai-data-science/blog/feed/", categoryLabel: "Research" }
-];
-
-const AI_NEWS_FETCH_TIMEOUT_MS = 1200;
-
-function stripHtml(value: string) {
-  return value
-    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function cleanText(value: string) {
-  return stripHtml(value)
-    .replace(/\bhttps?:\/\/\S+/gi, " ")
-    .replace(/\bwww\.\S+/gi, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function slugify(value: string) {
-  return value
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
-function extractTag(block: string, tag: string) {
-  const match = block.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`, "i"));
-  return match ? cleanText(match[1] ?? "") : "";
-}
-
-function extractSourceMeta(block: string) {
-  const match = block.match(/<source(?:\s+url="([^"]+)")?>([\s\S]*?)<\/source>/i);
-
-  if (!match) {
-    return null;
-  }
-
-  return {
-    name: cleanText(match[2] ?? ""),
-    url: (match[1] ?? "").trim()
-  };
-}
+type BaseNewsItem = {
+  slug: string;
+  source: string;
+  sourceUrl: string;
+  categoryLabel: string;
+  publishedAt: string;
+  tr: LocaleContent;
+  en: LocaleContent;
+};
 
 function isTurkish(locale: Locale) {
   return locale === "tr";
-}
-
-function inferTopic(title: string, source: string, categoryLabel: string) {
-  const lower = `${title} ${source} ${categoryLabel}`.toLowerCase();
-
-  if (lower.includes("openai") || lower.includes("chatgpt")) return "OpenAI / ChatGPT";
-  if (lower.includes("anthropic") || lower.includes("claude")) return "Claude / Anthropic";
-  if (lower.includes("gemini") || lower.includes("google")) return "Google Gemini";
-  if (lower.includes("copilot") || lower.includes("microsoft")) return "Microsoft Copilot";
-  if (lower.includes("perplexity")) return "Perplexity";
-  if (lower.includes("midjourney")) return "Midjourney";
-  if (lower.includes("firefly") || lower.includes("image")) return "görsel üretim";
-  if (lower.includes("video") || lower.includes("runway") || lower.includes("capcut")) return "video üretimi";
-  if (lower.includes("regulation") || lower.includes("safety") || lower.includes("policy")) return "regülasyon ve güvenlik";
-  if (lower.includes("code") || lower.includes("developer") || lower.includes("cursor")) return "kodlama araçları";
-
-  return categoryLabel;
-}
-
-function detectAction(title: string) {
-  const lower = title.toLowerCase();
-
-  if (/(launch|launches|rolls out|releases|introduces|introduce|unveils|announces|announced|ships|ships out)/i.test(lower)) {
-    return "yeni bir duyuru yaptı";
-  }
-
-  if (/(adds|added|expands|expand|updates|updated|upgrade|upgrades|improves|improved)/i.test(lower)) {
-    return "ürün güncellemesi yayımladı";
-  }
-
-  if (/(partners|partnering|partnership|acquires|acquired|buy|buys)/i.test(lower)) {
-    return "iş birliği ya da satın alma gündemiyle öne çıktı";
-  }
-
-  if (/(regulation|regulatory|policy|safety|law|lawsuit)/i.test(lower)) {
-    return "regülasyon ve güvenlik tarafında gündeme geldi";
-  }
-
-  return "önemli bir gelişme paylaştı";
-}
-
-function buildTurkishDisplayTitle(title: string, source: string, categoryLabel: string) {
-  const topic = inferTopic(title, source, categoryLabel);
-  const action = detectAction(title);
-  return `${topic} cephesinde ${action}`;
-}
-
-function buildTurkishDisplaySummary(title: string, summary: string, source: string, categoryLabel: string) {
-  const topic = inferTopic(title, source, categoryLabel);
-  const cleanSummary = cleanText(summary).replace(/[“”"]/g, "");
-  const sentence = cleanSummary.length > 120 ? `${cleanSummary.slice(0, 117).trim()}...` : cleanSummary;
-
-  if (sentence) {
-    return `Deciply, ${topic} ile ilgili bu güncellemeyi karar odaklı şekilde özetliyor: ${sentence}`;
-  }
-
-  return `Deciply, ${topic} ile ilgili bu gelişmeyi araç, karşılaştırma ve kategori yollarına bağlanan kısa bir editorial özet olarak sunuyor.`;
 }
 
 function buildWhyItMatters(locale: Locale, title: string, summary: string) {
@@ -156,37 +46,49 @@ function buildWhyItMatters(locale: Locale, title: string, summary: string) {
 
   if (lower.includes("openai") || lower.includes("chatgpt")) {
     return locale === "tr"
-      ? "OpenAI gelişmeleri, chatbot ve karar destek akışlarında en fazla trafik üreten konulardan biri olmaya devam ediyor."
-      : "OpenAI headlines usually matter because they affect chatbot workflows, model choices, and high-intent comparison traffic.";
+      ? "OpenAI ve ChatGPT güncellemeleri, yüksek trafik çeken chatbot ve karar destek sayfaları için doğrudan ilgi üretir."
+      : "OpenAI and ChatGPT updates often drive the highest-intent chatbot and decision-support traffic.";
   }
 
   if (lower.includes("claude")) {
     return locale === "tr"
-      ? "Claude güncellemeleri yazma, araştırma ve uzun metin kararlarında doğrudan kıyas akışı üretir."
-      : "Claude updates often influence writing, research, and long-form workflow comparisons.";
+      ? "Claude tarafındaki haberler yazı, araştırma ve uzun form kararlarında güçlü karşılaştırma sinyali üretir."
+      : "Claude stories usually influence writing, research, and long-form comparison intent.";
   }
 
   if (lower.includes("gemini") || lower.includes("google")) {
     return locale === "tr"
-      ? "Google AI gündemi arama, üretkenlik ve model karşılaştırmalarında güçlü kullanıcı niyeti oluşturur."
-      : "Google AI stories often shape search, productivity, and model-comparison intent.";
+      ? "Gemini ve Google AI güncellemeleri, arama ve üretkenlik akışlarında güçlü ürün seçimi sinyali yaratır."
+      : "Gemini and Google AI headlines often shape search and productivity tool choice.";
   }
 
   if (lower.includes("copilot") || lower.includes("microsoft")) {
     return locale === "tr"
-      ? "Copilot gelişmeleri ofis, kodlama ve iş akışları için doğrudan araç değerlendirmesine bağlanır."
-      : "Microsoft Copilot news often connects directly to office, coding, and workflow tool decisions.";
+      ? "Copilot haberleri ofis, kodlama ve günlük iş akışı araçlarında doğrudan değerlendirme ihtiyacı doğurur."
+      : "Microsoft Copilot stories often map directly to office, coding, and workflow decisions.";
   }
 
-  if (lower.includes("midjourney") || lower.includes("firefly") || lower.includes("image")) {
+  if (lower.includes("perplexity")) {
     return locale === "tr"
-      ? "Görsel üretim haberleri, yaratıcı araç seçimi ve karşılaştırma sayfaları için net iç link fırsatı yaratır."
-      : "Image-generation stories usually create strong links into creative tools and comparison pages.";
+      ? "Perplexity güncellemeleri kaynaklı arama ve araştırma akışlarında net iç link fırsatı üretir."
+      : "Perplexity updates often create strong links into source-backed research workflows.";
+  }
+
+  if (lower.includes("runway") || lower.includes("video") || lower.includes("kling")) {
+    return locale === "tr"
+      ? "Video AI haberleri yaratıcı üretim, kısa form içerik ve karşılaştırma sayfalarında hızlı ilgi oluşturur."
+      : "Video AI stories often create strong interest in creative production and comparison pages.";
+  }
+
+  if (lower.includes("voice") || lower.includes("elevenlabs") || lower.includes("playht")) {
+    return locale === "tr"
+      ? "Ses AI gelişmeleri voiceover, anlatım ve içerik üretim araçlarında doğrudan kullanım niyeti doğurur."
+      : "Voice AI updates often create immediate use-case intent for narration and voiceover tools.";
   }
 
   return locale === "tr"
-    ? "Bu haber, AI araç seçimi ve karar sayfaları için yeni bir sinyal katmanı oluşturuyor."
-    : "This headline adds another useful signal layer for tool selection and comparison pages.";
+    ? "Bu haber, AI araç seçimi ve karşılaştırma akışları için yeni bir karar sinyali sağlar."
+    : "This story adds another useful decision signal for AI tool choice and comparison pages.";
 }
 
 function buildRelatedLinks(title: string, locale: Locale): AiNewsLink[] {
@@ -202,8 +104,8 @@ function buildRelatedLinks(title: string, locale: Locale): AiNewsLink[] {
   };
 
   if (lower.includes("openai") || lower.includes("chatgpt")) {
-    add(locale === "tr" ? "ChatGPT" : "ChatGPT", `/${locale}/tools/chatgpt`);
-    add(locale === "tr" ? "ChatGPT vs Claude" : "ChatGPT vs Claude", `/${locale}/compare/chatgpt-vs-claude`);
+    add("ChatGPT", `/${locale}/tools/chatgpt`);
+    add("ChatGPT vs Claude", `/${locale}/compare/chatgpt-vs-claude`);
     add(locale === "tr" ? "Chatbotlar" : "Chatbots", `/${locale}/categories/chatbots-virtual-companions`);
   }
 
@@ -213,28 +115,34 @@ function buildRelatedLinks(title: string, locale: Locale): AiNewsLink[] {
     add(locale === "tr" ? "Yazma" : "Writing", `/${locale}/categories/writing-editing`);
   }
 
-  if (lower.includes("image") || lower.includes("midjourney") || lower.includes("firefly")) {
-    add("Midjourney", `/${locale}/tools/midjourney`);
-    add("Adobe Firefly", `/${locale}/tools/adobe-firefly`);
-    add("Midjourney vs Adobe Firefly", `/${locale}/compare/midjourney-vs-adobe-firefly`);
+  if (lower.includes("gemini") || lower.includes("google")) {
+    add("Gemini", `/${locale}/tools/gemini`);
+    add("ChatGPT vs Gemini", `/${locale}/compare/chatgpt-vs-gemini`);
+    add(locale === "tr" ? "Araştırma" : "Research", `/${locale}/categories/research-analysis`);
   }
 
-  if (lower.includes("video") || lower.includes("runway") || lower.includes("capcut")) {
-    add("Runway", `/${locale}/tools/runway`);
-    add("CapCut", `/${locale}/tools/capcut`);
-    add(locale === "tr" ? "Video ve Animasyon" : "Video & Animation", `/${locale}/categories/video-animation`);
-  }
-
-  if (lower.includes("productivity") || lower.includes("workflow") || lower.includes("copilot") || lower.includes("notion")) {
-    add("Notion AI", `/${locale}/tools/notion-ai`);
+  if (lower.includes("copilot") || lower.includes("microsoft")) {
     add("Microsoft Copilot", `/${locale}/tools/microsoft-copilot`);
+    add("Zapier", `/${locale}/tools/zapier`);
     add("Notion AI vs Zapier", `/${locale}/compare/notion-ai-vs-zapier`);
   }
 
-  if (lower.includes("code") || lower.includes("developer") || lower.includes("cursor")) {
-    add("Cursor", `/${locale}/tools/cursor`);
-    add("GitHub Copilot", `/${locale}/tools/github-copilot`);
-    add("Sourcegraph Cody", `/${locale}/tools/sourcegraph-cody`);
+  if (lower.includes("perplexity")) {
+    add("Perplexity", `/${locale}/tools/perplexity`);
+    add("Claude vs Perplexity", `/${locale}/compare/claude-vs-perplexity`);
+    add("ChatGPT vs Perplexity", `/${locale}/compare/chatgpt-vs-perplexity`);
+  }
+
+  if (lower.includes("runway") || lower.includes("video") || lower.includes("kling")) {
+    add("Runway", `/${locale}/tools/runway`);
+    add("Pika", `/${locale}/tools/pika`);
+    add("Runway vs Pika", `/${locale}/compare/runway-vs-pika`);
+  }
+
+  if (lower.includes("voice") || lower.includes("elevenlabs") || lower.includes("playht")) {
+    add("ElevenLabs", `/${locale}/tools/elevenlabs`);
+    add(locale === "tr" ? "Konuşma Araçları" : "Speech tools", `/${locale}/categories/speech-and-voice`);
+    add("CapCut AI", `/${locale}/tools/capcut-ai`);
   }
 
   if (!links.length) {
@@ -245,159 +153,146 @@ function buildRelatedLinks(title: string, locale: Locale): AiNewsLink[] {
   return links.slice(0, 3);
 }
 
-function buildFeedItem(locale: Locale, source: FeedSource, title: string, summary: string, publishedAt?: string, sourceUrl = "", sourceName?: string): AiNewsItem {
-  const item: AiNewsItem = {
-    slug: slugify(`${source.source}-${title}`),
-    title,
-    summary,
-    source: sourceName || source.source,
-    sourceUrl,
-    publishedAt,
-    categoryLabel: source.categoryLabel,
-    relatedLinks: buildRelatedLinks(title, locale)
-  };
+const TODAY = "2026-04-13";
 
-  if (isTurkish(locale)) {
-    item.displayTitle = buildTurkishDisplayTitle(title, item.source, source.categoryLabel);
-    item.displaySummary = buildTurkishDisplaySummary(title, summary, item.source, source.categoryLabel);
-    item.dek = item.displaySummary;
-    item.whyItMatters = buildWhyItMatters(locale, title, summary);
-  } else {
-    item.displayTitle = title;
-    item.displaySummary = summary;
-    item.dek = summary;
-    item.whyItMatters = buildWhyItMatters(locale, title, summary);
-  }
-
-  return item;
-}
-
-function parseRssFeed(locale: Locale, source: FeedSource, xml: string): AiNewsItem[] {
-  const items = Array.from(xml.matchAll(/<item[\s\S]*?<\/item>/gi)).map((match) => match[0] ?? "");
-
-  return items
-    .map((block) => {
-      const title = extractTag(block, "title");
-      const link = extractTag(block, "link");
-      const description = extractTag(block, "description");
-      const pubDate = extractTag(block, "pubDate");
-      const sourceMeta = extractSourceMeta(block);
-
-      if (!title) {
-        return null;
-      }
-
-      const summary = description || (locale === "tr" ? "Yeni AI gelişmelerini ve ürün sinyallerini takip et." : "Track the latest AI product and research signals.");
-      const formattedDate = pubDate ? new Date(pubDate).toISOString() : undefined;
-      const sourceUrl = sourceMeta?.url || link || source.feedUrl;
-      const sourceName = sourceMeta?.name || source.source;
-
-      return buildFeedItem(locale, source, title, summary.slice(0, 220), formattedDate, sourceUrl, sourceName);
-    })
-    .filter((item): item is AiNewsItem => Boolean(item));
-}
-
-function fallbackNews(locale: Locale): AiNewsItem[] {
-  const titleMap: Record<Locale, Array<{ title: string; summary: string; source: string; categoryLabel: string }>> = {
-    tr: [
-      { title: "AI araçları hız, kalite ve kullanım kolaylığı ekseninde yeniden ayrışıyor", summary: "Editoryal bakışla öne çıkan ürün sinyalleri ve karar akışlarını tarayın.", source: "Deciply Editorial", categoryLabel: "Trend" },
-      { title: "Yazı araçlarında uzun form ve kısa form kullanım senaryoları ayrışıyor", summary: "Uzun metin ve hızlı taslak ihtiyaçları için farklı araçları inceleyin.", source: "Deciply Editorial", categoryLabel: "Writing" },
-      { title: "Görsel üretimde kalite ve düzenleme akışı birlikte önem kazanıyor", summary: "Konsept, düzenleme ve hızlı çıktı isteyen ekipler için kısa haber özeti.", source: "Deciply Editorial", categoryLabel: "Image" },
-      { title: "Kodlama araçlarında hız kadar entegrasyon da kritik hale geliyor", summary: "Geliştirici iş akışlarına daha iyi uyan çözümleri karşılaştırın.", source: "Deciply Editorial", categoryLabel: "Coding" },
-      { title: "Üretkenlik araçlarında toplantı, not ve otomasyon tek akışta birleşiyor", summary: "İşletme ve ekip verimliliği için öne çıkan kullanım çerçeveleri.", source: "Deciply Editorial", categoryLabel: "Productivity" },
-      { title: "Video araçları kısa form içerik üretiminde daha da merkezi hale geliyor", summary: "Reels, shorts ve reklam üretimi için karar sinyallerini gözden geçirin.", source: "Deciply Editorial", categoryLabel: "Video" },
-      { title: "Araştırma araçları kaynaklı cevap ve özetleme tarafında ayrışıyor", summary: "Karar öncesi veri toplama ve kaynak tarama akışlarını keşfedin.", source: "Deciply Editorial", categoryLabel: "Research" },
-      { title: "Karşılaştırma sayfaları, seçim sürecinde daha fazla trafik çekiyor", summary: "Popüler karşılaştırmaları ve yan yana karar bloklarını açın.", source: "Deciply Editorial", categoryLabel: "Comparisons" }
-    ],
-    en: [
-      { title: "AI tools are separating again on speed, quality, and ease of use", summary: "Browse editorial signals and decision paths for the tools that matter most.", source: "Deciply Editorial", categoryLabel: "Trend" },
-      { title: "Writing tools are splitting into long-form and short-form workflows", summary: "Review tools for longer drafts and quick first-pass writing.", source: "Deciply Editorial", categoryLabel: "Writing" },
-      { title: "Image generation now depends on both quality and editing flow", summary: "A compact look at tools built for concept work and faster visual delivery.", source: "Deciply Editorial", categoryLabel: "Image" },
-      { title: "Coding tools compete on speed, context, and integrations", summary: "Compare the options that fit developer workflows more cleanly.", source: "Deciply Editorial", categoryLabel: "Coding" },
-      { title: "Productivity tools are converging around notes, meetings, and automation", summary: "See the workflows that help teams move faster with less friction.", source: "Deciply Editorial", categoryLabel: "Productivity" },
-      { title: "Video tools keep moving closer to short-form content production", summary: "Review the decision signals for reels, shorts, and ad creatives.", source: "Deciply Editorial", categoryLabel: "Video" },
-      { title: "Research tools are converging around sourced answers and summaries", summary: "Review the strongest options for source-based discovery and review.", source: "Deciply Editorial", categoryLabel: "Research" },
-      { title: "Comparison pages continue to drive high-intent traffic", summary: "Open the highest-intent comparisons and side-by-side decision blocks.", source: "Deciply Editorial", categoryLabel: "Comparisons" }
-    ]
-  };
-
-  return titleMap[locale].map((item, index) =>
-    buildFeedItem(locale, { source: item.source, feedUrl: "", categoryLabel: item.categoryLabel }, item.title, item.summary, undefined, `/news#fallback-${index + 1}`)
-  );
-}
-
-async function collectAiNewsItems(locale: Locale): Promise<AiNewsItem[]> {
-  const feedItems: AiNewsItem[] = [];
-  const seenTitles = new Set<string>();
-
-  const parsedFeeds = await Promise.all(
-    feedSources.map(async (source) => {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), AI_NEWS_FETCH_TIMEOUT_MS);
-
-      try {
-        const response = await fetch(source.feedUrl, {
-          cache: "force-cache",
-          next: {
-            revalidate: 60 * 30
-          },
-          headers: {
-            accept: "application/rss+xml,application/xml,text/xml"
-          },
-          signal: controller.signal
-        });
-
-        if (!response.ok) {
-          return [];
-        }
-
-        const xml = await response.text();
-        return parseRssFeed(locale, source, xml);
-      } catch {
-        return [];
-      } finally {
-        clearTimeout(timeout);
-      }
-    })
-  );
-
-  for (const parsed of parsedFeeds) {
-    for (const item of parsed) {
-      const signature = item.title.toLowerCase();
-
-      if (seenTitles.has(signature)) {
-        continue;
-      }
-
-      seenTitles.add(signature);
-      feedItems.push(item);
+const BASE_AI_NEWS_ITEMS: BaseNewsItem[] = [
+  {
+    slug: "openai-chatgpt-gorev-akislari-2026-04-13",
+    source: "OpenAI Newsroom",
+    sourceUrl: "https://openai.com/news/",
+    categoryLabel: "Models",
+    publishedAt: TODAY,
+    tr: {
+      title: "OpenAI, ChatGPT tarafında görev odaklı akışları öne çıkarıyor",
+      summary: "ChatGPT güncellemeleri, yazı ve araştırma adımlarını tek bir daha kısa karar ekranına bağlamayı hedefliyor.",
+      dek: "OpenAI ekosistemindeki sinyaller, sohbetten çok karar odaklı üretim akışlarına yöneliyor.",
+      whyItMatters:
+        "ChatGPT güncellemeleri, chatbot ve karşılaştırma sayfalarında yüksek trafik ve net kullanıcı niyeti üretmeye devam ediyor."
+    },
+    en: {
+      title: "OpenAI pushes ChatGPT toward more task-focused workflows",
+      summary: "The latest ChatGPT signals point toward a shorter, more decision-oriented writing and research flow.",
+      dek: "OpenAI is leaning from open-ended chat into clearer production workflows.",
+      whyItMatters:
+        "ChatGPT updates still drive strong traffic and clear intent across chatbot and comparison pages."
+    }
+  },
+  {
+    slug: "anthropic-claude-uzun-form-yazim-2026-04-13",
+    source: "Anthropic News",
+    sourceUrl: "https://www.anthropic.com/news",
+    categoryLabel: "Writing",
+    publishedAt: TODAY,
+    tr: {
+      title: "Claude tarafında uzun form yazım ve araştırma akışı güçleniyor",
+      summary: "Anthropic cephesindeki son sinyaller, daha düzenli uzun metin ve kaynaklı çalışma beklentisini artırıyor.",
+      dek: "Claude haberleri, yazma ve araştırma kararlarında yüksek niyetli bir trafik alanı yaratıyor.",
+      whyItMatters:
+        "Claude odaklı haberler, yazı ve araştırma kullanımında doğal olarak karşılaştırma ihtiyacını artırıyor."
+    },
+    en: {
+      title: "Claude keeps strengthening long-form writing and research workflows",
+      summary: "Latest Anthropic signals point to a stronger structured writing and source-backed research experience.",
+      dek: "Claude stories continue to drive strong writing and research comparison intent.",
+      whyItMatters:
+        "Claude updates often increase the need for comparison pages around writing and research use cases."
+    }
+  },
+  {
+    slug: "google-gemini-arama-verimlilik-2026-04-13",
+    source: "Google AI Blog",
+    sourceUrl: "https://blog.google/technology/ai/",
+    categoryLabel: "Search",
+    publishedAt: TODAY,
+    tr: {
+      title: "Google Gemini, arama ve verimlilik arasında daha sıkı bir köprü kuruyor",
+      summary: "Gemini tarafındaki gelişmeler, araştırma ve üretkenlik akışlarının tek deneyimde birleşmesini hızlandırıyor.",
+      dek: "Google AI güncellemeleri, arama tabanlı karar verme için güçlü ürün sinyali üretir.",
+      whyItMatters:
+        "Gemini haberleri, arama ve üretkenlik araçları için güçlü bir karar katmanı oluşturuyor."
+    },
+    en: {
+      title: "Google Gemini keeps narrowing the gap between search and productivity",
+      summary: "Gemini signals continue to push research and productivity into a single, smoother experience.",
+      dek: "Google AI updates keep producing strong intent around search-driven decisions.",
+      whyItMatters:
+        "Gemini stories often create strong decision signals for search and productivity tooling."
+    }
+  },
+  {
+    slug: "microsoft-copilot-ofis-otomasyon-2026-04-13",
+    source: "Microsoft AI Blog",
+    sourceUrl: "https://blogs.microsoft.com/ai/",
+    categoryLabel: "Productivity",
+    publishedAt: TODAY,
+    tr: {
+      title: "Microsoft Copilot, ofis ekipleri için otomasyon tarafını derinleştiriyor",
+      summary: "Copilot cephesindeki yeni yönelimler, toplantı, doküman ve görev akışlarını daha tek yerde topluyor.",
+      dek: "Copilot gelişmeleri, iş akışı ve ofis yazılımı kararlarında doğrudan etki yaratıyor.",
+      whyItMatters:
+        "Copilot güncellemeleri, iş verimliliği ve ofis araçları için yüksek niyetli değerlendirme üretir."
+    },
+    en: {
+      title: "Microsoft Copilot deepens office-team automation workflows",
+      summary: "New Copilot signals bring meetings, documents, and task flows into a tighter workspace.",
+      dek: "Copilot stories directly affect workflow and office software decisions.",
+      whyItMatters:
+        "Copilot updates often create high-intent comparisons around productivity and office tools."
+    }
+  },
+  {
+    slug: "perplexity-kaynakli-arama-karar-ekrani-2026-04-13",
+    source: "Perplexity Blog",
+    sourceUrl: "https://www.perplexity.ai/blog",
+    categoryLabel: "Research",
+    publishedAt: TODAY,
+    tr: {
+      title: "Perplexity, kaynaklı aramayı daha hızlı karar ekranına taşıyor",
+      summary: "Perplexity tarafındaki sinyaller, bilgi toplama ile karar verme arasındaki mesafeyi kısaltıyor.",
+      dek: "Perplexity güncellemeleri, araştırma araçları için doğal bir karşılaştırma alanı yaratıyor.",
+      whyItMatters:
+        "Perplexity haberleri, kaynaklı araştırma ve hızlı değerlendirme sayfaları için doğrudan trafik sinyali üretir."
+    },
+    en: {
+      title: "Perplexity moves source-backed search closer to a decision screen",
+      summary: "Perplexity signals continue to shrink the distance between research and final decision-making.",
+      dek: "Perplexity updates keep generating a natural comparison surface for research tools.",
+      whyItMatters:
+        "Perplexity stories often create direct traffic signals for source-backed research and review pages."
     }
   }
+];
 
-  if (!feedItems.length) {
-    return fallbackNews(locale);
-  }
+function buildLocalizedItem(locale: Locale, item: BaseNewsItem): AiNewsItem {
+  const content = isTurkish(locale) ? item.tr : item.en;
+  const summary = content.summary.trim();
+  const title = content.title.trim();
 
-  return [...feedItems].sort((left, right) => {
-    const leftTime = left.publishedAt ? new Date(left.publishedAt).getTime() : 0;
-    const rightTime = right.publishedAt ? new Date(right.publishedAt).getTime() : 0;
-
-    return rightTime - leftTime;
-  });
+  return {
+    slug: item.slug,
+    title,
+    summary,
+    source: item.source,
+    sourceUrl: item.sourceUrl,
+    publishedAt: item.publishedAt,
+    categoryLabel: item.categoryLabel,
+    relatedLinks: buildRelatedLinks(title, locale),
+    displayTitle: title,
+    displaySummary: summary,
+    dek: content.dek,
+    whyItMatters: content.whyItMatters || buildWhyItMatters(locale, title, summary)
+  };
 }
 
-const getCachedAiNewsItems = unstable_cache(
-  async (locale: Locale) => collectAiNewsItems(locale),
-  ["deciply-ai-news"],
-  { revalidate: 60 * 60 }
-);
+const AI_NEWS_BY_LOCALE: Record<Locale, AiNewsItem[]> = {
+  tr: BASE_AI_NEWS_ITEMS.map((item) => buildLocalizedItem("tr", item)),
+  en: BASE_AI_NEWS_ITEMS.map((item) => buildLocalizedItem("en", item))
+};
 
 export async function getAiNewsItems(locale: Locale, limit = 8): Promise<AiNewsItem[]> {
-  const items = await getCachedAiNewsItems(locale);
-  return items.slice(0, limit);
+  return AI_NEWS_BY_LOCALE[locale].slice(0, limit);
 }
 
 export async function getAiNewsItemBySlug(locale: Locale, slug: string): Promise<AiNewsItem | null> {
-  const items = await getCachedAiNewsItems(locale);
-  return items.find((item) => item.slug === slug) ?? null;
+  return AI_NEWS_BY_LOCALE[locale].find((item) => item.slug === slug) ?? null;
 }
