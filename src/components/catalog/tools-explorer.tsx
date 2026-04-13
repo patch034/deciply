@@ -557,7 +557,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
 
       {sortedTools.length > 0 ? (
         <>
-          <section className="grid grid-cols-1 gap-3">
+          <section className="grid grid-cols-1 gap-2.5">
             {visibleTools.map((tool) => (
               <ToolCard
                 key={tool.slug}
@@ -575,7 +575,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
             ))}
           </section>
 
-          <div className="flex flex-col items-center gap-4 py-2 sm:py-3">
+          <div className="flex flex-col items-center gap-3 py-2 sm:py-3">
             {currentPage < totalPages ? (
               <button
                 type="button"
