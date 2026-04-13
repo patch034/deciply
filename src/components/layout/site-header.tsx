@@ -14,9 +14,9 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   const navItems = dictionary.navigation;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-[rgba(248,251,255,0.9)] text-slate-900 backdrop-blur-2xl">
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-[rgba(248,251,255,0.88)] text-slate-900 backdrop-blur-2xl">
       <div className="mx-auto max-w-[1440px] px-3 py-3 sm:px-4 sm:py-4 lg:px-6">
-        <div className="rounded-[28px] border border-slate-200/85 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(247,250,253,0.96))] px-4 py-3.5 shadow-[0_24px_76px_-44px_rgba(15,23,42,0.16)] sm:px-5 lg:px-6">
+        <div className="ui-card ui-card-hover rounded-[24px] px-4 py-3.5 shadow-[0_20px_64px_-40px_rgba(15,23,42,0.14)] sm:px-5 lg:px-6">
           <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:items-center">
             <Link href={`/${locale}`} className="inline-flex min-h-[44px] shrink-0 items-center gap-3">
               <BrandLogo compact className="h-8 w-8" />
@@ -28,12 +28,12 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
               </span>
             </Link>
 
-            <nav className="flex items-center gap-1 overflow-x-auto pb-0.5 lg:justify-center lg:pb-0">
+            <nav className="flex items-center gap-1.5 overflow-x-auto pb-0.5 lg:justify-center lg:pb-0">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={`/${locale}${item.href}`}
-                  className="inline-flex min-h-[40px] shrink-0 items-center rounded-full px-4 text-sm font-semibold text-slate-700 transition duration-200 hover:bg-slate-100 hover:text-slate-950"
+                  className="inline-flex min-h-[40px] shrink-0 items-center rounded-full border border-transparent px-4 text-sm font-semibold text-slate-700 transition duration-200 hover:border-sky-200 hover:bg-sky-50 hover:text-[#0E2450]"
                 >
                   {item.label}
                 </Link>
@@ -50,7 +50,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
               <Link
                 key={`${item.href}-mobile`}
                 href={`/${locale}${item.href}`}
-                className="inline-flex min-h-[36px] shrink-0 items-center rounded-full border border-slate-200 bg-white px-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-700 transition hover:border-sky-200 hover:bg-slate-50 hover:text-slate-950"
+                className="inline-flex min-h-[36px] shrink-0 items-center rounded-full border border-slate-200 bg-white px-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-[#0E2450]"
               >
                 {item.label}
               </Link>

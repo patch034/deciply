@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
+
 import { motion } from "framer-motion";
 
-import type { ComparisonCard as ComparisonCardType } from "@/types/home";
-
 import { Badge } from "@/components/ui/badge";
+import type { ComparisonCard as ComparisonCardType } from "@/types/home";
 
 type ComparisonCardProps = {
   locale: string;
@@ -35,14 +35,7 @@ function ComparisonLogo({ name, logoUrl }: { name: string; logoUrl?: string }) {
   return (
     <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[10px] font-bold uppercase tracking-[0.14em] text-slate-700 shadow-[0_14px_32px_-22px_rgba(15,23,42,0.28)]">
       {logoUrl ? (
-        <img
-          src={logoUrl}
-          alt={name}
-          className="h-full w-full object-contain p-1.5"
-          loading="lazy"
-          decoding="async"
-          referrerPolicy="no-referrer"
-        />
+        <img src={logoUrl} alt={name} className="h-full w-full object-contain p-1.5" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
       ) : (
         <span>{name.slice(0, 2).toUpperCase()}</span>
       )}
@@ -58,11 +51,11 @@ export function ComparisonCard({ locale, item, linkLabel, featured = false, tone
   return (
     <motion.div whileHover={{ y: -4, scale: 1.01 }} transition={{ duration: 0.22 }} className="h-full">
       <Link href={href} className="group block h-full">
-        <div
+        <article
           className={[
-            "flex h-full flex-col justify-between overflow-hidden rounded-[30px] border p-5 transition duration-300 hover:-translate-y-1",
+            "flex h-full flex-col justify-between overflow-hidden rounded-[24px] border p-5 transition duration-300 hover:-translate-y-1.5",
             light
-              ? "border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,250,253,0.99))] shadow-[0_24px_72px_-42px_rgba(15,23,42,0.16)] hover:border-sky-200"
+              ? "border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(247,250,253,0.98))] shadow-[0_24px_72px_-42px_rgba(15,23,42,0.16)] hover:border-sky-200 hover:shadow-[0_30px_80px_-42px_rgba(37,99,235,0.16)]"
               : featured
                 ? "ui-card-strong ui-card-hover border-sky-400/10 bg-[linear-gradient(180deg,rgba(8,12,22,0.95),rgba(10,16,30,0.9))]"
                 : "ui-card ui-card-hover border-sky-400/10 bg-[linear-gradient(180deg,rgba(10,16,30,0.96),rgba(5,9,17,0.99))]"
@@ -103,14 +96,14 @@ export function ComparisonCard({ locale, item, linkLabel, featured = false, tone
           </div>
 
           <div className={["mt-auto border-t pt-3.5 sm:mt-6 sm:pt-5", light ? "border-slate-200" : "border-sky-400/10"].join(" ")}>
-            <span className={["inline-flex items-center gap-2 text-sm font-semibold transition duration-200 group-hover:translate-x-0.5", light ? "text-slate-700 group-hover:text-slate-950" : "text-slate-100 group-hover:text-white"].join(" ")}>
+            <span className={["inline-flex items-center gap-2 text-sm font-semibold transition duration-200 group-hover:translate-x-0.5", light ? "text-slate-700 group-hover:text-[#0E2450]" : "text-slate-100 group-hover:text-white"].join(" ")}>
               {linkLabel}
-              <span aria-hidden="true" className="text-cyan-300 transition duration-200 group-hover:translate-x-1">
+              <span aria-hidden="true" className="text-[#007FFF] transition duration-200 group-hover:translate-x-1">
                 →
               </span>
             </span>
           </div>
-        </div>
+        </article>
       </Link>
     </motion.div>
   );

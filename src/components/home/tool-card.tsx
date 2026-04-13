@@ -46,9 +46,9 @@ function toneClasses(tone: "dark" | "light") {
         subText: "text-slate-600",
         muted: "text-slate-500",
         cta:
-          "bg-[linear-gradient(90deg,#2563EB_0%,#3B82F6_52%,#06B6D4_100%)] text-white shadow-[0_20px_48px_-28px_rgba(37,99,235,0.42)]",
+          "bg-[linear-gradient(90deg,#0E2450_0%,#007FFF_42%,#0055FF_72%,#3B82F6_100%)] text-white shadow-[0_20px_48px_-28px_rgba(37,99,235,0.42)]",
         link: "text-slate-700",
-        linkHover: "group-hover:text-slate-950"
+        linkHover: "group-hover:text-[#0E2450]"
       }
     : {
         shell: "ui-card ui-card-hover home-card-glow border-sky-400/10 bg-[linear-gradient(180deg,rgba(10,16,30,0.96),rgba(5,9,17,0.99))]",
@@ -57,7 +57,7 @@ function toneClasses(tone: "dark" | "light") {
         subText: "text-slate-300/88",
         muted: "text-slate-400",
         cta:
-          "bg-[linear-gradient(90deg,#2563EB_0%,#3B82F6_52%,#06B6D4_100%)] text-white shadow-[0_22px_52px_-28px_rgba(37,99,235,0.6),0_30px_82px_-42px_rgba(14,165,233,0.42)]",
+          "bg-[linear-gradient(90deg,#0E2450_0%,#007FFF_42%,#0055FF_72%,#3B82F6_100%)] text-white shadow-[0_22px_52px_-28px_rgba(37,99,235,0.6),0_30px_82px_-42px_rgba(14,36,80,0.42)]",
         link: "text-slate-100",
         linkHover: "group-hover:text-white"
       };

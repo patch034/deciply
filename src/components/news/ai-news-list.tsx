@@ -42,7 +42,7 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
   const sidebar = variant === "sidebar";
 
   return (
-    <div className={sidebar ? "space-y-2.5" : "space-y-3"}>
+    <div className={sidebar ? "space-y-2.5" : "grid gap-4 md:grid-cols-2 xl:grid-cols-3"}>
       {items.map((item) => {
         const publishedAt = formatDate(locale, item.publishedAt);
         const detailHref = `/${locale}/news/${item.slug}`;
@@ -54,21 +54,14 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
           <article
             key={item.slug}
             className={[
-              "group rounded-[22px] border transition",
+              "group flex h-full min-h-[0] flex-col overflow-hidden rounded-[24px] border transition duration-300 hover:-translate-y-1.5",
               sidebar
-                ? "border-slate-200 bg-white p-3 shadow-[0_16px_48px_-36px_rgba(15,23,42,0.12)] hover:border-sky-200 hover:bg-slate-50"
-                : "border-slate-200 bg-white p-4 shadow-[0_18px_54px_-34px_rgba(15,23,42,0.12)] hover:border-sky-200 hover:bg-slate-50"
+                ? "border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(247,250,253,0.98))] p-3 shadow-[0_16px_48px_-36px_rgba(15,23,42,0.12)] hover:border-sky-200 hover:shadow-[0_20px_54px_-34px_rgba(37,99,235,0.14)]"
+                : "border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(247,250,253,0.98))] p-4 shadow-[0_18px_54px_-34px_rgba(15,23,42,0.12)] hover:border-sky-200 hover:shadow-[0_22px_62px_-34px_rgba(37,99,235,0.16)]"
             ].join(" ")}
           >
             <div className="flex items-start gap-3">
-              <span
-                className={[
-                  "flex shrink-0 items-center justify-center rounded-full border text-[10px] font-bold uppercase tracking-[0.16em]",
-                  sidebar
-                    ? "h-7 w-7 border-slate-200 bg-slate-50 text-slate-500"
-                    : "h-8 w-8 border-cyan-200 bg-cyan-50 text-cyan-700"
-                ].join(" ")}
-              >
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-sky-200 bg-sky-50 text-[10px] font-bold uppercase tracking-[0.16em] text-[#0055FF] shadow-[0_14px_30px_-20px_rgba(37,99,235,0.18)]">
                 {sourceMark}
               </span>
 
@@ -81,10 +74,7 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
                   {publishedAt ? <span className="text-[11px] text-slate-400">{publishedAt}</span> : null}
                 </div>
 
-                <Link
-                  href={detailHref}
-                  className="mt-1.5 block text-sm font-semibold leading-6 text-slate-950 transition group-hover:text-sky-700"
-                >
+                <Link href={detailHref} className="mt-1.5 block text-[15px] font-semibold leading-6 text-slate-950 transition group-hover:text-[#0055FF]">
                   {title}
                 </Link>
 
@@ -94,17 +84,11 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
 
                 {!sidebar ? (
                   <div className="mt-2 flex flex-wrap gap-2">
-                    <Link
-                      href={detailHref}
-                      className="inline-flex min-h-[28px] items-center rounded-full border border-sky-200 bg-sky-50 px-3 text-[11px] font-semibold text-sky-700 transition hover:border-sky-300 hover:bg-sky-100"
-                    >
-                      {locale === "tr" ? "Haberi oku" : "Read story"}
-                    </Link>
                     {item.relatedLinks.slice(0, 2).map((link) => (
                       <Link
                         key={`${item.slug}-${link.href}`}
                         href={link.href}
-                        className="inline-flex min-h-[28px] items-center rounded-full border border-slate-200 bg-slate-50 px-3 text-[11px] font-semibold text-slate-600 transition hover:border-sky-200 hover:bg-white hover:text-slate-950"
+                        className="inline-flex min-h-[28px] items-center rounded-full border border-slate-200 bg-slate-50 px-3 text-[11px] font-semibold text-slate-600 transition hover:border-sky-200 hover:bg-white hover:text-[#0E2450]"
                       >
                         {link.label}
                       </Link>
@@ -120,7 +104,7 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
                   <Link
                     key={`${item.slug}-${link.href}`}
                     href={link.href}
-                    className="inline-flex min-h-[30px] items-center rounded-full border border-slate-200 bg-slate-50 px-3 text-[11px] font-semibold text-slate-600 transition hover:border-sky-200 hover:bg-white hover:text-slate-950"
+                    className="inline-flex min-h-[30px] items-center rounded-full border border-slate-200 bg-slate-50 px-3 text-[11px] font-semibold text-slate-600 transition hover:border-sky-200 hover:bg-white hover:text-[#0E2450]"
                   >
                     {link.label}
                   </Link>
@@ -128,11 +112,8 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
               </div>
             ) : null}
 
-            <div className="mt-3 flex items-center justify-between gap-3 border-t border-slate-200 pt-3">
-              <Link
-                href={detailHref}
-                className="text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-700 transition hover:text-sky-800"
-              >
+            <div className="mt-auto flex min-h-[60px] items-end justify-between gap-3 border-t border-slate-200 pt-3.5">
+              <Link href={detailHref} className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0055FF] transition hover:text-[#0E2450]">
                 {locale === "tr" ? "Detayı gör" : "View details"}
               </Link>
 
@@ -141,7 +122,7 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
                   href={item.sourceUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 transition hover:text-slate-700"
+                  className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 transition hover:text-[#0E2450]"
                 >
                   {locale === "tr" ? "Kaynağa git" : "Original source"}
                 </a>
