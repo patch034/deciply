@@ -53,14 +53,15 @@ export function ComparisonCard({ locale, item, linkLabel, featured = false, tone
       <Link href={href} className="group block h-full">
         <article
           className={[
-            "ui-card ui-card-hover flex h-full flex-col justify-between overflow-hidden rounded-[22px] border p-4 transition duration-300 hover:-translate-y-1 sm:p-5",
+            "ui-card ui-card-hover flex h-full flex-col justify-between overflow-hidden rounded-[24px] border p-4 transition duration-300 hover:-translate-y-1 sm:p-5",
             light
-              ? "border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.995),rgba(247,250,253,0.98))] shadow-[0_12px_34px_-18px_rgba(15,23,42,0.14)] hover:border-sky-200 hover:shadow-[0_18px_42px_-20px_rgba(37,99,235,0.16)]"
+              ? "border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.995),rgba(247,250,253,0.98))] shadow-[0_16px_42px_-20px_rgba(15,23,42,0.16)] hover:border-sky-200 hover:shadow-[0_24px_50px_-22px_rgba(37,99,235,0.18)]"
               : featured
                 ? "ui-card-strong border-sky-400/10 bg-[linear-gradient(180deg,rgba(8,12,22,0.95),rgba(10,16,30,0.9))]"
                 : "ui-card border-sky-400/10 bg-[linear-gradient(180deg,rgba(10,16,30,0.96),rgba(5,9,17,0.99))]"
           ].join(" ")}
         >
+          <div className="h-1.5 rounded-full bg-[linear-gradient(90deg,#071226_0%,#0E2450_16%,#007FFF_54%,#0055FF_80%,#3B82F6_100%)]" />
           <div className="flex min-h-[34px] items-center justify-between gap-3 overflow-hidden sm:min-h-[40px]">
             <div className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
               <div className="flex shrink-0 items-center">
@@ -108,4 +109,3 @@ export function ComparisonCard({ locale, item, linkLabel, featured = false, tone
     </motion.div>
   );
 }
-

@@ -55,6 +55,7 @@ export function ToolCard({
   if (variant === "row") {
     return (
       <GlassPanel className="ui-card ui-card-hover flex h-full flex-col gap-4 overflow-hidden border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,250,253,0.98))] p-4 shadow-[0_24px_64px_-40px_rgba(15,23,42,0.14)] sm:flex-row sm:items-start sm:p-5">
+        <div className="h-1.5 w-full rounded-full bg-[linear-gradient(90deg,#071226_0%,#0E2450_16%,#007FFF_54%,#0055FF_80%,#3B82F6_100%)]" />
         <div className="flex min-w-0 flex-1 items-start gap-4">
           <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-[18px] border border-slate-200 bg-white shadow-[0_14px_32px_-22px_rgba(15,23,42,0.18)]">
             {logoUrl ? (
@@ -133,6 +134,7 @@ export function ToolCard({
   if (variant === "compact") {
     return (
       <GlassPanel className="ui-card ui-card-hover flex h-full flex-col overflow-hidden p-4">
+        <div className="h-1.5 w-full rounded-full bg-[linear-gradient(90deg,#071226_0%,#0E2450_16%,#007FFF_54%,#0055FF_80%,#3B82F6_100%)]" />
         <div className="flex items-start justify-between gap-3">
           <div className="flex min-w-0 flex-1 items-start gap-3">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_14px_32px_-22px_rgba(15,23,42,0.18)]">
@@ -208,6 +210,7 @@ export function ToolCard({
 
   return (
     <GlassPanel className="ui-card ui-card-hover flex h-full flex-col overflow-hidden p-4 sm:p-6">
+      <div className="h-1.5 w-full rounded-full bg-[linear-gradient(90deg,#071226_0%,#0E2450_16%,#007FFF_54%,#0055FF_80%,#3B82F6_100%)]" />
       <div className="flex min-h-[38px] flex-wrap items-start justify-between gap-3 overflow-hidden">
         <div className="flex min-w-0 flex-wrap gap-2 overflow-hidden">
           {categoryNames.slice(0, 1).map((category) => (
