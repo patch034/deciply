@@ -5,13 +5,39 @@ import Link from "next/link";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { LocaleSwitcher } from "@/components/layout/locale-switcher";
-import type { Locale } from "@/i18n/config";
+import type { SupportedLocale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 
 type SiteHeaderProps = {
-  locale: Locale;
+  locale: SupportedLocale;
   dictionary: Dictionary;
 };
+
+function getHeaderSubtitle(locale: SupportedLocale) {
+  switch (locale) {
+    case "tr":
+      return "AI araç dizini";
+    case "ar":
+      return "دليل أدوات الذكاء الاصطناعي";
+    case "ru":
+      return "Каталог AI‑инструментов";
+    case "zh":
+      return "AI 工具目录";
+    case "ja":
+      return "AIツールのディレクトリ";
+    case "ko":
+      return "AI 도구 디렉터리";
+    case "el":
+      return "Κατάλογος εργαλείων AI";
+    case "da":
+      return "AI-værktøjs-katalog";
+    case "fa":
+      return "دایرکتوری ابزارهای هوش مصنوعی";
+    case "en":
+    default:
+      return "AI tools directory";
+  }
+}
 
 export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   const navItems = dictionary.navigation;
@@ -44,9 +70,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
               <BrandLogo compact className="h-8 w-8" />
               <span className="min-w-0 leading-tight">
                 <span className="block text-[16px] font-semibold tracking-[-0.03em] text-slate-950 sm:text-[17px]">Deciply</span>
-                <span className="block text-[11px] font-medium text-slate-600 sm:text-[12px]">
-                  {locale === "tr" ? "AI araç dizini" : "AI tools directory"}
-                </span>
+                <span className="block text-[11px] font-medium text-slate-600 sm:text-[12px]">{getHeaderSubtitle(locale)}</span>
               </span>
             </Link>
 

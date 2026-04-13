@@ -17,6 +17,10 @@ export function normalizeLocale(value: string): Locale {
   return value === "tr" ? "tr" : "en";
 }
 
+export function isRtlLocale(value: string) {
+  return value === "ar" || value === "fa";
+}
+
 export function buildCanonicalUrl(path: string) {
   const safePath = path.startsWith("/") ? path : `/${path}`;
   return buildSiteUrl(safePath === "/" ? "" : safePath);

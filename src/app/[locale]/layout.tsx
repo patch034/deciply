@@ -4,7 +4,13 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { getDictionary } from "@/i18n/dictionaries";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
+import {
+  buildAlternates,
+  buildCanonicalUrl,
+  isRtlLocale,
+  isValidLocale,
+  type SupportedLocale,
+} from "@/i18n/config";
 
 export async function generateMetadata({
   params
@@ -17,7 +23,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const dictionary = getDictionary(normalizeLocale(locale));
+  const dictionary = getDictionary(locale as SupportedLocale);
 
   return {
     title: dictionary.meta.homeTitle,
@@ -42,13 +48,14 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  const dictionary = getDictionary(normalizeLocale(locale));
+  const dictionary = getDictionary(locale as SupportedLocale);
+  const supportedLocale = locale as SupportedLocale;
 
   return (
-    <div className="min-h-screen">
-      <SiteHeader locale={normalizeLocale(locale)} dictionary={dictionary} />
+    <div className="min-h-screen" dir={isRtlLocale(locale) ? "rtl" : "ltr"} lang={locale}>
+      <SiteHeader locale={supportedLocale} dictionary={dictionary} />
       <main className="pt-[92px] sm:pt-[96px] lg:pt-[100px]">{children}</main>
-      <SiteFooter locale={normalizeLocale(locale)} dictionary={dictionary} />
+      <SiteFooter locale={supportedLocale} dictionary={dictionary} />
     </div>
   );
 }

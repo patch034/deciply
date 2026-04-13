@@ -4,7 +4,7 @@ import Link from "next/link";
 import { createPortal } from "react-dom";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import type { Locale } from "@/i18n/config";
+import type { SupportedLocale } from "@/i18n/config";
 
 type LanguageEntry = {
   code: string;
@@ -37,7 +37,7 @@ function GlobeIcon() {
   );
 }
 
-export function LocaleSwitcher({ locale }: { locale: Locale }) {
+export function LocaleSwitcher({ locale }: { locale: SupportedLocale }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);

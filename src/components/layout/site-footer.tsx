@@ -1,11 +1,11 @@
 import Link from "next/link";
 
 import { BrandLogo } from "@/components/layout/brand-logo";
-import type { Locale } from "@/i18n/config";
+import type { SupportedLocale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 
 type SiteFooterProps = {
-  locale: Locale;
+  locale: SupportedLocale;
   dictionary: Dictionary;
 };
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { HomePage } from "@/components/home/home-page";
 import { getHomeContent } from "@/data/home";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, type SupportedLocale, normalizeLocale } from "@/i18n/config";
 import { buildHomeMetaDescription, buildHomeTitle } from "@/lib/seo";
 
 type LocalePageProps = {
@@ -18,8 +18,9 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 
   const safeLocale = normalizeLocale(locale);
   const content = getHomeContent(safeLocale);
-  const title = buildHomeTitle(safeLocale);
-  const description = buildHomeMetaDescription(safeLocale);
+  const uiLocale = locale as SupportedLocale;
+  const title = buildHomeTitle(uiLocale);
+  const description = buildHomeMetaDescription(uiLocale);
   const canonicalUrl = buildCanonicalUrl(`/${safeLocale}`);
 
   return {
