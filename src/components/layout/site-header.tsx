@@ -38,7 +38,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
       ].join(" ")}
     >
       <div className="w-full px-3 py-0 sm:px-4">
-        <div className="ui-card ui-card-hover mx-auto w-full rounded-[28px] border border-white/65 bg-[rgba(255,255,255,0.74)] px-4 py-3.5 shadow-[0_18px_48px_-34px_rgba(15,23,42,0.2)] ring-1 ring-white/55 backdrop-blur-2xl transition-[background-color,box-shadow,border-color,transform] duration-300 supports-[backdrop-filter]:bg-[rgba(255,255,255,0.74)] sm:px-5 lg:px-6">
+        <div className="ui-card ui-card-hover mx-auto w-full overflow-visible rounded-[28px] border border-white/65 bg-[rgba(255,255,255,0.74)] px-4 py-3.5 shadow-[0_18px_48px_-34px_rgba(15,23,42,0.2)] ring-1 ring-white/55 backdrop-blur-2xl transition-[background-color,box-shadow,border-color,transform] duration-300 supports-[backdrop-filter]:bg-[rgba(255,255,255,0.74)] sm:px-5 lg:px-6">
           <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:items-center">
             <Link href={`/${locale}`} className="inline-flex min-h-[44px] shrink-0 items-center gap-3">
               <BrandLogo compact className="h-8 w-8" />
