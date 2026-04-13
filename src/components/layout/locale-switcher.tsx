@@ -105,7 +105,7 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((current) => !current)}
-        className="inline-flex min-h-[42px] items-center gap-2 rounded-full border border-slate-200/85 bg-white/82 px-3.5 text-sm font-semibold text-slate-900 shadow-[0_18px_42px_-28px_rgba(15,23,42,0.22)] ring-1 ring-white/70 transition-[background-color,border-color,box-shadow,transform] duration-200 hover:border-sky-200 hover:bg-white hover:shadow-[0_22px_52px_-30px_rgba(14,37,64,0.3)] hover:-translate-y-[1px] sm:min-h-[44px]"
+        className="inline-flex min-h-[42px] items-center gap-2 rounded-full border border-slate-200/85 bg-white/80 px-3.5 text-sm font-semibold text-slate-900 shadow-[0_18px_42px_-28px_rgba(15,23,42,0.22)] ring-1 ring-white/70 transition-[background-color,border-color,box-shadow,transform] duration-200 hover:border-sky-200 hover:bg-white hover:shadow-[0_22px_52px_-30px_rgba(14,37,64,0.3)] hover:-translate-y-[1px] sm:min-h-[44px]"
       >
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-700">
           <GlobeIcon />
