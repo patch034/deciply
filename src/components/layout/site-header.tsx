@@ -31,13 +31,13 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   return (
     <header
       className={[
-        "sticky top-0 z-[80] text-slate-900 transition-[background-color,box-shadow,border-color,backdrop-filter,transform] duration-300 will-change-[background-color,box-shadow,backdrop-filter,transform]",
+        "fixed left-0 right-0 top-3 z-[80] text-slate-900 transition-[background-color,box-shadow,border-color,backdrop-filter,transform] duration-300 will-change-[background-color,box-shadow,backdrop-filter,transform]",
         isScrolled
           ? "border-b border-slate-200/85 bg-[rgba(255,255,255,0.9)] shadow-[0_28px_72px_-36px_rgba(15,23,42,0.28)] backdrop-blur-3xl backdrop-saturate-150 supports-[backdrop-filter]:bg-[rgba(255,255,255,0.9)]"
           : "border-b border-slate-200/60 bg-[rgba(255,255,255,0.68)] shadow-[0_18px_50px_-40px_rgba(15,23,42,0.18)] backdrop-blur-2xl backdrop-saturate-150 supports-[backdrop-filter]:bg-[rgba(255,255,255,0.72)]"
       ].join(" ")}
     >
-      <div className="mx-auto max-w-[1440px] px-3 py-2.5 sm:px-4 sm:py-3 lg:px-6">
+      <div className="mx-auto max-w-[1440px] px-3 py-0 sm:px-4 lg:px-6">
         <div className="ui-card ui-card-hover rounded-[28px] border border-white/70 bg-[rgba(255,255,255,0.82)] px-4 py-3.5 shadow-[0_20px_58px_-34px_rgba(15,23,42,0.24)] ring-1 ring-white/60 backdrop-blur-2xl transition-[background-color,box-shadow,border-color,transform] duration-300 supports-[backdrop-filter]:bg-[rgba(255,255,255,0.82)] sm:px-5 lg:px-6">
           <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:items-center">
             <Link href={`/${locale}`} className="inline-flex min-h-[44px] shrink-0 items-center gap-3">
