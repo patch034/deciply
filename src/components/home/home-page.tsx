@@ -1,6 +1,5 @@
 import { HomeBoostSections } from "@/components/home/home-boost-sections";
 import { HeroSection } from "@/components/home/hero-section";
-import { getComparisonDirectoryCards } from "@/lib/comparisons";
 import { getLocalizedTools } from "@/lib/catalog";
 import { toHomeToolCard } from "@/lib/tool-ui";
 import type { HomeContent } from "@/data/home";
@@ -29,20 +28,13 @@ type HomePageProps = {
 };
 
 export async function HomePage({ locale, content }: HomePageProps) {
-  const comparisonCards = getComparisonDirectoryCards(locale).slice(0, 8);
   const allTools = getLocalizedTools(locale).map((tool) => toHomeToolCard(locale, tool));
   const popularTools = buildPopularTools(locale).slice(0, 24);
 
   return (
     <div className="ui-page-shell relative min-h-screen overflow-x-clip bg-transparent pb-12 text-slate-900 sm:pb-16 lg:pb-20">
       <HeroSection locale={locale} content={content.hero} />
-      <HomeBoostSections
-        locale={locale}
-        comparisonCards={comparisonCards}
-        popularTools={popularTools}
-        allTools={allTools}
-        categories={content.categories}
-      />
+      <HomeBoostSections locale={locale} popularTools={popularTools} allTools={allTools} />
     </div>
   );
 }
