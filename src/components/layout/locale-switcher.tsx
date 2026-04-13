@@ -67,7 +67,7 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((current) => !current)}
-        className="inline-flex min-h-[42px] items-center gap-2 rounded-full border border-slate-200/90 bg-white/95 px-3.5 text-sm font-semibold text-slate-900 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.22)] transition hover:border-sky-200 hover:bg-white sm:min-h-[44px]"
+        className="inline-flex min-h-[42px] items-center gap-2 rounded-full border border-slate-200/90 bg-white/95 px-3.5 text-sm font-semibold text-slate-900 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.22)] transition-[background-color,border-color,box-shadow,transform] duration-200 hover:border-sky-200 hover:bg-white hover:shadow-[0_20px_48px_-30px_rgba(14,37,64,0.28)] hover:-translate-y-[1px] sm:min-h-[44px]"
       >
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-700">
           <GlobeIcon />
@@ -80,7 +80,7 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
       </button>
 
       {open ? (
-        <div className="language-menu absolute right-0 top-[calc(100%+0.5rem)] z-50 w-[min(92vw,18rem)] overflow-hidden rounded-[24px] border border-slate-200/90 bg-[rgba(255,255,255,0.98)] p-2 shadow-[0_30px_90px_-40px_rgba(15,23,42,0.28)]">
+        <div className="language-menu absolute right-0 top-[calc(100%+0.5rem)] z-50 w-[min(92vw,18rem)] overflow-hidden rounded-[24px] border border-slate-200/90 bg-[rgba(255,255,255,0.98)] p-2 shadow-[0_30px_90px_-40px_rgba(15,23,42,0.28)] backdrop-blur-xl supports-[backdrop-filter]:bg-[rgba(255,255,255,0.96)]">
           <p className="px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
             {locale === "tr" ? "Dil seç" : "Language"}
           </p>
