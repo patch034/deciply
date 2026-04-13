@@ -21,13 +21,13 @@ export function BlogCard({ locale, article, ctaLabel, tone = "light" }: BlogCard
   return (
     <div
       className={[
-        "group flex h-full min-h-[328px] flex-col overflow-hidden rounded-[22px] border p-5 transition duration-300 hover:-translate-y-1.5 sm:min-h-[344px] sm:p-6",
+        "group flex h-full min-h-[332px] flex-col overflow-hidden rounded-[22px] border p-5 transition duration-300 hover:-translate-y-1.5 sm:min-h-[352px] sm:p-6",
         light
-          ? "border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(247,250,253,0.98))] shadow-[0_26px_80px_-46px_rgba(15,23,42,0.18)] hover:border-sky-200 hover:shadow-[0_30px_88px_-44px_rgba(37,99,235,0.18)]"
+          ? "border-slate-200/95 bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(248,251,255,0.98))] shadow-[0_28px_90px_-50px_rgba(15,23,42,0.2)] hover:border-sky-200 hover:shadow-[0_34px_96px_-46px_rgba(37,99,235,0.2)]"
           : "border-sky-400/10 bg-[linear-gradient(180deg,rgba(10,16,30,0.96),rgba(5,9,17,0.99))] shadow-[0_28px_88px_-44px_rgba(14,165,233,0.14)] hover:border-cyan-400/20"
       ].join(" ")}
     >
-      <div className="flex flex-wrap items-center gap-3 border-b border-slate-200/80 pb-4 sm:pb-5">
+      <div className="flex min-h-[72px] flex-wrap items-center gap-3 border-b border-slate-200/80 pb-4 sm:min-h-[76px] sm:pb-5">
         <Badge variant={light ? "ghost" : "ghost"} className="max-w-full justify-start">
           {article.categoryLabel}
         </Badge>
@@ -56,8 +56,13 @@ export function BlogCard({ locale, article, ctaLabel, tone = "light" }: BlogCard
           {article.excerpt}
         </p>
 
-        <div className={["mt-auto flex items-end justify-between gap-3 border-t pt-4 text-sm sm:mt-6 sm:gap-4 sm:pt-5", light ? "border-slate-200" : "border-sky-400/10"].join(" ")}>
-          <span className={["truncate text-xs font-semibold uppercase tracking-[0.18em]", light ? "text-slate-500" : "text-slate-400"].join(" ")}>
+        <div
+          className={[
+            "mt-auto flex items-center justify-between gap-3 border-t pt-4 text-sm sm:mt-6 sm:gap-4 sm:pt-5",
+            light ? "border-slate-200" : "border-sky-400/10"
+          ].join(" ")}
+        >
+          <span className={["truncate text-[11px] font-semibold uppercase tracking-[0.2em]", light ? "text-slate-500" : "text-slate-400"].join(" ")}>
             {article.relatedToolSlugs.length} {relatedToolsLabel}
           </span>
           <Link
