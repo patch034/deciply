@@ -470,7 +470,7 @@ export default async function ComparisonPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip bg-transparent px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <Breadcrumb
           items={[
             { label: dictionary.breadcrumbsHome, href: `/${safeLocale}` },
@@ -530,18 +530,18 @@ export default async function ComparisonPage({
                 <Link
                   key={tool.slug}
                   href={compareHref}
-                  className="group rounded-[26px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(8,12,22,0.95),rgba(10,16,30,0.9))] p-5 shadow-[0_18px_54px_-34px_rgba(14,165,233,0.14)] transition hover:border-cyan-400/18 hover:bg-[linear-gradient(180deg,rgba(10,16,30,0.98),rgba(15,23,42,0.96))]"
+                  className="group rounded-[26px] border border-slate-200 bg-white p-5 shadow-[0_18px_54px_-34px_rgba(15,23,42,0.12)] transition hover:border-sky-200 hover:bg-slate-50"
                 >
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">{tool.name}</p>
-                  <h2 className="mt-3 text-xl font-semibold text-slate-50">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0055FF]">{tool.name}</p>
+                  <h2 className="mt-3 text-xl font-semibold text-slate-950">
                     {matchedTool.name} {safeLocale === "tr" ? "ile karşılaştır" : "comparison"}
                   </h2>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">
+                  <p className="mt-3 text-sm leading-7 text-slate-600">
                     {safeLocale === "tr"
                       ? "İlgili compare sayfasını açarak farklı kullanım ve fiyat sinyallerini yan yana görün."
                       : "Open the related comparison page to review use-case and pricing signals side by side."}
                   </p>
-                  <div className="mt-5 inline-flex items-center text-sm font-semibold text-cyan-200 transition group-hover:text-cyan-100">
+                  <div className="mt-5 inline-flex items-center text-sm font-semibold text-[#0055FF] transition group-hover:text-[#0E2450]">
                     {dictionary.compareLabel}
                   </div>
                 </Link>
