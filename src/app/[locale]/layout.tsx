@@ -47,7 +47,7 @@ export default async function LocaleLayout({
   return (
     <div className="min-h-screen">
       <SiteHeader locale={locale as Locale} dictionary={dictionary} />
-      <main className="pt-[104px] sm:pt-[112px] lg:pt-[120px]">{children}</main>
+      <main className="pt-[92px] sm:pt-[96px] lg:pt-[100px]">{children}</main>
       <SiteFooter locale={locale as Locale} dictionary={dictionary} />
     </div>
   );
