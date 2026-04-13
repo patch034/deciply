@@ -23,7 +23,7 @@ import {
   getLocalizedToolBySlug,
   getToolsByCategory
 } from "@/lib/catalog";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
 import { buildComparisonPath, getComparisonDirectoryCards, getComparisonTargetTools } from "@/lib/comparisons";
 import { getToolTrustIndicators } from "@/lib/tool-ui";
 
@@ -48,7 +48,7 @@ export async function generateMetadata({
   }
 
   if (slug === "comparisons") {
-    const comparison = getComparisonContent(locale as Locale);
+    const comparison = getComparisonContent(normalizeLocale(locale));
 
     return {
       title: comparison.title,
@@ -60,7 +60,7 @@ export async function generateMetadata({
     };
   }
 
-  const category = getLocalizedCategoryBySlug(locale as Locale, slug);
+  const category = getLocalizedCategoryBySlug(normalizeLocale(locale), slug);
 
   if (!category) {
     return {};
@@ -87,7 +87,7 @@ export default async function CategoryDetailPage({
     notFound();
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const content = getCatalogContent(safeLocale);
   const category = getLocalizedCategoryBySlug(safeLocale, slug);
 

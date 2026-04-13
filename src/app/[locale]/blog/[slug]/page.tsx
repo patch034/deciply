@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { SectionJumpNav } from "@/components/ui/section-jump-nav";
 import { SectionShell } from "@/components/ui/section-shell";
 import { blogArticles } from "@/data/blog";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
 import { buildAutoComparisonPath, buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
 import {
   formatBlogDate,
@@ -139,7 +139,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const article = getLocalizedBlogArticleBySlug(safeLocale, slug);
 
   if (!article) {
@@ -179,7 +179,7 @@ export default async function BlogDetailPage({
     notFound();
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const copy = getBlogCopy(safeLocale);
   const article = getLocalizedBlogArticleBySlug(safeLocale, slug);
 

@@ -1,6 +1,19 @@
 ﻿import type { Locale } from "@/i18n/config";
 
-const dictionaries = {
+type DictionaryShape = {
+  meta: { homeTitle: string; homeDescription: string };
+  navigation: { label: string; href: string }[];
+  footer: {
+    description: string;
+    badge: string;
+    contactBlock: { title: string; links: { label: string; href: string }[] };
+    groups: { title: string; links: { label: string; href: string }[] }[];
+    bottomNote: string;
+    copyright: string;
+  };
+};
+
+const dictionaries: Partial<Record<Locale, DictionaryShape>> = {
   tr: {
     meta: {
       homeTitle: "AI araçları ve SaaS rehberi",
@@ -131,24 +144,10 @@ const dictionaries = {
       copyright: "2026 Deciply. All rights reserved."
     }
   }
-} as const satisfies Record<
-  Locale,
-  {
-    meta: { homeTitle: string; homeDescription: string };
-    navigation: { label: string; href: string }[];
-    footer: {
-      description: string;
-      badge: string;
-      contactBlock: { title: string; links: { label: string; href: string }[] };
-      groups: { title: string; links: { label: string; href: string }[] }[];
-      bottomNote: string;
-      copyright: string;
-    };
-  }
->;
+};
 
-export type Dictionary = (typeof dictionaries)[Locale];
+export type Dictionary = DictionaryShape;
 
 export function getDictionary(locale: Locale) {
-  return dictionaries[locale];
+  return dictionaries[locale] ?? dictionaries.en ?? dictionaries.tr!;
 }

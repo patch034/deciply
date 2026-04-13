@@ -6,7 +6,7 @@ import { ComparisonCard } from "@/components/home/comparison-card";
 import { Breadcrumb } from "@/components/catalog/breadcrumb";
 import { SectionShell } from "@/components/ui/section-shell";
 import { getCatalogContent, getLocalizedToolBySlug, getLocalizedTools } from "@/lib/catalog";
-import { buildCanonicalUrl, buildAlternates, isValidLocale, type Locale } from "@/i18n/config";
+import { buildCanonicalUrl, buildAlternates, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
 import { getComparisonDirectoryCards, parseAutoComparisonPairSlug } from "@/lib/comparisons";
 
 export function generateStaticParams() {
@@ -24,7 +24,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const parsed = parseAutoComparisonPairSlug(pair);
 
   if (!parsed) {
@@ -70,7 +70,7 @@ export default async function CompareAutoPairPage({
     notFound();
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const parsed = parseAutoComparisonPairSlug(pair);
 
   if (!parsed) {

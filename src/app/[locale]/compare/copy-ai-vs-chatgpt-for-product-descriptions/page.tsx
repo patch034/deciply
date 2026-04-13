@@ -14,7 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
 import { SectionJumpNav } from "@/components/ui/section-jump-nav";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
 import { getLocalizedBlogArticleBySlug } from "@/lib/blog";
 import {
   buildComparisonPath,
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const comparison = getComparisonToolsFromPair(safeLocale, SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_SLUG);
 
   if (!comparison) {
@@ -125,7 +125,7 @@ export default async function ProductDescriptionComparisonPage({ params }: { par
     notFound();
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const comparison = getComparisonToolsFromPair(safeLocale, SPECIAL_PRODUCT_DESCRIPTION_COMPARISON_SLUG);
 
   if (!comparison) {

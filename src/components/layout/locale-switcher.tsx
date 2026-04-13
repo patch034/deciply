@@ -16,14 +16,14 @@ type LanguageEntry = {
 const languageEntries: LanguageEntry[] = [
   { code: "en", label: "English", nativeLabel: "English", live: true },
   { code: "tr", label: "Turkish", nativeLabel: "Türkçe", live: true },
-  { code: "ar", label: "Arabic", nativeLabel: "العربية" },
-  { code: "ru", label: "Russian", nativeLabel: "Русский" },
-  { code: "zh", label: "Chinese", nativeLabel: "中文" },
-  { code: "ja", label: "Japanese", nativeLabel: "日本語" },
-  { code: "ko", label: "Korean", nativeLabel: "한국어" },
-  { code: "el", label: "Greek", nativeLabel: "Ελληνικά" },
-  { code: "da", label: "Danish", nativeLabel: "Dansk" },
-  { code: "fa", label: "Persian", nativeLabel: "فارسی" }
+  { code: "ar", label: "Arabic", nativeLabel: "العربية", live: true },
+  { code: "ru", label: "Russian", nativeLabel: "Русский", live: true },
+  { code: "zh", label: "Chinese", nativeLabel: "中文", live: true },
+  { code: "ja", label: "Japanese", nativeLabel: "日本語", live: true },
+  { code: "ko", label: "Korean", nativeLabel: "한국어", live: true },
+  { code: "el", label: "Greek", nativeLabel: "Ελληνικά", live: true },
+  { code: "da", label: "Danish", nativeLabel: "Dansk", live: true },
+  { code: "fa", label: "Persian", nativeLabel: "فارسی", live: true }
 ];
 
 function GlobeIcon() {

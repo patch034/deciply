@@ -9,7 +9,7 @@ import { ToolCard } from "@/components/catalog/tool-card";
 import { Badge } from "@/components/ui/badge";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
 import { getBlogCopy } from "@/lib/blog";
 import { formatPricing, getCatalogContent, getCategoryNamesMap } from "@/lib/catalog";
 import {
@@ -129,7 +129,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const page = getUseCasePage(safeLocale, slug);
 
   if (!page) {
@@ -168,7 +168,7 @@ export default async function UseCasePage({
     notFound();
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const dictionary = copy[safeLocale];
   const content = getCatalogContent(safeLocale);
   const blogCopy = getBlogCopy(safeLocale);

@@ -1,13 +1,20 @@
 ﻿import { buildSiteUrl } from "@/lib/site";
 
-export const locales = ["tr", "en"] as const;
-export type Locale = (typeof locales)[number];
+export const contentLocales = ["tr", "en"] as const;
+export type Locale = (typeof contentLocales)[number];
+
+export const locales = ["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"] as const;
+export type SupportedLocale = (typeof locales)[number];
 
 export const defaultLocale: Locale = "en";
 export const localeCookieName = "deciply-locale";
 
-export function isValidLocale(value: string): value is Locale {
-  return locales.includes(value as Locale);
+export function isValidLocale(value: string): value is SupportedLocale {
+  return locales.includes(value as SupportedLocale);
+}
+
+export function normalizeLocale(value: string): Locale {
+  return value === "tr" ? "tr" : "en";
 }
 
 export function buildCanonicalUrl(path: string) {
@@ -18,10 +25,12 @@ export function buildCanonicalUrl(path: string) {
 export function buildAlternates(path: string) {
   const safePath = path.startsWith("/") ? path : `/${path}`;
   const normalizedPath = safePath === "/" ? "" : safePath;
+  const alternates = Object.fromEntries(
+    locales.map((locale) => [locale, buildSiteUrl(`/${locale}${normalizedPath}`)])
+  ) as Record<SupportedLocale, string>;
 
   return {
-    tr: buildSiteUrl(`/tr${normalizedPath}`),
-    en: buildSiteUrl(`/en${normalizedPath}`),
+    ...alternates,
     "x-default": buildSiteUrl(`/en${normalizedPath}`)
   };
 }

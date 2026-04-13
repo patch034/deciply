@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { StaticPageShell } from "@/components/content/static-page-shell";
-import { isValidLocale, type Locale } from "@/i18n/config";
+import { isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
 import { buildStaticPageMetadata, getStaticPage } from "@/lib/static-pages";
 
 export async function generateMetadata({
@@ -16,7 +16,7 @@ export async function generateMetadata({
     return {};
   }
 
-  return buildStaticPageMetadata(locale as Locale, "/contact", "contact");
+  return buildStaticPageMetadata(normalizeLocale(locale), "/contact", "contact");
 }
 
 export default async function ContactPage({
@@ -30,5 +30,5 @@ export default async function ContactPage({
     notFound();
   }
 
-  return <StaticPageShell content={getStaticPage(locale as Locale, "contact")} />;
+  return <StaticPageShell content={getStaticPage(normalizeLocale(locale), "contact")} />;
 }

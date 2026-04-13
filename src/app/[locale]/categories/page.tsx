@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { categories as categoryEntries } from "@/data/categories";
 import { getCatalogContent, getLocalizedCategories, getToolsByCategory } from "@/lib/catalog";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
 
 export async function generateMetadata({
   params
@@ -20,7 +20,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const content = getCatalogContent(locale as Locale);
+  const content = getCatalogContent(normalizeLocale(locale));
 
   return {
     title: content.categoriesIndex.title,
@@ -43,7 +43,7 @@ export default async function CategoriesPage({
     return null;
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const content = getCatalogContent(safeLocale);
   const categoryItems = getLocalizedCategories(safeLocale);
   const sidebarIcons: Record<string, string> = {

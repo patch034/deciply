@@ -7,7 +7,7 @@ import { SectionShell } from "@/components/ui/section-shell";
 import { categories } from "@/data/categories";
 import { toolCategoryOptions, useCaseOptions } from "@/data/tool-taxonomy";
 import { getLocalizedCategories, getLocalizedTools, getToolsByCategory } from "@/lib/catalog";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
 
 export async function generateMetadata({
   params
@@ -20,7 +20,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
 
   return {
     title: safeLocale === "tr" ? "Mega Kategori Dizini" : "Mega Category Directory",
@@ -202,7 +202,7 @@ export default async function MegaCategoryDirectoryPage({
     return null;
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const localizedCategories = getLocalizedCategories(safeLocale);
   const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
   const tools = getLocalizedTools(safeLocale);

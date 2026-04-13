@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { getDictionary } from "@/i18n/dictionaries";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
 
 export async function generateMetadata({
   params
@@ -17,7 +17,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const dictionary = getDictionary(locale);
+  const dictionary = getDictionary(normalizeLocale(locale));
 
   return {
     title: dictionary.meta.homeTitle,
@@ -42,13 +42,13 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  const dictionary = getDictionary(locale as Locale);
+  const dictionary = getDictionary(normalizeLocale(locale));
 
   return (
     <div className="min-h-screen">
-      <SiteHeader locale={locale as Locale} dictionary={dictionary} />
+      <SiteHeader locale={normalizeLocale(locale)} dictionary={dictionary} />
       <main className="pt-[92px] sm:pt-[96px] lg:pt-[100px]">{children}</main>
-      <SiteFooter locale={locale as Locale} dictionary={dictionary} />
+      <SiteFooter locale={normalizeLocale(locale)} dictionary={dictionary} />
     </div>
   );
 }

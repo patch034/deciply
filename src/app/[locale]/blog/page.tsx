@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { BlogCard } from "@/components/blog/blog-card";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
 import {
   getBlogBoostSections,
   getBlogCopy,
@@ -33,7 +33,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const copy = getBlogCopy(safeLocale);
   const currentPage = parseBlogPage(page);
   const canonicalPath = currentPage <= 1 ? `/${locale}/blog` : `/${locale}/blog?page=${currentPage}`;
@@ -63,7 +63,7 @@ export default async function BlogPage({
     return null;
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const copy = getBlogCopy(safeLocale);
   const requestedPage = parseBlogPage(page);
   const totalPages = getBlogTotalPages();

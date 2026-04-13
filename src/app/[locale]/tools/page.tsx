@@ -14,7 +14,7 @@ import {
 } from "@/lib/catalog";
 import { buildComparisonPath, getComparisonTargetSlugs } from "@/lib/comparisons";
 import { getToolLogoUrl } from "@/lib/logo";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
 import { buildToolsIndexMetaDescription, buildToolsPageTitle } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -39,7 +39,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const { page } = parseToolsQueryFilters(resolvedSearchParams);
   const canonicalPath = `/${locale}/tools?page=${page}`;
 
@@ -75,7 +75,7 @@ export default async function ToolsPage({
     return null;
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const content = getCatalogContent(safeLocale);
   const toolItems = getLocalizedTools(safeLocale);
   const categoryNames = getCategoryNamesMap(safeLocale);

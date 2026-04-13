@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { StaticPageShell } from "@/components/content/static-page-shell";
-import { isValidLocale, type Locale } from "@/i18n/config";
+import { isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
 import { buildStaticPageMetadata, getStaticPage } from "@/lib/static-pages";
 
 export async function generateMetadata({
@@ -16,7 +16,7 @@ export async function generateMetadata({
     return {};
   }
 
-  return buildStaticPageMetadata(locale as Locale, "/affiliate-disclosure", "affiliateDisclosure");
+  return buildStaticPageMetadata(normalizeLocale(locale), "/affiliate-disclosure", "affiliateDisclosure");
 }
 
 export default async function AffiliateDisclosurePage({
@@ -30,5 +30,5 @@ export default async function AffiliateDisclosurePage({
     notFound();
   }
 
-  return <StaticPageShell content={getStaticPage(locale as Locale, "affiliateDisclosure")} />;
+  return <StaticPageShell content={getStaticPage(normalizeLocale(locale), "affiliateDisclosure")} />;
 }

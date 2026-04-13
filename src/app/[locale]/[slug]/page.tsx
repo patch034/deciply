@@ -15,7 +15,7 @@ import {
   getToolCount
 } from "@/lib/catalog";
 import { buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
 import { stripBrandSuffix } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -33,7 +33,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const page = getDiscoveryPage(locale as Locale, slug);
+  const page = getDiscoveryPage(normalizeLocale(locale), slug);
 
   if (!page) {
     return {};
@@ -60,7 +60,7 @@ export default async function DiscoveryPage({
     notFound();
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const page = getDiscoveryPage(safeLocale, slug);
 
   if (!page) {

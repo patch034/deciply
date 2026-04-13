@@ -9,7 +9,7 @@ import { getLocalizedCategories, getLocalizedTools } from "@/lib/catalog";
 import { getBlogTrendingArticles } from "@/lib/blog";
 import { getComparisonDirectoryCards } from "@/lib/comparisons";
 import { getAiNewsItemBySlug, getAiNewsItems } from "@/lib/news";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
 
 export const dynamic = "force-dynamic";
 
@@ -86,7 +86,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const item = await getAiNewsItemBySlug(safeLocale, slug);
 
   if (!item) {
@@ -114,7 +114,7 @@ export default async function AiNewsDetailPage({
     notFound();
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const item = await getAiNewsItemBySlug(safeLocale, slug);
 
   if (!item) {

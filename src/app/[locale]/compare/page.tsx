@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
 import { getComparisonDirectoryCards } from "@/lib/comparisons";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
 
 const compareIntro = {
   tr: {
@@ -53,7 +53,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
 
   return {
     title: safeLocale === "tr" ? "Karşılaştırmalar" : "Comparisons",
@@ -79,7 +79,7 @@ export default async function CompareHubPage({
     return null;
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const copy = compareIntro[safeLocale];
   const featured = buildFeaturedPairs(safeLocale);
   const recent = getComparisonDirectoryCards(safeLocale).slice(8, 16);

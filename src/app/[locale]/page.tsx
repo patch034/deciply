@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { HomePage } from "@/components/home/home-page";
 import { getHomeContent } from "@/data/home";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
 import { buildHomeMetaDescription, buildHomeTitle } from "@/lib/seo";
 
 type LocalePageProps = {
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const content = getHomeContent(safeLocale);
   const title = buildHomeTitle(safeLocale);
   const description = buildHomeMetaDescription(safeLocale);
@@ -49,7 +49,7 @@ export default async function LocaleHomePage({ params }: LocalePageProps) {
     return null;
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const content = getHomeContent(safeLocale);
 
   return <HomePage locale={safeLocale} content={content} />;

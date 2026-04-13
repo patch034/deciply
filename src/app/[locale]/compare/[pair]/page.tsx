@@ -10,7 +10,7 @@ import { ComparisonFaq } from "@/components/comparison/comparison-faq";
 import { ComparisonInsightPanel } from "@/components/comparison/comparison-insight-panel";
 import { SectionShell } from "@/components/ui/section-shell";
 import type { ComparisonFaqItem, ComparisonRow } from "@/data/comparisons";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
 import {
   buildComparisonPath,
   getComparisonAlternativeTools,
@@ -312,7 +312,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const comparison = getComparisonToolsFromPair(safeLocale, pair);
 
   if (!comparison) {
@@ -350,7 +350,7 @@ export default async function ComparisonPage({
     notFound();
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const dictionary = copy[safeLocale];
   const comparison = getComparisonToolsFromPair(safeLocale, pair);
 

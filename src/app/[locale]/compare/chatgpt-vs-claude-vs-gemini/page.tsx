@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { ComparisonTriplePage as ComparisonTriplePageView } from "@/components/comparison/comparison-triple-page";
 import { tripleComparisonContent, type ComparisonFaqItem } from "@/data/comparisons";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
 import {
   FEATURED_TRIPLE_COMPARISON_SLUG,
   FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS,
@@ -119,7 +119,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const content = tripleComparisonContent[safeLocale];
   const canonicalPath = `/${safeLocale}/compare/${FEATURED_TRIPLE_COMPARISON_SLUG}`;
 
@@ -146,7 +146,7 @@ export default async function TripleComparisonRoutePage({ params }: { params: Pr
     notFound();
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const content = tripleComparisonContent[safeLocale];
   const firstTool = getLocalizedToolBySlug(safeLocale, FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[0]);
   const secondTool = getLocalizedToolBySlug(safeLocale, FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[1]);

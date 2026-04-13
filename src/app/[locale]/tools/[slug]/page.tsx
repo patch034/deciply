@@ -18,7 +18,7 @@ import { RatingBadge } from "@/components/ui/rating-badge";
 import type { ComparisonFaqItem } from "@/data/comparisons";
 import { tools } from "@/data/tools";
 import { toolCategoryOptions } from "@/data/tool-taxonomy";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
 import { getBlogCopy, getRelatedArticlesByTool } from "@/lib/blog";
 import { FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS, buildAutoComparisonPath, buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
 import { buildAlternativesPath, buildUseCasePath, getSafeComparisonPath, getUseCasePagesForTool } from "@/lib/intent-pages";
@@ -381,7 +381,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const tool = getLocalizedToolBySlug(safeLocale, slug);
 
   if (!tool) {
@@ -416,7 +416,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
     notFound();
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const dictionary = copy[safeLocale];
   const content = getCatalogContent(safeLocale);
   const tool = getLocalizedToolBySlug(safeLocale, slug);

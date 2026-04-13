@@ -8,7 +8,7 @@ import { SectionShell } from "@/components/ui/section-shell";
 import { getLocalizedTools } from "@/lib/catalog";
 import { toolCategoryOptions } from "@/data/tool-taxonomy";
 import { getAiNewsItems } from "@/lib/news";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
 
 export const dynamic = "force-dynamic";
 
@@ -41,7 +41,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
 
   return {
     title: safeLocale === "tr" ? "AI Haberleri" : "AI News",
@@ -67,7 +67,7 @@ export default async function NewsPage({
     return null;
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const items = await getAiNewsItems(safeLocale, 10);
   const featuredItems = items.slice(0, 3);
   const latestItems = items.slice(3);

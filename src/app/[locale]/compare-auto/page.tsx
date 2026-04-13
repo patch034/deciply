@@ -7,7 +7,7 @@ import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
 import { getCatalogContent, getLocalizedTools } from "@/lib/catalog";
 import { getComparisonDirectoryCards } from "@/lib/comparisons";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return {};
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const canonicalPath = `/${safeLocale}/compare-auto`;
 
   return {
@@ -43,7 +43,7 @@ export default async function CompareAutoPage({ params }: { params: Promise<{ lo
     return null;
   }
 
-  const safeLocale = locale as Locale;
+  const safeLocale = normalizeLocale(locale);
   const content = getCatalogContent(safeLocale);
   const tools = getLocalizedTools(safeLocale);
   const comparisonCards = getComparisonDirectoryCards(safeLocale).slice(0, 6);
