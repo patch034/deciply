@@ -103,14 +103,14 @@ function buildBlogCtaButtons(
 }
 function getBlogButtonClass(variant?: BlogCtaButton["variant"]) {
   if (variant === "primary") {
-    return "inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_72px_-22px_rgba(14,165,233,0.52)]";
+    return "inline-flex items-center justify-center rounded-2xl bg-[linear-gradient(90deg,#0E2450_0%,#007FFF_42%,#0055FF_72%,#3B82F6_100%)] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(37,99,235,0.5)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_72px_-22px_rgba(37,99,235,0.56)]";
   }
 
   if (variant === "secondary") {
-    return "inline-flex items-center justify-center rounded-2xl border border-sky-400/10 bg-slate-950/50 px-6 py-3.5 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/18 hover:text-cyan-100";
+    return "inline-flex items-center justify-center rounded-2xl border border-sky-400/10 bg-slate-950/50 px-6 py-3.5 text-sm font-semibold text-slate-100 transition hover:border-sky-200 hover:text-[#BFD2F6]";
   }
 
-  return "inline-flex items-center justify-center rounded-2xl border border-sky-400/10 bg-slate-950/40 px-6 py-3.5 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/18 hover:text-cyan-100";
+    return "inline-flex items-center justify-center rounded-2xl border border-sky-400/10 bg-slate-950/40 px-6 py-3.5 text-sm font-semibold text-slate-200 transition hover:border-sky-200 hover:text-[#BFD2F6]";
 }
 
 function renderBlogActionButton(button: BlogCtaButton) {
@@ -282,7 +282,7 @@ export default async function BlogDetailPage({
         <section id="genel-bakis" className="scroll-mt-24 rounded-[36px] border border-slate-200/85 bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(247,250,253,0.99),rgba(235,243,251,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(14,165,233,0.14)] lg:px-10 lg:py-12">
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
             <div>
-              <Badge variant="ghost" className="border-cyan-200 bg-cyan-50 text-cyan-700">
+ <Badge variant="ghost" className="border-sky-200 bg-sky-50 text-[#0055FF]">
                 {copy.articleLeadLabel}
               </Badge>
               <div className="mt-4 flex flex-wrap gap-2">

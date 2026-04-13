@@ -77,7 +77,7 @@ export default async function BlogPage({
   const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <div className="w-full max-w-full overflow-x-hidden bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] pb-10 pt-10 lg:pt-14">
+    <div className="w-full max-w-full overflow-x-hidden bg-transparent pb-10 pt-10 lg:pt-14">
       <SectionShell
         eyebrow={safeLocale === "tr" ? "Öne çıkan blog blokları" : "Featured blog blocks"}
         title={safeLocale === "tr" ? "Bu hafta öne çıkan rehberler" : "This week's featured guides"}
@@ -98,7 +98,7 @@ export default async function BlogPage({
             block.article ? (
               <div key={block.label} className="space-y-3">
                 <div className="flex items-center justify-between gap-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">{block.label}</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0055FF]">{block.label}</p>
                   <span className="text-xs font-medium text-slate-500">{copy.articleLeadLabel}</span>
                 </div>
                 <BlogCard locale={safeLocale} article={block.article} ctaLabel={copy.readMoreLabel} tone="light" />
@@ -147,7 +147,7 @@ export default async function BlogPage({
                   <span
                     key={pageNumber}
                     aria-current="page"
-                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-cyan-200 bg-cyan-50 px-4 text-sm font-semibold text-cyan-700 shadow-[0_10px_30px_-18px_rgba(37,99,235,0.16)]"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-[10px] border border-sky-200 bg-sky-50 px-4 text-sm font-semibold text-[#0055FF] shadow-[0_10px_30px_-18px_rgba(37,99,235,0.16)]"
                   >
                     {pageNumber}
                   </span>

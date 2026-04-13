@@ -20,19 +20,19 @@ export function CategoryHero({
   ctaHref
 }: CategoryHeroProps) {
   return (
-    <section className="rounded-[32px] border border-slate-200/90 bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(246,249,253,0.98))] p-8 shadow-[0_24px_80px_-44px_rgba(37,99,235,0.14)] md:p-10">
+    <section className="ui-card ui-card-hover rounded-[30px] border border-slate-200/90 bg-[linear-gradient(135deg,rgba(255,255,255,0.99),rgba(246,249,253,0.98))] p-6 shadow-[0_18px_54px_-34px_rgba(15,23,42,0.12)] md:p-8">
       <Badge variant="accent">{eyebrow}</Badge>
-      <div className="mt-5 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+      <div className="mt-5 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
         <div>
-          <h1 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{title}</h1>
-          <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{description}</p>
+          <h1 className="text-[2.35rem] font-bold tracking-[-0.04em] text-slate-950 md:text-[3rem]">{title}</h1>
+          <p className="mt-3 max-w-3xl text-[15px] leading-7 text-slate-600 md:text-[1.02rem] md:leading-8">{description}</p>
         </div>
-        <div className="rounded-[28px] border border-slate-200/90 bg-white/95 p-6 shadow-[0_18px_54px_-38px_rgba(37,99,235,0.18)]">
-          <p className="text-sm leading-7 text-slate-600">{supportText}</p>
+        <div className="ui-inner-panel rounded-[24px] bg-white/96 p-5 shadow-[0_14px_42px_-28px_rgba(15,23,42,0.12)]">
+          <p className="text-sm leading-6 text-slate-600">{supportText}</p>
           {ctaLabel && ctaHref ? (
             <Link
               href={ctaHref}
-              className="mt-5 inline-flex rounded-2xl bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5"
+              className="mt-4 inline-flex min-h-[42px] items-center justify-center rounded-[14px] bg-[linear-gradient(90deg,#0E2450_0%,#007FFF_42%,#0055FF_72%,#3B82F6_100%)] px-5 text-sm font-semibold text-white shadow-[0_18px_42px_-24px_rgba(37,99,235,0.52)] transition duration-300 hover:-translate-y-0.5"
             >
               {ctaLabel}
             </Link>

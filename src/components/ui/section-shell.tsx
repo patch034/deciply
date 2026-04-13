@@ -27,7 +27,7 @@ export function SectionShell({
   tone = "light"
 }: SectionShellProps) {
   return (
-    <section className={clsx("mx-auto w-full max-w-[1360px] px-4 sm:px-6 lg:px-8", className)}>
+    <section className={clsx("mx-auto w-full max-w-[1380px] px-4 sm:px-6 lg:px-8", className)}>
       {title ? (
         <SectionHeading
           eyebrow={eyebrow}
@@ -36,7 +36,7 @@ export function SectionShell({
           actions={actions}
           align={align}
           tone={tone}
-          className="mb-5 sm:mb-7"
+          className="mb-4 sm:mb-6"
         />
       ) : null}
       <div className={contentClassName}>{children}</div>

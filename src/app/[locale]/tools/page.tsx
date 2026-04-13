@@ -119,8 +119,8 @@ export default async function ToolsPage({
   });
 
   return (
-    <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-      <section className="rounded-[32px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(244,248,253,0.98))] p-6 shadow-[0_24px_80px_-44px_rgba(37,99,235,0.14)] sm:p-8">
+    <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip bg-transparent px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <section className="ui-card ui-card-hover rounded-[32px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(244,248,253,0.98))] p-6 shadow-[0_24px_80px_-44px_rgba(37,99,235,0.14)] sm:p-8">
         <Badge variant="accent">{content.toolsIndex.eyebrow}</Badge>
 
         <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-end">
@@ -132,19 +132,19 @@ export default async function ToolsPage({
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-            <div className="rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
+            <div className="ui-card rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                 {locale === "tr" ? "Araçlar" : "Tools"}
               </p>
               <p className="mt-2 text-2xl font-bold tracking-tight text-slate-950">{getToolCount()}</p>
             </div>
-            <div className="rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
+            <div className="ui-card rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                 {content.common.categoriesLabel}
               </p>
               <p className="mt-2 text-2xl font-bold tracking-tight text-slate-950">{categoryCount}</p>
             </div>
-            <div className="rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
+            <div className="ui-card rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                 {locale === "tr" ? "Keşif" : "Discovery"}
               </p>
@@ -166,7 +166,7 @@ export default async function ToolsPage({
           </Link>
           <Link
             href={`/${safeLocale}/compare-auto`}
-            className="inline-flex min-h-[40px] items-center rounded-full border border-cyan-200 bg-cyan-50 px-4 text-sm font-semibold text-cyan-700 transition hover:border-cyan-300 hover:bg-cyan-100"
+            className="inline-flex min-h-[40px] items-center rounded-full border border-sky-200 bg-sky-50 px-4 text-sm font-semibold text-[#0055FF] transition hover:border-sky-300 hover:bg-sky-100"
           >
             {locale === "tr" ? "Karşılaştırmalar" : "Comparisons"}
           </Link>

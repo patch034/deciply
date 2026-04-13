@@ -14,14 +14,14 @@ function getPricingSignal(pricing: string) {
       return "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.36)]";
     }
 
-    return "bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.36)]";
+    return "bg-[#0055FF] shadow-[0_0_10px_rgba(0,85,255,0.28)]";
   }
 
   if (normalized.includes("freemium") || normalized.includes("kısmen")) {
     return "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.36)]";
   }
 
-  return "bg-rose-400 shadow-[0_0_10px_rgba(251,113,133,0.34)]";
+  return "bg-[#3B82F6] shadow-[0_0_10px_rgba(59,130,246,0.28)]";
 }
 
 type ToolCardProps = {
@@ -120,7 +120,7 @@ export function ToolCard({
               {detailLabel}
             </Link>
             {compareHref ? (
-              <Link href={compareHref} className="inline-flex min-h-[42px] items-center justify-center rounded-xl border border-cyan-200 bg-cyan-50 px-4 py-2.5 text-sm font-semibold text-cyan-700 transition duration-150 hover:border-cyan-300 hover:bg-cyan-100 hover:text-cyan-800">
+          <Link href={compareHref} className="inline-flex min-h-[42px] items-center justify-center rounded-[14px] border border-sky-200 bg-sky-50 px-4 py-2.5 text-sm font-semibold text-[#0055FF] transition duration-150 hover:border-sky-300 hover:bg-sky-100 hover:text-[#0E2450]">
                 {compareLabel}
               </Link>
             ) : null}
@@ -192,7 +192,7 @@ export function ToolCard({
           {compareHref ? (
             <Link
               href={compareHref}
-              className="inline-flex min-h-[40px] items-center justify-center rounded-xl border border-cyan-200 bg-cyan-50 px-3 text-sm font-semibold text-cyan-700 transition duration-150 hover:border-cyan-300 hover:bg-cyan-100 hover:text-cyan-800"
+                className="inline-flex min-h-[40px] items-center justify-center rounded-[14px] border border-sky-200 bg-sky-50 px-3 text-sm font-semibold text-[#0055FF] transition duration-150 hover:border-sky-300 hover:bg-sky-100 hover:text-[#0E2450]"
             >
               {compareLabel}
             </Link>
@@ -240,7 +240,7 @@ export function ToolCard({
             {detailLabel}
           </Link>
           {compareHref ? (
-            <Link href={compareHref} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-xl border border-cyan-200 bg-cyan-50 px-4 py-2.5 text-sm font-semibold text-cyan-700 transition duration-150 hover:border-cyan-300 hover:bg-cyan-100 hover:text-cyan-800">
+          <Link href={compareHref} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-[14px] border border-sky-200 bg-sky-50 px-4 py-2.5 text-sm font-semibold text-[#0055FF] transition duration-150 hover:border-sky-300 hover:bg-sky-100 hover:text-[#0E2450]">
               {compareLabel}
             </Link>
           ) : null}

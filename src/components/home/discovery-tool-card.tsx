@@ -24,7 +24,7 @@ function getPricingSignal(pricing: string) {
   if (normalized.includes("free") || normalized.includes("ücretsiz")) {
     return normalized.includes("freemium") || normalized.includes("kısmen")
       ? "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.32)]"
-      : "bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.32)]";
+      : "bg-[#0055FF] shadow-[0_0_10px_rgba(0,85,255,0.28)]";
   }
 
   if (normalized.includes("freemium") || normalized.includes("kısmen")) {
@@ -96,7 +96,7 @@ export function DiscoveryToolCard({ locale, tool, ctaLabel, compact = false, var
             </div>
             <div className="mt-1 flex items-start justify-between gap-3">
               <div className="min-w-0">
-                <h3 className="truncate text-[0.98rem] font-bold tracking-[-0.03em] text-slate-950 transition group-hover:text-sky-700">
+          <h3 className="truncate text-[0.98rem] font-bold tracking-[-0.03em] text-slate-950 transition group-hover:text-[#0E2450]">
                   {tool.name}
                 </h3>
                 <p className="mobile-clamp-2 mt-1 text-[13px] leading-5 text-slate-600">{tool.description}</p>
@@ -144,7 +144,7 @@ export function DiscoveryToolCard({ locale, tool, ctaLabel, compact = false, var
         </div>
 
         <Link href={detailHref} aria-label={`${ctaLabel}: ${tool.name}`} className="mt-4 block min-w-0">
-          <h3 className="clamp-2 text-[1.08rem] font-bold tracking-[-0.03em] text-slate-950 transition duration-200 group-hover:text-sky-700 sm:text-[1.28rem]">
+          <h3 className="clamp-2 text-[1.08rem] font-bold tracking-[-0.03em] text-slate-950 transition duration-200 group-hover:text-[#0E2450] sm:text-[1.28rem]">
             {tool.name}
           </h3>
         </Link>

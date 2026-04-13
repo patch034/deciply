@@ -71,7 +71,7 @@ export function ArticleContent({ locale, sections, supportingLinks, tone = "ligh
         <Link
           key={`${part}-${index}`}
           href={match.href}
-          className="font-medium text-cyan-200 underline decoration-cyan-400/40 underline-offset-4 transition hover:text-cyan-100 hover:decoration-cyan-300"
+          className="font-medium text-[#0055FF] underline decoration-sky-200 underline-offset-4 transition hover:text-[#0E2450] hover:decoration-sky-300"
         >
           {part}
         </Link>
@@ -96,7 +96,7 @@ export function ArticleContent({ locale, sections, supportingLinks, tone = "ligh
         <Link
           key={`${href}-${match.index}`}
           href={href}
-          className="font-medium text-cyan-200 underline decoration-cyan-400/40 underline-offset-4 transition hover:text-cyan-100 hover:decoration-cyan-300"
+          className="font-medium text-[#0055FF] underline decoration-sky-200 underline-offset-4 transition hover:text-[#0E2450] hover:decoration-sky-300"
         >
           {label}
         </Link>
@@ -118,7 +118,7 @@ export function ArticleContent({ locale, sections, supportingLinks, tone = "ligh
         {index > 0 ? ", " : null}
         <Link
           href={item.href}
-          className="font-medium text-cyan-200 underline decoration-cyan-400/40 underline-offset-4 transition hover:text-cyan-100 hover:decoration-cyan-300"
+          className="font-medium text-[#0055FF] underline decoration-sky-200 underline-offset-4 transition hover:text-[#0E2450] hover:decoration-sky-300"
         >
           {item.label}
         </Link>
@@ -224,14 +224,14 @@ export function ArticleContent({ locale, sections, supportingLinks, tone = "ligh
             className={[
               "inline-flex min-h-[44px] items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold transition duration-300",
               button.variant === "primary"
-                ? "bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 text-white shadow-[0_20px_60px_-22px_rgba(34,211,238,0.58)] hover:-translate-y-0.5 hover:scale-[1.02]"
+                ? "bg-[linear-gradient(90deg,#0E2450_0%,#007FFF_42%,#0055FF_72%,#3B82F6_100%)] text-white shadow-[0_20px_60px_-22px_rgba(37,99,235,0.5)] hover:-translate-y-0.5 hover:scale-[1.02]"
                 : button.variant === "secondary"
                   ? isLight
                     ? "border border-slate-200 bg-white text-slate-700 hover:border-sky-200 hover:text-slate-950"
-                    : "border border-sky-400/14 bg-slate-950/50 text-slate-100 hover:border-cyan-400/18 hover:text-cyan-100"
+                    : "border border-sky-400/14 bg-slate-950/50 text-slate-100 hover:border-sky-200 hover:text-[#BFD2F6]"
                   : isLight
                     ? "border border-slate-200 bg-slate-50 text-slate-600 hover:border-sky-200 hover:text-slate-950"
-                    : "border border-sky-400/10 bg-slate-950/40 text-slate-200 hover:border-cyan-400/18 hover:text-cyan-100"
+                    : "border border-sky-400/10 bg-slate-950/40 text-slate-200 hover:border-sky-200 hover:text-[#BFD2F6]"
             ].join(" ")}
           >
             {button.label}
@@ -260,7 +260,7 @@ export function ArticleContent({ locale, sections, supportingLinks, tone = "ligh
       <div
         className={[
           "mt-4 rounded-[18px] px-4 py-3 text-sm leading-7 sm:mt-5 sm:rounded-[20px]",
-          isLight ? "border border-slate-200 bg-white/92 text-slate-600" : "border border-cyan-400/14 bg-cyan-400/[0.04] text-slate-300"
+          isLight ? "border border-slate-200 bg-white/92 text-slate-600" : "border border-sky-400/14 bg-slate-950/40 text-slate-300"
         ].join(" ")}
       >
         {locale === "tr" ? (
@@ -343,7 +343,7 @@ export function ArticleContent({ locale, sections, supportingLinks, tone = "ligh
                   isLight ? "border border-slate-200 bg-white/92 text-slate-700" : "border border-sky-400/10 bg-slate-950/50 text-slate-200"
                 ].join(" ")}
               >
-                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-cyan-300" />
+                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#0055FF]" />
                   <span>{renderLinkedText(item)}</span>
                 </li>
               ))}
@@ -354,7 +354,7 @@ export function ArticleContent({ locale, sections, supportingLinks, tone = "ligh
             <div
               className={[
                 "mt-5 rounded-[24px] p-4 sm:mt-6 sm:p-5",
-                isLight ? "border border-cyan-200 bg-cyan-50/70" : "border border-cyan-400/16 bg-cyan-400/[0.05]"
+                isLight ? "border border-sky-200 bg-sky-50/70" : "border border-sky-400/16 bg-slate-950/40"
               ].join(" ")}
             >
               <h3 className={["text-lg font-semibold", isLight ? "text-slate-950" : "text-slate-50"].join(" ")}>{section.comparison.title}</h3>
@@ -391,7 +391,7 @@ export function ArticleContent({ locale, sections, supportingLinks, tone = "ligh
                     <ul className={["mt-4 space-y-2 text-sm leading-7", isLight ? "text-slate-700" : "text-slate-200"].join(" ")}>
                       {subSection.bullets.map((item) => (
                         <li key={item} className="flex items-start gap-3">
-                          <span className="mt-2 h-2 w-2 rounded-full bg-cyan-300" />
+                          <span className="mt-2 h-2 w-2 rounded-full bg-[#0055FF]" />
                           <span>{renderLinkedText(item)}</span>
                         </li>
                       ))}

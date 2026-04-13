@@ -116,7 +116,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             </label>
             <div className="flex min-h-[72px] items-center gap-3 rounded-[28px] border border-slate-200/90 bg-white/96 p-2.5 text-left shadow-[0_26px_72px_-38px_rgba(15,23,42,0.18)] ring-1 ring-white/70 backdrop-blur">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[20px] border border-slate-200 bg-slate-50 text-slate-400 shadow-[0_10px_24px_-18px_rgba(15,23,42,0.22)]">
-                <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4.5 w-4.5">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
                   <path d="M10.5 4.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z" fill="none" stroke="currentColor" strokeWidth="1.7" />
                   <path d="m15 15 4.5 4.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
                 </svg>

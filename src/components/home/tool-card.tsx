@@ -26,14 +26,14 @@ function getPricingSignal(pricing: string) {
       return "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.36)]";
     }
 
-    return "bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.36)]";
+    return "bg-[#0055FF] shadow-[0_0_10px_rgba(0,85,255,0.28)]";
   }
 
   if (normalized.includes("freemium") || normalized.includes("kısmen")) {
     return "bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.36)]";
   }
 
-  return "bg-rose-400 shadow-[0_0_10px_rgba(251,113,133,0.32)]";
+  return "bg-[#3B82F6] shadow-[0_0_10px_rgba(59,130,246,0.28)]";
 }
 
 function toneClasses(tone: "dark" | "light") {
@@ -132,7 +132,7 @@ export function ToolCard({ locale, tool, detailLabel, tryLabel, bestForLabel, ra
 
         <div className={`mt-4 border-t pt-4 sm:mt-6 sm:pt-6 ${tone === "light" ? "border-slate-200" : "border-sky-400/10"}`}>
           <div className="min-h-[1.5rem] overflow-hidden pb-2">
-            <p className="translate-y-2 text-sm font-medium text-cyan-100/92 opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100">
+            <p className="translate-y-2 text-sm font-medium text-slate-100/92 opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100">
               {tool.benefit}
             </p>
           </div>

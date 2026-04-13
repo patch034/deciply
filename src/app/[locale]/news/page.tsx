@@ -77,8 +77,8 @@ export default async function NewsPage({
   const topicLabels = Array.from(new Set(items.map((item) => item.categoryLabel))).slice(0, 8);
 
   return (
-    <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-      <section className="rounded-[32px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(244,248,253,0.98))] p-6 shadow-[0_24px_80px_-44px_rgba(37,99,235,0.14)] sm:p-8">
+    <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip bg-transparent px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <section className="ui-card ui-card-hover rounded-[32px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(244,248,253,0.98))] p-6 shadow-[0_24px_80px_-44px_rgba(37,99,235,0.14)] sm:p-8">
         <div className="flex flex-wrap items-center gap-2">
           <Badge variant="accent">{safeLocale === "tr" ? "AI Haberleri" : "AI News"}</Badge>
           <Badge variant="ghost">{safeLocale === "tr" ? "İç sayfa" : "Internal page"}</Badge>
@@ -110,7 +110,7 @@ export default async function NewsPage({
             </div>
           </div>
 
-          <div className="rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
+          <div className="ui-card rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
             <div className="grid gap-2 sm:grid-cols-3">
               <div className="rounded-[18px] border border-slate-200 bg-slate-50 px-3 py-3">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
@@ -162,7 +162,7 @@ export default async function NewsPage({
               return (
                 <article
                   key={item.slug}
-                  className="group rounded-[26px] border border-slate-200 bg-white p-5 shadow-[0_18px_52px_-36px_rgba(15,23,42,0.12)] transition hover:-translate-y-0.5 hover:border-sky-200 hover:bg-slate-50"
+                  className="ui-card ui-card-hover group rounded-[26px] border border-slate-200 bg-white p-5 shadow-[0_18px_52px_-36px_rgba(15,23,42,0.12)] transition hover:-translate-y-0.5 hover:border-sky-200 hover:bg-slate-50"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <Badge variant="muted" className="text-[10px]">
@@ -211,7 +211,7 @@ export default async function NewsPage({
         </div>
 
         <aside className="space-y-6">
-          <div className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-[0_24px_72px_-42px_rgba(15,23,42,0.16)] sm:p-5">
+            <div className="ui-card rounded-[30px] border border-slate-200 bg-white p-4 shadow-[0_24px_72px_-42px_rgba(15,23,42,0.16)] sm:p-5">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">
               {safeLocale === "tr" ? "Kaynaklar" : "Sources"}
             </p>
@@ -227,7 +227,7 @@ export default async function NewsPage({
             </div>
           </div>
 
-          <div className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-[0_24px_72px_-42px_rgba(15,23,42,0.16)] sm:p-5">
+            <div className="ui-card rounded-[30px] border border-slate-200 bg-white p-4 shadow-[0_24px_72px_-42px_rgba(15,23,42,0.16)] sm:p-5">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">
               {safeLocale === "tr" ? "İlgili araçlar" : "Related tools"}
             </p>
@@ -250,7 +250,7 @@ export default async function NewsPage({
             </div>
           </div>
 
-          <div className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-[0_24px_72px_-42px_rgba(15,23,42,0.16)] sm:p-5">
+            <div className="ui-card rounded-[30px] border border-slate-200 bg-white p-4 shadow-[0_24px_72px_-42px_rgba(15,23,42,0.16)] sm:p-5">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">
               {safeLocale === "tr" ? "Hızlı geçişler" : "Quick jumps"}
             </p>

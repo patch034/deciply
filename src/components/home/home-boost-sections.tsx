@@ -176,7 +176,7 @@ export async function HomeBoostSections({ locale, comparisonCards, popularTools,
 
         <SectionShell
           tone="light"
-          className="section-tint-cyan px-0 sm:px-0"
+          className="section-tint-slate px-0 sm:px-0"
           eyebrow={locale === "tr" ? "Kategoriler" : "Categories"}
           title={locale === "tr" ? "Daha fazla AI kategorisi keşfet" : "Explore more AI categories"}
           description={
@@ -278,13 +278,13 @@ export async function HomeBoostSections({ locale, comparisonCards, popularTools,
                   </span>
                   {publishDate ? <span className="text-xs font-medium text-slate-500">{formatBlogDate(locale, publishDate)}</span> : null}
                 </div>
-                <h3 className="mt-3 text-[1.02rem] font-bold tracking-[-0.03em] text-slate-950 transition group-hover:text-sky-700">
+                <h3 className="mt-3 text-[1.02rem] font-bold tracking-[-0.03em] text-slate-950 transition group-hover:text-[#0E2450]">
                   {article.title}
                 </h3>
                 <p className="mt-2 flex-1 text-[14px] leading-6 text-slate-600">{article.excerpt}</p>
                 <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition group-hover:translate-x-0.5 group-hover:text-slate-950">
                   {locale === "tr" ? "Oku" : "Read"}
-                  <span aria-hidden="true" className="text-cyan-300">
+                  <span aria-hidden="true" className="text-[#0055FF]">
                     →
                   </span>
                 </span>
@@ -295,7 +295,7 @@ export async function HomeBoostSections({ locale, comparisonCards, popularTools,
 
         <SectionShell
           tone="light"
-          className="section-tint-cyan px-0 sm:px-0"
+          className="section-tint-slate px-0 sm:px-0"
           eyebrow={locale === "tr" ? "Daha fazla araç" : "More tools"}
           title={locale === "tr" ? "Dizin içinde daha geniş araç alanını keşfet" : "Browse a wider directory of AI tools"}
           description={

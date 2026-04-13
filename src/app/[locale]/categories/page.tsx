@@ -73,7 +73,7 @@ export default async function CategoriesPage({
   };
 
   return (
-    <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip bg-transparent px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
       <CategoryHero
         eyebrow={content.categoriesIndex.eyebrow}
         title={content.categoriesIndex.title}
@@ -85,7 +85,7 @@ export default async function CategoriesPage({
 
       <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
         <aside className="hidden lg:block">
-          <div className="sticky top-28 rounded-[28px] border border-slate-200 bg-white p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.12)]">
+          <div className="ui-card ui-card-hover sticky top-28 rounded-[24px] p-4 shadow-[0_18px_52px_-36px_rgba(15,23,42,0.14)]">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">
               {safeLocale === "tr" ? "Kategori dizini" : "Category directory"}
             </p>
@@ -145,10 +145,10 @@ export default async function CategoriesPage({
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            <Link
-              href={`/${safeLocale}/compare`}
-              className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.12)] transition hover:border-sky-200 hover:bg-slate-50"
-            >
+              <Link
+                href={`/${safeLocale}/compare`}
+                className="ui-card ui-card-hover rounded-[24px] p-5 transition hover:border-sky-200 hover:bg-slate-50"
+              >
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">
                 {safeLocale === "tr" ? "Karşılaştırmalar" : "Comparisons"}
               </p>
@@ -158,10 +158,10 @@ export default async function CategoriesPage({
                   : "Open the right comparison page before deciding"}
               </h3>
             </Link>
-            <Link
-              href={`/${safeLocale}/news`}
-              className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.12)] transition hover:border-sky-200 hover:bg-slate-50"
-            >
+              <Link
+                href={`/${safeLocale}/news`}
+                className="ui-card ui-card-hover rounded-[24px] p-5 transition hover:border-sky-200 hover:bg-slate-50"
+              >
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">
                 {safeLocale === "tr" ? "AI Haberleri" : "AI News"}
               </p>
@@ -171,10 +171,10 @@ export default async function CategoriesPage({
                   : "Track new guides and trend signals"}
               </h3>
             </Link>
-            <Link
-              href={`/${safeLocale}/categories/mega`}
-              className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.12)] transition hover:border-sky-200 hover:bg-slate-50"
-            >
+              <Link
+                href={`/${safeLocale}/categories/mega`}
+                className="ui-card ui-card-hover rounded-[24px] p-5 transition hover:border-sky-200 hover:bg-slate-50"
+              >
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">
                 {safeLocale === "tr" ? "Mega dizin" : "Mega directory"}
               </p>

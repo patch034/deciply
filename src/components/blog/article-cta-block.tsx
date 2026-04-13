@@ -28,7 +28,7 @@ export function ArticleCtaBlock({ eyebrow, title, description, buttons, tone = "
     >
       <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
         <div className="max-w-3xl">
-          <p className={["text-sm font-semibold uppercase tracking-[0.2em]", isLight ? "text-sky-600" : "text-cyan-300"].join(" ")}>{eyebrow}</p>
+          <p className={["text-sm font-semibold uppercase tracking-[0.2em]", isLight ? "text-[#0055FF]" : "text-[#BFD2F6]"].join(" ")}>{eyebrow}</p>
           <h2 className={["mt-4 text-3xl font-bold tracking-tight md:text-4xl", isLight ? "text-slate-950" : "text-slate-50"].join(" ")}>{title}</h2>
           <p className={["mt-3 text-[15px] leading-7 sm:mt-4 md:text-lg", isLight ? "text-slate-600" : "text-slate-300"].join(" ")}>{description}</p>
         </div>

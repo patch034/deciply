@@ -34,7 +34,7 @@ export async function HomePage({ locale, content }: HomePageProps) {
   const popularTools = buildPopularTools(locale).slice(0, 24);
 
   return (
-    <div className="relative min-h-screen overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] pb-12 text-slate-900 sm:pb-16 lg:pb-20">
+    <div className="relative min-h-screen overflow-x-clip bg-transparent pb-12 text-slate-900 sm:pb-16 lg:pb-20">
       <HeroSection locale={locale} content={content.hero} />
       <HomeBoostSections
         locale={locale}

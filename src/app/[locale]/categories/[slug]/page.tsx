@@ -175,10 +175,10 @@ export default async function CategoryDetailPage({
           <section className="rounded-[36px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(14,165,233,0.14)] lg:px-10 lg:py-12">
             <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
               <div>
-                <Badge variant="ghost" className="border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
+ <Badge variant="ghost" className="border-sky-200 bg-sky-50 text-[#0055FF]">
                   {comparison.hero.eyebrow}
                 </Badge>
-                <h1 className="mt-5 bg-gradient-to-r from-white via-sky-200 to-cyan-300 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-[3.8rem] lg:leading-[1.02]">
+ <h1 className="mt-5 bg-gradient-to-r from-[#071226] via-[#0E2450] to-[#0055FF] bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-[3.8rem] lg:leading-[1.02]">
                   {comparison.title}
                 </h1>
                 <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{comparison.summary}</p>
@@ -209,7 +209,7 @@ export default async function CategoryDetailPage({
           </section>
 
           <section className="rounded-[28px] border border-sky-400/10 bg-slate-950/50 p-6 shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)]">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">{safeLocale === "tr" ? "Editör notu" : "Editor note"}</p>
+ <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0055FF]">{safeLocale === "tr" ? "Editör notu" : "Editor note"}</p>
             <p className="mt-4 max-w-3xl text-base leading-8 text-slate-300">{editorNote}</p>
           </section>
 
@@ -219,7 +219,7 @@ export default async function CategoryDetailPage({
                 key={item.title}
                 className="rounded-[28px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)]"
               >
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{item.title}</p>
+ <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#0055FF]">{item.title}</p>
                 <h2 className="mt-4 text-lg font-semibold text-slate-100">{item.toolLabel}</h2>
                 <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
               </div>
@@ -248,7 +248,7 @@ export default async function CategoryDetailPage({
           <section className="rounded-[34px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(14,165,233,0.14)] lg:px-10 lg:py-12">
             <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
               <div className="max-w-3xl">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
+ <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#0055FF]">
                   {safeLocale === "tr" ? "Ara CTA" : "Mid CTA"}
                 </p>
                 <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{comparison.midCta.title}</h2>
@@ -411,13 +411,13 @@ export default async function CategoryDetailPage({
 
         <InfoSection title={content.categoryDetail.internalLinksTitle} description={content.categoryDetail.internalLinksDescription}>
           <div className="grid gap-3 sm:grid-cols-3">
-            <Link href={`/${safeLocale}/tools`} className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 p-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/18 hover:text-cyan-300">
+ <Link href={`/${safeLocale}/tools`} className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 p-4 text-sm font-semibold text-slate-100 transition hover:border-sky-200 hover:text-[#BFD2F6]">
               {content.categoryDetail.allToolsLink}
             </Link>
-            <Link href={`/${safeLocale}/categories`} className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 p-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/18 hover:text-cyan-300">
+ <Link href={`/${safeLocale}/categories`} className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 p-4 text-sm font-semibold text-slate-100 transition hover:border-sky-200 hover:text-[#BFD2F6]">
               {content.categoryDetail.allCategoriesLink}
             </Link>
-            <Link href={`/${safeLocale}/categories/guides`} className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 p-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/18 hover:text-cyan-300">
+ <Link href={`/${safeLocale}/categories/guides`} className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 p-4 text-sm font-semibold text-slate-100 transition hover:border-sky-200 hover:text-[#BFD2F6]">
               {content.categoryDetail.guidesLink}
             </Link>
           </div>

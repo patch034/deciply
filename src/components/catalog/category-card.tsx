@@ -12,14 +12,14 @@ type CategoryCardProps = {
 
 export function CategoryCard({ locale, category, linkLabel }: CategoryCardProps) {
   return (
-    <article className="rounded-[28px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(244,248,253,0.98))] p-6 shadow-[0_24px_80px_-44px_rgba(37,99,235,0.14)] transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_24px_70px_-34px_rgba(37,99,235,0.16)]">
+    <article className="ui-card ui-card-hover home-card-glow flex h-full flex-col rounded-[22px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.995),rgba(247,250,253,0.98))] p-5 shadow-[0_12px_34px_-18px_rgba(15,23,42,0.14)] transition duration-300 hover:-translate-y-1">
       <Badge variant="ghost">{category.slug}</Badge>
-      <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950">{category.name}</h2>
-      <p className="mt-3 text-sm leading-7 text-slate-600">{category.description}</p>
-      <p className="mt-4 text-sm leading-7 text-slate-500">{category.supportText}</p>
+      <h2 className="mt-4 text-[1.25rem] font-bold tracking-[-0.03em] text-slate-950">{category.name}</h2>
+      <p className="mt-3 text-sm leading-6 text-slate-600">{category.description}</p>
+      <p className="mt-3.5 text-sm leading-6 text-slate-500">{category.supportText}</p>
       <Link
         href={`/${locale}/categories/${category.slug}`}
-        className="mt-6 inline-flex text-sm font-semibold text-sky-700 transition hover:text-sky-800"
+        className="mt-auto inline-flex min-h-[40px] items-center self-start rounded-full border border-slate-200 bg-white px-4 text-sm font-semibold text-[#0055FF] transition hover:border-sky-200 hover:bg-slate-50 hover:text-[#0E2450]"
       >
         {linkLabel}
       </Link>

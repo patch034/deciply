@@ -580,7 +580,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
               <button
                 type="button"
                 onClick={handleLoadMore}
-                className="inline-flex min-h-11 items-center justify-center rounded-[14px] border border-cyan-200 bg-cyan-50 px-5 text-sm font-semibold text-cyan-700 transition hover:border-cyan-300 hover:bg-cyan-100"
+                className="inline-flex min-h-11 items-center justify-center rounded-[14px] border border-sky-200 bg-sky-50 px-5 text-sm font-semibold text-[#0055FF] transition hover:border-sky-300 hover:bg-sky-100 hover:text-[#0E2450]"
               >
                 {copy.loadMoreLabel}
               </button>

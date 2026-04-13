@@ -44,10 +44,10 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
   ];
 
   return (
-    <footer className="mt-16 border-t border-slate-200 bg-[linear-gradient(180deg,rgba(250,252,255,0.98),rgba(241,245,249,0.99))] px-4 pb-10 pt-10 text-slate-900 sm:px-6 sm:pb-12 sm:pt-12">
+    <footer className="mt-16 border-t border-slate-200 bg-[linear-gradient(180deg,rgba(249,250,251,0.98),rgba(241,245,249,0.99))] px-4 pb-10 pt-10 text-slate-900 sm:px-6 sm:pb-12 sm:pt-12">
       <div className="mx-auto max-w-[1440px] space-y-8">
         <div className="grid gap-6 lg:grid-cols-[1.2fr_repeat(4,minmax(0,1fr))] lg:items-start lg:gap-6">
-          <div className="ui-card min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
+          <div className="ui-card ui-card-hover min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
             <div className="flex items-center gap-3">
               <BrandLogo compact className="h-8" />
               <div className="min-w-0">
@@ -70,28 +70,28 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
             </div>
           </div>
 
-          <div className="ui-card min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
+          <div className="ui-card ui-card-hover min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
             <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{toolsGroup.title}</h2>
             <div className="mt-4 flex flex-col gap-2">{toolsGroup.links.map((item) => renderFooterLink(item))}</div>
           </div>
 
-          <div className="ui-card min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
+          <div className="ui-card ui-card-hover min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
             <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{compareGroup.title}</h2>
             <div className="mt-4 flex flex-col gap-2">{compareGroup.links.map((item) => renderFooterLink(item))}</div>
           </div>
 
-          <div className="ui-card min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
+          <div className="ui-card ui-card-hover min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
             <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{guidesGroup.title}</h2>
             <div className="mt-4 flex flex-col gap-2">{guidesGroup.links.map((item) => renderFooterLink(item))}</div>
           </div>
 
-          <div className="ui-card min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
+          <div className="ui-card ui-card-hover min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
             <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{trustGroup.title}</h2>
             <div className="mt-4 flex flex-col gap-2">{trustGroup.links.map((item) => renderFooterLink(item))}</div>
           </div>
         </div>
 
-        <div className="ui-card rounded-[24px] p-5 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.16)] sm:p-6">
+        <div className="ui-card ui-card-hover rounded-[24px] p-5 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.16)] sm:p-6">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">

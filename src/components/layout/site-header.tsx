@@ -14,9 +14,9 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   const navItems = dictionary.navigation;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-[rgba(248,251,255,0.88)] text-slate-900 backdrop-blur-2xl">
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-[rgba(255,255,255,0.72)] text-slate-900 backdrop-blur-2xl supports-[backdrop-filter]:bg-[rgba(255,255,255,0.7)]">
       <div className="mx-auto max-w-[1440px] px-3 py-3 sm:px-4 sm:py-4 lg:px-6">
-        <div className="ui-card ui-card-hover rounded-[24px] px-4 py-3.5 shadow-[0_20px_64px_-40px_rgba(15,23,42,0.14)] sm:px-5 lg:px-6">
+        <div className="ui-card ui-card-hover rounded-[24px] px-4 py-3.5 shadow-[0_22px_58px_-38px_rgba(15,23,42,0.18)] sm:px-5 lg:px-6">
           <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:items-center">
             <Link href={`/${locale}`} className="inline-flex min-h-[44px] shrink-0 items-center gap-3">
               <BrandLogo compact className="h-8 w-8" />
