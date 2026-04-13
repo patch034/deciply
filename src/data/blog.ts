@@ -89,7 +89,7 @@ const allBlogArticles: BlogEntry[] = [
             "Grok'tan geçiş yaparken hangi rota daha mantıklı?",
             [
               "Eğer amacın hızlı taslak üretmekse [ChatGPT](/tr/tools/chatgpt) ile başlamak çoğu zaman en kolay yoldur. Daha düzenli uzun metin ve araştırma gerekiyorsa [Claude](/tr/tools/claude) daha rahat hissedebilir. Kaynaklı karar sürecinde ise [Perplexity](/tr/tools/perplexity) öne çıkar.",
-              "Buradaki temel soru 'hangi araç daha popüler?' değil, 'hangi araç benim iş akışıma daha az sürtünme ekler?' sorusudur. Deciply bu yüzden araçları tek tek değil, kullanım senaryosuna göre ayırır."
+              "Buradaki temel soru 'hangi araç daha popüler?' değil, 'hangi araç benim iş akışıma daha az sürtünme ekler?' sorusudur. Deciply bu yüzden araçları tek tek değil, kullanım senaryosuna göre ayırır. Hedefin içerik üretmekse, araştırma yapıyorsan veya müşteri işi teslim ediyorsan seçim kriterlerin değişir."
             ],
             {
               subSections: [
@@ -105,7 +105,7 @@ const allBlogArticles: BlogEntry[] = [
                 sub(
                   "Araştırma için en mantıklı rota",
                   [
-                    "Kaynaklı özet ve hızlı karar desteği için [Perplexity](/tr/tools/perplexity) çoğu zaman daha pratik olabilir. Gündem taramasında ise [Gemini](/tr/tools/gemini) dengeli bir alternatif sunar."
+                    "Kaynaklı özet ve hızlı karar desteği için [Perplexity](/tr/tools/perplexity) çoğu zaman daha pratik olabilir. Gündem taramasında ise [Gemini](/tr/tools/gemini) dengeli bir alternatif sunar. Eğer tek bir araca bağlı kalmak istemiyorsan, burada bir ana araç ve bir tamamlayıcı araç seçmek daha akıllıca olur."
                   ],
                   ["[Perplexity vs Grok](/tr/compare/perplexity-vs-grok)", "[ChatGPT vs Claude vs Gemini](/tr/compare/chatgpt-vs-claude-vs-gemini)"],
                   "Araştırma araçlarını aç",
@@ -149,7 +149,7 @@ const allBlogArticles: BlogEntry[] = [
             "Which migration path makes the most sense?",
             [
               "If your goal is quick drafts, [ChatGPT](/en/tools/chatgpt) is often the easiest starting point. If you need a more structured long-form workflow, [Claude](/en/tools/claude) can feel more natural. For source-backed decisions, [Perplexity](/en/tools/perplexity) stands out.",
-              "The main question is not 'which tool is most popular?' but 'which tool adds the least friction to my workflow?' That is why Deciply organizes tools by use case first."
+              "The main question is not 'which tool is most popular?' but 'which tool adds the least friction to my workflow?' That is why Deciply organizes tools by use case first. Your answer changes depending on whether you are drafting content, researching a topic, or shipping client work."
             ],
             {
               subSections: [
@@ -162,7 +162,7 @@ const allBlogArticles: BlogEntry[] = [
                 ),
                 sub(
                   "Best route for research",
-                  ["For source-backed summaries and quick decision support, [Perplexity](/en/tools/perplexity) is often the more practical choice. For current-topic scanning, [Gemini](/en/tools/gemini) is a balanced option."],
+                  ["For source-backed summaries and quick decision support, [Perplexity](/en/tools/perplexity) is often the more practical choice. For current-topic scanning, [Gemini](/en/tools/gemini) is a balanced option. In practice, pairing one primary tool with one supporting tool usually works better than trying to force a single winner."],
                   ["[Perplexity vs Grok](/en/compare/perplexity-vs-grok)", "[ChatGPT vs Claude vs Gemini](/en/compare/chatgpt-vs-claude-vs-gemini)"],
                   "Open research tools",
                   "/en/tools/perplexity"
@@ -213,7 +213,7 @@ const allBlogArticles: BlogEntry[] = [
             "Hangi araç hangi kullanımda öne çıkar?",
             [
               "[ElevenLabs](/tr/tools/elevenlabs) özellikle anlatım sesi, reklam seslendirmesi ve temiz voiceover üretiminde öne çıkar. [Runway](/tr/tools/runway) daha çok video prodüksiyon tarafında işe yarar. [CapCut AI](/tr/tools/capcut-ai) ise kısa form içerik üretiminde hızlı sonuç isteyen kullanıcılar için pratik olabilir.",
-              "Metin tarafında senaryo üretmek için [ChatGPT](/tr/tools/chatgpt) veya kaynaklı planlama için [Perplexity](/tr/tools/perplexity) kullanmak, ses üretimini daha düzenli bir akışa oturtur."
+              "Metin tarafında senaryo üretmek için [ChatGPT](/tr/tools/chatgpt) veya kaynaklı planlama için [Perplexity](/tr/tools/perplexity) kullanmak, ses üretimini daha düzenli bir akışa oturtur. Böylece yalnızca ses üretmiş olmazsın; baştan sona teslim edilebilir bir içerik paketi kurarsın."
             ],
             {
               subSections: [
@@ -269,7 +269,7 @@ const allBlogArticles: BlogEntry[] = [
             "Which tool wins in each workflow?",
             [
               "[ElevenLabs](/en/tools/elevenlabs) stands out for narration, ad voiceovers, and polished audio output. [Runway](/en/tools/runway) is more useful in video production flows. [CapCut AI](/en/tools/capcut-ai) can be practical for creators who want speed in short-form content.",
-              "For script planning, [ChatGPT](/en/tools/chatgpt) or source-backed research with [Perplexity](/en/tools/perplexity) can make the voice workflow much more structured."
+              "For script planning, [ChatGPT](/en/tools/chatgpt) or source-backed research with [Perplexity](/en/tools/perplexity) can make the voice workflow much more structured. That matters when you are producing a repeatable asset, not just a one-off clip."
             ],
             {
               subSections: [
@@ -333,7 +333,7 @@ const allBlogArticles: BlogEntry[] = [
             "Hangi araç hangi işte daha mantıklı?",
             [
               "[Notion AI](/tr/tools/notion-ai) ekip notları ve içerik düzeni için rahat bir başlangıç olabilir. [Microsoft Copilot](/tr/tools/microsoft-copilot) ofis tarafında doğal bir entegrasyon hissi verir. [Zapier](/tr/tools/zapier) ise tekrar eden işlemleri otomasyona bağlamak için çok değerlidir.",
-              "Daha hızlı metin taslağı, müşteri mesajı veya iş özeti üretmek gerektiğinde [ChatGPT](/tr/tools/chatgpt) çoğu küçük işletme için pratik bir ilk adımdır."
+              "Daha hızlı metin taslağı, müşteri mesajı veya iş özeti üretmek gerektiğinde [ChatGPT](/tr/tools/chatgpt) çoğu küçük işletme için pratik bir ilk adımdır. Fakat en iyi sonuç, bu araçları birbirinin yerine değil, birbirini tamamlayan bir iş akışında kullanınca gelir."
             ],
             {
               subSections: [
@@ -389,7 +389,7 @@ const allBlogArticles: BlogEntry[] = [
             "Which tool fits which job?",
             [
               "[Notion AI](/en/tools/notion-ai) can be a comfortable starting point for team notes and content organization. [Microsoft Copilot](/en/tools/microsoft-copilot) feels native in office workflows. [Zapier](/en/tools/zapier) is highly useful when you want to automate repetitive steps.",
-              "For quick drafts, customer replies, and short business summaries, [ChatGPT](/en/tools/chatgpt) is often the most practical first stop."
+              "For quick drafts, customer replies, and short business summaries, [ChatGPT](/en/tools/chatgpt) is often the most practical first stop. The strongest setup for a small business is usually a simple stack: one tool for notes, one for automation, and one for drafting."
             ],
             {
               subSections: [

@@ -163,18 +163,20 @@ const BASE_AI_NEWS_ITEMS: BaseNewsItem[] = [
     categoryLabel: "Models",
     publishedAt: TODAY,
     tr: {
-      title: "OpenAI, ChatGPT tarafında görev odaklı akışları öne çıkarıyor",
-      summary: "ChatGPT güncellemeleri, yazı ve araştırma adımlarını tek bir daha kısa karar ekranına bağlamayı hedefliyor.",
-      dek: "OpenAI ekosistemindeki sinyaller, sohbetten çok karar odaklı üretim akışlarına yöneliyor.",
+      title: "OpenAI, ChatGPT'yi daha görev odaklı ve daha hızlı bir karar ekranına dönüştürüyor",
+      summary:
+        "ChatGPT tarafındaki güncellemeler, ilk taslak yazmaktan araştırma özetlemeye kadar olan adımları tek bir daha kısa üretim akışında birleştirmeyi hedefliyor. Bu da sohbet deneyiminden çok, işi hızlı tamamlamaya odaklı bir kullanım biçimi yaratıyor.",
+      dek: "OpenAI ekosistemindeki son sinyaller, genel sohbetten çok üretim, karar ve teslim odaklı bir ChatGPT deneyimine işaret ediyor.",
       whyItMatters:
-        "ChatGPT güncellemeleri, chatbot ve karşılaştırma sayfalarında yüksek trafik ve net kullanıcı niyeti üretmeye devam ediyor."
+        "Bu değişim, ChatGPT sayfalarında hem yüksek trafik hem de yüksek niyetli karşılaştırma akışı üretir. Kullanıcılar artık yalnızca sohbet aracı değil, iş bitirme aracı arıyor."
     },
     en: {
-      title: "OpenAI pushes ChatGPT toward more task-focused workflows",
-      summary: "The latest ChatGPT signals point toward a shorter, more decision-oriented writing and research flow.",
-      dek: "OpenAI is leaning from open-ended chat into clearer production workflows.",
+      title: "OpenAI pushes ChatGPT toward a more task-focused decision flow",
+      summary:
+        "The latest ChatGPT signals point toward a shorter, more production-oriented flow that blends drafting, research, and final decision support in one place.",
+      dek: "OpenAI appears to be shifting ChatGPT from open-ended chat into more outcome-driven workflows.",
       whyItMatters:
-        "ChatGPT updates still drive strong traffic and clear intent across chatbot and comparison pages."
+        "This shift keeps ChatGPT at the center of high-intent traffic across chatbot and comparison pages."
     }
   },
   {
@@ -184,18 +186,20 @@ const BASE_AI_NEWS_ITEMS: BaseNewsItem[] = [
     categoryLabel: "Writing",
     publishedAt: TODAY,
     tr: {
-      title: "Claude tarafında uzun form yazım ve araştırma akışı güçleniyor",
-      summary: "Anthropic cephesindeki son sinyaller, daha düzenli uzun metin ve kaynaklı çalışma beklentisini artırıyor.",
-      dek: "Claude haberleri, yazma ve araştırma kararlarında yüksek niyetli bir trafik alanı yaratıyor.",
+      title: "Claude tarafında uzun form yazı ve kaynaklı araştırma daha da güçleniyor",
+      summary:
+        "Anthropic cephesindeki son sinyaller, daha düzenli uzun metin, kaynaklı özet ve okunabilir yazı akışını öne çıkarıyor. Özellikle rapor, içerik ve araştırma işlerinde Claude'un konumunu güçlendiren bir çizgi görülüyor.",
+      dek: "Claude haberleri, yazma kararlarında yalnızca merak değil, doğrudan kullanım niyeti de oluşturuyor.",
       whyItMatters:
-        "Claude odaklı haberler, yazı ve araştırma kullanımında doğal olarak karşılaştırma ihtiyacını artırıyor."
+        "Bu tip haberler Claude için yazı ve araştırma tarafında doğal karşılaştırma ihtiyacını artırır. Kullanıcı, uzun metin için hangi aracın daha güvenli olduğunu sorgulamaya başlar."
     },
     en: {
-      title: "Claude keeps strengthening long-form writing and research workflows",
-      summary: "Latest Anthropic signals point to a stronger structured writing and source-backed research experience.",
-      dek: "Claude stories continue to drive strong writing and research comparison intent.",
+      title: "Claude keeps strengthening long-form writing and source-backed research",
+      summary:
+        "Latest Anthropic signals point to a stronger structured writing experience with a clearer source-backed research layer. That makes Claude even more relevant in editorial and analysis workflows.",
+      dek: "Claude stories continue to create clear writing and research comparison intent.",
       whyItMatters:
-        "Claude updates often increase the need for comparison pages around writing and research use cases."
+        "Claude updates often raise the need for deeper comparison pages around writing and research use cases."
     }
   },
   {
@@ -205,18 +209,20 @@ const BASE_AI_NEWS_ITEMS: BaseNewsItem[] = [
     categoryLabel: "Search",
     publishedAt: TODAY,
     tr: {
-      title: "Google Gemini, arama ve verimlilik arasında daha sıkı bir köprü kuruyor",
-      summary: "Gemini tarafındaki gelişmeler, araştırma ve üretkenlik akışlarının tek deneyimde birleşmesini hızlandırıyor.",
-      dek: "Google AI güncellemeleri, arama tabanlı karar verme için güçlü ürün sinyali üretir.",
+      title: "Google Gemini, arama ve verimlilik arasındaki sınırı daha da bulanıklaştırıyor",
+      summary:
+        "Gemini tarafındaki gelişmeler, araştırma, özetleme ve üretkenlik adımlarını tek deneyimde birleştirmeyi hızlandırıyor. Bu da Google ekosistemini sadece arama değil, çalışma alanı olarak da daha güçlü hale getiriyor.",
+      dek: "Google AI güncellemeleri, arama tabanlı karar verme ve günlük üretkenlik için güçlü ürün sinyali üretir.",
       whyItMatters:
-        "Gemini haberleri, arama ve üretkenlik araçları için güçlü bir karar katmanı oluşturuyor."
+        "Gemini haberleri, hem arama hem de verimlilik araçları için yüksek niyetli karar katmanı oluşturuyor. Bu nedenle kategori ve karşılaştırma sayfalarında güçlü bir trafik sinyali yaratır."
     },
     en: {
-      title: "Google Gemini keeps narrowing the gap between search and productivity",
-      summary: "Gemini signals continue to push research and productivity into a single, smoother experience.",
-      dek: "Google AI updates keep producing strong intent around search-driven decisions.",
+      title: "Google Gemini keeps blending search and productivity into one flow",
+      summary:
+        "Gemini signals continue to merge research, summarization, and productivity into a single smoother workflow. That keeps Google AI relevant not only for search, but also for daily work.",
+      dek: "Google AI updates continue to produce strong intent around search-driven decisions.",
       whyItMatters:
-        "Gemini stories often create strong decision signals for search and productivity tooling."
+        "Gemini stories usually create strong decision signals for both search and productivity tooling."
     }
   },
   {
@@ -226,18 +232,20 @@ const BASE_AI_NEWS_ITEMS: BaseNewsItem[] = [
     categoryLabel: "Productivity",
     publishedAt: TODAY,
     tr: {
-      title: "Microsoft Copilot, ofis ekipleri için otomasyon tarafını derinleştiriyor",
-      summary: "Copilot cephesindeki yeni yönelimler, toplantı, doküman ve görev akışlarını daha tek yerde topluyor.",
-      dek: "Copilot gelişmeleri, iş akışı ve ofis yazılımı kararlarında doğrudan etki yaratıyor.",
+      title: "Microsoft Copilot, ofis ekipleri için otomasyon katmanını derinleştiriyor",
+      summary:
+        "Copilot tarafındaki yeni yönelimler, toplantı notu, doküman özetleme ve görev akışlarını daha tek bir çalışma alanında topluyor. Bu da kurumsal üretkenlik araçlarını daha sıkı bir ekosistem kararı haline getiriyor.",
+      dek: "Copilot gelişmeleri, iş akışı ve ofis yazılımı seçimi üzerinde doğrudan etki yaratıyor.",
       whyItMatters:
-        "Copilot güncellemeleri, iş verimliliği ve ofis araçları için yüksek niyetli değerlendirme üretir."
+        "Copilot güncellemeleri, verimlilik araçları için yüksek niyetli bir değerlendirme zemini oluşturur. Ofis ekipleri için 'hangi araç daha kolay benimsenir?' sorusunu gündeme taşır."
     },
     en: {
-      title: "Microsoft Copilot deepens office-team automation workflows",
-      summary: "New Copilot signals bring meetings, documents, and task flows into a tighter workspace.",
-      dek: "Copilot stories directly affect workflow and office software decisions.",
+      title: "Microsoft Copilot deepens automation for office teams",
+      summary:
+        "New Copilot signals keep meetings, documents, and task flows inside a tighter working surface. That pushes office productivity closer to a single-system decision.",
+      dek: "Copilot stories directly affect workflow and office software choice.",
       whyItMatters:
-        "Copilot updates often create high-intent comparisons around productivity and office tools."
+        "Copilot updates often trigger high-intent comparisons around productivity and office software."
     }
   },
   {
@@ -247,18 +255,20 @@ const BASE_AI_NEWS_ITEMS: BaseNewsItem[] = [
     categoryLabel: "Research",
     publishedAt: TODAY,
     tr: {
-      title: "Perplexity, kaynaklı aramayı daha hızlı karar ekranına taşıyor",
-      summary: "Perplexity tarafındaki sinyaller, bilgi toplama ile karar verme arasındaki mesafeyi kısaltıyor.",
-      dek: "Perplexity güncellemeleri, araştırma araçları için doğal bir karşılaştırma alanı yaratıyor.",
+      title: "Perplexity, kaynaklı aramayı daha hızlı ve daha karar odaklı bir yüzeye taşıyor",
+      summary:
+        "Perplexity tarafındaki sinyaller, bilgi toplama ile karar verme arasındaki mesafeyi kısaltıyor. Kullanıcı artık yalnızca cevap değil, hızlı doğrulanmış özet ve kullanıma dönük bağlam bekliyor.",
+      dek: "Perplexity güncellemeleri, araştırma araçları için doğal ve yüksek niyetli bir karşılaştırma alanı yaratıyor.",
       whyItMatters:
-        "Perplexity haberleri, kaynaklı araştırma ve hızlı değerlendirme sayfaları için doğrudan trafik sinyali üretir."
+        "Perplexity haberleri, kaynaklı araştırma ve hızlı değerlendirme sayfalarına doğrudan trafik sinyali üretir. Bu da onu en değerli haber başlıklarından biri yapar."
     },
     en: {
-      title: "Perplexity moves source-backed search closer to a decision screen",
-      summary: "Perplexity signals continue to shrink the distance between research and final decision-making.",
-      dek: "Perplexity updates keep generating a natural comparison surface for research tools.",
+      title: "Perplexity moves source-backed search closer to a decision-ready surface",
+      summary:
+        "Perplexity signals continue to narrow the gap between research and final decision-making. Users are increasingly looking for verified answers and action-ready context, not just raw search output.",
+      dek: "Perplexity updates keep generating a natural, high-intent comparison surface for research tools.",
       whyItMatters:
-        "Perplexity stories often create direct traffic signals for source-backed research and review pages."
+        "Perplexity stories often produce direct traffic signals for source-backed research and review pages."
     }
   }
 ];
