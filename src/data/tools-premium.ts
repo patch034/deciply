@@ -1,4 +1,5 @@
-﻿import type { Locale } from "@/i18n/config";
+﻿import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
+import type { Locale } from "@/i18n/config";
 import type { MoneyUseCase, PricingTier, ToolEntry } from "@/types/catalog";
 
 type LocaleSeed = {
@@ -25,7 +26,7 @@ type ToolSeed = {
   useCaseSlugs: string[];
   rating: number;
   featured: boolean;
-  locales: Record<Locale, LocaleSeed>;
+  locales: Record<"tr" | "en", LocaleSeed>;
 };
 
 function buildMoneyUseCases(locale: Locale, name: string, bestUseCase: string, workflowExampleDescription: string): MoneyUseCase[] {
@@ -75,10 +76,12 @@ function buildTool(seed: ToolSeed): ToolEntry {
     useCaseSlugs: seed.useCaseSlugs,
     rating: seed.rating,
     featured: seed.featured,
-    locales: {
-      tr: buildLocale("tr", seed.name, seed.locales.tr),
-      en: buildLocale("en", seed.name, seed.locales.en)
-    }
+    locales: Object.fromEntries(
+      (["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"] as const).map((locale) => [
+        locale,
+        localizeTree(locale, buildLocale(locale, seed.name, seed.locales[getContentBaseLocale(locale)]))
+      ])
+    ) as Record<Locale, ReturnType<typeof buildLocale>>
   };
 }
 

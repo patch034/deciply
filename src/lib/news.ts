@@ -1,3 +1,4 @@
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type { Locale } from "@/i18n/config";
 
 export type AiNewsLink = {
@@ -274,7 +275,7 @@ const BASE_AI_NEWS_ITEMS: BaseNewsItem[] = [
 ];
 
 function buildLocalizedItem(locale: Locale, item: BaseNewsItem): AiNewsItem {
-  const content = isTurkish(locale) ? item.tr : item.en;
+  const content = localizeTree(locale, item[getContentBaseLocale(locale)]);
   const summary = content.summary.trim();
   const title = content.title.trim();
 
@@ -294,10 +295,12 @@ function buildLocalizedItem(locale: Locale, item: BaseNewsItem): AiNewsItem {
   };
 }
 
-const AI_NEWS_BY_LOCALE: Record<Locale, AiNewsItem[]> = {
-  tr: BASE_AI_NEWS_ITEMS.map((item) => buildLocalizedItem("tr", item)),
-  en: BASE_AI_NEWS_ITEMS.map((item) => buildLocalizedItem("en", item))
-};
+const AI_NEWS_BY_LOCALE = Object.fromEntries(
+  (["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"] as const).map((itemLocale) => [
+    itemLocale,
+    BASE_AI_NEWS_ITEMS.map((item) => buildLocalizedItem(itemLocale, item))
+  ])
+) as Record<Locale, AiNewsItem[]>;
 
 export async function getAiNewsItems(locale: Locale, limit = 8): Promise<AiNewsItem[]> {
   return AI_NEWS_BY_LOCALE[locale].slice(0, limit);

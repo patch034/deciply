@@ -1,5 +1,6 @@
-﻿import type { Locale } from "@/i18n/config";
-import { assertEncodingHealth, normalizeLocalizedContent } from "@/lib/encoding";
+import type { SupportedLocale } from "@/i18n/config";
+import { assertEncodingHealth, normalizeLocalizedContent } from '@/lib/encoding';
+import { getContentBaseLocale, localizeTree } from '@/lib/locale-copy';
 
 export type ComparisonRow = {
   label: string;
@@ -81,7 +82,7 @@ export type ComparisonPageContent = {
   };
 };
 
-export const comparisonContent: Record<Locale, ComparisonPageContent> = {
+export const comparisonContent: Record<"tr" | "en", ComparisonPageContent> = {
   tr: {
     title: "ChatGPT vs Claude",
     summary:
@@ -431,7 +432,7 @@ export type TripleComparisonPageContent = {
   relatedDescription: string;
 };
 
-export const tripleComparisonContent: Record<Locale, TripleComparisonPageContent> = {
+export const tripleComparisonContent: Record<"tr" | "en", TripleComparisonPageContent> = {
   tr: {
     title: "ChatGPT vs Claude vs Gemini",
     summary: "Bu üç genel amaçlı AI aracı benzer görünse de farklı iş akışlarında farklı şekilde öne çıkar. Hız, uzun form yazı ve Google ekosistemi arasındaki farkı netleştirin.",
@@ -476,9 +477,11 @@ export const tripleComparisonContent: Record<Locale, TripleComparisonPageContent
 
 assertEncodingHealth("comparisons");
 
-export function getComparisonContent(locale: Locale) {
-  return normalizeLocalizedContent(`comparison:${locale}`, comparisonContent[locale]);
+export function getComparisonContent(locale: SupportedLocale) {
+  return normalizeLocalizedContent(`comparison:${locale}`, localizeTree(locale, comparisonContent[getContentBaseLocale(locale)]));
 }
+
+
 
 
 

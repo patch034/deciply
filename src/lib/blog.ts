@@ -1,6 +1,7 @@
-import { blogArticles } from "@/data/blog";
+﻿import { blogArticles } from "@/data/blog";
 import { getBlogPlaybookSections } from "@/data/blog-playbooks";
 import { useCaseOptions } from "@/data/tool-taxonomy";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type { Locale } from "@/i18n/config";
 import { getLocalizedToolBySlug, getLocalizedTools } from "@/lib/catalog";
 import { buildComparisonPath } from "@/lib/comparisons";
@@ -11,7 +12,7 @@ import type { BlogEntry, LocalizedBlogArticle } from "@/types/blog";
 
 export const BLOG_PAGE_SIZE = 12;
 
-const rawBlogCopy = {
+const blogCopyBase = {
   tr: {
     breadcrumbsHome: "Ana sayfa",
     blogLabel: "Blog",
@@ -74,7 +75,12 @@ const rawBlogCopy = {
 
 assertEncodingHealth("blog-copy");
 
-const blogCopy = normalizeEncodingTree(rawBlogCopy).value as typeof rawBlogCopy;
+const blogCopy = Object.fromEntries(
+  (["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"] as const).map((itemLocale) => [
+    itemLocale,
+    localizeTree(itemLocale, blogCopyBase[getContentBaseLocale(itemLocale)])
+  ])
+) as Record<Locale, (typeof blogCopyBase)["tr"]>;
 
 export function getBlogCopy(locale: Locale) {
   return blogCopy[locale];
@@ -110,8 +116,8 @@ function localizeArticle(article: BlogEntry, locale: Locale): LocalizedBlogArtic
     updatedAt: article.updatedAt,
     relatedToolSlugs: article.relatedToolSlugs,
     contentGraph: article.contentGraph,
-    ...article.locales[locale],
-    sections: playbookSections ?? article.locales[locale].sections
+    ...localizeTree(locale, article.locales[getContentBaseLocale(locale)]),
+    sections: playbookSections ?? localizeTree(locale, article.locales[getContentBaseLocale(locale)].sections)
   };
 
   const localizedArticle = {

@@ -1,7 +1,8 @@
 ﻿import { blogArticles } from "@/data/blog";
 import { discoveryPages, getHomepageDiscoveryGuides } from "@/data/discovery-pages";
-import type { Locale } from "@/i18n/config";
+import type { SupportedLocale } from "@/i18n/config";
 import { getToolCount } from "@/lib/catalog";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type {
   CategoryCard,
   ComparisonCard,
@@ -140,7 +141,7 @@ export type HomeContent = {
   guides: GuideCard[];
 };
 
-const homeContent: Record<Locale, HomeContent> = {
+const homeContent: Record<"tr" | "en", HomeContent> = {
   tr: {
     hero: {
       badge: "AI araç dizini",
@@ -845,8 +846,8 @@ const homeContent: Record<Locale, HomeContent> = {
   }
 };
 
-export function getHomeContent(locale: Locale) {
-  const base = homeContent[locale];
+export function getHomeContent(locale: SupportedLocale) {
+  const base = homeContent[getContentBaseLocale(locale)];
   const toolCount = getToolCount();
   const articleCount = blogArticles.length;
   const discoveryCount = discoveryPages.length;
@@ -877,8 +878,8 @@ export function getHomeContent(locale: Locale) {
           { value: String(articleCount), label: "fresh guides" }
         ];
 
-  return {
-    ...base,
+  const content = {
+    ...localizeTree(locale, base),
     hero: {
       ...base.hero,
       stats: heroStats
@@ -919,5 +920,7 @@ export function getHomeContent(locale: Locale) {
     socialProofStats,
     guides: getHomepageDiscoveryGuides(locale)
   };
+
+  return localizeTree(locale, content);
 }
 

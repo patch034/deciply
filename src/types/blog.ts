@@ -1,4 +1,4 @@
-﻿import type { Locale } from "@/i18n/config";
+import type { ContentLocale } from "@/i18n/config";
 
 export type BlogComparisonItem = {
   label: string;
@@ -66,7 +66,7 @@ export type BlogEntry = {
   updatedAt?: string;
   relatedToolSlugs: string[];
   contentGraph?: BlogContentGraph;
-  locales: Record<Locale, BlogLocalizedContent>;
+  locales: Record<ContentLocale, BlogLocalizedContent>;
 };
 
 export type LocalizedBlogArticle = {

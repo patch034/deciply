@@ -9,6 +9,7 @@ import {
   FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS,
   getComparisonAlternativeToolsForSlugs
 } from "@/lib/comparisons";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import { getLocalizedToolBySlug } from "@/lib/catalog";
 import type { LocalizedTool } from "@/types/catalog";
 
@@ -120,7 +121,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 
   const safeLocale = normalizeLocale(locale);
-  const content = tripleComparisonContent[safeLocale];
+  const content = localizeTree(safeLocale, tripleComparisonContent[getContentBaseLocale(safeLocale)]);
   const canonicalPath = `/${safeLocale}/compare/${FEATURED_TRIPLE_COMPARISON_SLUG}`;
 
   return {
@@ -147,7 +148,7 @@ export default async function TripleComparisonRoutePage({ params }: { params: Pr
   }
 
   const safeLocale = normalizeLocale(locale);
-  const content = tripleComparisonContent[safeLocale];
+  const content = localizeTree(safeLocale, tripleComparisonContent[getContentBaseLocale(safeLocale)]);
   const firstTool = getLocalizedToolBySlug(safeLocale, FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[0]);
   const secondTool = getLocalizedToolBySlug(safeLocale, FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[1]);
   const thirdTool = getLocalizedToolBySlug(safeLocale, FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS[2]);

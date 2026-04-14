@@ -1,6 +1,7 @@
-﻿import type { Locale } from "@/i18n/config";
+﻿import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
+import type { Locale } from "@/i18n/config";
 
-export const catalogContent = {
+const catalogContentBase = {
   tr: {
     common: {
       categoriesLabel: "Kategoriler",
@@ -173,13 +174,11 @@ export const catalogContent = {
       backToTools: "Back to all tools"
     }
   }
-} as const satisfies Record<
-  Locale,
-  {
-    common: Record<string, string>;
-    categoriesIndex: Record<string, string>;
-    categoryDetail: Record<string, string>;
-    toolsIndex: Record<string, string>;
-    toolDetail: Record<string, string>;
-  }
->;
+} as const;
+
+export const catalogContent = Object.fromEntries(
+  (["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"] as const).map((itemLocale) => [
+    itemLocale,
+    localizeTree(itemLocale, catalogContentBase[getContentBaseLocale(itemLocale)])
+  ])
+) as Record<Locale, (typeof catalogContentBase)["tr"]>;

@@ -8,7 +8,7 @@ type ComparisonThreeWayRow = {
 };
 
 type ComparisonThreeWayTableProps = {
-  locale: "tr" | "en";
+  locale: "tr" | "en" | "ar" | "ru" | "zh" | "ja" | "ko" | "el" | "da" | "fa";
   title: string;
   description: string;
   columns: {

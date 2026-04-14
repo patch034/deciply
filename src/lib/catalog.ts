@@ -1,8 +1,9 @@
 ﻿import { categories } from "@/data/categories";
 import { catalogContent } from "@/data/catalog-content";
 import { tools } from "@/data/tools";
-import type { Locale } from "@/i18n/config";
+import type { SupportedLocale } from "@/i18n/config";
 import { assertEncodingHealth, normalizeLocalizedContent } from "@/lib/encoding";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import { enrichToolCopy } from "@/lib/tool-content";
 import type { LocalizedCategory, LocalizedTool, PricingTier } from "@/types/catalog";
 type BaseLocalizedTool = Omit<LocalizedTool, "whatItActuallyDoes" | "whoShouldUseSummary" | "realUseCaseExample" | "compareProfile">;
@@ -23,13 +24,14 @@ export type ToolsQueryFilters = {
 
 assertEncodingHealth("catalog");
 
-function buildLocalizedTool(locale: Locale, slug: string) {
+function buildLocalizedTool(locale: SupportedLocale, slug: string) {
   const tool = tools.find((item) => item.slug === slug);
 
   if (!tool) {
     return null;
   }
 
+  const baseLocale = getContentBaseLocale(locale);
   const localizedTool = normalizeLocalizedContent(
     `tool:${slug}:${locale}`,
     {
@@ -43,28 +45,28 @@ function buildLocalizedTool(locale: Locale, slug: string) {
       useCaseSlugs: tool.useCaseSlugs,
       rating: tool.rating,
       featured: tool.featured,
-      ...tool.locales[locale]
+      ...localizeTree(locale, tool.locales[baseLocale])
     } satisfies BaseLocalizedTool
   );
 
   return normalizeLocalizedContent(`tool-copy:${slug}:${locale}`, enrichToolCopy(locale, localizedTool));
 }
 
-export function getCatalogContent(locale: Locale) {
-  return normalizeLocalizedContent(`catalog-content:${locale}`, catalogContent[locale]);
+export function getCatalogContent(locale: SupportedLocale) {
+  return normalizeLocalizedContent(`catalog-content:${locale}`, localizeTree(locale, catalogContent[getContentBaseLocale(locale)]));
 }
 
-export function getLocalizedCategories(locale: Locale): LocalizedCategory[] {
+export function getLocalizedCategories(locale: SupportedLocale): LocalizedCategory[] {
   return normalizeLocalizedContent(
     `categories:${locale}`,
-    categories.map((category) => ({
+    categories.map((category) => localizeTree(locale, {
       slug: category.slug,
-      ...category.locales[locale]
+      ...category.locales[getContentBaseLocale(locale)]
     }))
   );
 }
 
-export function getLocalizedCategoryBySlug(locale: Locale, slug: string) {
+export function getLocalizedCategoryBySlug(locale: SupportedLocale, slug: string) {
   const category = categories.find((item) => item.slug === slug);
 
   if (!category) {
@@ -73,14 +75,14 @@ export function getLocalizedCategoryBySlug(locale: Locale, slug: string) {
 
   return normalizeLocalizedContent(
     `category:${slug}:${locale}`,
-    {
+    localizeTree(locale, {
       slug: category.slug,
-      ...category.locales[locale]
-    } satisfies LocalizedCategory
+      ...category.locales[getContentBaseLocale(locale)]
+    } satisfies LocalizedCategory)
   );
 }
 
-export function getLocalizedTools(locale: Locale): LocalizedTool[] {
+export function getLocalizedTools(locale: SupportedLocale): LocalizedTool[] {
   return tools
     .map((tool) => buildLocalizedTool(locale, tool.slug))
     .filter((tool): tool is LocalizedTool => tool !== null);
@@ -114,11 +116,11 @@ export function getToolCount() {
   return tools.length;
 }
 
-export function getLocalizedToolBySlug(locale: Locale, slug: string) {
+export function getLocalizedToolBySlug(locale: SupportedLocale, slug: string) {
   return buildLocalizedTool(locale, slug);
 }
 
-export function getToolsByCategory(locale: Locale, categorySlug: string) {
+export function getToolsByCategory(locale: SupportedLocale, categorySlug: string) {
   const aliases = categoryAliasMap[categorySlug];
 
   return getLocalizedTools(locale).filter((tool) => {
@@ -146,11 +148,11 @@ export function getToolsByCategory(locale: Locale, categorySlug: string) {
   });
 }
 
-export function getCategoryNamesMap(locale: Locale) {
+export function getCategoryNamesMap(locale: SupportedLocale) {
   return new Map(getLocalizedCategories(locale).map((category) => [category.slug, category.name]));
 }
 
-export function getRelatedTools(locale: Locale, toolSlug: string, limit = 3) {
+export function getRelatedTools(locale: SupportedLocale, toolSlug: string, limit = 3) {
   const currentTool = tools.find((item) => item.slug === toolSlug);
 
   if (!currentTool) {
@@ -207,8 +209,8 @@ export function parseToolsQueryFilters(searchParams: {
   };
 }
 
-export function formatPricing(pricing: PricingTier, locale: Locale) {
-  const labels: Record<Locale, Record<PricingTier, string>> = {
+export function formatPricing(pricing: PricingTier, locale: SupportedLocale) {
+  const labels: Partial<Record<SupportedLocale, Record<PricingTier, string>>> = {
     tr: {
       FREE: "Ücretsiz",
       FREEMIUM: "Kısmen ücretsiz",
@@ -218,10 +220,50 @@ export function formatPricing(pricing: PricingTier, locale: Locale) {
       FREE: "Free",
       FREEMIUM: "Freemium",
       PAID: "Paid"
+    },
+    ar: {
+      FREE: "مجانًا",
+      FREEMIUM: "مجاني جزئيًا",
+      PAID: "مدفوع"
+    },
+    ru: {
+      FREE: "Бесплатно",
+      FREEMIUM: "Freemium",
+      PAID: "Платно"
+    },
+    zh: {
+      FREE: "免费",
+      FREEMIUM: "部分免费",
+      PAID: "付费"
+    },
+    ja: {
+      FREE: "無料",
+      FREEMIUM: "フリーミアム",
+      PAID: "有料"
+    },
+    ko: {
+      FREE: "무료",
+      FREEMIUM: "부분 무료",
+      PAID: "유료"
+    },
+    el: {
+      FREE: "Δωρεάν",
+      FREEMIUM: "Freemium",
+      PAID: "Επί πληρωμή"
+    },
+    da: {
+      FREE: "Gratis",
+      FREEMIUM: "Freemium",
+      PAID: "Betalt"
+    },
+    fa: {
+      FREE: "رایگان",
+      FREEMIUM: "فریمیوم",
+      PAID: "پولی"
     }
   };
 
-  return labels[locale][pricing];
+  return labels[locale]?.[pricing] ?? labels.en?.[pricing] ?? pricing;
 }
 
 export function getToolOutboundUrl(tool: { affiliateUrl?: string; websiteUrl: string }) {

@@ -23,6 +23,7 @@ import {
 } from "@/lib/comparisons";
 import { getLocalizedBlogArticleBySlug } from "@/lib/blog";
 import { formatPricing, getCatalogContent, getCategoryNamesMap, getToolOutboundUrl } from "@/lib/catalog";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import { getToolLogoUrl } from "@/lib/logo";
 import type { LocalizedTool } from "@/types/catalog";
 const copy = {
@@ -116,6 +117,10 @@ const copy = {
   }
 } as const;
 
+const copyByLocale = Object.fromEntries(
+  locales.map((itemLocale) => [itemLocale, localizeTree(itemLocale, copy[getContentBaseLocale(itemLocale)])])
+) as Record<Locale, (typeof copy)["tr"]>;
+
 function joinItems(items: string[], locale: Locale, limit = 3) {
   return items.slice(0, limit).join(locale === "tr" ? ", " : ", ");
 }
@@ -169,7 +174,7 @@ function buildHeroIntro(locale: Locale, leftTool: LocalizedTool, rightTool: Loca
 }
 
 function buildComparisonRows(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool): ComparisonRow[] {
-  const labels = copy[locale].tableLabels;
+  const labels = copyByLocale[locale].tableLabels;
 
   return [
     {
@@ -351,7 +356,7 @@ export default async function ComparisonPage({
   }
 
   const safeLocale = normalizeLocale(locale);
-  const dictionary = copy[safeLocale];
+  const dictionary = copyByLocale[safeLocale];
   const comparison = getComparisonToolsFromPair(safeLocale, pair);
 
   if (!comparison) {

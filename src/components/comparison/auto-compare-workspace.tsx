@@ -7,6 +7,7 @@ import { GlassPanel } from "@/components/ui/glass-panel";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { buildAutoComparisonPath } from "@/lib/comparisons";
 import type { Locale } from "@/i18n/config";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type { LocalizedTool } from "@/types/catalog";
 
 type CompareToolOption = Pick<LocalizedTool, "slug" | "name" | "bestUseCase" | "pricing" | "compareProfile">;
@@ -77,6 +78,13 @@ const copy = {
     no: "No"
   }
 } as const;
+
+const copyByLocale = Object.fromEntries(
+  (["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"] as const).map((itemLocale) => [
+    itemLocale,
+    localizeTree(itemLocale, copy[getContentBaseLocale(itemLocale)])
+  ])
+) as Record<Locale, (typeof copy)["tr"]>;
 
 function compareLocaleSort(locale: Locale, left: CompareToolOption, right: CompareToolOption) {
   return left.name.localeCompare(right.name, locale === "tr" ? "tr-TR" : "en-US");
@@ -312,7 +320,7 @@ function SearchableToolSelect({ locale, label, value, onChange, options }: Searc
 }
 
 function renderValue(value: string | string[] | number | boolean, locale: Locale, compact = false) {
-  const labels = copy[locale];
+  const labels = copyByLocale[locale];
 
   if (Array.isArray(value)) {
     const normalizedItems = value.map((item) => normalizeCompareText(item));
@@ -425,7 +433,7 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
 }
 
 export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRightSlug, compact = false }: AutoCompareWorkspaceProps) {
-  const labels = copy[locale];
+  const labels = copyByLocale[locale];
   const orderedTools = useMemo(() => [...tools].sort((left, right) => compareLocaleSort(locale, left, right)), [locale, tools]);
 
   const initialLeft = initialLeftSlug && orderedTools.some((tool) => tool.slug === initialLeftSlug) ? initialLeftSlug : orderedTools[0]?.slug ?? "";

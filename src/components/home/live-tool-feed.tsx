@@ -16,13 +16,79 @@ type LiveToolFeedProps = {
 };
 
 function getTabLabel(locale: Locale, key: FeedTabKey) {
-  const labels: Record<FeedTabKey, { tr: string; en: string }> = {
-    today: { tr: "Bugün", en: "Today" },
-    new: { tr: "Yeni", en: "New" },
-    saved: { tr: "En çok kaydedilen", en: "Most saved" },
-    used: { tr: "En çok kullanılan", en: "Most used" },
-    extensions: { tr: "Tarayıcı uzantıları", en: "Browser extensions" },
-    apps: { tr: "Uygulamalar", en: "Apps" }
+  const labels: Record<FeedTabKey, Record<Locale, string>> = {
+    today: {
+      tr: "Bugün",
+      en: "Today",
+      ar: "اليوم",
+      ru: "Сегодня",
+      zh: "今天",
+      ja: "今日",
+      ko: "오늘",
+      el: "Σήμερα",
+      da: "I dag",
+      fa: "امروز"
+    },
+    new: {
+      tr: "Yeni",
+      en: "New",
+      ar: "جديد",
+      ru: "Новые",
+      zh: "最新",
+      ja: "新着",
+      ko: "신규",
+      el: "Νέα",
+      da: "Nyt",
+      fa: "جدید"
+    },
+    saved: {
+      tr: "En çok kaydedilen",
+      en: "Most saved",
+      ar: "الأكثر حفظًا",
+      ru: "Чаще сохраняют",
+      zh: "保存最多",
+      ja: "保存が多い",
+      ko: "저장 많이 됨",
+      el: "Πιο αποθηκευμένα",
+      da: "Mest gemte",
+      fa: "بیشترین ذخیره"
+    },
+    used: {
+      tr: "En çok kullanılan",
+      en: "Most used",
+      ar: "الأكثر استخدامًا",
+      ru: "Чаще используют",
+      zh: "使用最多",
+      ja: "最も使用",
+      ko: "가장 많이 사용",
+      el: "Πιο χρησιμοποιημένα",
+      da: "Mest brugte",
+      fa: "بیشترین استفاده"
+    },
+    extensions: {
+      tr: "Tarayıcı uzantıları",
+      en: "Browser extensions",
+      ar: "إضافات المتصفح",
+      ru: "Расширения браузера",
+      zh: "浏览器扩展",
+      ja: "ブラウザ拡張",
+      ko: "브라우저 확장",
+      el: "Επεκτάσεις browser",
+      da: "Browserudvidelser",
+      fa: "افزونه‌های مرورگر"
+    },
+    apps: {
+      tr: "Uygulamalar",
+      en: "Apps",
+      ar: "تطبيقات",
+      ru: "Приложения",
+      zh: "应用",
+      ja: "アプリ",
+      ko: "앱",
+      el: "Εφαρμογές",
+      da: "Apps",
+      fa: "اپ‌ها"
+    }
   };
 
   return labels[key][locale];

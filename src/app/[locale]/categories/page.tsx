@@ -8,6 +8,7 @@ import { PremiumButton } from "@/components/ui/premium-button";
 import { categories as categoryEntries } from "@/data/categories";
 import { getCatalogContent, getLocalizedCategories, getToolsByCategory } from "@/lib/catalog";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
+import { localizeLocaleRecord } from "@/lib/locale-copy";
 
 export async function generateMetadata({
   params
@@ -111,11 +112,11 @@ export default async function CategoriesPage({
                           : "border-slate-200 bg-white text-slate-500"
                       ].join(" ")}
                     >
-                      {sidebarIcons[category.slug] ?? category.locales[safeLocale].name.slice(0, 2).toUpperCase()}
+                      {sidebarIcons[category.slug] ?? localizeLocaleRecord(safeLocale, category.locales).name.slice(0, 2).toUpperCase()}
                     </span>
                     <span className="min-w-0">
-                      <span className="block text-sm font-semibold text-slate-950">{category.locales[safeLocale].name}</span>
-                      <span className="block truncate text-[11px] text-slate-500">{category.locales[safeLocale].description}</span>
+                      <span className="block text-sm font-semibold text-slate-950">{localizeLocaleRecord(safeLocale, category.locales).name}</span>
+                      <span className="block truncate text-[11px] text-slate-500">{localizeLocaleRecord(safeLocale, category.locales).description}</span>
                     </span>
                   </span>
                   <Badge variant="muted" className="shrink-0">

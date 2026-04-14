@@ -19,6 +19,7 @@ import { buildComparisonPath, getComparisonRelatedBlogSlugsForSlugs } from "@/li
 import { getLocalizedBlogArticleBySlug } from "@/lib/blog";
 import { formatPricing, getCatalogContent, getCategoryNamesMap } from "@/lib/catalog";
 import type { Locale } from "@/i18n/config";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type { LocalizedTool } from "@/types/catalog";
 
 type ComparisonThreeWayRow = {
@@ -62,7 +63,7 @@ export function ComparisonTriplePage({
   title,
   description
 }: ComparisonTriplePageProps) {
-  const dictionary = tripleComparisonContent[locale];
+  const dictionary = localizeTree(locale, tripleComparisonContent[getContentBaseLocale(locale)]);
   const content = getCatalogContent(locale);
   const categoryNamesMap = getCategoryNamesMap(locale);
   const [firstTool, secondTool, thirdTool] = tools;

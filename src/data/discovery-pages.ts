@@ -1,5 +1,6 @@
 ﻿import type { GuideCard } from "@/types/home";
-import type { Locale } from "@/i18n/config";
+import type { SupportedLocale } from "@/i18n/config";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 
 type DiscoveryLocale = {
   eyebrow: string;
@@ -25,7 +26,7 @@ export type DiscoveryPageEntry = {
   tag: string;
   readTime: string;
   toolSlugs: string[];
-  locales: Record<Locale, DiscoveryLocale>;
+  locales: Record<"tr" | "en", DiscoveryLocale>;
 };
 
 export const discoveryPages: DiscoveryPageEntry[] = [
@@ -384,24 +385,24 @@ const homepageGuideSlugs = [
   "ai-tools-for-business"
 ] as const;
 
-export function getDiscoveryPage(locale: Locale, slug: string) {
+export function getDiscoveryPage(locale: SupportedLocale, slug: string) {
   const page = discoveryPages.find((item) => item.slug === slug);
 
   if (!page) {
     return null;
   }
 
-  return {
+  return localizeTree(locale, {
     slug: page.slug,
     icon: page.icon,
     tag: page.tag,
     readTime: page.readTime,
     toolSlugs: page.toolSlugs,
-    ...page.locales[locale]
-  };
+    ...page.locales[getContentBaseLocale(locale)]
+  });
 }
 
-export function getHomepageDiscoveryGuides(locale: Locale): GuideCard[] {
+export function getHomepageDiscoveryGuides(locale: SupportedLocale): GuideCard[] {
   return homepageGuideSlugs
     .map((slug) => getDiscoveryPage(locale, slug))
     .filter((page): page is NonNullable<ReturnType<typeof getDiscoveryPage>> => Boolean(page))

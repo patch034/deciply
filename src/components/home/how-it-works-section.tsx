@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { GlassPanel } from "@/components/ui/glass-panel";
 import { SectionShell } from "@/components/ui/section-shell";
 import type { Locale } from "@/i18n/config";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 
 const content = {
   tr: {
@@ -58,7 +59,7 @@ type HowItWorksSectionProps = {
 };
 
 export function HowItWorksSection({ locale }: HowItWorksSectionProps) {
-  const section = content[locale];
+  const section = localizeTree(locale, content[getContentBaseLocale(locale)]);
 
   return (
     <SectionShell eyebrow={section.eyebrow} title={section.title} description={section.description}>

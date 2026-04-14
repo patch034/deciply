@@ -7,6 +7,7 @@ import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
 import { getComparisonDirectoryCards } from "@/lib/comparisons";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 
 const compareIntro = {
   tr: {
@@ -36,6 +37,18 @@ const compareIntro = {
     compareOpen: "Open comparison"
   }
 } as const;
+
+const compareIntroByLocale = {
+  tr: compareIntro.tr,
+  en: compareIntro.en
+} as const;
+
+const compareIntroLocalized = Object.fromEntries(
+  ["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"].map((locale) => [
+    locale,
+    localizeTree(locale as Parameters<typeof localizeTree>[0], compareIntroByLocale[getContentBaseLocale(locale as Parameters<typeof localizeTree>[0])])
+  ])
+) as Record<Locale, (typeof compareIntro)["tr"]>;
 
 function buildFeaturedPairs(locale: Locale) {
   const cards = getComparisonDirectoryCards(locale);
@@ -80,7 +93,7 @@ export default async function CompareHubPage({
   }
 
   const safeLocale = normalizeLocale(locale);
-  const copy = compareIntro[safeLocale];
+  const copy = compareIntroLocalized[safeLocale];
   const featured = buildFeaturedPairs(safeLocale);
   const recent = getComparisonDirectoryCards(safeLocale).slice(8, 16);
 

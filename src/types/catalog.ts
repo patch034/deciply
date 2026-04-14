@@ -1,4 +1,4 @@
-﻿import type { Locale } from "@/i18n/config";
+import type { ContentLocale, Locale } from "@/i18n/config";
 
 export type LocalizedText = Record<Locale, string>;
 export type LocalizedStringList = Record<Locale, string[]>;
@@ -18,7 +18,7 @@ export type RealUseCaseExample = {
 export type CategoryEntry = {
   slug: string;
   locales: Record<
-    Locale,
+    ContentLocale,
     {
       name: string;
       description: string;
@@ -60,7 +60,7 @@ export type ToolEntry = {
   featured: boolean;
   compareProfile?: ToolCompareProfile;
   locales: Record<
-    Locale,
+    ContentLocale,
     {
       name: string;
       shortDescription: string;

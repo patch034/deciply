@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { PremiumButton } from "@/components/ui/premium-button";
 import type { Locale } from "@/i18n/config";
 import { getToolLogoUrl } from "@/lib/logo";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type { LocalizedTool } from "@/types/catalog";
 
 type ComparisonDetailTabsProps = {
@@ -42,7 +43,7 @@ function buildOverallScore(tool: LocalizedTool) {
 }
 
 function getTabLabel(locale: Locale, tab: TabKey) {
-  const labels: Record<Locale, Record<TabKey, string>> = {
+  const labels = {
     tr: {
       overview: "Genel Bakış",
       pricing: "Fiyat",
@@ -59,9 +60,9 @@ function getTabLabel(locale: Locale, tab: TabKey) {
       weaknesses: "Weaknesses",
       verdict: "Verdict"
     }
-  };
+  } as const;
 
-  return labels[locale][tab];
+  return localizeTree(locale, labels[getContentBaseLocale(locale)])[tab];
 }
 
 function buildRows(locale: Locale, leftTool: LocalizedTool, rightTool: LocalizedTool) {

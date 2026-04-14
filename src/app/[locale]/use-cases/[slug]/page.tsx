@@ -12,6 +12,7 @@ import { SectionShell } from "@/components/ui/section-shell";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
 import { getBlogCopy } from "@/lib/blog";
 import { formatPricing, getCatalogContent, getCategoryNamesMap } from "@/lib/catalog";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import {
   buildUseCasePath,
   getSafeComparisonPath,
@@ -45,6 +46,10 @@ const copy = {
     bestForLabel: "Best fit"
   }
 } as const;
+
+const copyByLocale = Object.fromEntries(
+  locales.map((itemLocale) => [itemLocale, localizeTree(itemLocale, copy[getContentBaseLocale(itemLocale)])])
+) as Record<Locale, (typeof copy)["tr"]>;
 
 function buildUseCaseTitle(locale: Locale, title: string) {
   return locale === "tr" ? `${title} (2026)` : `${title} (2026)`;
@@ -169,7 +174,7 @@ export default async function UseCasePage({
   }
 
   const safeLocale = normalizeLocale(locale);
-  const dictionary = copy[safeLocale];
+  const dictionary = copyByLocale[safeLocale];
   const content = getCatalogContent(safeLocale);
   const blogCopy = getBlogCopy(safeLocale);
   const page = getUseCasePage(safeLocale, slug);

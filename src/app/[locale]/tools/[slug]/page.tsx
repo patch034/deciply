@@ -22,6 +22,7 @@ import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale
 import { getBlogCopy, getRelatedArticlesByTool } from "@/lib/blog";
 import { FEATURED_TRIPLE_COMPARISON_TOOL_SLUGS, buildAutoComparisonPath, buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
 import { buildAlternativesPath, buildUseCasePath, getSafeComparisonPath, getUseCasePagesForTool } from "@/lib/intent-pages";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import { buildToolMetaDescription, buildToolPageTitle } from "@/lib/seo";
 import { getToolTrustIndicators, getToolUseCaseTags } from "@/lib/tool-ui";
 import {
@@ -90,7 +91,7 @@ type PricingSummaryCard = {
   description: string;
 };
 
-const copy: Record<Locale, DetailCopy> = {
+const copy: Record<"tr" | "en", DetailCopy> = {
   tr: {
     breadcrumbsHome: "Ana sayfa",
     toolsLabel: "Araçlar",
@@ -170,6 +171,10 @@ const copy: Record<Locale, DetailCopy> = {
     secondaryCta: "Back to all tools"
   }
 };
+
+const copyByLocale = Object.fromEntries(
+  locales.map((itemLocale) => [itemLocale, localizeTree(itemLocale, copy[getContentBaseLocale(itemLocale)])])
+) as Record<Locale, DetailCopy>;
 
 function getToolCategoryLabel(locale: Locale, tool: LocalizedTool) {
   const map = new Map(toolCategoryOptions[locale].map((item) => [item.slug, item.label]));
@@ -417,7 +422,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ loc
   }
 
   const safeLocale = normalizeLocale(locale);
-  const dictionary = copy[safeLocale];
+  const dictionary = copyByLocale[safeLocale];
   const content = getCatalogContent(safeLocale);
   const tool = getLocalizedToolBySlug(safeLocale, slug);
 

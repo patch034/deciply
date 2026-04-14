@@ -1,10 +1,12 @@
 ﻿import { buildSiteUrl } from "@/lib/site";
 
 export const contentLocales = ["tr", "en"] as const;
-export type Locale = (typeof contentLocales)[number];
+export type ContentLocale = (typeof contentLocales)[number];
 
 export const locales = ["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"] as const;
 export type SupportedLocale = (typeof locales)[number];
+
+export type Locale = SupportedLocale;
 
 export const defaultLocale: Locale = "en";
 export const localeCookieName = "deciply-locale";
@@ -14,7 +16,7 @@ export function isValidLocale(value: string): value is SupportedLocale {
 }
 
 export function normalizeLocale(value: string): Locale {
-  return value === "tr" ? "tr" : "en";
+  return isValidLocale(value) ? (value as Locale) : defaultLocale;
 }
 
 export function isRtlLocale(value: string) {

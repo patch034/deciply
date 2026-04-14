@@ -2,6 +2,7 @@ import { tools } from "@/data/tools";
 import { useCaseOptions } from "@/data/tool-taxonomy";
 import { buildComparisonPath } from "@/lib/comparisons";
 import { buildAlternativesPath } from "@/lib/intent-pages";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type { Locale } from "@/i18n/config";
 import type { BlogEntry, BlogLocalizedContent, BlogSection, BlogSubSection } from "@/types/blog";
 
@@ -38,6 +39,13 @@ const categoryLabels = {
   }
 } as const;
 
+const categoryLabelsByLocale = Object.fromEntries(
+  (["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"] as const).map((itemLocale) => [
+    itemLocale,
+    localizeTree(itemLocale, categoryLabels[getContentBaseLocale(itemLocale)])
+  ])
+) as Record<Locale, (typeof categoryLabels)["tr"]>;
+
 const pricingLabels = {
   tr: {
     FREE: "Ücretsiz",
@@ -50,6 +58,13 @@ const pricingLabels = {
     PAID: "Paid"
   }
 } as const;
+
+const pricingLabelsByLocale = Object.fromEntries(
+  (["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"] as const).map((itemLocale) => [
+    itemLocale,
+    localizeTree(itemLocale, pricingLabels[getContentBaseLocale(itemLocale)])
+  ])
+) as Record<Locale, (typeof pricingLabels)["tr"]>;
 
 type ToolSnapshot = {
   slug: string;
@@ -64,12 +79,12 @@ type ToolSnapshot = {
 type ArticleSeed = {
   slug: string;
   publishDate: string;
-  topic: Record<Locale, string>;
-  title?: Partial<Record<Locale, string>>;
-  excerpt?: Partial<Record<Locale, string>>;
-  intro?: Partial<Record<Locale, string>>;
-  seoTitle?: Partial<Record<Locale, string>>;
-  seoDescription?: Partial<Record<Locale, string>>;
+  topic: Record<"tr" | "en", string>;
+  title?: Partial<Record<"tr" | "en", string>>;
+  excerpt?: Partial<Record<"tr" | "en", string>>;
+  intro?: Partial<Record<"tr" | "en", string>>;
+  seoTitle?: Partial<Record<"tr" | "en", string>>;
+  seoDescription?: Partial<Record<"tr" | "en", string>>;
   categorySlug: "guides";
   useCaseSlug: string;
   useCasePageSlug?: string;
@@ -77,11 +92,11 @@ type ArticleSeed = {
   comparePairs: { leftSlug: string; rightSlug: string }[];
   relatedArticleSlugs: string[];
   keywords: string[];
-  audience: Record<Locale, string>;
-  workflow: Record<Locale, [string, string, string]>;
-  caution: Record<Locale, string>;
-  nextStep: Record<Locale, string>;
-  extraSections?: Partial<Record<Locale, BlogSection[]>>;
+  audience: Record<"tr" | "en", string>;
+  workflow: Record<"tr" | "en", [string, string, string]>;
+  caution: Record<"tr" | "en", string>;
+  nextStep: Record<"tr" | "en", string>;
+  extraSections?: Partial<Record<"tr" | "en", BlogSection[]>>;
 };
 
 function getTool(locale: Locale, slug: string): ToolSnapshot {
@@ -91,7 +106,7 @@ function getTool(locale: Locale, slug: string): ToolSnapshot {
     throw new Error(`Unknown tool: ${slug}`);
   }
 
-  const localized = item.locales[locale];
+  const localized = localizeTree(locale, item.locales[getContentBaseLocale(locale)]);
 
   return {
     slug,
@@ -100,7 +115,7 @@ function getTool(locale: Locale, slug: string): ToolSnapshot {
     bestUseCase: localized.bestUseCase,
     pros: localized.pros,
     cons: localized.cons,
-    pricingLabel: pricingLabels[locale][item.pricing]
+    pricingLabel: pricingLabelsByLocale[locale][item.pricing]
   };
 }
 
@@ -117,7 +132,7 @@ const buildUseCaseLink = (locale: Locale, slug: string) => {
 };
 
 function buildTopicLabel(locale: Locale, seed: ArticleSeed) {
-  return seed.topic[locale];
+  return localizeTree(locale, seed.topic[getContentBaseLocale(locale)]);
 }
 
 function buildFirstPairLabel(locale: Locale, seed: ArticleSeed) {
@@ -126,6 +141,7 @@ function buildFirstPairLabel(locale: Locale, seed: ArticleSeed) {
 }
 
 function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedContent {
+  const baseLocale = getContentBaseLocale(locale);
   const topicLabel = buildTopicLabel(locale, seed);
   const topicLower = topicLabel.toLocaleLowerCase(locale === "tr" ? "tr-TR" : "en-US");
   const items = seed.toolSlugs.map((slug) => getTool(locale, slug));
@@ -134,44 +150,47 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
   const alternativeLinks = seed.toolSlugs.slice(0, 2).map((slug) => alternativeLink(locale, slug));
   const useCasePage = seed.useCasePageSlug ? buildUseCaseLink(locale, seed.useCasePageSlug) : null;
   const firstPair = buildFirstPairLabel(locale, seed);
-  const extraSections = seed.extraSections?.[locale] ?? [];
+  const extraSections = seed.extraSections?.[baseLocale] ?? [];
   const editorialSections = buildWorkflowPrimerSections(locale, seed, items, compareLinks, alternativeLinks, useCasePage, firstPair);
 
-  const title = seed.title?.[locale] ?? (locale === "tr"
-    ? `${topicLabel} için en iyi AI araçları`
-    : `Best AI tools for ${topicLabel}`);
+  const titleSource = seed.title?.[baseLocale] ?? (baseLocale === "tr" ? `${topicLabel} için en iyi AI araçları` : `Best AI tools for ${topicLabel}`);
+  const title = localizeTree(locale, titleSource);
 
-  const excerpt = seed.excerpt?.[locale] ?? (locale === "tr"
+  const excerptSource = seed.excerpt?.[baseLocale] ?? (baseLocale === "tr"
     ? `${topicLabel} için hızlı ama gerçekçi bir iş akışı kurmak isteyenler için pratik araç rehberi.`
     : `A practical guide for building a fast but realistic workflow around ${topicLower}.`);
+  const excerpt = localizeTree(locale, excerptSource);
 
-  const intro = seed.intro?.[locale] ?? (locale === "tr"
+  const introSource = seed.intro?.[baseLocale] ?? (baseLocale === "tr"
     ? `${items.map((item) => item.name).join(", ")} aynı işi aynı şekilde yapmaz. ${topicLabel} için doğru seçim, önce hedef çıktıyı, sonra edit ve yayın akışını netleştirmekten geçer.`
     : `${items.map((item) => item.name).join(", ")} do not solve the same job in the same way. The better choice for ${topicLower} starts with defining the output, then the editing and publishing flow.`);
+  const intro = localizeTree(locale, introSource);
 
-  const seoTitle = seed.seoTitle?.[locale] ?? (locale === "tr"
+  const seoTitleSource = seed.seoTitle?.[baseLocale] ?? (baseLocale === "tr"
     ? `${topicLabel} için en iyi AI araçları | Deciply`
     : `Best AI tools for ${topicLabel} | Deciply`);
+  const seoTitle = localizeTree(locale, seoTitleSource);
 
-  const seoDescription = seed.seoDescription?.[locale] ?? (locale === "tr"
+  const seoDescriptionSource = seed.seoDescription?.[baseLocale] ?? (baseLocale === "tr"
     ? `${topicLabel} için en iyi araçları, gerçek workflow adımlarını, compare linklerini ve tool sayfalarını inceleyin.`
     : `Review the best tools for ${topicLower}, plus the workflow steps, compare links, and tool pages worth opening next.`);
-  const workflowSteps = seed.workflow[locale];
+  const seoDescription = localizeTree(locale, seoDescriptionSource);
+  const workflowSteps = localizeTree(locale, seed.workflow[baseLocale]);
   const workflowPairs = [items[0], items[1], items[2]].filter(Boolean);
 
   return {
     title,
     excerpt,
     intro,
-    categoryLabel: categoryLabels[locale][seed.categorySlug],
+    categoryLabel: categoryLabelsByLocale[locale][seed.categorySlug],
     seoTitle,
     seoDescription,
     sections: [
       section(
         locale === "tr" ? "Bu rehber kimler için?" : "Who is this guide for?",
         [
-          seed.audience[locale],
-          locale === "tr"
+          localizeTree(locale, seed.audience[baseLocale]),
+          baseLocale === "tr"
             ? `${topicLabel} tarafında asıl amaç daha hızlı üretmek değil, daha az revizyonla yayınlanabilir çıktı almak.`
             : `The real goal is not just speed; it is creating publishable output with fewer revisions in ${topicLower}.`
         ],
@@ -188,11 +207,11 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
       section(
         locale === "tr" ? "İlk bakılacak araçlar" : "Tools to check first",
         [
-          locale === "tr"
+          baseLocale === "tr"
             ? `${topicLabel} için ilk turda ${items.slice(0, 3).map((item) => toolLink(locale, item.slug)).join(", ")} açmak, tek araca takılı kalmadan kısa liste oluşturmanı sağlar.`
             : `For ${topicLower}, opening ${items.slice(0, 3).map((item) => toolLink(locale, item.slug)).join(", ")} first helps you build a shortlist without locking onto one app too early.`,
           compareLinks.length
-            ? locale === "tr"
+            ? baseLocale === "tr"
               ? `Karar yakın kaldığında ${compareLinks.join(", ")} linkleri en hızlı ayrımı yapar.`
               : `When the decision stays close, ${compareLinks.join(", ")} gives the fastest comparison path.`
             : ""
@@ -203,7 +222,7 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
               item.name,
               [
                 item.shortDescription,
-                locale === "tr"
+                baseLocale === "tr"
                   ? `${item.name}, ${topicLabel} işinde daha iyi sonuç için ${item.bestUseCase.toLowerCase()} tarafında kullanıldığında daha anlamlı olur.`
                   : `${item.name} tends to work better when you use it for ${item.bestUseCase.toLowerCase()} within the ${topicLower} workflow.`
               ],
@@ -256,7 +275,7 @@ function buildArticleContent(locale: Locale, seed: ArticleSeed): BlogLocalizedCo
       ),
       section(
         locale === "tr" ? "Yayınlamadan önce kontrol listesi" : "Checklist before publishing",
-        [seed.caution[locale]],
+          [localizeTree(locale, seed.caution[baseLocale])],
         {
           bullets:
             locale === "tr"
@@ -333,6 +352,7 @@ function buildWorkflowPrimerSections(
   const secondItem = items[1] ?? firstItem;
   const comparePair = seed.comparePairs[0];
   const compareHref = comparePair ? buildComparisonPath(locale, comparePair.leftSlug, comparePair.rightSlug) : null;
+  const workflowSteps = localizeTree(locale, seed.workflow[getContentBaseLocale(locale)]);
 
   if (!firstItem) {
     return [];
@@ -361,7 +381,7 @@ function buildWorkflowPrimerSections(
         contextLead
       ],
       {
-        bullets: seed.workflow[locale].map((step, index) => `${index + 1}. ${step}`),
+          bullets: workflowSteps.map((step, index) => `${index + 1}. ${step}`),
         subSections: [
           sub(
             locale === "tr" ? "İlk taslak" : "First draft",

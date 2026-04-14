@@ -10,10 +10,11 @@ import { ToolCard } from "@/components/catalog/tool-card";
 import { Badge } from "@/components/ui/badge";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale, type SupportedLocale } from "@/i18n/config";
 import { getBlogCopy, getRelatedArticlesByTool } from "@/lib/blog";
 import { getCatalogContent, formatPricing, getCategoryNamesMap, getLocalizedToolBySlug } from "@/lib/catalog";
 import { buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import {
   buildAlternativesPath,
   getAlternativeTargetTools,
@@ -77,6 +78,10 @@ const copy = {
     relatedGuidesDescription: "Use these guides to tighten the decision before you click through to a tool."
   }
 } as const;
+
+const copyByLocale = Object.fromEntries(
+  locales.map((locale) => [locale, localizeTree(locale, copy[getContentBaseLocale(locale)])])
+) as Record<SupportedLocale, (typeof copy)["tr"]>;
 
 function buildAlternativesTitle(locale: Locale, toolName: string) {
   return locale === "tr"
@@ -156,7 +161,7 @@ export default async function AlternativesPage({
   }
 
   const safeLocale = normalizeLocale(locale);
-  const dictionary = copy[safeLocale];
+  const dictionary = copyByLocale[safeLocale];
   const content = getCatalogContent(safeLocale);
   const blogCopy = getBlogCopy(safeLocale);
   const currentTool = getLocalizedToolBySlug(safeLocale, tool);

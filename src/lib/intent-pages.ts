@@ -4,6 +4,7 @@ import type { Locale } from "@/i18n/config";
 import { getLocalizedBlogArticles } from "@/lib/blog";
 import { getLocalizedToolBySlug } from "@/lib/catalog";
 import { areComparableTools, buildComparisonPath, getComparisonRawTool } from "@/lib/comparisons";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type { LocalizedTool } from "@/types/catalog";
 
 type UseCasePageLocale = {
@@ -21,7 +22,7 @@ type UseCasePageLocale = {
 type UseCasePageDefinition = {
   slug: string;
   matchUseCaseSlugs: string[];
-  locales: Record<Locale, UseCasePageLocale>;
+  locales: Record<"tr" | "en", UseCasePageLocale>;
 };
 
 const useCasePageDefinitions: UseCasePageDefinition[] = [
@@ -245,7 +246,7 @@ export function getUseCasePage(locale: Locale, slug: string) {
   return {
     slug: page.slug,
     matchUseCaseSlugs: page.matchUseCaseSlugs,
-    ...page.locales[locale]
+    ...localizeTree(locale, page.locales[getContentBaseLocale(locale)])
   };
 }
 
@@ -284,7 +285,7 @@ export function getUseCasePagesForTool(locale: Locale, useCaseSlugs: string[], l
 
   return matched.slice(0, limit).map((page) => ({
     slug: page.slug,
-    title: page.locales[locale].title
+    title: localizeTree(locale, page.locales[getContentBaseLocale(locale)]).title
   }));
 }
 

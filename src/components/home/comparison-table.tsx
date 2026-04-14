@@ -2,7 +2,7 @@
 import { RatingBadge } from "@/components/ui/rating-badge";
 
 type ComparisonTableProps = {
-  locale: "tr" | "en";
+  locale: "tr" | "en" | "ar" | "ru" | "zh" | "ja" | "ko" | "el" | "da" | "fa";
   tools: ToolCard[];
   title: string;
   description: string;

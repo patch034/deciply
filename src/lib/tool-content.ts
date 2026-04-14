@@ -1,5 +1,6 @@
-import type { Locale } from "@/i18n/config";
+﻿import { locales, type Locale } from "@/i18n/config";
 import { buildToolCompareProfile } from "@/lib/tool-compare";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type { LocalizedTool, MoneyUseCase, RealUseCaseExample } from "@/types/catalog";
 
 type ToolCopySource = Omit<LocalizedTool, "whatItActuallyDoes" | "whoShouldUseSummary" | "realUseCaseExample" | "compareProfile">;
@@ -100,7 +101,7 @@ function joinList(locale: Locale, items: string[]) {
 
 type CategorySlug = "writing" | "image" | "video" | "productivity";
 
-const categoryLabels: Record<Locale, Record<CategorySlug, string>> = {
+const categoryLabelsBase: Record<"tr" | "en", Record<CategorySlug, string>> = {
   tr: {
     writing: "yazı",
     image: "görsel",
@@ -115,7 +116,11 @@ const categoryLabels: Record<Locale, Record<CategorySlug, string>> = {
   }
 };
 
-const categoryActions: Record<Locale, Record<CategorySlug, string>> = {
+const categoryLabels = Object.fromEntries(
+  locales.map((locale) => [locale, localizeTree(locale, categoryLabelsBase[getContentBaseLocale(locale)])])
+) as Record<Locale, Record<CategorySlug, string>>;
+
+const categoryActionsBase: Record<"tr" | "en", Record<CategorySlug, string>> = {
   tr: {
     writing: "taslak yazma, yeniden yazım, özetleme ve araştırma destekli metin üretimi",
     image: "konsept görsel, sosyal medya varlığı ve yaratıcı varyasyon üretimi",
@@ -129,6 +134,10 @@ const categoryActions: Record<Locale, Record<CategorySlug, string>> = {
     productivity: "notes, documents, tasks, and meeting summary workflows"
   }
 };
+
+const categoryActions = Object.fromEntries(
+  locales.map((locale) => [locale, localizeTree(locale, categoryActionsBase[getContentBaseLocale(locale)])])
+) as Record<Locale, Record<CategorySlug, string>>;
 
 function getPrimaryCategorySlug(tool: Pick<ToolCopySource, "toolCategorySlugs">): CategorySlug {
   return (tool.toolCategorySlugs[0] as CategorySlug | undefined) ?? "writing";
@@ -272,7 +281,7 @@ function buildWhoShouldUseSummary(locale: Locale, tool: Pick<ToolCopySource, "wh
 
 function buildRealUseCaseExample(locale: Locale, tool: Pick<ToolCopySource, "name" | "bestUseCase">, workflowKind: WorkflowKind): RealUseCaseExample {
   const bestUseCase = lowerFirst(locale, stripTrailingPunctuation(tool.bestUseCase));
-  const examples: Record<Locale, Record<WorkflowKind, RealUseCaseExample>> = {
+  const examplesBase: Record<"tr" | "en", Record<WorkflowKind, RealUseCaseExample>> = {
     tr: {
       writing: {
         title: "İlk müşteri taslağını hızlıca çıkar",
@@ -359,6 +368,10 @@ function buildRealUseCaseExample(locale: Locale, tool: Pick<ToolCopySource, "nam
     }
   };
 
+  const examples = Object.fromEntries(
+    locales.map((itemLocale) => [itemLocale, localizeTree(itemLocale, examplesBase[getContentBaseLocale(itemLocale)])])
+  ) as Record<Locale, Record<WorkflowKind, RealUseCaseExample>>;
+
   return examples[locale][workflowKind];
 }
 
@@ -372,7 +385,8 @@ function isGenericMoneyUseCase(locale: Locale, item: MoneyUseCase) {
 function buildMoneyUseCaseTemplates(locale: Locale, tool: Pick<ToolCopySource, "name" | "bestUseCase">, workflowKind: WorkflowKind) {
   const bestUseCase = lowerFirst(locale, stripTrailingPunctuation(tool.bestUseCase));
 
-  const groups = {
+  type MoneyUseCaseGroup = "text" | "presentation" | "visual" | "media";
+  const groupsBase: Record<MoneyUseCaseGroup, Record<"tr" | "en", MoneyUseCase[]>> = {
     text: {
       tr: [
         {
@@ -389,7 +403,7 @@ function buildMoneyUseCaseTemplates(locale: Locale, tool: Pick<ToolCopySource, "
         },
         {
           title: "İç operasyon desteği",
-          description: `${bestUseCase} tarafındaki manuel hazırlığı azaltıp daha fazla zamanı editöryal karar, strateji ve final kalite kontrolüne ayırabilirsiniz.`
+          description: `${bestUseCase} tarafındaki manuel hazırlığı azaltıp daha fazla zamanı editoryal karar, strateji ve final kalite kontrolüne ayırabilirsiniz.`
         }
       ],
       en: [
@@ -525,7 +539,19 @@ function buildMoneyUseCaseTemplates(locale: Locale, tool: Pick<ToolCopySource, "
         }
       ]
     }
-  } as const;
+  };
+
+  const groups = Object.fromEntries(
+    locales.map((itemLocale) => [
+      itemLocale,
+      Object.fromEntries(
+        (Object.entries(groupsBase) as [MoneyUseCaseGroup, Record<"tr" | "en", MoneyUseCase[]>][]).map(([group, localizedBase]) => [
+          group,
+          localizeTree(itemLocale, localizedBase[getContentBaseLocale(itemLocale)])
+        ])
+      ) as Record<MoneyUseCaseGroup, MoneyUseCase[]>
+    ])
+  ) as Record<Locale, Record<MoneyUseCaseGroup, MoneyUseCase[]>>;
 
   const group =
     workflowKind === "presentation"
@@ -536,7 +562,7 @@ function buildMoneyUseCaseTemplates(locale: Locale, tool: Pick<ToolCopySource, "
           ? "media"
           : "text";
 
-  return groups[group][locale];
+  return groups[locale][group];
 }
 
 export function enrichToolCopy(locale: Locale, tool: ToolCopySource): LocalizedTool {
@@ -580,3 +606,5 @@ export function enrichToolCopy(locale: Locale, tool: ToolCopySource): LocalizedT
     compareProfile: buildToolCompareProfile(locale, tool)
   };
 }
+
+

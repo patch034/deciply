@@ -1,4 +1,4 @@
-import type { Locale } from "@/i18n/config";
+import type { ContentLocale } from "@/i18n/config";
 
 export type StaticPageSection = {
   title: string;
@@ -271,7 +271,7 @@ export const staticPages = {
     }
   }
 } as const satisfies Record<
-  Locale,
+  ContentLocale,
   {
     about: StaticPageContent;
     contact: StaticPageContent;

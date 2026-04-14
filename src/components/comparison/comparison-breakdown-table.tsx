@@ -1,8 +1,9 @@
 import { Badge } from "@/components/ui/badge";
 import type { ComparisonRow } from "@/data/comparisons";
+import type { SupportedLocale } from "@/i18n/config";
 
 type ComparisonBreakdownTableProps = {
-  locale: "tr" | "en";
+  locale: "tr" | "en" | "ar" | "ru" | "zh" | "ja" | "ko" | "el" | "da" | "fa";
   title: string;
   description: string;
   columns: {
@@ -55,7 +56,7 @@ function isPricingLabel(value: string) {
   );
 }
 
-function renderValue(value: string, locale: "tr" | "en", compact = false) {
+function renderValue(value: string, locale: "tr" | "en" | "ar" | "ru" | "zh" | "ja" | "ko" | "el" | "da" | "fa", compact = false) {
   const normalized = normalizeCompareText(value);
   const lowered = normalized.toLowerCase();
 

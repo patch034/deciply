@@ -1,11 +1,12 @@
-﻿import type { Locale } from "@/i18n/config";
+import type { SupportedLocale } from "@/i18n/config";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 
 export type TaxonomyOption = {
   slug: string;
   label: string;
 };
 
-export const toolCategoryOptions = {
+const baseToolCategoryOptions = {
   tr: [
     { slug: "writing", label: "Yazı" },
     { slug: "image", label: "Görsel" },
@@ -18,9 +19,9 @@ export const toolCategoryOptions = {
     { slug: "video", label: "Video" },
     { slug: "productivity", label: "Productivity AI" }
   ]
-} as const satisfies Record<Locale, readonly TaxonomyOption[]>;
+} as const;
 
-export const useCaseOptions = {
+const baseUseCaseOptions = {
   tr: [
     { slug: "business", label: "İşletmeler" },
     { slug: "students", label: "Öğrenciler" },
@@ -37,4 +38,33 @@ export const useCaseOptions = {
     { slug: "freelancers", label: "Freelancers" },
     { slug: "research", label: "Research" }
   ]
-} as const satisfies Record<Locale, readonly TaxonomyOption[]>;
+} as const;
+
+const buildLocalizedOptions = (locale: SupportedLocale, base: readonly TaxonomyOption[]) =>
+  localizeTree(locale, base) as readonly TaxonomyOption[];
+
+export const toolCategoryOptions = {
+  tr: baseToolCategoryOptions.tr,
+  en: baseToolCategoryOptions.en,
+  ar: buildLocalizedOptions("ar", baseToolCategoryOptions.en),
+  ru: buildLocalizedOptions("ru", baseToolCategoryOptions.en),
+  zh: buildLocalizedOptions("zh", baseToolCategoryOptions.en),
+  ja: buildLocalizedOptions("ja", baseToolCategoryOptions.en),
+  ko: buildLocalizedOptions("ko", baseToolCategoryOptions.en),
+  el: buildLocalizedOptions("el", baseToolCategoryOptions.en),
+  da: buildLocalizedOptions("da", baseToolCategoryOptions.en),
+  fa: buildLocalizedOptions("fa", baseToolCategoryOptions.en)
+} as const satisfies Record<SupportedLocale, readonly TaxonomyOption[]>;
+
+export const useCaseOptions = {
+  tr: baseUseCaseOptions.tr,
+  en: baseUseCaseOptions.en,
+  ar: buildLocalizedOptions("ar", baseUseCaseOptions.en),
+  ru: buildLocalizedOptions("ru", baseUseCaseOptions.en),
+  zh: buildLocalizedOptions("zh", baseUseCaseOptions.en),
+  ja: buildLocalizedOptions("ja", baseUseCaseOptions.en),
+  ko: buildLocalizedOptions("ko", baseUseCaseOptions.en),
+  el: buildLocalizedOptions("el", baseUseCaseOptions.en),
+  da: buildLocalizedOptions("da", baseUseCaseOptions.en),
+  fa: buildLocalizedOptions("fa", baseUseCaseOptions.en)
+} as const satisfies Record<SupportedLocale, readonly TaxonomyOption[]>;

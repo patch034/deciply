@@ -12,7 +12,7 @@ type DecisionBox = {
 };
 
 type ComparisonDecisionBoxesProps = {
-  locale: "tr" | "en";
+  locale: "tr" | "en" | "ar" | "ru" | "zh" | "ja" | "ko" | "el" | "da" | "fa";
   leftTool: {
     name: string;
     bestUseCase: string;
@@ -31,7 +31,7 @@ type ComparisonDecisionBoxesProps = {
 };
 
 function buildDecisionBoxes(
-  locale: "tr" | "en",
+  locale: "tr" | "en" | "ar" | "ru" | "zh" | "ja" | "ko" | "el" | "da" | "fa",
   leftTool: ComparisonDecisionBoxesProps["leftTool"],
   rightTool: ComparisonDecisionBoxesProps["rightTool"],
   alternativesHref: string

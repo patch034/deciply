@@ -1,3 +1,4 @@
+﻿import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type { Locale } from "@/i18n/config";
 import type { BlogSection, BlogSubSection } from "@/types/blog";
 
@@ -542,20 +543,21 @@ const playbooks: Record<string, Playbook> = {
 };
 
 export function getBlogPlaybookSections(slug: string, locale: Locale): BlogSection[] | null {
-  const playbook = playbooks[slug]?.[locale];
+  const playbook = playbooks[slug]?.[getContentBaseLocale(locale)];
 
   if (!playbook) {
     return null;
   }
 
+  const localized = localizeTree(locale, playbook);
   const isTurkish = locale === "tr";
 
   return [
-    section(isTurkish ? "Gerçek senaryo" : "Real scenario", playbook.scenarioParagraphs),
-    section(isTurkish ? "Adım adım sistem" : "Step-by-step system", [isTurkish ? "Bu yazının mantığı kolay para anlatmak değil; yapılabilir ve ölçülebilir bir sistem kurmaktır." : "The goal here is not easy-money language. It is a small system that can actually be executed and measured."], { subSections: playbook.stepCards.map((card) => sub(card.title, card.paragraphs, card.bullets)) }),
-    section(isTurkish ? "Ne kadar kazanılır?" : "How much can you earn?", playbook.earningsParagraphs, { comparison: { title: isTurkish ? "Gerçekçi aralık" : "Realistic range", items: playbook.earningsItems } }),
-    section(isTurkish ? "Nerede fail olur?" : "Where does it fail?", playbook.failParagraphs, { bullets: playbook.failBullets }),
-    section(isTurkish ? "Hangi tool ne işe yarar?" : "What does each tool do?", playbook.toolsParagraphs, { comparison: { title: isTurkish ? "Araç bağlamı" : "Tool context", items: playbook.toolItems } }),
-    section(isTurkish ? "Mini case study" : "Mini case study", playbook.caseParagraphs)
+    section(isTurkish ? "Gerçek senaryo" : "Real scenario", localized.scenarioParagraphs),
+    section(isTurkish ? "Adım adım sistem" : "Step-by-step system", [isTurkish ? "Bu yazının mantığı kolay para anlatmak değil; yapılabilir ve ölçülebilir bir sistem kurmaktır." : "The goal here is not easy-money language. It is a small system that can actually be executed and measured."], { subSections: localized.stepCards.map((card) => sub(card.title, card.paragraphs, card.bullets)) }),
+    section(isTurkish ? "Ne kadar kazanılır?" : "How much can you earn?", localized.earningsParagraphs, { comparison: { title: isTurkish ? "Gerçekçi aralık" : "Realistic range", items: localized.earningsItems } }),
+    section(isTurkish ? "Nerede fail olur?" : "Where does it fail?", localized.failParagraphs, { bullets: localized.failBullets }),
+    section(isTurkish ? "Hangi tool ne işe yarar?" : "What does each tool do?", localized.toolsParagraphs, { comparison: { title: isTurkish ? "Araç bağlamı" : "Tool context", items: localized.toolItems } }),
+    section(isTurkish ? "Mini case study" : "Mini case study", localized.caseParagraphs)
   ];
 }

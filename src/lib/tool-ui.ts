@@ -1,6 +1,7 @@
-﻿import { toolCategoryOptions } from "@/data/tool-taxonomy";
-import type { Locale } from "@/i18n/config";
+import { toolCategoryOptions } from "@/data/tool-taxonomy";
+import { locales, type Locale } from "@/i18n/config";
 import { formatPricing, getToolOutboundUrl } from "@/lib/catalog";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import { getToolLogoUrl } from "@/lib/logo";
 import type { LocalizedTool, PricingTier } from "@/types/catalog";
 import type { ToolCard as HomeToolCard } from "@/types/home";
@@ -22,12 +23,16 @@ const iconMap: Record<string, string> = {
   pictory: "PT"
 };
 
-const trustIndicators: Record<Locale, string[]> = {
+const trustIndicatorsBase: Record<"tr" | "en", string[]> = {
   tr: ["Tarafsız değerlendirme", "Düzenli güncellenir", "Affiliate bağlantılar içerebilir"],
   en: ["Neutral evaluation", "Updated regularly", "May include affiliate links"]
 };
 
-const useCaseLabelMap: Record<Locale, Record<string, string>> = {
+const trustIndicators = Object.fromEntries(
+  locales.map((locale) => [locale, localizeTree(locale, trustIndicatorsBase[getContentBaseLocale(locale)])])
+) as Record<Locale, string[]>;
+
+const useCaseLabelMapBase: Record<"tr" | "en", Record<string, string>> = {
   tr: {
     writing: "İçerik yazımı",
     image: "Görsel üretim",
@@ -52,25 +57,33 @@ const useCaseLabelMap: Record<Locale, Record<string, string>> = {
   }
 };
 
+const useCaseLabelMap = Object.fromEntries(
+  locales.map((locale) => [locale, localizeTree(locale, useCaseLabelMapBase[getContentBaseLocale(locale)])])
+) as Record<Locale, Record<string, string>>;
+
+const ctaLabelsBase: Record<"tr" | "en", Record<PricingTier, string>> = {
+  tr: {
+    FREE: "Ücretsiz Başla",
+    FREEMIUM: "Ücretsiz Başla",
+    PAID: "Detayları gör"
+  },
+  en: {
+    FREE: "Start Free",
+    FREEMIUM: "Start Free",
+    PAID: "View details"
+  }
+};
+
+const ctaLabels = Object.fromEntries(
+  locales.map((locale) => [locale, localizeTree(locale, ctaLabelsBase[getContentBaseLocale(locale)])])
+) as Record<Locale, Record<PricingTier, string>>;
+
 export function getToolTrustIndicators(locale: Locale) {
   return trustIndicators[locale];
 }
 
 export function getToolCtaLabel(locale: Locale, pricing: PricingTier) {
-  const labels: Record<Locale, Record<PricingTier, string>> = {
-    tr: {
-      FREE: "Ücretsiz Başla",
-      FREEMIUM: "Ücretsiz Başla",
-      PAID: "Detayları gör"
-    },
-    en: {
-      FREE: "Start Free",
-      FREEMIUM: "Start Free",
-      PAID: "View details"
-    }
-  };
-
-  return labels[locale][pricing];
+  return ctaLabels[locale][pricing];
 }
 
 export function getToolUseCaseTags(locale: Locale, tool: Pick<LocalizedTool, "toolCategorySlugs" | "useCaseSlugs" | "bestUseCase">) {
@@ -157,7 +170,3 @@ export function toHomeToolCard(locale: Locale, tool: LocalizedTool): HomeToolCar
     notIdealFor
   };
 }
-
-
-
-

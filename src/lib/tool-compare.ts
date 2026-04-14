@@ -1,5 +1,6 @@
 ﻿import type { Locale } from "@/i18n/config";
 import { toolCategoryOptions } from "@/data/tool-taxonomy";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type { LocalizedTool, ToolCompareProfile } from "@/types/catalog";
 
 function clampScore(value: number) {
@@ -15,7 +16,7 @@ function includesAny(text: string, keywords: string[]) {
 }
 
 function getPricingModel(locale: Locale, pricing: LocalizedTool["pricing"]) {
-  const labels: Record<Locale, Record<LocalizedTool["pricing"], string>> = {
+  const labels = {
     tr: {
       FREE: "Ücretsiz",
       FREEMIUM: "Kısmen ücretsiz",
@@ -26,11 +27,10 @@ function getPricingModel(locale: Locale, pricing: LocalizedTool["pricing"]) {
       FREEMIUM: "Freemium",
       PAID: "Paid"
     }
-  };
+  } as const;
 
-  return labels[locale][pricing];
+  return localizeTree(locale, labels[getContentBaseLocale(locale)])[pricing];
 }
-
 function getCategoryLabel(locale: Locale, tool: Pick<LocalizedTool, "toolCategorySlugs" | "bestUseCase">) {
   const categoryMap = new Map(toolCategoryOptions[locale].map((item) => [item.slug, item.label]));
   const primarySlug = tool.toolCategorySlugs[0] as (typeof toolCategoryOptions)[typeof locale][number]["slug"] | undefined;

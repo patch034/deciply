@@ -26,7 +26,7 @@ type ComparisonInsightSlide = {
 };
 
 type ComparisonInsightPanelProps = {
-  locale: "tr" | "en";
+  locale: "tr" | "en" | "ar" | "ru" | "zh" | "ja" | "ko" | "el" | "da" | "fa";
   tools: ComparisonBattleTool[];
   summary?: string;
   highlights?: ComparisonWinnerCard[];
@@ -35,7 +35,7 @@ type ComparisonInsightPanelProps = {
   className?: string;
 };
 
-function getBattleTitle(locale: "tr" | "en", tools: ComparisonBattleTool[]) {
+function getBattleTitle(locale: "tr" | "en" | "ar" | "ru" | "zh" | "ja" | "ko" | "el" | "da" | "fa", tools: ComparisonBattleTool[]) {
   return tools.map((tool) => tool.name).join(locale === "tr" ? " VS " : " VS ");
 }
 
