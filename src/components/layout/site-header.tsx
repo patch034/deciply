@@ -59,8 +59,8 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
       className={[
         "fixed left-0 right-0 top-0 z-[80] overflow-visible text-slate-900 transition-[background-color,box-shadow,border-color,backdrop-filter,transform] duration-300 will-change-[background-color,box-shadow,backdrop-filter,transform]",
         isScrolled
-          ? "border-b border-slate-200/55 bg-[rgba(255,255,255,0.68)] shadow-[0_18px_46px_-34px_rgba(15,23,42,0.16)] backdrop-blur-3xl backdrop-saturate-150 supports-[backdrop-filter]:bg-[rgba(255,255,255,0.68)]"
-          : "border-b border-slate-200/35 bg-[rgba(255,255,255,0.42)] shadow-[0_10px_28px_-34px_rgba(15,23,42,0.08)] backdrop-blur-2xl backdrop-saturate-150 supports-[backdrop-filter]:bg-[rgba(255,255,255,0.44)]"
+          ? "border-b border-slate-200/70 bg-[rgba(255,255,255,0.82)] shadow-[0_18px_46px_-34px_rgba(15,23,42,0.15)] backdrop-blur-3xl backdrop-saturate-150 supports-[backdrop-filter]:bg-[rgba(255,255,255,0.82)]"
+          : "border-b border-slate-200/50 bg-[rgba(255,255,255,0.66)] shadow-[0_10px_28px_-34px_rgba(15,23,42,0.09)] backdrop-blur-2xl backdrop-saturate-150 supports-[backdrop-filter]:bg-[rgba(255,255,255,0.66)]"
       ].join(" ")}
     >
       <div className="w-full px-0 py-0">
@@ -79,7 +79,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
                 <Link
                   key={item.href}
                   href={`/${locale}${item.href}`}
-                  className="inline-flex min-h-[40px] shrink-0 items-center rounded-full border border-slate-200/75 bg-white/52 px-4 text-[14px] font-semibold tracking-[-0.01em] text-slate-700 shadow-[0_8px_20px_-20px_rgba(15,23,42,0.18)] transition duration-200 hover:border-sky-300 hover:bg-sky-50 hover:text-[#0A2540] hover:shadow-[0_12px_26px_-18px_rgba(14,37,64,0.36)]"
+                  className="ui-pill-link shrink-0 px-4 text-[14px] tracking-[-0.01em]"
                 >
                   {item.label}
                 </Link>
@@ -96,7 +96,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
               <Link
                 key={`${item.href}-mobile`}
                 href={`/${locale}${item.href}`}
-                className="inline-flex min-h-[36px] shrink-0 items-center rounded-full border border-slate-200/75 bg-white/58 px-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-700 shadow-[0_8px_20px_-20px_rgba(15,23,42,0.18)] transition duration-200 hover:border-sky-300 hover:bg-sky-50 hover:text-[#0A2540] hover:shadow-[0_12px_26px_-18px_rgba(14,37,64,0.36)]"
+                className="ui-pill-link min-h-[36px] shrink-0 px-3 text-[11px] uppercase tracking-[0.12em]"
               >
                 {item.label}
               </Link>

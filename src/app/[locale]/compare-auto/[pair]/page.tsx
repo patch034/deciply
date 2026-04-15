@@ -39,6 +39,7 @@ export async function generateMetadata({
   }
 
   const canonicalPath = `/${safeLocale}/compare-auto/${pair}`;
+  const alternatesPath = `/compare-auto/${pair}`;
   const title = safeLocale === "tr" ? `${leftTool.name} vs ${rightTool.name} | Canlı karşılaştırma` : `${leftTool.name} vs ${rightTool.name} | Live compare`;
   const description =
     safeLocale === "tr"
@@ -54,7 +55,7 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: buildCanonicalUrl(canonicalPath),
-      languages: buildAlternates(canonicalPath)
+      languages: buildAlternates(alternatesPath)
     }
   };
 }

@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   const safeLocale = normalizeLocale(locale);
   const canonicalPath = `/${safeLocale}/compare-auto`;
+  const alternatesPath = "/compare-auto";
 
   return {
     title: safeLocale === "tr" ? "Canlı AI karşılaştırma | Deciply" : "Live AI compare | Deciply",
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         : "Choose any two AI tools, compare them instantly, and jump into editorial comparison pages when you need more depth.",
     alternates: {
       canonical: buildCanonicalUrl(canonicalPath),
-      languages: buildAlternates(canonicalPath)
+      languages: buildAlternates(alternatesPath)
     }
   };
 }

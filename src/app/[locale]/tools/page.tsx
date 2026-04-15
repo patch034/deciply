@@ -41,14 +41,15 @@ export async function generateMetadata({
 
   const safeLocale = normalizeLocale(locale);
   const { page } = parseToolsQueryFilters(resolvedSearchParams);
-  const canonicalPath = `/${locale}/tools?page=${page}`;
+  const canonicalPath = `/${safeLocale}/tools?page=${page}`;
+  const alternatesPath = `/tools?page=${page}`;
 
   return {
     title: buildToolsPageTitle(safeLocale, page),
     description: buildToolsIndexMetaDescription(safeLocale, getToolCount(), page),
     alternates: {
       canonical: buildCanonicalUrl(canonicalPath),
-      languages: buildAlternates(canonicalPath)
+      languages: buildAlternates(alternatesPath)
     }
   };
 }

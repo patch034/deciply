@@ -86,7 +86,7 @@ export function ToolCard({
                   <span className={`h-2 w-2 shrink-0 rounded-full ${pricingSignal}`} />
                   <span className="truncate">{pricingLabel}</span>
                 </Badge>
-                <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-slate-500">
+                <span className="ui-soft-chip px-2.5 py-1 text-[11px]">
                   {locale === "tr" ? "Ayrıntı" : "Detail"}
                 </span>
               </div>
@@ -99,7 +99,7 @@ export function ToolCard({
 
               <div className="mt-2 flex flex-wrap gap-2">
                 {categoryNames.slice(1, 3).map((category) => (
-                  <span key={category} className="inline-flex min-h-[26px] items-center rounded-full border border-slate-200 bg-white px-2.5 text-[10px] font-semibold text-slate-600">
+                  <span key={category} className="ui-soft-chip min-h-[26px] bg-white px-2.5 text-[10px] text-slate-600">
                     {category}
                   </span>
                 ))}
@@ -112,19 +112,19 @@ export function ToolCard({
             <div className="grid w-full gap-2 sm:grid-cols-2 lg:w-[220px]">
               <Link
                 href={`/${locale}/tools/${tool.slug}`}
-                className="inline-flex min-h-[40px] items-center justify-center rounded-[14px] border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition duration-150 hover:border-sky-200 hover:bg-slate-50 hover:text-slate-950"
+                  className="inline-flex min-h-[40px] items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition duration-150 hover:border-sky-200 hover:bg-slate-50 hover:text-slate-950"
               >
                 {detailLabel}
               </Link>
               {compareHref ? (
                 <Link
                   href={compareHref}
-                  className="inline-flex min-h-[40px] items-center justify-center rounded-[14px] border border-sky-200 bg-sky-50 px-4 py-2.5 text-sm font-semibold text-[#0055FF] transition duration-150 hover:border-sky-300 hover:bg-sky-100 hover:text-[#0E2450]"
+                  className="inline-flex min-h-[40px] items-center justify-center rounded-xl border border-sky-200 bg-sky-50 px-4 py-2.5 text-sm font-semibold text-[#0055FF] transition duration-150 hover:border-sky-300 hover:bg-sky-100 hover:text-[#0E2450]"
                 >
                   {compareLabel}
                 </Link>
               ) : (
-                <span className="inline-flex min-h-[40px] items-center justify-center rounded-[14px] border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-400">
+                <span className="inline-flex min-h-[40px] items-center justify-center rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-400">
                   {compareLabel}
                 </span>
               )}
@@ -252,7 +252,7 @@ export function ToolCard({
             {detailLabel}
           </Link>
           {compareHref ? (
-          <Link href={compareHref} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-[14px] border border-sky-200 bg-sky-50 px-4 py-2.5 text-sm font-semibold text-[#0055FF] transition duration-150 hover:border-sky-300 hover:bg-sky-100 hover:text-[#0E2450]">
+          <Link href={compareHref} className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-xl border border-sky-200 bg-sky-50 px-4 py-2.5 text-sm font-semibold text-[#0055FF] transition duration-150 hover:border-sky-300 hover:bg-sky-100 hover:text-[#0E2450]">
               {compareLabel}
             </Link>
           ) : null}

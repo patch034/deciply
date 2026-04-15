@@ -119,7 +119,7 @@ function buildRelatedLinks(title: string, locale: Locale): AiNewsLink[] {
   if (lower.includes("gemini") || lower.includes("google")) {
     add("Gemini", `/${locale}/tools/gemini`);
     add("ChatGPT vs Gemini", `/${locale}/compare/chatgpt-vs-gemini`);
-    add(locale === "tr" ? "Araştırma" : "Research", `/${locale}/categories/research-analysis`);
+    add(locale === "tr" ? "Araştırma" : "Research", `/${locale}/categories/research-data-analysis`);
   }
 
   if (lower.includes("copilot") || lower.includes("microsoft")) {
@@ -142,7 +142,7 @@ function buildRelatedLinks(title: string, locale: Locale): AiNewsLink[] {
 
   if (lower.includes("voice") || lower.includes("elevenlabs") || lower.includes("playht")) {
     add("ElevenLabs", `/${locale}/tools/elevenlabs`);
-    add(locale === "tr" ? "Konuşma Araçları" : "Speech tools", `/${locale}/categories/speech-and-voice`);
+    add(locale === "tr" ? "Ses üretimi" : "Audio generation", `/${locale}/categories/audio-generation-conversion`);
     add("CapCut AI", `/${locale}/tools/capcut-ai`);
   }
 

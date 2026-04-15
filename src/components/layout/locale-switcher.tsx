@@ -37,11 +37,29 @@ function GlobeIcon() {
   );
 }
 
+function stripLocaleFromPathname(pathname: string) {
+  const segments = pathname.split("/").filter(Boolean);
+
+  if (!segments.length) {
+    return "";
+  }
+
+  const [first, ...rest] = segments;
+  const isLocaleSegment = languageEntries.some((entry) => entry.code === first);
+
+  if (!isLocaleSegment) {
+    return `/${segments.join("/")}`;
+  }
+
+  return rest.length ? `/${rest.join("/")}` : "";
+}
+
 export function LocaleSwitcher({ locale }: { locale: SupportedLocale }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
   const [menuPosition, setMenuPosition] = useState<{ top: number; left: number; width: number } | null>(null);
+  const [pathWithQuery, setPathWithQuery] = useState("/");
 
   useEffect(() => {
     function onPointerDown(event: MouseEvent) {
@@ -59,6 +77,16 @@ export function LocaleSwitcher({ locale }: { locale: SupportedLocale }) {
     return () => {
       document.removeEventListener("mousedown", onPointerDown);
     };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const normalizedPath = stripLocaleFromPathname(window.location.pathname);
+    const search = window.location.search ?? "";
+    setPathWithQuery(`${normalizedPath}${search}`);
   }, []);
 
   useEffect(() => {
@@ -136,7 +164,7 @@ export function LocaleSwitcher({ locale }: { locale: SupportedLocale }) {
                     return (
                       <Link
                         key={entry.code}
-                        href={`/${entry.code}`}
+                        href={`/${entry.code}${pathWithQuery}`}
                         onClick={() => setOpen(false)}
                         className={[
                           "flex items-center justify-between rounded-[18px] px-3 py-3 text-left transition",

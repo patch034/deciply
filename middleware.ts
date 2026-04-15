@@ -47,6 +47,16 @@ function getRequestProtocol(request: NextRequest) {
   return (request.headers.get("x-forwarded-proto") ?? request.nextUrl.protocol.replace(":", "")).toLowerCase();
 }
 
+function getLocaleFromPathname(pathname: string) {
+  const [, maybeLocale] = pathname.split("/");
+
+  if (!maybeLocale) {
+    return null;
+  }
+
+  return locales.includes(maybeLocale as (typeof locales)[number]) ? maybeLocale : null;
+}
+
 export function middleware(request: NextRequest) {
   const pathname = normalizePathname(request.nextUrl.pathname);
 
@@ -82,7 +92,17 @@ export function middleware(request: NextRequest) {
   );
 
   if (pathnameHasLocale) {
-    return NextResponse.next();
+    const pathnameLocale = getLocaleFromPathname(pathname);
+    const response = NextResponse.next();
+
+    if (pathnameLocale) {
+      response.cookies.set(localeCookieName, pathnameLocale, {
+        path: "/",
+        maxAge: 60 * 60 * 24 * 365
+      });
+    }
+
+    return response;
   }
 
   const locale = getPreferredLocale(request);

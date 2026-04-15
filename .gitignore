@@ -1,10 +1,21 @@
 .next
 node_modules
+.turbo
+.cache
 .env
 .env.local
 dist
+build
+out
 coverage
 *.log
+logs
+temp
+tmp
+backups
+screenshots
+.DS_Store
+Thumbs.db
 .edge-profile/
 .edge-profile-test2/
 review-bundle/
@@ -21,3 +32,4 @@ DECIPLY_UI_AUDIT.md
 DECIPLY_RELEVANT_SOURCE_DUMP.md
 DECIPLY_CONTENT_CATALOG.md
 deciply-full-code-export.md
+toolnova-full-code-export.md

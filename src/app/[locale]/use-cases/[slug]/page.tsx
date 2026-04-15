@@ -145,13 +145,14 @@ export async function generateMetadata({
   const title = buildUseCaseTitle(safeLocale, page.title);
   const description = buildUseCaseDescription(safeLocale, page.title, tools.map((item) => item.name));
   const canonicalPath = buildUseCasePath(safeLocale, slug);
+  const alternatesPath = `/use-cases/${slug}`;
 
   return {
     title,
     description,
     alternates: {
       canonical: buildCanonicalUrl(canonicalPath),
-      languages: buildAlternates(canonicalPath)
+      languages: buildAlternates(alternatesPath)
     },
     openGraph: {
       type: "website",

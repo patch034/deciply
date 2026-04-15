@@ -132,13 +132,14 @@ export async function generateMetadata({
     alternatives.map((item) => item.name)
   );
   const canonicalPath = buildAlternativesPath(safeLocale, tool);
+  const alternatesPath = `/alternatives/${tool}`;
 
   return {
     title,
     description,
     alternates: {
       canonical: buildCanonicalUrl(canonicalPath),
-      languages: buildAlternates(canonicalPath)
+      languages: buildAlternates(alternatesPath)
     },
     openGraph: {
       type: "website",

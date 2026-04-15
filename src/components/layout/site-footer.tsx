@@ -105,7 +105,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
             </div>
             <Link
               href={`/${locale}/tools`}
-              className="inline-flex rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-sky-200 hover:text-slate-950"
+              className="ui-pill-link min-h-[34px] px-3 text-xs"
             >
               {locale === "tr" ? "Tüm araçlar" : "All tools"}
             </Link>
@@ -116,7 +116,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
               <Link
                 key={item.label}
                 href={`/${locale}${item.href}`}
-                className="inline-flex min-h-[34px] items-center rounded-full border border-slate-200 bg-slate-50 px-3 text-xs font-semibold text-slate-600 transition hover:border-sky-200 hover:bg-white hover:text-[#0E2450]"
+                className="ui-pill-link min-h-[34px] px-3 text-xs"
               >
                 {item.label}
               </Link>
@@ -125,13 +125,13 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
           <div className="mt-4 flex flex-wrap gap-2">
             <Link
               href={`/${locale}/categories/mega`}
-              className="inline-flex min-h-[34px] items-center rounded-full border border-sky-200 bg-sky-50 px-3 text-xs font-semibold text-[#0055FF] transition hover:border-sky-300 hover:bg-sky-100"
+              className="ui-pill-link min-h-[34px] border-sky-200 bg-sky-50 px-3 text-xs text-[#0055FF] hover:border-sky-300 hover:bg-sky-100 hover:text-[#0E2450]"
             >
               {locale === "tr" ? "Mega dizin" : "Mega directory"}
             </Link>
             <Link
               href={`/${locale}/news`}
-              className="inline-flex min-h-[34px] items-center rounded-full border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-600 transition hover:border-sky-200 hover:text-[#0E2450]"
+              className="ui-pill-link min-h-[34px] px-3 text-xs"
             >
               {locale === "tr" ? "AI Haberleri" : "AI News"}
             </Link>
