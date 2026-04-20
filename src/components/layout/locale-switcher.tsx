@@ -84,21 +84,21 @@ export function LocaleSwitcher({ locale }: { locale: SupportedLocale }) {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((current) => !current)}
-        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-slate-200/90 bg-white/72 px-3.5 text-sm font-semibold text-slate-900 shadow-[0_14px_34px_-28px_rgba(15,23,42,0.28)] backdrop-blur-xl transition hover:border-sky-200 hover:bg-white/84"
+        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-slate-200 bg-white/95 px-3.5 text-sm font-bold text-slate-950 shadow-[0_14px_34px_-24px_rgba(15,23,42,0.22)] backdrop-blur transition hover:border-sky-300 hover:bg-white"
       >
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-600">
+        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-700">
           <GlobeIcon />
         </span>
         <span className="hidden sm:inline">{activeLanguage.nativeLabel}</span>
         <span className="sm:hidden">{activeLanguage.code.toUpperCase()}</span>
-        <span aria-hidden="true" className="text-xs text-slate-400">
+        <span aria-hidden="true" className="text-xs text-slate-500">
           ▾
         </span>
       </button>
 
       {open ? (
         <div
-          className="absolute right-0 top-[calc(100%+0.7rem)] z-[120] w-[min(18rem,calc(100vw-1rem))] rounded-[24px] border border-slate-200/90 bg-white/94 p-2 shadow-[0_24px_72px_-34px_rgba(15,23,42,0.24)] backdrop-blur-2xl"
+          className="absolute right-0 top-[calc(100%+0.7rem)] z-[999] w-[min(19rem,calc(100vw-1rem))] rounded-[24px] border border-slate-200 bg-white p-2 shadow-[0_24px_72px_-28px_rgba(15,23,42,0.26)]"
           role="menu"
         >
           <div className="grid gap-1">
@@ -108,18 +108,18 @@ export function LocaleSwitcher({ locale }: { locale: SupportedLocale }) {
                 href={`/${entry.code}${pathWithQuery}`}
                 onClick={() => setOpen(false)}
                 className={[
-                  "flex items-center justify-between rounded-[18px] px-3 py-3 transition",
+                  "flex min-h-[54px] items-center justify-between rounded-[18px] px-3 py-3 transition",
                   entry.code === locale
                     ? "bg-sky-50 text-slate-950 ring-1 ring-sky-200"
-                    : "text-slate-700 hover:bg-slate-50"
+                    : "text-slate-700 hover:bg-slate-50 hover:text-slate-950"
                 ].join(" ")}
                 role="menuitem"
               >
                 <span className="min-w-0">
-                  <span className="block text-sm font-semibold">{entry.nativeLabel}</span>
-                  <span className="block text-[11px] text-slate-400">{entry.label}</span>
+                  <span className="block text-sm font-bold">{entry.nativeLabel}</span>
+                  <span className="block text-[11px] font-semibold text-slate-400">{entry.label}</span>
                 </span>
-                <span className="rounded-full border border-slate-200 bg-white px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                <span className="rounded-full border border-slate-200 bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">
                   {entry.code.toUpperCase()}
                 </span>
               </Link>

@@ -108,7 +108,19 @@ function legacyCategoryToBrowse(category: string) {
 }
 
 function buildBrowseOptions(locale: Locale): BrowseOption[] {
-  const tr = locale === "tr";
+  const labels: Record<Locale, Record<string, string>> = {
+    tr: { all: "Tümü", writing: "Yazı", image: "Görsel", video: "Video", productivity: "Verimlilik", coding: "Kod", marketing: "Pazarlama", seo: "SEO", education: "Eğitim", voice: "Ses ve konuşma", business: "İşletme", research: "Araştırma", finance: "Finans", social: "Sosyal medya", health: "Sağlık", other: "Diğer" },
+    en: { all: "All", writing: "Writing", image: "Image", video: "Video", productivity: "Productivity", coding: "Coding", marketing: "Marketing", seo: "SEO", education: "Education", voice: "Voice", business: "Business", research: "Research", finance: "Finance", social: "Social media", health: "Health", other: "Other" },
+    ar: { all: "الكل", writing: "كتابة", image: "صور", video: "فيديو", productivity: "إنتاجية", coding: "برمجة", marketing: "تسويق", seo: "SEO", education: "تعليم", voice: "صوت", business: "أعمال", research: "بحث", finance: "مال", social: "تواصل اجتماعي", health: "صحة", other: "أخرى" },
+    ru: { all: "Все", writing: "Тексты", image: "Изображения", video: "Видео", productivity: "Продуктивность", coding: "Код", marketing: "Маркетинг", seo: "SEO", education: "Обучение", voice: "Голос", business: "Бизнес", research: "Исследования", finance: "Финансы", social: "Соцсети", health: "Здоровье", other: "Другое" },
+    zh: { all: "全部", writing: "写作", image: "图像", video: "视频", productivity: "效率", coding: "编程", marketing: "营销", seo: "SEO", education: "教育", voice: "语音", business: "商业", research: "研究", finance: "金融", social: "社交媒体", health: "健康", other: "其他" },
+    ja: { all: "すべて", writing: "文章", image: "画像", video: "動画", productivity: "生産性", coding: "コード", marketing: "マーケティング", seo: "SEO", education: "教育", voice: "音声", business: "ビジネス", research: "調査", finance: "金融", social: "SNS", health: "健康", other: "その他" },
+    ko: { all: "전체", writing: "글쓰기", image: "이미지", video: "비디오", productivity: "생산성", coding: "코딩", marketing: "마케팅", seo: "SEO", education: "교육", voice: "음성", business: "비즈니스", research: "리서치", finance: "금융", social: "소셜", health: "건강", other: "기타" },
+    el: { all: "Όλα", writing: "Κείμενο", image: "Εικόνα", video: "Βίντεο", productivity: "Παραγωγικότητα", coding: "Κώδικας", marketing: "Marketing", seo: "SEO", education: "Εκπαίδευση", voice: "Φωνή", business: "Επιχείρηση", research: "Έρευνα", finance: "Οικονομικά", social: "Social media", health: "Υγεία", other: "Άλλα" },
+    da: { all: "Alle", writing: "Skrivning", image: "Billede", video: "Video", productivity: "Produktivitet", coding: "Kode", marketing: "Marketing", seo: "SEO", education: "Uddannelse", voice: "Stemme", business: "Business", research: "Research", finance: "Finans", social: "Sociale medier", health: "Sundhed", other: "Andet" },
+    fa: { all: "همه", writing: "نوشتن", image: "تصویر", video: "ویدئو", productivity: "بهره‌وری", coding: "کدنویسی", marketing: "بازاریابی", seo: "SEO", education: "آموزش", voice: "صدا", business: "کسب‌وکار", research: "پژوهش", finance: "مالی", social: "شبکه اجتماعی", health: "سلامت", other: "سایر" }
+  };
+  const copy = labels[locale] ?? labels.en;
   const primaryMatchers: Array<(tool: ExplorerTool, text: string) => boolean> = [];
 
   const create = (slug: string, label: string, matcher: (tool: ExplorerTool, text: string) => boolean): BrowseOption => {
@@ -116,31 +128,31 @@ function buildBrowseOptions(locale: Locale): BrowseOption[] {
     return { slug, label, matches: matcher };
   };
 
-  const writing = create("writing", tr ? "Yazı" : "Writing", (tool, text) =>
+  const writing = create("writing", copy.writing, (tool, text) =>
     tool.toolCategorySlugs.includes("writing") ||
     includesAny(text, ["write", "writing", "copy", "content", "blog", "article", "grammar", "email", "script", "summar"])
   );
 
-  const image = create("image", tr ? "Görsel" : "Image", (tool, text) =>
+  const image = create("image", copy.image, (tool, text) =>
     tool.toolCategorySlugs.includes("image") ||
     includesAny(text, ["image", "photo", "picture", "design", "logo", "illustration", "graphic", "art", "portrait"])
   );
 
-  const video = create("video", tr ? "Video" : "Video", (tool, text) =>
+  const video = create("video", copy.video, (tool, text) =>
     tool.toolCategorySlugs.includes("video") ||
     includesAny(text, ["video", "clip", "reel", "film", "subtitle", "edit", "animation", "motion", "cut"])
   );
 
-  const productivity = create("productivity", tr ? "Verimlilik" : "Productivity", (tool, text) =>
+  const productivity = create("productivity", copy.productivity, (tool, text) =>
     tool.toolCategorySlugs.includes("productivity") ||
     includesAny(text, ["workflow", "productivity", "assistant", "meeting", "notes", "task", "calendar", "email", "planner"])
   );
 
-  const coding = create("coding", tr ? "Kod" : "Coding", (tool, text) =>
+  const coding = create("coding", copy.coding, (tool, text) =>
     includesAny(text, ["code", "coding", "developer", "dev", "program", "api", "github", "cursor", "terminal", "cli", "ide", "replit", "v0"])
   );
 
-  const marketing = create("marketing", tr ? "Pazarlama" : "Marketing", (tool, text) =>
+  const marketing = create("marketing", copy.marketing, (tool, text) =>
     includesAny(text, ["marketing", "campaign", "brand", "growth", "ads", "sales", "crm", "lead", "conversion", "outreach"])
   );
 
@@ -148,39 +160,39 @@ function buildBrowseOptions(locale: Locale): BrowseOption[] {
     includesAny(text, ["seo", "search", "keyword", "backlink", "ranking", "serp", "marketmuse", "frase", "scalenut", "outranking", "contentshake"])
   );
 
-  const education = create("education", tr ? "Eğitim" : "Education", (tool, text) =>
+  const education = create("education", copy.education, (tool, text) =>
     includesAny(text, ["student", "students", "education", "learn", "study", "school", "teacher", "tutor", "classroom"])
   );
 
-  const voice = create("voice", tr ? "Ses ve konuşma" : "Voice", (tool, text) =>
+  const voice = create("voice", copy.voice, (tool, text) =>
     includesAny(text, ["voice", "audio", "speech", "transcription", "podcast", "meeting", "caption", "elevenlabs", "otter", "fireflies", "notta", "fathom"])
   );
 
-  const business = create("business", tr ? "İşletme" : "Business", (tool, text) =>
+  const business = create("business", copy.business, (tool, text) =>
     includesAny(text, ["business", "enterprise", "startup", "operations", "support", "customer", "sales", "automation", "workflow", "hubspot", "intercom", "zendesk"])
   );
 
-  const research = create("research", tr ? "Araştırma" : "Research", (tool, text) =>
+  const research = create("research", copy.research, (tool, text) =>
     tool.useCaseSlugs.includes("research") ||
     includesAny(text, ["research", "answer", "paper", "citation", "query", "search", "perplexity", "phind", "analysis", "explore"])
   );
 
-  const finance = create("finance", tr ? "Finans" : "Finance", (tool, text) =>
+  const finance = create("finance", copy.finance, (tool, text) =>
     includesAny(text, ["finance", "invoice", "accounting", "budget", "money", "tax", "legal", "expense"])
   );
 
-  const social = create("social", tr ? "Sosyal medya" : "Social media", (tool, text) =>
+  const social = create("social", copy.social, (tool, text) =>
     includesAny(text, ["social", "linkedin", "instagram", "twitter", "x ", "tiktok", "post", "scheduler", "hootsuite", "buffer", "sprout"])
   );
 
-  const health = create("health", tr ? "Sağlık" : "Health", (tool, text) =>
+  const health = create("health", copy.health, (tool, text) =>
     includesAny(text, ["health", "medical", "wellness", "fitness", "therapy", "doctor", "clinic"])
   );
 
-  const other = create("other", tr ? "Diğer" : "Other", (tool, text) => !primaryMatchers.some((matcher) => matcher(tool, text)));
+  const other = create("other", copy.other, (tool, text) => !primaryMatchers.some((matcher) => matcher(tool, text)));
 
   return [
-    { slug: "all", label: tr ? "Tümü" : "All", matches: () => true },
+    { slug: "all", label: copy.all, matches: () => true },
     writing,
     image,
     video,

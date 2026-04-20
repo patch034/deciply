@@ -13,8 +13,20 @@ import {
 import { buildComparisonPath, getComparisonTargetSlugs } from "@/lib/comparisons";
 import { getToolLogoUrl } from "@/lib/logo";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, normalizeLocale } from "@/i18n/config";
-import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import { buildToolsIndexMetaDescription, buildToolsPageTitle } from "@/lib/seo";
+
+const toolsPageCopy = {
+  tr: { title: "AI araçlarını keşfet", subtitle: "Araçları, kategorileri ve kullanım amaçlarını hızlıca tara.", placeholder: "Araç ara, kategori ara veya kullanım amacını yaz…" },
+  en: { title: "Explore AI tools", subtitle: "Scan tools, categories, and use cases faster.", placeholder: "Search tools, categories, or use cases…" },
+  ar: { title: "استكشف أدوات AI", subtitle: "تصفح الأدوات والفئات وحالات الاستخدام بسرعة.", placeholder: "ابحث عن أداة أو فئة أو اكتب هدف الاستخدام…" },
+  ru: { title: "Изучайте AI-инструменты", subtitle: "Быстрее просматривайте инструменты, категории и сценарии.", placeholder: "Ищите инструмент, категорию или задачу…" },
+  zh: { title: "探索 AI 工具", subtitle: "更快浏览工具、分类和使用场景。", placeholder: "搜索工具、分类或输入使用目的…" },
+  ja: { title: "AIツールを探す", subtitle: "ツール、カテゴリ、用途をすばやく確認できます。", placeholder: "ツール名、カテゴリ、利用目的を検索…" },
+  ko: { title: "AI 도구 탐색", subtitle: "도구, 카테고리, 사용 목적을 빠르게 훑어보세요.", placeholder: "도구, 카테고리 또는 사용 목적 검색…" },
+  el: { title: "Ανακαλύψτε εργαλεία AI", subtitle: "Σαρώστε γρήγορα εργαλεία, κατηγορίες και χρήσεις.", placeholder: "Αναζήτηση εργαλείου, κατηγορίας ή σκοπού χρήσης…" },
+  da: { title: "Udforsk AI-værktøjer", subtitle: "Scan værktøjer, kategorier og brugsscenarier hurtigere.", placeholder: "Søg efter værktøj, kategori eller brugsmål…" },
+  fa: { title: "ابزارهای AI را کشف کنید", subtitle: "ابزارها، دسته‌ها و کاربردها را سریع‌تر مرور کنید.", placeholder: "ابزار، دسته یا هدف استفاده را جستجو کنید…" }
+} as const;
 
 export async function generateMetadata({
   params,
@@ -85,27 +97,8 @@ export default async function ToolsPage({
   const useCaseLabelMap = new Map<string, string>(
     useCaseOptions[safeLocale].map((item): [string, string] => [item.slug, item.label])
   );
-  const heroCopy = localizeTree(
-    safeLocale,
-    safeLocale === "tr"
-      ? {
-          title: "AI araçlarını keşfet",
-          subtitle: "Araçları, kategorileri ve kullanım amaçlarını hızlıca tara."
-        }
-      : {
-          title: "Explore AI tools",
-          subtitle: "Scan tools, categories, and use cases faster."
-        }
-  );
-  const searchPlaceholder =
-    safeLocale === "tr"
-      ? "Araç ara, kategori ara veya kullanım amacını yaz…"
-      : localizeTree(
-          safeLocale,
-          getContentBaseLocale(safeLocale) === "tr"
-            ? "Araç ara, kategori ara veya kullanım amacını yaz…"
-            : "Search tools, categories, or use cases…"
-        );
+  const heroCopy = toolsPageCopy[safeLocale];
+  const searchPlaceholder = heroCopy.placeholder;
 
   const explorerTools = toolItems.map((tool, index) => {
     const siteCategoryNames = tool.categorySlugs.map((item) => categoryNames.get(item) ?? item);

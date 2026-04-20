@@ -110,7 +110,7 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
               </span>
             </div>
 
-            <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
               {category.subcategories.map((subcategory) => (
                 <Link
                   key={subcategory.slug}

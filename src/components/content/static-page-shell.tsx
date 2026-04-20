@@ -7,7 +7,7 @@ type StaticPageShellProps = {
 export function StaticPageShell({ content }: StaticPageShellProps) {
   return (
     <div className="ui-page-shell mx-auto flex w-full max-w-5xl flex-col gap-5 px-4 py-8 sm:px-6 lg:px-8 lg:py-11">
-      <section className="rounded-[28px] border border-slate-200 bg-white px-5 py-7 shadow-[0_18px_44px_rgba(15,23,42,0.08)] sm:px-7 lg:px-9">
+      <section className="rounded-[28px] border border-slate-200 bg-white/95 px-5 py-7 shadow-[0_18px_44px_rgba(15,23,42,0.08)] sm:px-7 lg:px-9">
         <p className="text-xs font-black uppercase tracking-[0.2em] text-[#0055FF]">Deciply</p>
         <h1 className="mt-3 text-3xl font-black tracking-[-0.055em] text-slate-950 md:text-5xl">
           {content.title}
@@ -24,7 +24,7 @@ export function StaticPageShell({ content }: StaticPageShellProps) {
         {content.sections.map((section) => (
           <section
             key={section.title}
-            className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_14px_34px_rgba(15,23,42,0.06)] md:p-6"
+            className="rounded-[24px] border border-slate-200 bg-white/95 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.06)] md:p-6"
           >
             <h2 className="text-xl font-black tracking-[-0.035em] text-slate-950 md:text-2xl">{section.title}</h2>
             {section.paragraphs?.map((paragraph) => (

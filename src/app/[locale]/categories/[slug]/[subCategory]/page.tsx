@@ -5,34 +5,12 @@ import { notFound } from "next/navigation";
 
 import { PremiumButton } from "@/components/ui/premium-button";
 import { formatPricing, getLocalizedCategoryBySlug } from "@/lib/catalog";
-import { getSubcategory, getToolsBySubcategory } from "@/lib/category-taxonomy";
+import { categoryUiCopy, getCategoryHubItem, getSubcategory, getToolsBySubcategory } from "@/lib/category-taxonomy";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, normalizeLocale } from "@/i18n/config";
-import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import { getToolLogoUrl } from "@/lib/logo";
 
 export const revalidate = 3600;
 export const dynamicParams = true;
-
-const copyBase = {
-  tr: {
-    eyebrow: "Alt kategori",
-    tools: "İlgili araçlar",
-    empty: "Bu alt kategori için henüz gösterilecek araç bulunamadı.",
-    inspect: "İncele",
-    backToCategory: "Kategoriye dön",
-    backToAll: "Tüm kategoriler",
-    toolCountLabel: "araç"
-  },
-  en: {
-    eyebrow: "Subcategory",
-    tools: "Related tools",
-    empty: "No tools are available for this subcategory yet.",
-    inspect: "Inspect",
-    backToCategory: "Back to category",
-    backToAll: "All categories",
-    toolCountLabel: "tools"
-  }
-} as const;
 
 export function generateStaticParams() {
   return [];
@@ -51,16 +29,15 @@ export async function generateMetadata({
 
   const safeLocale = normalizeLocale(locale);
   const category = getLocalizedCategoryBySlug(safeLocale, slug);
+  const hubItem = getCategoryHubItem(safeLocale, slug);
   const subcategory = getSubcategory(safeLocale, slug, subCategory);
 
-  if (!category || !subcategory) {
+  if (!category || !hubItem || !subcategory) {
     return {};
   }
 
-  const title = `${subcategory.name} | ${category.name} | Deciply`;
-
   return {
-    title,
+    title: `${subcategory.name} | ${hubItem.name} | Deciply`,
     description: subcategory.description,
     alternates: {
       canonical: buildCanonicalUrl(`/${safeLocale}/categories/${slug}/${subCategory}`),
@@ -82,13 +59,14 @@ export default async function SubcategoryPage({
 
   const safeLocale = normalizeLocale(locale);
   const category = getLocalizedCategoryBySlug(safeLocale, slug);
+  const hubItem = getCategoryHubItem(safeLocale, slug);
   const subcategory = getSubcategory(safeLocale, slug, subCategory);
 
-  if (!category || !subcategory) {
+  if (!category || !hubItem || !subcategory) {
     notFound();
   }
 
-  const copy = localizeTree(safeLocale, copyBase[getContentBaseLocale(safeLocale)]);
+  const copy = categoryUiCopy[safeLocale];
   const tools = getToolsBySubcategory(safeLocale, slug, subCategory);
 
   return (
@@ -96,14 +74,14 @@ export default async function SubcategoryPage({
       <section className="ui-card rounded-[26px] p-6 sm:p-7">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-sky-600">{copy.eyebrow}</p>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-sky-600">{copy.subcategories}</p>
             <h1 className="mt-2 text-[2rem] font-black tracking-[-0.05em] text-slate-950 sm:text-[2.7rem]">
               {subcategory.name}
             </h1>
             <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">{subcategory.description}</p>
             <div className="mt-4 flex flex-wrap gap-2">
               <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-bold text-slate-600">
-                {category.name}
+                {hubItem.name}
               </span>
               <span className="rounded-full border border-sky-100 bg-sky-50 px-3 py-1 text-xs font-bold text-sky-700">
                 {tools.length} {copy.toolCountLabel}
@@ -115,7 +93,7 @@ export default async function SubcategoryPage({
               {copy.backToCategory}
             </PremiumButton>
             <PremiumButton href={`/${safeLocale}/categories`} variant="secondary">
-              {copy.backToAll}
+              {copy.allCategories}
             </PremiumButton>
           </div>
         </div>
