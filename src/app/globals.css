@@ -220,6 +220,22 @@ select.dark-select {
   color: #64748b;
 }
 
+.homepage-panel-scroll,
+.homepage-horizontal-scroll {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.homepage-panel-scroll::-webkit-scrollbar,
+.homepage-horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.homepage-panel-scroll {
+  scroll-behavior: smooth;
+}
+
 .ui-gradient-text {
   background-image: var(--tn-gradient-primary);
   background-clip: text;

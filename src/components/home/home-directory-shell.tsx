@@ -1,33 +1,48 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { HorizontalSlider } from "@/components/home/horizontal-slider";
 import { PremiumButton } from "@/components/ui/premium-button";
 import type { Locale } from "@/i18n/config";
 import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type { LocalizedCategory, LocalizedTool } from "@/types/catalog";
+import type { ComparisonCard as HomeComparisonCard } from "@/types/home";
+import type { AiNewsItem } from "@/lib/news";
 import { formatPricing } from "@/lib/catalog";
 import { getToolLogoUrl } from "@/lib/logo";
+
+export type HomeBlogPanelItem = {
+  slug: string;
+  title: string;
+  excerpt: string;
+};
 
 type HomeDirectoryShellProps = {
   locale: Locale;
   categories: LocalizedCategory[];
   tools: LocalizedTool[];
+  blogs: HomeBlogPanelItem[];
+  news: AiNewsItem[];
+  comparisons: HomeComparisonCard[];
 };
 
 const sectionCopyBase = {
   tr: {
     tabs: ["Bugün", "Yeni", "En çok kaydedilenler", "En çok kullanılanlar", "Uygulamalar"],
-    blogsTitle: "Popüler kategoriler",
-    blogCta: "Kategoriler",
-    newsTitle: "Hızlı karar",
-    newsCta: "Karşılaştır",
+    blogsTitle: "Güncel bloglar",
+    blogCta: "Tüm bloglar",
+    newsTitle: "AI haberleri",
+    newsCta: "Tüm haberler",
     toolsFeedTitle: "Canlı araç akışı",
-    toolsFeedDescription: "Araçları kompakt satırlarda tara, etiketleri gör ve doğru ürüne daha hızlı geç.",
+    toolsFeedDescription: "Araçları kompakt satırlarda tara, fiyatı ve etiketleri gör, doğru ürüne hızlı geç.",
     toolsFeedCta: "Daha fazla görüntüle",
-    categoryTitle: "Kategoriye göre ücretsiz AI araçları",
+    categoryTitle: "AI araçlarını kategorilere göre keşfet",
     categoryCta: "Daha fazla görüntüle",
+    compareTitle: "Popüler karşılaştırmalar",
+    compareCta: "Daha fazla karşılaştırma",
+    compareOpen: "Karşılaştırmayı aç",
     featuredTitle: "Öne çıkan yapay zekalar",
-    featuredDescription: "Öne çıkan araçları fiyat modeli ve kısa değer önerisiyle hızlıca tarayın.",
+    featuredDescription: "Kompakt kartlarla daha fazla aracı aynı ekranda tara.",
     inspectTool: "İncele",
     updatedLabel: "Güncel",
     featuredBadge: "Öne çıkan",
@@ -36,16 +51,19 @@ const sectionCopyBase = {
   en: {
     tabs: ["Today", "New", "Most saved", "Most used", "Apps"],
     blogsTitle: "Latest blog guides",
-    blogCta: "Go to blog",
+    blogCta: "All blogs",
     newsTitle: "AI News",
-    newsCta: "View all news",
+    newsCta: "All news",
     toolsFeedTitle: "Live tool feed",
-    toolsFeedDescription: "Scan tools in compact rows, review tags, and move straight into the right product.",
+    toolsFeedDescription: "Scan compact rows, check pricing and tags, then jump into the right product.",
     toolsFeedCta: "View more",
-    categoryTitle: "Free AI tools by category",
+    categoryTitle: "Explore AI tools by category",
     categoryCta: "View more",
+    compareTitle: "Popular comparisons",
+    compareCta: "More comparisons",
+    compareOpen: "Open comparison",
     featuredTitle: "Featured AI tools",
-    featuredDescription: "Review featured products with pricing model and a short value cue in one dense grid.",
+    featuredDescription: "Review more tools in a denser, easier-to-scan grid.",
     inspectTool: "Inspect",
     updatedLabel: "Live",
     featuredBadge: "Featured",
@@ -64,194 +82,272 @@ function buildFeaturedCategories(categories: LocalizedCategory[]) {
     "writing-editing",
     "audio-generation-conversion",
     "marketing-advertising",
-    "research-data-analysis"
+    "research-data-analysis",
+    "seo",
+    "business"
   ];
 
-  return preferredSlugs
+  const preferred = preferredSlugs
     .map((slug) => categories.find((category) => category.slug === slug))
     .filter((item): item is LocalizedCategory => Boolean(item));
+  const fallback = categories.filter((category) => !preferred.some((item) => item.slug === category.slug));
+
+  return [...preferred, ...fallback].slice(0, 14);
 }
 
-export function HomeDirectoryShell({ locale, categories, tools }: HomeDirectoryShellProps) {
-  const copy = localizeTree(locale, sectionCopyBase[getContentBaseLocale(locale)]);
-  const featuredCategories = buildFeaturedCategories(categories).slice(0, 10);
-  const feedTools = tools.slice(0, 12);
-  const featuredTools = tools.slice(0, 20);
+function initials(value: string) {
+  return value
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((item) => item[0])
+    .join("")
+    .toLocaleUpperCase("tr-TR");
+}
 
+function buildToolTags(tool: LocalizedTool) {
+  const tags = [...tool.toolCategorySlugs, ...tool.useCaseSlugs]
+    .map((tag) => tag.replaceAll("-", " "))
+    .filter(Boolean);
+
+  return [...new Set(tags)].slice(0, 3);
+}
+
+function PanelHeader({
+  title,
+  href,
+  label
+}: {
+  title: string;
+  href: string;
+  label: string;
+}) {
   return (
-    <div className="mx-auto mt-8 flex w-full max-w-[1440px] flex-col gap-8 px-4 sm:px-6 lg:px-8">
-      <section className="ui-card rounded-[26px] p-4">
-        <div className="flex flex-wrap gap-2">
-          {copy.tabs.map((tab, index) => (
-            <span
-              key={tab}
-              className={[
-                "inline-flex min-h-[38px] items-center rounded-full border px-4 text-sm font-semibold",
-                index === 0
-                  ? "border-sky-200 bg-sky-50 text-sky-700"
-                  : "border-slate-200 bg-white text-slate-600"
-              ].join(" ")}
-            >
-              {tab}
+    <div className="flex items-center justify-between gap-3">
+      <h2 className="text-base font-bold tracking-[-0.03em] text-slate-950">{title}</h2>
+      <Link href={href} className="text-xs font-bold text-sky-700 transition hover:text-slate-950">
+        {label}
+      </Link>
+    </div>
+  );
+}
+
+function BlogPanel({ locale, blogs, copy }: { locale: Locale; blogs: HomeBlogPanelItem[]; copy: typeof sectionCopyBase.tr | typeof sectionCopyBase.en }) {
+  return (
+    <aside className="ui-card h-[22rem] rounded-[24px] p-4 lg:h-[34rem]">
+      <PanelHeader title={copy.blogsTitle} href={`/${locale}/blog`} label={copy.blogCta} />
+      <div className="homepage-panel-scroll mt-4 h-[calc(100%-2.5rem)] space-y-2 overflow-y-auto pr-1">
+        {blogs.slice(0, 10).map((post) => (
+          <Link
+            key={post.slug}
+            href={`/${locale}/blog/${post.slug}`}
+            className="block rounded-[18px] px-3 py-3 transition hover:bg-slate-50"
+          >
+            <p className="clamp-2 text-sm font-bold leading-5 text-slate-950">{post.title}</p>
+            <p className="clamp-1 mt-1 text-xs leading-5 text-slate-500">{post.excerpt}</p>
+          </Link>
+        ))}
+      </div>
+    </aside>
+  );
+}
+
+function AiNewsPanel({ locale, news, copy }: { locale: Locale; news: AiNewsItem[]; copy: typeof sectionCopyBase.tr | typeof sectionCopyBase.en }) {
+  return (
+    <aside className="ui-card h-[22rem] rounded-[24px] p-4 lg:h-[34rem]">
+      <PanelHeader title={copy.newsTitle} href={`/${locale}/news`} label={copy.newsCta} />
+      <div className="homepage-panel-scroll mt-4 h-[calc(100%-2.5rem)] space-y-2 overflow-y-auto pr-1">
+        {news.slice(0, 10).map((item) => (
+          <Link
+            key={item.slug}
+            href={`/${locale}/news/${item.slug}`}
+            className="block rounded-[18px] px-3 py-3 transition hover:bg-slate-50"
+          >
+            <p className="clamp-2 text-sm font-bold leading-5 text-slate-950">{item.displayTitle ?? item.title}</p>
+            <p className="clamp-2 mt-1 text-xs leading-5 text-slate-500">{item.displaySummary ?? item.summary}</p>
+          </Link>
+        ))}
+      </div>
+    </aside>
+  );
+}
+
+function ToolFeedRow({ locale, tool }: { locale: Locale; tool: LocalizedTool }) {
+  return (
+    <Link
+      href={`/${locale}/tools/${tool.slug}`}
+      className="grid grid-cols-[46px_minmax(0,1fr)_auto] gap-3 rounded-[18px] border border-slate-200 bg-white px-3 py-3 shadow-[0_10px_24px_rgba(15,23,42,0.045)] transition hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-[0_18px_34px_rgba(15,23,42,0.08)]"
+    >
+      <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-[14px] border border-slate-200 bg-white">
+        <Image src={getToolLogoUrl(tool.websiteUrl)} alt={tool.name} width={44} height={44} unoptimized className="h-full w-full object-contain p-2" />
+      </span>
+      <span className="min-w-0">
+        <span className="flex items-center gap-2">
+          <span className="clamp-1 text-sm font-bold text-slate-950">{tool.name}</span>
+        </span>
+        <span className="clamp-1 mt-0.5 block text-xs leading-5 text-slate-600">{tool.shortDescription}</span>
+        <span className="mt-1.5 flex flex-wrap gap-1.5">
+          {buildToolTags(tool).map((tag) => (
+            <span key={tag} className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-semibold text-slate-500">
+              {tag}
             </span>
           ))}
+        </span>
+      </span>
+      <span className="self-start rounded-full border border-sky-100 bg-sky-50 px-2.5 py-1 text-[10px] font-bold text-sky-700">
+        {formatPricing(tool.pricing, locale)}
+      </span>
+    </Link>
+  );
+}
+
+function ToolsPanel({ locale, tools, copy }: { locale: Locale; tools: LocalizedTool[]; copy: typeof sectionCopyBase.tr | typeof sectionCopyBase.en }) {
+  return (
+    <div className="ui-card rounded-[24px] p-4 lg:h-[38rem]">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">{copy.updatedLabel}</p>
+          <h2 className="mt-1 text-[1.45rem] font-bold tracking-[-0.04em] text-slate-950">{copy.toolsFeedTitle}</h2>
+          <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-600">{copy.toolsFeedDescription}</p>
         </div>
+        <Link
+          href={`/${locale}/tools`}
+          className="inline-flex min-h-9 w-fit items-center justify-center rounded-full border border-sky-200 bg-sky-50 px-4 text-xs font-bold text-sky-700 transition hover:border-sky-300 hover:bg-white"
+        >
+          {copy.toolsFeedCta}
+        </Link>
+      </div>
+      <div className="homepage-panel-scroll mt-4 grid max-h-[26rem] gap-2.5 overflow-y-auto pr-1 lg:max-h-[30.5rem]">
+        {tools.slice(0, 15).map((tool) => (
+          <ToolFeedRow key={tool.slug} locale={locale} tool={tool} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function HomeDirectoryShell({ locale, categories, tools, blogs, news, comparisons }: HomeDirectoryShellProps) {
+  const copy = localizeTree(locale, sectionCopyBase[getContentBaseLocale(locale)]);
+  const featuredCategories = buildFeaturedCategories(categories);
+  const feedTools = tools.slice(0, 15);
+  const featuredTools = tools.slice(0, 18);
+  const comparisonCards = comparisons.slice(0, 12);
+
+  return (
+    <div className="mx-auto mt-7 flex w-full max-w-[1440px] flex-col gap-7 px-4 sm:px-6 lg:px-8">
+      <section className="flex gap-2 overflow-x-auto pb-1">
+        {copy.tabs.map((tab, index) => (
+          <span
+            key={tab}
+            className={[
+              "inline-flex min-h-[36px] shrink-0 items-center rounded-full border px-4 text-sm font-bold",
+              index === 0 ? "border-sky-200 bg-sky-50 text-sky-700" : "border-slate-200 bg-white/88 text-slate-600"
+            ].join(" ")}
+          >
+            {tab}
+          </span>
+        ))}
       </section>
 
-      <section className="grid gap-5 xl:grid-cols-[0.92fr_1.7fr_1.02fr]">
-        <aside className="ui-card rounded-[26px] p-4 sm:p-5">
-          <div className="flex items-center justify-between gap-3">
-            <h2 className="text-lg font-bold tracking-[-0.03em] text-slate-950">{copy.blogsTitle}</h2>
-            <Link href={`/${locale}/categories`} className="text-sm font-semibold text-sky-700 transition hover:text-slate-950">
-              {copy.blogCta}
-            </Link>
-          </div>
-          <div className="mt-4 space-y-3">
-            {featuredCategories.slice(0, 6).map((category) => (
-              <Link
-                key={category.slug}
-                href={`/${locale}/categories/${category.slug}`}
-                className="block rounded-[20px] border border-slate-200 bg-white px-4 py-3 transition hover:border-sky-200 hover:bg-slate-50"
-              >
-                <p className="clamp-2 text-sm font-semibold leading-6 text-slate-900">{category.name}</p>
-                <p className="clamp-2 mt-1 text-xs leading-5 text-slate-500">{category.description}</p>
-              </Link>
-            ))}
-          </div>
-        </aside>
-
-        <div className="ui-card rounded-[26px] p-4 sm:p-5">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">{copy.updatedLabel}</p>
-              <h2 className="mt-2 text-[1.65rem] font-bold tracking-[-0.04em] text-slate-950">{copy.toolsFeedTitle}</h2>
-              <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">{copy.toolsFeedDescription}</p>
-            </div>
-            <PremiumButton href={`/${locale}/tools`} className="self-start sm:self-auto">
-              {copy.toolsFeedCta}
-            </PremiumButton>
-          </div>
-
-          <div className="mt-5 space-y-3">
-            {feedTools.map((tool) => (
-              <Link
-                key={tool.slug}
-                href={`/${locale}/tools/${tool.slug}`}
-                className="grid gap-4 rounded-[22px] border border-slate-200 bg-white px-4 py-4 shadow-[0_10px_26px_rgba(15,23,42,0.05)] transition hover:border-sky-200 hover:shadow-[0_18px_40px_rgba(15,23,42,0.09)] sm:grid-cols-[52px_minmax(0,1fr)]"
-              >
-              <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-[16px] border border-slate-200 bg-white">
-                  <Image src={getToolLogoUrl(tool.websiteUrl)} alt={tool.name} width={48} height={48} unoptimized className="h-full w-full object-contain p-2" />
-                </span>
-
-                <span className="min-w-0">
-                  <span className="flex flex-wrap items-center gap-2">
-                    <span className="text-base font-semibold text-slate-950">{tool.name}</span>
-                    <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-[11px] font-semibold text-slate-500">
-                      {formatPricing(tool.pricing, locale)}
-                    </span>
-                  </span>
-                  <span className="clamp-2 mt-1 block text-sm leading-6 text-slate-600">{tool.shortDescription}</span>
-                  <span className="mt-2 flex flex-wrap gap-2">
-                    {tool.toolCategorySlugs.slice(0, 3).map((tag) => (
-                      <span key={tag} className="ui-soft-chip">
-                        {tag.replaceAll("-", " ")}
-                      </span>
-                    ))}
-                  </span>
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <aside className="ui-card rounded-[26px] p-4 sm:p-5">
-          <div className="flex items-center justify-between gap-3">
-            <h2 className="text-lg font-bold tracking-[-0.03em] text-slate-950">{copy.newsTitle}</h2>
-            <Link href={`/${locale}/compare`} className="text-sm font-semibold text-sky-700 transition hover:text-slate-950">
-              {copy.newsCta}
-            </Link>
-          </div>
-          <ol className="mt-4 space-y-3">
-            {feedTools.slice(0, 8).map((tool, index) => (
-              <li key={tool.slug}>
-                <Link
-                  href={`/${locale}/tools/${tool.slug}`}
-                  className="grid grid-cols-[2rem_minmax(0,1fr)] gap-3 rounded-[20px] border border-slate-200 bg-white px-4 py-3 transition hover:border-sky-200 hover:bg-slate-50"
-                >
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-xs font-bold text-slate-500">
-                    {index + 1}
-                  </span>
-                  <span className="min-w-0">
-                    <span className="clamp-2 block text-sm font-semibold leading-6 text-slate-900">
-                      {tool.name}
-                    </span>
-                    <span className="mt-1 flex items-center gap-2 text-[11px] text-slate-400">
-                      <span>{formatPricing(tool.pricing, locale)}</span>
-                      <span>•</span>
-                      <span>{tool.rating.toFixed(1)}/5</span>
-                    </span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ol>
-        </aside>
+      <section className="grid gap-4 xl:grid-cols-[20fr_55fr_25fr]">
+        <BlogPanel locale={locale} blogs={blogs} copy={copy} />
+        <ToolsPanel locale={locale} tools={feedTools} copy={copy} />
+        <AiNewsPanel locale={locale} news={news} copy={copy} />
       </section>
 
-      <section className="ui-card rounded-[26px] p-5 sm:p-6">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <h2 className="text-[1.6rem] font-bold tracking-[-0.04em] text-slate-950">{copy.categoryTitle}</h2>
+      <section className="ui-card rounded-[24px] p-5 sm:p-6">
+        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <h2 className="text-[1.45rem] font-bold tracking-[-0.04em] text-slate-950">{copy.categoryTitle}</h2>
           <PremiumButton href={`/${locale}/categories`} variant="secondary">
             {copy.categoryCta}
           </PremiumButton>
         </div>
 
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <HorizontalSlider ariaLabel={copy.categoryTitle}>
           {featuredCategories.map((category) => (
             <Link
               key={category.slug}
               href={`/${locale}/categories/${category.slug}`}
-              className="ui-inner-panel block rounded-[22px] px-4 py-4 transition hover:-translate-y-0.5 hover:border-sky-200"
+              className="ui-inner-panel ui-card-hover block min-h-[156px] w-[15.5rem] shrink-0 snap-start rounded-[20px] px-4 py-4"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-slate-100 text-sm font-bold text-slate-700">
-                {category.name.slice(0, 2).toUpperCase()}
+              <div className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-[#0E2450] text-xs font-black text-white">
+                {initials(category.name)}
               </div>
-              <h3 className="mt-3 text-sm font-semibold leading-6 text-slate-900">{category.name}</h3>
-              <p className="clamp-2 mt-1 text-xs leading-5 text-slate-500">{category.description}</p>
+              <h3 className="clamp-2 mt-3 text-sm font-bold leading-5 text-slate-950">{category.name}</h3>
+              <p className="clamp-2 mt-2 text-xs leading-5 text-slate-500">{category.description}</p>
             </Link>
           ))}
-        </div>
+        </HorizontalSlider>
       </section>
 
-      <section className="ui-card rounded-[26px] p-5 sm:p-6">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <section className="ui-card rounded-[24px] p-5 sm:p-6">
+        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <h2 className="text-[1.45rem] font-bold tracking-[-0.04em] text-slate-950">{copy.compareTitle}</h2>
+          <PremiumButton href={`/${locale}/compare`} variant="secondary">
+            {copy.compareCta}
+          </PremiumButton>
+        </div>
+
+        <HorizontalSlider ariaLabel={copy.compareTitle}>
+          {comparisonCards.map((comparison) => (
+            <Link
+              key={comparison.href}
+              href={`/${locale}${comparison.href}`}
+              className="ui-inner-panel ui-card-hover flex min-h-[190px] w-[19rem] shrink-0 snap-start flex-col rounded-[20px] px-4 py-4"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex -space-x-2">
+                  {comparison.logos?.slice(0, 3).map((logo) => (
+                    <span key={logo.name} className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border-2 border-white bg-white shadow-sm">
+                      {logo.logoUrl ? (
+                        <Image src={logo.logoUrl} alt={logo.name} width={40} height={40} unoptimized className="h-full w-full object-contain p-1.5" />
+                      ) : (
+                        <span className="text-xs font-bold text-slate-600">{initials(logo.name)}</span>
+                      )}
+                    </span>
+                  ))}
+                </div>
+                <span className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-bold text-slate-500">
+                  {comparison.highlight}
+                </span>
+              </div>
+              <h3 className="clamp-2 mt-4 text-base font-bold leading-6 text-slate-950">{comparison.title}</h3>
+              <p className="clamp-2 mt-2 text-xs leading-5 text-slate-500">{comparison.description}</p>
+              <span className="mt-auto pt-4 text-sm font-bold text-sky-700">{copy.compareOpen} →</span>
+            </Link>
+          ))}
+        </HorizontalSlider>
+      </section>
+
+      <section className="ui-card rounded-[24px] p-5 sm:p-6">
+        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">{copy.featuredBadge}</p>
-            <h2 className="mt-2 text-[1.6rem] font-bold tracking-[-0.04em] text-slate-950">{copy.featuredTitle}</h2>
-            <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-600">{copy.featuredDescription}</p>
+            <h2 className="mt-1 text-[1.45rem] font-bold tracking-[-0.04em] text-slate-950">{copy.featuredTitle}</h2>
+            <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-600">{copy.featuredDescription}</p>
           </div>
           <PremiumButton href={`/${locale}/tools`} variant="secondary">
             {copy.featuredToolsCta}
           </PremiumButton>
         </div>
 
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {featuredTools.map((tool) => (
-            <article key={tool.slug} className="ui-inner-panel flex h-full flex-col rounded-[22px] px-4 py-4">
-              <div className="flex items-start justify-between gap-3">
-                <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-[16px] border border-slate-200 bg-white">
-                  <Image src={getToolLogoUrl(tool.websiteUrl)} alt={tool.name} width={44} height={44} unoptimized className="h-full w-full object-contain p-2" />
+            <article key={tool.slug} className="ui-inner-panel ui-card-hover flex h-full flex-col rounded-[20px] px-3.5 py-3.5">
+              <div className="flex items-start justify-between gap-2">
+                <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-[14px] border border-slate-200 bg-white">
+                  <Image src={getToolLogoUrl(tool.websiteUrl)} alt={tool.name} width={40} height={40} unoptimized className="h-full w-full object-contain p-2" />
                 </span>
-                <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-slate-500">
+                <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-bold text-slate-500">
                   {formatPricing(tool.pricing, locale)}
                 </span>
               </div>
-              <h3 className="mt-4 text-base font-semibold tracking-[-0.03em] text-slate-950">{tool.name}</h3>
-              <p className="clamp-2 mt-2 text-sm leading-6 text-slate-600">{tool.shortDescription}</p>
-              <div className="mt-auto pt-4">
+              <h3 className="clamp-1 mt-3 text-sm font-bold tracking-[-0.02em] text-slate-950">{tool.name}</h3>
+              <p className="clamp-2 mt-1.5 text-xs leading-5 text-slate-600">{tool.shortDescription}</p>
+              <div className="mt-auto pt-3">
                 <Link
                   href={`/${locale}/tools/${tool.slug}`}
-                  className="inline-flex min-h-[40px] items-center rounded-[14px] border border-sky-200 bg-sky-50 px-4 text-sm font-semibold text-sky-700 transition hover:border-sky-300 hover:bg-sky-100"
+                  className="inline-flex min-h-[34px] items-center rounded-full border border-sky-200 bg-sky-50 px-3 text-xs font-bold text-sky-700 transition hover:border-sky-300 hover:bg-white"
                 >
                   {copy.inspectTool}
                 </Link>
