@@ -24,6 +24,38 @@ enum PublishStatus {
   PUBLISHED
 }
 
+enum AdminContentType {
+  TOOL
+  BLOG_POST
+  NEWS_ITEM
+  CATEGORY
+  COMPARISON
+}
+
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+  HIDDEN
+}
+
+model AdminContent {
+  id          String           @id @default(cuid())
+  type        AdminContentType
+  slug        String
+  locale      String           @default("tr")
+  title       String
+  status      ContentStatus    @default(DRAFT)
+  featured    Boolean          @default(false)
+  payload     String           @default("{}")
+  relations   String           @default("{}")
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  @@unique([type, slug, locale])
+  @@index([type, status])
+  @@index([locale])
+}
+
 model Category {
   id           String           @id @default(cuid())
   slug         String           @unique

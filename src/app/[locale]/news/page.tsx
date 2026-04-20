@@ -10,8 +10,6 @@ import { toolCategoryOptions } from "@/data/tool-taxonomy";
 import { getAiNewsItems } from "@/lib/news";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
 
-export const dynamic = "force-dynamic";
-
 function formatDate(locale: Locale, value?: string) {
   if (!value) {
     return null;

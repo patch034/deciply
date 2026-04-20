@@ -1,131 +1,22 @@
-﻿import type { Metadata } from "next";
-import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ArticleContent, buildArticleSectionId } from "@/components/blog/article-content";
-import { ArticleCtaBlock } from "@/components/blog/article-cta-block";
-import { BlogCard } from "@/components/blog/blog-card";
-import { Breadcrumb } from "@/components/catalog/breadcrumb";
-import { ToolCard } from "@/components/catalog/tool-card";
-import { Badge } from "@/components/ui/badge";
-import { SectionJumpNav } from "@/components/ui/section-jump-nav";
-import { SectionShell } from "@/components/ui/section-shell";
-import { blogArticles } from "@/data/blog";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
-import { buildAutoComparisonPath, buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
-import {
-  formatBlogDate,
-  getBlogCopy,
-  getBlogSupportingLinks,
-  getLocalizedBlogArticleBySlug,
-  getRelatedArticles,
-  resolveBlogPublishDate
-} from "@/lib/blog";
-import {
-  formatPricing,
-  getCategoryNamesMap,
-  getCatalogContent,
-  getLocalizedToolBySlug,
-
-} from "@/lib/catalog";
+import { ThemePreviewLayout } from "@/components/content/theme-preview-layout";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, normalizeLocale, type Locale } from "@/i18n/config";
+import { formatBlogDate, getLocalizedBlogArticleBySlug, resolveBlogPublishDate } from "@/lib/blog";
 import { buildBlogMetaDescription, buildBlogPageTitle } from "@/lib/seo";
 
-type BlogCtaButton = {
-  label: string;
-  href: string;
-  variant?: "primary" | "secondary" | "ghost";
-};
+export const revalidate = 3600;
+export const dynamicParams = true;
 
-function buildToolLabel(locale: Locale, toolName: string, action: "open" | "review") {
-  if (locale === "tr") {
-    return action === "open" ? `${toolName}’yi aç` : `${toolName}’yi incele`;
-  }
-
-  return action === "open" ? `Open ${toolName}` : `Review ${toolName}`;
+export function generateStaticParams() {
+  return [];
 }
 
-function buildBlogCtaButtons(
-  locale: Locale,
-  relatedTools: NonNullable<ReturnType<typeof getLocalizedToolBySlug>>[],
-  comparisonHref: string,
-  alternativesHref: string,
-  toolPageHref: string
-): BlogCtaButton[] {
-  const buttons: BlogCtaButton[] = [];
-  const uniqueTools = relatedTools.slice(0, 3);
-
-  uniqueTools.forEach((tool) => {
-    buttons.push({
-      label: buildToolLabel(locale, tool.name, "open"),
-      href: `/${locale}/tools/${tool.slug}`,
-      variant: "primary"
-    });
-  });
-
-  if (uniqueTools.length >= 2) {
-    const autoComparisonHref = buildAutoComparisonPath(locale, uniqueTools[0].slug, uniqueTools[1].slug);
-
-    buttons.push({
-      label: locale === "tr" ? uniqueTools[0].name + " vs " + uniqueTools[1].name + " hızlı karşılaştır" : "Auto compare " + uniqueTools[0].name + " vs " + uniqueTools[1].name,
-      href: autoComparisonHref,
-      variant: "secondary"
-    });
-  }
-
-  if (uniqueTools.length >= 2 && comparisonHref) {
-    buttons.push({
-      label:
-        locale === "tr"
-          ? uniqueTools[0].name + " vs " + uniqueTools[1].name + " editoryal karşılaştır"
-          : "Editorial compare: " + uniqueTools[0].name + " vs " + uniqueTools[1].name,
-      href: comparisonHref,
-      variant: "ghost"
-    });
-  }
-
-  if (alternativesHref && buttons.length < 5) {
-    buttons.push({
-      label: locale === "tr" ? "Alternatifleri incele" : "Open alternatives",
-      href: alternativesHref,
-      variant: "ghost"
-    });
-  }
-
-  if (!buttons.length) {
-    buttons.push({
-      label: locale === "tr" ? "Araçları aç" : "Open tools",
-      href: toolPageHref,
-      variant: "primary"
-    });
-  }
-
-  return buttons.slice(0, 5);
-}
-function getBlogButtonClass(variant?: BlogCtaButton["variant"]) {
-  if (variant === "primary") {
-    return "inline-flex items-center justify-center rounded-2xl bg-[linear-gradient(90deg,#0E2450_0%,#007FFF_42%,#0055FF_72%,#3B82F6_100%)] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_60px_-22px_rgba(37,99,235,0.5)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_28px_72px_-22px_rgba(37,99,235,0.56)]";
-  }
-
-  if (variant === "secondary") {
-    return "inline-flex items-center justify-center rounded-2xl border border-sky-400/10 bg-slate-950/50 px-6 py-3.5 text-sm font-semibold text-slate-100 transition hover:border-sky-200 hover:text-[#BFD2F6]";
-  }
-
-    return "inline-flex items-center justify-center rounded-2xl border border-sky-400/10 bg-slate-950/40 px-6 py-3.5 text-sm font-semibold text-slate-200 transition hover:border-sky-200 hover:text-[#BFD2F6]";
-}
-
-function renderBlogActionButton(button: BlogCtaButton) {
-  return (
-    <Link key={`${button.href}-${button.label}`} href={button.href} className={getBlogButtonClass(button.variant)}>
-      {button.label}
-    </Link>
-  );
-}export function generateStaticParams() {
-  return locales.flatMap((locale) =>
-    blogArticles.map((article) => ({
-      locale,
-      slug: article.slug
-    }))
-  );
+function buildPreviewDescription(locale: Locale, excerpt: string, intro: string) {
+  return locale === "tr"
+    ? `${excerpt} Bu detay sayfası yeni Deciply tema sisteminde daha temiz editoryal hiyerarşi ve daha güçlü içerik bloklarıyla yeniden kuruluyor. ${intro}`
+    : `${excerpt} This detail page is being rebuilt in the new Deciply theme system with a cleaner editorial hierarchy and stronger content blocks. ${intro}`;
 }
 
 export async function generateMetadata({
@@ -152,7 +43,7 @@ export async function generateMetadata({
 
   return {
     title: buildBlogPageTitle(article),
-    description: description,
+    description,
     alternates: {
       canonical: canonicalUrl,
       languages: buildAlternates(`/blog/${slug}`)
@@ -161,7 +52,7 @@ export async function generateMetadata({
       type: "article",
       url: canonicalUrl,
       title: buildBlogPageTitle(article),
-      description: description,
+      description,
       publishedTime,
       modifiedTime: article.updatedAt ?? publishedTime
     }
@@ -180,254 +71,69 @@ export default async function BlogDetailPage({
   }
 
   const safeLocale = normalizeLocale(locale);
-  const copy = getBlogCopy(safeLocale);
   const article = getLocalizedBlogArticleBySlug(safeLocale, slug);
 
   if (!article) {
     notFound();
   }
 
-  const content = getCatalogContent(safeLocale);
-  const categoryNamesMap = getCategoryNamesMap(safeLocale);
-  const relatedTools = article.relatedToolSlugs
-    .map((toolSlug) => getLocalizedToolBySlug(safeLocale, toolSlug))
-    .filter((tool) => tool !== null);
-  const primaryTool = relatedTools[0];
-  const relatedArticles = getRelatedArticles(safeLocale, article.slug, 3);
-  const tailSections = article.sections.slice(2);
-  const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/blog/${article.slug}`);
-  const inlineSupportingLinks = getBlogSupportingLinks(safeLocale, article.slug, 2, 2);
-  const comparisonHref = inlineSupportingLinks.comparePages[0]?.href ?? `/${safeLocale}/categories/comparisons`;
-  const alternativesHref = inlineSupportingLinks.alternativePages[0]?.href ?? (primaryTool ? `/${safeLocale}/alternatives/${primaryTool.slug}` : `/${safeLocale}/tools`);
-  const publishedLabel = safeLocale === "tr" ? "Yayınlandı" : "Published";
-  const updatedLabel = safeLocale === "tr" ? "Güncellendi" : "Updated";
   const publishedSource = resolveBlogPublishDate(article);
   const publishedDate = publishedSource ? formatBlogDate(safeLocale, publishedSource) : null;
-  const updatedDate = article.updatedAt ? formatBlogDate(safeLocale, article.updatedAt) : null;
-  const description = buildBlogMetaDescription(safeLocale, article);
-  const sectionNavItems = [
-    { label: safeLocale === "tr" ? "Genel Bakış" : "Overview", href: "#genel-bakis" },
-    ...article.sections.slice(0, 4).map((section) => ({
-      label: section.title,
-      href: `#${buildArticleSectionId(section.title)}`
-    }))
-  ];
-  const blogCtaButtons = buildBlogCtaButtons(safeLocale, relatedTools, comparisonHref, alternativesHref, `/${safeLocale}/tools`);
-
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: article.title,
-    description: description,
-    articleSection: article.categoryLabel,
-    inLanguage: safeLocale,
-    mainEntityOfPage: canonicalUrl,
-    url: canonicalUrl,
-    isPartOf: {
-      "@type": "WebSite",
-      name: "Deciply",
-      url: "https://deciply.com"
-    },
-    author: {
-      "@type": "Organization",
-      name: "Deciply Editorial Team"
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Deciply"
-    },
-    datePublished: publishedSource,
-    dateModified: article.updatedAt ?? publishedSource
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: copy.breadcrumbsHome,
-        item: `https://deciply.com/${safeLocale}`
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: copy.blogLabel,
-        item: `https://deciply.com/${safeLocale}/blog`
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: article.title,
-        item: canonicalUrl
-      }
-    ]
-  };
 
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-
-      <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-10 overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-        <Breadcrumb
-          items={[
-            { label: copy.breadcrumbsHome, href: `/${safeLocale}` },
-            { label: copy.blogLabel, href: `/${safeLocale}/blog` },
-            { label: article.title }
-          ]}
-        />
-
-        <section id="genel-bakis" className="scroll-mt-24 rounded-[36px] border border-slate-200/85 bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(247,250,253,0.99),rgba(235,243,251,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(14,165,233,0.14)] lg:px-10 lg:py-12">
-          <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-            <div>
- <Badge variant="ghost" className="border-sky-200 bg-sky-50 text-[#0055FF]">
-                {copy.articleLeadLabel}
-              </Badge>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <Badge variant="accent">{article.categoryLabel}</Badge>
-                <Badge variant="muted">{safeLocale === "tr" ? "SEO odaklı içerik" : "SEO-focused article"}</Badge>
-              </div>
-              <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.03]">
-                {article.title}
-              </h1>
-              <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-500">
-                <span>{publishedLabel}: {publishedDate}</span>
-                {updatedDate ? <span>{updatedLabel}: {updatedDate}</span> : null}
-              </div>
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{article.excerpt}</p>
-              <p className="mt-5 max-w-3xl text-base leading-8 text-slate-500">{article.intro}</p>
-            </div>
-
-            <div className="rounded-[28px] border border-slate-200 bg-white/92 p-6 shadow-[0_20px_60px_-36px_rgba(15,23,42,0.14)]">
-              <div className="grid gap-3 sm:grid-cols-1">
-                <div className="rounded-[22px] border border-slate-200 bg-slate-50/90 px-4 py-3 text-sm font-semibold text-slate-900">
-                  {safeLocale === "tr" ? "İç link" : "Internal links"}: {relatedTools.length + 1}
-                </div>
-                <div className="rounded-[22px] border border-slate-200 bg-slate-50/90 px-4 py-3 text-sm font-semibold text-slate-900">
-                  {safeLocale === "tr" ? "Bölüm sayısı" : "Sections"}: {article.sections.length}
-                </div>
-                <div className="rounded-[22px] border border-slate-200 bg-slate-50/90 px-4 py-3 text-sm font-semibold text-slate-900">
-                  {safeLocale === "tr" ? "Karşılaştırma linki hazır" : "Comparison path ready"}
-                </div>
-              </div>
-              <div className="mt-6 flex flex-wrap gap-3">
-                {blogCtaButtons.map(renderBlogActionButton)}
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-
-
-        <SectionJumpNav items={sectionNavItems} />
-
-        {tailSections.length ? <ArticleContent locale={safeLocale} sections={tailSections} supportingLinks={inlineSupportingLinks} tone="light" /> : null}
-
-        <SectionShell
-          eyebrow={copy.relatedToolsTitle}
-          title={copy.relatedToolsTitle}
-          description={copy.relatedToolsDescription}
-          className="px-0 sm:px-0 lg:px-0"
-          contentClassName="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
-        >
-          {relatedTools.map((tool) => (
-            <ToolCard
-              key={tool.slug}
-              locale={safeLocale}
-              tool={tool}
-              categoryNames={tool.categorySlugs.map((item) => categoryNamesMap.get(item) ?? item)}
-              pricingLabel={formatPricing(tool.pricing, safeLocale)}
-              detailLabel={content.common.viewDetailsLabel}
-              compareHref={
-                (() => {
-                  const target = getComparisonTargetTools(safeLocale, tool.slug, 1)[0];
-                  return target ? buildComparisonPath(safeLocale, tool.slug, target.slug) : undefined;
-                })()
-              }
-            />
-          ))}
-        </SectionShell>
-
-        <section className="rounded-[30px] border border-slate-200 bg-white p-6 shadow-[0_24px_80px_-44px_rgba(15,23,42,0.12)] md:p-8">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-950">{copy.comparisonBlockTitle}</h2>
-          <p className="mt-3 text-base leading-7 text-slate-600">{copy.comparisonBlockDescription}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            {blogCtaButtons.map(renderBlogActionButton)}
-          </div>
-        </section>
-
-        {relatedArticles.length ? (
-          <SectionShell
-            eyebrow={copy.relatedArticlesTitle}
-            title={copy.relatedArticlesTitle}
-            description={copy.relatedArticlesDescription}
-            className="px-0 sm:px-0 lg:px-0"
-            contentClassName="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
-          >
-            {relatedArticles.map((relatedArticle) => (
-              <BlogCard
-                key={relatedArticle.slug}
-                locale={safeLocale}
-                article={relatedArticle}
-                ctaLabel={copy.readMoreLabel}
-              />
-            ))}
-          </SectionShell>
-        ) : null}
-
-        <ArticleCtaBlock
-          eyebrow={safeLocale === "tr" ? "Son adım" : "Final step"}
-          title={
-            primaryTool
-              ? (safeLocale === "tr" ? `${primaryTool.name} sayfasını açın` : `Open the ${primaryTool.name} page`)
-              : (safeLocale === "tr" ? "İlgili aracı açın" : "Open the related tool")
-          }
-          description={
-            primaryTool
-              ? (safeLocale === "tr"
-                ? `Bu rehberde geçen ${primaryTool.name} sayfasında fiyatı, kullanım alanlarını ve alternatifleri inceleyin.`
-                : `Open ${primaryTool.name} to review pricing, use cases, and alternatives.`)
-              : (safeLocale === "tr"
-                ? "Bu rehberde geçen aracı açarak fiyatı, kullanım alanlarını ve alternatifleri inceleyin."
-                : "Open the related tool to review pricing, use cases, and alternatives.")
-          }
-          buttons={blogCtaButtons}
-          tone="light"
-        />
-
-      </div>
-    </>
+    <ThemePreviewLayout
+      locale={safeLocale}
+      eyebrow={safeLocale === "tr" ? "Blog detay preview" : "Blog detail preview"}
+      title={article.title}
+      description={buildPreviewDescription(safeLocale, article.excerpt, article.intro)}
+      breadcrumbs={[
+        { label: safeLocale === "tr" ? "Ana sayfa" : "Home", href: `/${safeLocale}` },
+        { label: safeLocale === "tr" ? "Blog" : "Blog", href: `/${safeLocale}/blog` },
+        { label: article.title }
+      ]}
+      badges={[
+        article.categoryLabel,
+        safeLocale === "tr" ? "Editoryal içerik" : "Editorial content",
+        ...(publishedDate ? [publishedDate] : [])
+      ]}
+      stats={[
+        {
+          label: safeLocale === "tr" ? "Bölüm sayısı" : "Sections",
+          value: String(article.sections.length)
+        },
+        {
+          label: safeLocale === "tr" ? "İlgili araç" : "Related tools",
+          value: String(article.relatedToolSlugs.length)
+        },
+        {
+          label: safeLocale === "tr" ? "Yayın tarihi" : "Publish date",
+          value: publishedDate ?? "-"
+        }
+      ]}
+      primaryAction={{
+        label: safeLocale === "tr" ? "Tüm blog yazıları" : "All blog articles",
+        href: `/${safeLocale}/blog`
+      }}
+      secondaryAction={{
+        label: safeLocale === "tr" ? "Araçlara dön" : "Browse tools",
+        href: `/${safeLocale}/tools`
+      }}
+      sections={[
+        {
+          title: safeLocale === "tr" ? "Yeni editoryal hero" : "New editorial hero",
+          description:
+            safeLocale === "tr"
+              ? "Makale hero alanı yeni sistemde daha güçlü başlık, özet, yayın tarihi ve güven sinyalleriyle tekrar kurulacak."
+              : "The article hero will be rebuilt with a stronger title, summary, publish date, and trust cues."
+        },
+        {
+          title: safeLocale === "tr" ? "Modüler içerik blokları" : "Modular content blocks",
+          description:
+            safeLocale === "tr"
+              ? "Alt başlıklar, iç linkler, ilgili araçlar ve karşılaştırma yönlendirmeleri yeni tema kartlarıyla yeniden yerleşecek."
+              : "Subsections, internal links, related tools, and comparison prompts will be reintroduced with the new theme cards."
+        }
+      ]}
+    />
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

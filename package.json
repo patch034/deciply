@@ -15,6 +15,8 @@
     "verify:blog-dates": "node scripts/verify-blog-dates.mjs",
     "repair:encoding": "node scripts/repair-encoding.mjs",
     "fix:encoding": "npm run repair:encoding",
+    "admin:db": "node scripts/setup-admin-db.mjs",
+    "admin:smoke": "node scripts/smoke-admin-content.mjs",
     "generate:favicon": "node scripts/generate-favicon-assets.mjs"
   },
   "dependencies": {

@@ -328,7 +328,7 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
     const longItems = normalizedItems.filter((item) => !isShortTag(item));
     if (longItems.length > 0) {
       return (
-        <ul className="compare-list">
+        <ul className="m-0 flex list-none flex-col gap-1 p-0 text-xs leading-5 text-slate-600">
           {longItems.slice(0, 3).map((item) => (
             <li key={item}>{item}</li>
           ))}
@@ -608,7 +608,7 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
                   {row.label}
                 </div>
                 <div className={compactRowLabels.has(row.label) ? "mt-2 space-y-1.5 lg:mt-0" : "mt-2.5 space-y-2.5 lg:mt-0"}>
-                  <div className="compare-slot-left flex items-start justify-between gap-3 border-t border-slate-200 pt-2 lg:border-t-0 lg:pt-0">
+                  <div className="flex items-start justify-between gap-3 rounded-[16px] border border-sky-200 bg-sky-50/50 px-3 py-3 shadow-[0_14px_28px_-24px_rgba(15,23,42,0.12)] lg:border lg:pt-3">
                     <div className="min-w-0">
                       <p className={compactRowLabels.has(row.label) ? "text-[9.5px] font-semibold uppercase tracking-[0.14em] text-[#0055FF]" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0055FF]"}>
                         {leftTool?.name ?? labels.leftLabel}
@@ -619,7 +619,7 @@ export function AutoCompareWorkspace({ locale, tools, initialLeftSlug, initialRi
                   </div>
                 </div>
                 <div className={compactRowLabels.has(row.label) ? "mt-2 space-y-1.5 lg:mt-0" : "mt-2.5 space-y-2.5 lg:mt-0"}>
-                  <div className="compare-slot-right flex items-start justify-between gap-3 border-t border-slate-200 pt-2 lg:border-t-0 lg:pt-0">
+                  <div className="flex items-start justify-between gap-3 rounded-[16px] border border-slate-200 bg-slate-50/70 px-3 py-3 shadow-[0_14px_28px_-24px_rgba(15,23,42,0.12)] lg:border lg:pt-3">
                     <div className="min-w-0">
                       <p className={compactRowLabels.has(row.label) ? "text-[9.5px] font-semibold uppercase tracking-[0.14em] text-[#0E2450]" : "text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0E2450]"}>
                         {rightTool?.name ?? labels.rightLabel}

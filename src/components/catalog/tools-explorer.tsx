@@ -4,8 +4,8 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { startTransition, useCallback, useDeferredValue, useEffect, useMemo, useState } from "react";
 
 import { ToolCard } from "@/components/catalog/tool-card";
-import { TOOLS_PAGE_SIZE, type ToolsQueryFilters, type ToolsSortOption } from "@/lib/catalog";
 import type { Locale } from "@/i18n/config";
+import { TOOLS_PAGE_SIZE, type ToolsQueryFilters, type ToolsSortOption } from "@/lib/catalog";
 import type { PricingTier } from "@/types/catalog";
 
 type ExplorerTool = {
@@ -90,7 +90,7 @@ function buildSortOptions(locale: Locale, copy: ToolsExplorerCopy) {
     { value: "newest", label: copy.newestLabel },
     { value: "alphabetical", label: "A-Z" },
     { value: "free-first", label: locale === "tr" ? "Ücretsiz" : "Free" },
-    { value: "freemium-first", label: locale === "tr" ? "Freemium" : "Freemium" },
+    { value: "freemium-first", label: "Freemium" },
     { value: "paid-first", label: copy.paidFirstLabel }
   ] as const satisfies readonly { value: ToolsSortOption; label: string }[];
 }
@@ -109,8 +109,8 @@ function legacyCategoryToBrowse(category: string) {
 
 function buildBrowseOptions(locale: Locale): BrowseOption[] {
   const tr = locale === "tr";
-
   const primaryMatchers: Array<(tool: ExplorerTool, text: string) => boolean> = [];
+
   const create = (slug: string, label: string, matcher: (tool: ExplorerTool, text: string) => boolean): BrowseOption => {
     primaryMatchers.push(matcher);
     return { slug, label, matches: matcher };
@@ -267,9 +267,9 @@ function FilterChip({
       aria-pressed={active}
       onClick={onClick}
       className={[
-        "inline-flex min-h-[38px] shrink-0 items-center gap-1.5 rounded-full border px-4 text-sm font-semibold transition duration-200",
+        "inline-flex min-h-[38px] shrink-0 items-center gap-1.5 rounded-full border px-4 text-sm font-semibold transition",
         active
-          ? "border-sky-200 bg-sky-50 text-sky-700 shadow-[0_14px_34px_-22px_rgba(37,99,235,0.18)]"
+          ? "border-sky-200 bg-sky-50 text-sky-700 shadow-[0_10px_24px_-18px_rgba(37,99,235,0.18)]"
           : "border-slate-200 bg-white text-slate-600 hover:border-sky-200 hover:text-slate-950"
       ].join(" ")}
     >
@@ -469,14 +469,12 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
   }
 
   const summaryText =
-    sortedTools.length > 0
-      ? `${startIndex}\u2013${endIndex} / ${sortedTools.length} ${copy.resultsLabel}`
-      : `0 ${copy.resultsLabel}`;
+    sortedTools.length > 0 ? `${startIndex}–${endIndex} / ${sortedTools.length} ${copy.resultsLabel}` : `0 ${copy.resultsLabel}`;
 
   return (
     <section className="space-y-5">
       <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_220px] lg:items-end">
-        <div className="rounded-[24px] border border-slate-200/80 bg-white/95 p-2 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.16)]">
+        <div className="ui-card rounded-[22px] p-2">
           <label className="sr-only" htmlFor="tool-search">
             {copy.searchLabel}
           </label>
@@ -492,7 +490,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
         </div>
 
         <div className="flex items-center gap-3 lg:justify-end">
-          <div className="w-full rounded-[22px] border border-slate-200/80 bg-white/95 p-2 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)] lg:w-[220px]">
+          <div className="ui-card rounded-[22px] p-2 lg:w-[220px]">
             <label className="sr-only" htmlFor="tool-sort">
               {copy.sortLabel}
             </label>
@@ -557,7 +555,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
 
       {sortedTools.length > 0 ? (
         <>
-          <section className="grid grid-cols-1 gap-2.5">
+          <section className="grid grid-cols-1 gap-3">
             {visibleTools.map((tool) => (
               <ToolCard
                 key={tool.slug}
@@ -588,7 +586,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
           </div>
         </>
       ) : (
-        <section className="rounded-[28px] border border-dashed border-slate-200 bg-white/96 px-4 py-8 text-center shadow-[0_24px_80px_-44px_rgba(37,99,235,0.12)] sm:px-6 sm:py-10">
+        <section className="ui-card rounded-[28px] border-dashed px-4 py-8 text-center sm:px-6 sm:py-10">
           <h3 className="text-xl font-bold tracking-tight text-slate-950">{copy.emptyTitle}</h3>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-600">{copy.emptyDescription}</p>
           <button

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
@@ -136,14 +137,7 @@ function ToolLogo({ tool }: { tool: HomeToolCard }) {
   return (
     <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[16px] border border-slate-200 bg-white text-[11px] font-bold uppercase tracking-[0.14em] text-slate-700 shadow-[0_16px_34px_-24px_rgba(15,23,42,0.24)]">
       {tool.logoUrl ? (
-        <img
-          src={tool.logoUrl}
-          alt={tool.name}
-          className="h-full w-full object-contain p-2"
-          loading="lazy"
-          decoding="async"
-          referrerPolicy="no-referrer"
-        />
+        <Image src={tool.logoUrl} alt={tool.name} width={48} height={48} unoptimized className="h-full w-full object-contain p-2" />
       ) : (
         fallback
       )}
@@ -170,15 +164,8 @@ function BlogFeedCard({
       className="group flex items-start gap-3 rounded-[18px] border border-slate-200 bg-white p-3.5 shadow-[0_18px_42px_-30px_rgba(15,23,42,0.16)] transition duration-200 hover:-translate-y-0.5 hover:border-sky-200 hover:bg-slate-50 hover:shadow-[0_22px_48px_-28px_rgba(37,99,235,0.18)]"
     >
       <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[14px] border border-slate-200 bg-[linear-gradient(180deg,#eff6ff_0%,#ffffff_100%)] text-[11px] font-bold uppercase tracking-[0.16em] text-[#0055FF]">
-        {thumbnail.kind === "logo" ? (
-          <img
-            src={thumbnail.value}
-            alt={article.title}
-            className="h-full w-full object-contain p-2"
-            loading="lazy"
-            decoding="async"
-            referrerPolicy="no-referrer"
-          />
+      {thumbnail.kind === "logo" ? (
+          <Image src={thumbnail.value} alt={article.title} width={44} height={44} unoptimized className="h-full w-full object-contain p-2" />
         ) : (
           thumbnail.value
         )}

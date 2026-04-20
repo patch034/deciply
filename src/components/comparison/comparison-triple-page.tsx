@@ -123,10 +123,10 @@ export function ComparisonTriplePage({
           ]}
         />
 
-        <section className="rounded-[36px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(10,16,30,0.94),rgba(13,18,34,0.96),rgba(8,11,20,0.99))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(14,165,233,0.14)] lg:px-10 lg:py-12">
+        <section className="ui-card rounded-[36px] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.995),rgba(246,250,255,0.985))] px-8 py-10 shadow-[0_24px_72px_-42px_rgba(15,23,42,0.14)] lg:px-10 lg:py-12">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div>
-              <Badge variant="ghost" className="border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
+              <Badge variant="ghost" className="border-sky-200 bg-sky-50 text-[#0055FF]">
                 {dictionary.eyebrow}
               </Badge>
               <div className="mt-4 flex flex-wrap gap-2">
@@ -136,14 +136,14 @@ export function ComparisonTriplePage({
                   </Badge>
                 ))}
               </div>
-              <h1 className="mt-6 bg-gradient-to-r from-white via-sky-200 to-cyan-300 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-[3.5rem] lg:leading-[1.03]">
+              <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-950 md:text-5xl lg:text-[3.5rem] lg:leading-[1.03]">
                 {title}
               </h1>
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{description}</p>
-              <p className="mt-4 max-w-3xl text-base leading-8 text-slate-400">{dictionary.summary}</p>
+              <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{description}</p>
+              <p className="mt-4 max-w-3xl text-base leading-8 text-slate-500">{dictionary.summary}</p>
             </div>
 
-            <div className="rounded-[32px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(10,16,30,0.94),rgba(13,18,34,0.98))] p-6 shadow-[0_18px_60px_-36px_rgba(14,165,233,0.12)] md:p-8">
+            <div className="rounded-[32px] border border-slate-200 bg-slate-50/90 p-6 shadow-[0_18px_60px_-40px_rgba(15,23,42,0.12)] md:p-8">
               <div className="flex flex-wrap gap-2">
                 {tools.map((tool) => (
                   <RatingBadge key={tool.slug} rating={tool.rating} className="shrink-0" />
@@ -179,10 +179,10 @@ export function ComparisonTriplePage({
         <InfoSection id="son-karar" title={dictionary.selectionTitle} description={dictionary.selectionDescription}>
           <div className="grid gap-4 md:grid-cols-3">
             {tools.map((tool) => (
-              <div key={tool.slug} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-200">{tool.name}</p>
-                <h2 className="mt-3 text-xl font-semibold text-slate-100">{tool.bestUseCase}</h2>
-                <p className="mt-3 text-sm leading-7 text-slate-300">{tool.whoShouldUseSummary}</p>
+              <div key={tool.slug} className="ui-card rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_14px_40px_-28px_rgba(15,23,42,0.12)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#0055FF]">{tool.name}</p>
+                <h2 className="mt-3 text-xl font-semibold text-slate-950">{tool.bestUseCase}</h2>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{tool.whoShouldUseSummary}</p>
                 <div className="mt-5">
                   <PremiumButton href={`/${locale}/tools/${tool.slug}`} variant="secondary" className="w-full">
                     {locale === "tr" ? tool.name + " incele" : "Review " + tool.name}
@@ -196,17 +196,17 @@ export function ComparisonTriplePage({
         <InfoSection id="fiyat" title={dictionary.pricingTitle} description={dictionary.pricingDescription}>
           <div className="grid gap-4 md:grid-cols-3">
             {tools.map((tool) => (
-              <div key={tool.slug} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 shadow-[0_16px_48px_-30px_rgba(14,165,233,0.1)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-200">{tool.name}</p>
-                <p className="mt-3 text-lg font-semibold text-slate-100">{formatPricing(tool.pricing, locale)}</p>
+              <div key={tool.slug} className="ui-card rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_14px_40px_-28px_rgba(15,23,42,0.12)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#0055FF]">{tool.name}</p>
+                <p className="mt-3 text-lg font-semibold text-slate-950">{formatPricing(tool.pricing, locale)}</p>
                 <div className="mt-4 grid gap-3">
-                  <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/45 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{locale === "tr" ? "Ücretsiz başlangıç" : "Free start"}</p>
-                    <p className="mt-2 text-sm leading-7 text-slate-300">{tool.pricing === "PAID" ? (locale === "tr" ? "Doğrudan ücretli giriş gerektirir." : "Starts as a paid product.") : (locale === "tr" ? "Ücretsiz veya freemium giriş sunar." : "Offers a free or freemium starting point.")}</p>
+                  <div className="rounded-[20px] border border-slate-200 bg-slate-50 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{locale === "tr" ? "Ücretsiz başlangıç" : "Free start"}</p>
+                    <p className="mt-2 text-sm leading-7 text-slate-600">{tool.pricing === "PAID" ? (locale === "tr" ? "Doğrudan ücretli giriş gerektirir." : "Starts as a paid product.") : (locale === "tr" ? "Ücretsiz veya freemium giriş sunar." : "Offers a free or freemium starting point.")}</p>
                   </div>
-                  <div className="rounded-[20px] border border-sky-400/10 bg-slate-950/45 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{locale === "tr" ? "Ticari kullanım" : "Commercial fit"}</p>
-                    <p className="mt-2 text-sm leading-7 text-slate-300">{tool.moneyUseCases[0]?.description ?? tool.realUseCaseExample.description}</p>
+                  <div className="rounded-[20px] border border-slate-200 bg-slate-50 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{locale === "tr" ? "Ticari kullanım" : "Commercial fit"}</p>
+                    <p className="mt-2 text-sm leading-7 text-slate-600">{tool.moneyUseCases[0]?.description ?? tool.realUseCaseExample.description}</p>
                   </div>
                 </div>
               </div>
@@ -230,12 +230,12 @@ export function ComparisonTriplePage({
           </div>
         </InfoSection>
 
-        <section id="son-karar" className="scroll-mt-24 rounded-[34px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(14,165,233,0.14)] lg:px-10 lg:py-12">
+        <section id="son-karar" className="ui-card scroll-mt-24 rounded-[34px] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.995),rgba(246,250,255,0.985))] px-8 py-10 shadow-[0_24px_72px_-42px_rgba(15,23,42,0.14)] lg:px-10 lg:py-12">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200">{dictionary.verdictTitle}</p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{dictionary.verdictTitle}</h2>
-              <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{dictionary.verdictDescription}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#0055FF]">{dictionary.verdictTitle}</p>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{dictionary.verdictTitle}</h2>
+              <p className="mt-4 text-base leading-7 text-slate-600 md:text-lg">{dictionary.verdictDescription}</p>
             </div>
             <ComparisonActionGrid
               locale={locale}
@@ -250,10 +250,10 @@ export function ComparisonTriplePage({
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {tools.map((tool) => (
-              <div key={tool.slug} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
-                <p className="text-sm font-semibold text-slate-100">{tool.name}</p>
-                <h3 className="mt-3 text-lg font-semibold text-slate-50">{tool.bestUseCase}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-300">{tool.realUseCaseExample.description}</p>
+              <div key={tool.slug} className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_14px_36px_-28px_rgba(15,23,42,0.12)]">
+                <p className="text-sm font-semibold text-slate-900">{tool.name}</p>
+                <h3 className="mt-3 text-lg font-semibold text-slate-950">{tool.bestUseCase}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{tool.realUseCaseExample.description}</p>
               </div>
             ))}
           </div>
@@ -313,10 +313,10 @@ export function ComparisonTriplePage({
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5 transition hover:border-cyan-400/18 hover:bg-cyan-400/[0.08]"
+              className="ui-card rounded-[24px] border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-sky-200 hover:bg-sky-50/50"
             >
-              <p className="text-sm font-semibold text-cyan-200">{item.label}</p>
-              <p className="mt-3 text-sm leading-7 text-slate-300">
+              <p className="text-sm font-semibold text-slate-900">{item.label}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-600">
                 {locale === "tr" ? "Alternatifleri ve kullanım alanlarını ayrı sayfada görün." : "Review alternatives and workflow fit on a dedicated page."}
               </p>
             </Link>
@@ -325,12 +325,12 @@ export function ComparisonTriplePage({
 
         <ComparisonFaq title={locale === "tr" ? "Sık sorulan sorular" : "FAQ"} description={locale === "tr" ? "Bu üç aracı seçmeden önce en sık sorulan karar sorularına kısa cevaplar." : "Short answers to the most common decision questions before you choose one of the tools."} items={faqItems} />
 
-        <section className="rounded-[36px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-5 py-8 text-white shadow-[0_28px_80px_-42px_rgba(14,165,233,0.14)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+        <section className="ui-card rounded-[36px] border border-slate-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.995),rgba(246,250,255,0.985))] px-5 py-8 shadow-[0_24px_72px_-42px_rgba(15,23,42,0.14)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-200/85">{locale === "tr" ? "Son adım" : "Final step"}</p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">{locale === "tr" ? "Bir aracı aç ve kendi akışında test et" : "Open one tool and test it in your own workflow"}</h2>
-              <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{locale === "tr" ? "En doğru sonraki adım, netleştirdiğin aracı açıp gerçek iş akışında denemektir." : "The best next step is to open the tool that fits best and test it in a real workflow."}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#0055FF]">{locale === "tr" ? "Son adım" : "Final step"}</p>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{locale === "tr" ? "Bir aracı aç ve kendi akışında test et" : "Open one tool and test it in your own workflow"}</h2>
+              <p className="mt-4 text-base leading-7 text-slate-600 md:text-lg">{locale === "tr" ? "En doğru sonraki adım, netleştirdiğin aracı açıp gerçek iş akışında denemektir." : "The best next step is to open the tool that fits best and test it in a real workflow."}</p>
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
               {tools.map((tool) => (

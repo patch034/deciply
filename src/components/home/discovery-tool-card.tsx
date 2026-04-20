@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -56,13 +57,13 @@ function ToolLogo({
       ].join(" ")}
     >
       {tool.logoUrl && !imageFailed ? (
-        <img
+        <Image
           src={tool.logoUrl}
           alt={tool.name}
+          width={48}
+          height={48}
+          unoptimized
           className="h-full w-full object-contain p-2"
-          loading="lazy"
-          decoding="async"
-          referrerPolicy="no-referrer"
           onError={() => setImageFailed(true)}
         />
       ) : (

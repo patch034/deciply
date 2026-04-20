@@ -14,7 +14,7 @@ import {
 } from "@/lib/catalog";
 import { buildComparisonPath, getComparisonTargetSlugs } from "@/lib/comparisons";
 import { getToolLogoUrl } from "@/lib/logo";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, normalizeLocale } from "@/i18n/config";
 import { buildToolsIndexMetaDescription, buildToolsPageTitle } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -120,61 +120,52 @@ export default async function ToolsPage({
   });
 
   return (
-    <div className="ui-page-shell relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip bg-transparent px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-      <section className="ui-card ui-card-hover rounded-[32px] border border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99),rgba(244,248,253,0.98))] p-6 shadow-[0_24px_80px_-44px_rgba(37,99,235,0.14)] sm:p-8">
+    <div className="ui-page-shell relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <section className="ui-card rounded-[30px] p-6 sm:p-8">
         <Badge variant="accent">{content.toolsIndex.eyebrow}</Badge>
 
-        <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-end">
+        <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1.18fr)_minmax(0,0.82fr)] lg:items-end">
           <div>
-            <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">
+            <h1 className="max-w-3xl text-4xl font-bold tracking-[-0.05em] text-slate-950 md:text-5xl">
               {content.toolsIndex.title}
             </h1>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{content.toolsIndex.description}</p>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-            <div className="ui-card rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
+            <div className="ui-inner-panel p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                 {locale === "tr" ? "Araçlar" : "Tools"}
               </p>
               <p className="mt-2 text-2xl font-bold tracking-tight text-slate-950">{getToolCount()}</p>
             </div>
-            <div className="ui-card rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
+            <div className="ui-inner-panel p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                 {content.common.categoriesLabel}
               </p>
               <p className="mt-2 text-2xl font-bold tracking-tight text-slate-950">{categoryCount}</p>
             </div>
-            <div className="ui-card rounded-[24px] border border-slate-200 bg-white/95 p-4 shadow-[0_18px_52px_-36px_rgba(37,99,235,0.14)]">
+            <div className="ui-inner-panel p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                 {locale === "tr" ? "Keşif" : "Discovery"}
               </p>
               <p className="mt-2 text-sm font-medium leading-6 text-slate-600">
                 {locale === "tr"
-                  ? "Arama, kategori ve sıralama ile hızlı tarama."
-                  : "Search, categories, and sorting for fast browsing."}
+                  ? "Arama, kategori ve sıralama ile daha hızlı tarama."
+                  : "Search, categories, and sorting for faster browsing."}
               </p>
             </div>
           </div>
         </div>
 
         <div className="mt-5 flex flex-wrap gap-2">
-          <Link
-            href={`/${safeLocale}/categories`}
-            className="inline-flex min-h-[40px] items-center rounded-full border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 transition hover:border-sky-200 hover:text-slate-950"
-          >
+          <Link href={`/${safeLocale}/categories`} className="ui-pill-link">
             {content.common.categoriesLabel}
           </Link>
-          <Link
-            href={`/${safeLocale}/compare-auto`}
-            className="inline-flex min-h-[40px] items-center rounded-full border border-sky-200 bg-sky-50 px-4 text-sm font-semibold text-[#0055FF] transition hover:border-sky-300 hover:bg-sky-100"
-          >
+          <Link href={`/${safeLocale}/compare-auto`} className="ui-pill-link border-sky-200 bg-sky-50 text-[#0055FF]">
             {locale === "tr" ? "Karşılaştırmalar" : "Comparisons"}
           </Link>
-          <Link
-            href={`/${safeLocale}/blog`}
-            className="inline-flex min-h-[40px] items-center rounded-full border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 transition hover:border-sky-200 hover:text-slate-950"
-          >
+          <Link href={`/${safeLocale}/blog`} className="ui-pill-link">
             {locale === "tr" ? "Rehberler" : "Guides"}
           </Link>
         </div>

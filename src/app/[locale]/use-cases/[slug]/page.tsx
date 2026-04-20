@@ -16,11 +16,13 @@ import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import {
   buildUseCasePath,
   getSafeComparisonPath,
-  getStaticUseCaseSlugs,
   getUseCaseBlogGuides,
   getUseCasePage,
   getUseCaseTools
 } from "@/lib/intent-pages";
+
+export const revalidate = 3600;
+export const dynamicParams = true;
 
 const copy = {
   tr: {
@@ -115,12 +117,7 @@ function getUseCaseCompareLinks(locale: Locale, selectedTools: ReturnType<typeof
 }
 
 export function generateStaticParams() {
-  return locales.flatMap((locale) =>
-    getStaticUseCaseSlugs().map((slug) => ({
-      locale,
-      slug
-    }))
-  );
+  return [];
 }
 
 export async function generateMetadata({

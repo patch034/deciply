@@ -21,66 +21,37 @@ export function BlogCard({ locale, article, ctaLabel, tone = "light" }: BlogCard
   return (
     <article
       className={[
-        "ui-card ui-card-hover group flex h-full min-h-[328px] flex-col overflow-hidden rounded-[24px] p-3.5 transition duration-300 hover:-translate-y-1 sm:min-h-[346px] sm:p-[18px]",
+        "group flex h-full min-h-[290px] flex-col rounded-[22px] border p-4 transition",
         light
-          ? "border-slate-200/95 bg-[linear-gradient(180deg,rgba(255,255,255,0.998),rgba(247,250,255,0.975))] shadow-[0_22px_56px_-24px_rgba(15,23,42,0.18)] ring-1 ring-slate-900/[0.035] hover:border-sky-200 hover:shadow-[0_30px_60px_-24px_rgba(37,99,235,0.2)]"
-          : "border-sky-400/10 bg-[linear-gradient(180deg,rgba(10,16,30,0.96),rgba(5,9,17,0.99))] shadow-[0_28px_88px_-44px_rgba(14,165,233,0.14)] hover:border-sky-300/20"
+          ? "border-slate-200 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.07)] hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_20px_44px_rgba(15,23,42,0.11)]"
+          : "border-slate-800 bg-slate-950 text-slate-50"
       ].join(" ")}
     >
-      <div className="h-[5px] w-full rounded-full bg-[linear-gradient(90deg,#071226_0%,#0E2450_14%,#007FFF_52%,#0055FF_78%,#3B82F6_100%)]" />
-      <div className="flex min-h-[66px] flex-wrap items-center gap-3 border-b border-slate-200/90 bg-white/75 px-0 pb-3.5 pt-3.5 backdrop-blur-[2px] sm:min-h-[70px] sm:pb-3.5 sm:pt-3.5">
-        <Badge variant="ghost" className="max-w-full justify-start">
-          {article.categoryLabel}
-        </Badge>
-        {publishDate ? <span className={["text-xs font-medium", light ? "text-slate-500" : "text-slate-400/90"].join(" ")}>{publishDate}</span> : null}
+      <div className="flex items-center gap-3 border-b border-slate-200 pb-3">
+        <Badge variant="ghost">{article.categoryLabel}</Badge>
+        {publishDate ? (
+          <span className={["text-xs font-medium", light ? "text-slate-500" : "text-slate-300"].join(" ")}>
+            {publishDate}
+          </span>
+        ) : null}
       </div>
 
-      <div className="mt-4 flex flex-1 flex-col sm:mt-4">
-        <h2
-          className={[
-            "min-h-[4rem] text-[1.08rem] font-bold tracking-[-0.03em] leading-[1.1] transition group-hover:text-[#0E2450] sm:min-h-[4.7rem] sm:text-[1.18rem] md:min-h-[4.95rem] md:text-[1.28rem]",
-            light ? "text-slate-900" : "text-slate-50 group-hover:text-[#BFD2F6]"
-          ].join(" ")}
-          style={{
-            display: "-webkit-box",
-            WebkitBoxOrient: "vertical",
-            WebkitLineClamp: 2,
-            overflow: "hidden"
-          }}
-        >
+      <div className="flex flex-1 flex-col">
+        <h2 className={["mt-4 clamp-2 text-[1.22rem] font-bold tracking-[-0.04em] leading-[1.08]", light ? "text-slate-950" : "text-slate-50"].join(" ")}>
           <Link href={`/${locale}/blog/${article.slug}`}>{article.title}</Link>
         </h2>
 
-        <p
-          className={[
-            "mt-3 min-h-[4rem] text-[14px] leading-6 sm:mt-3 sm:min-h-[4.2rem] sm:text-[14px] sm:leading-7 md:min-h-[4.6rem] md:text-[15px]",
-            light ? "text-slate-600" : "text-slate-300/84"
-          ].join(" ")}
-          style={{
-            display: "-webkit-box",
-            WebkitBoxOrient: "vertical",
-            WebkitLineClamp: 3,
-            overflow: "hidden"
-          }}
-        >
+        <p className={["mt-3 clamp-3 text-[15px] leading-7", light ? "text-slate-600" : "text-slate-300/84"].join(" ")}>
           {article.excerpt}
         </p>
 
-        <div
-          className={[
-            "mt-auto flex min-h-[70px] items-end justify-between gap-3 border-t pt-3.5 text-sm sm:min-h-[74px] sm:gap-4 sm:pt-3.5",
-            light ? "border-slate-200 bg-white/55" : "border-sky-400/10 bg-slate-950/10"
-          ].join(" ")}
-        >
-          <span className={["truncate text-[11px] font-semibold uppercase tracking-[0.18em]", light ? "text-slate-500" : "text-slate-400"].join(" ")}>
+        <div className={["mt-auto flex items-end justify-between gap-3 border-t pt-4", light ? "border-slate-200" : "border-slate-800"].join(" ")}>
+          <span className={["text-[11px] font-semibold uppercase tracking-[0.18em]", light ? "text-slate-500" : "text-slate-300"].join(" ")}>
             {article.relatedToolSlugs.length} {relatedToolsLabel}
           </span>
           <Link
             href={`/${locale}/blog/${article.slug}`}
-            className={[
-              "inline-flex min-h-[42px] items-center justify-center rounded-[14px] px-4 text-sm font-semibold transition duration-200 sm:min-w-[132px]",
-              "bg-[linear-gradient(90deg,#0E2450_0%,#007FFF_42%,#0055FF_72%,#3B82F6_100%)] text-white shadow-[0_18px_42px_-24px_rgba(37,99,235,0.5)] hover:-translate-y-0.5 hover:shadow-[0_22px_48px_-22px_rgba(37,99,235,0.56)]"
-            ].join(" ")}
+            className="inline-flex min-h-[42px] items-center justify-center rounded-[14px] bg-[linear-gradient(90deg,#0E2450_0%,#007FFF_42%,#0055FF_72%,#3B82F6_100%)] px-4 text-sm font-semibold text-white shadow-[0_18px_40px_-24px_rgba(37,99,235,0.45)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_46px_-22px_rgba(37,99,235,0.5)]"
           >
             {ctaLabel}
           </Link>

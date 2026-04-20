@@ -13,96 +13,98 @@ type SiteHeaderProps = {
   dictionary: Dictionary;
 };
 
-function getHeaderSubtitle(locale: SupportedLocale) {
-  switch (locale) {
-    case "tr":
-      return "AI araç dizini";
-    case "ar":
-      return "دليل أدوات الذكاء الاصطناعي";
-    case "ru":
-      return "Каталог AI‑инструментов";
-    case "zh":
-      return "AI 工具目录";
-    case "ja":
-      return "AIツールのディレクトリ";
-    case "ko":
-      return "AI 도구 디렉터리";
-    case "el":
-      return "Κατάλογος εργαλείων AI";
-    case "da":
-      return "AI-værktøjs-katalog";
-    case "fa":
-      return "دایرکتوری ابزارهای هوش مصنوعی";
-    case "en":
-    default:
-      return "AI tools directory";
-  }
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
+      {open ? (
+        <path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      ) : (
+        <>
+          <path d="M5 7h14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          <path d="M5 12h14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          <path d="M5 17h14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        </>
+      )}
+    </svg>
+  );
 }
 
 export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
-  const navItems = dictionary.navigation;
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const updateScrollState = () => {
-      setIsScrolled(window.scrollY > 8);
-    };
-
+    const updateScrollState = () => setIsScrolled(window.scrollY > 10);
     updateScrollState();
     window.addEventListener("scroll", updateScrollState, { passive: true });
-
     return () => window.removeEventListener("scroll", updateScrollState);
   }, []);
 
-  return (
-    <header
-      className={[
-        "fixed left-0 right-0 top-0 z-[80] overflow-visible text-slate-900 transition-[background-color,box-shadow,border-color,backdrop-filter,transform] duration-300 will-change-[background-color,box-shadow,backdrop-filter,transform]",
-        isScrolled
-          ? "border-b border-slate-200/70 bg-[rgba(255,255,255,0.82)] shadow-[0_18px_46px_-34px_rgba(15,23,42,0.15)] backdrop-blur-3xl backdrop-saturate-150 supports-[backdrop-filter]:bg-[rgba(255,255,255,0.82)]"
-          : "border-b border-slate-200/50 bg-[rgba(255,255,255,0.66)] shadow-[0_10px_28px_-34px_rgba(15,23,42,0.09)] backdrop-blur-2xl backdrop-saturate-150 supports-[backdrop-filter]:bg-[rgba(255,255,255,0.66)]"
-      ].join(" ")}
-    >
-      <div className="w-full px-0 py-0">
-        <div className="mx-auto flex w-full max-w-none flex-col gap-2 px-2.5 py-2.5 sm:px-4 sm:py-3 lg:px-6">
-          <div className="flex items-center gap-3 sm:gap-4">
-            <Link href={`/${locale}`} className="inline-flex min-h-[44px] shrink-0 items-center gap-3">
-              <BrandLogo compact className="h-8 w-8" />
-              <span className="min-w-0 leading-tight">
-                <span className="block text-[16px] font-semibold tracking-[-0.03em] text-slate-950 sm:text-[17px]">Deciply</span>
-                <span className="block text-[11px] font-medium text-slate-600 sm:text-[12px]">{getHeaderSubtitle(locale)}</span>
-              </span>
-            </Link>
+  useEffect(() => {
+    const closeMenu = () => setMobileOpen(false);
+    window.addEventListener("resize", closeMenu);
+    return () => window.removeEventListener("resize", closeMenu);
+  }, []);
 
-            <nav className="hidden min-w-0 flex-1 items-center justify-center gap-1.5 overflow-x-auto pb-0.5 lg:flex">
-              {navItems.map((item) => (
+  return (
+    <header className="fixed inset-x-0 top-0 z-[90] px-0 pt-0 sm:px-0 sm:pt-0">
+      <div
+        className={[
+          "mx-auto flex w-full max-w-none flex-col border-b transition-[background-color,box-shadow,border-color,transform] duration-300",
+          isScrolled
+            ? "border-slate-200/95 bg-white/84 shadow-[0_18px_48px_-30px_rgba(15,23,42,0.18)] backdrop-blur-2xl"
+            : "border-slate-200/85 bg-white/74 shadow-[0_14px_36px_-28px_rgba(15,23,42,0.12)] backdrop-blur-xl"
+        ].join(" ")}
+      >
+        <div className="mx-auto flex min-h-[76px] w-full max-w-[1440px] items-center gap-3 px-4 py-3 sm:px-5 lg:px-7">
+          <Link href={`/${locale}`} className="flex min-w-0 shrink-0 items-center gap-3">
+            <BrandLogo compact className="h-8 w-8" />
+            <span className="min-w-0 leading-tight">
+              <span className="block text-[1.05rem] font-semibold tracking-[-0.03em] text-slate-950">Deciply</span>
+              <span className="block text-[0.78rem] text-slate-500">{dictionary.brandSubtitle}</span>
+            </span>
+          </Link>
+
+          <nav className="hidden min-w-0 flex-1 items-center justify-center gap-2 lg:flex">
+            {dictionary.navigation.map((item) => (
+              <Link key={item.href} href={`/${locale}${item.href}`} className="ui-nav-pill">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="ml-auto flex items-center gap-2">
+            <div className="shrink-0">
+              <LocaleSwitcher locale={locale} />
+            </div>
+            <button
+              type="button"
+              onClick={() => setMobileOpen((current) => !current)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/90 bg-white/72 text-slate-700 shadow-[0_12px_28px_-24px_rgba(15,23,42,0.24)] backdrop-blur-xl transition hover:border-sky-200 hover:text-slate-950 lg:hidden"
+              aria-expanded={mobileOpen}
+              aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
+            >
+              <MenuIcon open={mobileOpen} />
+            </button>
+          </div>
+        </div>
+
+        {mobileOpen ? (
+          <div className="border-t border-slate-200/80 bg-white/92 px-4 pb-4 pt-2 lg:hidden">
+            <nav className="mx-auto grid max-w-[1440px] gap-2">
+              {dictionary.navigation.map((item) => (
                 <Link
-                  key={item.href}
+                  key={`${item.href}-mobile`}
                   href={`/${locale}${item.href}`}
-                  className="ui-pill-link shrink-0 px-4 text-[14px] tracking-[-0.01em]"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex min-h-[46px] items-center rounded-[18px] border border-slate-200 bg-white/82 px-4 text-sm font-semibold text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-slate-950"
                 >
                   {item.label}
                 </Link>
               ))}
             </nav>
-
-            <div className="flex shrink-0 items-center justify-between gap-3">
-              <LocaleSwitcher locale={locale} />
-            </div>
           </div>
-
-          <div className="flex items-center gap-2 overflow-x-auto pb-0.5 lg:hidden">
-            {navItems.map((item) => (
-              <Link
-                key={`${item.href}-mobile`}
-                href={`/${locale}${item.href}`}
-                className="ui-pill-link min-h-[36px] shrink-0 px-3 text-[11px] uppercase tracking-[0.12em]"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
+        ) : null}
       </div>
     </header>
   );

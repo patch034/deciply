@@ -64,6 +64,10 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (pathname === "/admin" || pathname.startsWith("/admin/")) {
+    return NextResponse.next();
+  }
+
   const host = getRequestHost(request);
   const protocol = getRequestProtocol(request);
   const isLocalhost = host.includes("localhost") || host.startsWith("127.0.0.1");

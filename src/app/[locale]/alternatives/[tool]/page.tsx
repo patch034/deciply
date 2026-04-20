@@ -18,9 +18,11 @@ import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import {
   buildAlternativesPath,
   getAlternativeTargetTools,
-  getSafeComparisonPath,
-  getStaticAlternativeSlugs
+  getSafeComparisonPath
 } from "@/lib/intent-pages";
+
+export const revalidate = 3600;
+export const dynamicParams = true;
 
 const copy = {
   tr: {
@@ -98,12 +100,7 @@ function buildAlternativesDescription(locale: Locale, toolName: string, alternat
 }
 
 export function generateStaticParams() {
-  return locales.flatMap((locale) =>
-    getStaticAlternativeSlugs().map((tool) => ({
-      locale,
-      tool
-    }))
-  );
+  return [];
 }
 
 export async function generateMetadata({
@@ -403,5 +400,4 @@ export default async function AlternativesPage({
     </>
   );
 }
-
 

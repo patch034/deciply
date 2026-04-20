@@ -54,7 +54,7 @@ export default async function LocaleLayout({
   return (
     <div className="min-h-screen" dir={isRtlLocale(locale) ? "rtl" : "ltr"} lang={locale}>
       <SiteHeader locale={supportedLocale} dictionary={dictionary} />
-      <main className="pt-[92px] sm:pt-[96px] lg:pt-[100px]">{children}</main>
+      <main className="pt-[94px] sm:pt-[104px] lg:pt-[116px]">{children}</main>
       <SiteFooter locale={supportedLocale} dictionary={dictionary} />
     </div>
   );

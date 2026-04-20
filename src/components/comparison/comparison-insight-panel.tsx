@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Image from "next/image";
 import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
@@ -53,14 +54,7 @@ function renderLogo(name: string, logoUrl?: string) {
   return (
     <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[10px] font-bold uppercase tracking-[0.18em] text-[#0055FF] shadow-[0_14px_30px_-20px_rgba(15,23,42,0.22)]">
       {logoUrl ? (
-        <img
-          src={logoUrl}
-          alt={name}
-          className="h-full w-full object-contain p-1.5"
-          loading="lazy"
-          decoding="async"
-          referrerPolicy="no-referrer"
-        />
+        <Image src={logoUrl} alt={name} width={40} height={40} unoptimized className="h-full w-full object-contain p-1.5" />
       ) : (
         <span>{getInitials(name)}</span>
       )}

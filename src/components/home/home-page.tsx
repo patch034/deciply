@@ -1,9 +1,13 @@
-import { HomeBoostSections } from "@/components/home/home-boost-sections";
 import { HeroSection } from "@/components/home/hero-section";
-import { getLocalizedTools } from "@/lib/catalog";
-import { toHomeToolCard } from "@/lib/tool-ui";
+import { HomeDirectoryShell } from "@/components/home/home-directory-shell";
 import type { HomeContent } from "@/data/home";
 import type { Locale } from "@/i18n/config";
+import { getLocalizedCategories, getLocalizedTools } from "@/lib/catalog";
+
+type HomePageProps = {
+  locale: Locale;
+  content: HomeContent;
+};
 
 function buildPopularTools(locale: Locale) {
   return [...getLocalizedTools(locale)]
@@ -17,24 +21,21 @@ function buildPopularTools(locale: Locale) {
       }
 
       return left.slug.localeCompare(right.slug);
-    })
-    .slice(0, 24)
-    .map((tool) => toHomeToolCard(locale, tool));
+    });
 }
 
-type HomePageProps = {
-  locale: Locale;
-  content: HomeContent;
-};
-
 export async function HomePage({ locale, content }: HomePageProps) {
-  const allTools = getLocalizedTools(locale).map((tool) => toHomeToolCard(locale, tool));
-  const popularTools = buildPopularTools(locale).slice(0, 24);
+  const categories = getLocalizedCategories(locale);
+  const tools = buildPopularTools(locale);
 
   return (
-    <div className="ui-page-shell relative min-h-screen overflow-x-clip bg-transparent pb-12 text-slate-900 sm:pb-16 lg:pb-20">
+    <div className="ui-page-shell relative min-h-screen overflow-x-clip pb-12 text-slate-900 sm:pb-16 lg:pb-20">
       <HeroSection locale={locale} content={content.hero} />
-      <HomeBoostSections locale={locale} popularTools={popularTools} allTools={allTools} />
+      <HomeDirectoryShell
+        locale={locale}
+        categories={categories}
+        tools={tools}
+      />
     </div>
   );
 }

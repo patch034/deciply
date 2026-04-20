@@ -1,39 +1,15 @@
-﻿import type { Metadata } from "next";
-import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { Breadcrumb } from "@/components/catalog/breadcrumb";
-import { CategoryHero } from "@/components/catalog/category-hero";
-import { InfoSection } from "@/components/catalog/info-section";
-import { ToolCard } from "@/components/catalog/tool-card";
-import { ComparisonCard } from "@/components/home/comparison-card";
-import { ComparisonBreakdownTable } from "@/components/comparison/comparison-breakdown-table";
-import { ComparisonFaq } from "@/components/comparison/comparison-faq";
-import { RelatedComparisonCard } from "@/components/comparison/related-comparison-card";
-import { Badge } from "@/components/ui/badge";
-import { PremiumButton } from "@/components/ui/premium-button";
-import { SectionShell } from "@/components/ui/section-shell";
-import { categories } from "@/data/categories";
-import { getComparisonContent } from "@/data/comparisons";
-import {
-  formatPricing,
-  getCatalogContent,
-  getCategoryNamesMap,
-  getLocalizedCategoryBySlug,
-  getLocalizedToolBySlug,
-  getToolsByCategory
-} from "@/lib/catalog";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
-import { buildComparisonPath, getComparisonDirectoryCards, getComparisonTargetTools } from "@/lib/comparisons";
-import { getToolTrustIndicators } from "@/lib/tool-ui";
+import { ThemePreviewLayout } from "@/components/content/theme-preview-layout";
+import { getLocalizedCategoryBySlug, getToolsByCategory } from "@/lib/catalog";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, normalizeLocale } from "@/i18n/config";
+
+export const revalidate = 3600;
+export const dynamicParams = true;
 
 export function generateStaticParams() {
-  return locales.flatMap((locale) =>
-    categories.map((category) => ({
-      locale,
-      slug: category.slug
-    }))
-  );
+  return [];
 }
 
 export async function generateMetadata({
@@ -47,20 +23,8 @@ export async function generateMetadata({
     return {};
   }
 
-  if (slug === "comparisons") {
-    const comparison = getComparisonContent(normalizeLocale(locale));
-
-    return {
-      title: comparison.title,
-      description: comparison.summary,
-      alternates: {
-        canonical: buildCanonicalUrl(`/${locale}/categories/${slug}`),
-        languages: buildAlternates(`/categories/${slug}`)
-      }
-    };
-  }
-
-  const category = getLocalizedCategoryBySlug(normalizeLocale(locale), slug);
+  const safeLocale = normalizeLocale(locale);
+  const category = getLocalizedCategoryBySlug(safeLocale, slug);
 
   if (!category) {
     return {};
@@ -70,7 +34,7 @@ export async function generateMetadata({
     title: category.seoTitle,
     description: category.seoDescription,
     alternates: {
-      canonical: buildCanonicalUrl(`/${locale}/categories/${slug}`),
+      canonical: buildCanonicalUrl(`/${safeLocale}/categories/${slug}`),
       languages: buildAlternates(`/categories/${slug}`)
     }
   };
@@ -88,348 +52,67 @@ export default async function CategoryDetailPage({
   }
 
   const safeLocale = normalizeLocale(locale);
-  const content = getCatalogContent(safeLocale);
   const category = getLocalizedCategoryBySlug(safeLocale, slug);
 
   if (!category) {
     notFound();
   }
 
-  const categoryNamesMap = getCategoryNamesMap(safeLocale);
-  const comparisonDirectoryCards = slug === "comparisons" ? getComparisonDirectoryCards(safeLocale) : [];
-
-  if (slug === "comparisons") {
-    const comparison = getComparisonContent(safeLocale);
-    const primaryTool = getLocalizedToolBySlug(safeLocale, comparison.primaryToolSlug);
-    const secondaryTool = getLocalizedToolBySlug(safeLocale, comparison.secondaryToolSlug);
-
-    if (!primaryTool || !secondaryTool) {
-      notFound();
-    }
-
-    const canonicalUrl = buildCanonicalUrl(`/${safeLocale}/categories/comparisons`);
-    const trustIndicators = getToolTrustIndicators(safeLocale);
-    const editorNote = safeLocale === "tr"
-      ? "Bu sayfa tek bir kazanan seçmez. Güçlü ve zayıf tarafları senaryoya göre gösterir."
-      : "This page does not pick a single winner. It shows strengths and limitations by scenario.";
-    const webPageSchema = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: comparison.title,
-      description: comparison.summary,
-      url: canonicalUrl,
-      inLanguage: safeLocale
-    };
-    const faqSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: comparison.faq.items.map((item) => ({
-        "@type": "Question",
-        name: item.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: item.answer
-        }
-      }))
-    };
-    const breadcrumbSchema = {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: content.common.breadcrumbsHome,
-          item: `https://deciply.com/${safeLocale}`
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: content.common.categoriesLabel,
-          item: `https://deciply.com/${safeLocale}/categories`
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: comparison.title,
-          item: canonicalUrl
-        }
-      ]
-    };
-
-    return (
-      <>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-
-        <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-10 overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-          <Breadcrumb
-            items={[
-              { label: content.common.breadcrumbsHome, href: `/${safeLocale}` },
-              { label: content.common.categoriesLabel, href: `/${safeLocale}/categories` },
-              { label: comparison.title }
-            ]}
-          />
-
-          <section className="rounded-[36px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.88),rgba(17,24,39,0.92),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_30px_90px_-46px_rgba(14,165,233,0.14)] lg:px-10 lg:py-12">
-            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-              <div>
- <Badge variant="ghost" className="border-sky-200 bg-sky-50 text-[#0055FF]">
-                  {comparison.hero.eyebrow}
-                </Badge>
- <h1 className="mt-5 bg-gradient-to-r from-[#071226] via-[#0E2450] to-[#0055FF] bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-[3.8rem] lg:leading-[1.02]">
-                  {comparison.title}
-                </h1>
-                <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{comparison.summary}</p>
-              </div>
-              <div className="rounded-[28px] border border-sky-400/10 bg-slate-950/50 p-6">
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="accent">{formatPricing(primaryTool.pricing, safeLocale)}</Badge>
-                  <Badge>{primaryTool.name}</Badge>
-                  <Badge>{secondaryTool.name}</Badge>
-                </div>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {trustIndicators.map((item) => (
-                    <Badge key={item} variant="ghost">
-                      {item}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                  <PremiumButton href={`/${safeLocale}/tools/${primaryTool.slug}`} className="w-full">
-                    {comparison.hero.leftButton}
-                  </PremiumButton>
-                  <PremiumButton href={`/${safeLocale}/tools/${secondaryTool.slug}`} className="w-full">
-                    {comparison.hero.rightButton}
-                  </PremiumButton>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="rounded-[28px] border border-sky-400/10 bg-slate-950/50 p-6 shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)]">
- <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0055FF]">{safeLocale === "tr" ? "Editör notu" : "Editor note"}</p>
-            <p className="mt-4 max-w-3xl text-base leading-8 text-slate-300">{editorNote}</p>
-          </section>
-
-          <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {comparison.selectionCards.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-[28px] border border-sky-400/10 bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(15,23,42,0.9))] p-6 shadow-[0_24px_80px_-44px_rgba(14,165,233,0.12)]"
-              >
- <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#0055FF]">{item.title}</p>
-                <h2 className="mt-4 text-lg font-semibold text-slate-100">{item.toolLabel}</h2>
-                <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
-              </div>
-            ))}
-          </section>
-
-          <InfoSection title={comparison.guidance.title} description={comparison.guidance.description}>
-            <div className="grid gap-4 md:grid-cols-3">
-              {comparison.guidance.items.map((item) => (
-                <div key={item.title} className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
-                  <h3 className="text-sm font-semibold text-slate-100 md:text-base">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </InfoSection>
-
-          <ComparisonBreakdownTable
-            locale={safeLocale}
-            title={comparison.table.title}
-            description={comparison.table.description}
-            columns={comparison.table.columns}
-            rows={comparison.table.rows}
-          />
-
-          <section className="rounded-[34px] border border-sky-400/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(11,15,25,0.98))] px-8 py-10 shadow-[0_28px_80px_-42px_rgba(14,165,233,0.14)] lg:px-10 lg:py-12">
-            <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
-              <div className="max-w-3xl">
- <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#0055FF]">
-                  {safeLocale === "tr" ? "Ara CTA" : "Mid CTA"}
-                </p>
-                <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">{comparison.midCta.title}</h2>
-                <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">{comparison.midCta.description}</p>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <PremiumButton href={`/${safeLocale}/tools/${primaryTool.slug}`} className="w-full">
-                  {comparison.midCta.leftButton}
-                </PremiumButton>
-                <PremiumButton href={`/${safeLocale}/tools/${secondaryTool.slug}`} className="w-full">
-                  {comparison.midCta.rightButton}
-                </PremiumButton>
-              </div>
-            </div>
-          </section>
-
-          <section className="grid gap-6 lg:grid-cols-2">
-            <InfoSection title={comparison.finalVerdict.title} description={comparison.finalVerdict.description}>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
-                  <p className="text-sm font-semibold text-slate-100">{comparison.finalVerdict.leftTitle}</p>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">{comparison.finalVerdict.leftDescription}</p>
-                  <div className="mt-5">
-                    <PremiumButton href={`/${safeLocale}/tools/${primaryTool.slug}`} className="w-full">
-                      {comparison.finalVerdict.leftButton}
-                    </PremiumButton>
-                  </div>
-                </div>
-                <div className="rounded-[24px] border border-sky-400/10 bg-slate-950/50 p-5">
-                  <p className="text-sm font-semibold text-slate-100">{comparison.finalVerdict.rightTitle}</p>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">{comparison.finalVerdict.rightDescription}</p>
-                  <div className="mt-5">
-                    <PremiumButton href={`/${safeLocale}/tools/${secondaryTool.slug}`} className="w-full">
-                      {comparison.finalVerdict.rightButton}
-                    </PremiumButton>
-                  </div>
-                </div>
-              </div>
-            </InfoSection>
-
-            <InfoSection title={content.common.relatedToolsLabel} description={content.toolDetail.relatedToolsDescription}>
-              <div className="grid gap-5 md:grid-cols-2">
-                {[primaryTool, secondaryTool].map((tool) => (
-                  <ToolCard
-                    key={tool.slug}
-                    locale={safeLocale}
-                    tool={tool}
-                    categoryNames={tool.categorySlugs.map((item) => categoryNamesMap.get(item) ?? item)}
-                    pricingLabel={formatPricing(tool.pricing, safeLocale)}
-                    detailLabel={content.common.viewDetailsLabel}
-                    compareHref={buildComparisonPath(safeLocale, primaryTool.slug, secondaryTool.slug)}
-                  />
-                ))}
-              </div>
-            </InfoSection>
-          </section>
-
-          <SectionShell
-            eyebrow={safeLocale === "tr" ? "Tüm karşılaştırmalar" : "All comparisons"}
-            title={safeLocale === "tr" ? "Compare dizini" : "Comparison directory"}
-            description={
-              safeLocale === "tr"
-                ? "Bu kategorideki tüm compare sayfalarını tek bir görünümde açın."
-                : "Open every comparison page in this category from one hub."
-            }
-          >
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {comparisonDirectoryCards.map((item) => (
-                <ComparisonCard
-                  key={item.href}
-                  locale={safeLocale}
-                  item={item}
-                  linkLabel={safeLocale === "tr" ? "Karşılaştırmayı aç" : "Open comparison"}
-                />
-              ))}
-            </div>
-          </SectionShell>
-          <ComparisonFaq
-            title={comparison.faq.title}
-            description={comparison.faq.description}
-            items={comparison.faq.items}
-          />
-
-          <SectionShell
-            eyebrow={content.common.relatedContentLabel}
-            title={comparison.related.title}
-            description={comparison.related.description}
-          >
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {comparison.related.cards.map((card) => (
-                <RelatedComparisonCard
-                  key={card.title}
-                  locale={safeLocale}
-                  title={card.title}
-                  description={card.description}
-                  href={card.href}
-                  ctaLabel={card.ctaLabel}
-                  highlight={card.highlight}
-                />
-              ))}
-            </div>
-          </SectionShell>
-        </div>
-      </>
-    );
-  }
-
   const tools = getToolsByCategory(safeLocale, slug);
 
   return (
-    <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-10 overflow-x-clip bg-[linear-gradient(180deg,#f8fbff_0%,#f4f7fb_46%,#eef3f8_100%)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-      <Breadcrumb
-        items={[
-          { label: content.common.breadcrumbsHome, href: `/${safeLocale}` },
-          { label: content.common.categoriesLabel, href: `/${safeLocale}/categories` },
-          { label: category.name }
-        ]}
-      />
-
-      <CategoryHero
-        eyebrow={content.common.categoriesLabel}
-        title={category.name}
-        description={category.description}
-        supportText={category.supportText}
-        ctaLabel={content.categoryDetail.allToolsLink}
-        ctaHref={`/${safeLocale}/tools`}
-      />
-
-      <SectionShell
-        eyebrow={content.common.allToolsLabel}
-        title={content.categoryDetail.toolsTitle}
-        description={content.categoryDetail.toolsDescription}
-      >
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {tools.map((tool) => (
-            <ToolCard
-              key={tool.slug}
-              locale={safeLocale}
-              tool={tool}
-              categoryNames={tool.categorySlugs.map((item) => categoryNamesMap.get(item) ?? item)}
-              pricingLabel={formatPricing(tool.pricing, safeLocale)}
-              detailLabel={content.common.viewDetailsLabel}
-              compareHref={
-                (() => {
-                  const target = getComparisonTargetTools(safeLocale, tool.slug, 1)[0];
-                  return target ? buildComparisonPath(safeLocale, tool.slug, target.slug) : undefined;
-                })()
-              }
-            />
-          ))}
-        </div>
-      </SectionShell>
-
-      <div className="grid gap-6 lg:grid-cols-2">
-        <InfoSection title={content.categoryDetail.relatedTitle} description={content.categoryDetail.relatedDescription}>
-          <div className="rounded-[24px] border border-dashed border-sky-400/10 bg-slate-950/50 p-5 text-sm leading-7 text-slate-300">
-            {content.common.placeholderLabel}: rehber içerikler, alternatif yazıları ve kategoriye özel karşılaştırmalar burada listelenecek.
-          </div>
-        </InfoSection>
-
-        <InfoSection title={content.categoryDetail.internalLinksTitle} description={content.categoryDetail.internalLinksDescription}>
-          <div className="grid gap-3 sm:grid-cols-3">
- <Link href={`/${safeLocale}/tools`} className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 p-4 text-sm font-semibold text-slate-100 transition hover:border-sky-200 hover:text-[#BFD2F6]">
-              {content.categoryDetail.allToolsLink}
-            </Link>
- <Link href={`/${safeLocale}/categories`} className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 p-4 text-sm font-semibold text-slate-100 transition hover:border-sky-200 hover:text-[#BFD2F6]">
-              {content.categoryDetail.allCategoriesLink}
-            </Link>
- <Link href={`/${safeLocale}/categories/guides`} className="rounded-[22px] border border-sky-400/10 bg-slate-950/50 p-4 text-sm font-semibold text-slate-100 transition hover:border-sky-200 hover:text-[#BFD2F6]">
-              {content.categoryDetail.guidesLink}
-            </Link>
-          </div>
-        </InfoSection>
-      </div>
-    </div>
+    <ThemePreviewLayout
+      locale={safeLocale}
+      eyebrow={safeLocale === "tr" ? "Kategori detay preview" : "Category detail preview"}
+      title={category.name}
+      description={category.description}
+      breadcrumbs={[
+        { label: safeLocale === "tr" ? "Ana sayfa" : "Home", href: `/${safeLocale}` },
+        { label: safeLocale === "tr" ? "Kategoriler" : "Categories", href: `/${safeLocale}/categories` },
+        { label: category.name }
+      ]}
+      badges={[
+        category.supportText,
+        `${tools.length} ${safeLocale === "tr" ? "araç" : "tools"}`
+      ]}
+      stats={[
+        {
+          label: safeLocale === "tr" ? "Araç sayısı" : "Tools",
+          value: String(tools.length)
+        },
+        {
+          label: safeLocale === "tr" ? "Kategori slug" : "Category slug",
+          value: category.slug
+        },
+        {
+          label: safeLocale === "tr" ? "Durum" : "Status",
+          value: safeLocale === "tr" ? "Yeni tema preview" : "New theme preview"
+        }
+      ]}
+      primaryAction={{
+        label: safeLocale === "tr" ? "Araçları görüntüle" : "Browse tools",
+        href: `/${safeLocale}/tools`
+      }}
+      secondaryAction={{
+        label: safeLocale === "tr" ? "Kategorilere dön" : "Back to categories",
+        href: `/${safeLocale}/categories`
+      }}
+      sections={[
+        {
+          title: safeLocale === "tr" ? "Yeni kategori hero" : "New category hero",
+          description:
+            safeLocale === "tr"
+              ? "Kategori üst alanı yeni sistemde daha net açıklama, daha güçlü CTA ve daha görünür araç yoğunluğu ile tekrar kurulacak."
+              : "The category hero will be rebuilt with a clearer description, stronger CTA, and more visible tool density."
+        },
+        {
+          title: safeLocale === "tr" ? "Arşiv ve yan yüzeyler" : "Archive and side surfaces",
+          description:
+            safeLocale === "tr"
+              ? "Araç arşivi, ilgili rehberler, karşılaştırmalar ve yan bilgi kutuları bu yeni kart sistemine taşınacak."
+              : "Tool archives, related guides, comparisons, and supporting side panels will be moved into this new card system."
+        }
+      ]}
+    />
   );
 }
-
-
-
-
-
-
-

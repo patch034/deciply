@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 import { Badge } from "@/components/ui/badge";
@@ -33,9 +33,9 @@ function normalizeComparisonHref(locale: string, href: string) {
 
 function ComparisonLogo({ name, logoUrl }: { name: string; logoUrl?: string }) {
   return (
-    <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[10px] font-bold uppercase tracking-[0.14em] text-slate-700 shadow-[0_14px_32px_-22px_rgba(15,23,42,0.28)]">
+    <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[10px] font-bold uppercase tracking-[0.14em] text-slate-700 shadow-[0_10px_24px_rgba(15,23,42,0.08)]">
       {logoUrl ? (
-        <img src={logoUrl} alt={name} className="h-full w-full object-contain p-1.5" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
+        <Image src={logoUrl} alt={name} width={40} height={40} unoptimized className="h-full w-full object-contain p-1.5" />
       ) : (
         <span>{name.slice(0, 2).toUpperCase()}</span>
       )}
@@ -49,59 +49,53 @@ export function ComparisonCard({ locale, item, linkLabel, featured = false, tone
   const logos = item.logos?.length ? item.logos : [{ name: item.icon }];
 
   return (
-    <motion.div whileHover={{ y: -3, scale: 1.01 }} transition={{ duration: 0.2 }} className="h-full">
+    <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.18 }} className="h-full">
       <Link href={href} className="group block h-full">
         <article
           className={[
-            "ui-card ui-card-hover flex h-full flex-col justify-between overflow-hidden rounded-[24px] border p-4 transition duration-300 hover:-translate-y-1 sm:p-[18px]",
+            "flex h-full flex-col justify-between rounded-[22px] border p-4 transition",
             light
-              ? "border-slate-200/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.995),rgba(247,250,253,0.98))] shadow-[0_18px_46px_-22px_rgba(15,23,42,0.16)] hover:border-sky-200 hover:shadow-[0_26px_54px_-24px_rgba(37,99,235,0.18)]"
+              ? "border-slate-200 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.07)] hover:border-sky-200 hover:shadow-[0_20px_42px_rgba(15,23,42,0.11)]"
               : featured
-                ? "ui-card-strong border-sky-400/10 bg-[linear-gradient(180deg,rgba(8,12,22,0.95),rgba(10,16,30,0.9))]"
-                : "ui-card border-sky-400/10 bg-[linear-gradient(180deg,rgba(10,16,30,0.96),rgba(5,9,17,0.99))]"
+                ? "border-slate-700 bg-slate-950 text-slate-50"
+                : "border-slate-800 bg-slate-950 text-slate-50"
           ].join(" ")}
         >
-          <div className="h-[5px] rounded-full bg-[linear-gradient(90deg,#071226_0%,#0E2450_16%,#007FFF_54%,#0055FF_80%,#3B82F6_100%)]" />
-          <div className="flex min-h-[32px] items-center justify-between gap-3 overflow-hidden sm:min-h-[36px]">
-            <div className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
-              <div className="flex shrink-0 items-center">
-                {logos.slice(0, 3).map((logo, index) => (
-                  <div key={`${logo.name}-${index}`} className={index > 0 ? "-ml-2" : ""}>
-                    <ComparisonLogo name={logo.name} logoUrl={logo.logoUrl} />
-                  </div>
-                ))}
+          <div>
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex min-w-0 items-center gap-3">
+                <div className="flex shrink-0 items-center">
+                  {logos.slice(0, 3).map((logo, index) => (
+                    <div key={`${logo.name}-${index}`} className={index > 0 ? "-ml-2" : ""}>
+                      <ComparisonLogo name={logo.name} logoUrl={logo.logoUrl} />
+                    </div>
+                  ))}
+                </div>
+                <p className={["truncate text-xs font-semibold uppercase tracking-[0.16em]", light ? "text-slate-500" : "text-slate-300"].join(" ")}>
+                  {item.eyebrow}
+                </p>
               </div>
-              <p className={["truncate text-sm font-medium", light ? "text-slate-700" : "text-slate-200"].join(" ")}>
-                {item.eyebrow}
-              </p>
+              {item.highlight ? (
+                <Badge variant={light ? "ghost" : "accent"} className="max-w-[110px]">
+                  {item.highlight}
+                </Badge>
+              ) : null}
             </div>
-            {item.highlight ? (
-              <Badge variant={light ? "ghost" : featured ? "accent" : "muted"} className="max-w-[96px] shrink-0 justify-center text-[11px]">
-                {item.highlight}
-              </Badge>
-            ) : null}
-          </div>
 
-          <div className="flex flex-1 flex-col">
-            <h3
-              className={[
-                "clamp-2 mt-2.5 min-h-[2.2rem] text-[1rem] font-bold leading-tight tracking-[-0.03em] sm:mt-3.5 sm:min-h-[2.55rem] sm:text-[1.12rem]",
-                light ? "text-slate-900" : "text-slate-50"
-              ].join(" ")}
-            >
+            <h3 className={["mt-4 clamp-2 text-[1.08rem] font-bold leading-tight tracking-[-0.03em]", light ? "text-slate-950" : "text-slate-50"].join(" ")}>
               {item.title}
             </h3>
-            <p className={["mobile-clamp-2 mt-2 flex-1 text-[13px] leading-relaxed sm:mt-2.5 sm:text-[14px]", light ? "text-slate-600" : "text-slate-300/84"].join(" ")}>
+            <p className={["mt-2 clamp-3 text-sm leading-6", light ? "text-slate-600" : "text-slate-300/84"].join(" ")}>
               {item.description}
             </p>
           </div>
 
-          <div className={["mt-auto border-t pt-3 sm:mt-[18px] sm:pt-3.5", light ? "border-slate-200" : "border-sky-400/10"].join(" ")}>
-            <span className={["inline-flex items-center gap-2 text-sm font-semibold transition duration-200 group-hover:translate-x-0.5", light ? "text-slate-700 group-hover:text-[#0E2450]" : "text-slate-100 group-hover:text-[#BFD2F6]"].join(" ")}>
+          <div className={["mt-5 flex items-center justify-between border-t pt-4", light ? "border-slate-200" : "border-slate-800"].join(" ")}>
+            <span className={["text-sm font-semibold transition", light ? "text-slate-700 group-hover:text-[#0E2450]" : "text-slate-100 group-hover:text-sky-200"].join(" ")}>
               {linkLabel}
-              <span aria-hidden="true" className="text-[#0055FF] transition duration-200 group-hover:translate-x-1">
-                →
-              </span>
+            </span>
+            <span aria-hidden="true" className="text-base font-semibold text-[#0055FF] transition group-hover:translate-x-1">
+              →
             </span>
           </div>
         </article>

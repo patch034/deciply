@@ -22,29 +22,26 @@ export function SectionHeading({
   className,
   tone = "light"
 }: SectionHeadingProps) {
-  const textClass = tone === "light" ? "text-slate-950" : "text-slate-50";
-  const descriptionClass = tone === "light" ? "text-slate-700" : "text-slate-300/82";
-  const badgeClass = tone === "light" ? "border-sky-200 bg-sky-50 text-[#0055FF]" : "border-sky-400/10 bg-slate-950/50 text-cyan-200";
+  const titleClass = tone === "light" ? "text-slate-950" : "text-slate-50";
+  const descriptionClass = tone === "light" ? "text-slate-600" : "text-slate-300/84";
 
   return (
     <div
       className={clsx(
-        "flex flex-col gap-3 md:flex-row md:items-end md:justify-between",
+        "flex flex-col gap-4 md:flex-row md:items-end md:justify-between",
         align === "center" && "mx-auto max-w-3xl text-center md:items-center",
         className
       )}
     >
-      <div className={clsx("max-w-3xl min-w-0", align === "center" && "mx-auto")}>
+      <div className={clsx("max-w-3xl", align === "center" && "mx-auto")}>
         {eyebrow ? (
-          <Badge variant="muted" className={badgeClass}>
-            {eyebrow}
-          </Badge>
+          <Badge variant={tone === "light" ? "ghost" : "accent"}>{eyebrow}</Badge>
         ) : null}
-        <h2 className={clsx("balance-text mt-3 max-w-3xl text-[1.58rem] font-bold tracking-[-0.045em] sm:mt-4 sm:text-[1.92rem] md:text-[2.18rem] md:leading-[1.06]", textClass)}>
+        <h2 className={clsx("balance-text mt-3 text-[1.7rem] font-bold tracking-[-0.05em] sm:text-[2rem] md:text-[2.25rem] md:leading-[1.05]", titleClass)}>
           {title}
         </h2>
         {description ? (
-          <p className={clsx("mt-2 max-w-2xl text-[12.5px] leading-6 sm:mt-3 sm:text-[13.5px] sm:leading-7 md:text-[0.95rem] md:leading-7", descriptionClass)}>
+          <p className={clsx("mt-3 max-w-2xl text-sm leading-7 md:text-[0.97rem]", descriptionClass)}>
             {description}
           </p>
         ) : null}

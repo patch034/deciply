@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 
 import { PremiumButton } from "@/components/ui/premium-button";
@@ -107,7 +108,7 @@ function renderAvatar(name: string, logoUrl?: string) {
   return (
     <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-[10px] font-bold uppercase tracking-[0.18em] text-[#0055FF] shadow-[0_12px_28px_-20px_rgba(15,23,42,0.16)]">
       {logoUrl ? (
-        <img src={logoUrl} alt={name} className="h-full w-full object-contain p-1.5" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
+        <Image src={logoUrl} alt={name} width={40} height={40} unoptimized className="h-full w-full object-contain p-1.5" />
       ) : (
         <span>{name.slice(0, 2).toUpperCase()}</span>
       )}

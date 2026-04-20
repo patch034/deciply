@@ -13,139 +13,89 @@ function isExternalHref(href: string) {
   return /^(mailto:|https?:\/\/|tel:)/i.test(href);
 }
 
-function alphaLabel(letter: string) {
-  return letter === "#" ? "Other" : letter.toUpperCase();
-}
+function renderLink(locale: SupportedLocale, item: { href: string; label: string }) {
+  const className = "text-sm text-slate-600 transition hover:text-slate-950";
 
-export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
-  function renderFooterLink(item: { href: string; label: string }) {
-    const sharedClassName = "inline-flex min-h-[34px] items-center text-sm text-slate-600 transition hover:text-[#0E2450]";
-
-    if (isExternalHref(item.href)) {
-      return (
-        <a key={item.href + item.label} href={item.href} className={sharedClassName}>
-          {item.label}
-        </a>
-      );
-    }
-
+  if (isExternalHref(item.href)) {
     return (
-      <Link key={item.href + item.label} href={`/${locale}${item.href}`} className={sharedClassName}>
+      <a key={item.href + item.label} href={item.href} className={className}>
         {item.label}
-      </Link>
+      </a>
     );
   }
 
-  const [toolsGroup, compareGroup, guidesGroup, trustGroup] = dictionary.footer.groups;
-  const browseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-  const browseLinks = [
-    ...browseLetters.map((letter) => ({ href: `/tools?q=${letter}`, label: alphaLabel(letter) })),
-    { href: "/tools", label: locale === "tr" ? "Diğer" : "Other" }
-  ];
+  return (
+    <Link key={item.href + item.label} href={`/${locale}${item.href}`} className={className}>
+      {item.label}
+    </Link>
+  );
+}
+
+function alphaLabel(letter: string) {
+  return letter === "#" ? "Other" : letter;
+}
+
+export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
+  const browseLinks = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map((letter) => ({
+    href: `/tools?q=${letter}`,
+    label: alphaLabel(letter)
+  }));
 
   return (
-    <footer className="mt-16 border-t border-slate-200 bg-[linear-gradient(180deg,rgba(249,250,251,0.98),rgba(241,245,249,0.99))] px-4 pb-10 pt-10 text-slate-900 sm:px-6 sm:pb-12 sm:pt-12">
-      <div className="mx-auto max-w-[1440px] space-y-8">
-        <div className="grid gap-6 lg:grid-cols-[1.2fr_repeat(4,minmax(0,1fr))] lg:items-start lg:gap-6">
-          <div className="ui-card ui-card-hover min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
-            <div className="flex items-center gap-3">
-              <BrandLogo compact className="h-8" />
-              <div className="min-w-0">
-                <p className="text-[15px] font-semibold tracking-[-0.03em] text-slate-950 sm:text-base">Deciply</p>
-                <p className="text-[11px] font-medium text-slate-600 sm:text-[12px]">
-                  {locale === "tr" ? "AI araç dizini" : "AI tools directory"}
-                </p>
+    <footer className="mt-16 px-4 pb-10 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1440px] space-y-6">
+        <section className="ui-card rounded-[30px] p-6 sm:p-7">
+          <div className="grid gap-6 lg:grid-cols-[1.2fr_repeat(4,minmax(0,1fr))]">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <BrandLogo compact className="h-8 w-8" />
+                <div>
+                  <p className="text-base font-semibold tracking-[-0.03em] text-slate-950">Deciply</p>
+                  <p className="text-xs text-slate-500">{dictionary.brandSubtitle}</p>
+                </div>
+              </div>
+              <p className="max-w-[32rem] text-sm leading-7 text-slate-600">{dictionary.footer.description}</p>
+              <div className="flex flex-wrap items-center gap-3 text-sm">
+                {dictionary.footer.contactBlock.links.map((item) => renderLink(locale, item))}
               </div>
             </div>
 
-            <p className="mt-4 max-w-[380px] text-sm leading-6 text-slate-600">{dictionary.footer.description}</p>
-            <p className="mt-3 max-w-[380px] text-sm font-medium leading-6 text-slate-900">
-              {locale === "tr"
-                ? "Doğru AI aracını daha hızlı, daha net ve daha güvenli seç."
-                : "Choose the right AI faster, more clearly, and with confidence."}
-            </p>
-
-            <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-700">
-              {dictionary.footer.contactBlock.links.map((item) => renderFooterLink(item))}
-            </div>
+            {dictionary.footer.groups.map((group) => (
+              <div key={group.title} className="space-y-3">
+                <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{group.title}</h2>
+                <div className="flex flex-col gap-2">{group.links.map((item) => renderLink(locale, item))}</div>
+              </div>
+            ))}
           </div>
+        </section>
 
-          <div className="ui-card ui-card-hover min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{toolsGroup.title}</h2>
-            <div className="mt-4 flex flex-col gap-2">{toolsGroup.links.map((item) => renderFooterLink(item))}</div>
-          </div>
-
-          <div className="ui-card ui-card-hover min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{compareGroup.title}</h2>
-            <div className="mt-4 flex flex-col gap-2">{compareGroup.links.map((item) => renderFooterLink(item))}</div>
-          </div>
-
-          <div className="ui-card ui-card-hover min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{guidesGroup.title}</h2>
-            <div className="mt-4 flex flex-col gap-2">{guidesGroup.links.map((item) => renderFooterLink(item))}</div>
-          </div>
-
-          <div className="ui-card ui-card-hover min-w-0 rounded-[24px] p-5 shadow-[0_20px_60px_-42px_rgba(15,23,42,0.14)] sm:p-6">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{trustGroup.title}</h2>
-            <div className="mt-4 flex flex-col gap-2">{trustGroup.links.map((item) => renderFooterLink(item))}</div>
-          </div>
-        </div>
-
-        <div className="ui-card ui-card-hover rounded-[24px] p-5 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.16)] sm:p-6">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <section className="ui-card rounded-[30px] p-6 sm:p-7">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">
-                {locale === "tr" ? "Harf sırasına göre keşfet" : "Browse alphabetically"}
+                {dictionary.footer.alphabetTitle}
               </p>
-              <p className="mt-2 text-sm leading-6 text-slate-600">
-                {locale === "tr"
-                  ? "Araçları harf bazında açarak hızlıca geniş katalog içinde gez."
-                  : "Open tools by letter and move through the directory quickly."}
+              <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">
+                {dictionary.footer.alphabetDescription}
               </p>
             </div>
-            <Link
-              href={`/${locale}/tools`}
-              className="ui-pill-link min-h-[34px] px-3 text-xs"
-            >
-              {locale === "tr" ? "Tüm araçlar" : "All tools"}
+            <Link href={`/${locale}/tools`} className="ui-nav-pill self-start lg:self-auto">
+              {dictionary.footer.allToolsLabel}
             </Link>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-5 flex flex-wrap gap-2">
             {browseLinks.map((item) => (
-              <Link
-                key={item.label}
-                href={`/${locale}${item.href}`}
-                className="ui-pill-link min-h-[34px] px-3 text-xs"
-              >
+              <Link key={item.label} href={`/${locale}${item.href}`} className="ui-nav-pill ui-nav-pill-muted px-3 text-xs">
                 {item.label}
               </Link>
             ))}
           </div>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <Link
-              href={`/${locale}/categories/mega`}
-              className="ui-pill-link min-h-[34px] border-sky-200 bg-sky-50 px-3 text-xs text-[#0055FF] hover:border-sky-300 hover:bg-sky-100 hover:text-[#0E2450]"
-            >
-              {locale === "tr" ? "Mega dizin" : "Mega directory"}
-            </Link>
-            <Link
-              href={`/${locale}/news`}
-              className="ui-pill-link min-h-[34px] px-3 text-xs"
-            >
-              {locale === "tr" ? "AI Haberleri" : "AI News"}
-            </Link>
-          </div>
-        </div>
+        </section>
 
-        <div className="border-t border-slate-200 pt-5">
-          <div className="flex flex-col gap-3 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-            <p className="max-w-2xl">{dictionary.footer.bottomNote}</p>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium text-slate-500 sm:shrink-0">
-              <p>{dictionary.footer.copyright}</p>
-              <p>Impact-Site-Verification: cc3ef693-e846-43e9-8663-c0af7be7810c</p>
-            </div>
-          </div>
+        <div className="flex flex-col gap-3 border-t border-slate-200/90 pt-5 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-2xl">{dictionary.footer.bottomNote}</p>
+          <p className="font-medium">{dictionary.footer.copyright}</p>
         </div>
       </div>
     </footer>

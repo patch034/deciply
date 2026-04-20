@@ -6,7 +6,7 @@ import { ToolCard } from "@/components/catalog/tool-card";
 import { Badge } from "@/components/ui/badge";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
-import { discoveryPages, getDiscoveryPage } from "@/data/discovery-pages";
+import { getDiscoveryPage } from "@/data/discovery-pages";
 import {
   formatPricing,
   getCatalogContent,
@@ -15,11 +15,14 @@ import {
   getToolCount
 } from "@/lib/catalog";
 import { buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
 import { stripBrandSuffix } from "@/lib/seo";
 
+export const revalidate = 3600;
+export const dynamicParams = true;
+
 export function generateStaticParams() {
-  return locales.flatMap((locale) => discoveryPages.map((page) => ({ locale, slug: page.slug })));
+  return [];
 }
 
 export async function generateMetadata({
@@ -234,5 +237,3 @@ export default async function DiscoveryPage({
     </>
   );
 }
-
-
