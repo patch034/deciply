@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { ToolsExplorer } from "@/components/catalog/tools-explorer";
-import { Badge } from "@/components/ui/badge";
 import { toolCategoryOptions, useCaseOptions } from "@/data/tool-taxonomy";
 import {
   formatPricing,
@@ -15,6 +13,7 @@ import {
 import { buildComparisonPath, getComparisonTargetSlugs } from "@/lib/comparisons";
 import { getToolLogoUrl } from "@/lib/logo";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, normalizeLocale } from "@/i18n/config";
+import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import { buildToolsIndexMetaDescription, buildToolsPageTitle } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -86,7 +85,27 @@ export default async function ToolsPage({
   const useCaseLabelMap = new Map<string, string>(
     useCaseOptions[safeLocale].map((item): [string, string] => [item.slug, item.label])
   );
-  const categoryCount = categoryNames.size;
+  const heroCopy = localizeTree(
+    safeLocale,
+    safeLocale === "tr"
+      ? {
+          title: "AI araçlarını keşfet",
+          subtitle: "Araçları, kategorileri ve kullanım amaçlarını hızlıca tara."
+        }
+      : {
+          title: "Explore AI tools",
+          subtitle: "Scan tools, categories, and use cases faster."
+        }
+  );
+  const searchPlaceholder =
+    safeLocale === "tr"
+      ? "Araç ara, kategori ara veya kullanım amacını yaz…"
+      : localizeTree(
+          safeLocale,
+          getContentBaseLocale(safeLocale) === "tr"
+            ? "Araç ara, kategori ara veya kullanım amacını yaz…"
+            : "Search tools, categories, or use cases…"
+        );
 
   const explorerTools = toolItems.map((tool, index) => {
     const siteCategoryNames = tool.categorySlugs.map((item) => categoryNames.get(item) ?? item);
@@ -120,55 +139,10 @@ export default async function ToolsPage({
   });
 
   return (
-    <div className="ui-page-shell relative mx-auto flex w-full max-w-7xl flex-col gap-8 overflow-x-clip px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-      <section className="ui-card rounded-[30px] p-6 sm:p-8">
-        <Badge variant="accent">{content.toolsIndex.eyebrow}</Badge>
-
-        <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1.18fr)_minmax(0,0.82fr)] lg:items-end">
-          <div>
-            <h1 className="max-w-3xl text-4xl font-bold tracking-[-0.05em] text-slate-950 md:text-5xl">
-              {content.toolsIndex.title}
-            </h1>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{content.toolsIndex.description}</p>
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-            <div className="ui-inner-panel p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                {locale === "tr" ? "Araçlar" : "Tools"}
-              </p>
-              <p className="mt-2 text-2xl font-bold tracking-tight text-slate-950">{getToolCount()}</p>
-            </div>
-            <div className="ui-inner-panel p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                {content.common.categoriesLabel}
-              </p>
-              <p className="mt-2 text-2xl font-bold tracking-tight text-slate-950">{categoryCount}</p>
-            </div>
-            <div className="ui-inner-panel p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                {locale === "tr" ? "Keşif" : "Discovery"}
-              </p>
-              <p className="mt-2 text-sm font-medium leading-6 text-slate-600">
-                {locale === "tr"
-                  ? "Arama, kategori ve sıralama ile daha hızlı tarama."
-                  : "Search, categories, and sorting for faster browsing."}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-5 flex flex-wrap gap-2">
-          <Link href={`/${safeLocale}/categories`} className="ui-pill-link">
-            {content.common.categoriesLabel}
-          </Link>
-          <Link href={`/${safeLocale}/compare-auto`} className="ui-pill-link border-sky-200 bg-sky-50 text-[#0055FF]">
-            {locale === "tr" ? "Karşılaştırmalar" : "Comparisons"}
-          </Link>
-          <Link href={`/${safeLocale}/blog`} className="ui-pill-link">
-            {locale === "tr" ? "Rehberler" : "Guides"}
-          </Link>
-        </div>
+    <div className="ui-page-shell relative mx-auto flex w-full max-w-7xl flex-col gap-5 overflow-x-clip px-4 py-7 sm:px-6 lg:px-8 lg:py-9">
+      <section className="rounded-[24px] border border-slate-200 bg-white/84 px-5 py-5 shadow-[0_14px_34px_rgba(15,23,42,0.055)] backdrop-blur">
+        <h1 className="text-[2rem] font-black tracking-[-0.05em] text-slate-950 sm:text-[2.4rem]">{heroCopy.title}</h1>
+        <p className="clamp-1 mt-1.5 max-w-3xl text-sm font-medium leading-6 text-slate-600">{heroCopy.subtitle}</p>
       </section>
 
       <ToolsExplorer
@@ -180,7 +154,7 @@ export default async function ToolsPage({
           filterTitle: content.toolsIndex.filterTitle,
           filterDescription: content.toolsIndex.filterDescription,
           searchLabel: content.toolsIndex.searchLabel,
-          searchPlaceholder: content.toolsIndex.searchPlaceholder,
+          searchPlaceholder,
           searchHelp: content.toolsIndex.searchHelp,
           toolCategoryLabel: content.toolsIndex.toolCategoryLabel,
           useCaseLabel: content.toolsIndex.useCaseLabel,

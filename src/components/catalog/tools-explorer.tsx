@@ -469,28 +469,35 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
   }
 
   const summaryText =
-    sortedTools.length > 0 ? `${startIndex}–${endIndex} / ${sortedTools.length} ${copy.resultsLabel}` : `0 ${copy.resultsLabel}`;
+    sortedTools.length > 0 ? `${startIndex}-${endIndex} / ${sortedTools.length} ${copy.resultsLabel}` : `0 ${copy.resultsLabel}`;
 
   return (
-    <section className="space-y-5">
-      <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_220px] lg:items-end">
-        <div className="ui-card rounded-[22px] p-2">
+    <section className="space-y-4">
+      <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_210px] lg:items-center">
+        <div className="rounded-[22px] border border-slate-200 bg-white px-3 py-2 shadow-[0_14px_34px_rgba(15,23,42,0.06)] transition focus-within:border-sky-300 focus-within:shadow-[0_18px_40px_rgba(37,99,235,0.12)]">
           <label className="sr-only" htmlFor="tool-search">
             {copy.searchLabel}
           </label>
-          <input
-            id="tool-search"
-            type="search"
-            value={query}
-            onChange={(event) => setFilters({ query: event.target.value, page: 1 })}
-            placeholder={copy.searchPlaceholder}
-            className="h-12 w-full rounded-[18px] border border-transparent bg-transparent px-4 text-sm font-medium text-slate-800 outline-none placeholder:text-slate-400 focus:border-sky-200 focus:bg-slate-50"
-          />
-          <p className="mt-2 px-3 pb-1 text-xs leading-6 text-slate-500">{copy.searchHelp}</p>
+          <div className="flex min-h-[52px] items-center gap-3">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-50 text-slate-500">
+              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-none stroke-current stroke-2">
+                <path d="m21 21-4.35-4.35" strokeLinecap="round" />
+                <circle cx="11" cy="11" r="6.5" />
+              </svg>
+            </span>
+            <input
+              id="tool-search"
+              type="search"
+              value={query}
+              onChange={(event) => setFilters({ query: event.target.value, page: 1 })}
+              placeholder={copy.searchPlaceholder}
+              className="h-11 w-full border-0 bg-transparent px-0 text-sm font-semibold text-slate-900 outline-none placeholder:text-slate-400 focus:shadow-none"
+            />
+          </div>
         </div>
 
         <div className="flex items-center gap-3 lg:justify-end">
-          <div className="ui-card rounded-[22px] p-2 lg:w-[220px]">
+          <div className="rounded-[18px] border border-slate-200 bg-white p-1.5 shadow-[0_12px_26px_rgba(15,23,42,0.045)] lg:w-[210px]">
             <label className="sr-only" htmlFor="tool-sort">
               {copy.sortLabel}
             </label>
@@ -498,7 +505,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
               id="tool-sort"
               value={activeSort}
               onChange={(event) => setFilters({ sort: event.target.value as ToolsSortOption, page: 1 })}
-              className="dark-select min-h-[44px] w-full rounded-[16px] border border-slate-200 bg-white px-3 text-sm text-slate-800 outline-none transition focus:border-sky-200"
+              className="dark-select min-h-[42px] w-full rounded-[14px] border border-slate-200 bg-white px-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-sky-200"
             >
               {sortOptions.map((option) => (
                 <option key={option.value} value={option.value}>
@@ -522,7 +529,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
                   useCase: "all"
                 })
               }
-              className="inline-flex min-h-[44px] items-center rounded-[18px] border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-600 transition hover:border-sky-200 hover:text-slate-950"
+              className="inline-flex min-h-[42px] items-center rounded-[14px] border border-slate-200 bg-white px-3.5 text-sm font-semibold text-slate-600 transition hover:border-sky-200 hover:text-slate-950"
             >
               {copy.resetFiltersLabel}
             </button>
@@ -555,7 +562,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
 
       {sortedTools.length > 0 ? (
         <>
-          <section className="grid grid-cols-1 gap-3">
+          <section className="grid grid-cols-1 gap-2.5">
             {visibleTools.map((tool) => (
               <ToolCard
                 key={tool.slug}
@@ -578,7 +585,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
               <button
                 type="button"
                 onClick={handleLoadMore}
-                className="inline-flex min-h-11 items-center justify-center rounded-[14px] border border-sky-200 bg-sky-50 px-5 text-sm font-semibold text-[#0055FF] transition hover:border-sky-300 hover:bg-sky-100 hover:text-[#0E2450]"
+                className="inline-flex min-h-10 items-center justify-center rounded-[14px] border border-sky-200 bg-sky-50 px-4 text-sm font-semibold text-[#0055FF] transition hover:border-sky-300 hover:bg-sky-100 hover:text-[#0E2450]"
               >
                 {copy.loadMoreLabel}
               </button>
