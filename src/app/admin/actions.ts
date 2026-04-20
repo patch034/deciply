@@ -1,11 +1,19 @@
 "use server";
 
-import { AdminContentType, ContentStatus } from "@prisma/client";
+import { ContentStatus } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
 import { clearAdminSession, createAdminSession, isAdminAuthenticated, verifyAdminPassword } from "@/lib/admin-auth";
-import { adminContentStatuses, adminContentTypes, normalizeJsonText } from "@/lib/admin-content";
+import {
+  adminContentStatuses,
+  adminContentTypes,
+  adminPublishLocales,
+  buildAdminPayloadFromForm,
+  buildAdminRelationsFromForm,
+  normalizeJsonText,
+  slugifyAdminTitle
+} from "@/lib/admin-content";
 import { prisma } from "@/lib/db";
 
 function requireEnumValue<T extends string>(allowed: readonly T[], value: FormDataEntryValue | null, field: string) {
@@ -44,96 +52,20 @@ export async function createAdminContentAction(formData: FormData) {
   await requireAdmin();
 
   const type = requireEnumValue(adminContentTypes, formData.get("type"), "type");
-  const status = requireEnumValue(adminContentStatuses, formData.get("status"), "status");
-  const slug = String(formData.get("slug") ?? "").trim();
+  const status = requireEnumValue(adminContentStatuses, formData.get("status") ?? ContentStatus.PUBLISHED, "status");
   const title = String(formData.get("title") ?? "").trim();
-  const locale = String(formData.get("locale") ?? "tr").trim() || "tr";
+  const requestedSlug = String(formData.get("slug") ?? "").trim();
+  const slug = requestedSlug || slugifyAdminTitle(title);
 
-  if (!slug || !title) {
-    throw new Error("Slug and title are required");
+  if (!title) {
+    throw new Error("Başlık zorunludur");
   }
 
-  await prisma.adminContent.create({
-    data: {
-      type,
-      status,
-      slug,
-      title,
-      locale,
-      featured: formData.get("featured") === "on",
-      payload: normalizeJsonText(formData.get("payload")),
-      relations: normalizeJsonText(formData.get("relations"))
-    }
-  });
+  const payload = buildAdminPayloadFromForm(formData, type);
+  const relations = buildAdminRelationsFromForm(formData);
+  const featured = formData.get("featured") === "on";
 
-  revalidatePath("/admin");
-}
-
-export async function updateAdminContentAction(formData: FormData) {
-  await requireAdmin();
-
-  const id = String(formData.get("id") ?? "");
-  const type = requireEnumValue(adminContentTypes, formData.get("type"), "type");
-  const status = requireEnumValue(adminContentStatuses, formData.get("status"), "status");
-  const slug = String(formData.get("slug") ?? "").trim();
-  const title = String(formData.get("title") ?? "").trim();
-  const locale = String(formData.get("locale") ?? "tr").trim() || "tr";
-
-  if (!id || !slug || !title) {
-    throw new Error("ID, slug and title are required");
-  }
-
-  await prisma.adminContent.update({
-    where: { id },
-    data: {
-      type,
-      status,
-      slug,
-      title,
-      locale,
-      featured: formData.get("featured") === "on",
-      payload: normalizeJsonText(formData.get("payload")),
-      relations: normalizeJsonText(formData.get("relations"))
-    }
-  });
-
-  revalidatePath("/admin");
-}
-
-export async function deleteAdminContentAction(formData: FormData) {
-  await requireAdmin();
-
-  const id = String(formData.get("id") ?? "");
-
-  if (!id) {
-    throw new Error("ID is required");
-  }
-
-  await prisma.adminContent.delete({ where: { id } });
-  revalidatePath("/admin");
-}
-
-export async function bulkImportAdminContentAction(formData: FormData) {
-  await requireAdmin();
-
-  const raw = String(formData.get("bulk") ?? "").trim();
-  const parsed = JSON.parse(raw);
-
-  if (!Array.isArray(parsed)) {
-    throw new Error("Bulk payload must be a JSON array");
-  }
-
-  for (const item of parsed) {
-    const type = requireEnumValue(adminContentTypes, item.type, "type");
-    const status = requireEnumValue(adminContentStatuses, item.status ?? ContentStatus.DRAFT, "status");
-    const slug = String(item.slug ?? "").trim();
-    const title = String(item.title ?? "").trim();
-    const locale = String(item.locale ?? "tr").trim() || "tr";
-
-    if (!slug || !title) {
-      throw new Error("Each bulk item needs slug and title");
-    }
-
+  for (const locale of adminPublishLocales) {
     await prisma.adminContent.upsert({
       where: {
         type_slug_locale: {
@@ -148,19 +80,151 @@ export async function bulkImportAdminContentAction(formData: FormData) {
         slug,
         title,
         locale,
-        featured: Boolean(item.featured),
-        payload: JSON.stringify(item.payload ?? {}, null, 2),
-        relations: JSON.stringify(item.relations ?? {}, null, 2)
+        featured,
+        payload,
+        relations
       },
       update: {
         status,
         title,
-        featured: Boolean(item.featured),
-        payload: JSON.stringify(item.payload ?? {}, null, 2),
-        relations: JSON.stringify(item.relations ?? {}, null, 2)
+        featured,
+        payload,
+        relations
       }
     });
   }
+
+  revalidatePath("/admin");
+}
+
+export async function updateAdminContentGroupAction(formData: FormData) {
+  await requireAdmin();
+
+  const type = requireEnumValue(adminContentTypes, formData.get("type"), "type");
+  const status = requireEnumValue(adminContentStatuses, formData.get("status") ?? ContentStatus.DRAFT, "status");
+  const slug = String(formData.get("slug") ?? "").trim();
+  const title = String(formData.get("title") ?? "").trim();
+
+  if (!slug || !title) {
+    throw new Error("Slug ve başlık zorunludur");
+  }
+
+  await prisma.adminContent.updateMany({
+    where: { type, slug },
+    data: {
+      status,
+      title,
+      featured: formData.get("featured") === "on",
+      payload: buildAdminPayloadFromForm(formData, type),
+      relations: buildAdminRelationsFromForm(formData)
+    }
+  });
+
+  revalidatePath("/admin");
+}
+
+export async function deleteAdminContentGroupAction(formData: FormData) {
+  await requireAdmin();
+
+  const type = requireEnumValue(adminContentTypes, formData.get("type"), "type");
+  const slug = String(formData.get("slug") ?? "").trim();
+
+  if (!slug) {
+    throw new Error("Slug zorunludur");
+  }
+
+  await prisma.adminContent.deleteMany({ where: { type, slug } });
+  revalidatePath("/admin");
+}
+
+export async function deleteAdminContentAction(formData: FormData) {
+  await requireAdmin();
+
+  const id = String(formData.get("id") ?? "");
+
+  if (!id) {
+    throw new Error("ID zorunludur");
+  }
+
+  await prisma.adminContent.delete({ where: { id } });
+  revalidatePath("/admin");
+}
+
+export async function bulkImportAdminContentAction(formData: FormData) {
+  await requireAdmin();
+
+  const raw = String(formData.get("bulk") ?? "").trim();
+  const parsed = JSON.parse(raw);
+
+  if (!Array.isArray(parsed)) {
+    throw new Error("Toplu import verisi JSON array olmalıdır");
+  }
+
+  for (const item of parsed) {
+    const type = requireEnumValue(adminContentTypes, item.type, "type");
+    const status = requireEnumValue(adminContentStatuses, item.status ?? ContentStatus.DRAFT, "status");
+    const title = String(item.title ?? "").trim();
+    const slug = String(item.slug ?? "").trim() || slugifyAdminTitle(title);
+    const targetLocales = Array.isArray(item.locales) && item.locales.length ? item.locales : adminPublishLocales;
+
+    if (!title) {
+      throw new Error("Her toplu import kaydında başlık olmalıdır");
+    }
+
+    for (const locale of targetLocales) {
+      await prisma.adminContent.upsert({
+        where: {
+          type_slug_locale: {
+            type,
+            slug,
+            locale: String(locale)
+          }
+        },
+        create: {
+          type,
+          status,
+          slug,
+          locale: String(locale),
+          title,
+          featured: Boolean(item.featured),
+          payload: JSON.stringify(item.payload ?? {}, null, 2),
+          relations: JSON.stringify(item.relations ?? {}, null, 2)
+        },
+        update: {
+          status,
+          title,
+          featured: Boolean(item.featured),
+          payload: JSON.stringify(item.payload ?? {}, null, 2),
+          relations: JSON.stringify(item.relations ?? {}, null, 2)
+        }
+      });
+    }
+  }
+
+  revalidatePath("/admin");
+}
+
+export async function updateAdminContentAction(formData: FormData) {
+  await requireAdmin();
+
+  const id = String(formData.get("id") ?? "");
+  const status = requireEnumValue(adminContentStatuses, formData.get("status") ?? ContentStatus.DRAFT, "status");
+  const title = String(formData.get("title") ?? "").trim();
+
+  if (!id || !title) {
+    throw new Error("ID ve başlık zorunludur");
+  }
+
+  await prisma.adminContent.update({
+    where: { id },
+    data: {
+      status,
+      title,
+      featured: formData.get("featured") === "on",
+      payload: normalizeJsonText(formData.get("payload")),
+      relations: normalizeJsonText(formData.get("relations"))
+    }
+  });
 
   revalidatePath("/admin");
 }

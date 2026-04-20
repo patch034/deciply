@@ -16,13 +16,13 @@ export default async function AdminLoginPage({
   const params = await searchParams;
 
   return (
-    <main className="min-h-screen bg-[linear-gradient(180deg,#f8fafc_0%,#edf4fb_100%)] px-4 py-10 text-slate-950">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(0,127,255,0.08),transparent_32%),linear-gradient(180deg,#f8fafc_0%,#edf4fb_100%)] px-4 py-10 text-slate-950">
       <div className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-md items-center">
-        <section className="w-full rounded-lg border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-42px_rgba(15,23,42,0.22)]">
+        <section className="w-full rounded-lg border border-white/70 bg-white/90 p-6 shadow-[0_24px_70px_-42px_rgba(15,23,42,0.28)] backdrop-blur">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0055FF]">Deciply Admin</p>
-          <h1 className="mt-3 text-2xl font-bold tracking-tight">Giriş yap</h1>
+          <h1 className="mt-3 text-2xl font-bold tracking-tight">Admin girişi</h1>
           <p className="mt-2 text-sm leading-6 text-slate-600">
-            İçerik yönetimi sadece yetkili kullanıcılar için açık.
+            İçerik paneli sadece yetkili kullanıcılar için açık. Parolayı girdikten sonra içerik ekleme ekranına geçersin.
           </p>
 
           {process.env.NODE_ENV !== "production" && !hasProductionAdminSecret() ? (
@@ -33,7 +33,7 @@ export default async function AdminLoginPage({
 
           {params.error ? (
             <p className="mt-4 rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-sm font-semibold text-rose-700">
-              Parola hatalı.
+              Parola hatalı. Lütfen tekrar dene.
             </p>
           ) : null}
 
@@ -44,10 +44,10 @@ export default async function AdminLoginPage({
                 name="password"
                 type="password"
                 required
-                className="min-h-11 rounded-md border border-slate-200 bg-white px-3 text-sm text-slate-950"
+                className="min-h-11 rounded-md border border-slate-200 bg-white px-3 text-sm text-slate-950 shadow-sm outline-none transition focus:border-blue-300 focus:ring-4 focus:ring-blue-100"
               />
             </label>
-            <button className="min-h-11 rounded-md bg-[#0055FF] px-4 text-sm font-semibold text-white transition hover:bg-[#004be0]">
+            <button className="min-h-11 rounded-md bg-[linear-gradient(135deg,#0E2450,#0055FF)] px-4 text-sm font-bold text-white shadow-[0_16px_34px_-24px_rgba(0,85,255,0.7)] transition hover:-translate-y-0.5">
               Giriş yap
             </button>
           </form>
