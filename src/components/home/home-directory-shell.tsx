@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { CategoryIcon } from "@/components/catalog/category-icon";
 import { HorizontalSlider } from "@/components/home/horizontal-slider";
 import { PremiumButton } from "@/components/ui/premium-button";
 import type { Locale } from "@/i18n/config";
@@ -20,6 +21,7 @@ export type HomeBlogPanelItem = {
 type HomeDirectoryShellProps = {
   locale: Locale;
   categories: LocalizedCategory[];
+  categoryToolCounts: Record<string, number>;
   tools: LocalizedTool[];
   blogs: HomeBlogPanelItem[];
   news: AiNewsItem[];
@@ -226,7 +228,7 @@ function ToolsPanel({ locale, tools, copy }: { locale: Locale; tools: LocalizedT
   );
 }
 
-export function HomeDirectoryShell({ locale, categories, tools, blogs, news, comparisons }: HomeDirectoryShellProps) {
+export function HomeDirectoryShell({ locale, categories, categoryToolCounts, tools, blogs, news, comparisons }: HomeDirectoryShellProps) {
   const copy = localizeTree(locale, sectionCopyBase[getContentBaseLocale(locale)]);
   const featuredCategories = buildFeaturedCategories(categories);
   const feedTools = tools.slice(0, 15);
@@ -263,18 +265,23 @@ export function HomeDirectoryShell({ locale, categories, tools, blogs, news, com
           </PremiumButton>
         </div>
 
-        <HorizontalSlider ariaLabel={copy.categoryTitle}>
+        <HorizontalSlider
+          ariaLabel={copy.categoryTitle}
+          contentClassName="grid auto-cols-[12.5rem] grid-flow-col grid-rows-2 gap-3 sm:auto-cols-[13.5rem] sm:gap-4"
+        >
           {featuredCategories.map((category) => (
             <Link
               key={category.slug}
               href={`/${locale}/categories/${category.slug}`}
-              className="ui-inner-panel ui-card-hover block min-h-[156px] w-[15.5rem] shrink-0 snap-start rounded-[20px] px-4 py-4"
+              className="ui-inner-panel ui-card-hover block min-h-[118px] snap-start rounded-[18px] px-3.5 py-3.5"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-[#0E2450] text-xs font-black text-white">
-                {initials(category.name)}
+              <div className="flex items-start justify-between gap-3">
+                <CategoryIcon slug={category.slug} label={category.name} className="h-9 w-9 shrink-0" />
+                <span className="rounded-full border border-slate-200 bg-white px-2 py-0.5 text-[10px] font-bold text-slate-500">
+                  {categoryToolCounts[category.slug] ?? 0}
+                </span>
               </div>
-              <h3 className="clamp-2 mt-3 text-sm font-bold leading-5 text-slate-950">{category.name}</h3>
-              <p className="clamp-2 mt-2 text-xs leading-5 text-slate-500">{category.description}</p>
+              <h3 className="clamp-2 mt-3 text-sm font-black leading-5 text-slate-950">{category.name}</h3>
             </Link>
           ))}
         </HorizontalSlider>

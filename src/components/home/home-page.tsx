@@ -3,7 +3,7 @@ import { HomeDirectoryShell } from "@/components/home/home-directory-shell";
 import { blogArticles } from "@/data/blog";
 import type { HomeContent } from "@/data/home";
 import type { Locale } from "@/i18n/config";
-import { getLocalizedCategories, getLocalizedTools } from "@/lib/catalog";
+import { getLocalizedCategories, getLocalizedTools, getToolsByCategory } from "@/lib/catalog";
 import { getComparisonDirectoryCards } from "@/lib/comparisons";
 import { getContentBaseLocale } from "@/lib/locale-copy";
 import { getAiNewsItems } from "@/lib/news";
@@ -31,6 +31,9 @@ function buildPopularTools(locale: Locale) {
 export async function HomePage({ locale, content }: HomePageProps) {
   const categories = getLocalizedCategories(locale);
   const tools = buildPopularTools(locale);
+  const categoryToolCounts = Object.fromEntries(
+    categories.map((category) => [category.slug, getToolsByCategory(locale, category.slug).length])
+  );
   const blogLocale = getContentBaseLocale(locale);
   const blogs = [...blogArticles]
     .sort((left, right) => String(right.publishDate ?? "").localeCompare(String(left.publishDate ?? "")))
@@ -49,6 +52,7 @@ export async function HomePage({ locale, content }: HomePageProps) {
       <HomeDirectoryShell
         locale={locale}
         categories={categories}
+        categoryToolCounts={categoryToolCounts}
         tools={tools}
         blogs={blogs}
         news={news}

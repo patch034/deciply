@@ -31,10 +31,6 @@ function renderLink(locale: SupportedLocale, item: { href: string; label: string
   );
 }
 
-function alphaLabel(letter: string) {
-  return letter === "#" ? "Other" : letter;
-}
-
 function getFooterSeoColumns(locale: SupportedLocale) {
   const tr = locale === "tr";
 
@@ -95,10 +91,6 @@ function getFooterSeoColumns(locale: SupportedLocale) {
 }
 
 export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
-  const browseLinks = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map((letter) => ({
-    href: `/tools?q=${letter}`,
-    label: alphaLabel(letter)
-  }));
   const seoColumns = getFooterSeoColumns(locale);
 
   return (
@@ -136,30 +128,6 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
                 <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{group.title}</h2>
                 <div className="flex flex-col gap-2.5">{group.links.slice(0, 8).map((item) => renderLink(locale, item))}</div>
               </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="ui-card rounded-[24px] p-5 sm:p-6">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">
-                {dictionary.footer.alphabetTitle}
-              </p>
-              <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">
-                {dictionary.footer.alphabetDescription}
-              </p>
-            </div>
-            <Link href={`/${locale}/tools`} className="ui-nav-pill self-start lg:self-auto">
-              {dictionary.footer.allToolsLabel}
-            </Link>
-          </div>
-
-          <div className="mt-5 flex flex-wrap gap-2">
-            {browseLinks.map((item) => (
-              <Link key={item.label} href={`/${locale}${item.href}`} className="ui-nav-pill ui-nav-pill-muted px-3 text-xs">
-                {item.label}
-              </Link>
             ))}
           </div>
         </section>

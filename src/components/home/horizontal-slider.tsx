@@ -6,9 +6,10 @@ import { useRef } from "react";
 type HorizontalSliderProps = {
   children: ReactNode;
   ariaLabel: string;
+  contentClassName?: string;
 };
 
-export function HorizontalSlider({ children, ariaLabel }: HorizontalSliderProps) {
+export function HorizontalSlider({ children, ariaLabel, contentClassName }: HorizontalSliderProps) {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
   function scroll(direction: "left" | "right") {
@@ -36,7 +37,10 @@ export function HorizontalSlider({ children, ariaLabel }: HorizontalSliderProps)
       </button>
       <div
         ref={scrollerRef}
-        className="homepage-horizontal-scroll -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 scroll-smooth sm:gap-4"
+        className={[
+          "homepage-horizontal-scroll -mx-4 overflow-x-auto px-4 pb-2 scroll-smooth",
+          contentClassName ?? "flex snap-x snap-mandatory gap-3 sm:gap-4"
+        ].join(" ")}
       >
         {children}
       </div>
