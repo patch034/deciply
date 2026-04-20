@@ -101,7 +101,7 @@ export function ToolCard({
 
   if (variant === "row") {
     return (
-      <article className="ui-card-hover rounded-[18px] border border-slate-200 bg-white px-3 py-3 shadow-[0_10px_24px_rgba(15,23,42,0.045)] transition sm:px-4">
+      <article className="ui-card-hover rounded-[18px] border border-slate-200 bg-white px-3 py-2.5 shadow-[0_12px_28px_rgba(15,23,42,0.065)] transition sm:px-4">
         <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
           <div className="flex min-w-0 items-center gap-3">
             <ToolLogo name={tool.name} logoUrl={logoUrl} />
@@ -117,9 +117,9 @@ export function ToolCard({
                 </span>
               </div>
 
-              <p className="clamp-1 mt-1 text-sm leading-5 text-slate-600">{tool.shortDescription}</p>
+              <p className="clamp-1 mt-1 text-[13px] leading-5 text-slate-600">{tool.shortDescription}</p>
 
-              <div className="mt-2 flex flex-wrap gap-1.5">
+              <div className="mt-1.5 flex flex-wrap gap-1.5">
                 {categoryNames.slice(0, 3).map((category) => (
                   <span key={category} className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-bold text-slate-500">
                     {category}

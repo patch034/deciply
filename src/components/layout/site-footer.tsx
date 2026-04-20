@@ -9,12 +9,18 @@ type SiteFooterProps = {
   dictionary: Dictionary;
 };
 
+type FooterLink = {
+  href: string;
+  label: string;
+};
+
 function isExternalHref(href: string) {
   return /^(mailto:|https?:\/\/|tel:)/i.test(href);
 }
 
-function renderLink(locale: SupportedLocale, item: { href: string; label: string }) {
-  const className = "text-sm text-slate-600 transition hover:text-slate-950";
+function renderLink(locale: SupportedLocale, item: FooterLink) {
+  const className =
+    "text-sm font-medium text-slate-600 transition hover:text-slate-950";
 
   if (isExternalHref(item.href)) {
     return (
@@ -31,12 +37,22 @@ function renderLink(locale: SupportedLocale, item: { href: string; label: string
   );
 }
 
-function getFooterSeoColumns(locale: SupportedLocale) {
+function getFooterColumns(locale: SupportedLocale) {
   const tr = locale === "tr";
 
   return [
     {
-      title: tr ? "En iyi AI araçları" : "Best AI tools",
+      title: tr ? "Keşfet" : "Explore",
+      links: [
+        { href: "/categories", label: tr ? "Kategoriler" : "Categories" },
+        { href: "/tools", label: tr ? "Araçlar" : "Tools" },
+        { href: "/compare", label: tr ? "Karşılaştırmalar" : "Comparisons" },
+        { href: "/news", label: tr ? "AI Haberleri" : "AI News" },
+        { href: "/blog", label: "Blog" }
+      ]
+    },
+    {
+      title: tr ? "Popüler" : "Popular",
       links: [
         { href: "/tools/chatgpt", label: "ChatGPT" },
         { href: "/tools/claude", label: "Claude" },
@@ -47,7 +63,28 @@ function getFooterSeoColumns(locale: SupportedLocale) {
       ]
     },
     {
-      title: tr ? "Daha fazla araç" : "More tools",
+      title: tr ? "İçerik" : "Content",
+      links: [
+        { href: "/blog", label: tr ? "Blog rehberleri" : "Blog guides" },
+        { href: "/news", label: tr ? "Güncel AI haberleri" : "Latest AI news" },
+        { href: "/compare/chatgpt-vs-grok", label: "ChatGPT vs Grok" },
+        { href: "/compare/claude-vs-grok", label: "Claude vs Grok" },
+        { href: "/blog/grok-alternatifleri-en-iyi-ai-araclari-2026", label: tr ? "Grok alternatifleri" : "Grok alternatives" },
+        { href: "/blog/en-iyi-ai-ses-olusturma-araclari-2026", label: tr ? "AI ses araçları" : "AI voice tools" }
+      ]
+    },
+    {
+      title: tr ? "Kurumsal" : "Company",
+      links: [
+        { href: "/about", label: tr ? "Hakkında" : "About" },
+        { href: "/contact", label: tr ? "İletişim" : "Contact" },
+        { href: "/privacy-policy", label: tr ? "Gizlilik" : "Privacy" },
+        { href: "/terms", label: tr ? "Kullanım şartları" : "Terms" },
+        { href: "/affiliate-disclosure", label: tr ? "Affiliate açıklaması" : "Affiliate disclosure" }
+      ]
+    },
+    {
+      title: tr ? "SEO bağlantıları" : "SEO links",
       links: [
         { href: "/categories/chatbots-virtual-companions", label: tr ? "Chatbot araçları" : "Chatbot tools" },
         { href: "/categories/writing-editing", label: tr ? "Yazma araçları" : "Writing tools" },
@@ -56,86 +93,47 @@ function getFooterSeoColumns(locale: SupportedLocale) {
         { href: "/categories/video-animation", label: tr ? "Video araçları" : "Video tools" },
         { href: "/categories/office-productivity", label: tr ? "Verimlilik araçları" : "Productivity tools" }
       ]
-    },
-    {
-      title: tr ? "Rehberler" : "Guides",
-      links: [
-        { href: "/blog", label: tr ? "Blog rehberleri" : "Blog guides" },
-        { href: "/compare", label: tr ? "Karşılaştırmalar" : "Comparisons" },
-        { href: "/tools", label: tr ? "Tüm araçlar" : "All tools" },
-        { href: "/categories", label: tr ? "Kategoriler" : "Categories" },
-        { href: "/news", label: tr ? "AI haberleri" : "AI news" }
-      ]
-    },
-    {
-      title: tr ? "Yeni içerikler" : "New content",
-      links: [
-        { href: "/blog/grok-alternatifleri-en-iyi-ai-araclari-2026", label: tr ? "Grok alternatifleri" : "Grok alternatives" },
-        { href: "/blog/en-iyi-ai-ses-olusturma-araclari-2026", label: tr ? "AI ses araçları" : "AI voice tools" },
-        { href: "/compare/chatgpt-vs-grok", label: "ChatGPT vs Grok" },
-        { href: "/compare/claude-vs-grok", label: "Claude vs Grok" },
-        { href: "/news", label: tr ? "Güncel AI haberleri" : "Latest AI news" }
-      ]
-    },
-    {
-      title: tr ? "Kaynak" : "Resource",
-      links: [
-        { href: "/about", label: tr ? "Hakkında" : "About" },
-        { href: "/contact", label: tr ? "İletişim" : "Contact" },
-        { href: "/privacy-policy", label: tr ? "Gizlilik" : "Privacy" },
-        { href: "/terms", label: tr ? "Kullanım şartları" : "Terms" },
-        { href: "/affiliate-disclosure", label: tr ? "Affiliate açıklaması" : "Affiliate disclosure" }
-      ]
     }
   ];
 }
 
 export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
-  const seoColumns = getFooterSeoColumns(locale);
+  const footerColumns = getFooterColumns(locale);
 
   return (
     <footer className="mt-16 px-4 pb-10 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-[1440px] space-y-5">
-        <section className="ui-card rounded-[24px] p-5 sm:p-6">
-          <div className="grid gap-6 lg:grid-cols-[1.2fr_repeat(4,minmax(0,1fr))]">
-            <div className="space-y-4">
+      <div className="mx-auto max-w-[1440px]">
+        <section className="ui-card rounded-[28px] p-5 sm:p-6 lg:p-7">
+          <div className="grid gap-8 lg:grid-cols-[1.05fr_2fr] lg:items-start">
+            <div className="space-y-5 rounded-[24px] border border-slate-200 bg-white/78 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.045)]">
               <div className="flex items-center gap-3">
-                <BrandLogo compact className="h-8 w-8" />
+                <BrandLogo compact className="h-10 w-10" />
                 <div>
-                  <p className="text-base font-semibold tracking-[-0.03em] text-slate-950">Deciply</p>
-                  <p className="text-xs text-slate-500">{dictionary.brandSubtitle}</p>
+                  <p className="text-xl font-black tracking-[-0.045em] text-slate-950">Deciply</p>
+                  <p className="text-sm font-semibold text-slate-500">{dictionary.brandSubtitle}</p>
                 </div>
               </div>
-              <p className="max-w-[32rem] text-sm leading-7 text-slate-600">{dictionary.footer.description}</p>
-              <div className="flex flex-wrap items-center gap-3 text-sm">
+              <p className="max-w-[36rem] text-sm leading-7 text-slate-600">{dictionary.footer.description}</p>
+              <div className="flex flex-wrap items-center gap-2 text-sm">
                 {dictionary.footer.contactBlock.links.map((item) => renderLink(locale, item))}
               </div>
             </div>
 
-            {dictionary.footer.groups.map((group) => (
-              <div key={group.title} className="space-y-3">
-                <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{group.title}</h2>
-                <div className="flex flex-col gap-2">{group.links.map((item) => renderLink(locale, item))}</div>
-              </div>
-            ))}
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+              {footerColumns.map((group) => (
+                <div key={group.title} className="space-y-3">
+                  <h2 className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-500">{group.title}</h2>
+                  <div className="flex flex-col gap-2">{group.links.slice(0, 8).map((item) => renderLink(locale, item))}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-7 flex flex-col gap-3 border-t border-slate-200/90 pt-5 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-2xl">{dictionary.footer.bottomNote}</p>
+            <p className="font-semibold">{dictionary.footer.copyright}</p>
           </div>
         </section>
-
-        <section className="ui-card rounded-[24px] p-5 sm:p-6">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            {seoColumns.map((group) => (
-              <div key={group.title} className="space-y-3">
-                <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{group.title}</h2>
-                <div className="flex flex-col gap-2.5">{group.links.slice(0, 8).map((item) => renderLink(locale, item))}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <div className="flex flex-col gap-3 border-t border-slate-200/90 pt-5 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-2xl">{dictionary.footer.bottomNote}</p>
-          <p className="font-medium">{dictionary.footer.copyright}</p>
-        </div>
       </div>
     </footer>
   );

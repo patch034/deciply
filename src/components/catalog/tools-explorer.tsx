@@ -474,12 +474,12 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
   return (
     <section className="space-y-4">
       <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_210px] lg:items-center">
-        <div className="rounded-[22px] border border-slate-200 bg-white px-3 py-2 shadow-[0_14px_34px_rgba(15,23,42,0.06)] transition focus-within:border-sky-300 focus-within:shadow-[0_18px_40px_rgba(37,99,235,0.12)]">
+        <div className="rounded-[22px] border-2 border-sky-100 bg-white px-3 py-2 shadow-[0_18px_42px_rgba(15,23,42,0.08)] transition focus-within:border-[#007FFF] focus-within:shadow-[0_20px_50px_rgba(0,127,255,0.16)]">
           <label className="sr-only" htmlFor="tool-search">
             {copy.searchLabel}
           </label>
           <div className="flex min-h-[52px] items-center gap-3">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-50 text-slate-500">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sky-50 text-[#0055FF]">
               <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-none stroke-current stroke-2">
                 <path d="m21 21-4.35-4.35" strokeLinecap="round" />
                 <circle cx="11" cy="11" r="6.5" />
@@ -491,7 +491,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
               value={query}
               onChange={(event) => setFilters({ query: event.target.value, page: 1 })}
               placeholder={copy.searchPlaceholder}
-              className="h-11 w-full border-0 bg-transparent px-0 text-sm font-semibold text-slate-900 outline-none placeholder:text-slate-400 focus:shadow-none"
+              className="h-11 w-full border-0 bg-transparent px-0 text-sm font-bold text-slate-950 outline-none placeholder:text-slate-400 focus:shadow-none"
             />
           </div>
         </div>
