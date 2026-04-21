@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { ToolCard } from "@/components/catalog/tool-card";
 import { PremiumButton } from "@/components/ui/premium-button";
-import { formatPricing, getLocalizedCategoryBySlug } from "@/lib/catalog";
+import { formatPricing, getCategoryNamesMap, getLocalizedCategoryBySlug } from "@/lib/catalog";
 import { categoryUiCopy, getCategoryHubItem, getSubcategory, getToolsBySubcategory } from "@/lib/category-taxonomy";
+import { buildComparisonPath, getComparisonTargetSlugs } from "@/lib/comparisons";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, normalizeLocale } from "@/i18n/config";
 import { getToolLogoUrl } from "@/lib/logo";
 
@@ -68,6 +68,7 @@ export default async function SubcategoryPage({
 
   const copy = categoryUiCopy[safeLocale];
   const tools = getToolsBySubcategory(safeLocale, slug, subCategory);
+  const categoryNames = getCategoryNamesMap(safeLocale);
 
   return (
     <div className="ui-page-shell relative mx-auto flex w-full max-w-[1440px] flex-col gap-7 overflow-x-clip px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
@@ -102,22 +103,31 @@ export default async function SubcategoryPage({
       <section className="ui-card rounded-[24px] p-5 sm:p-6">
         <h2 className="text-2xl font-black tracking-[-0.04em] text-slate-950">{copy.tools}</h2>
         {tools.length ? (
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {tools.map((tool) => (
-              <Link key={tool.slug} href={`/${safeLocale}/tools/${tool.slug}`} className="ui-inner-panel ui-card-hover rounded-[20px] p-4">
-                <div className="flex items-start justify-between gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-[14px] border border-slate-200 bg-white">
-                    <Image src={getToolLogoUrl(tool.websiteUrl)} alt={tool.name} width={44} height={44} unoptimized className="h-full w-full object-contain p-2" />
-                  </span>
-                  <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-bold text-slate-500">
-                    {formatPricing(tool.pricing, safeLocale)}
-                  </span>
-                </div>
-                <h3 className="clamp-1 mt-3 text-base font-black text-slate-950">{tool.name}</h3>
-                <p className="clamp-2 mt-2 text-xs leading-5 text-slate-500">{tool.shortDescription}</p>
-                <span className="mt-4 inline-flex text-sm font-bold text-sky-700">{copy.inspect} →</span>
-              </Link>
-            ))}
+          <div className="mt-5 grid gap-3">
+            {tools.map((tool) => {
+              const primaryComparisonTarget = getComparisonTargetSlugs(tool.slug, 1)[0];
+              const categoryLabels = tool.toolCategorySlugs
+                .map((categorySlug) => categoryNames.get(categorySlug) ?? categorySlug)
+                .slice(0, 3);
+
+              return (
+                <ToolCard
+                  key={tool.slug}
+                  locale={safeLocale}
+                  tool={tool}
+                  categoryNames={categoryLabels}
+                  pricingLabel={formatPricing(tool.pricing, safeLocale)}
+                  detailLabel={copy.inspect}
+                  compareHref={
+                    primaryComparisonTarget
+                      ? buildComparisonPath(safeLocale, tool.slug, primaryComparisonTarget)
+                      : undefined
+                  }
+                  logoUrl={getToolLogoUrl(tool.websiteUrl)}
+                  variant="row"
+                />
+              );
+            })}
           </div>
         ) : (
           <div className="mt-5 rounded-[20px] border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-sm font-semibold text-slate-500">

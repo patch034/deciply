@@ -92,7 +92,7 @@ export default async function CategoryDetailPage({
           {hubItem.subcategories.map((subcategory) => (
             <Link
               key={subcategory.slug}
-              href={`/${safeLocale}/category/${slug}/${subcategory.slug}`}
+              href={`/${safeLocale}/categories/${slug}/${subcategory.slug}`}
               className="group rounded-[20px] border border-slate-200 bg-white p-4 shadow-[0_12px_28px_rgba(15,23,42,0.055)] transition hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-[0_18px_38px_rgba(15,23,42,0.09)]"
             >
               <div className="flex items-start justify-between gap-3">

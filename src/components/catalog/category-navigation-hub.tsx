@@ -21,6 +21,17 @@ type CategoryNavigationHubProps = {
 export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavigationHubProps) {
   const [activeSlug, setActiveSlug] = useState(categories[0]?.slug ?? "");
 
+  const scrollToCategory = (slug: string) => {
+    const section = document.getElementById(`category-${slug}`);
+
+    if (!section) {
+      return;
+    }
+
+    setActiveSlug(slug);
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   useEffect(() => {
     const sections = categories
       .map((category) => document.getElementById(`category-${category.slug}`))
@@ -64,6 +75,10 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
                 <a
                   key={category.slug}
                   href={`#category-${category.slug}`}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    scrollToCategory(category.slug);
+                  }}
                   className={[
                     "group flex min-w-[12rem] items-center justify-between gap-3 rounded-[16px] border px-3 py-3 text-left transition lg:min-w-0",
                     active
@@ -114,7 +129,7 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
               {category.subcategories.map((subcategory) => (
                 <Link
                   key={subcategory.slug}
-                  href={`/${locale}/category/${category.slug}/${subcategory.slug}`}
+                  href={`/${locale}/categories/${category.slug}/${subcategory.slug}`}
                   className="group rounded-[18px] border border-slate-200 bg-slate-50/70 p-4 transition hover:-translate-y-0.5 hover:border-sky-200 hover:bg-white hover:shadow-[0_18px_34px_rgba(15,23,42,0.08)]"
                 >
                   <div className="flex items-start justify-between gap-3">

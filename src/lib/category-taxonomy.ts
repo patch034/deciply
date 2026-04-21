@@ -609,6 +609,366 @@ const EXTRA_SUBCATEGORY_MAP: Record<string, SubcategoryDefinition[]> = {
       description: { tr: "Öğrenci ve araştırmacı akışları.", en: "Student and researcher workflows." },
       match: { useCases: ["students", "research"] }
     }
+  ],
+  "education-translation": [
+    {
+      slug: "language-learning",
+      label: { tr: "Dil öğrenme", en: "Language learning" },
+      description: { tr: "Dil pratiği, çeviri ve öğrenme akışları.", en: "Language practice, translation, and learning workflows." },
+      match: { useCases: ["students"], toolCategories: ["writing", "productivity"] }
+    },
+    {
+      slug: "student-study",
+      label: { tr: "Öğrenci çalışma araçları", en: "Student study tools" },
+      description: { tr: "Not çıkarma, özetleme ve sınav hazırlığı.", en: "Note taking, summarization, and exam preparation." },
+      match: { useCases: ["students", "research"] }
+    },
+    {
+      slug: "translation-writing",
+      label: { tr: "Çeviri ve yazı desteği", en: "Translation and writing help" },
+      description: { tr: "Çok dilli yazı, düzenleme ve anlam koruma.", en: "Multilingual writing, editing, and meaning-preserving translation." },
+      match: { toolCategories: ["writing"], useCases: ["students", "business"] }
+    }
+  ],
+  "social-media": [
+    {
+      slug: "social-posts",
+      label: { tr: "Sosyal medya içeriği", en: "Social media posts" },
+      description: { tr: "Gönderi, başlık, caption ve içerik fikri üretimi.", en: "Post, headline, caption, and content idea generation." },
+      match: { useCases: ["creators", "content", "marketing"], toolCategories: ["writing", "image"] }
+    },
+    {
+      slug: "short-form-content",
+      label: { tr: "Kısa form içerik", en: "Short-form content" },
+      description: { tr: "Reels, Shorts ve klip üretim akışları.", en: "Reels, Shorts, and clip production workflows." },
+      match: { toolCategories: ["video", "image"], useCases: ["creators", "content"] }
+    },
+    {
+      slug: "social-scheduling",
+      label: { tr: "Planlama ve yayınlama", en: "Scheduling and publishing" },
+      description: { tr: "İçerik takvimi, kampanya planı ve sosyal operasyon.", en: "Content calendar, campaign planning, and social operations." },
+      match: { useCases: ["marketing", "business"], toolCategories: ["productivity", "writing"] }
+    }
+  ],
+  "business-management": [
+    {
+      slug: "crm-support",
+      label: { tr: "CRM ve destek", en: "CRM and support" },
+      description: { tr: "Müşteri destek, ticket ve CRM verimliliği.", en: "Customer support, ticketing, and CRM productivity." },
+      match: { useCases: ["business", "sales"], toolCategories: ["productivity", "writing"] }
+    },
+    {
+      slug: "team-productivity",
+      label: { tr: "Ekip verimliliği", en: "Team productivity" },
+      description: { tr: "Doküman, toplantı, görev ve operasyon düzeni.", en: "Documents, meetings, tasks, and operational clarity." },
+      match: { useCases: ["business"], toolCategories: ["productivity"] }
+    },
+    {
+      slug: "business-automation",
+      label: { tr: "İş otomasyonu", en: "Business automation" },
+      description: { tr: "Tekrarlayan işleri bağlayan AI otomasyon akışları.", en: "AI automation flows that connect repetitive business tasks." },
+      match: { useCases: ["business", "freelancers"], toolCategories: ["productivity"] }
+    }
+  ],
+  "business-research": [
+    {
+      slug: "market-research",
+      label: { tr: "Pazar araştırması", en: "Market research" },
+      description: { tr: "Rakip, pazar ve kullanıcı içgörüsü toplama.", en: "Competitor, market, and user insight gathering." },
+      match: { useCases: ["research", "business"], toolCategories: ["writing", "productivity"] }
+    },
+    {
+      slug: "knowledge-search",
+      label: { tr: "Bilgi arama", en: "Knowledge search" },
+      description: { tr: "Kurumsal bilgi, kaynak ve hızlı cevap akışları.", en: "Company knowledge, sources, and fast answer workflows." },
+      match: { useCases: ["research", "business"], toolCategories: ["productivity"] }
+    },
+    {
+      slug: "report-summaries",
+      label: { tr: "Rapor ve özet", en: "Reports and summaries" },
+      description: { tr: "Araştırma notlarını karar özetine dönüştürme.", en: "Turn research notes into decision-ready summaries." },
+      match: { useCases: ["research", "business"], toolCategories: ["writing"] }
+    }
+  ],
+  "law-finance": [
+    {
+      slug: "finance-productivity",
+      label: { tr: "Finans verimliliği", en: "Finance productivity" },
+      description: { tr: "Finansal not, rapor ve operasyonel destek akışları.", en: "Financial notes, reports, and operational support workflows." },
+      match: { useCases: ["business", "research"], toolCategories: ["productivity"] }
+    },
+    {
+      slug: "legal-writing",
+      label: { tr: "Hukuki yazı desteği", en: "Legal writing support" },
+      description: { tr: "Sözleşme taslağı, belge özeti ve kontrollü yazı desteği.", en: "Drafting, document summary, and controlled writing support." },
+      match: { useCases: ["business", "research"], toolCategories: ["writing"] }
+    },
+    {
+      slug: "compliance-review",
+      label: { tr: "Uyumluluk inceleme", en: "Compliance review" },
+      description: { tr: "Denetim, kontrol listesi ve risk sinyali için yardımcı araçlar.", en: "Tools for audits, checklists, and risk signals." },
+      match: { useCases: ["business"], toolCategories: ["productivity"] }
+    }
+  ],
+  "health-wellness": [
+    {
+      slug: "wellness-coaching",
+      label: { tr: "Wellness koçluğu", en: "Wellness coaching" },
+      description: { tr: "Günlük plan, alışkanlık ve kişisel destek araçları.", en: "Daily planning, habits, and personal support tools." },
+      match: { useCases: ["students", "business"], toolCategories: ["productivity"] }
+    },
+    {
+      slug: "health-notes",
+      label: { tr: "Sağlık notları", en: "Health notes" },
+      description: { tr: "Not, özet ve takip için dikkatli üretkenlik akışları.", en: "Careful productivity flows for notes, summaries, and tracking." },
+      match: { useCases: ["research"], toolCategories: ["writing", "productivity"] }
+    },
+    {
+      slug: "personal-planning",
+      label: { tr: "Kişisel planlama", en: "Personal planning" },
+      description: { tr: "Günlük yaşam, rutin ve kişisel karar desteği.", en: "Daily life, routines, and personal decision support." },
+      match: { useCases: ["students", "freelancers"], toolCategories: ["productivity"] }
+    }
+  ],
+  "daily-life": [
+    {
+      slug: "personal-assistants",
+      label: { tr: "Kişisel asistanlar", en: "Personal assistants" },
+      description: { tr: "Günlük yazı, planlama ve hızlı cevap yardımı.", en: "Daily writing, planning, and quick-answer help." },
+      match: { useCases: ["students", "freelancers"], toolCategories: ["writing", "productivity"] }
+    },
+    {
+      slug: "home-planning",
+      label: { tr: "Ev ve yaşam planlama", en: "Home and life planning" },
+      description: { tr: "Günlük düzen, fikir ve kişisel organizasyon.", en: "Daily organization, ideas, and personal planning." },
+      match: { useCases: ["students", "business"], toolCategories: ["productivity"] }
+    },
+    {
+      slug: "quick-answers",
+      label: { tr: "Hızlı cevap araçları", en: "Quick answer tools" },
+      description: { tr: "Soru-cevap, özet ve pratik bilgi akışları.", en: "Q&A, summaries, and practical information workflows." },
+      match: { useCases: ["research", "students"], toolCategories: ["writing"] }
+    }
+  ],
+  "interior-architecture-design": [
+    {
+      slug: "interior-visualization",
+      label: { tr: "İç mekan görselleştirme", en: "Interior visualization" },
+      description: { tr: "Oda, dekorasyon ve mimari fikir görselleştirme.", en: "Room, decor, and architecture idea visualization." },
+      match: { toolCategories: ["image"], useCases: ["creators", "business"] }
+    },
+    {
+      slug: "architecture-concepts",
+      label: { tr: "Mimari konsept", en: "Architecture concepts" },
+      description: { tr: "Konsept, moodboard ve yaratıcı tasarım akışları.", en: "Concept, moodboard, and creative design workflows." },
+      match: { categories: ["art-creative-design"], toolCategories: ["image"] }
+    },
+    {
+      slug: "design-mockups",
+      label: { tr: "Tasarım mockup", en: "Design mockups" },
+      description: { tr: "Sunum, prototip ve hızlı tasarım varlıkları.", en: "Presentation, prototype, and quick design assets." },
+      match: { toolCategories: ["image", "productivity"], useCases: ["creators"] }
+    }
+  ],
+  "art-creative-design": [
+    {
+      slug: "creative-concepts",
+      label: { tr: "Yaratıcı konseptler", en: "Creative concepts" },
+      description: { tr: "Kampanya, illüstrasyon ve yaratıcı fikir üretimi.", en: "Campaign, illustration, and creative idea generation." },
+      match: { toolCategories: ["image"], useCases: ["creators", "content"] }
+    },
+    {
+      slug: "brand-design",
+      label: { tr: "Marka tasarımı", en: "Brand design" },
+      description: { tr: "Logo, sosyal kit ve marka görseli hazırlama.", en: "Logo, social kit, and brand visual preparation." },
+      match: { toolCategories: ["image"], useCases: ["business", "creators"] }
+    },
+    {
+      slug: "illustration-art",
+      label: { tr: "İllüstrasyon ve sanat", en: "Illustration and art" },
+      description: { tr: "Sanatsal görsel, stil ve yaratıcı varyasyonlar.", en: "Art visuals, style exploration, and creative variations." },
+      match: { toolCategories: ["image"], useCases: ["creators"] }
+    }
+  ],
+  "image-analysis": [
+    {
+      slug: "ocr-extraction",
+      label: { tr: "OCR ve veri çıkarma", en: "OCR and extraction" },
+      description: { tr: "Görselden metin, tablo ve bilgi çıkarma.", en: "Extract text, tables, and information from images." },
+      match: { useCases: ["research", "business"], toolCategories: ["productivity"] }
+    },
+    {
+      slug: "visual-search",
+      label: { tr: "Görsel arama", en: "Visual search" },
+      description: { tr: "Görsel anlama, açıklama ve benzerlik akışları.", en: "Visual understanding, description, and similarity workflows." },
+      match: { toolCategories: ["image", "productivity"], useCases: ["research"] }
+    },
+    {
+      slug: "background-cleanup",
+      label: { tr: "Arka plan temizleme", en: "Background cleanup" },
+      description: { tr: "Ürün görseli, temizleme ve hızlı düzenleme.", en: "Product visuals, cleanup, and fast editing." },
+      match: { toolCategories: ["image"], useCases: ["business", "content"] }
+    }
+  ],
+  "ai-detection-and-undetection": [
+    {
+      slug: "ai-detectors",
+      label: { tr: "AI tespit araçları", en: "AI detectors" },
+      description: { tr: "Metin kontrolü, kalite ve yayın öncesi denetim.", en: "Text checks, quality, and pre-publish review." },
+      match: { toolCategories: ["writing"], useCases: ["content", "students"] }
+    },
+    {
+      slug: "humanizers",
+      label: { tr: "Metin insanlaştırma", en: "Text humanizers" },
+      description: { tr: "AI metnini daha doğal ve kontrollü hale getirme.", en: "Make AI text more natural and controlled." },
+      match: { toolCategories: ["writing"], useCases: ["content", "freelancers"] }
+    },
+    {
+      slug: "plagiarism-checks",
+      label: { tr: "İntihal ve kalite kontrol", en: "Plagiarism and quality checks" },
+      description: { tr: "Yayın öncesi kontrol, benzerlik ve kalite işleri.", en: "Pre-publish review, similarity, and quality workflows." },
+      match: { useCases: ["students", "content"], toolCategories: ["writing"] }
+    }
+  ],
+  "music-audio": [
+    {
+      slug: "music-generators",
+      label: { tr: "Müzik üreticiler", en: "Music generators" },
+      description: { tr: "Şarkı, jingle ve yaratıcı müzik üretimi.", en: "Song, jingle, and creative music generation." },
+      match: { categories: ["audio-generation-conversion"], useCases: ["creators", "content"] }
+    },
+    {
+      slug: "sound-design",
+      label: { tr: "Ses tasarımı", en: "Sound design" },
+      description: { tr: "Efekt, atmosfer ve yaratıcı ses varlıkları.", en: "Effects, atmospheres, and creative sound assets." },
+      match: { useCases: ["creators", "content"], toolCategories: ["video"] }
+    },
+    {
+      slug: "audio-editing",
+      label: { tr: "Ses düzenleme", en: "Audio editing" },
+      description: { tr: "Podcast, kayıt ve temiz ses üretimi.", en: "Podcast, recording, and clean audio production." },
+      match: { toolCategories: ["video", "productivity"], useCases: ["creators"] }
+    }
+  ],
+  "make-money-with-ai": [
+    {
+      slug: "freelance-services",
+      label: { tr: "Freelance hizmetler", en: "Freelance services" },
+      description: { tr: "AI ile paketlenebilir müşteri teslimleri.", en: "Client deliverables that can be packaged with AI." },
+      match: { useCases: ["freelancers", "business"], toolCategories: ["writing", "image", "video"] }
+    },
+    {
+      slug: "content-monetization",
+      label: { tr: "İçerik geliri", en: "Content monetization" },
+      description: { tr: "Blog, video, sosyal içerik ve affiliate akışları.", en: "Blog, video, social content, and affiliate workflows." },
+      match: { useCases: ["content", "creators"], toolCategories: ["writing", "video", "image"] }
+    },
+    {
+      slug: "agency-workflows",
+      label: { tr: "Ajans iş akışları", en: "Agency workflows" },
+      description: { tr: "Kampanya, kreatif ve operasyon teslimlerini hızlandırma.", en: "Speed up campaign, creative, and operations delivery." },
+      match: { useCases: ["business", "marketing"], toolCategories: ["writing", "image", "productivity"] }
+    }
+  ],
+  "free-tools": [
+    {
+      slug: "free-writing-tools",
+      label: { tr: "Ücretsiz yazı araçları", en: "Free writing tools" },
+      description: { tr: "Düşük maliyetle yazı ve içerik üretimi.", en: "Low-cost writing and content creation." },
+      match: { pricing: ["FREE", "FREEMIUM"], toolCategories: ["writing"] }
+    },
+    {
+      slug: "free-design-tools",
+      label: { tr: "Ücretsiz tasarım araçları", en: "Free design tools" },
+      description: { tr: "Görsel ve tasarım için ücretsiz/freemium seçenekler.", en: "Free or freemium options for visuals and design." },
+      match: { pricing: ["FREE", "FREEMIUM"], toolCategories: ["image"] }
+    },
+    {
+      slug: "free-productivity-tools",
+      label: { tr: "Ücretsiz verimlilik araçları", en: "Free productivity tools" },
+      description: { tr: "Günlük işler ve ekip verimliliği için ücretsiz seçenekler.", en: "Free options for daily work and team productivity." },
+      match: { pricing: ["FREE", "FREEMIUM"], toolCategories: ["productivity"] }
+    }
+  ],
+  comparisons: [
+    {
+      slug: "chatbot-comparisons",
+      label: { tr: "Chatbot karşılaştırmaları", en: "Chatbot comparisons" },
+      description: { tr: "ChatGPT, Claude, Gemini ve benzer araçları seçme akışı.", en: "Choose between ChatGPT, Claude, Gemini, and similar tools." },
+      match: { categories: ["chatbots-virtual-companions"], toolCategories: ["writing"] }
+    },
+    {
+      slug: "creative-tool-comparisons",
+      label: { tr: "Kreatif araç karşılaştırmaları", en: "Creative tool comparisons" },
+      description: { tr: "Görsel, video ve tasarım araçlarını yan yana değerlendirme.", en: "Compare image, video, and design tools side by side." },
+      match: { toolCategories: ["image", "video"], useCases: ["creators"] }
+    },
+    {
+      slug: "productivity-comparisons",
+      label: { tr: "Verimlilik karşılaştırmaları", en: "Productivity comparisons" },
+      description: { tr: "Toplantı, doküman, otomasyon ve ekip akışları.", en: "Meetings, documents, automation, and team workflows." },
+      match: { toolCategories: ["productivity"], useCases: ["business"] }
+    }
+  ],
+  guides: [
+    {
+      slug: "beginner-guides",
+      label: { tr: "Başlangıç rehberleri", en: "Beginner guides" },
+      description: { tr: "AI aracı seçmeye yeni başlayanlar için temel akışlar.", en: "Core workflows for people starting to choose AI tools." },
+      match: { featured: true }
+    },
+    {
+      slug: "workflow-guides",
+      label: { tr: "İş akışı rehberleri", en: "Workflow guides" },
+      description: { tr: "Belirli bir işi daha hızlı yapmak için araç kombinasyonları.", en: "Tool combinations for completing specific work faster." },
+      match: { useCases: ["business", "freelancers", "content"] }
+    },
+    {
+      slug: "tool-selection-guides",
+      label: { tr: "Araç seçim rehberleri", en: "Tool selection guides" },
+      description: { tr: "Fiyat, kullanım ve kaliteye göre daha iyi seçim yapma.", en: "Choose better by pricing, use case, and quality." },
+      match: { featured: true, pricing: ["FREE", "FREEMIUM"] }
+    }
+  ],
+  "ai-tools": [
+    {
+      slug: "all-purpose-ai",
+      label: { tr: "Genel amaçlı AI", en: "General-purpose AI" },
+      description: { tr: "Yazı, araştırma, fikir ve günlük üretkenlik için çok yönlü araçlar.", en: "Versatile tools for writing, research, ideation, and daily productivity." },
+      match: { featured: true }
+    },
+    {
+      slug: "creator-ai",
+      label: { tr: "Creator AI", en: "Creator AI" },
+      description: { tr: "İçerik üreticileri için görsel, video ve yazı araçları.", en: "Image, video, and writing tools for creators." },
+      match: { useCases: ["creators", "content"], toolCategories: ["writing", "image", "video"] }
+    },
+    {
+      slug: "business-ai",
+      label: { tr: "İş için AI", en: "Business AI" },
+      description: { tr: "Ekip, satış, destek ve operasyon için AI araçları.", en: "AI tools for teams, sales, support, and operations." },
+      match: { useCases: ["business", "sales"], toolCategories: ["productivity", "writing"] }
+    }
+  ],
+  other: [
+    {
+      slug: "emerging-tools",
+      label: { tr: "Yeni çıkan araçlar", en: "Emerging tools" },
+      description: { tr: "Henüz geniş kategoriye oturmayan yeni AI araçları.", en: "New AI tools that do not yet fit one broad category." },
+      match: { featured: false }
+    },
+    {
+      slug: "specialized-workflows",
+      label: { tr: "Özel iş akışları", en: "Specialized workflows" },
+      description: { tr: "Dar ama faydalı kullanım senaryoları.", en: "Narrow but useful use cases." },
+      match: { useCases: ["business", "research", "freelancers"] }
+    },
+    {
+      slug: "utility-tools",
+      label: { tr: "Yardımcı araçlar", en: "Utility tools" },
+      description: { tr: "Küçük ama tekrar eden dijital işleri kolaylaştıran araçlar.", en: "Tools that simplify small recurring digital tasks." },
+      match: { toolCategories: ["productivity", "image", "writing"] }
+    }
   ]
 };
 
@@ -794,7 +1154,17 @@ function sortCategories<T extends { slug: string }>(items: T[]) {
 }
 
 function getDefinitionsForCategory(slug: string) {
-  return [...(SUBCATEGORY_MAP[slug] ?? []), ...(EXTRA_SUBCATEGORY_MAP[slug] ?? []), ...DEFAULT_SUBCATEGORIES].slice(0, 6);
+  const definitions = [...(SUBCATEGORY_MAP[slug] ?? []), ...(EXTRA_SUBCATEGORY_MAP[slug] ?? []), ...DEFAULT_SUBCATEGORIES];
+  const seen = new Set<string>();
+
+  return definitions.filter((definition) => {
+    if (seen.has(definition.slug)) {
+      return false;
+    }
+
+    seen.add(definition.slug);
+    return true;
+  });
 }
 
 function matchesSubcategory(tool: LocalizedTool, match: SubcategoryMatch, subcategorySlug?: string) {
