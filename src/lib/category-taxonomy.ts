@@ -1,5 +1,5 @@
 import { categories as categoryEntries } from "@/data/categories";
-import { getLocalizedCategories, getToolsByCategory } from "@/lib/catalog";
+import { categoryAliasMap, getLocalizedCategories, getLocalizedTools, getToolsByCategory } from "@/lib/catalog";
 import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type { SupportedLocale } from "@/i18n/config";
 import type { LocalizedTool, PricingTier } from "@/types/catalog";
@@ -795,7 +795,11 @@ function getDefinitionsForCategory(slug: string) {
   return [...(SUBCATEGORY_MAP[slug] ?? []), ...(EXTRA_SUBCATEGORY_MAP[slug] ?? []), ...DEFAULT_SUBCATEGORIES].slice(0, 6);
 }
 
-function matchesSubcategory(tool: LocalizedTool, match: SubcategoryMatch) {
+function matchesSubcategory(tool: LocalizedTool, match: SubcategoryMatch, subcategorySlug?: string) {
+  if (subcategorySlug && tool.subcategorySlug === subcategorySlug) {
+    return true;
+  }
+
   if (match.featured && tool.featured) {
     return true;
   }
@@ -819,11 +823,29 @@ function matchesSubcategory(tool: LocalizedTool, match: SubcategoryMatch) {
   return false;
 }
 
+function toolMatchesCategory(tool: LocalizedTool, categorySlug: string) {
+  if (tool.categorySlug === categorySlug || tool.categorySlugs.includes(categorySlug)) {
+    return true;
+  }
+
+  if (tool.toolCategorySlugs.includes(categorySlug) || tool.primaryCategorySlug === categorySlug) {
+    return true;
+  }
+
+  if (categorySlug === "other") {
+    return true;
+  }
+
+  const aliases = categoryAliasMap[categorySlug];
+  return Boolean(aliases?.some((slug) => tool.toolCategorySlugs.includes(slug)));
+}
+
 export function getCategoryHub(locale: SupportedLocale): CategoryHubItem[] {
   const localizedCategories = sortCategories(getLocalizedCategories(locale));
+  const localizedTools = getLocalizedTools(locale);
 
   return localizedCategories.map((category) => {
-    const categoryTools = getToolsByCategory(locale, category.slug);
+    const categoryTools = localizedTools.filter((tool) => toolMatchesCategory(tool, category.slug));
     const categoryCopy = getCategoryLocalizedCopy(locale, category.slug, category);
 
     return {
@@ -834,7 +856,7 @@ export function getCategoryHub(locale: SupportedLocale): CategoryHubItem[] {
         slug: subcategory.slug,
         name: getSubcategoryLabel(locale, subcategory.slug, subcategory.label),
         description: getSubcategoryDescription(locale, subcategory.slug, categoryCopy.name, subcategory.description),
-        toolCount: categoryTools.filter((tool) => matchesSubcategory(tool, subcategory.match)).length
+        toolCount: categoryTools.filter((tool) => matchesSubcategory(tool, subcategory.match, subcategory.slug)).length
       }))
     };
   });
@@ -862,7 +884,7 @@ export function getToolsBySubcategory(locale: SupportedLocale, categorySlug: str
   }
 
   return getToolsByCategory(locale, categorySlug)
-    .filter((tool) => matchesSubcategory(tool, definition.match))
+    .filter((tool) => matchesSubcategory(tool, definition.match, definition.slug))
     .sort((left, right) => {
       if (left.featured !== right.featured) {
         return left.featured ? -1 : 1;

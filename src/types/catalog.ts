@@ -53,6 +53,8 @@ export type ToolEntry = {
   websiteUrl: string;
   affiliateUrl: string;
   primaryCategorySlug: string;
+  categorySlug?: string;
+  subcategorySlug?: string;
   categorySlugs: string[];
   toolCategorySlugs: string[];
   useCaseSlugs: string[];
@@ -101,6 +103,8 @@ export type LocalizedTool = {
   websiteUrl: string;
   affiliateUrl: string;
   primaryCategorySlug: string;
+  categorySlug?: string;
+  subcategorySlug?: string;
   categorySlugs: string[];
   toolCategorySlugs: string[];
   useCaseSlugs: string[];

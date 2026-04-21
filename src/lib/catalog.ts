@@ -40,6 +40,8 @@ function buildLocalizedTool(locale: SupportedLocale, slug: string) {
       websiteUrl: tool.websiteUrl,
       affiliateUrl: tool.affiliateUrl ?? tool.websiteUrl,
       primaryCategorySlug: tool.primaryCategorySlug,
+      categorySlug: tool.categorySlug,
+      subcategorySlug: tool.subcategorySlug,
       categorySlugs: tool.categorySlugs,
       toolCategorySlugs: tool.toolCategorySlugs,
       useCaseSlugs: tool.useCaseSlugs,
@@ -88,7 +90,7 @@ export function getLocalizedTools(locale: SupportedLocale): LocalizedTool[] {
     .filter((tool): tool is LocalizedTool => tool !== null);
 }
 
-const categoryAliasMap: Record<string, string[]> = {
+export const categoryAliasMap: Record<string, string[]> = {
   "writing-editing": ["writing"],
   "image-generation-editing": ["image"],
   "image-analysis": ["image"],
@@ -133,6 +135,10 @@ export function getToolsByCategory(locale: SupportedLocale, categorySlug: string
     }
 
     if (tool.primaryCategorySlug === categorySlug) {
+      return true;
+    }
+
+    if (tool.categorySlug === categorySlug) {
       return true;
     }
 

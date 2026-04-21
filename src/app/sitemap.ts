@@ -5,6 +5,7 @@ import { discoveryPages } from "@/data/discovery-pages";
 import { categories } from "@/data/categories";
 import { locales } from "@/i18n/config";
 import { tools } from "@/data/tools";
+import { getCategoryHub } from "@/lib/category-taxonomy";
 import { getStaticComparisonSlugs } from "@/lib/comparisons";
 import { getStaticAlternativeSlugs, getStaticUseCaseSlugs } from "@/lib/intent-pages";
 
@@ -43,6 +44,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: withLocale(locale, `/categories/${category.slug}`),
         lastModified: staticLastModified
       });
+    }
+
+    for (const category of getCategoryHub(locale)) {
+      entries.push({
+        url: withLocale(locale, `/category/${category.slug}`),
+        lastModified: staticLastModified
+      });
+
+      for (const subcategory of category.subcategories) {
+        entries.push({
+          url: withLocale(locale, `/category/${category.slug}/${subcategory.slug}`),
+          lastModified: staticLastModified
+        });
+      }
     }
 
     for (const tool of tools) {
