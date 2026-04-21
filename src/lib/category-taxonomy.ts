@@ -405,27 +405,6 @@ const CATEGORY_ORDER = [
   "other"
 ];
 
-const DEFAULT_SUBCATEGORIES: SubcategoryDefinition[] = [
-  {
-    slug: "popular-tools",
-    label: { tr: "Popüler araçlar", en: "Popular tools" },
-    description: { tr: "Bu kategoride sık incelenen öne çıkan araçlar.", en: "Frequently reviewed tools in this category." },
-    match: { featured: true }
-  },
-  {
-    slug: "free-and-freemium",
-    label: { tr: "Ücretsiz ve freemium", en: "Free and freemium" },
-    description: { tr: "Düşük maliyetle başlayabileceğin seçenekler.", en: "Lower-friction options for getting started." },
-    match: { pricing: ["FREE", "FREEMIUM"] }
-  },
-  {
-    slug: "business-workflows",
-    label: { tr: "İş akışları", en: "Business workflows" },
-    description: { tr: "Ekip, operasyon ve üretkenlik odaklı kullanımlar.", en: "Team, operations, and productivity workflows." },
-    match: { useCases: ["business", "freelancers", "research"] }
-  }
-];
-
 const SUBCATEGORY_MAP: Record<string, SubcategoryDefinition[]> = {
   "chatbots-virtual-companions": [
     {
@@ -449,21 +428,45 @@ const SUBCATEGORY_MAP: Record<string, SubcategoryDefinition[]> = {
   ],
   "writing-editing": [
     {
-      slug: "blog-writing",
-      label: { tr: "Blog ve içerik yazımı", en: "Blog and content writing" },
-      description: { tr: "Blog, makale, sosyal içerik ve uzun form metin üretimi.", en: "Blog, article, social, and long-form writing workflows." },
+      slug: "ai-blog-generator",
+      label: { tr: "AI Blog Oluşturucu", en: "AI Blog Generator" },
+      description: { tr: "Blog yazısı, makale taslağı ve içerik planı üreten araçlar.", en: "Tools for blog posts, article drafts, and content plans." },
       match: { toolCategories: ["writing"], useCases: ["content", "creators"] }
     },
     {
-      slug: "copywriting",
-      label: { tr: "Reklam ve satış metni", en: "Copywriting" },
-      description: { tr: "Pazarlama, ürün açıklaması ve satış odaklı metinler.", en: "Marketing, product description, and sales-focused copy." },
+      slug: "ai-book-writing",
+      label: { tr: "AI Kitap Yazma", en: "AI Book Writing" },
+      description: { tr: "Uzun form kitap, bölüm taslağı ve yaratıcı yazı akışları.", en: "Long-form book, chapter draft, and creative writing workflows." },
+      match: { toolCategories: ["writing"], useCases: ["content", "creators"] }
+    },
+    {
+      slug: "ai-copywriting",
+      label: { tr: "AI Metin Yazarlığı", en: "AI Copywriting" },
+      description: { tr: "Reklam, satış sayfası, ürün açıklaması ve kampanya metinleri.", en: "Ads, landing pages, product descriptions, and campaign copy." },
       match: { categories: ["marketing-advertising"], useCases: ["business", "freelancers"] }
     },
     {
-      slug: "summarization",
-      label: { tr: "Özetleme ve düzenleme", en: "Summarization and editing" },
-      description: { tr: "Not, araştırma, metin temizleme ve hızlı düzenleme.", en: "Notes, research, cleanup, and fast editing." },
+      slug: "ai-email-writer",
+      label: { tr: "AI E-posta Yazarı", en: "AI Email Writer" },
+      description: { tr: "Satış, destek, takip ve günlük e-posta metinleri.", en: "Sales, support, follow-up, and daily email copy." },
+      match: { toolCategories: ["writing"], useCases: ["business", "freelancers"] }
+    },
+    {
+      slug: "ai-paraphraser",
+      label: { tr: "AI Parafraser", en: "AI Paraphraser" },
+      description: { tr: "Metni yeniden yazma, sadeleştirme ve ton değiştirme araçları.", en: "Tools for rewriting, simplifying, and changing text tone." },
+      match: { toolCategories: ["writing"], useCases: ["students", "content"] }
+    },
+    {
+      slug: "ai-title-generator",
+      label: { tr: "AI Başlık Oluşturucu", en: "AI Title Generator" },
+      description: { tr: "Blog, video, reklam ve sosyal medya başlıkları üretme.", en: "Generate blog, video, ad, and social media headlines." },
+      match: { toolCategories: ["writing"], useCases: ["content", "marketing", "creators"] }
+    },
+    {
+      slug: "ai-summarizer",
+      label: { tr: "AI Özetleyici", en: "AI Summarizer" },
+      description: { tr: "Not, makale, araştırma ve toplantı metinlerini özetleme.", en: "Summarize notes, articles, research, and meeting text." },
       match: { useCases: ["research", "students"], toolCategories: ["writing"] }
     }
   ],
@@ -973,15 +976,16 @@ const EXTRA_SUBCATEGORY_MAP: Record<string, SubcategoryDefinition[]> = {
 };
 
 const subcategoryLabels: Record<string, Record<SupportedLocale, string>> = {
-  "popular-tools": { tr: "Popüler araçlar", en: "Popular tools", ar: "أدوات شائعة", ru: "Популярные инструменты", zh: "热门工具", ja: "人気ツール", ko: "인기 도구", el: "Δημοφιλή εργαλεία", da: "Populære værktøjer", fa: "ابزارهای محبوب" },
-  "free-and-freemium": { tr: "Ücretsiz ve freemium", en: "Free and freemium", ar: "مجاني وفريميوم", ru: "Бесплатные и freemium", zh: "免费与 Freemium", ja: "無料とフリーミアム", ko: "무료 및 프리미엄", el: "Δωρεάν και freemium", da: "Gratis og freemium", fa: "رایگان و فریمیوم" },
-  "business-workflows": { tr: "İş akışları", en: "Business workflows", ar: "سير عمل الأعمال", ru: "Бизнес-процессы", zh: "业务流程", ja: "業務ワークフロー", ko: "비즈니스 워크플로", el: "Ροές εργασίας", da: "Forretningsflows", fa: "جریان‌های کاری کسب‌وکار" },
   "ai-assistants": { tr: "AI asistanlar", en: "AI assistants", ar: "مساعدو AI", ru: "AI-ассистенты", zh: "AI 助手", ja: "AIアシスタント", ko: "AI 어시스턴트", el: "Βοηθοί AI", da: "AI-assistenter", fa: "دستیارهای AI" },
   "research-chatbots": { tr: "Araştırma chatbotları", en: "Research chatbots", ar: "روبوتات بحثية", ru: "Исследовательские чат-боты", zh: "研究型聊天机器人", ja: "リサーチ用チャットボット", ko: "리서치 챗봇", el: "Chatbot έρευνας", da: "Research-chatbots", fa: "چت‌بات‌های پژوهشی" },
   "business-chatbots": { tr: "İş için chatbotlar", en: "Chatbots for business", ar: "روبوتات دردشة للأعمال", ru: "Чат-боты для бизнеса", zh: "商务聊天机器人", ja: "ビジネス向けチャットボット", ko: "비즈니스 챗봇", el: "Chatbot για επιχειρήσεις", da: "Chatbots til virksomheder", fa: "چت‌بات‌های کسب‌وکار" },
-  "blog-writing": { tr: "Blog ve içerik yazımı", en: "Blog and content writing", ar: "كتابة المدونات والمحتوى", ru: "Блоги и контент", zh: "博客与内容写作", ja: "ブログとコンテンツ作成", ko: "블로그 및 콘텐츠 작성", el: "Blog και περιεχόμενο", da: "Blog- og indholdsskrivning", fa: "نوشتن بلاگ و محتوا" },
-  copywriting: { tr: "Reklam ve satış metni", en: "Copywriting", ar: "كتابة الإعلانات", ru: "Копирайтинг", zh: "广告文案", ja: "コピーライティング", ko: "카피라이팅", el: "Copywriting", da: "Copywriting", fa: "کپی‌رایتینگ" },
-  summarization: { tr: "Özetleme ve düzenleme", en: "Summarization and editing", ar: "التلخيص والتحرير", ru: "Резюме и редактирование", zh: "摘要与编辑", ja: "要約と編集", ko: "요약 및 편집", el: "Σύνοψη και επεξεργασία", da: "Opsummering og redigering", fa: "خلاصه‌سازی و ویرایش" },
+  "ai-blog-generator": { tr: "AI Blog Oluşturucu", en: "AI Blog Generator", ar: "مولد مدونات AI", ru: "AI-генератор блогов", zh: "AI 博客生成器", ja: "AIブログ生成", ko: "AI 블로그 생성기", el: "Γεννήτρια blog AI", da: "AI bloggenerator", fa: "تولیدکننده وبلاگ AI" },
+  "ai-book-writing": { tr: "AI Kitap Yazma", en: "AI Book Writing", ar: "كتابة الكتب بالذكاء الاصطناعي", ru: "AI-написание книг", zh: "AI 图书写作", ja: "AI書籍執筆", ko: "AI 책 쓰기", el: "Συγγραφή βιβλίων AI", da: "AI bogskrivning", fa: "کتاب‌نویسی با AI" },
+  "ai-copywriting": { tr: "AI Metin Yazarlığı", en: "AI Copywriting", ar: "كتابة إعلانية بالذكاء الاصطناعي", ru: "AI-копирайтинг", zh: "AI 文案写作", ja: "AIコピーライティング", ko: "AI 카피라이팅", el: "AI copywriting", da: "AI copywriting", fa: "کپی‌رایتینگ با AI" },
+  "ai-email-writer": { tr: "AI E-posta Yazarı", en: "AI Email Writer", ar: "كاتب بريد إلكتروني AI", ru: "AI-автор писем", zh: "AI 邮件写作", ja: "AIメール作成", ko: "AI 이메일 작성기", el: "Συντάκτης email AI", da: "AI e-mailskriver", fa: "نویسنده ایمیل AI" },
+  "ai-paraphraser": { tr: "AI Parafraser", en: "AI Paraphraser", ar: "إعادة صياغة AI", ru: "AI-перефразировщик", zh: "AI 改写工具", ja: "AI言い換えツール", ko: "AI 패러프레이저", el: "AI παραφραστής", da: "AI parafrasering", fa: "بازنویس AI" },
+  "ai-title-generator": { tr: "AI Başlık Oluşturucu", en: "AI Title Generator", ar: "مولد عناوين AI", ru: "AI-генератор заголовков", zh: "AI 标题生成器", ja: "AIタイトル生成", ko: "AI 제목 생성기", el: "Γεννήτρια τίτλων AI", da: "AI titelgenerator", fa: "تولیدکننده عنوان AI" },
+  "ai-summarizer": { tr: "AI Özetleyici", en: "AI Summarizer", ar: "ملخص AI", ru: "AI-суммаризатор", zh: "AI 摘要工具", ja: "AI要約ツール", ko: "AI 요약기", el: "AI σύνοψη", da: "AI opsummering", fa: "خلاصه‌ساز AI" },
   "image-generators": { tr: "Görsel üreticiler", en: "Image generators", ar: "مولدات الصور", ru: "Генераторы изображений", zh: "图像生成器", ja: "画像生成ツール", ko: "이미지 생성기", el: "Γεννήτριες εικόνων", da: "Billedgeneratorer", fa: "تولیدکننده‌های تصویر" },
   "design-assets": { tr: "Tasarım varlıkları", en: "Design assets", ar: "أصول التصميم", ru: "Дизайн-ресурсы", zh: "设计素材", ja: "デザイン素材", ko: "디자인 자산", el: "Στοιχεία σχεδίασης", da: "Designassets", fa: "دارایی‌های طراحی" },
   "image-editing": { tr: "Görsel düzenleme", en: "Image editing", ar: "تحرير الصور", ru: "Редактирование изображений", zh: "图像编辑", ja: "画像編集", ko: "이미지 편집", el: "Επεξεργασία εικόνας", da: "Billedredigering", fa: "ویرایش تصویر" },
@@ -1154,7 +1158,7 @@ function sortCategories<T extends { slug: string }>(items: T[]) {
 }
 
 function getDefinitionsForCategory(slug: string) {
-  const definitions = [...(SUBCATEGORY_MAP[slug] ?? []), ...(EXTRA_SUBCATEGORY_MAP[slug] ?? []), ...DEFAULT_SUBCATEGORIES];
+  const definitions = [...(SUBCATEGORY_MAP[slug] ?? []), ...(EXTRA_SUBCATEGORY_MAP[slug] ?? [])];
   const seen = new Set<string>();
 
   return definitions.filter((definition) => {
