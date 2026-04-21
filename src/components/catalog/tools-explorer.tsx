@@ -320,30 +320,33 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
   const normalizedQuery = normalize(deferredQuery.trim(), locale);
   const browseOptions = useMemo(() => buildBrowseOptions(locale), [locale]);
   const sortOptions = useMemo(() => buildSortOptions(locale, copy), [copy, locale]);
+  const searchableTools = useMemo(
+    () => tools.map((tool) => ({ tool, searchText: getToolSearchText(tool, locale) })),
+    [locale, tools]
+  );
 
   const browseCounts = useMemo(() => {
     return new Map(
       browseOptions.map((option) => [
         option.slug,
-        tools.filter((tool) => option.matches(tool, getToolSearchText(tool, locale))).length
+        searchableTools.filter(({ tool, searchText }) => option.matches(tool, searchText)).length
       ])
     );
-  }, [browseOptions, locale, tools]);
+  }, [browseOptions, searchableTools]);
 
   const filteredTools = useMemo(() => {
     const browseOption = browseOptions.find((option) => option.slug === activeBrowse) ?? browseOptions[0];
 
-    return tools.filter((tool) => {
-      const searchText = getToolSearchText(tool, locale);
+    return searchableTools.flatMap(({ tool, searchText }) => {
       const matchesQuery = normalizedQuery.length === 0 || searchText.includes(normalizedQuery);
       const matchesBrowse = browseOption.slug === "all" ? true : browseOption.matches(tool, searchText);
       const matchesToolCategory = legacyToolCategory === "all" || tool.toolCategorySlugs.includes(legacyToolCategory);
       const matchesPricing = legacyPricing === "all" || tool.pricing === legacyPricing;
       const matchesUseCase = legacyUseCase === "all" || tool.useCaseSlugs.includes(legacyUseCase);
 
-      return matchesQuery && matchesBrowse && matchesToolCategory && matchesPricing && matchesUseCase;
+      return matchesQuery && matchesBrowse && matchesToolCategory && matchesPricing && matchesUseCase ? [tool] : [];
     });
-  }, [activeBrowse, browseOptions, legacyPricing, legacyToolCategory, legacyUseCase, locale, normalizedQuery, tools]);
+  }, [activeBrowse, browseOptions, legacyPricing, legacyToolCategory, legacyUseCase, normalizedQuery, searchableTools]);
 
   const sortedTools = useMemo(() => sortTools(filteredTools, activeSort, locale), [activeSort, filteredTools, locale]);
   const hasActiveFilters =

@@ -42,6 +42,8 @@ type SubcategoryDefinition = {
   match: SubcategoryMatch;
 };
 
+const categoryHubCache = new Map<SupportedLocale, CategoryHubItem[]>();
+
 type CategoryField = "name" | "description" | "supportText" | "seoTitle" | "seoDescription";
 
 type CategoryLocaleCopy = Partial<Record<CategoryField, string>>;
@@ -841,10 +843,16 @@ function toolMatchesCategory(tool: LocalizedTool, categorySlug: string) {
 }
 
 export function getCategoryHub(locale: SupportedLocale): CategoryHubItem[] {
+  const cachedHub = categoryHubCache.get(locale);
+
+  if (cachedHub) {
+    return cachedHub;
+  }
+
   const localizedCategories = sortCategories(getLocalizedCategories(locale));
   const localizedTools = getLocalizedTools(locale);
 
-  return localizedCategories.map((category) => {
+  const hub = localizedCategories.map((category) => {
     const categoryTools = localizedTools.filter((tool) => toolMatchesCategory(tool, category.slug));
     const categoryCopy = getCategoryLocalizedCopy(locale, category.slug, category);
 
@@ -860,6 +868,10 @@ export function getCategoryHub(locale: SupportedLocale): CategoryHubItem[] {
       }))
     };
   });
+
+  categoryHubCache.set(locale, hub);
+
+  return hub;
 }
 
 export function getCategoryHubItem(locale: SupportedLocale, categorySlug: string) {

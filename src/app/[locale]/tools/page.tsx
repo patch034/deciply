@@ -107,7 +107,16 @@ export default async function ToolsPage({
     const primaryComparisonTarget = getComparisonTargetSlugs(tool.slug, 1)[0];
 
     return {
-      ...tool,
+      slug: tool.slug,
+      name: tool.name,
+      shortDescription: tool.shortDescription,
+      pricing: tool.pricing,
+      rating: tool.rating,
+      featured: tool.featured,
+      categorySlugs: tool.categorySlugs,
+      toolCategorySlugs: tool.toolCategorySlugs,
+      useCaseSlugs: tool.useCaseSlugs,
+      websiteUrl: tool.websiteUrl,
       sourceIndex: index,
       logoUrl: getToolLogoUrl(tool.websiteUrl),
       pricingLabel: formatPricing(tool.pricing, safeLocale),
@@ -117,12 +126,6 @@ export default async function ToolsPage({
         ? buildComparisonPath(safeLocale, tool.slug, primaryComparisonTarget)
         : undefined,
       searchKeywords: [
-        tool.name,
-        tool.shortDescription,
-        tool.whatItActuallyDoes,
-        tool.whoShouldUseSummary,
-        tool.realUseCaseExample.title,
-        tool.realUseCaseExample.description,
         ...siteCategoryNames,
         ...toolCategoryLabels,
         ...useCaseLabels,

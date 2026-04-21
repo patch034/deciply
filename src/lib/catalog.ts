@@ -24,10 +24,21 @@ export type ToolsQueryFilters = {
 
 assertEncodingHealth("catalog");
 
+const toolBySlug = new Map(tools.map((tool) => [tool.slug, tool]));
+const localizedToolsCache = new Map<SupportedLocale, LocalizedTool[]>();
+const localizedToolCache = new Map<string, LocalizedTool | null>();
+
 function buildLocalizedTool(locale: SupportedLocale, slug: string) {
-  const tool = tools.find((item) => item.slug === slug);
+  const cacheKey = `${locale}:${slug}`;
+
+  if (localizedToolCache.has(cacheKey)) {
+    return localizedToolCache.get(cacheKey) ?? null;
+  }
+
+  const tool = toolBySlug.get(slug);
 
   if (!tool) {
+    localizedToolCache.set(cacheKey, null);
     return null;
   }
 
@@ -51,7 +62,10 @@ function buildLocalizedTool(locale: SupportedLocale, slug: string) {
     } satisfies BaseLocalizedTool
   );
 
-  return normalizeLocalizedContent(`tool-copy:${slug}:${locale}`, enrichToolCopy(locale, localizedTool));
+  const enrichedTool = normalizeLocalizedContent(`tool-copy:${slug}:${locale}`, enrichToolCopy(locale, localizedTool));
+  localizedToolCache.set(cacheKey, enrichedTool);
+
+  return enrichedTool;
 }
 
 export function getCatalogContent(locale: SupportedLocale) {
@@ -85,9 +99,19 @@ export function getLocalizedCategoryBySlug(locale: SupportedLocale, slug: string
 }
 
 export function getLocalizedTools(locale: SupportedLocale): LocalizedTool[] {
-  return tools
+  const cachedTools = localizedToolsCache.get(locale);
+
+  if (cachedTools) {
+    return cachedTools;
+  }
+
+  const localizedTools = tools
     .map((tool) => buildLocalizedTool(locale, tool.slug))
     .filter((tool): tool is LocalizedTool => tool !== null);
+
+  localizedToolsCache.set(locale, localizedTools);
+
+  return localizedTools;
 }
 
 export const categoryAliasMap: Record<string, string[]> = {
