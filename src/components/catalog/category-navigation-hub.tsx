@@ -73,10 +73,10 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
 
   return (
     <div className="grid items-start gap-5 lg:grid-cols-[280px_minmax(0,1fr)]">
-      <aside className="lg:self-start">
-        <div className="rounded-[18px] border border-slate-200 bg-white p-2 lg:sticky lg:top-24 lg:max-h-[calc(100vh-120px)] lg:overflow-y-auto">
+      <aside className="lg:sticky lg:top-24 lg:self-start">
+        <div className="rounded-[18px] border border-slate-200 bg-white p-2">
           <p className="px-2 pb-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-600">{copy.sidebarTitle}</p>
-          <nav className="homepage-horizontal-scroll flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible lg:pr-1">
+          <nav className="homepage-horizontal-scroll flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:gap-1.5 lg:overflow-visible lg:pr-0">
             {categories.map((category) => {
               const active = category.slug === activeSlug;
 
@@ -89,7 +89,7 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
                     scrollToCategory(category.slug);
                   }}
                   className={[
-                    "group flex min-w-[12rem] cursor-pointer items-center justify-between gap-3 rounded-[12px] border border-l-[3px] px-3 py-2.5 text-left transition duration-150 lg:min-w-0",
+                    "group flex min-w-[12rem] cursor-pointer items-center justify-between gap-3 rounded-[12px] border border-l-[3px] px-3 py-2.5 text-left transition duration-150 lg:min-w-0 lg:py-2",
                     active
                       ? "border-sky-200 border-l-[#2563eb] bg-sky-50 text-[#2563eb]"
                       : "border-transparent border-l-transparent bg-white text-slate-600 hover:border-slate-200 hover:border-l-sky-200 hover:bg-slate-50 hover:text-slate-950"
