@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { CategoryHero } from "@/components/catalog/category-hero";
-import { CategoryIcon } from "@/components/catalog/category-icon";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { getLocalizedCategoryBySlug } from "@/lib/catalog";
 import { categoryUiCopy, getCategoryHubItem } from "@/lib/category-taxonomy";
@@ -77,7 +76,7 @@ export default async function CategoryDetailPage({
         ctaHref={`/${safeLocale}/categories`}
       />
 
-      <section className="ui-card rounded-[24px] p-5 sm:p-6">
+      <section className="rounded-[18px] border border-slate-200 bg-white p-4 sm:p-5">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-600">{copy.subcategories}</p>
@@ -88,23 +87,17 @@ export default async function CategoryDetailPage({
           </span>
         </div>
 
-        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+        <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
           {hubItem.subcategories.map((subcategory) => (
             <Link
               key={subcategory.slug}
-              href={`/${safeLocale}/categories/${slug}/${subcategory.slug}`}
-              className="group rounded-[20px] border border-slate-200 bg-white p-4 shadow-[0_12px_28px_rgba(15,23,42,0.055)] transition hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-[0_18px_38px_rgba(15,23,42,0.09)]"
+              href={`/${safeLocale}/category/${subcategory.routeSlug}`}
+              className="group flex h-10 items-center justify-between gap-3 rounded-[10px] border border-slate-200 bg-white px-3 text-sm font-semibold text-slate-700 transition hover:border-sky-200 hover:bg-sky-50/70 hover:text-slate-950"
+              aria-label={`${copy.openLabel}: ${subcategory.name}`}
             >
-              <div className="flex items-start justify-between gap-3">
-                <CategoryIcon slug={slug} label={subcategory.name} className="h-10 w-10 shrink-0" />
-                <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-bold text-slate-500">
-                  {subcategory.toolCount} {copy.toolCountLabel}
-                </span>
-              </div>
-              <h3 className="clamp-2 mt-3 text-base font-black leading-6 text-slate-950">{subcategory.name}</h3>
-              <p className="clamp-2 mt-2 text-xs leading-5 text-slate-500">{subcategory.description}</p>
-              <span className="mt-4 inline-flex text-sm font-bold text-sky-700 group-hover:text-[#0055FF]">
-                {copy.openLabel} →
+              <span className="clamp-1 min-w-0">{subcategory.name}</span>
+              <span className="shrink-0 text-xs font-bold text-slate-400 group-hover:text-sky-700">
+                {subcategory.toolCount}
               </span>
             </Link>
           ))}

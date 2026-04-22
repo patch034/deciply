@@ -1,7 +1,7 @@
 import { categories as categoryEntries } from "@/data/categories";
 import { categoryAliasMap, getLocalizedCategories, getLocalizedTools, getToolsByCategory } from "@/lib/catalog";
 import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
-import type { SupportedLocale } from "@/i18n/config";
+import { locales, type SupportedLocale } from "@/i18n/config";
 import type { LocalizedTool, PricingTier } from "@/types/catalog";
 
 type LocaleText = {
@@ -19,6 +19,7 @@ type SubcategoryMatch = {
 
 export type CategoryHubSubcategory = {
   slug: string;
+  routeSlug: string;
   name: string;
   description: string;
   toolCount: number;
@@ -1133,6 +1134,36 @@ function getSubcategoryLabel(locale: SupportedLocale, slug: string, fallback: Lo
   return subcategoryLabels[slug]?.[locale] ?? label(locale, fallback);
 }
 
+function toLocalizedRouteSlug(locale: SupportedLocale, value: string, fallback: string) {
+  const lowerCased = value.trim().toLocaleLowerCase(locale === "tr" ? "tr-TR" : locale);
+  const normalized = lowerCased
+    .replace(/\u00e7/g, "c")
+    .replace(/\u011f/g, "g")
+    .replace(/\u0131/g, "i")
+    .replace(/\u00f6/g, "o")
+    .replace(/\u015f/g, "s")
+    .replace(/\u00fc/g, "u")
+    .replace(/\u00e6/g, "ae")
+    .replace(/\u00f8/g, "o")
+    .replace(/\u00e5/g, "a")
+    .normalize("NFKD")
+    .replace(/\p{M}/gu, "")
+    .replace(/[^\p{L}\p{N}]+/gu, "-")
+    .replace(/^-+|-+$/g, "");
+
+  return normalized || fallback;
+}
+
+export function getSubcategoryRouteSlug(locale: SupportedLocale, categorySlug: string, subcategorySlug: string) {
+  const definition = getDefinitionsForCategory(categorySlug).find((subcategory) => subcategory.slug === subcategorySlug);
+
+  if (!definition) {
+    return subcategorySlug;
+  }
+
+  return toLocalizedRouteSlug(locale, getSubcategoryLabel(locale, definition.slug, definition.label), definition.slug);
+}
+
 function getSubcategoryDescription(locale: SupportedLocale, subcategorySlug: string, categoryName: string, fallback: LocaleText) {
   if (locale === "tr" || locale === "en") {
     return label(locale, fallback);
@@ -1236,6 +1267,7 @@ export function getCategoryHub(locale: SupportedLocale): CategoryHubItem[] {
       toolCount: categoryTools.length,
       subcategories: getDefinitionsForCategory(category.slug).map((subcategory) => ({
         slug: subcategory.slug,
+        routeSlug: getSubcategoryRouteSlug(locale, category.slug, subcategory.slug),
         name: getSubcategoryLabel(locale, subcategory.slug, subcategory.label),
         description: getSubcategoryDescription(locale, subcategory.slug, categoryCopy.name, subcategory.description),
         toolCount: categoryTools.filter((tool) => matchesSubcategory(tool, subcategory.match, subcategory.slug)).length
@@ -1260,6 +1292,33 @@ export function getSubcategory(locale: SupportedLocale, categorySlug: string, su
   }
 
   return category.subcategories.find((subcategory) => subcategory.slug === subcategorySlug) ?? null;
+}
+
+export function getSubcategoryByRouteSlug(locale: SupportedLocale, routeSlug: string) {
+  const decodedRouteSlug = decodeURIComponent(routeSlug);
+
+  for (const category of getCategoryHub(locale)) {
+    const subcategory = category.subcategories.find(
+      (item) => item.routeSlug === decodedRouteSlug || item.slug === decodedRouteSlug
+    );
+
+    if (subcategory) {
+      return { category, subcategory };
+    }
+  }
+
+  return null;
+}
+
+export function getSubcategoryRouteAlternates(categorySlug: string, subcategorySlug: string) {
+  const languages = Object.fromEntries(
+    locales.map((locale) => [
+      locale,
+      `/${locale}/category/${getSubcategoryRouteSlug(locale, categorySlug, subcategorySlug)}`
+    ])
+  ) as Record<SupportedLocale, string>;
+
+  return languages;
 }
 
 export function getToolsBySubcategory(locale: SupportedLocale, categorySlug: string, subcategorySlug: string) {

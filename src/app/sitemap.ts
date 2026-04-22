@@ -47,14 +47,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
 
     for (const category of getCategoryHub(locale)) {
-      entries.push({
-        url: withLocale(locale, `/category/${category.slug}`),
-        lastModified: staticLastModified
-      });
-
       for (const subcategory of category.subcategories) {
         entries.push({
-          url: withLocale(locale, `/category/${category.slug}/${subcategory.slug}`),
+          url: withLocale(locale, `/category/${subcategory.routeSlug}`),
           lastModified: staticLastModified
         });
       }

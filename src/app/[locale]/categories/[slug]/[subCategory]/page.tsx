@@ -4,9 +4,15 @@ import { notFound } from "next/navigation";
 import { ToolCard } from "@/components/catalog/tool-card";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { formatPricing, getCategoryNamesMap, getLocalizedCategoryBySlug } from "@/lib/catalog";
-import { categoryUiCopy, getCategoryHubItem, getSubcategory, getToolsBySubcategory } from "@/lib/category-taxonomy";
+import {
+  categoryUiCopy,
+  getCategoryHubItem,
+  getSubcategory,
+  getSubcategoryRouteAlternates,
+  getToolsBySubcategory
+} from "@/lib/category-taxonomy";
 import { buildComparisonPath, getComparisonTargetSlugs } from "@/lib/comparisons";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, normalizeLocale } from "@/i18n/config";
+import { buildCanonicalUrl, isValidLocale, normalizeLocale } from "@/i18n/config";
 import { getToolLogoUrl } from "@/lib/logo";
 
 export const revalidate = 3600;
@@ -36,12 +42,20 @@ export async function generateMetadata({
     return {};
   }
 
+  const alternatePaths = getSubcategoryRouteAlternates(slug, subCategory);
+  const languages = Object.fromEntries(
+    Object.entries(alternatePaths).map(([alternateLocale, path]) => [alternateLocale, buildCanonicalUrl(path)])
+  ) as Record<string, string>;
+
   return {
     title: `${subcategory.name} | ${hubItem.name} | Deciply`,
     description: subcategory.description,
     alternates: {
-      canonical: buildCanonicalUrl(`/${safeLocale}/categories/${slug}/${subCategory}`),
-      languages: buildAlternates(`/categories/${slug}/${subCategory}`)
+      canonical: buildCanonicalUrl(`/${safeLocale}/category/${subcategory.routeSlug}`),
+      languages: {
+        ...languages,
+        "x-default": languages.en
+      }
     }
   };
 }
