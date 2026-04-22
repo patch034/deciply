@@ -48,7 +48,7 @@ export default async function CategoriesPage({
   const copy = categoryUiCopy[safeLocale];
 
   return (
-    <div className="ui-page-shell relative mx-auto flex w-full max-w-[1440px] flex-col gap-7 overflow-x-clip bg-transparent px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+    <div className="ui-page-shell relative mx-auto flex w-full max-w-[1440px] flex-col gap-7 bg-transparent px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
       <CategoryHero
         eyebrow={content.categoriesIndex.eyebrow}
         title={content.categoriesIndex.title}

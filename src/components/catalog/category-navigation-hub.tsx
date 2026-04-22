@@ -72,11 +72,11 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
   }, [categories]);
 
   return (
-    <div className="grid gap-5 lg:grid-cols-[280px_minmax(0,1fr)]">
-      <aside className="lg:sticky lg:top-[100px] lg:self-start">
-        <div className="rounded-[18px] border border-slate-200 bg-white p-2">
+    <div className="grid items-start gap-5 lg:grid-cols-[280px_minmax(0,1fr)]">
+      <aside className="lg:self-start">
+        <div className="rounded-[18px] border border-slate-200 bg-white p-2 lg:sticky lg:top-24 lg:max-h-[calc(100vh-120px)] lg:overflow-y-auto">
           <p className="px-2 pb-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-600">{copy.sidebarTitle}</p>
-          <nav className="homepage-horizontal-scroll flex gap-2 overflow-x-auto pb-1 lg:max-h-[calc(100vh-120px)] lg:flex-col lg:overflow-y-auto lg:pr-1">
+          <nav className="homepage-horizontal-scroll flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible lg:pr-1">
             {categories.map((category) => {
               const active = category.slug === activeSlug;
 
@@ -119,7 +119,7 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
           <section
             key={category.slug}
             id={`category-${category.slug}`}
-            className="scroll-mt-28 rounded-[18px] border border-slate-200 bg-white p-4"
+            className="scroll-mt-32 rounded-[18px] border border-slate-200 bg-white p-4"
           >
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
