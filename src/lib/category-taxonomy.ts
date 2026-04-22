@@ -1,8 +1,9 @@
-import { categories as categoryEntries } from "@/data/categories";
-import { categoryAliasMap, getLocalizedCategories, getLocalizedTools, getToolsByCategory } from "@/lib/catalog";
+import { categoryDirectory } from "@/data/category-directory";
+import { categoryAliasMap, getLocalizedTools } from "@/lib/catalog";
 import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import { locales, type SupportedLocale } from "@/i18n/config";
 import type { LocalizedTool, PricingTier } from "@/types/catalog";
+import type { DirectorySubcategory } from "@/data/category-directory";
 
 type LocaleText = {
   tr: string;
@@ -1134,6 +1135,18 @@ function getSubcategoryLabel(locale: SupportedLocale, slug: string, fallback: Lo
   return subcategoryLabels[slug]?.[locale] ?? label(locale, fallback);
 }
 
+function getDirectoryText(locale: SupportedLocale, value: LocaleText) {
+  return value[locale] ?? value.en ?? value.tr;
+}
+
+function getDirectoryCategory(slug: string) {
+  return categoryDirectory.find((category) => category.slug === slug) ?? null;
+}
+
+function getDirectorySubcategory(categorySlug: string, subcategorySlug: string) {
+  return getDirectoryCategory(categorySlug)?.subcategories.find((subcategory) => subcategory.slug === subcategorySlug) ?? null;
+}
+
 function toLocalizedRouteSlug(locale: SupportedLocale, value: string, fallback: string) {
   const lowerCased = value.trim().toLocaleLowerCase(locale === "tr" ? "tr-TR" : locale);
   const normalized = lowerCased
@@ -1154,7 +1167,39 @@ function toLocalizedRouteSlug(locale: SupportedLocale, value: string, fallback: 
   return normalized || fallback;
 }
 
+function hasRouteSlugCollision(locale: SupportedLocale, routeSlug: string, categorySlug: string, subcategorySlug: string) {
+  let matches = 0;
+
+  for (const category of categoryDirectory) {
+    for (const subcategory of category.subcategories) {
+      const itemRouteSlug = toLocalizedRouteSlug(locale, getDirectoryText(locale, subcategory.title), subcategory.slug);
+
+      if (itemRouteSlug === routeSlug) {
+        matches += 1;
+      }
+    }
+  }
+
+  if (matches < 2) {
+    return false;
+  }
+
+  return Boolean(getDirectorySubcategory(categorySlug, subcategorySlug));
+}
+
 export function getSubcategoryRouteSlug(locale: SupportedLocale, categorySlug: string, subcategorySlug: string) {
+  const directorySubcategory = getDirectorySubcategory(categorySlug, subcategorySlug);
+
+  if (directorySubcategory) {
+    const routeSlug = toLocalizedRouteSlug(locale, getDirectoryText(locale, directorySubcategory.title), subcategorySlug);
+
+    if (hasRouteSlugCollision(locale, routeSlug, categorySlug, subcategorySlug)) {
+      return `${routeSlug}-${categorySlug}`;
+    }
+
+    return routeSlug;
+  }
+
   const definition = getDefinitionsForCategory(categorySlug).find((subcategory) => subcategory.slug === subcategorySlug);
 
   if (!definition) {
@@ -1189,7 +1234,21 @@ function sortCategories<T extends { slug: string }>(items: T[]) {
 }
 
 function getDefinitionsForCategory(slug: string) {
-  const definitions = [...(SUBCATEGORY_MAP[slug] ?? []), ...(EXTRA_SUBCATEGORY_MAP[slug] ?? [])];
+  const directoryCategory = getDirectoryCategory(slug);
+
+  if (directoryCategory) {
+    return directoryCategory.subcategories.map((subcategory) => ({
+      slug: subcategory.slug,
+      label: subcategory.title,
+      description: {
+        tr: getDirectoryText("tr", subcategory.title),
+        en: getDirectoryText("en", subcategory.title)
+      },
+      match: {}
+    } satisfies SubcategoryDefinition));
+  }
+
+  const definitions: SubcategoryDefinition[] = [];
   const seen = new Set<string>();
 
   return definitions.filter((definition) => {
@@ -1247,6 +1306,86 @@ function toolMatchesCategory(tool: LocalizedTool, categorySlug: string) {
   return Boolean(aliases?.some((slug) => tool.toolCategorySlugs.includes(slug)));
 }
 
+const genericSubcategoryTokens = new Set([
+  "ai",
+  "yapay",
+  "zeka",
+  "generator",
+  "jenerator",
+  "olusturucu",
+  "creator",
+  "tool",
+  "tools",
+  "arac",
+  "araclari",
+  "assistant",
+  "asistani"
+]);
+
+function normalizeSearchText(value: string) {
+  return value
+    .toLocaleLowerCase("tr-TR")
+    .replace(/ç/g, "c")
+    .replace(/ğ/g, "g")
+    .replace(/ı/g, "i")
+    .replace(/ö/g, "o")
+    .replace(/ş/g, "s")
+    .replace(/ü/g, "u")
+    .normalize("NFKD")
+    .replace(/\p{M}/gu, "")
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .trim();
+}
+
+function getDirectorySubcategoryTokens(subcategory: DirectorySubcategory) {
+  return Array.from(
+    new Set(
+      normalizeSearchText(`${subcategory.title.tr} ${subcategory.title.en} ${subcategory.slug}`)
+        .split(/\s+/)
+        .filter((token) => token.length > 2 && !genericSubcategoryTokens.has(token))
+    )
+  );
+}
+
+function getToolSearchText(tool: LocalizedTool) {
+  return normalizeSearchText(
+    [
+      tool.name,
+      tool.shortDescription,
+      tool.longDescription,
+      tool.bestUseCase,
+      tool.primaryCategorySlug,
+      tool.categorySlug,
+      tool.categorySlugs.join(" "),
+      tool.toolCategorySlugs.join(" "),
+      tool.useCaseSlugs.join(" "),
+      tool.whoShouldUse.join(" "),
+      tool.features.join(" ")
+    ]
+      .filter(Boolean)
+      .join(" ")
+  );
+}
+
+function matchesDirectorySubcategory(tool: LocalizedTool, categorySlug: string, subcategory: DirectorySubcategory) {
+  if (tool.subcategorySlug === subcategory.slug) {
+    return true;
+  }
+
+  if (!toolMatchesCategory(tool, categorySlug)) {
+    return false;
+  }
+
+  const tokens = getDirectorySubcategoryTokens(subcategory);
+
+  if (!tokens.length) {
+    return false;
+  }
+
+  const haystack = getToolSearchText(tool);
+  return tokens.some((token) => haystack.includes(token));
+}
+
 export function getCategoryHub(locale: SupportedLocale): CategoryHubItem[] {
   const cachedHub = categoryHubCache.get(locale);
 
@@ -1254,23 +1393,34 @@ export function getCategoryHub(locale: SupportedLocale): CategoryHubItem[] {
     return cachedHub;
   }
 
-  const localizedCategories = sortCategories(getLocalizedCategories(locale));
   const localizedTools = getLocalizedTools(locale);
 
-  const hub = localizedCategories.map((category) => {
+  const hub = categoryDirectory.map((category) => {
+    const categoryName = getDirectoryText(locale, category.title);
     const categoryTools = localizedTools.filter((tool) => toolMatchesCategory(tool, category.slug));
-    const categoryCopy = getCategoryLocalizedCopy(locale, category.slug, category);
+    const categoryCopy = {
+      name: categoryName,
+      description: `${categoryName} alt kategorilerini hızlıca tarayın ve ilgili AI araçlarına geçin.`,
+      supportText: `${categoryName} için tüm alt kategoriler eksiksiz ve kompakt bir dizin yapısında listelenir.`,
+      seoTitle: `${categoryName} AI araçları`,
+      seoDescription: `${categoryName} kategorisindeki AI araçlarını alt kategorilere göre keşfedin.`
+    };
 
     return {
-      ...category,
+      slug: category.slug,
       ...categoryCopy,
       toolCount: categoryTools.length,
       subcategories: getDefinitionsForCategory(category.slug).map((subcategory) => ({
         slug: subcategory.slug,
         routeSlug: getSubcategoryRouteSlug(locale, category.slug, subcategory.slug),
-        name: getSubcategoryLabel(locale, subcategory.slug, subcategory.label),
+        name: getDirectoryText(locale, subcategory.label),
         description: getSubcategoryDescription(locale, subcategory.slug, categoryCopy.name, subcategory.description),
-        toolCount: categoryTools.filter((tool) => matchesSubcategory(tool, subcategory.match, subcategory.slug)).length
+        toolCount: categoryTools.filter((tool) =>
+          matchesDirectorySubcategory(tool, category.slug, {
+            slug: subcategory.slug,
+            title: subcategory.label
+          })
+        ).length
       }))
     };
   });
@@ -1322,14 +1472,14 @@ export function getSubcategoryRouteAlternates(categorySlug: string, subcategoryS
 }
 
 export function getToolsBySubcategory(locale: SupportedLocale, categorySlug: string, subcategorySlug: string) {
-  const definition = getDefinitionsForCategory(categorySlug).find((subcategory) => subcategory.slug === subcategorySlug);
+  const definition = getDirectorySubcategory(categorySlug, subcategorySlug);
 
   if (!definition) {
     return [];
   }
 
-  return getToolsByCategory(locale, categorySlug)
-    .filter((tool) => matchesSubcategory(tool, definition.match, definition.slug))
+  return getLocalizedTools(locale)
+    .filter((tool) => matchesDirectorySubcategory(tool, categorySlug, definition))
     .sort((left, right) => {
       if (left.featured !== right.featured) {
         return left.featured ? -1 : 1;
@@ -1344,5 +1494,5 @@ export function getToolsBySubcategory(locale: SupportedLocale, categorySlug: str
 }
 
 export function getCategoryRouteSlugs() {
-  return sortCategories(categoryEntries).map((category) => category.slug);
+  return categoryDirectory.map((category) => category.slug);
 }

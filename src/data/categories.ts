@@ -1,4 +1,5 @@
 import type { CategoryEntry } from "@/types/catalog";
+export { categoryDirectory } from "@/data/category-directory";
 
 export const categories: CategoryEntry[] = [
   {
