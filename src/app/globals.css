@@ -236,6 +236,19 @@ select.dark-select {
   scroll-behavior: smooth;
 }
 
+.category-sticky-sidebar {
+  align-self: start;
+}
+
+@media (min-width: 1024px) {
+  .category-sticky-sidebar {
+    position: sticky;
+    top: 96px;
+    z-index: 20;
+    height: max-content;
+  }
+}
+
 .ui-gradient-text {
   background-image: var(--tn-gradient-primary);
   background-clip: text;
