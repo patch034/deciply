@@ -1368,7 +1368,12 @@ function getToolSearchText(tool: LocalizedTool) {
 }
 
 function matchesDirectorySubcategory(tool: LocalizedTool, categorySlug: string, subcategory: DirectorySubcategory) {
-  if (tool.subcategorySlug === subcategory.slug) {
+  if (
+    tool.subcategorySlug === subcategory.slug ||
+    tool.categorySlugs.includes(subcategory.slug) ||
+    tool.toolCategorySlugs.includes(subcategory.slug) ||
+    tool.useCaseSlugs.includes(subcategory.slug)
+  ) {
     return true;
   }
 
@@ -1415,7 +1420,7 @@ export function getCategoryHub(locale: SupportedLocale): CategoryHubItem[] {
         routeSlug: getSubcategoryRouteSlug(locale, category.slug, subcategory.slug),
         name: getDirectoryText(locale, subcategory.label),
         description: getSubcategoryDescription(locale, subcategory.slug, categoryCopy.name, subcategory.description),
-        toolCount: categoryTools.filter((tool) =>
+        toolCount: localizedTools.filter((tool) =>
           matchesDirectorySubcategory(tool, category.slug, {
             slug: subcategory.slug,
             title: subcategory.label

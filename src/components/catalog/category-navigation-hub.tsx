@@ -19,6 +19,7 @@ type CategoryNavigationHubProps = {
 
 export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavigationHubProps) {
   const [activeSlug, setActiveSlug] = useState(categories[0]?.slug ?? "");
+  const categoryCountLabel = locale === "tr" ? "kategori" : copy.subcategoryLabel;
 
   const scrollToCategory = (slug: string) => {
     const section = document.getElementById(`category-${slug}`);
@@ -40,33 +41,42 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
       return;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
+    const updateActiveSection = () => {
+      const markerOffset = 120;
+      const currentSection =
+        [...sections]
+          .reverse()
+          .find((section) => section.getBoundingClientRect().top <= markerOffset) ?? sections[0];
 
-        if (visible?.target.id) {
-          setActiveSlug(visible.target.id.replace("category-", ""));
-        }
-      },
+      if (currentSection?.id) {
+        setActiveSlug(currentSection.id.replace("category-", ""));
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      () => updateActiveSection(),
       {
-        rootMargin: "-18% 0px -58% 0px",
-        threshold: [0.12, 0.24, 0.36, 0.48]
+        rootMargin: "-120px 0px -70% 0px",
+        threshold: [0, 0.12, 0.24, 0.36]
       }
     );
 
     sections.forEach((section) => observer.observe(section));
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", updateActiveSection);
+    };
   }, [categories]);
 
   return (
     <div className="grid gap-5 lg:grid-cols-[280px_minmax(0,1fr)]">
-      <aside className="lg:sticky lg:top-28 lg:self-start">
+      <aside className="lg:sticky lg:top-[100px] lg:self-start">
         <div className="rounded-[18px] border border-slate-200 bg-white p-2">
           <p className="px-2 pb-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-600">{copy.sidebarTitle}</p>
-          <nav className="homepage-horizontal-scroll flex gap-2 overflow-x-auto pb-1 lg:max-h-[calc(100vh-9rem)] lg:flex-col lg:overflow-y-auto lg:pr-1">
+          <nav className="homepage-horizontal-scroll flex gap-2 overflow-x-auto pb-1 lg:max-h-[calc(100vh-120px)] lg:flex-col lg:overflow-y-auto lg:pr-1">
             {categories.map((category) => {
               const active = category.slug === activeSlug;
 
@@ -79,10 +89,10 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
                     scrollToCategory(category.slug);
                   }}
                   className={[
-                    "group flex min-w-[12rem] items-center justify-between gap-3 rounded-[12px] border px-3 py-2.5 text-left transition lg:min-w-0",
+                    "group flex min-w-[12rem] cursor-pointer items-center justify-between gap-3 rounded-[12px] border border-l-[3px] px-3 py-2.5 text-left transition duration-150 lg:min-w-0",
                     active
-                      ? "border-sky-200 bg-sky-50 text-slate-950"
-                      : "border-transparent bg-white text-slate-600 hover:border-slate-200 hover:bg-slate-50"
+                      ? "border-sky-200 border-l-[#2563eb] bg-sky-50 text-[#2563eb]"
+                      : "border-transparent border-l-transparent bg-white text-slate-600 hover:border-slate-200 hover:border-l-sky-200 hover:bg-slate-50 hover:text-slate-950"
                   ].join(" ")}
                 >
                   <span className="min-w-0">
@@ -93,8 +103,8 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
                   </span>
                   <span
                     className={[
-                      "h-7 w-1.5 shrink-0 rounded-full transition",
-                      active ? "bg-[#0055FF]" : "bg-slate-200 group-hover:bg-sky-200"
+                      "h-7 w-1.5 shrink-0 rounded-full transition duration-150",
+                      active ? "bg-[#2563eb]" : "bg-slate-200 group-hover:bg-sky-200"
                     ].join(" ")}
                   />
                 </a>
@@ -117,7 +127,7 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
                 <p className="clamp-1 mt-1 max-w-3xl text-sm leading-6 text-slate-500">{category.description}</p>
               </div>
               <span className="w-fit rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-bold text-slate-600">
-                {category.toolCount} {copy.toolCountLabel}
+                {category.subcategories.length} {categoryCountLabel}
               </span>
             </div>
 
