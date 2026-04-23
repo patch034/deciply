@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 import type { SupportedLocale } from "@/i18n/config";
 import type { CategoryHubItem } from "@/lib/category-taxonomy";
@@ -27,6 +27,10 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
   const [desktopSidebarStyle, setDesktopSidebarStyle] = useState<CSSProperties>({});
   const layoutRef = useRef<HTMLDivElement>(null);
   const desktopPanelRef = useRef<HTMLDivElement>(null);
+  const desktopNavContainerRef = useRef<HTMLDivElement>(null);
+  const mobileNavContainerRef = useRef<HTMLElement>(null);
+  const desktopItemRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const mobileItemRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
   const frameRef = useRef<number | null>(null);
   const activeFrameRef = useRef<number | null>(null);
   const categoryCountLabel = locale === "tr" ? "kategori" : copy.subcategoryLabel;
@@ -183,43 +187,104 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
     };
   }, [categories.length]);
 
-  const navigationItems = useMemo(
-    () =>
-      categories.map((category) => {
-        const active = category.slug === activeSlug;
+  useEffect(() => {
+    const syncActiveItemIntoView = (
+      container: HTMLElement | null,
+      item: HTMLElement | null,
+      axis: "vertical" | "horizontal"
+    ) => {
+      if (!container || !item) {
+        return;
+      }
 
-        return (
-          <a
-            key={category.slug}
-            href={`#category-${category.slug}`}
-            onClick={(event) => {
-              event.preventDefault();
-              scrollToCategory(category.slug);
-            }}
-            className={[
-              "group flex min-w-[12rem] cursor-pointer items-center justify-between gap-3 rounded-[12px] border border-l-[3px] px-3 py-2 text-left transition duration-150 lg:min-w-0",
-              active
-                ? "border-sky-200 border-l-[#2563eb] bg-sky-50 text-[#2563eb]"
-                : "border-transparent border-l-transparent bg-white text-slate-600 hover:border-slate-200 hover:border-l-sky-200 hover:bg-slate-50 hover:text-slate-950"
-            ].join(" ")}
-          >
-            <span className="min-w-0">
-              <span className="clamp-1 block text-sm font-bold">{category.name}</span>
-              <span className="mt-0.5 block text-[11px] font-semibold text-slate-400">
-                {category.subcategories.length} {copy.subcategoryLabel}
-              </span>
-            </span>
-            <span
-              className={[
-                "h-7 w-1.5 shrink-0 rounded-full transition duration-150",
-                active ? "bg-[#2563eb]" : "bg-slate-200 group-hover:bg-sky-200"
-              ].join(" ")}
-            />
-          </a>
-        );
-      }),
-    [activeSlug, categories, copy.subcategoryLabel]
-  );
+      const containerRect = container.getBoundingClientRect();
+      const itemRect = item.getBoundingClientRect();
+
+      if (axis === "vertical") {
+        const fullyVisible = itemRect.top >= containerRect.top && itemRect.bottom <= containerRect.bottom;
+
+        if (fullyVisible) {
+          return;
+        }
+
+        const nextScrollTop =
+          item.offsetTop - container.clientTop - container.clientHeight / 2 + item.clientHeight / 2;
+
+        container.scrollTo({
+          top: Math.max(nextScrollTop, 0),
+          behavior: "smooth"
+        });
+        return;
+      }
+
+      const fullyVisible = itemRect.left >= containerRect.left && itemRect.right <= containerRect.right;
+
+      if (fullyVisible) {
+        return;
+      }
+
+      const nextScrollLeft =
+        item.offsetLeft - container.clientLeft - container.clientWidth / 2 + item.clientWidth / 2;
+
+      container.scrollTo({
+        left: Math.max(nextScrollLeft, 0),
+        behavior: "smooth"
+      });
+    };
+
+    if (window.innerWidth >= DESKTOP_BREAKPOINT) {
+      syncActiveItemIntoView(
+        desktopNavContainerRef.current,
+        desktopItemRefs.current[activeSlug] ?? null,
+        "vertical"
+      );
+      return;
+    }
+
+    syncActiveItemIntoView(
+      mobileNavContainerRef.current,
+      mobileItemRefs.current[activeSlug] ?? null,
+      "horizontal"
+    );
+  }, [activeSlug]);
+
+  const renderNavigationItem = (category: CategoryHubItem, mode: "desktop" | "mobile") => {
+    const active = category.slug === activeSlug;
+    const itemRefMap = mode === "desktop" ? desktopItemRefs : mobileItemRefs;
+
+    return (
+      <a
+        key={`${mode}-${category.slug}`}
+        ref={(node) => {
+          itemRefMap.current[category.slug] = node;
+        }}
+        href={`#category-${category.slug}`}
+        onClick={(event) => {
+          event.preventDefault();
+          scrollToCategory(category.slug);
+        }}
+        className={[
+          "group flex min-w-[12rem] cursor-pointer items-center justify-between gap-3 rounded-[12px] border border-l-[3px] px-3 py-2 text-left transition duration-150 lg:min-w-0",
+          active
+            ? "border-sky-200 border-l-[#2563eb] bg-sky-50 text-[#2563eb]"
+            : "border-transparent border-l-transparent bg-white text-slate-600 hover:border-slate-200 hover:border-l-sky-200 hover:bg-slate-50 hover:text-slate-950"
+        ].join(" ")}
+      >
+        <span className="min-w-0">
+          <span className="clamp-1 block text-sm font-bold">{category.name}</span>
+          <span className="mt-0.5 block text-[11px] font-semibold text-slate-400">
+            {category.subcategories.length} {copy.subcategoryLabel}
+          </span>
+        </span>
+        <span
+          className={[
+            "h-7 w-1.5 shrink-0 rounded-full transition duration-150",
+            active ? "bg-[#2563eb]" : "bg-slate-200 group-hover:bg-sky-200"
+          ].join(" ")}
+        />
+      </a>
+    );
+  };
 
   return (
     <div ref={layoutRef} className="relative">
@@ -234,7 +299,9 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
             className="category-sidebar-panel rounded-[18px] border border-slate-200 bg-white p-2 shadow-[0_16px_36px_rgba(15,23,42,0.06)]"
           >
             <p className="px-2 pb-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-600">{copy.sidebarTitle}</p>
-            <nav className="flex flex-col gap-1">{navigationItems}</nav>
+            <div ref={desktopNavContainerRef} className="max-h-[calc(100vh-168px)] overflow-y-auto pr-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <nav className="flex flex-col gap-1">{categories.map((category) => renderNavigationItem(category, "desktop"))}</nav>
+            </div>
           </div>
         </aside>
       </div>
@@ -243,7 +310,9 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
         <aside className="lg:hidden">
           <div className="rounded-[18px] border border-slate-200 bg-white p-2">
             <p className="px-2 pb-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-600">{copy.sidebarTitle}</p>
-            <nav className="homepage-horizontal-scroll flex gap-2 overflow-x-auto pb-1">{navigationItems}</nav>
+            <nav ref={mobileNavContainerRef} className="homepage-horizontal-scroll flex gap-2 overflow-x-auto pb-1">
+              {categories.map((category) => renderNavigationItem(category, "mobile"))}
+            </nav>
           </div>
         </aside>
 
