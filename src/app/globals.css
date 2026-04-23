@@ -249,6 +249,19 @@ select.dark-select {
   }
 }
 
+.category-sidebar-panel {
+  max-height: calc(100vh - 112px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.category-sidebar-panel::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 .ui-gradient-text {
   background-image: var(--tn-gradient-primary);
   background-clip: text;
