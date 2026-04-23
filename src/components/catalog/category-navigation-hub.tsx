@@ -28,6 +28,7 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
   const layoutRef = useRef<HTMLDivElement>(null);
   const desktopPanelRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<number | null>(null);
+  const activeFrameRef = useRef<number | null>(null);
   const categoryCountLabel = locale === "tr" ? "kategori" : copy.subcategoryLabel;
 
   const scrollToCategory = (slug: string) => {
@@ -52,29 +53,52 @@ export function CategoryNavigationHub({ locale, categories, copy }: CategoryNavi
     }
 
     const updateActiveSection = () => {
-      const markerOffset = SCROLL_OFFSET + 8;
-      const currentSection =
-        [...sections]
-          .reverse()
-          .find((section) => section.getBoundingClientRect().top <= markerOffset) ?? sections[0];
+      activeFrameRef.current = null;
 
-      if (currentSection?.id) {
-        setActiveSlug(currentSection.id.replace("category-", ""));
+      const viewportCenter = window.innerHeight / 2;
+      let closestSection = sections[0];
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+        const visibleTop = Math.max(rect.top, 0);
+        const visibleBottom = Math.min(rect.bottom, window.innerHeight);
+        const visibleCenter =
+          visibleBottom > visibleTop
+            ? visibleTop + (visibleBottom - visibleTop) / 2
+            : rect.top + rect.height / 2;
+        const distance = Math.abs(visibleCenter - viewportCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestSection = section;
+        }
+      }
+
+      if (closestSection?.id) {
+        setActiveSlug(closestSection.id.replace("category-", ""));
       }
     };
 
-    const observer = new IntersectionObserver(() => updateActiveSection(), {
-      rootMargin: `-${SCROLL_OFFSET}px 0px -68% 0px`,
-      threshold: [0, 0.12, 0.24, 0.36]
-    });
+    const scheduleActiveUpdate = () => {
+      if (activeFrameRef.current !== null) {
+        cancelAnimationFrame(activeFrameRef.current);
+      }
 
-    sections.forEach((section) => observer.observe(section));
-    updateActiveSection();
-    window.addEventListener("scroll", updateActiveSection, { passive: true });
+      activeFrameRef.current = window.requestAnimationFrame(updateActiveSection);
+    };
+
+    scheduleActiveUpdate();
+    window.addEventListener("scroll", scheduleActiveUpdate, { passive: true });
+    window.addEventListener("resize", scheduleActiveUpdate);
 
     return () => {
-      observer.disconnect();
-      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("scroll", scheduleActiveUpdate);
+      window.removeEventListener("resize", scheduleActiveUpdate);
+
+      if (activeFrameRef.current !== null) {
+        cancelAnimationFrame(activeFrameRef.current);
+      }
     };
   }, [categories]);
 
