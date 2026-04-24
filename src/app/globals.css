@@ -4,17 +4,17 @@
 
 :root {
   color-scheme: light;
-  --tn-bg: #f4f8fc;
+  --tn-bg: #f8fafc;
   --tn-surface: #ffffff;
   --tn-surface-soft: #f6faff;
-  --tn-border: #d9e4ef;
-  --tn-border-strong: #cfdceb;
+  --tn-border: #dde7f1;
+  --tn-border-strong: #cedbea;
   --tn-text: #0f172a;
   --tn-text-muted: #475569;
   --tn-primary: #2563eb;
   --tn-primary-strong: #0055ff;
-  --tn-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
-  --tn-shadow-hover: 0 24px 50px rgba(15, 23, 42, 0.13);
+  --tn-shadow: 0 16px 38px rgba(15, 23, 42, 0.07);
+  --tn-shadow-hover: 0 26px 56px rgba(15, 23, 42, 0.11);
   --tn-gradient-primary: linear-gradient(90deg, #071226 0%, #0e2450 34%, #1d4ed8 68%, #60a5fa 100%);
 }
 
@@ -29,9 +29,10 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at top left, rgba(191, 219, 254, 0.34), transparent 22%),
-    radial-gradient(circle at top right, rgba(219, 234, 254, 0.42), transparent 22%),
-    linear-gradient(180deg, #f4f8fc 0%, #f6f9fd 44%, #eef4fa 100%);
+    radial-gradient(circle at top left, rgba(191, 219, 254, 0.28), transparent 22%),
+    radial-gradient(circle at top right, rgba(219, 234, 254, 0.38), transparent 24%),
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.72), transparent 26%),
+    linear-gradient(180deg, #f8fafc 0%, #f7faff 44%, #eef4fa 100%);
   color: var(--tn-text);
   font-family: Inter, Outfit, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-feature-settings: "ss01" 1, "cv11" 1;
@@ -40,6 +41,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
 * {
@@ -124,7 +126,7 @@ select.dark-select {
 .ui-card,
 .ui-card-strong {
   border: 1px solid var(--tn-border);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(247, 250, 255, 0.995));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.995), rgba(248, 251, 255, 0.995));
   border-radius: 22px;
   box-shadow: var(--tn-shadow);
   overflow: hidden;
@@ -141,7 +143,7 @@ select.dark-select {
 
 .ui-card-hover:hover {
   transform: translateY(-2px);
-  border-color: #b6d5fb;
+  border-color: #c5dafd;
   box-shadow: var(--tn-shadow-hover);
 }
 
@@ -149,7 +151,7 @@ select.dark-select {
   border: 1px solid var(--tn-border);
   background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(246, 249, 253, 1));
   border-radius: 18px;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.055);
 }
 
 .ui-nav-pill {

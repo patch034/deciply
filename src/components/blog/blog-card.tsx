@@ -10,9 +10,10 @@ type BlogCardProps = {
   article: LocalizedBlogArticle;
   ctaLabel: string;
   tone?: "dark" | "light";
+  featured?: boolean;
 };
 
-export function BlogCard({ locale, article, ctaLabel, tone = "light" }: BlogCardProps) {
+export function BlogCard({ locale, article, ctaLabel, tone = "light", featured = false }: BlogCardProps) {
   const relatedToolsLabel = locale === "tr" ? "bağlantılı araç" : "related tools";
   const publishSource = resolveBlogPublishDate(article);
   const publishDate = publishSource ? formatBlogDate(locale, publishSource) : null;
@@ -21,7 +22,8 @@ export function BlogCard({ locale, article, ctaLabel, tone = "light" }: BlogCard
   return (
     <article
       className={[
-        "group flex h-full min-h-[290px] flex-col rounded-[22px] border p-4 transition",
+        "group flex h-full flex-col rounded-[22px] border transition",
+        featured ? "min-h-[250px] p-4" : "min-h-[228px] p-3.5",
         light
           ? "border-slate-200 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.07)] hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_20px_44px_rgba(15,23,42,0.11)]"
           : "border-slate-800 bg-slate-950 text-slate-50"
@@ -37,21 +39,27 @@ export function BlogCard({ locale, article, ctaLabel, tone = "light" }: BlogCard
       </div>
 
       <div className="flex flex-1 flex-col">
-        <h2 className={["mt-4 clamp-2 text-[1.22rem] font-bold tracking-[-0.04em] leading-[1.08]", light ? "text-slate-950" : "text-slate-50"].join(" ")}>
+        <h2
+          className={[
+            "mt-3 clamp-2 font-bold tracking-[-0.04em] leading-[1.08]",
+            featured ? "text-[1.16rem]" : "text-[1.02rem]",
+            light ? "text-slate-950" : "text-slate-50"
+          ].join(" ")}
+        >
           <Link href={`/${locale}/blog/${article.slug}`}>{article.title}</Link>
         </h2>
 
-        <p className={["mt-3 clamp-3 text-[15px] leading-7", light ? "text-slate-600" : "text-slate-300/84"].join(" ")}>
+        <p className={["mt-2.5 clamp-2 text-[13px] leading-6", light ? "text-slate-600" : "text-slate-300/84"].join(" ")}>
           {article.excerpt}
         </p>
 
-        <div className={["mt-auto flex items-end justify-between gap-3 border-t pt-4", light ? "border-slate-200" : "border-slate-800"].join(" ")}>
-          <span className={["text-[11px] font-semibold uppercase tracking-[0.18em]", light ? "text-slate-500" : "text-slate-300"].join(" ")}>
+        <div className={["mt-auto flex items-end justify-between gap-3 border-t pt-3.5", light ? "border-slate-200" : "border-slate-800"].join(" ")}>
+          <span className={["text-[10px] font-semibold uppercase tracking-[0.16em]", light ? "text-slate-500" : "text-slate-300"].join(" ")}>
             {article.relatedToolSlugs.length} {relatedToolsLabel}
           </span>
           <Link
             href={`/${locale}/blog/${article.slug}`}
-            className="inline-flex min-h-[42px] items-center justify-center rounded-[14px] bg-[linear-gradient(90deg,#0E2450_0%,#007FFF_42%,#0055FF_72%,#3B82F6_100%)] px-4 text-sm font-semibold text-white shadow-[0_18px_40px_-24px_rgba(37,99,235,0.45)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_46px_-22px_rgba(37,99,235,0.5)]"
+            className="inline-flex min-h-[36px] items-center justify-center rounded-[12px] bg-[linear-gradient(90deg,#0E2450_0%,#2563eb_44%,#5b4bff_100%)] px-3.5 text-[13px] font-semibold text-white shadow-[0_18px_40px_-24px_rgba(37,99,235,0.42)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_46px_-22px_rgba(37,99,235,0.48)]"
           >
             {ctaLabel}
           </Link>

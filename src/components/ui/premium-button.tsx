@@ -17,7 +17,7 @@ type PremiumButtonProps = {
 
 const styles = {
   primary:
-    "bg-[linear-gradient(90deg,#0E2450_0%,#007FFF_42%,#0055FF_72%,#3B82F6_100%)] text-white shadow-[0_24px_56px_-24px_rgba(37,99,235,0.72),0_34px_92px_-38px_rgba(14,36,80,0.42)] hover:brightness-[1.04] hover:shadow-[0_30px_72px_-24px_rgba(37,99,235,0.8),0_42px_116px_-38px_rgba(14,36,80,0.52)]",
+    "bg-[linear-gradient(90deg,#0e2450_0%,#2563eb_44%,#5b4bff_100%)] text-white shadow-[0_24px_56px_-24px_rgba(37,99,235,0.68),0_34px_92px_-38px_rgba(14,36,80,0.34)] hover:brightness-[1.04] hover:shadow-[0_30px_72px_-24px_rgba(37,99,235,0.78),0_42px_116px_-38px_rgba(91,75,255,0.34)]",
   secondary:
     "border border-slate-200 bg-white/94 text-slate-700 hover:border-sky-200 hover:bg-white hover:text-slate-950",
   ghost:
@@ -34,7 +34,7 @@ export function PremiumButton({
   rel
 }: PremiumButtonProps) {
   const classes = clsx(
-    "inline-flex min-h-[42px] items-center justify-center overflow-hidden rounded-[14px] px-3.5 py-2 text-[13px] font-semibold leading-none transition duration-150 sm:min-h-[44px] sm:px-4 sm:text-sm",
+    "inline-flex min-h-[42px] items-center justify-center overflow-hidden rounded-[14px] px-3.5 py-2 text-[13px] font-semibold leading-none transition duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 sm:min-h-[44px] sm:px-4 sm:text-sm",
     variant !== "primary" && "shadow-[inset_0_1px_0_rgba(56,189,248,0.05)]",
     styles[variant],
     className

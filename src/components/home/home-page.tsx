@@ -4,6 +4,7 @@ import { blogArticles } from "@/data/blog";
 import type { HomeContent } from "@/data/home";
 import type { Locale } from "@/i18n/config";
 import { getLocalizedCategories, getLocalizedTools, getToolsByCategory } from "@/lib/catalog";
+import { buildHomeSearchIndex } from "@/lib/home-search";
 import { getComparisonDirectoryCards } from "@/lib/comparisons";
 import { getContentBaseLocale } from "@/lib/locale-copy";
 import { getAiNewsItems } from "@/lib/news";
@@ -45,10 +46,11 @@ export async function HomePage({ locale, content }: HomePageProps) {
     }));
   const news = await getAiNewsItems(locale, 10);
   const comparisons = getComparisonDirectoryCards(locale);
+  const searchItems = await buildHomeSearchIndex(locale);
 
   return (
     <div className="ui-page-shell relative min-h-screen overflow-x-clip pb-12 text-slate-900 sm:pb-16 lg:pb-20">
-      <HeroSection locale={locale} content={content.hero} />
+      <HeroSection locale={locale} content={content.hero} searchItems={searchItems} />
       <HomeDirectoryShell
         locale={locale}
         categories={categories}

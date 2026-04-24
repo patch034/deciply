@@ -1,16 +1,15 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 import { CategoryIcon } from "@/components/catalog/category-icon";
 import { HorizontalSlider } from "@/components/home/horizontal-slider";
 import { PremiumButton } from "@/components/ui/premium-button";
+import { formatPricing } from "@/lib/catalog";
+import type { AiNewsItem } from "@/lib/news";
+import { getToolLogoUrl } from "@/lib/logo";
 import type { Locale } from "@/i18n/config";
-import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type { LocalizedCategory, LocalizedTool } from "@/types/catalog";
 import type { ComparisonCard as HomeComparisonCard } from "@/types/home";
-import type { AiNewsItem } from "@/lib/news";
-import { formatPricing } from "@/lib/catalog";
-import { getToolLogoUrl } from "@/lib/logo";
 
 export type HomeBlogPanelItem = {
   slug: string;
@@ -28,7 +27,30 @@ type HomeDirectoryShellProps = {
   comparisons: HomeComparisonCard[];
 };
 
-const sectionCopyBase = {
+const sectionCopy: Record<
+  Locale,
+  {
+    tabs: string[];
+    blogsTitle: string;
+    blogCta: string;
+    newsTitle: string;
+    newsCta: string;
+    toolsFeedTitle: string;
+    toolsFeedDescription: string;
+    toolsFeedCta: string;
+    categoryTitle: string;
+    categoryCta: string;
+    compareTitle: string;
+    compareCta: string;
+    compareOpen: string;
+    featuredTitle: string;
+    featuredDescription: string;
+    inspectTool: string;
+    updatedLabel: string;
+    featuredBadge: string;
+    featuredToolsCta: string;
+  }
+> = {
   tr: {
     tabs: ["Bugün", "Yeni", "En çok kaydedilenler", "En çok kullanılanlar", "Uygulamalar"],
     blogsTitle: "Güncel bloglar",
@@ -70,8 +92,176 @@ const sectionCopyBase = {
     updatedLabel: "Live",
     featuredBadge: "Featured",
     featuredToolsCta: "Browse tools"
+  },
+  ar: {
+    tabs: ["اليوم", "جديد", "الأكثر حفظًا", "الأكثر استخدامًا", "التطبيقات"],
+    blogsTitle: "أحدث أدلة المدونة",
+    blogCta: "كل المقالات",
+    newsTitle: "أخبار AI",
+    newsCta: "كل الأخبار",
+    toolsFeedTitle: "تدفق الأدوات المباشر",
+    toolsFeedDescription: "تصفّح الأدوات في صفوف مدمجة، وراجع السعر والعلامات ثم انتقل بسرعة إلى الخيار المناسب.",
+    toolsFeedCta: "عرض المزيد",
+    categoryTitle: "استكشف أدوات AI حسب الفئة",
+    categoryCta: "عرض المزيد",
+    compareTitle: "مقارنات شائعة",
+    compareCta: "مزيد من المقارنات",
+    compareOpen: "افتح المقارنة",
+    featuredTitle: "أدوات AI مميزة",
+    featuredDescription: "راجع المزيد من الأدوات في شبكة أكثر كثافة وأسهل في المسح.",
+    inspectTool: "استعراض",
+    updatedLabel: "مباشر",
+    featuredBadge: "مميز",
+    featuredToolsCta: "اذهب إلى الأدوات"
+  },
+  ru: {
+    tabs: ["Сегодня", "Новые", "Часто сохраняют", "Часто используют", "Приложения"],
+    blogsTitle: "Свежие гайды блога",
+    blogCta: "Все статьи",
+    newsTitle: "Новости AI",
+    newsCta: "Все новости",
+    toolsFeedTitle: "Живая лента инструментов",
+    toolsFeedDescription: "Просматривайте компактные строки, цену и теги, затем быстро переходите к нужному продукту.",
+    toolsFeedCta: "Показать больше",
+    categoryTitle: "Изучайте AI-инструменты по категориям",
+    categoryCta: "Показать больше",
+    compareTitle: "Популярные сравнения",
+    compareCta: "Больше сравнений",
+    compareOpen: "Открыть сравнение",
+    featuredTitle: "Избранные AI-инструменты",
+    featuredDescription: "Смотрите больше инструментов в более плотной и удобной сетке.",
+    inspectTool: "Открыть",
+    updatedLabel: "Актуально",
+    featuredBadge: "Избранное",
+    featuredToolsCta: "К инструментам"
+  },
+  zh: {
+    tabs: ["今天", "最新", "收藏最多", "使用最多", "应用"],
+    blogsTitle: "最新博客指南",
+    blogCta: "全部博客",
+    newsTitle: "AI 新闻",
+    newsCta: "全部新闻",
+    toolsFeedTitle: "实时工具流",
+    toolsFeedDescription: "以紧凑列表浏览工具，快速查看价格与标签，再进入最合适的产品。",
+    toolsFeedCta: "查看更多",
+    categoryTitle: "按分类探索 AI 工具",
+    categoryCta: "查看更多",
+    compareTitle: "热门对比",
+    compareCta: "更多对比",
+    compareOpen: "打开对比",
+    featuredTitle: "精选 AI 工具",
+    featuredDescription: "在更紧凑、更易扫描的网格中查看更多工具。",
+    inspectTool: "查看",
+    updatedLabel: "实时",
+    featuredBadge: "精选",
+    featuredToolsCta: "前往工具页"
+  },
+  ja: {
+    tabs: ["今日", "新着", "保存数が多い", "利用数が多い", "アプリ"],
+    blogsTitle: "最新ブログガイド",
+    blogCta: "すべてのブログ",
+    newsTitle: "AIニュース",
+    newsCta: "すべてのニュース",
+    toolsFeedTitle: "ライブツールフィード",
+    toolsFeedDescription: "コンパクトな行で価格やタグを見ながら、最適なプロダクトへすばやく移動できます。",
+    toolsFeedCta: "もっと見る",
+    categoryTitle: "カテゴリ別に AI ツールを探す",
+    categoryCta: "もっと見る",
+    compareTitle: "人気の比較",
+    compareCta: "比較をもっと見る",
+    compareOpen: "比較を開く",
+    featuredTitle: "注目の AI ツール",
+    featuredDescription: "より密度の高い見やすいグリッドで多くのツールを確認できます。",
+    inspectTool: "見る",
+    updatedLabel: "更新中",
+    featuredBadge: "注目",
+    featuredToolsCta: "ツールを見る"
+  },
+  ko: {
+    tabs: ["오늘", "신규", "저장 많은 순", "사용 많은 순", "앱"],
+    blogsTitle: "최신 블로그 가이드",
+    blogCta: "모든 블로그",
+    newsTitle: "AI 뉴스",
+    newsCta: "모든 뉴스",
+    toolsFeedTitle: "실시간 도구 피드",
+    toolsFeedDescription: "가격과 태그를 보며 압축된 행으로 도구를 훑고, 적합한 제품으로 빠르게 이동하세요.",
+    toolsFeedCta: "더 보기",
+    categoryTitle: "카테고리별로 AI 도구 탐색",
+    categoryCta: "더 보기",
+    compareTitle: "인기 비교",
+    compareCta: "비교 더 보기",
+    compareOpen: "비교 열기",
+    featuredTitle: "주요 AI 도구",
+    featuredDescription: "더 촘촘하고 읽기 쉬운 그리드에서 더 많은 도구를 확인하세요.",
+    inspectTool: "보기",
+    updatedLabel: "실시간",
+    featuredBadge: "주요",
+    featuredToolsCta: "도구로 이동"
+  },
+  el: {
+    tabs: ["Σήμερα", "Νέα", "Πιο αποθηκευμένα", "Πιο χρησιμοποιημένα", "Apps"],
+    blogsTitle: "Νέοι οδηγοί blog",
+    blogCta: "Όλα τα άρθρα",
+    newsTitle: "AI News",
+    newsCta: "Όλα τα νέα",
+    toolsFeedTitle: "Ζωντανή ροή εργαλείων",
+    toolsFeedDescription: "Σάρωσε συμπαγείς γραμμές, δες τιμές και ετικέτες και πήγαινε γρήγορα στο σωστό προϊόν.",
+    toolsFeedCta: "Προβολή περισσότερων",
+    categoryTitle: "Εξερεύνησε εργαλεία AI ανά κατηγορία",
+    categoryCta: "Προβολή περισσότερων",
+    compareTitle: "Δημοφιλείς συγκρίσεις",
+    compareCta: "Περισσότερες συγκρίσεις",
+    compareOpen: "Άνοιγμα σύγκρισης",
+    featuredTitle: "Προτεινόμενα εργαλεία AI",
+    featuredDescription: "Δες περισσότερα εργαλεία σε πιο πυκνό και ευανάγνωστο grid.",
+    inspectTool: "Άνοιγμα",
+    updatedLabel: "Live",
+    featuredBadge: "Προτεινόμενο",
+    featuredToolsCta: "Μετάβαση στα εργαλεία"
+  },
+  da: {
+    tabs: ["I dag", "Nye", "Mest gemt", "Mest brugt", "Apps"],
+    blogsTitle: "Seneste blogguides",
+    blogCta: "Alle blogs",
+    newsTitle: "AI-nyheder",
+    newsCta: "Alle nyheder",
+    toolsFeedTitle: "Live værktøjsfeed",
+    toolsFeedDescription: "Scan kompakte rækker, se pris og tags, og gå hurtigt videre til det rigtige produkt.",
+    toolsFeedCta: "Se mere",
+    categoryTitle: "Udforsk AI-værktøjer efter kategori",
+    categoryCta: "Se mere",
+    compareTitle: "Populære sammenligninger",
+    compareCta: "Flere sammenligninger",
+    compareOpen: "Åbn sammenligning",
+    featuredTitle: "Udvalgte AI-værktøjer",
+    featuredDescription: "Se flere værktøjer i et tættere og lettere scannbart grid.",
+    inspectTool: "Åbn",
+    updatedLabel: "Live",
+    featuredBadge: "Udvalgt",
+    featuredToolsCta: "Gå til værktøjer"
+  },
+  fa: {
+    tabs: ["امروز", "جدید", "بیشترین ذخیره", "بیشترین استفاده", "اپ‌ها"],
+    blogsTitle: "راهنماهای تازه وبلاگ",
+    blogCta: "همه وبلاگ‌ها",
+    newsTitle: "اخبار AI",
+    newsCta: "همه خبرها",
+    toolsFeedTitle: "جریان زنده ابزارها",
+    toolsFeedDescription: "ابزارها را در ردیف‌های فشرده ببینید، قیمت و برچسب‌ها را بررسی کنید و سریع‌تر به گزینه مناسب برسید.",
+    toolsFeedCta: "مشاهده بیشتر",
+    categoryTitle: "ابزارهای AI را بر اساس دسته کشف کنید",
+    categoryCta: "مشاهده بیشتر",
+    compareTitle: "مقایسه‌های محبوب",
+    compareCta: "مقایسه‌های بیشتر",
+    compareOpen: "باز کردن مقایسه",
+    featuredTitle: "ابزارهای شاخص AI",
+    featuredDescription: "ابزارهای بیشتری را در یک شبکه فشرده‌تر و خواناتر مرور کنید.",
+    inspectTool: "مشاهده",
+    updatedLabel: "زنده",
+    featuredBadge: "شاخص",
+    featuredToolsCta: "رفتن به ابزارها"
   }
-} as const;
+};
 
 function buildFeaturedCategories(categories: LocalizedCategory[]) {
   const preferredSlugs = [
@@ -134,7 +324,7 @@ function PanelHeader({
   );
 }
 
-function BlogPanel({ locale, blogs, copy }: { locale: Locale; blogs: HomeBlogPanelItem[]; copy: typeof sectionCopyBase.tr | typeof sectionCopyBase.en }) {
+function BlogPanel({ locale, blogs, copy }: { locale: Locale; blogs: HomeBlogPanelItem[]; copy: (typeof sectionCopy)[Locale] }) {
   return (
     <aside className="ui-card h-[22rem] rounded-[24px] p-4 lg:h-[34rem]">
       <PanelHeader title={copy.blogsTitle} href={`/${locale}/blog`} label={copy.blogCta} />
@@ -154,7 +344,7 @@ function BlogPanel({ locale, blogs, copy }: { locale: Locale; blogs: HomeBlogPan
   );
 }
 
-function AiNewsPanel({ locale, news, copy }: { locale: Locale; news: AiNewsItem[]; copy: typeof sectionCopyBase.tr | typeof sectionCopyBase.en }) {
+function AiNewsPanel({ locale, news, copy }: { locale: Locale; news: AiNewsItem[]; copy: (typeof sectionCopy)[Locale] }) {
   return (
     <aside className="ui-card h-[22rem] rounded-[24px] p-4 lg:h-[34rem]">
       <PanelHeader title={copy.newsTitle} href={`/${locale}/news`} label={copy.newsCta} />
@@ -203,7 +393,7 @@ function ToolFeedRow({ locale, tool }: { locale: Locale; tool: LocalizedTool }) 
   );
 }
 
-function ToolsPanel({ locale, tools, copy }: { locale: Locale; tools: LocalizedTool[]; copy: typeof sectionCopyBase.tr | typeof sectionCopyBase.en }) {
+function ToolsPanel({ locale, tools, copy }: { locale: Locale; tools: LocalizedTool[]; copy: (typeof sectionCopy)[Locale] }) {
   return (
     <div className="ui-card rounded-[24px] p-4 lg:h-[38rem]">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -212,12 +402,9 @@ function ToolsPanel({ locale, tools, copy }: { locale: Locale; tools: LocalizedT
           <h2 className="mt-1 text-[1.45rem] font-bold tracking-[-0.04em] text-slate-950">{copy.toolsFeedTitle}</h2>
           <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-600">{copy.toolsFeedDescription}</p>
         </div>
-        <Link
-          href={`/${locale}/tools`}
-          className="inline-flex min-h-9 w-fit items-center justify-center rounded-full border border-sky-200 bg-sky-50 px-4 text-xs font-bold text-sky-700 transition hover:border-sky-300 hover:bg-white"
-        >
+        <PremiumButton href={`/${locale}/tools`} className="min-h-[38px] rounded-full px-4 text-xs">
           {copy.toolsFeedCta}
-        </Link>
+        </PremiumButton>
       </div>
       <div className="homepage-panel-scroll mt-4 grid max-h-[26rem] gap-2.5 overflow-y-auto pr-1 lg:max-h-[30.5rem]">
         {tools.slice(0, 15).map((tool) => (
@@ -229,7 +416,7 @@ function ToolsPanel({ locale, tools, copy }: { locale: Locale; tools: LocalizedT
 }
 
 export function HomeDirectoryShell({ locale, categories, categoryToolCounts, tools, blogs, news, comparisons }: HomeDirectoryShellProps) {
-  const copy = localizeTree(locale, sectionCopyBase[getContentBaseLocale(locale)]);
+  const copy = sectionCopy[locale];
   const featuredCategories = buildFeaturedCategories(categories);
   const feedTools = tools.slice(0, 15);
   const featuredTools = tools.slice(0, 18);
@@ -260,9 +447,7 @@ export function HomeDirectoryShell({ locale, categories, categoryToolCounts, too
       <section className="ui-card rounded-[24px] p-5 sm:p-6">
         <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <h2 className="text-[1.45rem] font-bold tracking-[-0.04em] text-slate-950">{copy.categoryTitle}</h2>
-          <PremiumButton href={`/${locale}/categories`} variant="secondary">
-            {copy.categoryCta}
-          </PremiumButton>
+          <PremiumButton href={`/${locale}/categories`}>{copy.categoryCta}</PremiumButton>
         </div>
 
         <HorizontalSlider
@@ -270,10 +455,9 @@ export function HomeDirectoryShell({ locale, categories, categoryToolCounts, too
           contentClassName="grid auto-cols-[12.5rem] grid-flow-col grid-rows-2 gap-3 sm:auto-cols-[13.5rem] sm:gap-4"
         >
           {featuredCategories.map((category) => (
-            <Link
+            <div
               key={category.slug}
-              href={`/${locale}/categories/${category.slug}`}
-              className="ui-inner-panel ui-card-hover block min-h-[118px] snap-start rounded-[18px] px-3.5 py-3.5"
+              className="ui-inner-panel ui-card-hover block min-h-[118px] cursor-default snap-start rounded-[18px] px-3.5 py-3.5"
             >
               <div className="flex items-start justify-between gap-3">
                 <CategoryIcon slug={category.slug} label={category.name} className="h-9 w-9 shrink-0" />
@@ -282,7 +466,7 @@ export function HomeDirectoryShell({ locale, categories, categoryToolCounts, too
                 </span>
               </div>
               <h3 className="clamp-2 mt-3 text-sm font-black leading-5 text-slate-950">{category.name}</h3>
-            </Link>
+            </div>
           ))}
         </HorizontalSlider>
       </section>
@@ -333,9 +517,7 @@ export function HomeDirectoryShell({ locale, categories, categoryToolCounts, too
             <h2 className="mt-1 text-[1.45rem] font-bold tracking-[-0.04em] text-slate-950">{copy.featuredTitle}</h2>
             <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-600">{copy.featuredDescription}</p>
           </div>
-          <PremiumButton href={`/${locale}/tools`} variant="secondary">
-            {copy.featuredToolsCta}
-          </PremiumButton>
+          <PremiumButton href={`/${locale}/tools`}>{copy.featuredToolsCta}</PremiumButton>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">

@@ -12,14 +12,39 @@ import type { BlogEntry, LocalizedBlogArticle } from "@/types/blog";
 
 export const BLOG_PAGE_SIZE = 12;
 
-const blogCopyBase = {
+type BlogCopy = {
+  breadcrumbsHome: string;
+  blogLabel: string;
+  listEyebrow: string;
+  listTitle: string;
+  listDescription: string;
+  readMoreLabel: string;
+  heroPrimaryCta: string;
+  heroSecondaryCta: string;
+  comparisonCtaLabel: string;
+  relatedToolsTitle: string;
+  relatedToolsDescription: string;
+  relatedArticlesTitle: string;
+  relatedArticlesDescription: string;
+  comparisonBlockTitle: string;
+  comparisonBlockDescription: string;
+  articleLeadLabel: string;
+  toolPageRelatedTitle: string;
+  toolPageRelatedDescription: string;
+  backToBlog: string;
+  previousPage: string;
+  nextPage: string;
+  pageLabel: string;
+};
+
+const blogCopyBase: Record<"tr" | "en", BlogCopy> = {
   tr: {
     breadcrumbsHome: "Ana sayfa",
     blogLabel: "Blog",
-    listEyebrow: "SEO içerikleri",
-    listTitle: "Trafik ve karar odaklı AI rehberleri",
+    listEyebrow: "AI rehberleri",
+    listTitle: "AI rehberleri ve karşılaştırmaları",
     listDescription:
-      "Deciply blog bölümünde gerçek kullanım senaryoları, araç karşılaştırmaları ve net seçim rehberleri yer alır.",
+      "Doğru aracı seçmene yardımcı olacak pratik rehberler, karşılaştırmalar ve kullanım senaryoları.",
     readMoreLabel: "Devamını oku",
     heroPrimaryCta: "İlgili aracı aç",
     heroSecondaryCta: "İlgili karşılaştırmaları aç",
@@ -45,10 +70,10 @@ const blogCopyBase = {
   en: {
     breadcrumbsHome: "Home",
     blogLabel: "Blog",
-    listEyebrow: "SEO content",
-    listTitle: "AI guides built for traffic and decisions",
+    listEyebrow: "AI guides",
+    listTitle: "AI guides and comparisons",
     listDescription:
-      "The Deciply blog covers real workflows, tool comparisons, and clearer decision guides.",
+      "Practical guides, comparisons, and use cases to help you choose the right AI tool.",
     readMoreLabel: "Read more",
     heroPrimaryCta: "Open the related tool",
     heroSecondaryCta: "Open related comparisons",
@@ -71,16 +96,60 @@ const blogCopyBase = {
     nextPage: "Next",
     pageLabel: "Page"
   }
-} as const;
+};
 
 assertEncodingHealth("blog-copy");
 
+const blogCopyOverrides: Partial<Record<Locale, Partial<BlogCopy>>> = {
+  ar: {
+    listEyebrow: "أدلة AI",
+    listTitle: "أدلة ومقارنات AI",
+    listDescription: "أدلة عملية ومقارنات وحالات استخدام تساعدك على اختيار أداة AI المناسبة."
+  },
+  ru: {
+    listEyebrow: "Гайды по AI",
+    listTitle: "Гайды и сравнения AI",
+    listDescription: "Практичные гайды, сравнения и сценарии использования, которые помогают выбрать подходящий AI-инструмент."
+  },
+  zh: {
+    listEyebrow: "AI 指南",
+    listTitle: "AI 指南与对比",
+    listDescription: "用更实用的指南、对比和使用场景帮助你选出合适的 AI 工具。"
+  },
+  ja: {
+    listEyebrow: "AIガイド",
+    listTitle: "AIガイドと比較",
+    listDescription: "適切な AI ツール選びに役立つ実践的なガイド、比較、ユースケースをまとめています。"
+  },
+  ko: {
+    listEyebrow: "AI 가이드",
+    listTitle: "AI 가이드와 비교",
+    listDescription: "적합한 AI 도구를 고를 수 있도록 실용적인 가이드, 비교, 활용 사례를 제공합니다."
+  },
+  el: {
+    listEyebrow: "Οδηγοί AI",
+    listTitle: "Οδηγοί και συγκρίσεις AI",
+    listDescription: "Πρακτικοί οδηγοί, συγκρίσεις και περιπτώσεις χρήσης για να επιλέξεις το σωστό εργαλείο AI."
+  },
+  da: {
+    listEyebrow: "AI-guides",
+    listTitle: "AI-guides og sammenligninger",
+    listDescription: "Praktiske guides, sammenligninger og brugsscenarier, der hjælper dig med at vælge det rigtige AI-værktøj."
+  },
+  fa: {
+    listEyebrow: "راهنماهای AI",
+    listTitle: "راهنماها و مقایسه‌های AI",
+    listDescription: "راهنماهای کاربردی، مقایسه‌ها و سناریوهای استفاده که به انتخاب ابزار مناسب AI کمک می‌کنند."
+  }
+};
+
 const blogCopy = Object.fromEntries(
-  (["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"] as const).map((itemLocale) => [
-    itemLocale,
-    localizeTree(itemLocale, blogCopyBase[getContentBaseLocale(itemLocale)])
-  ])
-) as Record<Locale, (typeof blogCopyBase)["tr"]>;
+  (["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"] as const).map((itemLocale) => {
+    const localized = localizeTree(itemLocale, blogCopyBase[getContentBaseLocale(itemLocale)]);
+
+    return [itemLocale, { ...localized, ...(blogCopyOverrides[itemLocale] ?? {}) }];
+  })
+) as Record<Locale, BlogCopy>;
 
 export function getBlogCopy(locale: Locale) {
   return blogCopy[locale];

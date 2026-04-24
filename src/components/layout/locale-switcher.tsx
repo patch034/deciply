@@ -59,8 +59,18 @@ export function LocaleSwitcher({ locale }: { locale: SupportedLocale }) {
       }
     };
 
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
     document.addEventListener("mousedown", handlePointerDown);
-    return () => document.removeEventListener("mousedown", handlePointerDown);
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("keydown", handleEscape);
+    };
   }, []);
 
   useEffect(() => {
@@ -84,7 +94,7 @@ export function LocaleSwitcher({ locale }: { locale: SupportedLocale }) {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((current) => !current)}
-        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-slate-200 bg-white/95 px-3.5 text-sm font-bold text-slate-950 shadow-[0_14px_34px_-24px_rgba(15,23,42,0.22)] backdrop-blur transition hover:border-sky-300 hover:bg-white"
+        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 text-sm font-bold text-slate-950 shadow-[0_14px_34px_-24px_rgba(15,23,42,0.22)] transition hover:border-sky-300 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
       >
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-700">
           <GlobeIcon />
@@ -98,7 +108,7 @@ export function LocaleSwitcher({ locale }: { locale: SupportedLocale }) {
 
       {open ? (
         <div
-          className="absolute right-0 top-[calc(100%+0.7rem)] z-[999] w-[min(19rem,calc(100vw-1rem))] rounded-[24px] border border-slate-200 bg-white p-2 shadow-[0_24px_72px_-28px_rgba(15,23,42,0.26)]"
+          className="absolute right-0 top-[calc(100%+0.7rem)] z-[999] w-[min(19rem,calc(100vw-1rem))] rounded-[24px] border border-slate-200 bg-white/100 p-2 shadow-[0_24px_72px_-28px_rgba(15,23,42,0.26)]"
           role="menu"
         >
           <div className="grid gap-1">
@@ -107,6 +117,7 @@ export function LocaleSwitcher({ locale }: { locale: SupportedLocale }) {
                 key={entry.code}
                 href={`/${entry.code}${pathWithQuery}`}
                 onClick={() => setOpen(false)}
+                dir={entry.code === "ar" || entry.code === "fa" ? "rtl" : "ltr"}
                 className={[
                   "flex min-h-[54px] items-center justify-between rounded-[18px] px-3 py-3 transition",
                   entry.code === locale

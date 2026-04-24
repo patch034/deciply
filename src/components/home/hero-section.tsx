@@ -3,23 +3,25 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+import { GlobalSmartSearch } from "@/components/home/global-smart-search";
 import { Badge } from "@/components/ui/badge";
 import type { HomeContent } from "@/data/home";
 import type { Locale } from "@/i18n/config";
-import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
+import type { HomeSearchItem } from "@/lib/home-search";
 
 type HeroSectionProps = {
   locale: Locale;
   content: HomeContent["hero"];
+  searchItems: HomeSearchItem[];
 };
 
-const quickLinkBase = {
+const quickLinkBase: Record<Locale, { label: string; href: string }[]> = {
   tr: [
     { label: "Kategoriler", href: "/categories" },
     { label: "Araçlar", href: "/tools" },
     { label: "Karşılaştırmalar", href: "/compare" },
     { label: "Canlı karşılaştırma", href: "/compare-auto" },
-    { label: "Bloglar", href: "/blog" },
+    { label: "Blog", href: "/blog" },
     { label: "AI Haberleri", href: "/news" }
   ],
   en: [
@@ -27,26 +29,90 @@ const quickLinkBase = {
     { label: "Tools", href: "/tools" },
     { label: "Comparisons", href: "/compare" },
     { label: "Live compare", href: "/compare-auto" },
-    { label: "Blogs", href: "/blog" },
+    { label: "Blog", href: "/blog" },
     { label: "AI News", href: "/news" }
+  ],
+  ar: [
+    { label: "الفئات", href: "/categories" },
+    { label: "الأدوات", href: "/tools" },
+    { label: "المقارنات", href: "/compare" },
+    { label: "مقارنة مباشرة", href: "/compare-auto" },
+    { label: "المدونة", href: "/blog" },
+    { label: "أخبار AI", href: "/news" }
+  ],
+  ru: [
+    { label: "Категории", href: "/categories" },
+    { label: "Инструменты", href: "/tools" },
+    { label: "Сравнения", href: "/compare" },
+    { label: "Онлайн-сравнение", href: "/compare-auto" },
+    { label: "Блог", href: "/blog" },
+    { label: "Новости AI", href: "/news" }
+  ],
+  zh: [
+    { label: "分类", href: "/categories" },
+    { label: "工具", href: "/tools" },
+    { label: "对比", href: "/compare" },
+    { label: "实时对比", href: "/compare-auto" },
+    { label: "博客", href: "/blog" },
+    { label: "AI 新闻", href: "/news" }
+  ],
+  ja: [
+    { label: "カテゴリ", href: "/categories" },
+    { label: "ツール", href: "/tools" },
+    { label: "比較", href: "/compare" },
+    { label: "ライブ比較", href: "/compare-auto" },
+    { label: "ブログ", href: "/blog" },
+    { label: "AIニュース", href: "/news" }
+  ],
+  ko: [
+    { label: "카테고리", href: "/categories" },
+    { label: "도구", href: "/tools" },
+    { label: "비교", href: "/compare" },
+    { label: "실시간 비교", href: "/compare-auto" },
+    { label: "블로그", href: "/blog" },
+    { label: "AI 뉴스", href: "/news" }
+  ],
+  el: [
+    { label: "Κατηγορίες", href: "/categories" },
+    { label: "Εργαλεία", href: "/tools" },
+    { label: "Συγκρίσεις", href: "/compare" },
+    { label: "Ζωντανή σύγκριση", href: "/compare-auto" },
+    { label: "Blog", href: "/blog" },
+    { label: "AI News", href: "/news" }
+  ],
+  da: [
+    { label: "Kategorier", href: "/categories" },
+    { label: "Værktøjer", href: "/tools" },
+    { label: "Sammenligninger", href: "/compare" },
+    { label: "Live-sammenligning", href: "/compare-auto" },
+    { label: "Blog", href: "/blog" },
+    { label: "AI-nyheder", href: "/news" }
+  ],
+  fa: [
+    { label: "دسته‌ها", href: "/categories" },
+    { label: "ابزارها", href: "/tools" },
+    { label: "مقایسه‌ها", href: "/compare" },
+    { label: "مقایسه زنده", href: "/compare-auto" },
+    { label: "وبلاگ", href: "/blog" },
+    { label: "اخبار AI", href: "/news" }
   ]
-} as const;
+};
 
-function SearchIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
-      <path d="M10.5 4.5a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z" fill="none" stroke="currentColor" strokeWidth="1.7" />
-      <path d="m15 15 4.5 4.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
-    </svg>
-  );
-}
+const statCopy: Record<Locale, string> = {
+  tr: "Güncel",
+  en: "Live",
+  ar: "مباشر",
+  ru: "Актуально",
+  zh: "实时",
+  ja: "更新中",
+  ko: "실시간",
+  el: "Live",
+  da: "Live",
+  fa: "زنده"
+};
 
-export function HeroSection({ locale, content }: HeroSectionProps) {
-  const quickLinks = localizeTree(locale, quickLinkBase[getContentBaseLocale(locale)]);
-  const searchPlaceholder =
-    locale === "tr"
-      ? "Araç, kategori veya karşılaştırma ara..."
-      : "Search tools, categories, or comparisons...";
+export function HeroSection({ locale, content, searchItems }: HeroSectionProps) {
+  const quickLinks = quickLinkBase[locale];
 
   return (
     <section className="relative mx-auto w-full max-w-[1440px] px-4 pt-4 sm:px-6 sm:pt-6 lg:px-8 lg:pt-8">
@@ -89,36 +155,14 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             {content.description}
           </motion.p>
 
-          <motion.form
-            action={`/${locale}/tools`}
-            method="get"
-            className="mt-7 w-full max-w-4xl"
+          <motion.div
+            className="w-full"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.42, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
           >
-            <label className="sr-only" htmlFor="homepage-search">
-              {locale === "tr" ? "Araç ara" : "Search tools"}
-            </label>
-            <div className="flex min-h-[72px] items-center gap-3 rounded-[28px] border border-slate-200 bg-white p-2.5 text-left shadow-[0_18px_44px_rgba(15,23,42,0.1)]">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[20px] border border-slate-200 bg-slate-50 text-slate-400">
-                <SearchIcon />
-              </div>
-              <input
-                id="homepage-search"
-                name="q"
-                type="search"
-                placeholder={searchPlaceholder}
-                className="h-14 flex-1 border-0 bg-transparent px-0 text-[15px] text-slate-800 outline-none placeholder:text-slate-400"
-              />
-              <button
-                type="submit"
-                className="inline-flex h-12 shrink-0 items-center justify-center rounded-[20px] bg-[linear-gradient(90deg,#0E2450_0%,#007FFF_52%,#3B82F6_100%)] px-5 text-sm font-semibold text-white shadow-[0_20px_48px_-28px_rgba(37,99,235,0.42)] transition hover:-translate-y-0.5 hover:brightness-[1.03]"
-              >
-                {locale === "tr" ? "Ara" : "Search"}
-              </button>
-            </div>
-          </motion.form>
+            <GlobalSmartSearch locale={locale} items={searchItems} />
+          </motion.div>
 
           <motion.div
             className="mt-4 flex flex-wrap justify-center gap-2"
@@ -151,7 +195,7 @@ export function HeroSection({ locale, content }: HeroSectionProps) {
             {content.stats.map((stat) => (
               <div key={stat.label} className="ui-inner-panel px-5 py-4 text-left">
                 <div className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#0E2450]">
-                  {locale === "tr" ? "Güncel" : "Live"}
+                  {statCopy[locale]}
                 </div>
                 <div className="mt-3 text-3xl font-black tracking-[-0.06em] text-slate-950">{stat.value}</div>
                 <div className="mt-1 text-sm font-semibold text-slate-600">{stat.label}</div>

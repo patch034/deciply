@@ -15,6 +15,85 @@ import {
 } from "@/lib/blog";
 import { buildBlogIndexMetaDescription } from "@/lib/seo";
 
+const featuredBlogCopy: Record<
+  Locale,
+  { eyebrow: string; title: string; description: string; blocks: [string, string, string] }
+> = {
+  tr: {
+    eyebrow: "Bu hafta öne çıkan rehberler",
+    title: "Bu hafta öne çıkan rehberler",
+    description: "Editör seçimleri, en çok okunanlar ve yeni yayınlanan rehberler tek blokta.",
+    blocks: ["Editör seçimleri", "Bu hafta en çok okunan", "Bu hafta yeni"]
+  },
+  en: {
+    eyebrow: "Featured guides this week",
+    title: "Featured guides this week",
+    description: "Editor picks, most-read articles, and newly published guides in one place.",
+    blocks: ["Editor's picks", "Most read this week", "New this week"]
+  },
+  ar: {
+    eyebrow: "أدلة هذا الأسبوع المميزة",
+    title: "أدلة هذا الأسبوع المميزة",
+    description: "اختيارات التحرير، الأكثر قراءة، والأدلة المنشورة حديثًا في مكان واحد.",
+    blocks: ["اختيارات التحرير", "الأكثر قراءة هذا الأسبوع", "الجديد هذا الأسبوع"]
+  },
+  ru: {
+    eyebrow: "Рекомендуемые гайды недели",
+    title: "Рекомендуемые гайды недели",
+    description: "Выбор редакции, самые читаемые материалы и свежие гайды в одном блоке.",
+    blocks: ["Выбор редакции", "Самое читаемое за неделю", "Новое за неделю"]
+  },
+  zh: {
+    eyebrow: "本周精选指南",
+    title: "本周精选指南",
+    description: "编辑推荐、本周热门与新发布指南集中展示。",
+    blocks: ["编辑推荐", "本周热门", "本周新发布"]
+  },
+  ja: {
+    eyebrow: "今週の注目ガイド",
+    title: "今週の注目ガイド",
+    description: "編集部のおすすめ、よく読まれている記事、新着ガイドをまとめて確認できます。",
+    blocks: ["編集部おすすめ", "今週よく読まれた記事", "今週の新着"]
+  },
+  ko: {
+    eyebrow: "이번 주 추천 가이드",
+    title: "이번 주 추천 가이드",
+    description: "에디터 추천, 많이 읽힌 글, 새로 올라온 가이드를 한곳에서 볼 수 있습니다.",
+    blocks: ["에디터 추천", "이번 주 많이 읽힌 글", "이번 주 신규"]
+  },
+  el: {
+    eyebrow: "Προτεινόμενοι οδηγοί της εβδομάδας",
+    title: "Προτεινόμενοι οδηγοί της εβδομάδας",
+    description: "Επιλογές σύνταξης, πιο διαβασμένα άρθρα και νέοι οδηγοί σε ένα σημείο.",
+    blocks: ["Επιλογές σύνταξης", "Πιο διαβασμένα της εβδομάδας", "Νέο αυτή την εβδομάδα"]
+  },
+  da: {
+    eyebrow: "Udvalgte guides i denne uge",
+    title: "Udvalgte guides i denne uge",
+    description: "Redaktionens valg, mest læste artikler og nye guides samlet ét sted.",
+    blocks: ["Redaktionens valg", "Mest læst i denne uge", "Nyt i denne uge"]
+  },
+  fa: {
+    eyebrow: "راهنماهای شاخص این هفته",
+    title: "راهنماهای شاخص این هفته",
+    description: "انتخاب‌های تحریریه، مطالب پربازدید و راهنماهای تازه منتشرشده را یکجا ببینید.",
+    blocks: ["انتخاب تحریریه", "پربازدید این هفته", "جدید این هفته"]
+  }
+};
+
+const browseToolsLabel: Record<Locale, string> = {
+  tr: "Araçlara git",
+  en: "Browse tools",
+  ar: "اذهب إلى الأدوات",
+  ru: "К инструментам",
+  zh: "前往工具页",
+  ja: "ツールを見る",
+  ko: "도구로 이동",
+  el: "Μετάβαση στα εργαλεία",
+  da: "Gå til værktøjer",
+  fa: "رفتن به ابزارها"
+};
+
 function buildBlogPageHref(locale: Locale, page: number) {
   return page <= 1 ? `/${locale}/blog` : `/${locale}/blog?page=${page}`;
 }
@@ -65,6 +144,7 @@ export default async function BlogPage({
 
   const safeLocale = normalizeLocale(locale);
   const copy = getBlogCopy(safeLocale);
+  const featuredCopy = featuredBlogCopy[safeLocale];
   const requestedPage = parseBlogPage(page);
   const totalPages = getBlogTotalPages();
   const boostSections = getBlogBoostSections(safeLocale);
@@ -79,29 +159,24 @@ export default async function BlogPage({
   return (
     <div className="ui-page-shell w-full max-w-full overflow-x-hidden bg-transparent pb-10 pt-10 lg:pt-14">
       <SectionShell
-        eyebrow={safeLocale === "tr" ? "Öne çıkan blog blokları" : "Featured blog blocks"}
-        title={safeLocale === "tr" ? "Bu hafta öne çıkan rehberler" : "This week's featured guides"}
-        description={
-          safeLocale === "tr"
-            ? "Editör seçimleri, en çok okunanlar ve yeni yayınlanan rehberler tek blokta."
-            : "Editor picks, most-read articles, and the newest guides in one premium block."
-        }
-        actions={<PremiumButton href={`/${safeLocale}/blog`}>{copy.backToBlog}</PremiumButton>}
+        eyebrow={featuredCopy.eyebrow}
+        title={featuredCopy.title}
+        description={featuredCopy.description}
         tone="light"
       >
-        <div className="grid gap-4 xl:grid-cols-3">
+        <div className="grid gap-3 xl:grid-cols-3">
           {([
-            { label: safeLocale === "tr" ? "Editör seçimleri" : "Editor's Picks", article: boostSections.editorPicks[0] },
-            { label: safeLocale === "tr" ? "Bu hafta en çok okunan" : "Most Read This Week", article: boostSections.mostRead[0] },
-            { label: safeLocale === "tr" ? "Bu hafta yeni" : "New This Week", article: boostSections.newThisWeek[0] }
+            { label: featuredCopy.blocks[0], article: boostSections.editorPicks[0] },
+            { label: featuredCopy.blocks[1], article: boostSections.mostRead[0] },
+            { label: featuredCopy.blocks[2], article: boostSections.newThisWeek[0] }
           ] as const).map((block) =>
             block.article ? (
-              <div key={block.label} className="space-y-3">
+              <div key={block.label} className="space-y-2.5">
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0055FF]">{block.label}</p>
                   <span className="text-xs font-medium text-slate-500">{copy.articleLeadLabel}</span>
                 </div>
-                <BlogCard locale={safeLocale} article={block.article} ctaLabel={copy.readMoreLabel} tone="light" />
+                <BlogCard locale={safeLocale} article={block.article} ctaLabel={copy.readMoreLabel} tone="light" featured />
               </div>
             ) : null
           )}
@@ -112,10 +187,10 @@ export default async function BlogPage({
         eyebrow={copy.listEyebrow}
         title={copy.listTitle}
         description={copy.listDescription}
-        actions={<PremiumButton href={`/${safeLocale}/tools?page=1`}>{safeLocale === "tr" ? "Araçlara git" : "Browse tools"}</PremiumButton>}
+        actions={<PremiumButton href={`/${safeLocale}/tools?page=1`}>{browseToolsLabel[safeLocale]}</PremiumButton>}
         tone="light"
       >
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {articles.map((article) => (
             <BlogCard key={article.slug} locale={safeLocale} article={article} ctaLabel={copy.readMoreLabel} tone="light" />
           ))}
