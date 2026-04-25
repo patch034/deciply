@@ -69,7 +69,7 @@ function buildLocalizedTool(locale: SupportedLocale, slug: string) {
 }
 
 export function getCatalogContent(locale: SupportedLocale) {
-  return normalizeLocalizedContent(`catalog-content:${locale}`, localizeTree(locale, catalogContent[getContentBaseLocale(locale)]));
+  return normalizeLocalizedContent(`catalog-content:${locale}`, catalogContent[locale]);
 }
 
 export function getLocalizedCategories(locale: SupportedLocale): LocalizedCategory[] {

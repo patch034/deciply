@@ -6,11 +6,12 @@ import type { LocalizedTool } from "@/types/catalog";
 import { Badge } from "@/components/ui/badge";
 import { GlassPanel } from "@/components/ui/glass-panel";
 import { RatingBadge } from "@/components/ui/rating-badge";
+import type { Locale } from "@/i18n/config";
 
 function getPricingTone(pricing: string) {
   const normalized = pricing.toLowerCase();
 
-  if (normalized.includes("free") || normalized.includes("ücretsiz")) {
+  if (normalized.includes("free") || normalized.includes("ücretsiz") || normalized.includes("مجاني") || normalized.includes("免费") || normalized.includes("無料") || normalized.includes("무료") || normalized.includes("δωρεάν") || normalized.includes("gratis") || normalized.includes("رایگان")) {
     if (normalized.includes("freemium") || normalized.includes("kısmen")) {
       return "bg-sky-400";
     }
@@ -84,6 +85,19 @@ function ActionLink({
   );
 }
 
+const compareLabels: Record<Locale, string> = {
+  tr: "Karşılaştır",
+  en: "Compare",
+  ar: "قارن",
+  ru: "Сравнить",
+  zh: "对比",
+  ja: "比較",
+  ko: "비교",
+  el: "Σύγκρινε",
+  da: "Sammenlign",
+  fa: "مقایسه"
+};
+
 export function ToolCard({
   locale,
   tool,
@@ -96,7 +110,8 @@ export function ToolCard({
   logoUrl,
   variant = "card"
 }: ToolCardProps) {
-  const compareLabel = locale === "tr" ? "Karşılaştır" : "Compare";
+  const safeLocale = locale as Locale;
+  const compareLabel = compareLabels[safeLocale] ?? compareLabels.en;
   const pricingTone = getPricingTone(pricingLabel);
 
   if (variant === "row") {

@@ -7,43 +7,154 @@ import { PremiumButton } from "@/components/ui/premium-button";
 import { SectionShell } from "@/components/ui/section-shell";
 import { getComparisonDirectoryCards } from "@/lib/comparisons";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, normalizeLocale, type Locale } from "@/i18n/config";
-import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 
-const compareIntro = {
+const compareIntroLocalized: Record<
+  Locale,
+  {
+    title: string;
+    description: string;
+    heroBadge: string;
+    allComparisons: string;
+    autoCompare: string;
+    featuredTitle: string;
+    featuredDescription: string;
+    recentTitle: string;
+    recentDescription: string;
+    compareOpen: string;
+    compareLabel: string;
+  }
+> = {
   tr: {
     title: "AI karşılaştırmalarını tek yerde keşfet",
-    description:
-      "Karar vermeden önce popüler karşılaştırmaları, hızlı seçim bloklarını ve canlı compare akışını kompakt bir dizinde gez.",
-    heroBadge: "Compare hub",
+    description: "Karar vermeden önce popüler karşılaştırmaları, canlı akışı ve hızlı seçim sayfalarını tek merkezde incele.",
+    heroBadge: "Karşılaştırma merkezi",
     allComparisons: "Tüm karşılaştırmalar",
     autoCompare: "Canlı karşılaştırma",
     featuredTitle: "Öne çıkan karşılaştırmalar",
-    featuredDescription: "En çok trafik çeken ve karar açısından güçlü compare sayfaları.",
-    recentTitle: "Yakın karşılaştırmalar",
-    recentDescription: "Benzer araç çiftleri ve yüksek niyetli karar sayfaları.",
-    compareOpen: "Karşılaştırmayı aç"
+    featuredDescription: "Karar sürecinde en çok ihtiyaç duyulan karşılaştırmaları hızlıca gözden geçir.",
+    recentTitle: "Yeni karşılaştırmalar",
+    recentDescription: "Yakın araç eşleşmeleri ve yüksek niyetli karar sayfaları.",
+    compareOpen: "Karşılaştırmayı aç",
+    compareLabel: "Karşılaştır"
   },
   en: {
     title: "Explore AI comparisons in one place",
-    description:
-      "Browse popular comparisons, quick decision blocks, and the live compare flow inside one compact hub.",
+    description: "Review popular comparisons, live compare flows, and quick decision pages inside one compact hub.",
     heroBadge: "Compare hub",
     allComparisons: "All comparisons",
     autoCompare: "Live compare",
     featuredTitle: "Featured comparisons",
-    featuredDescription: "High-intent comparison pages that drive the strongest decisions.",
-    recentTitle: "Nearby comparisons",
-    recentDescription: "Adjacent tool pairs and other high-intent decision pages.",
-    compareOpen: "Open comparison"
+    featuredDescription: "Quickly review the comparisons people rely on most when making decisions.",
+    recentTitle: "New comparisons",
+    recentDescription: "Nearby tool matchups and high-intent decision pages.",
+    compareOpen: "Open comparison",
+    compareLabel: "Compare"
+  },
+  ar: {
+    title: "استكشف مقارنات AI في مكان واحد",
+    description: "راجع المقارنات الشائعة وتدفقات المقارنة المباشرة وصفحات القرار السريعة داخل مركز واحد منظم.",
+    heroBadge: "مركز المقارنات",
+    allComparisons: "كل المقارنات",
+    autoCompare: "مقارنة مباشرة",
+    featuredTitle: "مقارنات مميزة",
+    featuredDescription: "راجع بسرعة المقارنات الأكثر فائدة عند اتخاذ القرار.",
+    recentTitle: "مقارنات جديدة",
+    recentDescription: "مطابقات أدوات قريبة وصفحات قرار عالية النية.",
+    compareOpen: "افتح المقارنة",
+    compareLabel: "قارن"
+  },
+  ru: {
+    title: "Изучайте сравнения AI в одном месте",
+    description: "Просматривайте популярные сравнения, живые сценарии сравнения и быстрые страницы принятия решения в одном центре.",
+    heroBadge: "Центр сравнений",
+    allComparisons: "Все сравнения",
+    autoCompare: "Живое сравнение",
+    featuredTitle: "Избранные сравнения",
+    featuredDescription: "Быстро просматривайте сравнения, которые чаще всего помогают принять решение.",
+    recentTitle: "Новые сравнения",
+    recentDescription: "Близкие пары инструментов и страницы выбора с высоким намерением.",
+    compareOpen: "Открыть сравнение",
+    compareLabel: "Сравнить"
+  },
+  zh: {
+    title: "在一个页面中探索 AI 对比",
+    description: "在一个紧凑中心中查看热门对比、实时对比流程和快速决策页面。",
+    heroBadge: "对比中心",
+    allComparisons: "全部对比",
+    autoCompare: "实时对比",
+    featuredTitle: "精选对比",
+    featuredDescription: "快速浏览最常用于决策的对比页面。",
+    recentTitle: "最新对比",
+    recentDescription: "相近工具组合与高意图决策页面。",
+    compareOpen: "打开对比",
+    compareLabel: "对比"
+  },
+  ja: {
+    title: "AI比較をひとつの場所で探す",
+    description: "人気の比較、ライブ比較フロー、素早い意思決定ページをひとつのハブで確認できます。",
+    heroBadge: "比較ハブ",
+    allComparisons: "すべての比較",
+    autoCompare: "ライブ比較",
+    featuredTitle: "注目の比較",
+    featuredDescription: "意思決定に役立つ比較ページをすばやく確認できます。",
+    recentTitle: "新しい比較",
+    recentDescription: "近いツールの組み合わせと高意図の判断ページ。",
+    compareOpen: "比較を開く",
+    compareLabel: "比較"
+  },
+  ko: {
+    title: "한곳에서 AI 비교 탐색",
+    description: "인기 비교, 실시간 비교 흐름, 빠른 의사결정 페이지를 하나의 허브에서 살펴보세요.",
+    heroBadge: "비교 허브",
+    allComparisons: "모든 비교",
+    autoCompare: "실시간 비교",
+    featuredTitle: "주요 비교",
+    featuredDescription: "결정에 가장 많이 쓰이는 비교를 빠르게 확인해 보세요.",
+    recentTitle: "새 비교",
+    recentDescription: "가까운 도구 조합과 높은 의도의 비교 페이지.",
+    compareOpen: "비교 열기",
+    compareLabel: "비교"
+  },
+  el: {
+    title: "Εξερεύνησε συγκρίσεις AI σε ένα μέρος",
+    description: "Δες δημοφιλείς συγκρίσεις, live compare ροές και γρήγορες σελίδες απόφασης μέσα σε ένα ενιαίο hub.",
+    heroBadge: "Κέντρο συγκρίσεων",
+    allComparisons: "Όλες οι συγκρίσεις",
+    autoCompare: "Ζωντανή σύγκριση",
+    featuredTitle: "Προτεινόμενες συγκρίσεις",
+    featuredDescription: "Δες γρήγορα τις συγκρίσεις που βοηθούν περισσότερο στην απόφαση.",
+    recentTitle: "Νέες συγκρίσεις",
+    recentDescription: "Κοντινά ζευγάρια εργαλείων και σελίδες υψηλής πρόθεσης.",
+    compareOpen: "Άνοιγμα σύγκρισης",
+    compareLabel: "Σύγκρινε"
+  },
+  da: {
+    title: "Udforsk AI-sammenligninger ét sted",
+    description: "Gennemse populære sammenligninger, live compare-flow og hurtige beslutningssider i ét samlet hub.",
+    heroBadge: "Sammenligningshub",
+    allComparisons: "Alle sammenligninger",
+    autoCompare: "Live sammenligning",
+    featuredTitle: "Udvalgte sammenligninger",
+    featuredDescription: "Se hurtigt de sammenligninger, der oftest hjælper brugere med at vælge.",
+    recentTitle: "Nye sammenligninger",
+    recentDescription: "Nært beslægtede værktøjspar og højintente beslutningssider.",
+    compareOpen: "Åbn sammenligning",
+    compareLabel: "Sammenlign"
+  },
+  fa: {
+    title: "مقایسه‌های AI را در یک جا ببینید",
+    description: "مقایسه‌های محبوب، جریان مقایسه زنده و صفحه‌های تصمیم‌گیری سریع را در یک هاب واحد مرور کنید.",
+    heroBadge: "مرکز مقایسه",
+    allComparisons: "همه مقایسه‌ها",
+    autoCompare: "مقایسه زنده",
+    featuredTitle: "مقایسه‌های شاخص",
+    featuredDescription: "مقایسه‌هایی را که بیشتر به تصمیم‌گیری کمک می‌کنند سریع مرور کنید.",
+    recentTitle: "مقایسه‌های جدید",
+    recentDescription: "جفت ابزارهای نزدیک و صفحه‌های تصمیم‌گیری با نیت بالا.",
+    compareOpen: "باز کردن مقایسه",
+    compareLabel: "مقایسه"
   }
-} as const;
-
-const compareIntroLocalized = Object.fromEntries(
-  ["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"].map((locale) => [
-    locale,
-    localizeTree(locale as Locale, compareIntro[getContentBaseLocale(locale as Locale)])
-  ])
-) as Record<Locale, (typeof compareIntro)["tr"]>;
+};
 
 function buildFeaturedPairs(locale: Locale) {
   return getComparisonDirectoryCards(locale).slice(0, 8);
@@ -61,13 +172,11 @@ export async function generateMetadata({
   }
 
   const safeLocale = normalizeLocale(locale);
+  const copy = compareIntroLocalized[safeLocale];
 
   return {
-    title: safeLocale === "tr" ? "Karşılaştırmalar" : "Comparisons",
-    description:
-      safeLocale === "tr"
-        ? "AI araç karşılaştırmalarını, canlı compare akışını ve karar odaklı bağlantıları tek yerde keşfet."
-        : "Browse AI comparisons, live compare flows, and decision-focused links in one place.",
+    title: copy.title,
+    description: copy.description,
     alternates: {
       canonical: buildCanonicalUrl(`/${safeLocale}/compare`),
       languages: buildAlternates("/compare")
@@ -107,7 +216,7 @@ export default async function CompareHubPage({
             <div className="flex flex-wrap gap-2">
               <Badge variant="ghost">{copy.allComparisons}</Badge>
               <Badge variant="ghost">{copy.autoCompare}</Badge>
-              <Badge variant="ghost">{safeLocale === "tr" ? "Karar rehberi" : "Decision guides"}</Badge>
+              <Badge variant="ghost">{copy.compareLabel}</Badge>
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
               <PremiumButton href={`/${safeLocale}/compare-auto`}>{copy.autoCompare}</PremiumButton>
@@ -147,7 +256,7 @@ export default async function CompareHubPage({
           >
             <span className="min-w-0">
               <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
-                {safeLocale === "tr" ? "Karşılaştır" : "Compare"}
+                {copy.compareLabel}
               </span>
               <span className="block truncate text-sm font-semibold text-slate-950">{item.title}</span>
             </span>

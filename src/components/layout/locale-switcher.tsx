@@ -35,6 +35,21 @@ function GlobeIcon() {
   );
 }
 
+function ChevronDownIcon() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true" className="h-3 w-3">
+      <path
+        d="M4 6.5 8 10l4-3.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function stripLocaleFromPathname(pathname: string) {
   const segments = pathname.split("/").filter(Boolean);
 
@@ -93,6 +108,7 @@ export function LocaleSwitcher({ locale }: { locale: SupportedLocale }) {
         type="button"
         aria-haspopup="menu"
         aria-expanded={open}
+        aria-label={activeLanguage.nativeLabel}
         onClick={() => setOpen((current) => !current)}
         className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 text-sm font-bold text-slate-950 shadow-[0_14px_34px_-24px_rgba(15,23,42,0.22)] transition hover:border-sky-300 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
       >
@@ -101,14 +117,14 @@ export function LocaleSwitcher({ locale }: { locale: SupportedLocale }) {
         </span>
         <span className="hidden sm:inline">{activeLanguage.nativeLabel}</span>
         <span className="sm:hidden">{activeLanguage.code.toUpperCase()}</span>
-        <span aria-hidden="true" className="text-xs text-slate-500">
-          ▾
+        <span className="text-slate-500">
+          <ChevronDownIcon />
         </span>
       </button>
 
       {open ? (
         <div
-          className="absolute right-0 top-[calc(100%+0.7rem)] z-[999] w-[min(19rem,calc(100vw-1rem))] rounded-[24px] border border-slate-200 bg-white/100 p-2 shadow-[0_24px_72px_-28px_rgba(15,23,42,0.26)]"
+          className="absolute right-0 top-[calc(100%+0.7rem)] z-[999] w-[min(19rem,calc(100vw-1rem))] rounded-[24px] border border-slate-200 bg-white p-2 shadow-[0_24px_72px_-28px_rgba(15,23,42,0.26)]"
           role="menu"
         >
           <div className="grid gap-1">

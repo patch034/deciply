@@ -82,7 +82,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
               onClick={() => setMobileOpen((current) => !current)}
               className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/90 bg-white/72 text-slate-700 shadow-[0_12px_28px_-24px_rgba(15,23,42,0.24)] backdrop-blur-xl transition hover:border-sky-200 hover:text-slate-950 lg:hidden"
               aria-expanded={mobileOpen}
-              aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
+              aria-label={mobileOpen ? dictionary.mobileMenuCloseLabel : dictionary.mobileMenuOpenLabel}
             >
               <MenuIcon open={mobileOpen} />
             </button>
