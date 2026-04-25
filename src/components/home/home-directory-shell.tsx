@@ -4,8 +4,8 @@ import Link from "next/link";
 import { CategoryIcon } from "@/components/catalog/category-icon";
 import { HorizontalSlider } from "@/components/home/horizontal-slider";
 import { PremiumButton } from "@/components/ui/premium-button";
+import type { HomePreviewItem } from "@/data/home-previews";
 import { formatPricing } from "@/lib/catalog";
-import type { AiNewsItem } from "@/lib/news";
 import { getToolLogoUrl } from "@/lib/logo";
 import type { Locale } from "@/i18n/config";
 import type { LocalizedCategory, LocalizedTool } from "@/types/catalog";
@@ -23,7 +23,7 @@ type HomeDirectoryShellProps = {
   categoryToolCounts: Record<string, number>;
   tools: LocalizedTool[];
   blogs: HomeBlogPanelItem[];
-  news: AiNewsItem[];
+  news: HomePreviewItem[];
   comparisons: HomeComparisonCard[];
 };
 
@@ -344,7 +344,7 @@ function BlogPanel({ locale, blogs, copy }: { locale: Locale; blogs: HomeBlogPan
   );
 }
 
-function AiNewsPanel({ locale, news, copy }: { locale: Locale; news: AiNewsItem[]; copy: (typeof sectionCopy)[Locale] }) {
+function AiNewsPanel({ locale, news, copy }: { locale: Locale; news: HomePreviewItem[]; copy: (typeof sectionCopy)[Locale] }) {
   return (
     <aside className="ui-card h-[22rem] rounded-[24px] p-4 lg:h-[34rem]">
       <PanelHeader title={copy.newsTitle} href={`/${locale}/news`} label={copy.newsCta} />
@@ -355,8 +355,8 @@ function AiNewsPanel({ locale, news, copy }: { locale: Locale; news: AiNewsItem[
             href={`/${locale}/news/${item.slug}`}
             className="block rounded-[18px] px-3 py-3 transition hover:bg-slate-50"
           >
-            <p className="clamp-2 text-sm font-bold leading-5 text-slate-950">{item.displayTitle ?? item.title}</p>
-            <p className="clamp-2 mt-1 text-xs leading-5 text-slate-500">{item.displaySummary ?? item.summary}</p>
+            <p className="clamp-2 text-sm font-bold leading-5 text-slate-950">{item.title}</p>
+            <p className="clamp-2 mt-1 text-xs leading-5 text-slate-500">{item.excerpt}</p>
           </Link>
         ))}
       </div>

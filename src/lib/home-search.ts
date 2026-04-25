@@ -1,9 +1,8 @@
 import type { Locale, SupportedLocale } from "@/i18n/config";
+import { getHomepageBlogPreviews, getHomepageNewsPreviews } from "@/data/home-previews";
 import { getLocalizedCategories, getLocalizedTools } from "@/lib/catalog";
-import { getLocalizedBlogArticles } from "@/lib/blog";
 import { getCategoryHub } from "@/lib/category-taxonomy";
 import { getComparisonDirectoryCards } from "@/lib/comparisons";
-import { getAiNewsItems } from "@/lib/news";
 
 export type HomeSearchGroup = "tools" | "categories" | "comparisons" | "blog" | "news";
 
@@ -111,7 +110,7 @@ export async function buildHomeSearchIndex(locale: SupportedLocale): Promise<Hom
     searchText: makeSearchText([comparison.title, comparison.description, comparison.highlight, comparison.eyebrow])
   }));
 
-  const blogs = getLocalizedBlogArticles(locale).map((article) => ({
+  const blogs = getHomepageBlogPreviews(locale).map((article) => ({
     id: `blog:${article.slug}`,
     group: "blog" as const,
     title: article.title,
@@ -119,26 +118,19 @@ export async function buildHomeSearchIndex(locale: SupportedLocale): Promise<Hom
     href: `/${locale}/blog/${article.slug}`,
     searchText: makeSearchText([
       article.title,
-      article.excerpt,
-      article.intro,
-      article.categoryLabel,
-      article.relatedToolSlugs.join(" ")
+      article.excerpt
     ])
   }));
 
-  const newsItems = (await getAiNewsItems(locale, 24)).map((item) => ({
+  const newsItems = getHomepageNewsPreviews(locale).map((item) => ({
     id: `news:${item.slug}`,
     group: "news" as const,
-    title: item.displayTitle ?? item.title,
-    subtitle: item.displaySummary ?? item.summary,
+    title: item.title,
+    subtitle: item.excerpt,
     href: `/${locale}/news/${item.slug}`,
     searchText: makeSearchText([
-      item.displayTitle ?? item.title,
-      item.displaySummary ?? item.summary,
-      item.categoryLabel,
-      item.source,
-      item.dek,
-      item.whyItMatters
+      item.title,
+      item.excerpt
     ])
   }));
 

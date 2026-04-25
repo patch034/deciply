@@ -1,12 +1,11 @@
 import { HeroSection } from "@/components/home/hero-section";
 import { HomeDirectoryShell } from "@/components/home/home-directory-shell";
 import type { HomeContent } from "@/data/home";
+import { getHomepageBlogPreviews, getHomepageNewsPreviews } from "@/data/home-previews";
 import type { Locale } from "@/i18n/config";
 import { getLocalizedCategories, getLocalizedTools, getToolsByCategory } from "@/lib/catalog";
-import { getLocalizedBlogArticles } from "@/lib/blog";
 import { buildHomeSearchIndex } from "@/lib/home-search";
 import { getComparisonDirectoryCards } from "@/lib/comparisons";
-import { getAiNewsItems } from "@/lib/news";
 
 type HomePageProps = {
   locale: Locale;
@@ -34,14 +33,8 @@ export async function HomePage({ locale, content }: HomePageProps) {
   const categoryToolCounts = Object.fromEntries(
     categories.map((category) => [category.slug, getToolsByCategory(locale, category.slug).length])
   );
-  const blogs = getLocalizedBlogArticles(locale)
-    .slice(0, 10)
-    .map((article) => ({
-      slug: article.slug,
-      title: article.title,
-      excerpt: article.excerpt
-    }));
-  const news = await getAiNewsItems(locale, 10);
+  const blogs = getHomepageBlogPreviews(locale);
+  const news = getHomepageNewsPreviews(locale);
   const comparisons = getComparisonDirectoryCards(locale);
   const searchItems = await buildHomeSearchIndex(locale);
 
