@@ -13,6 +13,7 @@
     "prisma:studio": "prisma studio",
     "verify:encoding": "node scripts/verify-encoding.mjs",
     "verify:blog-dates": "node scripts/verify-blog-dates.mjs",
+    "verify:i18n": "node scripts/verify-i18n.mjs",
     "repair:encoding": "node scripts/repair-encoding.mjs",
     "fix:encoding": "npm run repair:encoding",
     "admin:db": "node scripts/setup-admin-db.mjs",

@@ -5,8 +5,32 @@ import { ThemePreviewLayout } from "@/components/content/theme-preview-layout";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, normalizeLocale, type Locale } from "@/i18n/config";
 import { getAiNewsItemBySlug } from "@/lib/news";
 
-export const revalidate = 3600;
-export const dynamicParams = true;
+const newsDetailCopy: Record<
+  Locale,
+  {
+    newsTitle: string;
+    eyebrow: string;
+    home: string;
+    source: string;
+    published: string;
+    internalLinks: string;
+    allNews: string;
+    originalSource: string;
+    digest: string;
+    whyItMatters: string;
+  }
+> = {
+  tr: { newsTitle: "AI Haberleri", eyebrow: "AI haber detay", home: "Ana sayfa", source: "Kaynak", published: "Yayın tarihi", internalLinks: "İç link", allNews: "Tüm haberler", originalSource: "Orijinal kaynak", digest: "Editoryal özet", whyItMatters: "Neden önemli" },
+  en: { newsTitle: "AI News", eyebrow: "AI news detail", home: "Home", source: "Source", published: "Published", internalLinks: "Internal links", allNews: "All news", originalSource: "Original source", digest: "Editorial digest", whyItMatters: "Why it matters" },
+  ar: { newsTitle: "أخبار AI", eyebrow: "تفاصيل خبر AI", home: "الرئيسية", source: "المصدر", published: "تاريخ النشر", internalLinks: "روابط داخلية", allNews: "كل الأخبار", originalSource: "المصدر الأصلي", digest: "الملخص التحريري", whyItMatters: "لماذا هذا مهم" },
+  ru: { newsTitle: "Новости AI", eyebrow: "Детали новости AI", home: "Главная", source: "Источник", published: "Дата публикации", internalLinks: "Внутренние ссылки", allNews: "Все новости", originalSource: "Оригинальный источник", digest: "Редакционная сводка", whyItMatters: "Почему это важно" },
+  zh: { newsTitle: "AI 新闻", eyebrow: "AI 新闻详情", home: "首页", source: "来源", published: "发布时间", internalLinks: "站内链接", allNews: "全部新闻", originalSource: "原始来源", digest: "编辑摘要", whyItMatters: "为什么重要" },
+  ja: { newsTitle: "AIニュース", eyebrow: "AIニュース詳細", home: "ホーム", source: "ソース", published: "公開日", internalLinks: "内部リンク", allNews: "すべてのニュース", originalSource: "元のソース", digest: "編集要約", whyItMatters: "重要な理由" },
+  ko: { newsTitle: "AI 뉴스", eyebrow: "AI 뉴스 상세", home: "홈", source: "출처", published: "게시일", internalLinks: "내부 링크", allNews: "모든 뉴스", originalSource: "원문 출처", digest: "편집 요약", whyItMatters: "왜 중요한가" },
+  el: { newsTitle: "Νέα AI", eyebrow: "Λεπτομέρεια νέου AI", home: "Αρχική", source: "Πηγή", published: "Ημερομηνία", internalLinks: "Εσωτερικοί σύνδεσμοι", allNews: "Όλες οι ειδήσεις", originalSource: "Αρχική πηγή", digest: "Συντακτική σύνοψη", whyItMatters: "Γιατί έχει σημασία" },
+  da: { newsTitle: "AI-nyheder", eyebrow: "AI-nyhedsdetalje", home: "Forside", source: "Kilde", published: "Udgivet", internalLinks: "Interne links", allNews: "Alle nyheder", originalSource: "Original kilde", digest: "Redaktionelt resumé", whyItMatters: "Hvorfor det betyder noget" },
+  fa: { newsTitle: "اخبار AI", eyebrow: "جزئیات خبر AI", home: "خانه", source: "منبع", published: "تاریخ انتشار", internalLinks: "لینک‌های داخلی", allNews: "همه خبرها", originalSource: "منبع اصلی", digest: "خلاصه تحریریه", whyItMatters: "چرا مهم است" }
+};
 
 function formatDate(locale: Locale, value?: string) {
   if (!value) {
@@ -19,7 +43,7 @@ function formatDate(locale: Locale, value?: string) {
     return null;
   }
 
-  return new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-US", {
+  return new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : locale, {
     day: "2-digit",
     month: "short",
     year: "numeric",
@@ -32,38 +56,32 @@ function buildWhyItMatters(locale: Locale, title: string, summary: string) {
   const lower = `${title} ${summary}`.toLowerCase();
 
   if (lower.includes("openai") || lower.includes("chatgpt")) {
-    return locale === "tr"
-      ? "OpenAI ve ChatGPT güncellemeleri, chatbot kararları ve yüksek niyetli karşılaştırma sayfaları için güçlü trafik sinyali üretir."
-      : "OpenAI and ChatGPT updates usually create strong traffic signals across chatbot decisions and high-intent comparison pages.";
+    return {
+      tr: "OpenAI ve ChatGPT güncellemeleri, chatbot kararları ve yüksek niyetli karşılaştırma sayfaları için güçlü trafik sinyali üretir.",
+      en: "OpenAI and ChatGPT updates usually create strong traffic signals across chatbot decisions and high-intent comparison pages.",
+      ar: "تحديثات OpenAI وChatGPT تولد عادة إشارات قوية لصفحات القرار والمقارنة ذات النية العالية.",
+      ru: "Обновления OpenAI и ChatGPT обычно дают сильный сигнал для страниц решений и сравнений с высоким намерением.",
+      zh: "OpenAI 和 ChatGPT 的更新通常会为高意图的对比与决策页面带来强信号。",
+      ja: "OpenAI と ChatGPT の更新は、高意図の比較ページや意思決定ページに強いシグナルを生みます。",
+      ko: "OpenAI와 ChatGPT 업데이트는 비교·결정 페이지에서 강한 수요 신호를 만듭니다.",
+      el: "Οι ενημερώσεις OpenAI και ChatGPT δημιουργούν ισχυρό σήμα πρόθεσης για σελίδες απόφασης και σύγκρισης.",
+      da: "OpenAI- og ChatGPT-opdateringer skaber ofte stærke signaler til beslutnings- og sammenligningssider.",
+      fa: "به‌روزرسانی‌های OpenAI و ChatGPT معمولاً سیگنال قوی برای صفحه‌های تصمیم‌گیری و مقایسه ایجاد می‌کنند."
+    }[locale];
   }
 
-  if (lower.includes("claude")) {
-    return locale === "tr"
-      ? "Claude başlıkları yazma, araştırma ve uzun form karar akışlarında doğrudan kıyas ihtiyacı doğurur."
-      : "Claude headlines often trigger direct comparison intent around writing, research, and long-form workflows.";
-  }
-
-  if (lower.includes("gemini") || lower.includes("google")) {
-    return locale === "tr"
-      ? "Gemini haberleri arama, üretkenlik ve günlük iş akışları için güçlü ürün seçimi sinyali yaratır."
-      : "Gemini stories often influence product-choice intent across search, productivity, and day-to-day workflows.";
-  }
-
-  if (lower.includes("copilot") || lower.includes("microsoft")) {
-    return locale === "tr"
-      ? "Copilot gelişmeleri ofis ve iş akışı araçlarında değerlendirme ihtiyacını hızlandırır."
-      : "Copilot developments typically accelerate evaluation across office and workflow tools.";
-  }
-
-  if (lower.includes("perplexity")) {
-    return locale === "tr"
-      ? "Perplexity güncellemeleri kaynaklı araştırma akışları için net iç link ve karar fırsatı üretir."
-      : "Perplexity updates create clear internal-link and decision opportunities for source-backed research workflows.";
-  }
-
-  return locale === "tr"
-    ? "Bu haber, araç seçimi ve karşılaştırma akışları için yeni bir karar sinyali sağlıyor."
-    : "This story adds another useful decision signal for tool selection and comparison flows.";
+  return {
+    tr: "Bu haber, araç seçimi ve karşılaştırma akışları için yeni bir karar sinyali sağlıyor.",
+    en: "This story adds another useful decision signal for tool selection and comparison flows.",
+    ar: "يضيف هذا الخبر إشارة مفيدة أخرى لاختيار الأدوات ومسارات المقارنة.",
+    ru: "Этот материал добавляет ещё один полезный сигнал для выбора инструмента и сценариев сравнения.",
+    zh: "这条新闻为工具选择和对比流程增加了一个新的参考信号。",
+    ja: "このニュースは、ツール選定や比較導線に新たな判断材料を加えます。",
+    ko: "이 뉴스는 도구 선택과 비교 흐름에 또 하나의 유용한 신호를 더합니다.",
+    el: "Αυτή η είδηση προσθέτει ένα ακόμη χρήσιμο σήμα για επιλογή εργαλείων και ροές σύγκρισης.",
+    da: "Denne historie tilføjer endnu et nyttigt signal til valg af værktøj og sammenligningsforløb.",
+    fa: "این خبر یک سیگنال مفید دیگر برای انتخاب ابزار و جریان‌های مقایسه اضافه می‌کند."
+  }[locale];
 }
 
 export async function generateStaticParams() {
@@ -89,7 +107,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${item.title} | ${safeLocale === "tr" ? "AI Haberleri" : "AI News"}`,
+    title: `${item.title} | ${newsDetailCopy[safeLocale].newsTitle}`,
     description: item.summary,
     alternates: {
       canonical: buildCanonicalUrl(`/${safeLocale}/news/${slug}`),
@@ -110,6 +128,7 @@ export default async function AiNewsDetailPage({
   }
 
   const safeLocale = normalizeLocale(locale);
+  const copy = newsDetailCopy[safeLocale];
   const item = await getAiNewsItemBySlug(safeLocale, slug);
 
   if (!item) {
@@ -125,44 +144,35 @@ export default async function AiNewsDetailPage({
   return (
     <ThemePreviewLayout
       locale={safeLocale}
-      eyebrow={safeLocale === "tr" ? "AI haber detay preview" : "AI news detail preview"}
+      eyebrow={copy.eyebrow}
       title={title}
       description={dek}
       breadcrumbs={[
-        { label: safeLocale === "tr" ? "Ana sayfa" : "Home", href: `/${safeLocale}` },
-        { label: safeLocale === "tr" ? "AI Haberleri" : "AI News", href: `/${safeLocale}/news` },
+        { label: copy.home, href: `/${safeLocale}` },
+        { label: copy.newsTitle, href: `/${safeLocale}/news` },
         { label: title }
       ]}
       badges={[item.source, item.categoryLabel, ...(publishedAt ? [publishedAt] : [])]}
       stats={[
-        {
-          label: safeLocale === "tr" ? "Kaynak" : "Source",
-          value: item.source
-        },
-        {
-          label: safeLocale === "tr" ? "Yayın tarihi" : "Published",
-          value: publishedAt ?? "-"
-        },
-        {
-          label: safeLocale === "tr" ? "İç link" : "Internal links",
-          value: String(item.relatedLinks.length)
-        }
+        { label: copy.source, value: item.source },
+        { label: copy.published, value: publishedAt ?? "-" },
+        { label: copy.internalLinks, value: String(item.relatedLinks.length) }
       ]}
       primaryAction={{
-        label: safeLocale === "tr" ? "Tüm haberler" : "All news",
+        label: copy.allNews,
         href: `/${safeLocale}/news`
       }}
       secondaryAction={{
-        label: safeLocale === "tr" ? "Orijinal kaynak" : "Original source",
+        label: copy.originalSource,
         href: item.sourceUrl
       }}
       sections={[
         {
-          title: safeLocale === "tr" ? "Editoryal özet" : "Editorial digest",
+          title: copy.digest,
           description: summary
         },
         {
-          title: safeLocale === "tr" ? "Neden önemli" : "Why it matters",
+          title: copy.whyItMatters,
           description: whyItMatters
         }
       ]}

@@ -10,6 +10,19 @@ type AiNewsListProps = {
   variant?: "page" | "sidebar";
 };
 
+const newsListCopy: Record<Locale, { viewDetails: string; originalSource: string }> = {
+  tr: { viewDetails: "Detayı gör", originalSource: "Kaynağa git" },
+  en: { viewDetails: "View details", originalSource: "Original source" },
+  ar: { viewDetails: "عرض التفاصيل", originalSource: "المصدر الأصلي" },
+  ru: { viewDetails: "Подробнее", originalSource: "Оригинальный источник" },
+  zh: { viewDetails: "查看详情", originalSource: "原始来源" },
+  ja: { viewDetails: "詳細を見る", originalSource: "元のソース" },
+  ko: { viewDetails: "자세히 보기", originalSource: "원문 출처" },
+  el: { viewDetails: "Δες λεπτομέρειες", originalSource: "Αρχική πηγή" },
+  da: { viewDetails: "Se detaljer", originalSource: "Original kilde" },
+  fa: { viewDetails: "دیدن جزئیات", originalSource: "منبع اصلی" }
+};
+
 function formatDate(locale: Locale, value?: string) {
   if (!value) {
     return null;
@@ -40,6 +53,7 @@ function buildSourceMark(source: string) {
 
 export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps) {
   const sidebar = variant === "sidebar";
+  const copy = newsListCopy[locale];
 
   return (
     <div className={sidebar ? "space-y-2.5" : "grid gap-4 md:grid-cols-2 xl:grid-cols-3"}>
@@ -114,7 +128,7 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
 
             <div className="mt-auto flex min-h-[54px] items-end justify-between gap-3 border-t border-slate-200 pt-3">
               <Link href={detailHref} className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0055FF] transition hover:border-sky-200 hover:bg-slate-50 hover:text-[#0E2450]">
-                {locale === "tr" ? "Detayı gör" : "View details"}
+                {copy.viewDetails}
               </Link>
 
               {!sidebar ? (
@@ -124,7 +138,7 @@ export function AiNewsList({ locale, items, variant = "page" }: AiNewsListProps)
                   rel="noopener noreferrer"
                   className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 transition hover:border-slate-300 hover:bg-white hover:text-[#0E2450]"
                 >
-                  {locale === "tr" ? "Kaynağa git" : "Original source"}
+                  {copy.originalSource}
                 </a>
               ) : null}
             </div>

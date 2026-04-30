@@ -14,7 +14,7 @@ import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale
 import { getBlogCopy, getRelatedArticlesByTool } from "@/lib/blog";
 import { getCatalogContent, formatPricing, getCategoryNamesMap, getLocalizedToolBySlug } from "@/lib/catalog";
 import { buildComparisonPath, getComparisonTargetTools } from "@/lib/comparisons";
-import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
+import { localizeString } from "@/lib/locale-copy";
 import {
   buildAlternativesPath,
   getAlternativeTargetTools,
@@ -82,21 +82,52 @@ const copy = {
 } as const;
 
 const copyByLocale = Object.fromEntries(
-  locales.map((locale) => [locale, localizeTree(locale, copy[getContentBaseLocale(locale)])])
+  locales.map((locale) => {
+    if (locale === "tr" || locale === "en") {
+      return [locale, copy[locale]];
+    }
+
+    return [
+      locale,
+      Object.fromEntries(
+        Object.entries(copy.en).map(([key, value]) => [key, localizeString(locale, value)])
+      )
+    ];
+  })
 ) as Record<SupportedLocale, (typeof copy)["tr"]>;
 
+const alternativesYearLabels: Record<Locale, string> = {
+  tr: "alternatifleri",
+  en: "Alternatives",
+  ar: "بدائل",
+  ru: "альтернативы",
+  zh: "替代方案",
+  ja: "代替案",
+  ko: "대안",
+  el: "εναλλακτικές",
+  da: "alternativer",
+  fa: "جایگزین‌ها"
+};
+
 function buildAlternativesTitle(locale: Locale, toolName: string) {
-  return locale === "tr"
-    ? `${toolName} alternatifleri (2026)`
-    : `${toolName} Alternatives (2026)`;
+  return `${toolName} ${alternativesYearLabels[locale]} (2026)`;
 }
 
 function buildAlternativesDescription(locale: Locale, toolName: string, alternatives: string[]) {
-  const alternativeText = alternatives.slice(0, 3).join(locale === "tr" ? ", " : ", ");
+  const alternativeText = alternatives.slice(0, 3).join(", ");
 
-  return locale === "tr"
-    ? `${toolName} için fiyat, güçlü yönler, karşılaştırma linkleri ve en mantıklı alternatifleri inceleyin: ${alternativeText}.`
-    : `Review ${toolName} alternatives across pricing, strengths, compare links, and best-fit workflows: ${alternativeText}.`;
+  if (locale === "tr") {
+    return `${toolName} için fiyat, güçlü yönler, karşılaştırma linkleri ve en mantıklı alternatifleri inceleyin: ${alternativeText}.`;
+  }
+
+  if (locale === "en") {
+    return `Review ${toolName} alternatives across pricing, strengths, compare links, and best-fit workflows: ${alternativeText}.`;
+  }
+
+  return localizeString(
+    locale,
+    `Review ${toolName} alternatives across pricing, strengths, compare links, and best-fit workflows: ${alternativeText}.`
+  );
 }
 
 export function generateStaticParams() {
@@ -242,7 +273,7 @@ export default async function AlternativesPage({
                 ))}
               </div>
               <h1 className="mt-6 bg-gradient-to-r from-white via-sky-200 to-cyan-300 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-[3.5rem] lg:leading-[1.03]">
-                {safeLocale === "tr" ? `${currentTool.name} alternatifleri` : `${currentTool.name} alternatives`}
+                {`${currentTool.name} ${alternativesYearLabels[safeLocale]}`}
               </h1>
               <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{currentTool.shortDescription}</p>
               <p className="mt-4 max-w-3xl text-base leading-8 text-slate-400">{dictionary.shortIntro}</p>
@@ -400,4 +431,3 @@ export default async function AlternativesPage({
     </>
   );
 }
-

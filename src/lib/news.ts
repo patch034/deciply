@@ -1,4 +1,4 @@
-import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
+import { localizeString } from "@/lib/locale-copy";
 import type { Locale } from "@/i18n/config";
 
 export type AiNewsLink = {
@@ -38,8 +38,16 @@ type BaseNewsItem = {
   en: LocaleContent;
 };
 
-function isTurkish(locale: Locale) {
-  return locale === "tr";
+function translateUi(locale: Locale, trValue: string, enValue: string) {
+  if (locale === "tr") {
+    return trValue;
+  }
+
+  if (locale === "en") {
+    return enValue;
+  }
+
+  return localizeString(locale, enValue);
 }
 
 function buildWhyItMatters(locale: Locale, title: string, summary: string) {
@@ -275,7 +283,17 @@ const BASE_AI_NEWS_ITEMS: BaseNewsItem[] = [
 ];
 
 function buildLocalizedItem(locale: Locale, item: BaseNewsItem): AiNewsItem {
-  const content = localizeTree(locale, item[getContentBaseLocale(locale)]);
+  const content =
+    locale === "tr"
+      ? item.tr
+      : locale === "en"
+        ? item.en
+        : {
+            title: localizeString(locale, item.en.title),
+            summary: localizeString(locale, item.en.summary),
+            dek: localizeString(locale, item.en.dek),
+            whyItMatters: localizeString(locale, item.en.whyItMatters)
+          };
   const summary = content.summary.trim();
   const title = content.title.trim();
 
@@ -286,7 +304,7 @@ function buildLocalizedItem(locale: Locale, item: BaseNewsItem): AiNewsItem {
     source: item.source,
     sourceUrl: item.sourceUrl,
     publishedAt: item.publishedAt,
-    categoryLabel: item.categoryLabel,
+    categoryLabel: translateUi(locale, item.categoryLabel, item.categoryLabel),
     relatedLinks: buildRelatedLinks(title, locale),
     displayTitle: title,
     displaySummary: summary,

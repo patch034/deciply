@@ -13,8 +13,21 @@ type BlogCardProps = {
   featured?: boolean;
 };
 
+const relatedToolsLabels: Record<Locale, string> = {
+  tr: "bağlantılı araç",
+  en: "related tools",
+  ar: "أدوات مرتبطة",
+  ru: "связанные инструменты",
+  zh: "相关工具",
+  ja: "関連ツール",
+  ko: "관련 도구",
+  el: "σχετικά εργαλεία",
+  da: "relaterede værktøjer",
+  fa: "ابزارهای مرتبط"
+};
+
 export function BlogCard({ locale, article, ctaLabel, tone = "light", featured = false }: BlogCardProps) {
-  const relatedToolsLabel = locale === "tr" ? "bağlantılı araç" : "related tools";
+  const relatedToolsLabel = relatedToolsLabels[locale];
   const publishSource = resolveBlogPublishDate(article);
   const publishDate = publishSource ? formatBlogDate(locale, publishSource) : null;
   const light = tone === "light";

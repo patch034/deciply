@@ -7,7 +7,6 @@ import { GlassPanel } from "@/components/ui/glass-panel";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { buildAutoComparisonPath } from "@/lib/comparisons";
 import type { Locale } from "@/i18n/config";
-import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
 import type { LocalizedTool } from "@/types/catalog";
 
 type CompareToolOption = Pick<LocalizedTool, "slug" | "name" | "bestUseCase" | "pricing" | "compareProfile">;
@@ -20,7 +19,39 @@ type AutoCompareWorkspaceProps = {
   compact?: boolean;
 };
 
-const copy = {
+type CompareCopy = {
+  leftLabel: string;
+  rightLabel: string;
+  selectorHint: string;
+  compareCta: string;
+  openLabel: string;
+  emptyTitle: string;
+  emptyDescription: string;
+  compactTitle: string;
+  compactDescription: string;
+  fullTitle: string;
+  fullDescription: string;
+  pricingModel: string;
+  freeTier: string;
+  bestUseCase: string;
+  strengths: string;
+  weaknesses: string;
+  speed: string;
+  ease: string;
+  quality: string;
+  students: string;
+  creators: string;
+  business: string;
+  value: string;
+  category: string;
+  yes: string;
+  no: string;
+  searchPlaceholder: string;
+  noMatch: string;
+  notAvailable: string;
+};
+
+const copyByLocale: Record<Locale, CompareCopy> = {
   tr: {
     leftLabel: "Araç A",
     rightLabel: "Araç B",
@@ -47,7 +78,10 @@ const copy = {
     value: "Değer",
     category: "Kategori",
     yes: "Evet",
-    no: "Hayır"
+    no: "Hayır",
+    searchPlaceholder: "Araç ara...",
+    noMatch: "Araç bulunamadı.",
+    notAvailable: "Mevcut değil"
   },
   en: {
     leftLabel: "Tool A",
@@ -75,16 +109,260 @@ const copy = {
     value: "Value",
     category: "Category",
     yes: "Yes",
-    no: "No"
+    no: "No",
+    searchPlaceholder: "Search a tool...",
+    noMatch: "No tools found.",
+    notAvailable: "Not available"
+  },
+  ar: {
+    leftLabel: "الأداة A",
+    rightLabel: "الأداة B",
+    selectorHint: "اختر أي أداتين وقارنهما فورًا.",
+    compareCta: "قارن الآن",
+    openLabel: "افتح المقارنة",
+    emptyTitle: "اختر أداتين للمقارنة",
+    emptyDescription: "بمجرد اختيار الأداتين ستظهر فروق السعر والملاءمة والجودة أدناه.",
+    compactTitle: "مقارنة سريعة",
+    compactDescription: "عرض مختصر للزوج الذي اخترته.",
+    fullTitle: "مساحة المقارنة التلقائية",
+    fullDescription: "استخدم بيانات الدليل نفسها لمراجعة السعر والملاءمة والسرعة وجودة المخرجات في لوحة واحدة.",
+    pricingModel: "نموذج التسعير",
+    freeTier: "خطة مجانية",
+    bestUseCase: "أفضل استخدام",
+    strengths: "نقاط القوة",
+    weaknesses: "نقاط الضعف",
+    speed: "السرعة",
+    ease: "سهولة الاستخدام",
+    quality: "جودة المخرجات",
+    students: "الطلاب",
+    creators: "المنشئون",
+    business: "الأعمال",
+    value: "القيمة",
+    category: "الفئة",
+    yes: "نعم",
+    no: "لا",
+    searchPlaceholder: "ابحث عن أداة...",
+    noMatch: "لم يتم العثور على أدوات.",
+    notAvailable: "غير متاح"
+  },
+  ru: {
+    leftLabel: "Инструмент A",
+    rightLabel: "Инструмент B",
+    selectorHint: "Выберите любые два инструмента и сравните их сразу.",
+    compareCta: "Сравнить",
+    openLabel: "Открыть сравнение",
+    emptyTitle: "Выберите два инструмента для сравнения",
+    emptyDescription: "После выбора ниже сразу появятся различия по цене, сценарию использования и качеству.",
+    compactTitle: "Быстрое сравнение",
+    compactDescription: "Краткий обзор выбранной пары.",
+    fullTitle: "Авто-сравнение",
+    fullDescription: "Используйте те же данные каталога, чтобы в одной панели оценить цену, соответствие, скорость и качество.",
+    pricingModel: "Модель цены",
+    freeTier: "Бесплатный старт",
+    bestUseCase: "Лучший сценарий",
+    strengths: "Сильные стороны",
+    weaknesses: "Слабые стороны",
+    speed: "Скорость",
+    ease: "Простота",
+    quality: "Качество результата",
+    students: "Студенты",
+    creators: "Авторы",
+    business: "Бизнес",
+    value: "Ценность",
+    category: "Категория",
+    yes: "Да",
+    no: "Нет",
+    searchPlaceholder: "Найдите инструмент...",
+    noMatch: "Инструменты не найдены.",
+    notAvailable: "Недоступно"
+  },
+  zh: {
+    leftLabel: "工具 A",
+    rightLabel: "工具 B",
+    selectorHint: "任选两个工具并立即对比。",
+    compareCta: "立即对比",
+    openLabel: "打开对比",
+    emptyTitle: "请选择两个工具进行对比",
+    emptyDescription: "选择后，下方会立即显示价格、适配度和质量差异。",
+    compactTitle: "快速对比",
+    compactDescription: "你所选工具组合的简要概览。",
+    fullTitle: "自动对比工作区",
+    fullDescription: "使用同一份目录数据，在一个面板中查看价格、适配度、速度和输出质量。",
+    pricingModel: "定价模式",
+    freeTier: "免费层级",
+    bestUseCase: "最佳用途",
+    strengths: "优势",
+    weaknesses: "不足",
+    speed: "速度",
+    ease: "易用性",
+    quality: "输出质量",
+    students: "学生",
+    creators: "创作者",
+    business: "企业",
+    value: "性价比",
+    category: "分类",
+    yes: "是",
+    no: "否",
+    searchPlaceholder: "搜索工具...",
+    noMatch: "未找到工具。",
+    notAvailable: "不可用"
+  },
+  ja: {
+    leftLabel: "ツール A",
+    rightLabel: "ツール B",
+    selectorHint: "好きな2つのツールを選んですぐに比較できます。",
+    compareCta: "今すぐ比較",
+    openLabel: "比較を開く",
+    emptyTitle: "比較する2つのツールを選択してください",
+    emptyDescription: "選択すると、価格・適合性・品質の違いがすぐ下に表示されます。",
+    compactTitle: "クイック比較",
+    compactDescription: "選択したペアの要点をコンパクトに表示します。",
+    fullTitle: "自動比較ワークスペース",
+    fullDescription: "同じカタログデータを使って、価格・適合性・速度・出力品質を1つのパネルで確認できます。",
+    pricingModel: "料金モデル",
+    freeTier: "無料枠",
+    bestUseCase: "最適な用途",
+    strengths: "強み",
+    weaknesses: "弱み",
+    speed: "速度",
+    ease: "使いやすさ",
+    quality: "出力品質",
+    students: "学生",
+    creators: "クリエイター",
+    business: "ビジネス",
+    value: "価値",
+    category: "カテゴリ",
+    yes: "はい",
+    no: "いいえ",
+    searchPlaceholder: "ツールを検索...",
+    noMatch: "一致するツールがありません。",
+    notAvailable: "利用不可"
+  },
+  ko: {
+    leftLabel: "도구 A",
+    rightLabel: "도구 B",
+    selectorHint: "원하는 두 도구를 선택해 즉시 비교하세요.",
+    compareCta: "지금 비교",
+    openLabel: "비교 열기",
+    emptyTitle: "비교할 두 도구를 선택하세요",
+    emptyDescription: "선택하는 즉시 아래에서 가격, 적합도, 품질 차이를 확인할 수 있습니다.",
+    compactTitle: "빠른 비교",
+    compactDescription: "선택한 두 도구의 핵심만 간단히 보여줍니다.",
+    fullTitle: "자동 비교 워크스페이스",
+    fullDescription: "같은 카탈로그 데이터를 사용해 가격, 적합성, 속도, 결과 품질을 한 패널에서 검토하세요.",
+    pricingModel: "가격 모델",
+    freeTier: "무료 시작",
+    bestUseCase: "최적 활용",
+    strengths: "강점",
+    weaknesses: "약점",
+    speed: "속도",
+    ease: "사용 편의성",
+    quality: "출력 품질",
+    students: "학생",
+    creators: "크리에이터",
+    business: "비즈니스",
+    value: "가치",
+    category: "카테고리",
+    yes: "예",
+    no: "아니오",
+    searchPlaceholder: "도구 검색...",
+    noMatch: "도구를 찾지 못했습니다.",
+    notAvailable: "사용 불가"
+  },
+  el: {
+    leftLabel: "Εργαλείο A",
+    rightLabel: "Εργαλείο B",
+    selectorHint: "Διάλεξε δύο εργαλεία και σύγκρινέ τα αμέσως.",
+    compareCta: "Σύγκρινε τώρα",
+    openLabel: "Άνοιγμα σύγκρισης",
+    emptyTitle: "Επίλεξε δύο εργαλεία για σύγκριση",
+    emptyDescription: "Μόλις τα επιλέξεις, θα εμφανιστούν παρακάτω οι διαφορές σε τιμή, χρήση και ποιότητα.",
+    compactTitle: "Γρήγορη σύγκριση",
+    compactDescription: "Μια συνοπτική προβολή για το ζευγάρι που διάλεξες.",
+    fullTitle: "Χώρος αυτόματης σύγκρισης",
+    fullDescription: "Χρησιμοποίησε τα ίδια δεδομένα καταλόγου για να δεις τιμή, καταλληλότητα, ταχύτητα και ποιότητα σε ένα panel.",
+    pricingModel: "Μοντέλο τιμολόγησης",
+    freeTier: "Δωρεάν επίπεδο",
+    bestUseCase: "Καλύτερη χρήση",
+    strengths: "Δυνατά σημεία",
+    weaknesses: "Αδυναμίες",
+    speed: "Ταχύτητα",
+    ease: "Ευκολία χρήσης",
+    quality: "Ποιότητα αποτελέσματος",
+    students: "Μαθητές",
+    creators: "Δημιουργοί",
+    business: "Επιχειρήσεις",
+    value: "Αξία",
+    category: "Κατηγορία",
+    yes: "Ναι",
+    no: "Όχι",
+    searchPlaceholder: "Αναζήτησε εργαλείο...",
+    noMatch: "Δεν βρέθηκαν εργαλεία.",
+    notAvailable: "Μη διαθέσιμο"
+  },
+  da: {
+    leftLabel: "Værktøj A",
+    rightLabel: "Værktøj B",
+    selectorHint: "Vælg to værktøjer og sammenlign dem med det samme.",
+    compareCta: "Sammenlign nu",
+    openLabel: "Åbn sammenligning",
+    emptyTitle: "Vælg to værktøjer for at sammenligne",
+    emptyDescription: "Så snart du vælger dem, vises forskelle i pris, workflow-fit og kvalitet nedenfor.",
+    compactTitle: "Hurtig sammenligning",
+    compactDescription: "Et kompakt overblik over det valgte værktøjspar.",
+    fullTitle: "Automatisk sammenligningspanel",
+    fullDescription: "Brug de samme katalogdata til at gennemgå pris, fit, hastighed og output i ét panel.",
+    pricingModel: "Prisstruktur",
+    freeTier: "Gratis niveau",
+    bestUseCase: "Bedste brugsscenarie",
+    strengths: "Styrker",
+    weaknesses: "Svagheder",
+    speed: "Hastighed",
+    ease: "Brugervenlighed",
+    quality: "Outputkvalitet",
+    students: "Studerende",
+    creators: "Skabere",
+    business: "Forretning",
+    value: "Værdi",
+    category: "Kategori",
+    yes: "Ja",
+    no: "Nej",
+    searchPlaceholder: "Søg efter værktøj...",
+    noMatch: "Ingen værktøjer fundet.",
+    notAvailable: "Ikke tilgængelig"
+  },
+  fa: {
+    leftLabel: "ابزار A",
+    rightLabel: "ابزار B",
+    selectorHint: "هر دو ابزار را انتخاب کنید و فوراً مقایسه کنید.",
+    compareCta: "همین حالا مقایسه کن",
+    openLabel: "باز کردن مقایسه",
+    emptyTitle: "برای مقایسه دو ابزار انتخاب کنید",
+    emptyDescription: "به محض انتخاب، تفاوت قیمت، تناسب کاربرد و کیفیت در پایین نمایش داده می‌شود.",
+    compactTitle: "مقایسه سریع",
+    compactDescription: "نمایی خلاصه از دو ابزاری که انتخاب کرده‌اید.",
+    fullTitle: "محیط مقایسه خودکار",
+    fullDescription: "با استفاده از همان داده‌های دایرکتوری، قیمت، تناسب، سرعت و کیفیت خروجی را در یک پنل بررسی کنید.",
+    pricingModel: "مدل قیمت‌گذاری",
+    freeTier: "سطح رایگان",
+    bestUseCase: "بهترین کاربرد",
+    strengths: "نقاط قوت",
+    weaknesses: "نقاط ضعف",
+    speed: "سرعت",
+    ease: "سهولت استفاده",
+    quality: "کیفیت خروجی",
+    students: "دانشجویان",
+    creators: "سازندگان",
+    business: "کسب‌وکار",
+    value: "ارزش",
+    category: "دسته",
+    yes: "بله",
+    no: "خیر",
+    searchPlaceholder: "جست‌وجوی ابزار...",
+    noMatch: "ابزاری پیدا نشد.",
+    notAvailable: "در دسترس نیست"
   }
-} as const;
-
-const copyByLocale = Object.fromEntries(
-  (["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"] as const).map((itemLocale) => [
-    itemLocale,
-    localizeTree(itemLocale, copy[getContentBaseLocale(itemLocale)])
-  ])
-) as Record<Locale, (typeof copy)["tr"]>;
+};
 
 function compareLocaleSort(locale: Locale, left: CompareToolOption, right: CompareToolOption) {
   return left.name.localeCompare(right.name, locale === "tr" ? "tr-TR" : "en-US");
@@ -251,7 +529,7 @@ function SearchableToolSelect({ locale, label, value, onChange, options }: Searc
             autoComplete="off"
             spellCheck={false}
             value={query}
-            placeholder={locale === "tr" ? "Araç ara..." : "Compare tool..."}
+            placeholder={copyByLocale[locale].searchPlaceholder}
             onFocus={() => setOpen(true)}
             onChange={(event) => {
               setQuery(event.target.value);
@@ -311,7 +589,7 @@ function SearchableToolSelect({ locale, label, value, onChange, options }: Searc
               );
             })
           ) : (
-            <p className="px-3 py-4 text-sm text-slate-500">{locale === "tr" ? "Eşleşme bulunamadı." : "No tools found."}</p>
+            <p className="px-3 py-4 text-sm text-slate-500">{copyByLocale[locale].noMatch}</p>
           )}
         </div>
       ) : null}
@@ -416,7 +694,7 @@ function renderValue(value: string | string[] | number | boolean, locale: Locale
       return (
         <span
           role="img"
-          aria-label={locale === "tr" ? "Uygun değil" : "Not available"}
+          aria-label={labels.notAvailable}
           className={
             compact
               ? "inline-flex h-5 w-5 items-center justify-center rounded-full border border-slate-200 bg-white text-[11px] font-bold text-[#0055FF]"

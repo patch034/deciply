@@ -1,4 +1,5 @@
 import type { SupportedLocale } from "@/i18n/config";
+import { localizeString } from "@/lib/locale-copy";
 
 export type DirectoryLocaleText = {
   tr: string;
@@ -635,14 +636,14 @@ function makeLocaleText(tr: string, en = toEnglishLabel(tr)): DirectoryLocaleTex
   return {
     tr,
     en,
-    ar: en,
-    ru: en,
-    zh: en,
-    ja: en,
-    ko: en,
-    el: en,
-    da: en,
-    fa: en
+    ar: localizeString("ar", en),
+    ru: localizeString("ru", en),
+    zh: localizeString("zh", en),
+    ja: localizeString("ja", en),
+    ko: localizeString("ko", en),
+    el: localizeString("el", en),
+    da: localizeString("da", en),
+    fa: localizeString("fa", en)
   };
 }
 

@@ -1,7 +1,7 @@
 ﻿import { blogArticles } from "@/data/blog";
 import { getBlogPlaybookSections } from "@/data/blog-playbooks";
 import { useCaseOptions } from "@/data/tool-taxonomy";
-import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
+import { getContentBaseLocale, localizeString, localizeTree } from "@/lib/locale-copy";
 import type { Locale } from "@/i18n/config";
 import { getLocalizedToolBySlug, getLocalizedTools } from "@/lib/catalog";
 import { buildComparisonPath } from "@/lib/comparisons";
@@ -143,9 +143,45 @@ const blogCopyOverrides: Partial<Record<Locale, Partial<BlogCopy>>> = {
   }
 };
 
+const localeCodes: Record<Locale, string> = {
+  tr: "tr-TR",
+  en: "en-US",
+  ar: "ar",
+  ru: "ru-RU",
+  zh: "zh-CN",
+  ja: "ja-JP",
+  ko: "ko-KR",
+  el: "el-GR",
+  da: "da-DK",
+  fa: "fa-IR"
+};
+
+const alternativesLabelByLocale: Record<Locale, string> = {
+  tr: "alternatifleri",
+  en: "alternatives",
+  ar: "البدائل",
+  ru: "альтернативы",
+  zh: "替代方案",
+  ja: "代替案",
+  ko: "대안",
+  el: "εναλλακτικές",
+  da: "alternativer",
+  fa: "جایگزین‌ها"
+};
+
+function localizeBlogCopy(locale: Locale, source: BlogCopy): BlogCopy {
+  if (locale === "tr" || locale === "en") {
+    return source;
+  }
+
+  return Object.fromEntries(
+    Object.entries(source).map(([key, value]) => [key, localizeString(locale, value)])
+  ) as BlogCopy;
+}
+
 const blogCopy = Object.fromEntries(
   (["tr", "en", "ar", "ru", "zh", "ja", "ko", "el", "da", "fa"] as const).map((itemLocale) => {
-    const localized = localizeTree(itemLocale, blogCopyBase[getContentBaseLocale(itemLocale)]);
+    const localized = localizeBlogCopy(itemLocale, blogCopyBase[itemLocale === "tr" ? "tr" : "en"]);
 
     return [itemLocale, { ...localized, ...(blogCopyOverrides[itemLocale] ?? {}) }];
   })
@@ -160,9 +196,9 @@ export function resolveBlogPublishDate(article: Pick<BlogEntry, "publishDate">) 
 }
 
 export function formatBlogDate(locale: Locale, value: string) {
-  return new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-US", {
+  return new Intl.DateTimeFormat(localeCodes[locale], {
     day: "numeric",
-    month: locale === "tr" ? "long" : "short",
+    month: locale === "tr" || locale === "ar" || locale === "ru" || locale === "fa" ? "long" : "short",
     year: "numeric",
     timeZone: "Europe/Istanbul"
   }).format(new Date(`${value}T12:00:00+03:00`));
@@ -414,7 +450,7 @@ function buildArticlePageLinks(locale: Locale, article: LocalizedBlogArticle) {
     .map((toolSlug) => getLocalizedToolBySlug(locale, toolSlug))
     .filter((tool): tool is NonNullable<typeof tool> => tool !== null)
     .map((tool) => ({
-      label: locale === "tr" ? `${tool.name} alternatifleri` : `${tool.name} alternatives`,
+      label: `${tool.name} ${alternativesLabelByLocale[locale]}`,
       href: `/${locale}/alternatives/${tool.slug}`
     }));
 

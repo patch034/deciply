@@ -1099,6 +1099,145 @@ const socialProofStatLabels: Record<Locale, [string, string, string]> = {
   fa: ["ابزار AI بررسی‌شده", "صفحه use case فعال", "راهنمای تازه"]
 };
 
+const homeSectionOverrides: Record<
+  Locale,
+  {
+    hotTools: HomeContent["sections"]["hotTools"];
+    guides: HomeContent["sections"]["guides"];
+  }
+> = {
+  tr: {
+    hotTools: {
+      eyebrow: "Trending",
+      title: "Şu an öne çıkan AI araçları",
+      description: "Karşılaştırma ve keşif akışlarında sık açılan araçları hızlıca görün."
+    },
+    guides: {
+      eyebrow: "Discovery sayfaları",
+      title: "Kararı hızlandıran en iyi sayfalar",
+      description: "Para kazanma, yeni başlangıç, içerik üretimi ve freelance kullanım senaryoları için hazırlanan sayfaları açın.",
+      linkLabel: "Sayfayı aç"
+    }
+  },
+  en: {
+    hotTools: {
+      eyebrow: "Trending",
+      title: "Trending AI tools right now",
+      description: "Quickly review the tools that show up most often in discovery and comparison flows."
+    },
+    guides: {
+      eyebrow: "Discovery pages",
+      title: "Best pages built to speed up decisions",
+      description: "Open use-case pages for monetization, beginner workflows, content creation, and freelance work.",
+      linkLabel: "Open page"
+    }
+  },
+  ar: {
+    hotTools: {
+      eyebrow: "الرائج الآن",
+      title: "أدوات AI الرائجة الآن",
+      description: "راجع بسرعة الأدوات التي تظهر أكثر من غيرها في مسارات الاكتشاف والمقارنة."
+    },
+    guides: {
+      eyebrow: "صفحات الاكتشاف",
+      title: "أفضل الصفحات لتسريع القرار",
+      description: "افتح صفحات حالات الاستخدام للربح، والبدايات الجديدة، وصناعة المحتوى، والعمل الحر.",
+      linkLabel: "افتح الصفحة"
+    }
+  },
+  ru: {
+    hotTools: {
+      eyebrow: "В тренде",
+      title: "AI-инструменты, которые сейчас в тренде",
+      description: "Быстро просмотрите инструменты, которые чаще всего появляются в сценариях поиска и сравнения."
+    },
+    guides: {
+      eyebrow: "Страницы discovery",
+      title: "Лучшие страницы для ускорения выбора",
+      description: "Откройте страницы по монетизации, стартовым сценариям, созданию контента и фриланс-работе.",
+      linkLabel: "Открыть страницу"
+    }
+  },
+  zh: {
+    hotTools: {
+      eyebrow: "正在热门",
+      title: "当前热门的 AI 工具",
+      description: "快速查看在发现和对比流程中最常出现的工具。"
+    },
+    guides: {
+      eyebrow: "发现页",
+      title: "帮助更快做决定的页面",
+      description: "打开围绕变现、新手起步、内容创作和自由职业场景的使用页面。",
+      linkLabel: "打开页面"
+    }
+  },
+  ja: {
+    hotTools: {
+      eyebrow: "トレンド",
+      title: "今よく見られているAIツール",
+      description: "発見や比較の流れでよく表示されるツールをすばやく確認できます。"
+    },
+    guides: {
+      eyebrow: "ディスカバリーページ",
+      title: "判断を早めるおすすめページ",
+      description: "収益化、初心者向けワークフロー、コンテンツ制作、フリーランス向けのユースケースページを開けます。",
+      linkLabel: "ページを開く"
+    }
+  },
+  ko: {
+    hotTools: {
+      eyebrow: "트렌딩",
+      title: "지금 주목받는 AI 도구",
+      description: "탐색과 비교 흐름에서 자주 등장하는 도구를 빠르게 살펴보세요."
+    },
+    guides: {
+      eyebrow: "디스커버리 페이지",
+      title: "결정을 빠르게 돕는 핵심 페이지",
+      description: "수익화, 초보자 워크플로, 콘텐츠 제작, 프리랜서 작업용 활용 페이지를 열어보세요.",
+      linkLabel: "페이지 열기"
+    }
+  },
+  el: {
+    hotTools: {
+      eyebrow: "Τάση",
+      title: "AI εργαλεία που ξεχωρίζουν τώρα",
+      description: "Δες γρήγορα τα εργαλεία που εμφανίζονται πιο συχνά στις ροές ανακάλυψης και σύγκρισης."
+    },
+    guides: {
+      eyebrow: "Σελίδες discovery",
+      title: "Οι καλύτερες σελίδες για πιο γρήγορη απόφαση",
+      description: "Άνοιξε σελίδες για monetization, αρχικά workflows, δημιουργία περιεχομένου και freelance εργασία.",
+      linkLabel: "Άνοιξε τη σελίδα"
+    }
+  },
+  da: {
+    hotTools: {
+      eyebrow: "Trending",
+      title: "AI-værktøjer der trender lige nu",
+      description: "Få hurtigt overblik over de værktøjer, der oftest dukker op i discovery- og sammenligningsflows."
+    },
+    guides: {
+      eyebrow: "Discovery-sider",
+      title: "De bedste sider til hurtigere beslutninger",
+      description: "Åbn use-case sider til indtjening, begyndervenlige workflows, indholdsproduktion og freelancearbejde.",
+      linkLabel: "Åbn siden"
+    }
+  },
+  fa: {
+    hotTools: {
+      eyebrow: "ترند",
+      title: "ابزارهای AI پرتقاضای این لحظه",
+      description: "ابزارهایی را که بیشتر از همه در جریان‌های کشف و مقایسه دیده می‌شوند سریع مرور کنید."
+    },
+    guides: {
+      eyebrow: "صفحه‌های کشف",
+      title: "بهترین صفحه‌ها برای سریع‌تر شدن تصمیم",
+      description: "صفحه‌های کاربردی مربوط به درآمدزایی، شروع کار، تولید محتوا و فریلنسری را باز کنید.",
+      linkLabel: "باز کردن صفحه"
+    }
+  }
+};
+
 function buildHeroContent(locale: Locale, toolCount: number, articleCount: number, discoveryCount: number): HomeContent["hero"] {
   return {
     ...localizedHeroBase[locale],
@@ -1131,36 +1270,14 @@ export function getHomeContent(locale: SupportedLocale) {
     },
     sections: {
       ...base.sections,
-      hotTools:
-        locale === "tr"
-          ? {
-              ...base.sections.hotTools,
-              eyebrow: "Trending",
-              title: "Şu an öne çıkan AI araçları",
-              description: "Karşılaştırma ve keşif akışlarında sık açılan araçları hızlıca görün."
-            }
-          : {
-              ...base.sections.hotTools,
-              eyebrow: "Trending",
-              title: "Trending AI tools right now",
-              description: "Quickly review the tools that show up most often in discovery and comparison flows."
-            },
-      guides:
-        locale === "tr"
-          ? {
-              ...base.sections.guides,
-              eyebrow: "Discovery sayfaları",
-              title: "Kararı hızlandıran en iyi sayfalar",
-              description: "Para kazanma, yeni başlangıç, içerik üretimi ve freelance kullanım senaryoları için hazırlanan sayfaları açın.",
-              linkLabel: "Sayfayı aç"
-            }
-          : {
-              ...base.sections.guides,
-              eyebrow: "Discovery pages",
-              title: "Best pages built to speed up decisions",
-              description: "Open use-case pages for monetization, beginner workflows, content creation, and freelance work.",
-              linkLabel: "Open page"
-            }
+      hotTools: {
+        ...base.sections.hotTools,
+        ...homeSectionOverrides[locale].hotTools
+      },
+      guides: {
+        ...base.sections.guides,
+        ...homeSectionOverrides[locale].guides
+      }
     },
     socialProofStats: buildSocialProofStats(locale, toolCount, articleCount, discoveryCount),
     guides: getHomepageDiscoveryGuides(locale)

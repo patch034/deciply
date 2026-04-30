@@ -1,6 +1,6 @@
 ﻿import { locales, type Locale } from "@/i18n/config";
 import { buildToolCompareProfile } from "@/lib/tool-compare";
-import { getContentBaseLocale, localizeTree } from "@/lib/locale-copy";
+import { getContentBaseLocale, localizeString, localizeTree } from "@/lib/locale-copy";
 import type { LocalizedTool, MoneyUseCase, RealUseCaseExample } from "@/types/catalog";
 
 type ToolCopySource = Omit<LocalizedTool, "whatItActuallyDoes" | "whoShouldUseSummary" | "realUseCaseExample" | "compareProfile">;
@@ -81,7 +81,15 @@ function lowerFirst(locale: Locale, value: string) {
 
 function joinList(locale: Locale, items: string[]) {
   if (items.length === 0) {
-    return locale === "tr" ? "genel kullanıcılar" : "general users";
+    if (locale === "tr") {
+      return "genel kullanıcılar";
+    }
+
+    if (locale === "en") {
+      return "general users";
+    }
+
+    return localizeString(locale, "general users");
   }
 
   if (items.length === 1) {
@@ -89,13 +97,29 @@ function joinList(locale: Locale, items: string[]) {
   }
 
   if (items.length === 2) {
-    return locale === "tr" ? `${items[0]} ve ${items[1]}` : `${items[0]} and ${items[1]}`;
+    if (locale === "tr") {
+      return `${items[0]} ve ${items[1]}`;
+    }
+
+    if (locale === "en") {
+      return `${items[0]} and ${items[1]}`;
+    }
+
+    return localizeString(locale, `${items[0]} and ${items[1]}`);
   }
 
   const head = items.slice(0, -1).join(", ");
   const tail = items.at(-1);
 
-  return locale === "tr" ? `${head} ve ${tail}` : `${head}, and ${tail}`;
+  if (locale === "tr") {
+    return `${head} ve ${tail}`;
+  }
+
+  if (locale === "en") {
+    return `${head}, and ${tail}`;
+  }
+
+  return localizeString(locale, `${head}, and ${tail}`);
 }
 
 
@@ -211,7 +235,11 @@ function extractCapabilityFragment(
     }
   }
 
-  return stripTrailingPunctuation(tool.bestUseCase) || (locale === "tr" ? "net iş akışları" : "clear workflows");
+  if (stripTrailingPunctuation(tool.bestUseCase)) {
+    return stripTrailingPunctuation(tool.bestUseCase);
+  }
+
+  return locale === "tr" ? "net iş akışları" : locale === "en" ? "clear workflows" : localizeString(locale, "clear workflows");
 }
 
 function detectWorkflowKind(locale: Locale, tool: Pick<ToolCopySource, "toolCategorySlugs" | "bestUseCase">, capability: string): WorkflowKind {
@@ -265,18 +293,108 @@ function buildWhatItActuallyDoes(
   const categoryLabel = getCategoryLabel(locale, tool);
   const categoryAction = getCategoryAction(locale, tool);
 
-  return locale === "tr"
-    ? `${tool.name}, ${categoryAction} için kullanılan bir ${categoryLabel} aracıdır. Öne çıkan tarafı ${cleanCapability}.`
-    : `${tool.name} is a ${categoryLabel} tool built for ${categoryAction}. Its standout angle is ${cleanCapability}.`;
+  switch (locale) {
+    case "tr":
+      return `${tool.name}, ${categoryAction} için kullanılan bir ${categoryLabel} aracıdır. Öne çıkan tarafı ${cleanCapability}.`;
+    case "en":
+      return `${tool.name} is a ${categoryLabel} tool built for ${categoryAction}. Its standout angle is ${cleanCapability}.`;
+    case "ar":
+      return `${tool.name} أداة ${categoryLabel} مخصصة لـ ${categoryAction}. أبرز ما يميزها هو ${cleanCapability}.`;
+    case "ru":
+      return `${tool.name} — инструмент в категории ${categoryLabel}, созданный для ${categoryAction}. Его сильная сторона — ${cleanCapability}.`;
+    case "zh":
+      return `${tool.name} 是一款面向 ${categoryAction} 的${categoryLabel}工具，最突出的特点是 ${cleanCapability}。`;
+    case "ja":
+      return `${tool.name} は ${categoryAction} のために作られた${categoryLabel}ツールです。特に優れている点は ${cleanCapability} です。`;
+    case "ko":
+      return `${tool.name}는 ${categoryAction}에 맞춰진 ${categoryLabel} 도구이며, 가장 눈에 띄는 강점은 ${cleanCapability}입니다.`;
+    case "el":
+      return `Το ${tool.name} είναι εργαλείο ${categoryLabel} για ${categoryAction}. Το πιο δυνατό του σημείο είναι ${cleanCapability}.`;
+    case "da":
+      return `${tool.name} er et ${categoryLabel}-værktøj bygget til ${categoryAction}. Det skiller sig især ud med ${cleanCapability}.`;
+    case "fa":
+      return `${tool.name} یک ابزار ${categoryLabel} برای ${categoryAction} است و مهم‌ترین نقطه قوت آن ${cleanCapability} است.`;
+  }
 }
 
 function buildWhoShouldUseSummary(locale: Locale, tool: Pick<ToolCopySource, "whoShouldUse" | "bestUseCase">) {
   const audience = joinList(locale, tool.whoShouldUse.slice(0, 3));
   const bestUseCase = lowerFirst(locale, stripTrailingPunctuation(tool.bestUseCase));
 
-  return locale === "tr"
-    ? `En çok ${audience} için uygundur; özellikle ${bestUseCase} tarafında hızlı değer verir.`
-    : `Best for ${audience} that need ${bestUseCase} workflows.`;
+  switch (locale) {
+    case "tr":
+      return `En çok ${audience} için uygundur; özellikle ${bestUseCase} tarafında hızlı değer verir.`;
+    case "en":
+      return `Best for ${audience} that need ${bestUseCase} workflows.`;
+    case "ar":
+      return `يناسب أكثر ${audience} ممن يحتاجون إلى سير عمل ${bestUseCase}.`;
+    case "ru":
+      return `Лучше всего подходит для ${audience}, которым нужен сценарий ${bestUseCase}.`;
+    case "zh":
+      return `最适合需要 ${bestUseCase} 工作流的 ${audience}。`;
+    case "ja":
+      return `${bestUseCase} のワークフローを必要とする ${audience} に最適です。`;
+    case "ko":
+      return `${bestUseCase} 워크플로가 필요한 ${audience}에게 가장 잘 맞습니다.`;
+    case "el":
+      return `Ταιριάζει περισσότερο σε ${audience} που χρειάζονται ροές εργασίας για ${bestUseCase}.`;
+    case "da":
+      return `Bedst til ${audience}, der har brug for workflows til ${bestUseCase}.`;
+    case "fa":
+      return `برای ${audience} که به جریان کاری ${bestUseCase} نیاز دارند مناسب‌تر است.`;
+  }
+}
+
+function buildShortDescription(locale: Locale, toolName: string, capability: string, audience: string) {
+  const cleanCapability = stripTrailingPunctuation(capability);
+
+  switch (locale) {
+    case "tr":
+      return `${toolName}, ${cleanCapability} için kullanılır. Özellikle ${audience} için uygundur.`;
+    case "en":
+      return `${toolName} helps with ${cleanCapability}. Best for ${audience}.`;
+    case "ar":
+      return `${toolName} يساعد في ${cleanCapability}. وهو مناسب خصوصًا لـ ${audience}.`;
+    case "ru":
+      return `${toolName} помогает с задачами ${cleanCapability}. Особенно полезен для ${audience}.`;
+    case "zh":
+      return `${toolName} 可用于 ${cleanCapability}，尤其适合 ${audience}。`;
+    case "ja":
+      return `${toolName} は ${cleanCapability} に役立ち、特に ${audience} に向いています。`;
+    case "ko":
+      return `${toolName}는 ${cleanCapability} 작업을 돕고, 특히 ${audience}에게 잘 맞습니다.`;
+    case "el":
+      return `Το ${toolName} βοηθά σε ${cleanCapability} και ταιριάζει ιδιαίτερα σε ${audience}.`;
+    case "da":
+      return `${toolName} hjælper med ${cleanCapability} og passer især til ${audience}.`;
+    case "fa":
+      return `${toolName} برای ${cleanCapability} کمک می‌کند و به‌ویژه برای ${audience} مناسب است.`;
+  }
+}
+
+function buildSeoTitle(locale: Locale, toolName: string, bestUseCase: string) {
+  switch (locale) {
+    case "tr":
+      return `${toolName} incelemesi (2026): ${bestUseCase}, fiyat ve kullanım alanları`;
+    case "en":
+      return `${toolName} Review (2026): ${bestUseCase}, Pricing & Use Cases`;
+    case "ar":
+      return `مراجعة ${toolName} (2026): ${bestUseCase} والأسعار وحالات الاستخدام`;
+    case "ru":
+      return `Обзор ${toolName} (2026): ${bestUseCase}, цены и сценарии использования`;
+    case "zh":
+      return `${toolName} 评测（2026）：${bestUseCase}、价格与使用场景`;
+    case "ja":
+      return `${toolName} レビュー（2026）：${bestUseCase}、価格、利用シーン`;
+    case "ko":
+      return `${toolName} 리뷰 (2026): ${bestUseCase}, 가격 및 활용 사례`;
+    case "el":
+      return `Αξιολόγηση ${toolName} (2026): ${bestUseCase}, τιμές και χρήσεις`;
+    case "da":
+      return `${toolName} anmeldelse (2026): ${bestUseCase}, priser og brugsscenarier`;
+    case "fa":
+      return `بررسی ${toolName} (2026): ${bestUseCase}، قیمت و کاربردها`;
+  }
 }
 
 function buildRealUseCaseExample(locale: Locale, tool: Pick<ToolCopySource, "name" | "bestUseCase">, workflowKind: WorkflowKind): RealUseCaseExample {
@@ -575,16 +693,15 @@ export function enrichToolCopy(locale: Locale, tool: ToolCopySource): LocalizedT
     ? buildMoneyUseCaseTemplates(locale, tool, workflowKind).slice(0, tool.moneyUseCases.length)
     : tool.moneyUseCases;
 
-  const shortDescription =
-    locale === "tr"
-      ? `${tool.name}, ${stripTrailingPunctuation(capability)} için kullanılır. Özellikle ${joinList(locale, tool.whoShouldUse.slice(0, 2))} için uygundur.`
-      : `${tool.name} helps with ${stripTrailingPunctuation(capability)}. Best for ${joinList(locale, tool.whoShouldUse.slice(0, 2))}.`;
+  const shortDescription = buildShortDescription(
+    locale,
+    tool.name,
+    capability,
+    joinList(locale, tool.whoShouldUse.slice(0, 2))
+  );
 
   const longDescription = `${whatItActuallyDoes} ${whoShouldUseSummary} ${realUseCaseExample.description}`;
-  const seoTitle =
-    locale === "tr"
-      ? `${tool.name} incelemesi (2026): ${tool.bestUseCase}, fiyat ve kullanım alanları`
-      : `${tool.name} Review (2026): ${tool.bestUseCase}, Pricing & Use Cases`;
+  const seoTitle = buildSeoTitle(locale, tool.name, tool.bestUseCase);
   const seoDescription = clipText(`${shortDescription} ${realUseCaseExample.description}`);
 
   return {

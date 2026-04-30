@@ -82,15 +82,28 @@ function normalize(text: string, locale: Locale) {
 function includesAny(text: string, terms: string[]) {
   return terms.some((term) => text.includes(term));
 }
+const explorerLabels: Record<Locale, { free: string; freemium: string; browseByCategory: string }> = {
+  tr: { free: "Ücretsiz", freemium: "Freemium", browseByCategory: "Kategoriye göre keşfet" },
+  en: { free: "Free", freemium: "Freemium", browseByCategory: "Browse by category" },
+  ar: { free: "مجاني", freemium: "فريميوم", browseByCategory: "تصفح حسب الفئة" },
+  ru: { free: "Бесплатно", freemium: "Фримиум", browseByCategory: "Просмотр по категориям" },
+  zh: { free: "免费", freemium: "免费增值", browseByCategory: "按分类浏览" },
+  ja: { free: "無料", freemium: "フリーミアム", browseByCategory: "カテゴリ別に探す" },
+  ko: { free: "무료", freemium: "프리미엄", browseByCategory: "카테고리별 탐색" },
+  el: { free: "Δωρεάν", freemium: "Freemium", browseByCategory: "Περιήγηση ανά κατηγορία" },
+  da: { free: "Gratis", freemium: "Freemium", browseByCategory: "Udforsk efter kategori" },
+  fa: { free: "رایگان", freemium: "فریمیوم", browseByCategory: "مرور بر اساس دسته‌بندی" }
+};
 
 function buildSortOptions(locale: Locale, copy: ToolsExplorerCopy) {
+  const labels = explorerLabels[locale];
   return [
     { value: "popular", label: copy.mostPopularLabel },
     { value: "highest-rated", label: copy.highestRatedLabel },
     { value: "newest", label: copy.newestLabel },
     { value: "alphabetical", label: "A-Z" },
-    { value: "free-first", label: locale === "tr" ? "Ücretsiz" : "Free" },
-    { value: "freemium-first", label: "Freemium" },
+    { value: "free-first", label: labels.free },
+    { value: "freemium-first", label: labels.freemium },
     { value: "paid-first", label: copy.paidFirstLabel }
   ] as const satisfies readonly { value: ToolsSortOption; label: string }[];
 }
@@ -318,6 +331,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
   }, [initialFilters]);
 
   const normalizedQuery = normalize(deferredQuery.trim(), locale);
+  const labels = explorerLabels[locale];
   const browseOptions = useMemo(() => buildBrowseOptions(locale), [locale]);
   const sortOptions = useMemo(() => buildSortOptions(locale, copy), [copy, locale]);
   const searchableTools = useMemo(
@@ -555,7 +569,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
       <div className="space-y-3">
         <div className="flex items-center justify-between gap-3">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-            {locale === "tr" ? "Kategoriye göre keşfet" : "Browse by category"}
+            {labels.browseByCategory}
           </p>
           <p className="text-xs font-semibold text-slate-500">{summaryText}</p>
         </div>
