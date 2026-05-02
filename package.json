@@ -6,6 +6,9 @@
     "dev": "next dev",
     "prebuild": "npm run verify:encoding && npm run verify:blog-dates",
     "build": "prisma generate && next build",
+    "build:cloudflare": "npx opennextjs-cloudflare build",
+    "preview:cloudflare": "npm run build:cloudflare && wrangler dev",
+    "deploy:cloudflare": "npm run build:cloudflare && wrangler deploy",
     "start": "next start",
     "lint": "next lint",
     "prisma:generate": "prisma generate",
@@ -41,6 +44,7 @@
     "postcss": "^8.5.3",
     "prisma": "^6.6.0",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "wrangler": "^4.87.0"
   }
 }
