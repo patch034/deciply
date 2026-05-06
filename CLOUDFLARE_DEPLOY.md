@@ -1,18 +1,13 @@
 Cloudflare Settings:
 
-If 2 fields exist:
-Build command:
-npm run build:cloudflare
+Workers settings:
+- Build command: `npm run build:cloudflare`
+- Deploy command: `npx wrangler deploy`
+- Root directory: `/`
+- Compatibility flag: `nodejs_compat`
+- Worker entry: `.open-next/worker.js`
+- Assets directory: `.open-next/assets`
 
-Deploy command:
-npx wrangler deploy
-
-If ONLY ONE command field exists:
-Use:
-npm run deploy
-
-Pages settings:
-- Framework preset: None
-- Build output directory: .open-next
-- Root directory: /
-- Compatibility flag: nodejs_compat
+Recommended workflow:
+- Production deploy: `npm run deploy`
+- Local preview: `npm run preview:cloudflare`

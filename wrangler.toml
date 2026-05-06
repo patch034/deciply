@@ -1,4 +1,13 @@
 name = "deciply"
-compatibility_date = "2025-04-01"
+main = ".open-next/worker.js"
+compatibility_date = "2025-05-05"
 compatibility_flags = ["nodejs_compat"]
-pages_build_output_dir = ".open-next"
+
+routes = [
+  { pattern = "deciply.com/*", zone_name = "deciply.com" },
+  { pattern = "www.deciply.com/*", zone_name = "deciply.com" }
+]
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
