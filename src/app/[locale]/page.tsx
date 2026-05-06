@@ -2,12 +2,27 @@ import type { Metadata } from "next";
 
 import { HomePage } from "@/components/home/home-page";
 import { getHomeContent } from "@/data/home";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, type SupportedLocale, normalizeLocale } from "@/i18n/config";
+import {
+  buildAlternates,
+  buildCanonicalUrl,
+  isValidLocale,
+  locales,
+  type Locale,
+  type SupportedLocale,
+  normalizeLocale
+} from "@/i18n/config";
 import { buildHomeMetaDescription, buildHomeTitle } from "@/lib/seo";
+
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 type LocalePageProps = {
   params: Promise<{ locale: string }>;
 };
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
