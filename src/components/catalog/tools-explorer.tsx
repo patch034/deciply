@@ -386,7 +386,7 @@ export function ToolsExplorer({ locale, tools, initialFilters, detailLabel, copy
       pricing?: PricingTier | "all";
       useCase?: string;
     }) => {
-      const params = new URLSearchParams(searchParams.toString());
+      const params = new URLSearchParams(searchParams?.toString() ?? "");
       const nextQuery = (nextState.query ?? query).trim();
       const nextBrowse = nextState.browse ?? activeBrowse;
       const nextSort = nextState.sort ?? activeSort;
