@@ -2,15 +2,17 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ThemePreviewLayout } from "@/components/content/theme-preview-layout";
+import { blogArticles } from "@/data/blog";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, normalizeLocale, type Locale } from "@/i18n/config";
 import { formatBlogDate, getLocalizedBlogArticleBySlug, resolveBlogPublishDate } from "@/lib/blog";
 import { buildBlogMetaDescription, buildBlogPageTitle } from "@/lib/seo";
 
 export const revalidate = 3600;
-export const dynamicParams = true;
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [];
+  return Array.from(new Set(blogArticles.map((article) => article.slug))).map((slug) => ({ slug }));
 }
 
 const blogDetailCopy: Record<

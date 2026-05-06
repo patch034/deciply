@@ -18,11 +18,13 @@ import { localizeString } from "@/lib/locale-copy";
 import {
   buildAlternativesPath,
   getAlternativeTargetTools,
-  getSafeComparisonPath
+  getSafeComparisonPath,
+  getStaticAlternativeSlugs
 } from "@/lib/intent-pages";
 
 export const revalidate = 3600;
-export const dynamicParams = true;
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 const copy = {
   tr: {
@@ -131,7 +133,7 @@ function buildAlternativesDescription(locale: Locale, toolName: string, alternat
 }
 
 export function generateStaticParams() {
-  return [];
+  return getStaticAlternativeSlugs().map((tool) => ({ tool }));
 }
 
 export async function generateMetadata({

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { ToolCard } from "@/components/catalog/tool-card";
 import { PremiumButton } from "@/components/ui/premium-button";
+import { categoryDirectory } from "@/data/category-directory";
 import { formatPricing, getCategoryNamesMap, getLocalizedCategoryBySlug } from "@/lib/catalog";
 import {
   categoryUiCopy,
@@ -16,10 +17,16 @@ import { buildCanonicalUrl, isValidLocale, normalizeLocale } from "@/i18n/config
 import { getToolLogoUrl } from "@/lib/logo";
 
 export const revalidate = 3600;
-export const dynamicParams = true;
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [];
+  return categoryDirectory.flatMap((category) =>
+    category.subcategories.map((subcategory) => ({
+      slug: category.slug,
+      subCategory: subcategory.slug
+    }))
+  );
 }
 
 export async function generateMetadata({

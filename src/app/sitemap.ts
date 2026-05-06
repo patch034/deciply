@@ -12,6 +12,8 @@ import { getStaticAlternativeSlugs, getStaticUseCaseSlugs } from "@/lib/intent-p
 const siteUrl = "https://deciply.com";
 const staticLastModified = new Date("2026-03-29T00:00:00.000Z");
 
+export const dynamic = "force-static";
+
 function withLocale(locale: string, path = "") {
   return `${siteUrl}/${locale}${path}`;
 }

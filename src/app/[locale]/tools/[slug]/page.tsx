@@ -6,9 +6,11 @@ import {
   buildAlternates,
   buildCanonicalUrl,
   isValidLocale,
+  locales,
   normalizeLocale,
   type Locale
 } from "@/i18n/config";
+import { tools } from "@/data/tools";
 import {
   formatPricing,
   getCategoryNamesMap,
@@ -76,10 +78,11 @@ const toolDetailCopy: Record<
 };
 
 export const revalidate = 3600;
-export const dynamicParams = true;
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [];
+  return locales.flatMap((locale) => tools.map((tool) => ({ locale, slug: tool.slug })));
 }
 
 export async function generateMetadata({

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 
 import { ThemePreviewLayout } from "@/components/content/theme-preview-layout";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
-import { buildComparisonPath, getComparisonToolsFromPair } from "@/lib/comparisons";
+import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
+import { buildComparisonPath, getComparisonToolsFromPair, getStaticComparisonSlugs } from "@/lib/comparisons";
 
 const comparisonCopy: Record<
   Locale,
@@ -70,10 +70,11 @@ const comparisonCopy: Record<
 };
 
 export const revalidate = 3600;
-export const dynamicParams = true;
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [];
+  return getStaticComparisonSlugs().flatMap((pair) => locales.map((locale) => ({ locale, pair })));
 }
 
 export async function generateMetadata({
