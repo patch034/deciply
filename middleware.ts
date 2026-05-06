@@ -1,0 +1,121 @@
+import { NextRequest, NextResponse } from "next/server";
+
+import { defaultLocale, localeCookieName, locales } from "@/i18n/config";
+import { getBlogRedirectTarget } from "@/lib/blog-routing";
+import { siteConfig } from "@/lib/site";
+
+function normalizePathname(pathname: string) {
+  if (pathname === "/") {
+    return pathname;
+  }
+
+  return pathname.replace(/\/+$/, "");
+}
+
+function getPreferredLocale(request: NextRequest) {
+  const cookieLocale = request.cookies.get(localeCookieName)?.value;
+
+  if (cookieLocale && locales.includes(cookieLocale as (typeof locales)[number])) {
+    return cookieLocale;
+  }
+
+  const acceptLanguage = request.headers.get("accept-language");
+
+  if (!acceptLanguage) {
+    return defaultLocale;
+  }
+
+  const preferred = acceptLanguage
+    .split(",")
+    .map((entry) => entry.split(";")[0]?.trim().toLowerCase())
+    .find((language) => {
+      if (!language) {
+        return false;
+      }
+
+      return locales.some((locale) => language === locale || language.startsWith(`${locale}-`));
+    });
+
+  return preferred?.slice(0, 2) ?? defaultLocale;
+}
+
+function getRequestHost(request: NextRequest) {
+  return (request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? "").toLowerCase();
+}
+
+function getRequestProtocol(request: NextRequest) {
+  return (request.headers.get("x-forwarded-proto") ?? request.nextUrl.protocol.replace(":", "")).toLowerCase();
+}
+
+function getLocaleFromPathname(pathname: string) {
+  const [, maybeLocale] = pathname.split("/");
+
+  if (!maybeLocale) {
+    return null;
+  }
+
+  return locales.includes(maybeLocale as (typeof locales)[number]) ? maybeLocale : null;
+}
+
+export function middleware(request: NextRequest) {
+  const pathname = normalizePathname(request.nextUrl.pathname);
+
+  if (pathname.startsWith("/_next") || pathname.startsWith("/api") || pathname.includes(".")) {
+    return NextResponse.next();
+  }
+
+  if (pathname === "/admin" || pathname.startsWith("/admin/")) {
+    return NextResponse.next();
+  }
+
+  const host = getRequestHost(request);
+  const protocol = getRequestProtocol(request);
+  const isLocalhost = host.includes("localhost") || host.startsWith("127.0.0.1");
+  const isCanonicalHost = host === siteConfig.host;
+  const isWwwHost = host === `www.${siteConfig.host}`;
+
+  if (!isLocalhost && (isWwwHost || ((isCanonicalHost || isWwwHost) && protocol === "http"))) {
+    const url = request.nextUrl.clone();
+    url.protocol = "https";
+    url.host = siteConfig.host;
+    url.pathname = pathname;
+    return NextResponse.redirect(url, 308);
+  }
+
+  const blogRedirectTarget = getBlogRedirectTarget(pathname);
+
+  if (blogRedirectTarget) {
+    const url = request.nextUrl.clone();
+    url.pathname = blogRedirectTarget;
+    url.search = "";
+    return NextResponse.redirect(url, 301);
+  }
+
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
+  );
+
+  if (pathnameHasLocale) {
+    const pathnameLocale = getLocaleFromPathname(pathname);
+    const response = NextResponse.next();
+
+    if (pathnameLocale) {
+      response.cookies.set(localeCookieName, pathnameLocale, {
+        path: "/",
+        maxAge: 60 * 60 * 24 * 365
+      });
+    }
+
+    return response;
+  }
+
+  const locale = getPreferredLocale(request);
+  const url = request.nextUrl.clone();
+  url.pathname = `/${locale}${pathname}`;
+
+  return NextResponse.redirect(url);
+}
+
+export const config = {
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"]
+};

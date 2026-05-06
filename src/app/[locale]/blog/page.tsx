@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import { BlogCard } from "@/components/blog/blog-card";
 import { PremiumButton } from "@/components/ui/premium-button";
@@ -9,7 +10,8 @@ import {
   getBlogBoostSections,
   getBlogCopy,
   getBlogTotalPages,
-  getPaginatedLocalizedBlogArticles
+  getPaginatedLocalizedBlogArticles,
+  parseBlogPage
 } from "@/lib/blog";
 import { buildBlogIndexMetaDescription } from "@/lib/seo";
 
@@ -97,11 +99,14 @@ function buildBlogPageHref(locale: Locale, page: number) {
 }
 
 export async function generateMetadata({
-  params
+  params,
+  searchParams
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ page?: string | string[] }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const { page } = await searchParams;
 
   if (!isValidLocale(locale)) {
     return {};
@@ -109,12 +114,13 @@ export async function generateMetadata({
 
   const safeLocale = normalizeLocale(locale);
   const copy = getBlogCopy(safeLocale);
-  const canonicalPath = `/${locale}/blog`;
-  const alternatesPath = "/blog";
+  const currentPage = parseBlogPage(page);
+  const canonicalPath = currentPage <= 1 ? `/${locale}/blog` : `/${locale}/blog?page=${currentPage}`;
+  const alternatesPath = currentPage <= 1 ? "/blog" : `/blog?page=${currentPage}`;
 
   return {
-    title: copy.blogLabel,
-    description: buildBlogIndexMetaDescription(safeLocale, 1),
+    title: currentPage > 1 ? `${copy.blogLabel} - ${copy.pageLabel} ${currentPage}` : copy.blogLabel,
+    description: buildBlogIndexMetaDescription(safeLocale, currentPage),
     alternates: {
       canonical: buildCanonicalUrl(canonicalPath),
       languages: buildAlternates(alternatesPath)
@@ -123,11 +129,14 @@ export async function generateMetadata({
 }
 
 export default async function BlogPage({
-  params
+  params,
+  searchParams
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ page?: string | string[] }>;
 }) {
   const { locale } = await params;
+  const { page } = await searchParams;
 
   if (!isValidLocale(locale)) {
     return null;
@@ -136,9 +145,15 @@ export default async function BlogPage({
   const safeLocale = normalizeLocale(locale);
   const copy = getBlogCopy(safeLocale);
   const featuredCopy = featuredBlogCopy[safeLocale];
+  const requestedPage = parseBlogPage(page);
   const totalPages = getBlogTotalPages();
   const boostSections = getBlogBoostSections(safeLocale);
-  const { articles, currentPage } = getPaginatedLocalizedBlogArticles(safeLocale, 1);
+
+  if (requestedPage > totalPages) {
+    notFound();
+  }
+
+  const { articles, currentPage } = getPaginatedLocalizedBlogArticles(safeLocale, requestedPage);
   const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (

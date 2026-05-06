@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 
 import { ToolsExplorer } from "@/components/catalog/tools-explorer";
 import { toolCategoryOptions, useCaseOptions } from "@/data/tool-taxonomy";
@@ -30,23 +29,35 @@ const toolsPageCopy = {
 } as const;
 
 export async function generateMetadata({
-  params
+  params,
+  searchParams
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{
+    page?: string | string[];
+    q?: string | string[];
+    browse?: string | string[];
+    category?: string | string[];
+    pricing?: string | string[];
+    useCase?: string | string[];
+    sort?: string | string[];
+  }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const resolvedSearchParams = await searchParams;
 
   if (!isValidLocale(locale)) {
     return {};
   }
 
   const safeLocale = normalizeLocale(locale);
-  const canonicalPath = `/${safeLocale}/tools`;
-  const alternatesPath = "/tools";
+  const { page } = parseToolsQueryFilters(resolvedSearchParams);
+  const canonicalPath = `/${safeLocale}/tools?page=${page}`;
+  const alternatesPath = `/tools?page=${page}`;
 
   return {
-    title: buildToolsPageTitle(safeLocale, 1),
-    description: buildToolsIndexMetaDescription(safeLocale, getToolCount(), 1),
+    title: buildToolsPageTitle(safeLocale, page),
+    description: buildToolsIndexMetaDescription(safeLocale, getToolCount(), page),
     alternates: {
       canonical: buildCanonicalUrl(canonicalPath),
       languages: buildAlternates(alternatesPath)
@@ -55,11 +66,22 @@ export async function generateMetadata({
 }
 
 export default async function ToolsPage({
-  params
+  params,
+  searchParams
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{
+    page?: string | string[];
+    q?: string | string[];
+    browse?: string | string[];
+    category?: string | string[];
+    pricing?: string | string[];
+    useCase?: string | string[];
+    sort?: string | string[];
+  }>;
 }) {
   const { locale } = await params;
+  const resolvedSearchParams = await searchParams;
 
   if (!isValidLocale(locale)) {
     return null;
@@ -77,7 +99,6 @@ export default async function ToolsPage({
   );
   const heroCopy = toolsPageCopy[safeLocale];
   const searchPlaceholder = heroCopy.placeholder;
-  const initialFilters = parseToolsQueryFilters({});
 
   const explorerTools = toolItems.map((tool, index) => {
     const siteCategoryNames = tool.categorySlugs.map((item) => categoryNames.get(item) ?? item);
@@ -120,46 +141,44 @@ export default async function ToolsPage({
         <p className="clamp-1 mt-1.5 max-w-3xl text-sm font-medium leading-6 text-slate-600">{heroCopy.subtitle}</p>
       </section>
 
-      <Suspense fallback={null}>
-        <ToolsExplorer
-          locale={safeLocale}
-          tools={explorerTools}
-          initialFilters={initialFilters}
-          detailLabel={content.common.viewDetailsLabel}
-          copy={{
-            filterTitle: content.toolsIndex.filterTitle,
-            filterDescription: content.toolsIndex.filterDescription,
-            searchLabel: content.toolsIndex.searchLabel,
-            searchPlaceholder,
-            searchHelp: content.toolsIndex.searchHelp,
-            toolCategoryLabel: content.toolsIndex.toolCategoryLabel,
-            useCaseLabel: content.toolsIndex.useCaseLabel,
-            pricingFilterLabel: content.toolsIndex.pricingFilterLabel,
-            allToolCategoriesLabel: content.toolsIndex.allToolCategoriesLabel,
-            allUseCasesLabel: content.toolsIndex.allUseCasesLabel,
-            allPricingLabel: content.toolsIndex.allPricingLabel,
-            resetFiltersLabel: content.toolsIndex.resetFiltersLabel,
-            resultsLabel: content.toolsIndex.resultsLabel,
-            resultsSummaryLabel: content.toolsIndex.resultsSummaryLabel,
-            emptyTitle: content.toolsIndex.emptyTitle,
-            emptyDescription: content.toolsIndex.emptyDescription,
-            bestForLabel: content.toolsIndex.bestForLabel,
-            pageLabel: content.toolsIndex.pageLabel,
-            previousPage: content.toolsIndex.previousPage,
-            nextPage: content.toolsIndex.nextPage,
-            loadMoreLabel: content.toolsIndex.loadMoreLabel,
-            sortLabel: content.toolsIndex.sortLabel,
-            mostPopularLabel: content.toolsIndex.mostPopularLabel,
-            highestRatedLabel: content.toolsIndex.highestRatedLabel,
-            newestLabel: content.toolsIndex.newestLabel,
-            freeFirstLabel: content.toolsIndex.freeFirstLabel,
-            paidFirstLabel: content.toolsIndex.paidFirstLabel,
-            quickIntentLabel: content.toolsIndex.quickIntentLabel,
-            mobileFiltersLabel: content.toolsIndex.mobileFiltersLabel,
-            mobileFiltersCloseLabel: content.toolsIndex.mobileFiltersCloseLabel
-          }}
-        />
-      </Suspense>
+      <ToolsExplorer
+        locale={safeLocale}
+        tools={explorerTools}
+        initialFilters={parseToolsQueryFilters(resolvedSearchParams)}
+        detailLabel={content.common.viewDetailsLabel}
+        copy={{
+          filterTitle: content.toolsIndex.filterTitle,
+          filterDescription: content.toolsIndex.filterDescription,
+          searchLabel: content.toolsIndex.searchLabel,
+          searchPlaceholder,
+          searchHelp: content.toolsIndex.searchHelp,
+          toolCategoryLabel: content.toolsIndex.toolCategoryLabel,
+          useCaseLabel: content.toolsIndex.useCaseLabel,
+          pricingFilterLabel: content.toolsIndex.pricingFilterLabel,
+          allToolCategoriesLabel: content.toolsIndex.allToolCategoriesLabel,
+          allUseCasesLabel: content.toolsIndex.allUseCasesLabel,
+          allPricingLabel: content.toolsIndex.allPricingLabel,
+          resetFiltersLabel: content.toolsIndex.resetFiltersLabel,
+          resultsLabel: content.toolsIndex.resultsLabel,
+          resultsSummaryLabel: content.toolsIndex.resultsSummaryLabel,
+          emptyTitle: content.toolsIndex.emptyTitle,
+          emptyDescription: content.toolsIndex.emptyDescription,
+          bestForLabel: content.toolsIndex.bestForLabel,
+          pageLabel: content.toolsIndex.pageLabel,
+          previousPage: content.toolsIndex.previousPage,
+          nextPage: content.toolsIndex.nextPage,
+          loadMoreLabel: content.toolsIndex.loadMoreLabel,
+          sortLabel: content.toolsIndex.sortLabel,
+          mostPopularLabel: content.toolsIndex.mostPopularLabel,
+          highestRatedLabel: content.toolsIndex.highestRatedLabel,
+          newestLabel: content.toolsIndex.newestLabel,
+          freeFirstLabel: content.toolsIndex.freeFirstLabel,
+          paidFirstLabel: content.toolsIndex.paidFirstLabel,
+          quickIntentLabel: content.toolsIndex.quickIntentLabel,
+          mobileFiltersLabel: content.toolsIndex.mobileFiltersLabel,
+          mobileFiltersCloseLabel: content.toolsIndex.mobileFiltersCloseLabel
+        }}
+      />
     </div>
   );
 }

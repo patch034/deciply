@@ -5,15 +5,14 @@ import { notFound } from "next/navigation";
 import { CategoryHero } from "@/components/catalog/category-hero";
 import { PremiumButton } from "@/components/ui/premium-button";
 import { getLocalizedCategoryBySlug } from "@/lib/catalog";
-import { categoryUiCopy, getCategoryHubItem, getCategoryRouteSlugs } from "@/lib/category-taxonomy";
+import { categoryUiCopy, getCategoryHubItem } from "@/lib/category-taxonomy";
 import { buildAlternates, buildCanonicalUrl, isValidLocale, normalizeLocale } from "@/i18n/config";
 
 export const revalidate = 3600;
-export const dynamic = "force-static";
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export function generateStaticParams() {
-  return getCategoryRouteSlugs().map((slug) => ({ slug }));
+  return [];
 }
 
 export async function generateMetadata({

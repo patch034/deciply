@@ -6,14 +6,11 @@ import { ComparisonCard } from "@/components/home/comparison-card";
 import { Breadcrumb } from "@/components/catalog/breadcrumb";
 import { SectionShell } from "@/components/ui/section-shell";
 import { getCatalogContent, getLocalizedToolBySlug, getLocalizedTools } from "@/lib/catalog";
-import { buildCanonicalUrl, buildAlternates, isValidLocale, locales, type Locale, normalizeLocale } from "@/i18n/config";
-import { getComparisonDirectoryCards, getStaticComparisonPairSlugs, parseAutoComparisonPairSlug } from "@/lib/comparisons";
-
-export const dynamic = "force-static";
-export const dynamicParams = false;
+import { buildCanonicalUrl, buildAlternates, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
+import { getComparisonDirectoryCards, parseAutoComparisonPairSlug } from "@/lib/comparisons";
 
 export function generateStaticParams() {
-  return getStaticComparisonPairSlugs().flatMap((pair) => locales.map((locale) => ({ locale, pair })));
+  return [] as { locale: string; pair: string }[];
 }
 
 export async function generateMetadata({

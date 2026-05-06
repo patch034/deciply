@@ -6,29 +6,20 @@ import { PremiumButton } from "@/components/ui/premium-button";
 import { formatPricing, getCategoryNamesMap } from "@/lib/catalog";
 import {
   categoryUiCopy,
-  getCategoryHub,
   getCategoryHubItem,
   getSubcategoryByRouteSlug,
   getSubcategoryRouteAlternates,
   getToolsBySubcategory
 } from "@/lib/category-taxonomy";
 import { buildComparisonPath, getComparisonTargetSlugs } from "@/lib/comparisons";
-import { buildCanonicalUrl, isValidLocale, locales, normalizeLocale } from "@/i18n/config";
+import { buildCanonicalUrl, isValidLocale, normalizeLocale } from "@/i18n/config";
 import { getToolLogoUrl } from "@/lib/logo";
 
 export const revalidate = 3600;
-export const dynamic = "force-static";
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export function generateStaticParams() {
-  return locales.flatMap((locale) =>
-    getCategoryHub(locale).flatMap((category) =>
-      category.subcategories.map((subcategory) => ({
-        locale,
-        slug: subcategory.routeSlug
-      }))
-    )
-  );
+  return [];
 }
 
 export async function generateMetadata({

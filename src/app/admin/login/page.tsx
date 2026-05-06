@@ -1,19 +1,59 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
-export const dynamic = "force-static";
+import { loginAdminAction } from "@/app/admin/actions";
+import { hasProductionAdminSecret, isAdminAuthenticated } from "@/lib/admin-auth";
 
-export default function AdminLoginPage() {
+export default async function AdminLoginPage({
+  searchParams
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  if (await isAdminAuthenticated()) {
+    redirect("/admin");
+  }
+
+  const params = await searchParams;
+
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(0,127,255,0.08),transparent_32%),linear-gradient(180deg,#f8fafc_0%,#edf4fb_100%)] px-4 py-10 text-slate-950">
       <div className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-md items-center">
         <section className="w-full rounded-lg border border-white/70 bg-white/90 p-6 shadow-[0_24px_70px_-42px_rgba(15,23,42,0.28)] backdrop-blur">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0055FF]">Deciply Admin</p>
-          <h1 className="mt-3 text-2xl font-bold tracking-tight">Admin login</h1>
+          <h1 className="mt-3 text-2xl font-bold tracking-tight">Admin girişi</h1>
           <p className="mt-2 text-sm leading-6 text-slate-600">
-            The interactive admin login is disabled in the static export build. Use the local development environment if you need content management.
+            İçerik paneli sadece yetkili kullanıcılar için açık. Parolayı girdikten sonra içerik ekleme ekranına geçersin.
           </p>
-          <Link href="/admin" className="mt-6 inline-flex min-h-11 items-center rounded-md border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 transition hover:border-sky-200 hover:text-[#0055FF]">
-            Back to admin
+
+          {process.env.NODE_ENV !== "production" && !hasProductionAdminSecret() ? (
+            <p className="mt-4 rounded-md border border-sky-200 bg-sky-50 px-3 py-2 text-xs leading-5 text-slate-700">
+              Lokal varsayılan parola: <span className="font-semibold">deciply-admin-local</span>
+            </p>
+          ) : null}
+
+          {params.error ? (
+            <p className="mt-4 rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-sm font-semibold text-rose-700">
+              Parola hatalı. Lütfen tekrar dene.
+            </p>
+          ) : null}
+
+          <form action={loginAdminAction} className="mt-6 grid gap-4">
+            <label className="grid gap-2 text-sm font-semibold text-slate-700">
+              Admin parolası
+              <input
+                name="password"
+                type="password"
+                required
+                className="min-h-11 rounded-md border border-slate-200 bg-white px-3 text-sm text-slate-950 shadow-sm outline-none transition focus:border-blue-300 focus:ring-4 focus:ring-blue-100"
+              />
+            </label>
+            <button className="min-h-11 rounded-md bg-[linear-gradient(135deg,#0E2450,#0055FF)] px-4 text-sm font-bold text-white shadow-[0_16px_34px_-24px_rgba(0,85,255,0.7)] transition hover:-translate-y-0.5">
+              Giriş yap
+            </button>
+          </form>
+
+          <Link href="/tr" className="mt-5 inline-flex text-sm font-semibold text-slate-500 transition hover:text-slate-950">
+            Siteye dön
           </Link>
         </section>
       </div>

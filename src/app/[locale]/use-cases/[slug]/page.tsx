@@ -18,13 +18,11 @@ import {
   getSafeComparisonPath,
   getUseCaseBlogGuides,
   getUseCasePage,
-  getUseCaseTools,
-  getStaticUseCaseSlugs
+  getUseCaseTools
 } from "@/lib/intent-pages";
 
 export const revalidate = 3600;
-export const dynamic = "force-static";
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 const copy = {
   tr: {
@@ -119,7 +117,7 @@ function getUseCaseCompareLinks(locale: Locale, selectedTools: ReturnType<typeof
 }
 
 export function generateStaticParams() {
-  return getStaticUseCaseSlugs().flatMap((slug) => locales.map((locale) => ({ locale, slug })));
+  return [];
 }
 
 export async function generateMetadata({

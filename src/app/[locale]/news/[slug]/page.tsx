@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ThemePreviewLayout } from "@/components/content/theme-preview-layout";
-import { buildAlternates, buildCanonicalUrl, isValidLocale, locales, normalizeLocale, type Locale } from "@/i18n/config";
-import { getAiNewsItemBySlug, getAiNewsItems } from "@/lib/news";
-
-export const dynamic = "force-static";
-export const dynamicParams = false;
+import { buildAlternates, buildCanonicalUrl, isValidLocale, normalizeLocale, type Locale } from "@/i18n/config";
+import { getAiNewsItemBySlug } from "@/lib/news";
 
 const newsDetailCopy: Record<
   Locale,
@@ -88,14 +85,7 @@ function buildWhyItMatters(locale: Locale, title: string, summary: string) {
 }
 
 export async function generateStaticParams() {
-  const itemsByLocale = await Promise.all(
-    locales.map(async (locale) => {
-      const items = await getAiNewsItems(locale, Number.MAX_SAFE_INTEGER);
-      return items.map((item) => ({ locale, slug: item.slug }));
-    })
-  );
-
-  return itemsByLocale.flat();
+  return [];
 }
 
 export async function generateMetadata({

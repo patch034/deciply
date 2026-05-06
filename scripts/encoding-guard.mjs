@@ -2,7 +2,7 @@
 import path from "node:path";
 
 export const contentExtensions = new Set([".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs", ".json", ".md"]);
-export const ignoredDirectories = new Set([".git", ".next", ".open-next", "node_modules", "out", "public", "review-bundle"]);
+export const ignoredDirectories = new Set([".git", ".next", ".open-next", "node_modules", "public", "review-bundle"]);
 export const ignoredFilenames = new Set(["toolnova-full-code-export.md", "deciply-full-code-export.md", "turkish-repair.mjs"]);
 export const turkishSentinel = "Şğİçöü";
 
