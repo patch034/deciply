@@ -84,6 +84,7 @@ function buildWhyItMatters(locale: Locale, title: string, summary: string) {
   }[locale];
 }
 
+// Do not generate all combinations. This project must not exceed safe static route limits.
 export async function generateStaticParams() {
   return [];
 }

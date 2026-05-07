@@ -130,6 +130,7 @@ function buildAlternativesDescription(locale: Locale, toolName: string, alternat
   );
 }
 
+// Do not generate all combinations. This project must not exceed safe static route limits.
 export function generateStaticParams() {
   return [];
 }

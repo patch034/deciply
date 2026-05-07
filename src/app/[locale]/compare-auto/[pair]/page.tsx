@@ -9,7 +9,11 @@ import { getCatalogContent, getLocalizedToolBySlug, getLocalizedTools } from "@/
 import { buildCanonicalUrl, buildAlternates, isValidLocale, type Locale, normalizeLocale } from "@/i18n/config";
 import { getComparisonDirectoryCards, parseAutoComparisonPairSlug } from "@/lib/comparisons";
 
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
+
 export function generateStaticParams() {
+  // Do not generate all combinations. This project must not exceed safe static route limits.
   return [] as { locale: string; pair: string }[];
 }
 

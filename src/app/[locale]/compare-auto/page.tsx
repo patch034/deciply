@@ -64,6 +64,7 @@ const compareAutoCopy: Record<
   fa: { title: "مقایسه زنده AI | Deciply", description: "هر دو ابزار AI را انتخاب کنید، فوراً مقایسه کنید و در صورت نیاز به صفحه‌های مقایسه تحریریه بروید.", breadcrumb: "مقایسه زنده", eyebrow: "پنل تصمیم فوری", heroTitle: "هر دو ابزار را فوری مقایسه کنید", heroDescription: "با همان داده‌های کاتالوگ، قیمت، سرعت، سهولت استفاده و تناسب با جریان کاری را در یک پنل ببینید.", openTools: "باز کردن ابزارها", editorialComparisons: "مقایسه‌های تحریریه", sectionEyebrow: "مقایسه‌های SEO", sectionTitle: "صفحه‌های مقایسه دستی", sectionDescription: "صفحه‌های مقایسه تحریریه کلاسیک برای تصمیم‌های عمیق‌تر اینجا باقی می‌مانند.", openComparison: "باز کردن مقایسه" }
 };
 
+// Do not generate all combinations. This project must not exceed safe static route limits.
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }

@@ -26,6 +26,7 @@ import {
 import { formatPricing, getCatalogContent, getCategoryNamesMap, getToolOutboundUrl } from "@/lib/catalog";
 import type { ComparisonFaqItem, ComparisonRow } from "@/data/comparisons";
 
+// Do not generate all combinations. This project must not exceed safe static route limits.
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }

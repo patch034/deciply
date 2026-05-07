@@ -20,6 +20,7 @@ type LocalePageProps = {
   params: Promise<{ locale: string }>;
 };
 
+// Do not generate all combinations. This project must not exceed safe static route limits.
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }

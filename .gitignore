@@ -1,5 +1,5 @@
 .next
-.open-next/
+.open-next
 .vercel
 node_modules
 .turbo
@@ -28,6 +28,7 @@ _tmp*.mjs
 _next*
 _start*
 *.tsbuildinfo
+.next-standalone
 home-after-*.png
 footer-after*.png
 mobile-*.png

@@ -116,6 +116,7 @@ function getUseCaseCompareLinks(locale: Locale, selectedTools: ReturnType<typeof
   return links;
 }
 
+// Do not generate all combinations. This project must not exceed safe static route limits.
 export function generateStaticParams() {
   return [];
 }

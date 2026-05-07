@@ -11,6 +11,7 @@ import { buildAlternates, buildCanonicalUrl, isValidLocale, normalizeLocale } fr
 export const revalidate = 3600;
 export const dynamicParams = true;
 
+// Do not generate all combinations. This project must not exceed safe static route limits.
 export function generateStaticParams() {
   return [];
 }
